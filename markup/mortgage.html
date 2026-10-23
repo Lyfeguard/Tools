@@ -1,0 +1,53 @@
+<div id="lgmc-input-panel" class="lgmc-input-panel">
+ <div class="lgmc-eyebrow">01 — YOUR DETAILS</div>
+ <h2>About your mortgage</h2>
+ <p class="lgmc-intro">Enter the property price, deposit, interest rate and mortgage term.</p>
+ <div class="lgmc-field-grid">
+  <div class="lgmc-field"><label for="lgmc-price">Property price</label><div class="lgmc-input-shell"><span class="lgmc-prefix" aria-hidden="true">£</span><input id="lgmc-price" name="lgmc-price" type="text" inputmode="decimal" autocomplete="off" placeholder="350,000" aria-describedby="lgmc-error"></div></div>
+  <div class="lgmc-field"><label for="lgmc-deposit">Deposit</label><div class="lgmc-input-shell"><span class="lgmc-prefix" aria-hidden="true">£</span><input id="lgmc-deposit" name="lgmc-deposit" type="text" inputmode="decimal" autocomplete="off" placeholder="70,000" aria-describedby="lgmc-error"></div></div>
+  <div class="lgmc-field"><label for="lgmc-rate">Annual interest rate</label><div class="lgmc-input-shell"><input id="lgmc-rate" name="lgmc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="4.5" aria-describedby="lgmc-error"><span class="lgmc-suffix" aria-hidden="true">%</span></div></div>
+  <div class="lgmc-field"><label for="lgmc-term">Mortgage term</label><div class="lgmc-input-shell"><input id="lgmc-term" name="lgmc-term" type="text" inputmode="decimal" autocomplete="off" placeholder="25" aria-describedby="lgmc-error"><span class="lgmc-suffix" aria-hidden="true">years</span></div></div>
+ </div>
+ <fieldset class="lgmc-mortgage-type"><legend>Repayment type</legend>
+  <label class="lgmc-choice"><input id="lgmc-type-repayment" type="radio" name="mortgage-type" value="repayment" checked=""><span>Repayment</span></label>
+  <label class="lgmc-choice"><input id="lgmc-type-interest-only" type="radio" name="mortgage-type" value="interest-only"><span>Interest-only</span></label>
+ </fieldset>
+ <p id="lgmc-error" role="alert" hidden=""></p>
+</div>
+
+<div id="lgmc-results-panel" aria-live="polite" aria-atomic="true">
+ <div class="lgmc-eyebrow">02 — YOUR RESULTS</div><h2>Your mortgage estimate</h2>
+ <div class="lgmc-primary-result"><p class="lgmc-main-label" id="lgmc-monthly-label">Estimated monthly repayment</p><div id="lgmc-monthly" class="lgmc-monthly">—</div><p id="lgmc-assumption" class="lgmc-assumption">Enter your mortgage details to see an estimate.</p></div>
+ <div class="lgmc-results-grid">
+  <div class="lgmc-result-item"><span>Amount borrowed</span><strong id="lgmc-loan">—</strong></div>
+  <div class="lgmc-result-item"><span>Loan-to-value</span><strong id="lgmc-ltv">—</strong></div>
+  <div class="lgmc-result-item"><span>Total interest</span><strong id="lgmc-interest">—</strong></div>
+  <div class="lgmc-result-item"><span id="lgmc-total-label">Total mortgage cost</span><strong id="lgmc-total">—</strong></div>
+  <div class="lgmc-result-item"><span>Balance due at term end</span><strong id="lgmc-outstanding">—</strong></div>
+ </div>
+ <p class="lgmc-disclaimer">Illustrative figures only. Assumes an unchanged annual borrowing rate throughout the term, and excludes fees, insurance and other costs. This is not an affordability assessment or mortgage offer.</p>
+</div>
+
+<div id="lgmc-breakdown" class="lgmc-viz-card">
+ <h3>Repayment breakdown</h3>
+ <p id="lgmc-breakdown-intro" class="lgmc-viz-intro">How the total mortgage cost is split between the amount borrowed and interest.</p>
+ <div id="lgmc-breakdown-chart" class="lgmc-viz-chart" role="img" aria-label="Mortgage repayment breakdown will appear once details are entered"><div id="lgmc-principal-bar" class="lgmc-viz-bar-principal"></div><div id="lgmc-interest-bar" class="lgmc-viz-bar-interest"></div></div>
+ <div class="lgmc-viz-legend">
+  <div class="lgmc-viz-legend-row"><span class="lgmc-viz-legend-name"><i class="lgmc-viz-dot lgmc-viz-dot-principal"></i><span id="lgmc-principal-label">Amount borrowed</span></span><span id="lgmc-principal-pct" class="lgmc-viz-muted">—</span><strong id="lgmc-breakdown-principal">—</strong></div>
+  <div class="lgmc-viz-legend-row"><span class="lgmc-viz-legend-name"><i class="lgmc-viz-dot lgmc-viz-dot-interest"></i>Total interest</span><span id="lgmc-interest-pct" class="lgmc-viz-muted">—</span><strong id="lgmc-breakdown-interest">—</strong></div>
+ </div><p id="lgmc-breakdown-note" class="lgmc-viz-intro lgmc-breakdown-note">For interest-only mortgages, the capital is payable at the end of the term.</p>
+</div>
+
+<div id="lgmc-rate-comparison" class="lgmc-viz-card">
+ <h3>What if the interest rate changed?</h3><p class="lgmc-viz-intro">Compare monthly payments at different rates, assuming each rate applies throughout the mortgage term.</p>
+ <div class="lgmc-viz-rate-grid">
+  <div class="lgmc-viz-rate-card"><span id="lgmc-lower-label" class="lgmc-viz-rate-label">Lower rate</span><strong id="lgmc-lower" class="lgmc-viz-rate-amount">—</strong><small>per month</small><span id="lgmc-lower-diff" class="lgmc-viz-difference">—</span></div>
+  <div class="lgmc-viz-rate-card lgmc-viz-selected"><span id="lgmc-current-label" class="lgmc-viz-rate-label">Your rate</span><strong id="lgmc-current" class="lgmc-viz-rate-amount">—</strong><small>per month</small><span class="lgmc-viz-difference">Your rate</span></div>
+  <div class="lgmc-viz-rate-card"><span id="lgmc-higher-label" class="lgmc-viz-rate-label">Higher rate</span><strong id="lgmc-higher" class="lgmc-viz-rate-amount">—</strong><small>per month</small><span id="lgmc-higher-diff" class="lgmc-viz-difference">—</span></div>
+ </div><p class="lgmc-viz-footnote">These are hypothetical rates, not live mortgage offers. Changes to fixed-rate deals, fees or affordability criteria are not modelled.</p>
+</div>
+
+<details id="lgmc-methodology">
+ <summary><span>How was this calculated?</span><span class="lgmc-accordion-symbol" aria-hidden="true"></span></summary>
+ <div class="lgmc-accordion-body"><p id="lgmc-method-text">Enter your mortgage details to see how the estimate is calculated.</p><p class="lgmc-accordion-note">Interest rates may change during the mortgage term. Interest-only mortgages require a separate plan to repay the outstanding capital.</p></div>
+</details>

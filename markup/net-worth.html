@@ -1,0 +1,246 @@
+<section aria-labelledby="lgnw-assets-heading" id="lgnw-assets-panel">
+  <div class="lgnw-topline"><span class="lgnw-eyebrow">01 / WHAT YOU OWN</span><span class="lgnw-subtotal" id="lgnw-assets-subtotal">—</span></div>
+  <h2 id="lgnw-assets-heading">Your assets</h2>
+  <p class="lgnw-intro">Enter what your assets are worth today, not what you originally paid. Leave anything that doesn't apply blank.</p>
+  <fieldset class="lgnw-scope">
+    <legend>Whose net worth?</legend>
+    <div class="lgnw-scope-options">
+      <label><input checked="" name="lgnw-scope" type="radio" value="personal"> Just mine</label><label><input name="lgnw-scope" type="radio" value="household"> Our household</label>
+    </div>
+    <p>For personal estimates include only your attributable share of jointly owned assets and shared debts. For household estimates include shared items once. Joint debt liability can exceed an allocated share.</p>
+  </fieldset>
+  <fieldset class="lgnw-group">
+    <legend>Cash &amp; financial assets</legend>
+    <div class="lgnw-fields">
+      <div class="lgnw-field">
+        <label for="lgnw-current-accounts">Current accounts</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" id="lgnw-current-accounts" inputmode="decimal" placeholder="2,500" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-cash">Savings &amp; cash</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-cash" inputmode="decimal" placeholder="12,500" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-isa">Individual Savings Accounts (ISAs)</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-autofill-field-type="ccCvv" id="lgnw-isa" inputmode="decimal" placeholder="20,000" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-investments">Other investments</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-investments" inputmode="decimal" placeholder="8,000" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-pensions">Pension pots</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-pensions" inputmode="decimal" placeholder="85,000" spellcheck="false" type="text"></div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="lgnw-group">
+    <legend>Property &amp; other assets</legend>
+    <div class="lgnw-fields">
+      <div class="lgnw-field">
+        <label for="lgnw-property">Your home</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-property" inputmode="decimal" placeholder="350,000" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-other-property">Other property</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" id="lgnw-other-property" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-vehicles">Vehicles</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-vehicles" inputmode="decimal" placeholder="12,000" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-business">Business interests</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-business" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-other-assets">Other valuable assets</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-assets-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-other-assets" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+    </div>
+  </fieldset>
+  <p class="lgnw-form-note" id="lgnw-assets-note">Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance.</p>
+  <p class="lgnw-error" hidden="" id="lgnw-assets-error" role="alert"></p>
+</section>
+
+<section aria-labelledby="lgnw-liabilities-heading" id="lgnw-liabilities-panel">
+  <div class="lgnw-topline"><span class="lgnw-eyebrow">02 / WHAT YOU OWE</span><span class="lgnw-subtotal" id="lgnw-liabilities-subtotal">—</span></div>
+  <h2 id="lgnw-liabilities-heading">Your liabilities</h2>
+  <p class="lgnw-intro">Enter what you still owe, rather than your original borrowing or monthly repayments. Use the same personal or household basis throughout.</p>
+  <fieldset class="lgnw-group">
+    <legend>Property &amp; vehicle borrowing</legend>
+    <div class="lgnw-fields">
+      <div class="lgnw-field">
+        <label for="lgnw-mortgage">Mortgages</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-mortgage" inputmode="decimal" placeholder="245,000" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-car-finance">Car finance</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-car-finance" inputmode="decimal" placeholder="7,500" spellcheck="false" type="text"></div>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="lgnw-group">
+    <legend>Loans &amp; other debts</legend>
+    <div class="lgnw-fields">
+      <div class="lgnw-field">
+        <label for="lgnw-credit-cards">Credit cards</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-credit-cards" inputmode="decimal" placeholder="1,250" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-personal-loans">Personal loans</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-personal-loans" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-overdraft">Overdrafts</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" id="lgnw-overdraft" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-student-loan">Student loans</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-student-loan" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+      <div class="lgnw-field">
+        <label for="lgnw-other-debts">Other debts</label>
+        <div class="lgnw-money-input"><span aria-hidden="true" class="lgnw-currency">£</span><input aria-describedby="lgnw-liabilities-note" aria-invalid="false" autocomplete="off" data-np-intersection-state="visible" id="lgnw-other-debts" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      </div>
+    </div>
+  </fieldset>
+  <p class="lgnw-form-note" id="lgnw-liabilities-note">Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership.</p>
+  <p class="lgnw-error" hidden="" id="lgnw-liabilities-error" role="alert"></p>
+</section>
+
+<section aria-labelledby="lgnw-results-heading" class="lgnw-results" data-sign="neutral" id="lgnw-results-panel">
+  <div class="lgnw-hero-top"><span class="lgnw-eyebrow">03 / YOUR FINANCIAL SNAPSHOT</span><span class="lgnw-date" id="lgnw-snapshot-date">Calculated on 20 Oct 2026</span></div>
+  <h2 id="lgnw-results-heading">Your net worth, clearly.</h2>
+  <div class="lgnw-hero-grid">
+    <div class="lgnw-main-result">
+      <span class="lgnw-main-label" id="lgnw-scope-result">Estimated net worth</span>
+      <div aria-atomic="true" aria-live="polite" class="lgnw-main-value" id="lgnw-net-worth">—</div>
+      <p class="lgnw-context" id="lgnw-results-context">Enter your figures above to see your financial position.</p>
+    </div>
+    <div class="lgnw-summary">
+      <div class="lgnw-summary-item">
+        <span class="lgnw-summary-label"><i aria-hidden="true" class="lgnw-mark lgnw-mark-assets"></i>Total assets</span><strong id="lgnw-assets-total">—</strong>
+      </div>
+      <div class="lgnw-summary-item">
+        <span class="lgnw-summary-label"><i aria-hidden="true" class="lgnw-mark lgnw-mark-debt"></i>Total liabilities</span><strong id="lgnw-liabilities-total">—</strong>
+      </div>
+      <div class="lgnw-summary-caption">Net worth = assets − liabilities</div>
+    </div>
+  </div>
+  <div class="lgnw-hero-bottom">
+    <div class="lgnw-privacy">
+      <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24" width="16">
+        <rect height="11" rx="2" width="16" x="4" y="10"></rect>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Calculated in your browser. No account required.
+    </div>
+    <div class="lgnw-actions">
+      <button disabled="" id="lgnw-export" type="button">
+        <svg aria-hidden="true" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="16"><path d="M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3"></path></svg>Download Excel</button><button class="lgnw-reset" id="lgnw-reset" type="button">Clear figures</button>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="lgnw-bridge-heading" class="lgnw-bridge" data-negative="false" id="lgnw-bridge-panel">
+  <div class="lgnw-section-intro">
+    <div>
+      <div class="lgnw-eyebrow">YOUR FINANCIAL POSITION</div>
+      <h2 id="lgnw-bridge-heading">How your net worth adds up</h2>
+      <p>See how outstanding debts reduce the value of what you own.</p>
+    </div>
+    <span class="lgnw-mini-formula">ASSETS − LIABILITIES = NET WORTH</span>
+  </div>
+  <div class="lgnw-bridge-plot">
+    <svg aria-label="Enter assets and liabilities to see how net worth is calculated" height="242" id="lgnw-bridge-svg" role="img" viewBox="0 0 900 242" width="100%"></svg>
+    <div class="lgnw-chart-empty" id="lgnw-bridge-empty">Add your figures to see how your net worth is calculated.</div>
+  </div>
+  <div class="lgnw-bridge-metrics">
+    <div class="lgnw-bridge-metric">
+      <span><i aria-hidden="true" class="lgnw-metric-dot lgnw-asset-dot"></i>01 Total assets</span><strong id="lgnw-bridge-assets">—</strong>
+    </div>
+    <div class="lgnw-bridge-metric">
+      <span><i aria-hidden="true" class="lgnw-metric-dot lgnw-debt-dot"></i>02 Less liabilities</span><strong id="lgnw-bridge-liabilities">—</strong>
+    </div>
+    <div class="lgnw-bridge-metric lgnw-final">
+      <span><i aria-hidden="true" class="lgnw-metric-dot lgnw-net-dot"></i>03 Your net worth</span><strong id="lgnw-bridge-net">—</strong>
+    </div>
+  </div>
+  <p class="lgnw-bridge-note">The middle bar represents debts deducted from your assets. Your net worth can be negative if liabilities exceed assets.</p>
+</section>
+
+<section aria-labelledby="lgnw-composition-heading" class="lgnw-visual" id="lgnw-composition-panel">
+  <div class="lgnw-eyebrow">WHERE YOUR WEALTH SITS</div>
+  <h2 id="lgnw-composition-heading">Your asset mix</h2>
+  <p class="lgnw-intro">A clearer view of where your assets are held — from everyday savings to property and pensions.</p>
+  <div class="lgnw-composition-body">
+    <div class="lgnw-ring-wrap">
+      <svg aria-label="No positive asset values to chart" height="240" id="lgnw-asset-donut" role="img" viewBox="0 0 240 240" width="240">
+        <circle cx="120" cy="120" fill="none" r="89" stroke="#edf4f1" stroke-width="27"></circle>
+        <g id="lgnw-asset-segments" transform="rotate(-90 120 120)"></g>
+      </svg>
+      <div class="lgnw-ring-center"><span>TOTAL ASSETS</span><strong id="lgnw-asset-donut-total">—</strong></div>
+    </div>
+    <div aria-label="Asset categories" class="lgnw-legend" id="lgnw-asset-legend"><p class="lgnw-empty">Enter assets above to see where your wealth sits.</p></div>
+  </div>
+  <p class="lgnw-footnote">Categories with no value are omitted from the chart. Pensions are included at their estimated current value.</p>
+</section>
+
+<section aria-labelledby="lgnw-debts-heading" class="lgnw-visual" id="lgnw-debts-panel">
+  <div class="lgnw-eyebrow">WHERE YOUR DEBTS SIT</div>
+  <h2 id="lgnw-debts-heading">Your liabilities, explained</h2>
+  <p class="lgnw-intro">See which outstanding balances make up your total liabilities, without confusing them with monthly repayments.</p>
+  <div class="lgnw-debts-summary"><span>Combined outstanding debt</span><strong id="lgnw-debt-total">—</strong></div>
+  <div class="lgnw-debt-bars" id="lgnw-debt-bars"><p class="lgnw-empty">Enter outstanding debts to see the breakdown.</p></div>
+  <p class="lgnw-footnote">Bars are scaled relative to your largest outstanding debt. Amounts remain full balances.</p>
+</section>
+
+<section aria-labelledby="lgnw-insights-heading" id="lgnw-insights-panel">
+  <div class="lgnw-eyebrow">GO BEYOND THE NUMBER</div>
+  <h2 id="lgnw-insights-heading">What your numbers reveal</h2>
+  <p class="lgnw-intro">Three factual measures that help explain your overall financial position.</p>
+  <div class="lgnw-insights-grid">
+    <article class="lgnw-insight">
+      <span class="lgnw-insight-icon"><svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="21">
+          <rect height="14" rx="2" width="18" x="3" y="6"></rect>
+          <path d="M3 10h18M8 3v3m8-3v3"></path></svg></span><span class="lgnw-insight-name">Cash, savings &amp; investments</span><strong id="lgnw-liquid-investments">—</strong>
+      <p>Positive current accounts, cash, savings, ISAs and other investments. These may not all be immediately accessible.</p>
+    </article>
+    <article class="lgnw-insight">
+      <span class="lgnw-insight-icon"><svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="21">
+          <path d="m3 10 9-7 9 7v10H3z"></path>
+          <path d="M9 20v-7h6v7"></path></svg></span><span class="lgnw-insight-name">Indicative property equity</span><strong id="lgnw-property-equity">—</strong>
+      <p>Property values less the mortgages entered. Assumes those mortgages relate to the properties included.</p>
+    </article>
+    <article class="lgnw-insight">
+      <span class="lgnw-insight-icon"><svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="21"><path d="M4 20V4m0 16h16M8 16V9m5 7V5m5 11v-5"></path></svg></span><span class="lgnw-insight-name">Liabilities to assets</span><strong id="lgnw-debt-asset-ratio">—</strong>
+      <p>Your outstanding liabilities as a percentage of your total asset value.</p>
+    </article>
+  </div>
+  <p class="lgnw-insights-note">Net worth excluding UK student loans (comparison): <strong id="lgnw-net-ex-student">—</strong>. Your actual student loan balance remains outstanding; repayment obligations differ from ordinary loans.</p>
+  <p class="lgnw-insights-note">These are descriptive figures, not a credit score, affordability assessment or financial recommendation.</p>
+</section>
+
+<details class="lgnw-methodology" id="lgnw-methodology">
+  <summary>
+    <span class="lgnw-method-icon"><svg aria-hidden="true" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewBox="0 0 24 24" width="24">
+        <rect height="18" rx="2" width="14" x="5" y="3"></rect>
+        <path d="M8 8h8M8 12h2m4 0h2M8 16h2m4 0h2"></path></svg></span><span class="lgnw-method-heading"><strong>How was this calculated?</strong><small>Method, assumptions and what to include</small></span><span aria-hidden="true" class="lgnw-chevron"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24" width="22"><path d="m6 9 6 6 6-6"></path></svg></span>
+  </summary>
+  <div class="lgnw-method-body">
+    <p class="lgnw-method-lead" id="lgnw-method-dynamic">Net worth is calculated by subtracting your outstanding liabilities from your estimated asset values.</p>
+    <div class="lgnw-method-grid">
+      <div>
+        <h3>What counts as an asset?</h3>
+        <p>Cash and savings, ISAs, other investments, pension pots, property, vehicles, business interests and other valuable assets. Use current estimates and a consistent approach to jointly owned assets and debts.</p>
+      </div>
+      <div>
+        <h3>What counts as a liability?</h3>
+        <p>Outstanding mortgage balances, credit cards, personal loans, car finance, student loans and other debts. Enter remaining balances, not monthly payments, and don't subtract debts twice. Student loan repayment obligations may differ from conventional borrowing.</p>
+      </div>
+    </div>
+    <div class="lgnw-method-warning">
+      <strong>Important to know</strong>
+      <p>This is a gross balance-sheet estimate, not cash available today or an inheritance-tax valuation. State Pension benefits and defined-benefit pension income are not ordinary pension-pot balances. UK student loans generally have income-related repayments and may be written off under scheme rules. Ownership, leases, taxes, selling costs, valuations and currency changes may affect realisable wealth. An allocated share of a joint loan may not equal legal liability.</p>
+    </div>
+  </div>
+</details>

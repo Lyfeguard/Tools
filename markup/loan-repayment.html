@@ -1,0 +1,91 @@
+<div id="lglc-input-panel" class="lglc-input-panel">
+  <div class="lglc-eyebrow">01 — YOUR DETAILS</div>
+  <h2>About your loan</h2>
+  <p class="lglc-intro">Enter how much you'd like to borrow, the annual interest rate and repayment term.</p>
+  <div class="lglc-field-grid">
+    <div class="lglc-field lglc-full">
+      <label for="lglc-amount">Loan amount</label>
+      <div class="lglc-input-shell"><span class="lglc-prefix" aria-hidden="true">£</span><input id="lglc-amount" name="lglc-amount" type="text" inputmode="decimal" autocomplete="off" placeholder="10,000" aria-describedby="lglc-error"></div>
+    </div>
+    <div class="lglc-field">
+      <label for="lglc-rate">Annual interest rate</label>
+      <div class="lglc-input-shell"><input id="lglc-rate" name="lglc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="7.5" aria-describedby="lglc-error"><span class="lglc-suffix" aria-hidden="true">%</span></div>
+    </div>
+    <div class="lglc-field">
+      <label for="lglc-term">Loan term</label>
+      <div class="lglc-input-shell"><input id="lglc-term" name="lglc-term" type="text" inputmode="decimal" autocomplete="off" placeholder="5" aria-describedby="lglc-error"><span class="lglc-suffix" aria-hidden="true">years</span></div>
+    </div>
+  </div>
+  <p id="lglc-error" role="alert" hidden=""></p>
+</div>
+
+<div id="lglc-results-panel" aria-live="polite" aria-atomic="true">
+  <div class="lglc-eyebrow">02 — YOUR RESULTS</div>
+  <h2>Your loan estimate</h2>
+  <div class="lglc-primary-result">
+    <p class="lglc-main-label">Estimated monthly repayment</p>
+    <div id="lglc-monthly" class="lglc-monthly">—</div>
+    <p id="lglc-assumption" class="lglc-assumption">Enter your loan details to see an estimate.</p>
+  </div>
+  <div class="lglc-results-grid">
+    <div class="lglc-result-item"><span>Amount borrowed</span><strong id="lglc-principal">—</strong></div>
+    <div class="lglc-result-item"><span>Total interest</span><strong id="lglc-interest">—</strong></div>
+    <div class="lglc-result-item"><span>Total repaid</span><strong id="lglc-total">—</strong></div>
+  </div>
+  <p class="lglc-disclaimer">Estimates assume a fixed annual interest rate and equal monthly repayments. Fees and additional charges are excluded.</p>
+</div>
+
+<div id="lglc-breakdown" class="lglc-viz-card">
+  <h3>Repayment breakdown</h3>
+  <p class="lglc-viz-intro">How your total repayments are split between the amount borrowed and interest.</p>
+  <div id="lglc-breakdown-chart" class="lglc-viz-chart" role="img" aria-label="Repayment breakdown will appear after entering loan details">
+    <div id="lglc-principal-bar" class="lglc-viz-bar-principal"></div>
+    <div id="lglc-interest-bar" class="lglc-viz-bar-interest"></div>
+  </div>
+  <div class="lglc-viz-legend">
+    <div class="lglc-viz-legend-row">
+      <span class="lglc-viz-legend-name"><i class="lglc-viz-dot lglc-viz-dot-principal"></i>Amount borrowed</span>
+      <span id="lglc-principal-pct" class="lglc-viz-muted">—</span>
+      <strong id="lglc-breakdown-principal">—</strong>
+    </div>
+    <div class="lglc-viz-legend-row">
+      <span class="lglc-viz-legend-name"><i class="lglc-viz-dot lglc-viz-dot-interest"></i>Total interest</span>
+      <span id="lglc-interest-pct" class="lglc-viz-muted">—</span>
+      <strong id="lglc-breakdown-interest">—</strong>
+    </div>
+  </div>
+</div>
+
+<div id="lglc-rate-comparison" class="lglc-viz-card">
+  <h3>What if the interest rate changed?</h3>
+  <p class="lglc-viz-intro">Compare your estimated monthly repayments at different interest rates.</p>
+  <div class="lglc-viz-rate-grid">
+    <div class="lglc-viz-rate-card">
+      <span id="lglc-lower-label" class="lglc-viz-rate-label">Lower rate</span>
+      <strong id="lglc-lower" class="lglc-viz-rate-amount">—</strong>
+      <small>per month</small>
+      <span id="lglc-lower-diff" class="lglc-viz-difference">—</span>
+    </div>
+    <div class="lglc-viz-rate-card lglc-viz-selected">
+      <span id="lglc-current-label" class="lglc-viz-rate-label">Your rate</span>
+      <strong id="lglc-current" class="lglc-viz-rate-amount">—</strong>
+      <small>per month</small>
+      <span class="lglc-viz-difference">Your rate</span>
+    </div>
+    <div class="lglc-viz-rate-card">
+      <span id="lglc-higher-label" class="lglc-viz-rate-label">Higher rate</span>
+      <strong id="lglc-higher" class="lglc-viz-rate-amount">—</strong>
+      <small>per month</small>
+      <span id="lglc-higher-diff" class="lglc-viz-difference">—</span>
+    </div>
+  </div>
+  <p class="lglc-viz-footnote">Illustrations assume each interest rate applies throughout the loan term.</p>
+</div>
+
+<details id="lglc-methodology">
+  <summary><span>How was this calculated?</span><span class="lglc-accordion-symbol" aria-hidden="true"></span></summary>
+  <div class="lglc-accordion-body">
+    <p id="lglc-method-text">Enter your loan details to see how the monthly repayment is calculated.</p>
+    <p class="lglc-accordion-note">This is an illustration, not a loan offer. The calculation uses a nominal annual borrowing rate, not a representative APR, and excludes fees and additional charges.</p>
+  </div>
+</details>

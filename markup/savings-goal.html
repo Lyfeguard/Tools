@@ -1,0 +1,238 @@
+<section class="lg-tools" aria-labelledby="sg-input-title">
+  <div class="lg-card">
+    <p class="lg-kicker">01 — Your details</p>
+    <h2 id="sg-input-title">Your savings goal</h2>
+
+    <form id="sg-form" novalidate="" autocomplete="off" aria-describedby="sg-live-help">
+      <fieldset id="sg-fields" disabled="">
+        <legend class="lg-sr-only">Savings goal details</legend>
+
+        <fieldset class="lg-mode-group">
+          <legend class="lg-sr-only">What would you like to calculate?</legend>
+
+          <div class="lg-options">
+            <label class="lg-choice">
+              <input type="radio" name="sg-mode" value="monthly" checked="">
+              <span>Monthly saving</span>
+            </label>
+
+            <label class="lg-choice">
+              <input type="radio" name="sg-mode" value="time">
+              <span>Time to goal</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div id="sg-errors" class="lg-alert" role="alert" hidden=""></div>
+
+        <div class="lg-grid">
+          <div class="lg-field">
+            <label class="lg-label" for="sg-goal">
+              Savings target
+              <span class="lg-sr-only"> (pounds)</span>
+            </label>
+
+            <div class="lg-control">
+              <span aria-hidden="true">£</span>
+              <input id="sg-goal" type="text" inputmode="decimal" maxlength="18" placeholder="10,000" aria-describedby="sg-goal-help sg-goal-error" required="">
+            </div>
+
+            <p id="sg-goal-help" class="lg-hint">The total you want to have saved.</p>
+            <p id="sg-goal-error" class="lg-error" hidden=""></p>
+          </div>
+
+          <div class="lg-field">
+            <label class="lg-label" for="sg-initial">
+              Already saved
+              <span class="lg-sr-only"> (pounds)</span>
+            </label>
+
+            <div class="lg-control">
+              <span aria-hidden="true">£</span>
+              <input id="sg-initial" type="text" inputmode="decimal" maxlength="18" value="0" aria-describedby="sg-initial-help sg-initial-error" required="">
+            </div>
+
+            <p id="sg-initial-help" class="lg-hint">Include only money set aside for this goal.</p>
+            <p id="sg-initial-error" class="lg-error" hidden=""></p>
+          </div>
+
+          <div class="lg-field lg-term" id="sg-term-field" role="group" aria-labelledby="sg-term-label" aria-describedby="sg-term-help sg-term-error">
+            <p class="lg-label" id="sg-term-label">Time to save</p>
+
+            <div class="lg-term-inputs">
+              <div>
+                <div class="lg-control">
+                  <input id="sg-years" type="text" inputmode="numeric" maxlength="2" placeholder="2" aria-describedby="sg-years-error sg-term-error">
+                  <label class="lg-unit-label" for="sg-years"> Years </label>
+                </div>
+
+                <p id="sg-years-error" class="lg-error" hidden=""></p>
+              </div>
+
+              <div>
+                <div class="lg-control">
+                  <input id="sg-months" type="text" inputmode="numeric" maxlength="2" placeholder="0" aria-describedby="sg-months-error sg-term-error">
+                  <label class="lg-unit-label" for="sg-months"> Months </label>
+                </div>
+
+                <p id="sg-months-error" class="lg-error" hidden=""></p>
+              </div>
+            </div>
+
+            <p id="sg-term-help" class="lg-hint">For a shorter goal, enter just the months.</p>
+            <p id="sg-term-error" class="lg-error" hidden=""></p>
+          </div>
+
+          <div class="lg-field" id="sg-monthly-field" hidden="">
+            <label class="lg-label" for="sg-monthly">
+              Monthly saving
+              <span class="lg-sr-only"> (pounds)</span>
+            </label>
+
+            <div class="lg-control">
+              <span aria-hidden="true">£</span>
+              <input id="sg-monthly" type="text" inputmode="decimal" maxlength="18" placeholder="250" aria-describedby="sg-monthly-help sg-monthly-error" disabled="">
+            </div>
+
+            <p id="sg-monthly-help" class="lg-hint">The amount you plan to add each month.</p>
+            <p id="sg-monthly-error" class="lg-error" hidden=""></p>
+          </div>
+
+          <div class="lg-field">
+            <label class="lg-label" for="sg-rate">
+              Annual interest rate (AER)
+              <span class="lg-sr-only"> (percent)</span>
+            </label>
+
+            <div class="lg-control">
+              <input id="sg-rate" type="text" inputmode="decimal" maxlength="8" value="0" aria-describedby="sg-rate-help sg-rate-error" required="">
+              <span aria-hidden="true">%</span>
+            </div>
+
+            <p id="sg-rate-help" class="lg-hint">Leave at 0% to exclude interest.</p>
+            <p id="sg-rate-error" class="lg-error" hidden=""></p>
+          </div>
+        </div>
+
+        <div class="lg-form-footer">
+          <p id="sg-live-help" class="lg-hint">Results update as you enter your figures.</p>
+
+          <div class="lg-actions">
+            <button class="lg-text-button" id="sg-example" type="button">Use example figures</button>
+
+            <button class="lg-text-button" id="sg-reset" type="reset">Clear figures</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <p id="sg-startup" class="lg-hint" role="status" hidden="">Enable JavaScript to use the calculator. You can still read the calculation method below.</p>
+    <noscript><p class="lg-hint">Enable JavaScript to use the calculator. The worked example and calculation method below still apply.</p></noscript>
+  </div>
+</section>
+
+<section class="lg-tools" aria-labelledby="sg-results-title">
+  <div class="lg-card lg-result-card">
+    <div class="lg-section-top">
+      <p class="lg-kicker">02 — Your result</p>
+      <span id="sg-state-badge" class="lg-state">Example figures</span>
+    </div>
+    <h2 id="sg-results-title">Your savings plan</h2>
+    <div id="sg-result" aria-busy="false">
+      <p id="sg-result-label" class="lg-result-label">Monthly saving needed</p>
+      <p class="lg-result-amount"><strong id="sg-result-value" class="lg-value">£314.41</strong></p>
+      <p id="sg-example-badge" class="lg-example-badge">Illustrative example</p>
+      <p id="sg-result-summary" class="lg-result-summary">Example: £10,000 target, £2,000 already saved, 2 years at 4% AER. Enter your own figures above.</p>
+      <div id="sg-result-detail">
+        <dl class="lg-stats">
+          <div><dt>Already saved</dt><dd id="sg-out-initial">£2,000.00</dd></div>
+          <div><dt>New savings paid in</dt><dd id="sg-out-contributions">£7,545.84</dd></div>
+          <div><dt>Estimated interest</dt><dd id="sg-out-interest">£454.22</dd></div>
+          <div><dt>Projected balance</dt><dd id="sg-out-balance">£10,000.06</dd></div>
+        </dl>
+        <p id="sg-scenario" class="lg-scenario">£50 more a month (£364.41) could get you there 3 months sooner.</p>
+      </div>
+      <p id="sg-assumptions" class="lg-hint">4% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses.</p>
+    </div>
+    <p id="sg-status" class="lg-sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+  </div>
+</section>
+
+<section class="lg-tools" id="sg-projection" aria-labelledby="sg-projection-title">
+  <div class="lg-card">
+    <div class="lg-section-top">
+      <h2 id="sg-projection-title">Your savings breakdown</h2>
+
+      <button id="sg-download" class="lg-button lg-secondary" type="button" disabled="">Download CSV</button>
+    </div>
+
+    <p id="sg-breakdown-note" class="lg-hint">Paid in includes your starting savings. Figures are rounded to the nearest penny.</p>
+
+    <div class="lg-table-wrap" tabindex="0" role="region" aria-label="Savings breakdown; scroll horizontally on smaller screens">
+      <table>
+        <caption id="sg-table-caption" class="lg-sr-only">
+          Your savings breakdown
+        </caption>
+
+        <thead>
+          <tr>
+            <th scope="col">When</th>
+            <th scope="col">Total paid in</th>
+            <th scope="col">Interest earned</th>
+            <th scope="col">Savings balance</th>
+          </tr>
+        </thead>
+
+        <tbody id="sg-schedule">
+          <tr><th scope="row">Today</th><td>£2,000.00</td><td>£0.00</td><td>£2,000.00</td></tr>
+          <tr><th scope="row">Year 1</th><td>£5,772.92</td><td>£148.68</td><td>£5,921.60</td></tr>
+          <tr><th scope="row">Year 2</th><td>£9,545.84</td><td>£454.22</td><td>£10,000.06</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lg-hint lg-scroll-hint">Scroll across to see all columns.</p>
+
+    <div class="lg-table-actions">
+      <button id="sg-show-all" class="lg-text-button" type="button" aria-expanded="false" aria-controls="sg-schedule" hidden="" disabled="">Show all years</button>
+    </div>
+
+    <details class="lg-details" id="sg-chart-details">
+      <summary>View savings chart</summary>
+
+      <div>
+        <p id="sg-chart-summary" class="lg-hint">The chart uses the balance at the end of every month.</p>
+
+        <div id="sg-chart" aria-hidden="true">
+          <p class="lg-hint">Open this section to see the chart.</p>
+        </div>
+
+        <div class="lg-legend" aria-hidden="true">
+          <span>Savings balance</span>
+          <span>Total paid in</span>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section class="lg-tools" aria-label="Calculation method">
+  <details class="lg-card lg-method" id="sg-method">
+    <summary>How was this calculated?</summary>
+    <div class="lg-method-content">
+      <p>We start with your existing savings, add interest and then add your saving at the end of each month. Interest stays in the account and can earn further interest.</p>
+      <h3>Monthly saving needed</h3>
+      <p>Without interest, we subtract your starting savings from your target and divide the remaining amount by the number of months. With interest, we convert your AER to an equivalent monthly rate first.</p>
+      <p class="lg-formula">Monthly rate r = (1 + AER / 100)^(1 / 12) − 1<br>Monthly saving = max(0, (T − P × (1 + r)^n) / (((1 + r)^n − 1) / r))</p>
+      <p>T is your target, P is your starting savings and n is the number of months. At 0% interest, monthly saving = max(0, (T − P) / n). We round the required monthly saving up to a sufficient penny.</p>
+      <h3>Time to your goal</h3>
+      <p>We project one month at a time until the balance reaches your target. The result is the first whole month in which you could reach it. If your starting savings already cover the target, no further saving is needed.</p>
+      <h3>Assumptions and limits</h3>
+      <p>The rate stays constant, deposits are equal and interest remains in the account. Every deposit, including the final one, is the full monthly amount, so the final balance may exceed your target. Your bank’s daily calculations and payment dates can produce a different result.</p>
+      <p>The table shows cumulative figures. Total paid in includes your starting savings and subsequent deposits. Interest is the estimated total earned by that point. Calculations retain full precision; displayed money is rounded to pennies.</p>
+      <p>The calculator excludes withdrawals, tax, fees, inflation, changing rates, account limits, introductory rates and bonuses, including Lifetime ISA bonuses. It models cash savings and does not model investment risk.</p>
+      <p>You can model up to 50 years, targets and starting savings up to £10 million, and AERs from 0% to 25%. In time-to-goal mode, monthly saving can be up to £1 million. These are calculation limits, not suggested amounts or rates.</p>
+      <p>For more detail, see <a href="https://www.hsbc.co.uk/savings/what-is-aer/">HSBC’s explanation of AER</a> and <a href="https://www.gov.uk/apply-tax-free-interest-on-savings">GOV.UK’s guidance on savings interest and tax</a>.</p>
+    </div>
+  </details>
+</section>

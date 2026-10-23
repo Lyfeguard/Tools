@@ -1,0 +1,108 @@
+<div class="lg-tools">
+  <section class="lg-card" aria-labelledby="ef-h-essentials">
+    <p class="lg-kicker">01 / Your essentials</p>
+    <h2 id="ef-h-essentials">What do your essentials cost each month?</h2>
+    <p class="lg-hint">Only what you couldn't go without: rent or mortgage, energy, council tax, food, transport, insurance and minimum debt repayments.</p>
+
+    <div class="lg-field ef-gap">
+      <label class="lg-label" for="ef-monthly">Monthly essentials</label>
+      <div class="lg-control"><span>£</span><input id="ef-monthly" class="ef-money" type="text" inputmode="decimal" autocomplete="off" placeholder="2,000"></div>
+    </div>
+
+    <button type="button" class="lg-text-button" id="ef-toggle" aria-expanded="false" aria-controls="ef-breakdown">Not sure? Help me add it up</button>
+
+    <div class="ef-breakdown" id="ef-breakdown" hidden="">
+      <div class="lg-grid">
+        <div class="lg-field">
+          <label class="lg-label" for="ef-b1">Rent or mortgage</label>
+          <div class="lg-control"><span>£</span><input id="ef-b1" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+        </div>
+        <div class="lg-field">
+          <label class="lg-label" for="ef-b2">Energy, water and council tax</label>
+          <div class="lg-control"><span>£</span><input id="ef-b2" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+        </div>
+        <div class="lg-field">
+          <label class="lg-label" for="ef-b3">Food and household</label>
+          <div class="lg-control"><span>£</span><input id="ef-b3" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+        </div>
+        <div class="lg-field">
+          <label class="lg-label" for="ef-b4">Transport</label>
+          <div class="lg-control"><span>£</span><input id="ef-b4" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+        </div>
+        <div class="lg-field">
+          <label class="lg-label" for="ef-b5">Insurance and debt repayments</label>
+          <div class="lg-control"><span>£</span><input id="ef-b5" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+        </div>
+        <div class="lg-field">
+          <label class="lg-label" for="ef-b6">Other essentials</label>
+          <div class="lg-control"><span>£</span><input id="ef-b6" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="lg-tools">
+  <section class="lg-card" aria-labelledby="ef-h-situation">
+    <p class="lg-kicker">02 / Your situation</p>
+    <h2 id="ef-h-situation">How secure is your income?</h2>
+    <fieldset>
+      <legend class="lg-hint">The less predictable your income, the bigger the safety net you need.</legend>
+      <div class="lg-options ef-options">
+        <label class="lg-choice"><input type="radio" name="ef-months" value="3" checked="">Two steady incomes<span class="ef-months">3 months</span></label>
+        <label class="lg-choice"><input type="radio" name="ef-months" value="6">One income, or others rely on you<span class="ef-months">6 months</span></label>
+        <label class="lg-choice"><input type="radio" name="ef-months" value="9">Self-employed or irregular income<span class="ef-months">9 months</span></label>
+      </div>
+    </fieldset>
+  </section>
+</div>
+
+<div class="lg-tools">
+  <section class="lg-card" aria-labelledby="ef-h-saved">
+    <p class="lg-kicker">03 / Saved so far</p>
+    <h2 id="ef-h-saved">How much have you already put aside?</h2>
+    <p class="lg-hint">Count only easy-access savings you'd use in an emergency. Leave it blank if you're starting from zero.</p>
+
+    <div class="lg-field ef-gap">
+      <label class="lg-label" for="ef-saved">Emergency savings</label>
+      <div class="lg-control"><span>£</span><input id="ef-saved" class="ef-money" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+    </div>
+  </section>
+</div>
+
+<div class="lg-tools">
+  <section class="lg-card lg-result-card" aria-labelledby="ef-h-result">
+    <p class="lg-kicker">04 / Your result</p>
+    <div aria-live="polite">
+      <h2 class="lg-result-label" id="ef-h-result">Your emergency fund target</h2>
+      <p class="lg-result-amount"><span class="lg-value" id="ef-target">£–</span></p>
+      <p class="lg-result-summary" id="ef-summary">Enter your monthly essentials to see your target.</p>
+
+      <div id="ef-progress-block" hidden="">
+        <div class="ef-progress">
+          <div class="ef-bar" id="ef-barwrap" role="progressbar" aria-label="Progress towards your target" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="ef-bar-fill" id="ef-bar"></div></div>
+          <p class="ef-bar-caption" id="ef-caption"></p>
+        </div>
+
+        <dl class="lg-stats ef-stats">
+          <div><dt>Saved</dt><dd id="ef-st-saved"></dd></div>
+          <div><dt>Still to save</dt><dd id="ef-st-gap"></dd></div>
+          <div><dt>Covers you for</dt><dd id="ef-st-cover"></dd></div>
+        </dl>
+
+        <div class="ef-plan" id="ef-plan">
+          <h3>To get there, save about</h3>
+          <ul>
+            <li><span>Within 6 months</span><strong id="ef-p6"></strong></li>
+            <li><span>Within 12 months</span><strong id="ef-p12"></strong></li>
+            <li><span>Within 2 years</span><strong id="ef-p24"></strong></li>
+          </ul>
+        </div>
+
+        <p class="ef-done" id="ef-done" hidden="">You've reached your target. Keep it in an easy-access account and check it again whenever your costs change.</p>
+      </div>
+    </div>
+
+    <p class="lg-hint">Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure.</p>
+  </section>
+</div>

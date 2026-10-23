@@ -1,0 +1,120 @@
+<div class="lg-tools">
+  <section class="lg-card" aria-labelledby="pr-h-salary">
+    <p class="lg-kicker">01 / Full-time salary</p>
+    <h2 id="pr-h-salary">What is the full-time salary for the role?</h2>
+    <p class="lg-hint">Use the annual salary before tax for the full-time version of the job. Job adverts often show this as the full-time equivalent (FTE) salary.</p>
+
+    <div class="lg-field pr-gap">
+      <label class="lg-label" for="pr-salary">Full-time salary a year</label>
+      <div class="lg-control"><span>£</span><input id="pr-salary" class="pr-input" type="text" inputmode="decimal" autocomplete="off" placeholder="40,000" value="40,000"></div>
+    </div>
+  </section>
+</div>
+
+<div class="lg-tools">
+  <section class="lg-card" aria-labelledby="pr-h-week">
+    <p class="lg-kicker">02 / Your working week</p>
+    <h2 id="pr-h-week">How much will you work?</h2>
+    <fieldset>
+      <legend class="lg-hint">Choose whether to compare hours or days.</legend>
+      <div class="lg-options">
+        <label class="lg-choice"><input type="radio" name="pr-mode" value="hours" checked="">Hours</label>
+        <label class="lg-choice"><input type="radio" name="pr-mode" value="days">Days</label>
+      </div>
+    </fieldset>
+
+    <div class="lg-grid pr-gap">
+      <div class="lg-field">
+        <label class="lg-label" for="pr-full" id="pr-full-label">Full-time hours a week</label>
+        <div class="lg-control"><input id="pr-full" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="37.5"><span class="pr-unit">hours</span></div>
+      </div>
+      <div class="lg-field">
+        <label class="lg-label" for="pr-yours" id="pr-yours-label">Your hours a week</label>
+        <div class="lg-control"><input id="pr-yours" class="pr-input" type="text" inputmode="decimal" autocomplete="off" placeholder="22.5" value="22.5"><span class="pr-unit">hours</span></div>
+      </div>
+    </div>
+    <p class="lg-error" id="pr-error" role="alert" hidden=""></p>
+  </section>
+</div>
+
+<div class="lg-tools">
+  <section class="lg-card" aria-labelledby="pr-h-extras">
+    <p class="lg-kicker">03 / Pension and holiday</p>
+    <h2 id="pr-h-extras">Pension and holiday</h2>
+    <p class="lg-hint">We've filled in common figures. Change them if your contract or payslip shows something different.</p>
+
+    <div class="lg-grid pr-gap">
+      <div class="lg-field">
+        <label class="lg-label" for="pr-ee">Your pension contribution</label>
+        <div class="lg-control"><input id="pr-ee" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="5"><span>% of salary</span></div>
+      </div>
+      <div class="lg-field">
+        <label class="lg-label" for="pr-er">Your employer's contribution</label>
+        <div class="lg-control"><input id="pr-er" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="3"><span>% of salary</span></div>
+      </div>
+      <div class="lg-field">
+        <label class="lg-label" for="pr-holiday">Full-time holiday a year</label>
+        <div class="lg-control"><input id="pr-holiday" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="28"><span>days</span></div>
+        <span class="lg-hint">Including bank holidays. 28 days is the legal minimum for a five-day week.</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="lg-tools">
+  <section class="lg-card lg-result-card" id="pr-result" aria-labelledby="pr-h-result">
+    <p class="lg-kicker">04 / Your result</p>
+    <div aria-live="polite">
+      <h2 class="lg-result-label" id="pr-h-result">Your pro rata salary</h2>
+      <p class="lg-result-amount"><span class="lg-value" id="pr-salary-out">£24,000</span></p>
+      <p class="lg-result-summary" id="pr-summary">That’s £2,000 a month or £462 a week, for 22.5 of 37.5 hours (60% of full time).</p>
+
+      <div id="pr-detail">
+        <div class="pr-insight" id="pr-insight">
+          <p id="pr-insight-text">You’d work 40% fewer hours, but your take-home pay falls by about 35%.</p>
+          <div class="pr-bar-row">
+            <span>Time worked</span>
+            <div class="pr-bar" aria-hidden="true"><div class="pr-bar-fill" id="pr-bar-hours" style="width: 60%"></div></div>
+            <strong id="pr-bar-hours-val">60%</strong>
+          </div>
+          <div class="pr-bar-row">
+            <span>Take-home kept</span>
+            <div class="pr-bar" aria-hidden="true"><div class="pr-bar-fill" id="pr-bar-pay" style="width: 65%"></div></div>
+            <strong id="pr-bar-pay-val">65%</strong>
+          </div>
+        </div>
+
+        <dl class="lg-stats">
+          <div>
+            <dt>Take-home a month</dt>
+            <dd id="pr-st-net">£1,653</dd>
+          </div>
+          <div>
+            <dt>Holiday a year</dt>
+            <dd id="pr-st-holiday">126 hours</dd>
+          </div>
+          <div>
+            <dt>Pension a month (you and employer)</dt>
+            <dd id="pr-st-pension">£160</dd>
+          </div>
+        </dl>
+
+        <div class="pr-compare">
+          <h3>Compared with full time</h3>
+          <ul>
+            <li><span>Full-time take-home</span><strong id="pr-ft-net">£2,560 a month</strong></li>
+            <li><span>Your take-home</span><strong id="pr-pt-net">£1,653 a month</strong></li>
+            <li><span>Difference</span><strong id="pr-diff">£907 less a month</strong></li>
+          </ul>
+        </div>
+
+        <div class="pr-notes" id="pr-notes" hidden="">
+          <h3>Worth knowing</h3>
+          <ul id="pr-notes-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="lg-hint">Estimates use 2026/27 Income Tax and National Insurance rates for England, Wales and Northern Ireland, with your pension taken before tax. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice.</p>
+  </section>
+</div>
