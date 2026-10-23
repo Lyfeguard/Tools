@@ -1,0 +1,69 @@
+<div id="lgci-input-panel" class="lgci-input-panel">
+ <div class="lgci-eyebrow">01 — YOUR DETAILS</div>
+ <h2>Grow your savings</h2>
+ <p class="lgci-intro">Choose your starting amount, regular contributions, frequency and growth assumptions.</p>
+ <div class="lgci-field-grid">
+  <div class="lgci-field"><label for="lgci-initial">Starting amount</label><div class="lgci-input-shell"><span class="lgci-prefix" aria-hidden="true">£</span><input id="lgci-initial" type="text" inputmode="decimal" autocomplete="off" placeholder="5,000" aria-describedby="lgci-error"></div></div>
+  <div class="lgci-field"><label for="lgci-contribution">Regular contribution</label><div class="lgci-input-shell"><span class="lgci-prefix" aria-hidden="true">£</span><input id="lgci-contribution" type="text" inputmode="decimal" autocomplete="off" placeholder="200" aria-describedby="lgci-error"></div></div>
+  <div class="lgci-field"><label for="lgci-frequency">Contribution frequency</label><div class="lgci-input-shell"><select id="lgci-frequency" aria-describedby="lgci-error"><option value="monthly" selected="">Monthly</option><option value="weekly">Weekly</option><option value="fortnightly">Every 2 weeks</option><option value="quarterly">Quarterly</option><option value="annually">Annually</option><option value="none">No regular contributions</option></select></div></div>
+  <div class="lgci-field"><label for="lgci-rate">Annual interest / growth rate (effective)</label><div class="lgci-input-shell"><input id="lgci-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="5" aria-describedby="lgci-error"><span class="lgci-suffix" aria-hidden="true">%</span></div></div>
+  <div class="lgci-field"><label for="lgci-years">Projection period</label><div class="lgci-input-shell"><input id="lgci-years" type="text" inputmode="decimal" autocomplete="off" placeholder="10" aria-describedby="lgci-error"><span class="lgci-suffix" aria-hidden="true">years</span></div></div>
+ </div>
+ <p class="lgci-frequency-tip" id="lgci-frequency-tip">Contributions are assumed to be made at the end of each selected period.</p>
+ <p id="lgci-error" role="alert" hidden=""></p>
+</div>
+
+<div id="lgci-results-panel" aria-live="polite" aria-atomic="true">
+ <div class="lgci-eyebrow">02 — YOUR RESULTS</div><h2>Your savings projection</h2>
+ <div class="lgci-primary-result"><p class="lgci-main-label">Estimated future balance</p><div id="lgci-future" class="lgci-monthly">—</div><p id="lgci-assumption" class="lgci-assumption">Enter your savings details to see a projection.</p></div>
+ <div class="lgci-results-grid">
+  <div class="lgci-result-item"><span>Starting amount</span><strong id="lgci-start-result">—</strong></div>
+  <div class="lgci-result-item"><span>Regular contributions</span><strong id="lgci-contributions">—</strong></div>
+  <div class="lgci-result-item"><span>Total contributed</span><strong id="lgci-invested">—</strong></div>
+  <div class="lgci-result-item"><span>Interest / growth earned</span><strong id="lgci-growth">—</strong></div>
+ </div>
+ <p class="lgci-disclaimer">Illustrative projection assuming a constant annual effective growth rate and contributions at the end of each selected period. Excludes fees, taxes and inflation. Returns are not guaranteed.</p>
+</div>
+
+<section id="lgci-projection" class="lgci-projection" aria-label="Savings growth projection">
+  <div class="lgci-chart-eyebrow">PROJECTED GROWTH</div>
+  <div class="lgci-chart-header">
+    <div>
+      <h2>Your savings over time</h2>
+      <p>See your balance grow and how much comes from your contributions.</p>
+    </div>
+    <div class="lgci-chart-final"><span>Projected final balance</span><strong id="lgci-chart-final">—</strong></div>
+  </div>
+  <div class="lgci-chart-legend">
+    <span><i class="lgci-line-key lgci-balance-key"></i>Total balance</span><span><i class="lgci-line-key lgci-contributed-key"></i>Money contributed</span>
+  </div>
+  <div class="lgci-chart-surface" id="lgci-chart-area">
+    <svg id="lgci-growth-svg" viewBox="0 0 1000 295" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Complete the calculator fields to view a savings projection"><title>Projected savings balance and contributions over time</title></svg>
+  </div>
+  <p class="lgci-chart-caption" id="lgci-chart-caption">Enter your savings details to see the growth projection.</p>
+</section>
+
+<div id="lgci-breakdown" class="lgci-viz-card">
+ <h3>Savings growth breakdown</h3>
+ <p class="lgci-viz-intro">How much of your projected balance comes from your money and from compound growth.</p>
+ <div id="lgci-breakdown-chart" class="lgci-viz-chart" role="img" aria-label="Savings balance breakdown; enter details to see amounts"><div id="lgci-principal-bar" class="lgci-viz-bar-principal"></div><div id="lgci-interest-bar" class="lgci-viz-bar-interest"></div></div>
+ <div class="lgci-viz-legend">
+  <div class="lgci-viz-legend-row"><span class="lgci-viz-legend-name"><i class="lgci-viz-dot lgci-viz-dot-principal"></i>Your contributions</span><span id="lgci-principal-pct" class="lgci-viz-muted">—</span><strong id="lgci-breakdown-principal">—</strong></div>
+  <div class="lgci-viz-legend-row"><span class="lgci-viz-legend-name"><i class="lgci-viz-dot lgci-viz-dot-interest"></i>Interest / growth</span><span id="lgci-interest-pct" class="lgci-viz-muted">—</span><strong id="lgci-breakdown-interest">—</strong></div>
+ </div>
+ <p class="lgci-viz-intro lgci-breakdown-note">Regular contributions are added at the end of the selected period. Growth is illustrative and not guaranteed.</p>
+</div>
+
+<div id="lgci-rate-comparison" class="lgci-viz-card">
+ <h3>What if the growth rate changed?</h3><p class="lgci-viz-intro">Compare the projected final balance at an annual rate one percentage point lower or higher.</p>
+ <div class="lgci-viz-rate-grid">
+  <div class="lgci-viz-rate-card"><span id="lgci-lower-label" class="lgci-viz-rate-label">Lower rate</span><strong id="lgci-lower" class="lgci-viz-rate-amount">—</strong><small>future balance</small><span id="lgci-lower-diff" class="lgci-viz-difference">—</span></div>
+  <div class="lgci-viz-rate-card lgci-viz-selected"><span id="lgci-current-label" class="lgci-viz-rate-label">Your rate</span><strong id="lgci-current" class="lgci-viz-rate-amount">—</strong><small>future balance</small><span class="lgci-viz-difference">Your rate</span></div>
+  <div class="lgci-viz-rate-card"><span id="lgci-higher-label" class="lgci-viz-rate-label">Higher rate</span><strong id="lgci-higher" class="lgci-viz-rate-amount">—</strong><small>future balance</small><span id="lgci-higher-diff" class="lgci-viz-difference">—</span></div>
+ </div><p class="lgci-viz-footnote">Rates are illustrative scenarios, not forecasts. The model assumes an unchanged effective annual rate.</p>
+</div>
+
+<details id="lgci-methodology">
+ <summary><span>How was this calculated?</span><span class="lgci-accordion-symbol" aria-hidden="true"></span></summary>
+ <div class="lgci-accordion-body"><p id="lgci-method-text">Enter your savings details to see how the projection is calculated.</p><p class="lgci-accordion-note">The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns.</p></div>
+</details>
