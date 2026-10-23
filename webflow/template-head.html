@@ -1,0 +1,52 @@
+<!--
+  Tools template: Page settings > Custom code > Inside <head> tag
+  Replace YOUR-HOST with the hosting URL (pin the version, e.g. .../lg-calc@1.0.1/...).
+  Each {{...}} is a CMS field: delete the placeholder and insert the field with "+ Add field".
+  Keep double quotes and & out of the fields used here; use the curly apostrophe (’) not '.
+-->
+<link rel="stylesheet" href="https://YOUR-HOST/lg-calc.min.css">
+<script src="https://YOUR-HOST/lg-calc.min.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://lyfeguard.com/tools/{{Slug}}#webpage",
+      "url": "https://lyfeguard.com/tools/{{Slug}}",
+      "name": "{{Name}}",
+      "description": "{{Meta description}}",
+      "inLanguage": "en-GB",
+      "isPartOf": { "@id": "https://lyfeguard.com/#website" },
+      "publisher": { "@id": "https://lyfeguard.com/#organization" },
+      "dateModified": "{{Date modified}}",
+      "reviewedBy": { "@type": "Person", "name": "Fraser Stewart", "url": "https://lyfeguard.com/author/fraser-stewart" },
+      "breadcrumb": { "@id": "https://lyfeguard.com/tools/{{Slug}}#breadcrumb" },
+      "mainEntity": { "@id": "https://lyfeguard.com/tools/{{Slug}}#webapp" }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://lyfeguard.com/tools/{{Slug}}#webapp",
+      "url": "https://lyfeguard.com/tools/{{Slug}}",
+      "name": "{{Name}}",
+      "description": "{{App description}}",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+      "provider": { "@id": "https://lyfeguard.com/#organization" },
+      "featureList": "{{Feature list}}"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://lyfeguard.com/tools/{{Slug}}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lyfeguard.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lyfeguard.com/tools" },
+        { "@type": "ListItem", "position": 3, "name": "{{Name}}", "item": "https://lyfeguard.com/tools/{{Slug}}" }
+      ]
+    }
+  ]
+}
+</script>
