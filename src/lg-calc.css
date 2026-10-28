@@ -57,6 +57,7 @@
   --lg-radius: 20px; /* cards and panels */
   --lg-radius-small: 14px; /* inputs, buttons, inner cards */
   --lg-radius-tiny: 10px; /* chips, toggles, small notes */
+  --lg-shadow-raised: 0 1px 2px rgba(10, 45, 58, 0.1), 0 1px 1px rgba(10, 45, 58, 0.04); /* selected option */
   /* Fonts (loaded by the Webflow site) */
   --lg-font-body: "Manrope", sans-serif;
   --lg-font-heading: "Epilogue", sans-serif;
@@ -196,9 +197,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   padding: 4px;
-  background: var(--lg-mist-alt);
-  border: 1px solid var(--lg-line);
-  border-radius: var(--lg-radius);
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
   margin: 8px 0 24px;
 }
 
@@ -219,9 +220,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   padding: 4px;
-  background: var(--lg-mist-alt);
-  border: 1px solid var(--lg-line);
-  border-radius: var(--lg-radius);
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
   margin: 8px 0 0;
 }
 .lg-tools .lg-choice {
@@ -231,16 +232,21 @@
   gap: 8px;
   padding: 10px;
   border: 1px solid transparent;
-  border-radius: var(--lg-radius-small);
+  border-radius: var(--lg-radius-tiny);
   cursor: pointer;
   min-height: 46px;
   font-size: 15px;
   font-weight: 600;
   color: var(--lg-ink);
 }
+.lg-tools .lg-choice:hover,
+#lgdti-input-panel .lgdti-choice:hover {
+  background: rgba(10, 45, 58, 0.04);
+}
 .lg-tools .lg-choice:has(input:checked) {
   background: #fff;
-  border-color: var(--lg-accent);
+  border-color: transparent;
+  box-shadow: var(--lg-shadow-raised);
 }
 .lg-tools input[type="radio"] {
   appearance: auto;
@@ -5216,9 +5222,9 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: 6px;
   max-width: 360px;
   padding: 4px;
-  background: var(--lg-mist-alt);
+  background: var(--lg-mist);
   border: 1px solid var(--lg-border);
-  border-radius: var(--lg-radius);
+  border-radius: var(--lg-radius-small);
 }
 #lgdti-input-panel .lgdti-choice {
   display: flex;
@@ -5229,14 +5235,15 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   margin: 0;
   padding: 8px 10px;
   border: 1px solid transparent;
-  border-radius: var(--lg-radius-small);
+  border-radius: var(--lg-radius-tiny);
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
 }
 #lgdti-input-panel .lgdti-choice:has(input:checked) {
   background: #fff;
-  border-color: var(--lg-mint-ink);
+  border-color: transparent;
+  box-shadow: var(--lg-shadow-raised);
 }
 #lgdti-input-panel .lgdti-choice:has(input:focus-visible) {
   outline: 3px solid var(--lg-mint-ink);
