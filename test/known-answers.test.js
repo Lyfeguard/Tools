@@ -179,3 +179,40 @@ test('input handling: pound signs and thousands commas accepted, malformed numbe
     assert.match(r['lglc-error'], /Enter a loan above/, bad);
   }
 });
+
+test('input handling: malformed numbers are never read as a different number', async () => {
+  // Emergency fund and salary by age have no error line yet: an invalid entry shows the empty state and is marked invalid.
+  const page = await openCalculator(browser, 'emergency-fund');
+  await run(page, [['fill', '#ef-monthly', '2,000abc']]);
+  assert.equal((await page.textContent('#ef-target')).trim(), '£–');
+  assert.equal(await page.getAttribute('#ef-monthly', 'aria-invalid'), 'true');
+  await page.locator('#ef-monthly').blur();
+  assert.equal(await page.inputValue('#ef-monthly'), '2,000abc', 'invalid text is left for the person to correct');
+  await run(page, [['fill', '#ef-monthly', '2000']]);
+  assert.equal((await page.textContent('#ef-target')).trim(), '£6,000');
+  assert.equal(await page.getAttribute('#ef-monthly', 'aria-invalid'), null);
+  await page.close();
+
+  // "28k" used to be read as £28.
+  const saPage = await openCalculator(browser, 'salary-by-age');
+  await run(saPage, [['fill', '#sa-salary', '28k']]);
+  assert.equal(await saPage.getAttribute('#sa-salary', 'aria-invalid'), 'true');
+  assert.equal((await saPage.textContent('#sa-value')).trim(), (await (async () => {
+    const blank = await openCalculator(browser, 'salary-by-age');
+    await run(blank, [['fill', '#sa-salary', '']]);
+    const t = (await blank.textContent('#sa-value')).trim();
+    await blank.close();
+    return t;
+  })()), 'shows the same as a blank salary');
+  await saPage.close();
+
+  // Pro rata shows a message.
+  const pr = await results('pro-rata-salary', [['fill', '#pr-salary', '-40000']], ['pr-salary-out', 'pr-error']);
+  assert.deepEqual(pr, { 'pr-salary-out': '£–', 'pr-error': 'Enter numbers only, for example 40,000 or 37.5.' });
+
+  // IHT: commas only as thousands separators.
+  const bad = await results('inheritance-tax', [['fill', '#lgiht-cash', '5,00,000'], ['select', '#lgiht-home-desc', 'no'], ['select', '#lgiht-transfer', 'no']], ['lgiht-tax']);
+  assert.equal(bad['lgiht-tax'], '—');
+  const good = await results('inheritance-tax', [['fill', '#lgiht-cash', '£500,000'], ['select', '#lgiht-home-desc', 'no'], ['select', '#lgiht-transfer', 'no']], ['lgiht-tax']);
+  assert.equal(good['lgiht-tax'], '£70,000');
+});
