@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.5.0
+ * Lyfeguard calculators | lg-calc.js | v1.6.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.5.0';
+  LG.version = '1.6.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -3409,6 +3409,475 @@
         if (event.target.id && event.target.id.indexOf('lgdti-') === 0) update();
       });
       update();
+    }
+  });
+
+  /* ==================================================================
+     Retirement income calculator  [retirement-income]
+     ================================================================== */
+  module('retirement-income', function () {
+    'use strict';
+    const MAX_AGE = 100;
+    const LUMP_SUM_ALLOWANCE = 268275; // 2026/27, frozen
+    const TAX_FREE_SHARE = 0.25;
+
+    // Year-by-year projection in today's money. Each year the pot pays what
+    // the State Pension and other income don't cover, then the rest grows at
+    // growth less inflation. Returns the rows and the first age the pot can't
+    // pay in full (runsOut), or null if it lasts to MAX_AGE.
+    function project(input) {
+      const real = (1 + input.growth / 100) / (1 + input.inflation / 100) - 1;
+      const upfront = input.lump === 'upfront';
+      const lump = upfront ? Math.min(input.pot * TAX_FREE_SHARE, LUMP_SUM_ALLOWANCE) : 0;
+      let balance = input.pot - lump;
+      let taxFreeLeft = upfront ? 0 : LUMP_SUM_ALLOWANCE;
+      const years = [];
+      let runsOut = null;
+      let anyNeed = false;
+      for (let age = input.age; age < MAX_AGE; age++) {
+        const sp = age >= input.spAge ? input.sp : 0;
+        const need = Math.max(0, input.target - sp - input.other);
+        if (need > 0) anyNeed = true;
+        const fromPot = Math.min(need, Math.max(0, balance));
+        const taxFree = Math.min(fromPot * TAX_FREE_SHARE, taxFreeLeft);
+        taxFreeLeft -= taxFree;
+        const tax = LG.ukTax.incomeTax(fromPot - taxFree + sp + input.other);
+        years.push({ age, start: Math.max(0, balance), need, fromPot, sp, other: input.other, taxFree, tax, net: fromPot + sp + input.other - tax });
+        if (runsOut === null && fromPot < need - 0.005) runsOut = age;
+        balance = (balance - fromPot) * (1 + real);
+      }
+      return { real, lump, years, runsOut, anyNeed, endBalance: Math.max(0, balance) };
+    }
+
+    // The highest income target the pot can pay in full every year until planAge.
+    function sustainableTarget(input) {
+      const lasts = (target) => {
+        const r = project(Object.assign({}, input, { target }));
+        return r.runsOut === null || r.runsOut >= input.planAge;
+      };
+      let lo = 0;
+      let hi = input.pot + input.sp + input.other + 1;
+      for (let i = 0; i < 60; i++) {
+        const mid = (lo + hi) / 2;
+        if (lasts(mid)) lo = mid;
+        else hi = mid;
+      }
+      return lo;
+    }
+    LG.retirementIncome = { project, sustainableTarget, MAX_AGE, LUMP_SUM_ALLOWANCE };
+
+    // Field rules: kind (money / whole / rate), range, and whether blank is allowed.
+    const FIELDS = {
+      pot: { kind: 'money', min: 1, max: 50000000, required: true, label: 'your pension pot', msg: 'Enter a pension pot from \u00A31 to \u00A350,000,000.' },
+      age: { kind: 'whole', min: 55, max: 90, required: true, msg: 'Enter an age from 55 to 90.' },
+      target: { kind: 'money', min: 1, max: 1000000, required: true, msg: 'Enter the income you want, from \u00A31 to \u00A31,000,000 a year.' },
+      sp: { kind: 'money', min: 0, max: 100000, blank: 0, msg: 'Enter your State Pension from \u00A30 to \u00A3100,000 a year, or 0.' },
+      'sp-age': { kind: 'whole', min: 60, max: 75, blank: 67, msg: 'Enter a State Pension age from 60 to 75.' },
+      other: { kind: 'money', min: 0, max: 1000000, blank: 0, msg: 'Enter other income from \u00A30 to \u00A31,000,000 a year, or 0.' },
+      growth: { kind: 'rate', min: -5, max: 15, blank: 4, msg: 'Enter growth from -5% to 15% a year.' },
+      inflation: { kind: 'rate', min: 0, max: 10, blank: 2.5, msg: 'Enter inflation from 0% to 10% a year.' },
+      'plan-age': { kind: 'whole', min: 60, max: 100, blank: 95, msg: 'Enter a plan age from 60 to 100, older than the age you start.' },
+    };
+    const DEFAULTS = { sp: '12,548', 'sp-age': '67', growth: '4', inflation: '2.5', 'plan-age': '95' };
+
+    LG.start({
+      name: 'Retirement Income',
+      panel: 'lgri-form',
+      required: Object.keys(FIELDS).map((id) => 'lgri-' + id).concat(['lgri-results', 'lgri-headline', 'lgri-chart', 'lgri-table-body']),
+      setup: setup,
+    });
+
+    function setup(root) {
+      const get = (id) => document.getElementById('lgri-' + id);
+      const write = (id, text) => {
+        const el = get(id);
+        if (el) el.textContent = text;
+      };
+      const money = (n) => LG.money(Math.round(n), 0);
+      const compact = (n) => (n >= 1e6 ? '\u00A3' + (n / 1e6).toFixed(1).replace(/\.0$/, '') + 'm' : n >= 1e3 ? '\u00A3' + Math.round(n / 1e3) + 'k' : money(n));
+      const touched = new Set();
+      let announceTimer = null;
+      let lastResult = null;
+
+      function readField(id) {
+        const rule = FIELDS[id];
+        let raw = get(id).value;
+        if (rule.kind === 'rate') raw = raw.replace(/%\s*$/, '');
+        // Allow a minus sign for growth only.
+        const negative = rule.kind === 'rate' && /^\s*-/.test(raw);
+        const item = LG.parseNumber(negative ? raw.replace('-', '') : raw, rule.kind === 'whole' ? 0 : 2);
+        if (!item.entered) return { blank: true, value: rule.blank, ok: rule.blank !== undefined };
+        const value = negative ? -item.value : item.value;
+        const ok = item.valid && value >= rule.min && value <= rule.max;
+        return { blank: false, value, ok, error: ok ? '' : rule.msg };
+      }
+
+      function setFieldError(id, message) {
+        const input = get(id);
+        const box = get(id + '-error');
+        LG.markInvalid(input, Boolean(message));
+        if (box) {
+          box.textContent = message;
+          box.hidden = !message;
+        }
+      }
+
+      function readAll() {
+        const values = {};
+        const errors = [];
+        let complete = true;
+        Object.keys(FIELDS).forEach((id) => {
+          const r = readField(id);
+          values[id] = r.value;
+          if (r.blank && !r.ok) complete = false;
+          if (r.error) errors.push({ id, message: r.error });
+        });
+        // Plan age must be after the starting age.
+        if (!errors.some((e) => e.id === 'plan-age' || e.id === 'age') && values.age !== undefined && values['plan-age'] <= values.age) {
+          errors.push({ id: 'plan-age', message: FIELDS['plan-age'].msg });
+        }
+        return { values, errors, complete };
+      }
+
+      function showErrors(errors) {
+        const shown = errors.filter((e) => touched.has(e.id));
+        Object.keys(FIELDS).forEach((id) => {
+          const e = shown.find((x) => x.id === id);
+          setFieldError(id, e ? e.message : '');
+        });
+        const summary = get('error-summary');
+        const list = get('error-list');
+        list.replaceChildren();
+        shown.forEach((e) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#lgri-' + e.id;
+          a.textContent = e.message;
+          a.addEventListener('click', (event) => {
+            event.preventDefault();
+            get(e.id).focus();
+          });
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        summary.hidden = shown.length === 0;
+      }
+
+      function clearResults(state, message) {
+        lastResult = null;
+        get('results').dataset.state = state;
+        write('headline-label', 'Your pot could last until');
+        write('headline', '\u2014');
+        const status = get('status');
+        status.hidden = true;
+        write('summary', message);
+        ['first-withdrawal', 'rate', 'cash', 'sustainable', 'low', 'mid', 'high', 'low-note', 'high-note'].forEach((id) => write(id, '\u2014'));
+        write('cash-label', 'Tax-free cash');
+        write('low-label', 'Lower growth');
+        write('mid-label', 'Your assumption');
+        write('high-label', 'Higher growth');
+        const cols = get('income-cols');
+        const empty = document.createElement('p');
+        empty.className = 'lgc-empty';
+        empty.textContent = 'Enter your details to see your income.';
+        cols.replaceChildren(empty);
+        const chart = get('chart');
+        chart.replaceChildren();
+        chart.setAttribute('aria-label', 'Your pot over time will appear once you enter your details');
+        const body = get('table-body');
+        body.innerHTML = '';
+        const tr = body.insertRow();
+        const td = tr.insertCell();
+        td.colSpan = 7;
+        td.textContent = 'Enter your details to see the figures.';
+        write('method-text', 'Enter your details to see how the figures are worked out.');
+        write('sticky-value', '\u2014');
+        updateSticky();
+        announce('');
+      }
+
+      const lastsText = (r) => (r.runsOut === null ? 'beyond age ' + MAX_AGE : 'age ' + r.runsOut);
+
+      function render() {
+        const { values: v, errors, complete } = readAll();
+        showErrors(errors);
+        if (errors.length) return clearResults('invalid', 'Check the highlighted fields to see your results.');
+        if (!complete) return clearResults('empty', 'Enter your pension pot, your age and the income you want to see how long your pot could last.');
+        const input = {
+          pot: v.pot,
+          age: v.age,
+          target: v.target,
+          sp: v.sp,
+          spAge: v['sp-age'],
+          other: v.other,
+          growth: v.growth,
+          inflation: v.inflation,
+          planAge: v['plan-age'],
+          lump: (root.querySelector('input[name="lgri-lump"]:checked') || {}).value === 'upfront' ? 'upfront' : 'spread',
+        };
+        const r = project(input);
+        lastResult = { input, r };
+        const first = r.years[0];
+        const sustainable = sustainableTarget(input);
+        const lastsToPlan = r.runsOut === null || r.runsOut >= input.planAge;
+        const results = get('results');
+        const status = get('status');
+
+        if (!r.anyNeed) {
+          results.dataset.state = 'covered';
+          write('headline-label', 'Your pot');
+          write('headline', 'Isn\u2019t needed');
+          status.hidden = true;
+          write('summary', 'Your State Pension and other income cover the ' + money(input.target) + ' a year you want, so your pot is untouched.');
+        } else {
+          results.dataset.state = lastsToPlan ? 'lasts' : 'short';
+          write('headline-label', r.runsOut === null ? 'Your pot could last' : 'Your pot could last until');
+          write('headline', r.runsOut === null ? 'Beyond age ' + MAX_AGE : 'Age ' + r.runsOut);
+          status.hidden = false;
+          status.dataset.tone = lastsToPlan ? 'good' : 'warn';
+          status.textContent = lastsToPlan
+            ? 'Lasts to your plan age of ' + input.planAge
+            : 'Runs out ' + (input.planAge - r.runsOut) + (input.planAge - r.runsOut === 1 ? ' year' : ' years') + ' before age ' + input.planAge;
+          const before = r.years.find((y) => y.age < input.spAge);
+          const after = r.years.find((y) => y.age >= input.spAge);
+          let text =
+            before && after && input.sp > 0
+              ? 'Taking ' + money(before.need) + ' a year from your pot until State Pension age (' + input.spAge + '), then ' + money(after.need) + ' a year.'
+              : 'Taking ' + money(first.need) + ' a year from your pot.';
+          const atPlan = r.years.find((y) => y.age === input.planAge);
+          if (lastsToPlan) text += atPlan ? ' Your pot could still be worth ' + money(atPlan.start) + ' at age ' + input.planAge + '.' : '';
+          else {
+            const later = r.years.find((y) => y.age === input.planAge - 1) || r.years[r.years.length - 1];
+            const gapYears = input.spAge - r.runsOut - 1;
+            text +=
+              gapYears > 0 && input.sp > 0
+                ? ' After it runs out, you would have ' + money(input.other) + ' a year until your State Pension starts at ' + input.spAge + ', then ' + money(later.sp + later.other) + ' a year.'
+                : ' After it runs out, your income falls to ' + money(later.sp + later.other) + ' a year.';
+          }
+          write('summary', text);
+        }
+        write('first-withdrawal', money(first.fromPot));
+        write('rate', first.start > 0 ? LG.percent((first.fromPot / first.start) * 100) : '\u2014');
+        if (input.lump === 'upfront') {
+          write('cash-label', 'Tax-free cash at the start');
+          write('cash', money(r.lump));
+        } else {
+          write('cash-label', 'Tax-free cash to your plan age');
+          write('cash', money(r.years.filter((y) => y.age < input.planAge).reduce((n, y) => n + y.taxFree, 0)));
+        }
+        write('sustainable', money(sustainable) + ' a year');
+
+        renderIncome(input, r);
+        renderChart(input, r);
+        renderTable(r);
+        renderGrowth(input, r);
+        write(
+          'method-text',
+          'Growth of ' +
+            LG.percent(input.growth, 2) +
+            ' less inflation of ' +
+            LG.percent(input.inflation, 2) +
+            ' gives growth of ' +
+            LG.percent(r.real * 100, 2) +
+            ' a year in today\u2019s money. ' +
+            (input.lump === 'upfront'
+              ? 'Taking ' + money(r.lump) + ' tax-free at the start leaves ' + money(input.pot - r.lump) + ' invested. '
+              : 'Your ' + money(input.pot) + ' stays invested and 25% of each withdrawal is tax-free. ') +
+            'In your first year your pot pays ' +
+            money(first.fromPot) +
+            ', the gap between the ' +
+            money(input.target) +
+            ' you want and your other income of ' +
+            money(first.sp + first.other) +
+            '. Your income could stay at ' +
+            money(sustainable) +
+            ' a year until age ' +
+            input.planAge +
+            ' before the pot runs out.',
+        );
+        write('sticky-value', r.anyNeed ? (r.runsOut === null ? 'Beyond ' + MAX_AGE : 'Age ' + r.runsOut) : 'Not needed');
+        updateSticky();
+        announce(
+          r.anyNeed
+            ? 'Your pot could last until ' + lastsText(r) + '. ' + (lastsToPlan ? 'That lasts to your plan age.' : 'That is before your plan age of ' + input.planAge + '.')
+            : 'Your other income covers the income you want.',
+        );
+      }
+
+      function announce(text) {
+        clearTimeout(announceTimer);
+        announceTimer = setTimeout(() => write('announce', text), 800);
+      }
+
+      function incomeColumn(title, row) {
+        const col = document.createElement('div');
+        col.className = 'lgc-income-col';
+        const h = document.createElement('h4');
+        h.textContent = title;
+        const dl = document.createElement('dl');
+        const add = (label, value, cls) => {
+          const wrap = document.createElement('div');
+          if (cls) wrap.className = cls;
+          const dt = document.createElement('dt');
+          dt.textContent = label;
+          const dd = document.createElement('dd');
+          dd.textContent = value;
+          wrap.append(dt, dd);
+          dl.appendChild(wrap);
+        };
+        add('From your pot', money(row.fromPot));
+        add('State Pension', money(row.sp));
+        if (row.other) add('Other income', money(row.other));
+        add('Income tax (estimate)', row.tax ? '\u2212' + money(row.tax) : money(0));
+        add('Take-home a year', money(row.net), 'lgc-total');
+        add('Take-home a month', money(row.net / 12));
+        col.append(h, dl);
+        return col;
+      }
+
+      function renderIncome(input, r) {
+        const cols = get('income-cols');
+        cols.replaceChildren();
+        const before = r.years.find((y) => y.age < input.spAge);
+        const after = r.years.find((y) => y.age >= input.spAge && (r.runsOut === null || y.age < r.runsOut));
+        if (before) cols.appendChild(incomeColumn('Age ' + input.age + ' to ' + (Math.min(input.spAge, r.runsOut || input.spAge) - 1), before));
+        if (after) cols.appendChild(incomeColumn((before ? 'From age ' : 'Age ') + after.age + (r.runsOut ? ' to ' + (r.runsOut - 1) : ' onwards'), after));
+        if (r.runsOut !== null && r.runsOut < MAX_AGE) cols.appendChild(incomeColumn('From age ' + r.runsOut + ', when your pot runs out', r.years.find((y) => y.age === r.runsOut + 1) || r.years[r.years.length - 1]));
+      }
+
+      function renderTable(r) {
+        const body = get('table-body');
+        body.innerHTML = '';
+        r.years.forEach((y) => {
+          const tr = body.insertRow();
+          const th = document.createElement('th');
+          th.scope = 'row';
+          th.textContent = y.age;
+          tr.appendChild(th);
+          [y.start, y.fromPot, y.sp, y.other, y.tax, y.net].forEach((n) => (tr.insertCell().textContent = money(n)));
+          if (r.runsOut !== null && y.age >= r.runsOut) tr.className = 'lgc-row-out';
+        });
+      }
+
+      function renderGrowth(input, r) {
+        const variants = [
+          ['low', input.growth - 1],
+          ['mid', input.growth],
+          ['high', input.growth + 1],
+        ];
+        const lastAge = (res) => (res.runsOut === null ? MAX_AGE : res.runsOut);
+        variants.forEach(([key, g]) => {
+          const res = key === 'mid' ? r : project(Object.assign({}, input, { growth: g }));
+          write(key + '-label', LG.percent(g, 2) + ' growth');
+          write(key, !res.anyNeed ? 'Not needed' : res.runsOut === null ? 'Beyond age ' + MAX_AGE : 'Until age ' + res.runsOut);
+          if (key !== 'mid') {
+            const diff = lastAge(res) - lastAge(r);
+            write(key + '-note', diff === 0 ? 'No change' : Math.abs(diff) + (Math.abs(diff) === 1 ? ' year ' : ' years ') + (diff < 0 ? 'sooner' : 'longer'));
+          }
+        });
+      }
+
+      const NS = 'http://www.w3.org/2000/svg';
+      const svgEl = (tag, attrs) => {
+        const el = document.createElementNS(NS, tag);
+        Object.keys(attrs).forEach((k) => el.setAttribute(k, String(attrs[k])));
+        return el;
+      };
+
+      function renderChart(input, r) {
+        const box = get('chart');
+        box.replaceChildren();
+        const W = Math.max(280, Math.round(box.clientWidth || 640));
+        const H = W < 480 ? 220 : 260;
+        const pad = { l: 52, r: 12, t: 12, b: 28 };
+        const pts = r.years.map((y) => [y.age, y.start]).concat([[MAX_AGE, r.endBalance]]);
+        const maxV = Math.max(1, ...pts.map((p) => p[1]));
+        const x0 = input.age;
+        const x = (age) => pad.l + ((age - x0) / (MAX_AGE - x0)) * (W - pad.l - pad.r);
+        const y = (v) => pad.t + (1 - v / maxV) * (H - pad.t - pad.b);
+        const svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, width: '100%', height: H, focusable: 'false', 'aria-hidden': 'true' });
+        for (let i = 0; i <= 4; i++) {
+          const v = (maxV * i) / 4;
+          svg.appendChild(svgEl('line', { x1: pad.l, x2: W - pad.r, y1: y(v), y2: y(v), class: 'lgc-chart-grid' }));
+          const t = svgEl('text', { x: pad.l - 8, y: y(v) + 4, 'text-anchor': 'end', class: 'lgc-chart-text' });
+          t.textContent = compact(v);
+          svg.appendChild(t);
+        }
+        const step = MAX_AGE - x0 > 30 ? 10 : 5;
+        for (let a = Math.ceil(x0 / step) * step; a <= MAX_AGE; a += step) {
+          const t = svgEl('text', { x: x(a), y: H - 8, 'text-anchor': 'middle', class: 'lgc-chart-text' });
+          t.textContent = a;
+          svg.appendChild(t);
+        }
+        const marker = (age, cls) => {
+          if (age > x0 && age < MAX_AGE) svg.appendChild(svgEl('line', { x1: x(age), x2: x(age), y1: pad.t, y2: H - pad.b, class: cls }));
+        };
+        if (input.sp > 0) marker(input.spAge, 'lgc-chart-sp');
+        marker(input.planAge, 'lgc-chart-plan');
+        const line = pts.map((p, i) => (i ? 'L' : 'M') + x(p[0]).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join(' ');
+        svg.appendChild(svgEl('path', { d: line + ' L' + x(MAX_AGE) + ' ' + y(0) + ' L' + x(x0) + ' ' + y(0) + ' Z', class: 'lgc-chart-area' }));
+        svg.appendChild(svgEl('path', { d: line, class: 'lgc-chart-line' }));
+        box.appendChild(svg);
+        const atPlan = r.years.find((yy) => yy.age === input.planAge);
+        box.setAttribute(
+          'aria-label',
+          'Pot value from age ' + x0 + ': ' + money(r.years[0].start) + ' at the start, ' + (r.runsOut === null ? 'still ' + money(r.endBalance) + ' at age ' + MAX_AGE : 'running out at age ' + r.runsOut) + (atPlan ? ', ' + money(atPlan.start) + ' at your plan age of ' + input.planAge : '') + '.',
+        );
+      }
+
+      // Mobile: a small bar with the headline while the results are below the screen.
+      const sticky = get('sticky');
+      let resultsBelow = false;
+      function updateSticky() {
+        if (sticky) sticky.hidden = !(lastResult && resultsBelow);
+      }
+      if (sticky && typeof IntersectionObserver !== 'undefined') {
+        new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            resultsBelow = !e.isIntersecting && e.boundingClientRect.top > 0;
+          });
+          updateSticky();
+        }).observe(get('results'));
+      }
+
+      // Events
+      Object.keys(FIELDS).forEach((id) => {
+        const input = get(id);
+        input.addEventListener('input', render);
+        input.addEventListener('blur', () => {
+          touched.add(id);
+          const r = readField(id);
+          // Tidy money fields to 12,500 style once they're valid.
+          if (!r.blank && r.ok && FIELDS[id].kind === 'money') input.value = r.value.toLocaleString('en-GB', { maximumFractionDigits: 2 });
+          render();
+        });
+      });
+      root.querySelectorAll('input[name="lgri-lump"]').forEach((el) => el.addEventListener('change', render));
+      get('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        Object.keys(FIELDS).forEach((id) => touched.add(id));
+        render();
+        const summary = get('error-summary');
+        if (!summary.hidden) summary.focus();
+      });
+      get('clear').addEventListener('click', () => {
+        Object.keys(FIELDS).forEach((id) => {
+          get(id).value = DEFAULTS[id] || '';
+        });
+        root.querySelector('input[name="lgri-lump"][value="spread"]').checked = true;
+        touched.clear();
+        render();
+        get('pot').focus();
+      });
+      if (typeof ResizeObserver !== 'undefined') {
+        let width = 0;
+        new ResizeObserver(() => {
+          const w = get('chart').clientWidth;
+          if (lastResult && Math.abs(w - width) > 8) renderChart(lastResult.input, lastResult.r);
+          width = w;
+        }).observe(get('chart'));
+      }
+      render();
     }
   });
 })(window, document);

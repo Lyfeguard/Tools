@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 The Tools template loads two files in its head code, served by jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.5.0/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.5.0/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.6.0/dist/lg-calc.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.6.0/dist/lg-calc.min.js" defer></script>
 ```
 
 Each calculator starts only when its own markup is on the page.
@@ -23,7 +23,8 @@ Each calculator starts only when its own markup is on the page.
 
 ## Calculator keys
 net-worth, inheritance-tax, compound-interest, savings-goal, emergency-fund,
-loan-repayment, pro-rata-salary, salary-by-age, mortgage, debt-to-income
+loan-repayment, pro-rata-salary, salary-by-age, mortgage, debt-to-income,
+retirement-income
 
 ## Making a change
 Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for the tests.
@@ -47,12 +48,21 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
 4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
    ```
-   npm run style-diff -- v1.5.0
+   npm run style-diff -- v1.6.0
    ```
-5. Commit, then create a release tagged with the new version (e.g. `v1.5.1`). GitHub runs the build and tests on every pull request ("Check calculators").
+5. Commit, then create a release tagged with the new version (e.g. `v1.6.1`). GitHub runs the build and tests on every pull request ("Check calculators").
 6. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).
+
+## Markup pattern for calculators
+New calculators follow the pattern in `markup/retirement-income.html`; the older ones will move to it.
+- One root element: `<div class="lg-calc" data-calc="key" id="prefix">`. It styles and lays itself out (spacing, and layout that responds to its own width with container queries), so nothing depends on the Webflow template.
+- Use the shared `lgc-` components in `src/lg-calc.css` (cards, fields, option switcher, stats, comparison cards, chart, table, sticky result bar). They use class selectors only, so Webflow styles can override them.
+- Every input has a `<label>`, a hint and an error line linked with `aria-describedby`, `inputmode` and `enterkeyhint`. Groups of fields and radio buttons sit in a `<fieldset>` with a `<legend>`.
+- One error summary (`role="alert"`) at the top of the form, a "Clear figures" button, and one short screen-reader announcement (`aria-live`) once typing pauses, not the whole results panel.
+- Charts are SVG with a text description (`role="img"` and `aria-label`) and the same figures in a table.
+- No inline styles and no `<script>` in the markup.
 
 ## Rules
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.
