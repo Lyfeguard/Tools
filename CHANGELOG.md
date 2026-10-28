@@ -1,7 +1,12 @@
 # Changelog
 
+## v1.2.1 – 2026-10-28
+- Fix: v1.2.0 removed the fallback that styled savings goal, emergency fund, pro rata, salary by age and inheritance tax when the template wrapper has no `data-calc` attribute, so those calculators lost their layout. Each calculator's scoped styles now apply whenever its own markup is on the page (`:root:has(#...)`), so styling no longer depends on the template wrapper and `data-calc` is optional.
+- New test (`test/styles.test.js`) renders every calculator with and without the template wrapper and requires identical styles. It fails on v1.2.0 for exactly those five calculators.
+- CSS is 109 KB minified (v1.1.0: 128 KB).
+
 ## v1.2.0 – 2026-10-28
-No visual or calculation changes: every calculator's results and styles were checked against v1.1.0.
+**Known issue, fixed in v1.2.1:** savings goal, emergency fund, pro rata, salary by age and inheritance tax lose their layout styles when the template wrapper has no `data-calc` attribute. Don't use this version.
 - Tests: known-answer and snapshot tests for all ten calculators (`npm test`), a style comparison against any earlier release (`npm run style-diff`), and a GitHub check that runs the build and tests on every pull request.
 - CSS 17% smaller (128 KB to 106 KB minified): removed a duplicate copy of the loan styles, the selectors that only served the old static pages (`.lg-calc-wrap:has(...)`), and styles for elements no longer in the markup (old in-card CTAs, IHT FAQ, breadcrumb and skip-link styles, unused compound interest and mortgage classes).
 - JS: shared helpers for start-up, number input, money formatting and errors (`LG.start`, `LG.parseNumber`, `LG.money`, `LG.showError`), used by the loan, mortgage, compound interest and debt-to-income calculators.

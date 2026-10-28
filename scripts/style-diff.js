@@ -2,6 +2,7 @@
 // between the current dist/ and the dist/ at an earlier git ref.
 // Use it after a CSS clean-up to prove nothing visible changed:
 //   npm run style-diff -- v1.1.0
+//   npm run style-diff -- v1.1.0 --only=inheritance-tax --all
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const os = require('os');
@@ -11,6 +12,9 @@ const { ROOT, openCalculator, run } = require('../test/page');
 const scenarios = require('../test/scenarios');
 
 const ref = process.argv[2];
+// Optional: --only=<calculator key> and --all to compare every scenario, not just the first two.
+const only = (process.argv.find((a) => a.startsWith('--only=')) || '').slice(7);
+const allScenarios = process.argv.includes('--all');
 if (!ref) {
   console.error('Usage: npm run style-diff -- <git ref, e.g. v1.1.0>');
   process.exit(2);
@@ -48,8 +52,9 @@ async function styles(browser, key, steps, width, dist) {
   const browser = await chromium.launch();
   let differences = 0;
   for (const key of Object.keys(scenarios)) {
+    if (only && key !== only) continue;
     const names = Object.keys(scenarios[key]);
-    for (const name of names.slice(0, 2)) {
+    for (const name of allScenarios ? names : names.slice(0, 2)) {
       for (const width of [1280, 620, 375]) {
         const steps = scenarios[key][name];
         const before = await styles(browser, key, steps, width, baseDist);

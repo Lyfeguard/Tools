@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.2.0
+ * Lyfeguard calculators | lg-calc.css | v1.2.1
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -7,11 +7,13 @@
  * Structure: shared rules first, then calculator-specific rules in the same
  * order they had on the original pages, so the cascade is unchanged.
  * Where a selector exists on more than one calculator with different values,
- * the rule is scoped with :where([data-calc="..."]), the Calculator key set on
- * .lg-calc-wrap in the CMS template. :where() adds zero specificity, so
+ * the rule is scoped with :where([data-calc="..."], :root:has(#...)). The first
+ * matches the Calculator key on .lg-calc-wrap in the CMS template; the second
+ * matches when that calculator's markup is anywhere on the page, so styling
+ * never depends on the template wrapper. :where() adds zero specificity, so
  * scoping never changes which rule wins.
- * Inheritance tax rules are scoped with :is(#iht-form, [data-calc=...]); the
- * #iht-form id is kept only because it sets those rules' specificity.
+ * Inheritance tax rules are scoped with :is(#iht-form, [data-calc=...], ...);
+ * the #iht-form id is kept only because it sets those rules' specificity.
  *
  * The calculator markup sits in a Rich Text element (class lg-calc-markup)
  * inside .lg-calc-wrap; the resets at the end of this file stop Webflow's rich
@@ -63,7 +65,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"]) .lg-tools h3 {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools h3 {
   font-size: 19px;
   margin-top: 24px;
 }
@@ -87,7 +89,7 @@
   font: inherit;
   line-height: 1.4;
 }
-:where([data-calc="savings-goal"], [data-calc="emergency-fund"]) .lg-tools button {
+:where([data-calc="savings-goal"], :root:has(#sg-form), [data-calc="emergency-fund"], :root:has(#ef-monthly)) .lg-tools button {
   touch-action: manipulation;
 }
 .lg-tools .lg-card {
@@ -142,7 +144,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"]) .lg-tools .lg-options {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
@@ -158,8 +160,11 @@
    ------------------------------------------------------------------ */
 :where(
     [data-calc="emergency-fund"],
+    :root:has(#ef-monthly),
     [data-calc="pro-rata-salary"],
-    [data-calc="salary-by-age"]
+    :root:has(#pr-salary),
+    [data-calc="salary-by-age"],
+    :root:has(#sa-salary)
   )
   .lg-tools
   .lg-options {
@@ -256,7 +261,7 @@
   outline: 3px solid var(--lg-accent);
   outline-offset: 3px;
 }
-:where([data-calc="savings-goal"], [data-calc="emergency-fund"]) .lg-tools .lg-control > span {
+:where([data-calc="savings-goal"], :root:has(#sg-form), [data-calc="emergency-fund"], :root:has(#ef-monthly)) .lg-tools .lg-control > span {
   padding: 0 12px;
   color: var(--lg-muted);
   pointer-events: none;
@@ -265,7 +270,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"]) .lg-tools .lg-control input {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-control input {
   appearance: none;
   width: 100%;
   min-width: 0;
@@ -286,14 +291,14 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"]) .lg-tools .lg-control[data-invalid="true"] {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools .lg-control[data-invalid="true"] {
   border-color: var(--lg-error);
 }
 
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"], [data-calc="salary-by-age"]) .lg-tools .lg-control > span {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary), [data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools .lg-control > span {
   padding: 0 12px;
   color: var(--lg-muted);
   pointer-events: none;
@@ -301,8 +306,11 @@
 }
 :where(
     [data-calc="emergency-fund"],
+    :root:has(#ef-monthly),
     [data-calc="pro-rata-salary"],
-    [data-calc="salary-by-age"]
+    :root:has(#pr-salary),
+    [data-calc="salary-by-age"],
+    :root:has(#sa-salary)
   )
   .lg-tools
   .lg-control
@@ -323,7 +331,7 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"]) .lg-tools .lg-control input:first-child {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools .lg-control input:first-child {
   padding-left: 12px;
 }
 
@@ -341,10 +349,10 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"]) .lg-tools .lg-control:has([aria-invalid="true"]) {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-control:has([aria-invalid="true"]) {
   border: 2px solid var(--lg-error);
 }
-:where([data-calc="savings-goal"]) .lg-tools .lg-error {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-error {
   color: var(--lg-error);
   font-size: 14px;
   font-weight: 600;
@@ -380,7 +388,7 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"]) .lg-tools .lg-error {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools .lg-error {
   color: var(--lg-error);
   font-size: 14px;
   font-weight: 600;
@@ -439,7 +447,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"]) .lg-tools button:disabled {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools button:disabled {
   color: #48636a;
   background: #edf2f1;
   border-color: #a6bdbb;
@@ -465,13 +473,13 @@
   border-color: var(--lg-ink);
   color: #fff;
 }
-:where([data-calc="savings-goal"], [data-calc="emergency-fund"])
+:where([data-calc="savings-goal"], :root:has(#sg-form), [data-calc="emergency-fund"], :root:has(#ef-monthly))
   .lg-tools
   .lg-result-card
   :is(h2, h3, p, dt, dd, strong, span) {
   color: #fff;
 }
-:where([data-calc="pro-rata-salary"], [data-calc="salary-by-age"])
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary), [data-calc="salary-by-age"], :root:has(#sa-salary))
   .lg-tools
   .lg-result-card
   :is(h2, h3, p, dt, dd, strong, span, li) {
@@ -517,7 +525,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"]) .lg-tools .lg-result-summary {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-result-summary {
   max-width: 68ch;
   min-height: 3.1em;
   margin: 12px 0 20px;
@@ -534,15 +542,18 @@
    ------------------------------------------------------------------ */
 :where(
     [data-calc="emergency-fund"],
+    :root:has(#ef-monthly),
     [data-calc="pro-rata-salary"],
-    [data-calc="salary-by-age"]
+    :root:has(#pr-salary),
+    [data-calc="salary-by-age"],
+    :root:has(#sa-salary)
   )
   .lg-tools
   .lg-result-summary {
   max-width: 68ch;
   margin: 12px 0 20px;
 }
-:where([data-calc="savings-goal"], [data-calc="emergency-fund"]) .lg-tools .lg-stats {
+:where([data-calc="savings-goal"], :root:has(#sg-form), [data-calc="emergency-fund"], :root:has(#ef-monthly)) .lg-tools .lg-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
@@ -550,7 +561,7 @@
   margin: 0;
   padding: 20px 0 0;
 }
-:where([data-calc="pro-rata-salary"], [data-calc="salary-by-age"]) .lg-tools .lg-stats {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary), [data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools .lg-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
@@ -609,7 +620,7 @@
   border: 1px solid var(--lg-line);
   border-radius: 8px;
 }
-:where([data-calc="savings-goal"]) .lg-tools table {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
@@ -617,34 +628,34 @@
   font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
-:where([data-calc="savings-goal"]) .lg-tools caption {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools caption {
   text-align: left;
   font-size: 14px;
   font-weight: 600;
   padding: 12px 16px;
   color: var(--lg-muted);
 }
-:where([data-calc="savings-goal"]) .lg-tools th,
-:where([data-calc="savings-goal"]) .lg-tools td {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools th,
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools td {
   padding: 13px 16px;
   border-top: 1px solid var(--lg-line);
   color: var(--lg-ink);
   text-align: right;
   white-space: nowrap;
 }
-:where([data-calc="savings-goal"]) .lg-tools thead th {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools thead th {
   background: #edf4f2;
   font-size: 13px;
   font-weight: 700;
 }
-:where([data-calc="savings-goal"]) .lg-tools tbody th {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools tbody th {
   font-weight: 600;
 }
-:where([data-calc="savings-goal"]) .lg-tools th:first-child,
-:where([data-calc="savings-goal"]) .lg-tools td:first-child {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools th:first-child,
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools td:first-child {
   text-align: left;
 }
-:where([data-calc="savings-goal"]) .lg-tools tbody tr:last-child {
+:where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools tbody tr:last-child {
   background: #edf7f3;
 }
 .lg-tools tbody td.lg-table-pending {
@@ -793,7 +804,7 @@
   color: var(--lg-ink);
 }
 @container lg-savings-form (max-width:560px) {
-  :where([data-calc="savings-goal"]) .lg-tools .lg-grid {
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -816,7 +827,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-:where([data-calc="emergency-fund"], [data-calc="pro-rata-salary"]) .lg-tools legend.lg-hint {
+:where([data-calc="emergency-fund"], :root:has(#ef-monthly), [data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools legend.lg-hint {
   font-weight: 400;
   margin: 0 0 4px;
 }
@@ -972,7 +983,7 @@
   margin: 20px 0 0;
   padding-top: 16px;
 }
-:where([data-calc="pro-rata-salary"]) .lg-tools :is(.pr-compare, .pr-notes) h3 {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools :is(.pr-compare, .pr-notes) h3 {
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
@@ -1024,8 +1035,11 @@
 @media (max-width: 700px) {
   :where(
       [data-calc="savings-goal"],
+      :root:has(#sg-form),
       [data-calc="emergency-fund"],
-      [data-calc="pro-rata-salary"]
+      :root:has(#ef-monthly),
+      [data-calc="pro-rata-salary"],
+      :root:has(#pr-salary)
     )
     .lg-tools
     .lg-stats {
@@ -1043,7 +1057,7 @@
   }
 }
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"]) .lg-tools .lg-grid {
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -1053,7 +1067,7 @@
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="emergency-fund"], [data-calc="pro-rata-salary"]) .lg-tools .lg-grid {
+  :where([data-calc="emergency-fund"], :root:has(#ef-monthly), [data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -1065,7 +1079,7 @@
 .lg-tools .sa-gap {
   margin-top: 20px;
 }
-:where([data-calc="salary-by-age"]) .lg-tools legend.lg-label {
+:where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools legend.lg-label {
   margin: 0 0 4px;
 }
 .lg-tools .sa-ages,
@@ -1137,19 +1151,19 @@
   margin: 20px 0 0;
   padding-top: 16px;
 }
-:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) h3 {
+:where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) h3 {
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0;
   margin: 0 0 8px;
 }
-:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) ul {
+:where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) li {
+:where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) li {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -1158,10 +1172,10 @@
   border-top: 1px solid #2a4f5a;
   font-size: 15px;
 }
-:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) li:first-child {
+:where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) li:first-child {
   border-top: 0;
 }
-:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) strong {
+:where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) strong {
   flex: none;
   font-size: 17px;
   text-align: right;
@@ -1353,10 +1367,10 @@
    Savings goal
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"]) .lg-tools .lg-options {
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-options {
     gap: 4px;
   }
-  :where([data-calc="savings-goal"]) .lg-tools .lg-choice {
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-choice {
     font-size: 14px;
     padding: 10px 6px;
     gap: 6px;
@@ -1383,7 +1397,7 @@
    Savings goal
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"]) .lg-tools .lg-stats dt {
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-stats dt {
     max-width: 55%;
   }
 }
@@ -1403,8 +1417,8 @@
    Savings goal
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"]) .lg-tools th,
-  :where([data-calc="savings-goal"]) .lg-tools td {
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools th,
+  :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools td {
     padding: 11px 12px;
   }
   .lg-tools .lg-section-top {
@@ -1481,12 +1495,12 @@
    Average salary by age
    ------------------------------------------------------------------ */
 @media (forced-colors: active) {
-  :where([data-calc="salary-by-age"]) .lg-tools :is(.sa-fill, .sa-box, .sa-med, .sa-you) {
+  :where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-fill, .sa-box, .sa-med, .sa-you) {
     background: Highlight;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  :where([data-calc="salary-by-age"]) .lg-tools :is(.sa-fill, .sa-you) {
+  :where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-fill, .sa-you) {
     transition: none;
   }
 }
@@ -2963,12 +2977,12 @@
 /* ------------------------------------------------------------------
    Inheritance tax
    ------------------------------------------------------------------ */
-:is(#iht-form, [data-calc="inheritance-tax"]) {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) {
   --lgiht-ink: #082c37;
   --lgiht-muted: #506a70;
   --lgiht-teal: #005f55;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card {
   container-type: inline-size;
   position: relative;
   box-sizing: border-box;
@@ -2981,12 +2995,12 @@
   color: #082c37;
   font-family: "Manrope", sans-serif;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *,
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *:before,
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *:after {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card *,
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card *:before,
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card *:after {
   box-sizing: border-box;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-eyebrow {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-eyebrow {
   font-family: "Funnel Display", sans-serif;
   font-weight: 700;
   letter-spacing: 0.105em;
@@ -2994,15 +3008,15 @@
   text-transform: uppercase;
   color: #005f55;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-top {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
   margin: 0 0 11px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card h2,
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card h3.lgiht-card-title {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card h2,
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card h3.lgiht-card-title {
   font-family: "Epilogue", sans-serif;
   font-weight: 650;
   letter-spacing: -0.035em;
@@ -3011,7 +3025,7 @@
   color: #082c37;
   margin: 0 0 11px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card h3 {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card h3 {
   font-family: "Epilogue", sans-serif;
   font-weight: 650;
   letter-spacing: -0.025em;
@@ -3020,32 +3034,32 @@
   margin: 0;
   color: #082c37;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-lead {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-lead {
   font-size: 13.5px;
   color: #566f77;
   line-height: 1.75;
   margin: 0 0 26px;
   max-width: 770px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-total {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-total {
   font-family: "Epilogue", sans-serif;
   font-size: 18px;
   font-weight: 650;
   color: #087f70;
   font-variant-numeric: tabular-nums;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 23px 18px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields.lgi-fields-three {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields.lgi-fields-three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-field {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-field {
   min-width: 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-field label {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-field label {
   font-family: "Manrope", sans-serif;
   display: block;
   font-size: 13px;
@@ -3054,13 +3068,13 @@
   color: #163a43;
   margin: 0 0 8px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-help {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-help {
   margin: 7px 0 0;
   font-size: 12px;
   line-height: 1.6;
   color: #506a70;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money {
   display: flex;
   align-items: center;
   width: 100%;
@@ -3073,12 +3087,12 @@
     box-shadow 0.15s,
     border-color 0.15s;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:focus-within {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:focus-within {
   border-color: #039a87;
   box-shadow: 0 0 0 3px rgba(9, 157, 133, 0.13);
   background: #fff;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money .lgi-symbol {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money .lgi-symbol {
   height: 100%;
   width: 42px;
   display: grid;
@@ -3090,7 +3104,7 @@
   font-weight: 750;
   font-size: 14px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input {
   min-width: 0;
   width: 100%;
   height: 100%;
@@ -3109,24 +3123,24 @@
   appearance: none;
   font-variant-numeric: tabular-nums;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input::placeholder {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input::placeholder {
   color: #506a70;
   font-weight: 400;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input:disabled {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input[aria-invalid="true"] {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input[aria-invalid="true"] {
   color: #a4403a;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:has(input[aria-invalid="true"]) {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:has(input[aria-invalid="true"]) {
   border-color: #d78981;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:has(input:disabled) {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:has(input:disabled) {
   opacity: 0.52;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select.lgi-select {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card select.lgi-select {
   display: block;
   min-height: 50px;
   width: 100%;
@@ -3142,11 +3156,11 @@
   outline: 0;
   cursor: pointer;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select.lgi-select:focus-visible {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card select.lgi-select:focus-visible {
   border-color: #039a87;
   outline: 3px solid rgba(9, 157, 133, 0.15);
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-note {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-note {
   margin: 25px 0 0;
   border-radius: 8px;
   background: #edf8f5;
@@ -3156,75 +3170,75 @@
   font-size: 12px;
   line-height: 1.65;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-error {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-error {
   color: #a03c37;
   font-size: 12px;
   font-weight: 650;
   line-height: 1.6;
   margin-top: 12px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-error[hidden],
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card [hidden] {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-error[hidden],
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card [hidden] {
   display: none !important;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-divide {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-divide {
   border-top: 1px solid #edf0ef;
   margin: 24px 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card a {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card a {
   color: #047b70;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 @supports (grid-template-rows: subgrid) {
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field {
     display: grid;
     grid-row: span 3;
     grid-template-rows: subgrid;
     row-gap: 0;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field > label {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field > label {
     align-self: end;
   }
 }
 @supports not (grid-template-rows: subgrid) {
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field > label {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field > label {
     display: flex;
     align-items: flex-end;
     min-height: 2.9em;
   }
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) #lgiht-pension-note {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) #lgiht-pension-note {
   margin: 0;
   align-self: end;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select.lgi-select[aria-invalid="true"] {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card select.lgi-select[aria-invalid="true"] {
   border-color: #a03c37;
 }
 @container (max-width:750px) {
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields.lgi-fields-three {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields.lgi-fields-three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @container (max-width:470px) {
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields,
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields.lgi-fields-three {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields,
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields.lgi-fields-three {
     grid-template-columns: 1fr;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-top {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-top {
     align-items: start;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field {
     display: block;
     grid-row: auto;
     grid-template-rows: none;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field > label {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field > label {
     min-height: 0;
   }
 }
 @media (max-width: 650px) {
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card {
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card {
     padding: 26px 22px;
   }
 }
@@ -3733,7 +3747,7 @@
   margin-top: 22px;
 }
 @media (prefers-reduced-motion: reduce) {
-  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *,
+  :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card *,
   #lgiht-results-card * {
     transition: none !important;
   }
@@ -3751,32 +3765,32 @@
   border: 0 !important;
 }
 
-:where([data-calc="inheritance-tax"]) #calc-heading {
+:where([data-calc="inheritance-tax"], :root:has(#lgiht-assets-card)) #calc-heading {
   scroll-margin-top: 85px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card {
   min-inline-size: 0;
   margin-inline: 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) fieldset.lgiht-card {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) fieldset.lgiht-card {
   min-inline-size: 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-field-feedback {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-field-feedback {
   min-width: 0;
   align-self: start;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-field-feedback .lgi-help {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-field-feedback .lgi-help {
   margin-top: 7px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-field-feedback .lgi-error {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-field-feedback .lgi-error {
   margin: 7px 0 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select[aria-invalid="true"],
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:has([aria-invalid="true"]) {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card select[aria-invalid="true"],
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:has([aria-invalid="true"]) {
   outline: 2px solid #a03c37;
   outline-offset: 1px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card :is(input, select):focus-visible {
+:is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card :is(input, select):focus-visible {
   outline: 3px solid #005f55;
   outline-offset: 3px;
 }

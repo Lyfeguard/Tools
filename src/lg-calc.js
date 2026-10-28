@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.2.0
+ * Lyfeguard calculators | lg-calc.js | v1.2.1
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.2.0';
+  LG.version = '1.2.1';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
