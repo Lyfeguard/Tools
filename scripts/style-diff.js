@@ -38,7 +38,8 @@ async function styles(browser, key, steps, width, dist) {
       for (const pseudo of pseudos) {
         const cs = getComputedStyle(el, pseudo || null);
         const parts = [];
-        for (let j = 0; j < cs.length; j++) parts.push(cs[j] + '\u0001' + cs.getPropertyValue(cs[j]));
+        // Custom properties (--lg-*) are inputs to the styles, not results; skip them.
+        for (let j = 0; j < cs.length; j++) if (!cs[j].startsWith('--')) parts.push(cs[j] + '\u0001' + cs.getPropertyValue(cs[j]));
         out[name + pseudo] = parts.join('\u0002');
       }
     });

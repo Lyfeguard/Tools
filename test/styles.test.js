@@ -24,7 +24,7 @@ async function markupStyles(key, steps, wrapper, width) {
       for (const pseudo of ['', '::before', '::after']) {
         const cs = getComputedStyle(el, pseudo || null);
         const parts = [];
-        for (let j = 0; j < cs.length; j++) parts.push(cs[j] + ':' + cs.getPropertyValue(cs[j]));
+        for (let j = 0; j < cs.length; j++) if (!cs[j].startsWith('--')) parts.push(cs[j] + ':' + cs.getPropertyValue(cs[j]));
         out.push([`${i} ${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}.${[...el.classList].join('.')}${pseudo}`, parts.join(';')]);
       }
     });
