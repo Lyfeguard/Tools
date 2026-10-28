@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.4.0 – 2026-10-28
+Visual update: all ten calculators now follow the Lyfeguard brand kit (v2.3). Calculations are unchanged.
+- Colours: Ocean for text, headings and the dark results panels; Neon Mint for highlights on Ocean (bars, eyebrow labels, focus); Mint Ink for accents on light backgrounds (bars, borders, selected options, focus rings); Mist and Mist Alt for inputs and tinted areas; one secondary text colour (Ocean at 68%) in place of six greys; Ocean at 12% for lines.
+- Accent text on light backgrounds is Ocean (Mint Ink is too light for text), and links get a Mint Ink underline.
+- Corners: 20px for cards and panels, 14px for inputs, buttons and inner cards, 10px for small chips.
+- Accessibility: text below WCAG AA contrast went from 31 elements to none across the calculators.
+- Chart data colours and warning and error colours are unchanged.
+
 ## v1.3.0 – 2026-10-28
 No visual change: every calculator's computed styles were checked against v1.2.1.
 - CSS design tokens: the shared colours and fonts are defined once in `:root` (`--lg-navy`, `--lg-teal`, `--lg-line-soft`, `--lg-surface-tint`, `--lg-surface-input`, four `--lg-on-dark-*` colours for the dark results cards, and `--lg-font-body`, `--lg-font-heading`, `--lg-font-label`) and used in 241 places instead of repeated values.
