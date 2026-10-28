@@ -12,11 +12,9 @@
     "pr-full-label": {
       "text": "Full-time hours a week"
     },
-    "pr-full@invalid": "false",
     "pr-yours-label": {
       "text": "Your hours a week"
     },
-    "pr-yours@invalid": "false",
     "pr-error": {
       "text": "Your hours can’t be more than the full-time week. Use the full-time salary if you work full time.",
       "hidden": true
@@ -98,11 +96,9 @@
     "pr-full-label": {
       "text": "Full-time days a week"
     },
-    "pr-full@invalid": "false",
     "pr-yours-label": {
       "text": "Your days a week"
     },
-    "pr-yours@invalid": "false",
     "pr-error": {
       "text": "Your days can’t be more than the full-time week. Use the full-time salary if you work full time.",
       "hidden": true
@@ -183,11 +179,9 @@
     "pr-full-label": {
       "text": "Full-time hours a week"
     },
-    "pr-full@invalid": "false",
     "pr-yours-label": {
       "text": "Your hours a week"
     },
-    "pr-yours@invalid": "false",
     "pr-error": {
       "text": "Your hours can’t be more than the full-time week. Use the full-time salary if you work full time.",
       "hidden": true
@@ -268,7 +262,6 @@
     "pr-full-label": {
       "text": "Full-time hours a week"
     },
-    "pr-full@invalid": "false",
     "pr-yours-label": {
       "text": "Your hours a week"
     },

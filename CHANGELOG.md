@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.5.0 – 2026-10-28
+No visual change: computed styles match v1.4.0, and results for valid input are unchanged.
+- Every calculator now uses the shared JS helpers for start-up (`LG.start`), reading numbers (`LG.parseNumber`), money and percentages (`LG.money`, `LG.percent`) and marking invalid fields (`LG.markInvalid`). Net worth, inheritance tax, savings goal, emergency fund, pro rata and salary by age were moved over; no calculator has its own number parser or currency formatter any more.
+- Emergency fund, pro rata and salary by age no longer misread malformed input: "28k" was read as 28, "-500" as 500 and "1e5" as 15. Invalid entries now count as blank, are marked invalid for screen readers, and are no longer cleared when you leave the field. Pro rata also says "Enter numbers only".
+- Inheritance tax accepts commas only as thousands separators ("500,000", not "5,00,000").
+- Tests: new checks for the stricter input handling.
+
 ## v1.4.0 – 2026-10-28
 Visual update: all ten calculators now follow the Lyfeguard brand kit (v2.3). Calculations are unchanged.
 - Colours: Ocean for text, headings and the dark results panels; Neon Mint for highlights on Ocean (bars, eyebrow labels, focus); Mint Ink for accents on light backgrounds (bars, borders, selected options, focus rings); Mist and Mist Alt for inputs and tinted areas; one secondary text colour (Ocean at 68%) in place of six greys; Ocean at 12% for lines.

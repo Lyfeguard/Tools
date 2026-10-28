@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.4.0
+ * Lyfeguard calculators | lg-calc.js | v1.5.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.4.0';
+  LG.version = '1.5.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -129,7 +129,7 @@
   LG.ukTax = { rates: TAX, incomeTax: incomeTax, employeeNI: employeeNI };
 
   /* ------------------------------------------------------------------
-     Core: shared helpers for the panel-style calculators
+     Core: shared helpers used by every calculator
      ------------------------------------------------------------------ */
   var GBP_FORMATS = {};
   function gbpFormat(digits) {
@@ -190,6 +190,21 @@
     });
   };
 
+  // Format a percentage with up to `digits` decimal places (default 1): 12.5%.
+  var PCT_FORMATS = {};
+  LG.percent = function (n, digits) {
+    var d = digits === undefined ? 1 : digits;
+    if (!PCT_FORMATS[d]) PCT_FORMATS[d] = new Intl.NumberFormat('en-GB', { maximumFractionDigits: d });
+    return PCT_FORMATS[d].format(n) + '%';
+  };
+
+  // Mark a field as invalid for assistive technology and styling, or clear the mark.
+  LG.markInvalid = function (el, invalid) {
+    if (!el) return;
+    if (invalid) el.setAttribute('aria-invalid', 'true');
+    else el.removeAttribute('aria-invalid');
+  };
+
   // Show or clear a calculator's error message (an element with role="alert").
   LG.showError = function (el, message) {
     if (!el) return;
@@ -232,13 +247,11 @@
       const node = get(id);
       if (node) node.textContent = value;
     };
-    const fmtGBP = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 2 });
-    const fmtWhole = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 });
     const dateLabel = () => new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     const pence = (n) => Math.round(n * 100);
     const pounds = (cents) => cents / 100;
-    const money = (cents) => (cents % 100 === 0 ? fmtWhole.format(pounds(cents)) : fmtGBP.format(pounds(cents)));
-    const ratioText = (n) => new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 }).format(n) + '%';
+    const money = (cents) => LG.money(pounds(cents), cents % 100 === 0 ? 0 : 2);
+    const ratioText = (n) => LG.percent(n);
     const compact = (cents) => {
       const amount = pounds(cents);
       if (amount >= 1e9) return '\u00A3' + (amount / 1e9).toFixed(1).replace(/\.0$/, '') + 'bn';
@@ -256,15 +269,10 @@
 
     function readAmount(id) {
       const input = get('lgnw-' + id);
-      const raw = String(input.value ?? '').trim();
-      if (raw === '') return { valid: true, cents: 0, entered: false };
-      const clean = raw.replace(/\u00A3/g, '').replace(/\s/g, '');
-      if (!/^(?:\d{1,3}(?:,\d{3})+|\d+)?(?:\.\d{0,2})?$/.test(clean) || clean === '') return { valid: false, cents: 0, entered: true };
-      const numeric = clean.replace(/,/g, '');
-      const validFormat = /^(?:\d+(?:\.\d{0,2})?|\.\d{1,2})$/.test(numeric);
-      const amount = validFormat ? Number(numeric) : NaN;
-      const valid = Number.isFinite(amount) && amount >= 0 && amount <= 1e12;
-      return { valid, cents: valid ? pence(amount) : 0, entered: true };
+      const item = LG.parseNumber(input.value, 2);
+      if (!item.entered) return { valid: true, cents: 0, entered: false };
+      const valid = item.valid && item.value <= 1e12;
+      return { valid, cents: valid ? pence(item.value) : 0, entered: true };
     }
 
     function showInvalid(group, invalid) {
@@ -650,17 +658,6 @@
     }
 
     function init() {
-      const root = get('lgnw-assets-panel');
-      if (!root || root.dataset.lgnwReady === 'true') return;
-      const missing = ALL.filter((item) => !get('lgnw-' + item.id));
-      if (missing.length) {
-        console.warn(
-          '[Lyfeguard Net Worth] Missing input fields:',
-          missing.map((item) => item.id),
-        );
-        return;
-      }
-      root.dataset.lgnwReady = 'true';
       set('lgnw-snapshot-date', 'Calculated ' + dateLabel());
       ALL.forEach((item) => {
         const input = get('lgnw-' + item.id);
@@ -707,7 +704,7 @@
       }
       update();
     }
-    LG.ready(init);
+    LG.start({ name: 'Net Worth', panel: 'lgnw-assets-panel', required: ALL.map((item) => 'lgnw-' + item.id), setup: init });
   });
 
   /* ==================================================================
@@ -732,22 +729,18 @@
     const NRB = 32500000;
     const RNRB = 17500000;
     const TWO_MILLION = 200000000;
-    const GBP = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 });
-    const GBP_PENCE = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const pounds = (pence) => pence / 100;
-    const money = (pence) => (pence % 100 === 0 ? GBP : GBP_PENCE).format(pounds(pence));
-    const ratio = (n) => new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 }).format(n) + '%';
+    const money = (pence) => LG.money(pounds(pence), pence % 100 === 0 ? 0 : 2);
+    const ratio = (n) => LG.percent(n);
     let lastModel = null;
 
     function parseAmount(id, percent = false) {
       const input = get(id);
       if (!input) return { valid: false, entered: false, value: 0 };
-      const raw = String(input.value ?? '').trim();
-      if (!raw) return { valid: true, entered: false, value: 0 };
-      const cleaned = raw.replace(/[\u00A3,\s%]/g, '');
-      if (!/^(?:\d+(?:\.\d{0,2})?|\.\d{1,2})$/.test(cleaned)) return { valid: false, entered: true, value: 0 };
-      const number = Number(cleaned);
-      if (!Number.isFinite(number) || number < 0 || number > (percent ? 100 : MAX)) return { valid: false, entered: true, value: 0 };
+      const item = LG.parseNumber(percent ? String(input.value ?? '').replace(/%\s*$/, '') : input.value, 2);
+      if (!item.entered) return { valid: true, entered: false, value: 0 };
+      const number = item.value;
+      if (!item.valid || number < 0 || number > (percent ? 100 : MAX)) return { valid: false, entered: true, value: 0 };
       return { valid: true, entered: true, value: percent ? number : Math.round(number * 100) };
     }
 
@@ -1297,16 +1290,9 @@
       ]);
     }
 
+    const REQUIRED = ALL_INPUTS.concat(['period', 'home-desc', 'transfer', 'spouse-scope', 'relief-confirmation']);
     function init() {
-      const root = get('assets-card');
-      if (!root || root.dataset.ready === 'true') return;
-      const required = ALL_INPUTS.concat(['period', 'home-desc', 'transfer', 'spouse-scope', 'relief-confirmation']);
-      const missing = required.filter((id) => !get(id));
-      if (missing.length) {
-        console.warn('[Lyfeguard IHT] Missing input IDs:', missing.join(', '));
-        return;
-      }
-      root.dataset.ready = 'true';
+      const required = REQUIRED;
       for (const id of required) {
         get(id).addEventListener('input', update);
         get(id).addEventListener('change', update);
@@ -1338,7 +1324,7 @@
       });
       update();
     }
-    LG.ready(init);
+    LG.start({ name: 'IHT', panel: PREFIX + 'assets-card', required: REQUIRED.map((id) => PREFIX + id), setup: init });
   });
 
   /* ==================================================================
@@ -1697,39 +1683,37 @@
     /* One calculator per page. This script makes no network requests. */
     (function () {
       'use strict';
+      const required = [
+        'fields',
+        'goal',
+        'initial',
+        'years',
+        'months',
+        'monthly',
+        'rate',
+        'result',
+        'result-value',
+        'result-label',
+        'result-summary',
+        'state-badge',
+        'projection',
+        'schedule',
+        'download',
+        'chart',
+        'chart-details',
+        'show-all',
+        'status',
+        'startup',
+      ];
       function boot() {
         const $ = (id) => document.getElementById('sg-' + id);
         const form = $('form');
         const engine = window.LyfeTools && window.LyfeTools.savingsGoal;
-        const required = [
-          'fields',
-          'goal',
-          'initial',
-          'years',
-          'months',
-          'monthly',
-          'rate',
-          'result',
-          'result-value',
-          'result-label',
-          'result-summary',
-          'state-badge',
-          'projection',
-          'schedule',
-          'download',
-          'chart',
-          'chart-details',
-          'show-all',
-          'status',
-          'startup',
-        ];
-        if (!form || form.dataset.ready || !engine || required.some((id) => !$(id))) return;
-        form.dataset.ready = 'true';
+        if (!engine) return;
         const fieldIds = ['goal', 'initial', 'years', 'months', 'monthly', 'rate'];
         const touched = new Set();
-        const currency = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' });
         const compact = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', notation: 'compact', maximumFractionDigits: 1 });
-        const money = (value) => currency.format(value);
+        const money = (value) => LG.money(value, 2);
         const text = (id, value) => {
           if ($(id)) $(id).textContent = value;
         };
@@ -1789,10 +1773,9 @@
             let raw = $(id).value.trim();
             if (kind === 'money') raw = raw.replace(/^\u00A3\s*/, '');
             if (kind === 'rate') raw = raw.replace(/%$/, '').trim();
-            if (raw.startsWith('.')) raw = '0' + raw;
             if (!raw && blankIsZero) return 0;
-            const pattern = kind === 'money' ? /^(?:\d+|\d{1,3}(?:,\d{3})+)(?:\.\d{1,2})?$/ : kind === 'whole' ? /^\d+$/ : /^\d+(?:\.\d{1,4})?$/;
-            const value = pattern.test(raw) ? Number(raw.replace(/,/g, '')) : NaN;
+            const item = LG.parseNumber(raw, kind === 'money' ? 2 : kind === 'whole' ? 0 : 4);
+            const value = item.valid ? item.value : NaN;
             if (!Number.isFinite(value) || value < min || value > max) {
               const messages = {
                 goal: raw ? 'Enter a target from \u00A30.01 to \u00A310,000,000, with up to two decimal places.' : 'Enter your savings target in pounds.',
@@ -2230,7 +2213,7 @@
         }
         showDefaultExample();
       }
-      LG.ready(boot);
+      LG.start({ name: 'Savings Goal', panel: 'sg-form', required: required.map((id) => 'sg-' + id), setup: boot });
     })();
   });
 
@@ -2238,23 +2221,19 @@
      Emergency fund calculator  [emergency-fund]
      ================================================================== */
   module('emergency-fund', function () {
-    LG.ready(function () {
-      var $ = function (id) {
-        return document.getElementById(id);
-      };
+    LG.start({ name: 'Emergency Fund', panel: 'ef-monthly', required: ['ef-monthly', 'ef-saved', 'ef-target'], setup: setup });
+    function setup(root, $) {
       var monthlyEl = $('ef-monthly');
       var savedEl = $('ef-saved');
-      if (!monthlyEl || !savedEl || !$('ef-target')) return;
-      if (monthlyEl.dataset.lgReady === 'true') return;
-      monthlyEl.dataset.lgReady = 'true';
 
-      var gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
       var money = function (n) {
-        return gbp.format(Math.round(n));
+        return LG.money(Math.round(n), 0);
       };
-      var num = function (v) {
-        var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
-        return isFinite(n) && n > 0 ? n : 0;
+      // Read a money field: blank or invalid counts as 0, and invalid entries are marked.
+      var num = function (el) {
+        var item = LG.parseNumber(el.value, 2);
+        LG.markInvalid(el, item.entered && !item.valid);
+        return item.valid && item.value > 0 ? item.value : 0;
       };
       var months = function (n) {
         return n === 1 ? '1 month' : n + ' months';
@@ -2272,15 +2251,15 @@
         parts.forEach(function (p) {
           if (p.value.trim() !== '') {
             any = true;
-            total += num(p.value);
+            total += num(p);
           }
         });
         if (any) monthlyEl.value = total ? total.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
       }
 
       function render() {
-        var monthly = num(monthlyEl.value);
-        var saved = num(savedEl.value);
+        var monthly = num(monthlyEl);
+        var saved = num(savedEl);
         var m = selectedMonths();
 
         if (!monthly) {
@@ -2324,9 +2303,9 @@
           render();
         });
         el.addEventListener('blur', function () {
-          if (el.value.trim() === '') return;
-          var n = num(el.value);
-          el.value = n ? n.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
+          var item = LG.parseNumber(el.value, 2);
+          if (!item.entered || !item.valid) return; // leave invalid text for the person to correct
+          el.value = item.value ? item.value.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
         });
       });
 
@@ -2346,7 +2325,7 @@
       }
 
       render();
-    });
+    }
   });
 
   /* ==================================================================
@@ -2566,31 +2545,31 @@
     // Exposed for testing and for the worked examples
     window.LGProRata = { calculate: calculate, notes: notes, rates: R };
 
-    LG.ready(function () {
-      var $ = function (id) {
-        return document.getElementById(id);
-      };
-      if (!$('pr-salary') || !$('pr-result')) return;
-      if ($('pr-result').dataset.lgReady === 'true') return;
-      $('pr-result').dataset.lgReady = 'true';
-
-      var gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+    LG.start({ name: 'Pro Rata Salary', panel: 'pr-salary', required: ['pr-salary', 'pr-full', 'pr-yours', 'pr-result', 'pr-error'], setup: setup });
+    function setup(root, $) {
       var money = function (n) {
-        return gbp.format(Math.round(n));
+        return LG.money(Math.round(n), 0);
       };
-      var num = function (v) {
-        var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
-        return isFinite(n) && n > 0 ? n : 0;
+      // Fields that held something other than a number on the last render.
+      var invalid = [];
+      // Read a number field: blank or invalid counts as 0; invalid entries are noted.
+      var num = function (id) {
+        var item = LG.parseNumber($(id).value, 2);
+        if (item.entered && !item.valid) invalid.push(id);
+        return item.valid && item.value > 0 ? item.value : 0;
       };
       var dec = function (n) {
         var r = Math.round(n * 10) / 10;
         return r % 1 === 0 ? String(r) : r.toFixed(1);
       };
       var pctVal = function (id, fallback) {
-        var v = $(id).value.trim();
-        if (v === '') return fallback;
-        var n = parseFloat(v.replace(/[^0-9.]/g, ''));
-        return isFinite(n) ? Math.min(Math.max(n, 0), 100) : fallback;
+        var item = LG.parseNumber($(id).value.replace(/%\s*$/, ''), 2);
+        if (!item.entered) return fallback;
+        if (!item.valid) {
+          invalid.push(id);
+          return fallback;
+        }
+        return Math.min(Math.max(item.value, 0), 100);
       };
       var defaults = { hours: { full: '37.5', yours: '22.5' }, days: { full: '5', yours: '3' } };
 
@@ -2602,30 +2581,37 @@
       function setInvalid(id, bad) {
         var c = $(id).closest('.lg-control');
         if (c) c.setAttribute('data-invalid', bad ? 'true' : 'false');
-        $(id).setAttribute('aria-invalid', bad ? 'true' : 'false');
+        LG.markInvalid($(id), bad);
       }
 
       function render() {
         var m = mode();
+        invalid = [];
         var input = {
-          salary: num($('pr-salary').value),
-          fullTime: num($('pr-full').value),
-          yours: num($('pr-yours').value),
+          salary: num('pr-salary'),
+          fullTime: num('pr-full'),
+          yours: num('pr-yours'),
           eePct: pctVal('pr-ee', 5),
           erPct: pctVal('pr-er', 3),
-          holiday: num($('pr-holiday').value) || 28,
+          holiday: num('pr-holiday') || 28,
         };
         var max = m === 'hours' ? 168 : 7;
         var tooMany = input.yours > input.fullTime && input.fullTime > 0;
         var fullTooBig = input.fullTime > max;
-        setInvalid('pr-yours', tooMany);
-        setInvalid('pr-full', fullTooBig);
-        $('pr-error').hidden = !(tooMany || fullTooBig);
-        $('pr-error').textContent = fullTooBig
-          ? 'A full-time week can\u2019t be more than ' + max + ' ' + m + '.'
-          : 'Your ' + m + ' can\u2019t be more than the full-time week. Use the full-time salary if you work full time.';
+        var notNumbers = invalid.length > 0;
+        ['pr-salary', 'pr-ee', 'pr-er', 'pr-holiday'].forEach(function (id) {
+          if ($(id)) setInvalid(id, invalid.indexOf(id) !== -1);
+        });
+        setInvalid('pr-yours', tooMany || invalid.indexOf('pr-yours') !== -1);
+        setInvalid('pr-full', fullTooBig || invalid.indexOf('pr-full') !== -1);
+        $('pr-error').hidden = !(notNumbers || tooMany || fullTooBig);
+        $('pr-error').textContent = notNumbers
+          ? 'Enter numbers only, for example 40,000 or 37.5.'
+          : fullTooBig
+            ? 'A full-time week can\u2019t be more than ' + max + ' ' + m + '.'
+            : 'Your ' + m + ' can\u2019t be more than the full-time week. Use the full-time salary if you work full time.';
 
-        if (!input.salary || !input.fullTime || !input.yours || tooMany || fullTooBig) {
+        if (notNumbers || !input.salary || !input.fullTime || !input.yours || tooMany || fullTooBig) {
           $('pr-salary-out').textContent = '\u00A3\u2013';
           $('pr-summary').textContent = 'Enter your full-time salary and your working week to see your pro rata salary.';
           $('pr-detail').hidden = true;
@@ -2703,9 +2689,9 @@
         el.addEventListener('input', render);
       });
       $('pr-salary').addEventListener('blur', function () {
-        if ($('pr-salary').value.trim() === '') return;
-        var n = num($('pr-salary').value);
-        $('pr-salary').value = n ? n.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
+        var item = LG.parseNumber($('pr-salary').value, 2);
+        if (!item.entered || !item.valid) return; // leave invalid text for the person to correct
+        $('pr-salary').value = item.value ? item.value.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
       });
       document.querySelectorAll('input[name="pr-mode"]').forEach(function (r) {
         r.addEventListener('change', function () {
@@ -2716,7 +2702,7 @@
 
       applyMode(false);
       render();
-    });
+    }
   });
 
   /* ==================================================================
@@ -2811,25 +2797,20 @@
 
     window.LGSalaryAge = { data: DATA, calculate: calculate, takeHome: takeHome, percentile: percentile, group: group };
 
-    LG.ready(function () {
-      var $ = function (id) {
-        return document.getElementById(id);
-      };
-      if (!$('sa-salary') || !$('sa-result')) return;
-      if ($('sa-result').dataset.lgReady === 'true') return;
-      $('sa-result').dataset.lgReady = 'true';
-
-      var gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+    LG.start({ name: 'Salary by Age', panel: 'sa-salary', required: ['sa-salary', 'sa-result'], setup: setup });
+    function setup(root, $) {
       var money = function (n) {
-        return gbp.format(Math.round(n));
+        return LG.money(Math.round(n), 0);
       };
       var short = function (n) {
         var k = n / 1000;
         return '\u00A3' + (k >= 100 ? Math.round(k) : Math.round(k * 10) / 10) + 'k';
       };
-      var num = function (v) {
-        var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
-        return isFinite(n) && n > 0 ? n : 0;
+      // Read the salary: blank or invalid counts as 0, and an invalid entry is marked.
+      var num = function (el) {
+        var item = LG.parseNumber(el.value, 2);
+        LG.markInvalid(el, item.entered && !item.valid);
+        return item.valid && item.value > 0 ? item.value : 0;
       };
       var dash = function (age) {
         return age.replace('-', '\u2013');
@@ -2882,7 +2863,7 @@
       function render() {
         var sex = checked('sa-who', 'all');
         var age = checked('sa-age', '30-39');
-        var salary = num($('sa-salary').value);
+        var salary = num($('sa-salary'));
         renderData(sex, age, salary);
 
         var groupText = people[sex] + ' aged ' + dash(age);
@@ -2951,9 +2932,9 @@
       $('sa-salary').addEventListener('input', render);
       $('sa-salary').addEventListener('blur', function () {
         var el = $('sa-salary');
-        if (el.value.trim() === '') return;
-        var n = num(el.value);
-        el.value = n ? n.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
+        var item = LG.parseNumber(el.value, 2);
+        if (!item.entered || !item.valid) return; // leave invalid text for the person to correct
+        el.value = item.value ? item.value.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
       });
       document.querySelectorAll('input[name="sa-age"]').forEach(function (r) {
         r.addEventListener('change', render);
@@ -2968,7 +2949,7 @@
       });
 
       render();
-    });
+    }
   });
 
   /* ==================================================================
