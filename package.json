@@ -3,6 +3,11 @@
   "private": true,
   "description": "Shared CSS and JS for the calculators at lyfeguard.com/tools",
   "scripts": {
-    "build": "bash scripts/build.sh"
+    "build": "bash scripts/build.sh",
+    "test": "node --test test/*.test.js",
+    "style-diff": "node scripts/style-diff.js"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
   }
 }

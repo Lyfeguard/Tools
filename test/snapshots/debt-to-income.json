@@ -1,0 +1,548 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgdti-input-panel": {
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments—"
+    },
+    "lgdti-income-label": {
+      "text": "Gross salary per year"
+    },
+    "lgdti-income@invalid": "false",
+    "lgdti-other-income@invalid": "false",
+    "lgdti-other-income-hint": {
+      "text": "e.g. regular self-employed, rental or benefit income, before tax."
+    },
+    "lgdti-housing@invalid": "false",
+    "lgdti-car@invalid": "false",
+    "lgdti-loans@invalid": "false",
+    "lgdti-cards@invalid": "false",
+    "lgdti-student@invalid": "false",
+    "lgdti-other@invalid": "false",
+    "lgdti-other-hint": {
+      "text": "e.g. buy now pay later, store cards, overdraft repayments."
+    },
+    "lgdti-debt-subtotal": {
+      "text": "—"
+    },
+    "lgdti-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-results-panel": {
+      "text": "02 — YOUR RESULTS Your debt-to-income ratio Debt-to-income ratio — Enter your income and debt repayments to see your ratio. Gross monthly income— Monthly debt repayments— Left after repayments (before tax)— Ratio excluding mortgage or rent— Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.",
+      "data-band": "none"
+    },
+    "lgdti-ratio": {
+      "text": "—"
+    },
+    "lgdti-band": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-assumption": {
+      "text": "Enter your income and debt repayments to see your ratio."
+    },
+    "lgdti-monthly-income": {
+      "text": "—"
+    },
+    "lgdti-monthly-debt": {
+      "text": "—"
+    },
+    "lgdti-left": {
+      "text": "—"
+    },
+    "lgdti-ratio-ex-housing": {
+      "text": "—"
+    },
+    "lgdti-gauge": {
+      "text": "Where your ratio sits A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits. 0%20%36%50%60%+ Low under 20% Manageable 20% to 35.9% High 36% to 49.9% Very high 50% or more Enter your details to see what your ratio may mean."
+    },
+    "lgdti-gauge-track": {
+      "text": "",
+      "label": "Your ratio will appear on the scale once you enter your details"
+    },
+    "lgdti-gauge-marker": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-band-text": {
+      "text": "Enter your details to see what your ratio may mean."
+    },
+    "lgdti-breakdown": {
+      "text": "Where your income goes Each debt repayment as a share of your gross monthly income. Enter your income and debts to see the breakdown."
+    },
+    "lgdti-breakdown-chart": {
+      "text": "",
+      "label": "Your breakdown will appear once you enter your details"
+    },
+    "lgdti-breakdown-legend": {
+      "text": "Enter your income and debts to see the breakdown."
+    },
+    "lgdti-target": {
+      "text": "What would bring your ratio to 36%? 36% is a commonly used guide for a manageable level of debt. Compare it with your figures. Repayments at 36% — per month — Reduce repayments by — per month — Or income needed — gross per month — Each option assumes everything else stays the same."
+    },
+    "lgdti-target-max": {
+      "text": "—"
+    },
+    "lgdti-target-headroom": {
+      "text": "—"
+    },
+    "lgdti-target-reduce": {
+      "text": "—"
+    },
+    "lgdti-target-reduce-note": {
+      "text": "—"
+    },
+    "lgdti-target-income": {
+      "text": "—"
+    },
+    "lgdti-target-income-note": {
+      "text": "—"
+    },
+    "lgdti-methodology": {
+      "text": "How was this calculated? Enter your income and debt repayments to see how your ratio is calculated. Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria."
+    },
+    "lgdti-method-text": {
+      "text": "Enter your income and debt repayments to see how your ratio is calculated."
+    }
+  },
+  "annual": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgdti-input-panel": {
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£1,425.50"
+    },
+    "lgdti-income-label": {
+      "text": "Gross salary per year"
+    },
+    "lgdti-income@invalid": "false",
+    "lgdti-other-income@invalid": "false",
+    "lgdti-other-income-hint": {
+      "text": "e.g. regular self-employed, rental or benefit income, before tax."
+    },
+    "lgdti-housing@invalid": "false",
+    "lgdti-car@invalid": "false",
+    "lgdti-loans@invalid": "false",
+    "lgdti-cards@invalid": "false",
+    "lgdti-student@invalid": "false",
+    "lgdti-other@invalid": "false",
+    "lgdti-other-hint": {
+      "text": "e.g. buy now pay later, store cards, overdraft repayments."
+    },
+    "lgdti-debt-subtotal": {
+      "text": "£1,425.50"
+    },
+    "lgdti-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-results-panel": {
+      "text": "02 — YOUR RESULTS Your debt-to-income ratio Debt-to-income ratio 38.0%High Monthly debt repayments of £1,425.50 are 38.0% of your gross monthly income of £3,750. Gross monthly income£3,750 Monthly debt repayments£1,425.50 Left after repayments (before tax)£2,324.50 Ratio excluding mortgage or rent8.7% Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.",
+      "data-band": "high"
+    },
+    "lgdti-ratio": {
+      "text": "38.0%"
+    },
+    "lgdti-band": {
+      "text": "High"
+    },
+    "lgdti-assumption": {
+      "text": "Monthly debt repayments of £1,425.50 are 38.0% of your gross monthly income of £3,750."
+    },
+    "lgdti-monthly-income": {
+      "text": "£3,750"
+    },
+    "lgdti-monthly-debt": {
+      "text": "£1,425.50"
+    },
+    "lgdti-left": {
+      "text": "£2,324.50"
+    },
+    "lgdti-ratio-ex-housing": {
+      "text": "8.7%"
+    },
+    "lgdti-gauge": {
+      "text": "Where your ratio sits A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits. 0%20%36%50%60%+ Low under 20% Manageable 20% to 35.9% High 36% to 49.9% Very high 50% or more A ratio of 36% to 49.9% is often seen as high. Some lenders may offer less or charge more, and repayments could be hard to keep up if your circumstances change."
+    },
+    "lgdti-gauge-track": {
+      "text": "",
+      "label": "Your ratio of 38.0% is in the high band"
+    },
+    "lgdti-gauge-marker": {
+      "text": "",
+      "left": "63.356%",
+      "data-band": "high"
+    },
+    "lgdti-band-text": {
+      "text": "A ratio of 36% to 49.9% is often seen as high. Some lenders may offer less or charge more, and repayments could be hard to keep up if your circumstances change."
+    },
+    "lgdti-breakdown": {
+      "text": "Where your income goes Each debt repayment as a share of your gross monthly income. Mortgage or rent29.3%£1,100Car finance6.7%£250Credit cards2.0%£75.50Left after repayments62.0%£2,324.50"
+    },
+    "lgdti-breakdown-chart": {
+      "text": "",
+      "label": "Share of gross monthly income: Mortgage or rent 29.3%; Car finance 6.7%; Credit cards 2.0%; left after repayments 62.0%"
+    },
+    "lgdti-breakdown-legend": {
+      "text": "Mortgage or rent29.3%£1,100Car finance6.7%£250Credit cards2.0%£75.50Left after repayments62.0%£2,324.50"
+    },
+    "lgdti-target": {
+      "text": "What would bring your ratio to 36%? 36% is a commonly used guide for a manageable level of debt. Compare it with your figures. Repayments at 36% £1,350 per month You're £75.50 above this level Reduce repayments by £75.50 per month Brings repayments down to £1,350 Or income needed £3,959.72 gross per month £47,516.67 a year, £209.72 a month more than now Each option assumes everything else stays the same."
+    },
+    "lgdti-target-max": {
+      "text": "£1,350"
+    },
+    "lgdti-target-headroom": {
+      "text": "You're £75.50 above this level"
+    },
+    "lgdti-target-reduce": {
+      "text": "£75.50"
+    },
+    "lgdti-target-reduce-note": {
+      "text": "Brings repayments down to £1,350"
+    },
+    "lgdti-target-income": {
+      "text": "£3,959.72"
+    },
+    "lgdti-target-income-note": {
+      "text": "£47,516.67 a year, £209.72 a month more than now"
+    },
+    "lgdti-methodology": {
+      "text": "How was this calculated? Gross monthly income = a gross salary of £45,000 a year (£3,750 a month) = £3,750. Total monthly debt repayments = £1,425.50. Debt-to-income ratio = £1,425.50 ÷ £3,750 × 100 = 38.0%. Excluding mortgage or rent, the ratio is 8.7%. Blank fields are treated as £0. Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria."
+    },
+    "lgdti-method-text": {
+      "text": "Gross monthly income = a gross salary of £45,000 a year (£3,750 a month) = £3,750. Total monthly debt repayments = £1,425.50. Debt-to-income ratio = £1,425.50 ÷ £3,750 × 100 = 38.0%. Excluding mortgage or rent, the ratio is 8.7%. Blank fields are treated as £0."
+    }
+  },
+  "monthly": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgdti-input-panel": {
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per month £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£1,360"
+    },
+    "lgdti-income-label": {
+      "text": "Gross salary per month"
+    },
+    "lgdti-income@invalid": "false",
+    "lgdti-other-income@invalid": "false",
+    "lgdti-other-income-hint": {
+      "text": "e.g. regular self-employed, rental or benefit income, before tax."
+    },
+    "lgdti-housing@invalid": "false",
+    "lgdti-car@invalid": "false",
+    "lgdti-loans@invalid": "false",
+    "lgdti-cards@invalid": "false",
+    "lgdti-student@invalid": "false",
+    "lgdti-other@invalid": "false",
+    "lgdti-other-hint": {
+      "text": "e.g. buy now pay later, store cards, overdraft repayments."
+    },
+    "lgdti-debt-subtotal": {
+      "text": "£1,360"
+    },
+    "lgdti-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-results-panel": {
+      "text": "02 — YOUR RESULTS Your debt-to-income ratio Debt-to-income ratio 60.4%Very high Monthly debt repayments of £1,360 are 60.4% of your gross monthly income of £2,250. Gross monthly income£2,250 Monthly debt repayments£1,360 Left after repayments (before tax)£890 Ratio excluding mortgage or rent20.4% Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.",
+      "data-band": "very-high"
+    },
+    "lgdti-ratio": {
+      "text": "60.4%"
+    },
+    "lgdti-band": {
+      "text": "Very high"
+    },
+    "lgdti-assumption": {
+      "text": "Monthly debt repayments of £1,360 are 60.4% of your gross monthly income of £2,250."
+    },
+    "lgdti-monthly-income": {
+      "text": "£2,250"
+    },
+    "lgdti-monthly-debt": {
+      "text": "£1,360"
+    },
+    "lgdti-left": {
+      "text": "£890"
+    },
+    "lgdti-ratio-ex-housing": {
+      "text": "20.4%"
+    },
+    "lgdti-gauge": {
+      "text": "Where your ratio sits A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits. 0%20%36%50%60%+ Low under 20% Manageable 20% to 35.9% High 36% to 49.9% Very high 50% or more A ratio of 50% or more is usually seen as very high. If repayments feel hard to manage, free, confidential help is available from MoneyHelper, StepChange or Citizens Advice."
+    },
+    "lgdti-gauge-track": {
+      "text": "",
+      "label": "Your ratio of 60.4% is in the very high band"
+    },
+    "lgdti-gauge-marker": {
+      "text": "",
+      "left": "100%",
+      "data-band": "very-high"
+    },
+    "lgdti-band-text": {
+      "text": "A ratio of 50% or more is usually seen as very high. If repayments feel hard to manage, free, confidential help is available from MoneyHelper, StepChange or Citizens Advice."
+    },
+    "lgdti-breakdown": {
+      "text": "Where your income goes Each debt repayment as a share of your gross monthly income. Mortgage or rent40.0%£900Personal loans17.8%£400Student loan2.7%£60Left after repayments39.6%£890"
+    },
+    "lgdti-breakdown-chart": {
+      "text": "",
+      "label": "Share of gross monthly income: Mortgage or rent 40.0%; Personal loans 17.8%; Student loan 2.7%; left after repayments 39.6%"
+    },
+    "lgdti-breakdown-legend": {
+      "text": "Mortgage or rent40.0%£900Personal loans17.8%£400Student loan2.7%£60Left after repayments39.6%£890"
+    },
+    "lgdti-target": {
+      "text": "What would bring your ratio to 36%? 36% is a commonly used guide for a manageable level of debt. Compare it with your figures. Repayments at 36% £810 per month You're £550 above this level Reduce repayments by £550 per month Brings repayments down to £810 Or income needed £3,777.78 gross per month £45,333.33 a year, £1,527.78 a month more than now Each option assumes everything else stays the same."
+    },
+    "lgdti-target-max": {
+      "text": "£810"
+    },
+    "lgdti-target-headroom": {
+      "text": "You're £550 above this level"
+    },
+    "lgdti-target-reduce": {
+      "text": "£550"
+    },
+    "lgdti-target-reduce-note": {
+      "text": "Brings repayments down to £810"
+    },
+    "lgdti-target-income": {
+      "text": "£3,777.78"
+    },
+    "lgdti-target-income-note": {
+      "text": "£45,333.33 a year, £1,527.78 a month more than now"
+    },
+    "lgdti-methodology": {
+      "text": "How was this calculated? Gross monthly income = a gross salary of £2,000 a month plus £250 other income = £2,250. Total monthly debt repayments = £1,360. Debt-to-income ratio = £1,360 ÷ £2,250 × 100 = 60.4%. Excluding mortgage or rent, the ratio is 20.4%. Blank fields are treated as £0. Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria."
+    },
+    "lgdti-method-text": {
+      "text": "Gross monthly income = a gross salary of £2,000 a month plus £250 other income = £2,250. Total monthly debt repayments = £1,360. Debt-to-income ratio = £1,360 ÷ £2,250 × 100 = 60.4%. Excluding mortgage or rent, the ratio is 20.4%. Blank fields are treated as £0."
+    }
+  },
+  "debtOnly": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgdti-input-panel": {
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£800"
+    },
+    "lgdti-income-label": {
+      "text": "Gross salary per year"
+    },
+    "lgdti-income@invalid": "false",
+    "lgdti-other-income@invalid": "false",
+    "lgdti-other-income-hint": {
+      "text": "e.g. regular self-employed, rental or benefit income, before tax."
+    },
+    "lgdti-housing@invalid": "false",
+    "lgdti-car@invalid": "false",
+    "lgdti-loans@invalid": "false",
+    "lgdti-cards@invalid": "false",
+    "lgdti-student@invalid": "false",
+    "lgdti-other@invalid": "false",
+    "lgdti-other-hint": {
+      "text": "e.g. buy now pay later, store cards, overdraft repayments."
+    },
+    "lgdti-debt-subtotal": {
+      "text": "£800"
+    },
+    "lgdti-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-results-panel": {
+      "text": "02 — YOUR RESULTS Your debt-to-income ratio Debt-to-income ratio — Enter your income to see your ratio. Gross monthly income— Monthly debt repayments— Left after repayments (before tax)— Ratio excluding mortgage or rent— Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.",
+      "data-band": "none"
+    },
+    "lgdti-ratio": {
+      "text": "—"
+    },
+    "lgdti-band": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-assumption": {
+      "text": "Enter your income to see your ratio."
+    },
+    "lgdti-monthly-income": {
+      "text": "—"
+    },
+    "lgdti-monthly-debt": {
+      "text": "—"
+    },
+    "lgdti-left": {
+      "text": "—"
+    },
+    "lgdti-ratio-ex-housing": {
+      "text": "—"
+    },
+    "lgdti-gauge": {
+      "text": "Where your ratio sits A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits. 0%20%36%50%60%+ Low under 20% Manageable 20% to 35.9% High 36% to 49.9% Very high 50% or more Enter your details to see what your ratio may mean."
+    },
+    "lgdti-gauge-track": {
+      "text": "",
+      "label": "Your ratio will appear on the scale once you enter your details"
+    },
+    "lgdti-gauge-marker": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-band-text": {
+      "text": "Enter your details to see what your ratio may mean."
+    },
+    "lgdti-breakdown": {
+      "text": "Where your income goes Each debt repayment as a share of your gross monthly income. Enter your income and debts to see the breakdown."
+    },
+    "lgdti-breakdown-chart": {
+      "text": "",
+      "label": "Your breakdown will appear once you enter your details"
+    },
+    "lgdti-breakdown-legend": {
+      "text": "Enter your income and debts to see the breakdown."
+    },
+    "lgdti-target": {
+      "text": "What would bring your ratio to 36%? 36% is a commonly used guide for a manageable level of debt. Compare it with your figures. Repayments at 36% — per month — Reduce repayments by — per month — Or income needed — gross per month — Each option assumes everything else stays the same."
+    },
+    "lgdti-target-max": {
+      "text": "—"
+    },
+    "lgdti-target-headroom": {
+      "text": "—"
+    },
+    "lgdti-target-reduce": {
+      "text": "—"
+    },
+    "lgdti-target-reduce-note": {
+      "text": "—"
+    },
+    "lgdti-target-income": {
+      "text": "—"
+    },
+    "lgdti-target-income-note": {
+      "text": "—"
+    },
+    "lgdti-methodology": {
+      "text": "How was this calculated? Enter your income and debt repayments to see how your ratio is calculated. Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria."
+    },
+    "lgdti-method-text": {
+      "text": "Enter your income and debt repayments to see how your ratio is calculated."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgdti-input-panel": {
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments— Enter amounts of £0 or more using numbers only, with up to two decimal places (for example 1,250 or 1250.50)."
+    },
+    "lgdti-income-label": {
+      "text": "Gross salary per year"
+    },
+    "lgdti-income@invalid": "false",
+    "lgdti-other-income@invalid": "false",
+    "lgdti-other-income-hint": {
+      "text": "e.g. regular self-employed, rental or benefit income, before tax."
+    },
+    "lgdti-housing@invalid": "false",
+    "lgdti-car@invalid": "true",
+    "lgdti-loans@invalid": "false",
+    "lgdti-cards@invalid": "false",
+    "lgdti-student@invalid": "false",
+    "lgdti-other@invalid": "false",
+    "lgdti-other-hint": {
+      "text": "e.g. buy now pay later, store cards, overdraft repayments."
+    },
+    "lgdti-debt-subtotal": {
+      "text": "—"
+    },
+    "lgdti-error": {
+      "text": "Enter amounts of £0 or more using numbers only, with up to two decimal places (for example 1,250 or 1250.50)."
+    },
+    "lgdti-results-panel": {
+      "text": "02 — YOUR RESULTS Your debt-to-income ratio Debt-to-income ratio —Low Please check the highlighted amounts. Gross monthly income— Monthly debt repayments— Left after repayments (before tax)— Ratio excluding mortgage or rent— Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.",
+      "data-band": "none"
+    },
+    "lgdti-ratio": {
+      "text": "—"
+    },
+    "lgdti-band": {
+      "text": "Low",
+      "hidden": true
+    },
+    "lgdti-assumption": {
+      "text": "Please check the highlighted amounts."
+    },
+    "lgdti-monthly-income": {
+      "text": "—"
+    },
+    "lgdti-monthly-debt": {
+      "text": "—"
+    },
+    "lgdti-left": {
+      "text": "—"
+    },
+    "lgdti-ratio-ex-housing": {
+      "text": "—"
+    },
+    "lgdti-gauge": {
+      "text": "Where your ratio sits A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits. 0%20%36%50%60%+ Low under 20% Manageable 20% to 35.9% High 36% to 49.9% Very high 50% or more Enter your details to see what your ratio may mean."
+    },
+    "lgdti-gauge-track": {
+      "text": "",
+      "label": "Your ratio will appear on the scale once you enter your details"
+    },
+    "lgdti-gauge-marker": {
+      "text": "",
+      "hidden": true,
+      "left": "0%",
+      "data-band": "low"
+    },
+    "lgdti-band-text": {
+      "text": "Enter your details to see what your ratio may mean."
+    },
+    "lgdti-breakdown": {
+      "text": "Where your income goes Each debt repayment as a share of your gross monthly income. Enter your income and debts to see the breakdown."
+    },
+    "lgdti-breakdown-chart": {
+      "text": "",
+      "label": "Your breakdown will appear once you enter your details"
+    },
+    "lgdti-breakdown-legend": {
+      "text": "Enter your income and debts to see the breakdown."
+    },
+    "lgdti-target": {
+      "text": "What would bring your ratio to 36%? 36% is a commonly used guide for a manageable level of debt. Compare it with your figures. Repayments at 36% — per month — Reduce repayments by — per month — Or income needed — gross per month — Each option assumes everything else stays the same."
+    },
+    "lgdti-target-max": {
+      "text": "—"
+    },
+    "lgdti-target-headroom": {
+      "text": "—"
+    },
+    "lgdti-target-reduce": {
+      "text": "—"
+    },
+    "lgdti-target-reduce-note": {
+      "text": "—"
+    },
+    "lgdti-target-income": {
+      "text": "—"
+    },
+    "lgdti-target-income-note": {
+      "text": "—"
+    },
+    "lgdti-methodology": {
+      "text": "How was this calculated? Enter your income and debt repayments to see how your ratio is calculated. Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria."
+    },
+    "lgdti-method-text": {
+      "text": "Enter your income and debt repayments to see how your ratio is calculated."
+    }
+  }
+}

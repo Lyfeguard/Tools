@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.1.0
+ * Lyfeguard calculators | lg-calc.js | v1.2.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.1.0';
+  LG.version = '1.2.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -127,6 +127,76 @@
     return main * 0.08 + upper * 0.02;
   }
   LG.ukTax = { rates: TAX, incomeTax: incomeTax, employeeNI: employeeNI };
+
+  /* ------------------------------------------------------------------
+     Core: shared helpers for the panel-style calculators
+     ------------------------------------------------------------------ */
+  var GBP_FORMATS = {};
+  function gbpFormat(digits) {
+    if (!GBP_FORMATS[digits]) {
+      GBP_FORMATS[digits] = new Intl.NumberFormat('en-GB', {
+        style: 'currency',
+        currency: 'GBP',
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits,
+      });
+    }
+    return GBP_FORMATS[digits];
+  }
+  // Format pounds. digits: 0 or 2; leave it out to show pence only when there are any.
+  LG.money = function (n, digits) {
+    if (digits === undefined) digits = Math.abs(Math.round(n * 100)) % 100 === 0 ? 0 : 2;
+    return gbpFormat(digits).format(n);
+  };
+
+  // Read a number typed by the user. Accepts an optional pound sign, spaces,
+  // and commas only as thousands separators ("12,500" but not "1,2,3").
+  // Returns { entered, valid, value }; blank is entered: false, value: NaN.
+  LG.parseNumber = function (raw, maxDecimals) {
+    var text = String(raw == null ? '' : raw).replace(/[\u00A3\s]/g, '');
+    if (text === '') return { entered: false, valid: true, value: NaN };
+    var places = maxDecimals === undefined ? 2 : maxDecimals;
+    var decimals = places > 0 ? '(?:\\.\\d{0,' + places + '})?' : '';
+    var shape = new RegExp('^(?:\\d{1,3}(?:,\\d{3})+' + decimals + '|\\d+' + decimals + (places > 0 ? '|\\.\\d{1,' + places + '}' : '') + ')$');
+    if (!shape.test(text)) return { entered: true, valid: false, value: NaN };
+    var value = Number(text.replace(/,/g, ''));
+    return { entered: true, valid: Number.isFinite(value), value: value };
+  };
+
+  // Standard start-up for a calculator: finds its panel, checks the required
+  // element ids are present, and runs setup once. Returns nothing.
+  //   LG.start({ name, panel, required, setup(root, get) })
+  // get(id) looks up document.getElementById(id). root is the CMS wrapper
+  // (.lg-calc-wrap / [data-calc]) holding the panel, or the page body.
+  LG.start = function (options) {
+    LG.ready(function () {
+      var panel = document.getElementById(options.panel);
+      if (!panel) return; // not this calculator's page
+      var root = panel.closest('[data-calc], .lg-calc-wrap') || document.body;
+      var flag = 'lgReady' + options.panel.replace(/[^a-z0-9]/gi, '');
+      if (root.dataset[flag] === 'true') return;
+      var get = function (id) {
+        return document.getElementById(id);
+      };
+      var missing = (options.required || []).filter(function (id) {
+        return !get(id);
+      });
+      if (missing.length) {
+        if (window.console && console.warn) console.warn('[Lyfeguard ' + options.name + '] Missing IDs:', missing.join(', '));
+        return;
+      }
+      root.dataset[flag] = 'true';
+      options.setup(root, get);
+    });
+  };
+
+  // Show or clear a calculator's error message (an element with role="alert").
+  LG.showError = function (el, message) {
+    if (!el) return;
+    el.textContent = message;
+    el.hidden = !message;
+    el.style.display = message ? 'block' : 'none';
+  };
 
   /* ==================================================================
      Net worth calculator  [net-worth]
@@ -624,8 +694,6 @@
           const first = get('lgnw-current-accounts');
           if (first) first.focus();
         });
-      const form = root.closest('form');
-      if (form) form.addEventListener('submit', (event) => event.preventDefault());
       const svg = get('lgnw-bridge-svg');
       if (svg && typeof ResizeObserver !== 'undefined') {
         const observer = new ResizeObserver(() => {
@@ -1268,12 +1336,6 @@
         update();
         get('home').focus();
       });
-      // Keep any enclosing native Webflow form from navigating or submitting.
-      const form = root.closest('form');
-      if (form && !form.dataset.lgihtSubmitHandled) {
-        form.dataset.lgihtSubmitHandled = 'true';
-        form.addEventListener('submit', (event) => event.preventDefault());
-      }
       update();
     }
     LG.ready(init);
@@ -1284,24 +1346,16 @@
      ================================================================== */
   module('compound-interest', function () {
     'use strict';
-    function init() {
-      const root = document.getElementById('lgci-input-panel');
-      if (!root || root.dataset.lgciReady === 'true') return;
-      const el = (id) => document.getElementById(id);
-      const ids = ['lgci-initial', 'lgci-contribution', 'lgci-frequency', 'lgci-rate', 'lgci-years'];
-      const missing = ids.filter((id) => !el(id));
-      if (missing.length) {
-        console.warn('[Lyfeguard Compound Interest] Missing input IDs:', missing);
-        return;
-      }
-      root.dataset.lgciReady = 'true';
-      const money = (n, digits = 0) =>
-        new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: digits, maximumFractionDigits: digits }).format(n);
+    const ids = ['lgci-initial', 'lgci-contribution', 'lgci-frequency', 'lgci-rate', 'lgci-years'];
+    LG.start({ name: 'Compound Interest', panel: 'lgci-input-panel', required: ids, setup: setup });
+    function setup(root, el) {
+      const money = (n, digits = 0) => LG.money(n, digits);
       const compact = (n) =>
         n >= 1e6 ? '\u00A3' + (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + 'm' : n >= 1000 ? '\u00A3' + (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k' : money(n);
+      const decimals = { 'lgci-initial': 2, 'lgci-contribution': 2, 'lgci-rate': 4, 'lgci-years': 4 };
       const read = (id) => {
-        const raw = String(el(id).value ?? '').replace(/[\u00A3,\s]/g, '');
-        return raw === '' ? NaN : Number(raw);
+        const item = LG.parseNumber(el(id).value, decimals[id]);
+        return item.valid ? item.value : NaN;
       };
       const write = (id, text) => {
         const target = el(id);
@@ -1319,13 +1373,7 @@
         annually: { step: 1, label: 'year' },
         none: { step: Infinity, label: 'none' },
       };
-      const error = el('lgci-error');
-      const showError = (message) => {
-        if (!error) return;
-        error.textContent = message;
-        error.hidden = !message;
-        error.style.display = message ? 'block' : 'none';
-      };
+      const showError = (message) => LG.showError(el('lgci-error'), message);
       function schedule(years, amount, frequency) {
         const step = period[frequency].step,
           events = [];
@@ -1543,11 +1591,8 @@
         el(id).addEventListener('input', update);
         el(id).addEventListener('change', update);
       });
-      const form = root.closest('form');
-      if (form) form.addEventListener('submit', (e) => e.preventDefault());
       update();
     }
-    LG.ready(init);
   });
 
   /* ==================================================================
@@ -2309,32 +2354,18 @@
      ================================================================== */
   module('loan-repayment', function () {
     'use strict';
-    function init() {
-      // Root: the legacy Webflow form if present, otherwise the calculator wrap
-      // (CMS template), otherwise the page body.
-      const panel = document.getElementById('lglc-input-panel');
-      const root =
-        document.getElementById('loan-calculator-section') || (panel && panel.closest('[data-calc], .lg-calc-wrap')) || (panel ? document.body : null);
-      if (!root || root.dataset.lglcReady === 'true') return;
-      const fieldIds = ['lglc-amount', 'lglc-rate', 'lglc-term'];
-      const required = [...fieldIds, 'lglc-monthly', 'lglc-principal', 'lglc-interest', 'lglc-total'];
-      const get = (id) => document.getElementById(id);
-      const missing = required.filter((id) => !get(id) || !root.contains(get(id)));
-      if (missing.length) {
-        console.warn('[Lyfeguard Loan Calculator] Missing IDs inside calculator:', missing.join(', '));
-        return;
-      }
-      root.dataset.lglcReady = 'true';
-      const money = (value, digits = 2) =>
-        new Intl.NumberFormat('en-GB', {
-          style: 'currency',
-          currency: 'GBP',
-          minimumFractionDigits: digits,
-          maximumFractionDigits: digits,
-        }).format(value);
-      const read = (id) => {
-        const raw = String(get(id).value || '').replace(/[\u00A3,\s]/g, '');
-        return raw === '' ? NaN : Number(raw);
+    const fieldIds = ['lglc-amount', 'lglc-rate', 'lglc-term'];
+    LG.start({
+      name: 'Loan Calculator',
+      panel: 'lglc-input-panel',
+      required: [...fieldIds, 'lglc-monthly', 'lglc-principal', 'lglc-interest', 'lglc-total'],
+      setup: setup,
+    });
+    function setup(root, get) {
+      const money = (value, digits = 2) => LG.money(value, digits);
+      const read = (id, decimals) => {
+        const item = LG.parseNumber(get(id).value, decimals);
+        return item.valid ? item.value : NaN;
       };
       const write = (id, value) => {
         const el = get(id);
@@ -2350,13 +2381,7 @@
         return (loan * r) / (1 - Math.pow(1 + r, -months));
       };
       const rateLabel = (rate) => Number(rate.toFixed(2)) + '% rate';
-      const error = get('lglc-error');
-      function showError(message) {
-        if (!error) return;
-        error.textContent = message;
-        error.hidden = !message;
-        error.style.display = message ? 'block' : 'none';
-      }
+      const showError = (message) => LG.showError(get('lglc-error'), message);
       function clear() {
         [
           'lglc-monthly',
@@ -2394,9 +2419,9 @@
           showError('');
           return;
         }
-        const amount = read('lglc-amount');
-        const rate = read('lglc-rate');
-        const years = read('lglc-term');
+        const amount = read('lglc-amount', 2);
+        const rate = read('lglc-rate', 4);
+        const years = read('lglc-term', 4);
         const monthsFloat = years * 12;
         const valid =
           [amount, rate, years].every(Number.isFinite) &&
@@ -2460,11 +2485,8 @@
       root.addEventListener('change', (event) => {
         if (fieldIds.includes(event.target.id)) update();
       });
-      const form = root.matches('form') ? root : root.closest('form') || root.querySelector('form');
-      if (form) form.addEventListener('submit', (event) => event.preventDefault());
       update();
     }
-    LG.ready(init);
   });
 
   /* ==================================================================
@@ -2479,7 +2501,7 @@
       additionalThreshold: LG.ukTax.rates.additionalThreshold,
       niPrimary: LG.ukTax.rates.niPrimary,
       niUpper: LG.ukTax.rates.niUpper,
-      higherRateStart: 50270,
+      higherRateStart: LG.ukTax.rates.personalAllowance + LG.ukTax.rates.basicBand,
       hicbcStart: 60000,
       hicbcEnd: 80000,
       aeTrigger: 10000,
@@ -2954,28 +2976,16 @@
      ================================================================== */
   module('mortgage', function () {
     'use strict';
-    function init() {
-      const fieldIds = ['lgmc-price', 'lgmc-deposit', 'lgmc-rate', 'lgmc-term'];
-      const get = (id) => document.getElementById(id);
-      if (!get('lgmc-input-panel') && !get('lgmc-price')) return; // not the mortgage page
-      const missing = [...fieldIds, 'lgmc-monthly', 'lgmc-loan', 'lgmc-ltv', 'lgmc-interest', 'lgmc-total'].filter((id) => !get(id));
-      if (missing.length) {
-        console.warn('[Lyfeguard Mortgage Calculator] Missing IDs:', missing.join(', '));
-        return;
-      }
+    const fieldIds = ['lgmc-price', 'lgmc-deposit', 'lgmc-rate', 'lgmc-term'];
+    LG.start({
+      name: 'Mortgage Calculator',
+      panel: 'lgmc-input-panel',
+      required: [...fieldIds, 'lgmc-monthly', 'lgmc-loan', 'lgmc-ltv', 'lgmc-interest', 'lgmc-total'],
+      setup: setup,
+    });
+    function setup(root, get) {
       const fields = fieldIds.map(get);
-      const form = get('lgmc-price').closest('form');
-      const root = get('mortgage-calculator-section') || form || document.body;
-      if (root.dataset.lgmcReady === 'true') return;
-      root.dataset.lgmcReady = 'true';
-
-      const money = (n, digits = 2) =>
-        new Intl.NumberFormat('en-GB', {
-          style: 'currency',
-          currency: 'GBP',
-          minimumFractionDigits: digits,
-          maximumFractionDigits: digits,
-        }).format(n);
+      const money = (n, digits = 2) => LG.money(n, digits);
       const write = (id, value) => {
         const el = get(id);
         if (el) el.textContent = value;
@@ -2984,9 +2994,10 @@
         const el = get(id);
         if (el) el.style.width = Math.max(0, Math.min(100, percent)).toFixed(3) + '%';
       };
+      const decimals = { 'lgmc-price': 2, 'lgmc-deposit': 2, 'lgmc-rate': 4, 'lgmc-term': 4 };
       const read = (id) => {
-        const value = String(get(id).value ?? '').replace(/[\u00A3,\s]/g, '');
-        return value === '' ? NaN : Number(value);
+        const item = LG.parseNumber(get(id).value, decimals[id]);
+        return item.valid ? item.value : NaN;
       };
       const mortgageType = () => {
         const selected = document.querySelector('input[name="mortgage-type"]:checked');
@@ -3030,13 +3041,7 @@
         const chart = get('lgmc-breakdown-chart');
         if (chart) chart.setAttribute('aria-label', 'Mortgage repayment breakdown will appear once details are entered');
       }
-      function error(message) {
-        const el = get('lgmc-error');
-        if (!el) return;
-        el.textContent = message;
-        el.hidden = !message;
-        el.style.display = message ? 'block' : 'none';
-      }
+      const error = (message) => LG.showError(get('lgmc-error'), message);
       function differenceText(change) {
         if (Math.abs(change) < 0.005) return 'No change';
         return money(Math.abs(change)) + (change < 0 ? ' less per month' : ' more per month');
@@ -3139,10 +3144,8 @@
         el.addEventListener('change', update);
       });
       document.querySelectorAll('input[name="mortgage-type"]').forEach((el) => el.addEventListener('change', update));
-      if (form) form.addEventListener('submit', (event) => event.preventDefault());
       update();
     }
-    LG.ready(init);
   });
 
   /* ==================================================================
@@ -3188,29 +3191,16 @@
     const TARGET = 36;
     const GAUGE_MAX = 60;
     const MAX = 1e9;
-    function init() {
-      const panel = document.getElementById('lgdti-input-panel');
-      if (!panel) return; // not the debt-to-income page
-      const root = panel.closest('[data-calc], .lg-calc-wrap') || document.body;
-      if (root.dataset.lgdtiReady === 'true') return;
+    const fieldIds = ['income', 'other-income'].concat(DEBTS.map((d) => d.id));
+    LG.start({
+      name: 'Debt-to-Income Calculator',
+      panel: 'lgdti-input-panel',
+      required: fieldIds.concat(['ratio', 'monthly-income', 'monthly-debt']).map((id) => 'lgdti-' + id),
+      setup: setup,
+    });
+    function setup(root) {
       const get = (id) => document.getElementById('lgdti-' + id);
-      const fieldIds = ['income', 'other-income'].concat(DEBTS.map((d) => d.id));
-      const missing = fieldIds.concat(['ratio', 'monthly-income', 'monthly-debt']).filter((id) => !get(id));
-      if (missing.length) {
-        console.warn('[Lyfeguard Debt-to-Income Calculator] Missing IDs:', missing.map((id) => 'lgdti-' + id).join(', '));
-        return;
-      }
-      root.dataset.lgdtiReady = 'true';
-
-      const money = (n) => {
-        const digits = Math.abs(Math.round(n * 100)) % 100 === 0 ? 0 : 2;
-        return new Intl.NumberFormat('en-GB', {
-          style: 'currency',
-          currency: 'GBP',
-          minimumFractionDigits: digits,
-          maximumFractionDigits: digits,
-        }).format(n);
-      };
+      const money = LG.money;
       const pct = (n) => n.toFixed(1) + '%';
       const write = (id, value) => {
         const el = get(id);
@@ -3221,21 +3211,13 @@
         return selected && selected.value === 'month' ? 'month' : 'year';
       };
       function parse(id) {
-        const raw = String(get(id).value ?? '').trim();
-        if (raw === '') return { entered: false, valid: true, value: 0 };
-        const clean = raw.replace(/[\u00A3,\s]/g, '');
-        if (!/^(?:\d+(?:\.\d{0,2})?|\.\d{1,2})$/.test(clean)) return { entered: true, valid: false, value: 0 };
-        const value = Number(clean);
-        const valid = Number.isFinite(value) && value >= 0 && value <= MAX;
-        return { entered: true, valid, value: valid ? value : 0 };
+        const item = LG.parseNumber(get(id).value, 2);
+        const valid = item.valid && (!item.entered || item.value <= MAX);
+        return { entered: item.entered, valid, value: item.entered && valid ? item.value : 0 };
       }
       function showError(message, invalid) {
         fieldIds.forEach((id) => get(id).setAttribute('aria-invalid', invalid.includes(id) ? 'true' : 'false'));
-        const el = get('error');
-        if (!el) return;
-        el.textContent = message;
-        el.hidden = !message;
-        el.style.display = message ? 'block' : 'none';
+        LG.showError(get('error'), message);
       }
 
       const resultIds = [
@@ -3445,10 +3427,7 @@
       root.addEventListener('change', (event) => {
         if (event.target.id && event.target.id.indexOf('lgdti-') === 0) update();
       });
-      const form = panel.closest('form');
-      if (form) form.addEventListener('submit', (event) => event.preventDefault());
       update();
     }
-    LG.ready(init);
   });
 })(window, document);

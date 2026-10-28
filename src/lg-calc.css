@@ -1,19 +1,23 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.1.0
+ * Lyfeguard calculators | lg-calc.css | v1.2.0
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
  *
  * Structure: shared rules first, then calculator-specific rules in the same
- * order they had on each page, so the cascade is unchanged.
+ * order they had on the original pages, so the cascade is unchanged.
  * Where a selector exists on more than one calculator with different values,
- * the rule is scoped with :where([data-calc="..."], .lg-calc-wrap:has(#...)).
- * :where() adds zero specificity, so scoping never changes which rule wins.
- * data-calc is for the CMS template; the :has() branch covers today's pages.
+ * the rule is scoped with :where([data-calc="..."]), the Calculator key set on
+ * .lg-calc-wrap in the CMS template. :where() adds zero specificity, so
+ * scoping never changes which rule wins.
+ * Inheritance tax rules are scoped with :is(#iht-form, [data-calc=...]); the
+ * #iht-form id is kept only because it sets those rules' specificity.
  *
- * v1.0.1: CMS template support. The calculator markup sits in a Rich Text
- * element (class lg-calc-markup) inside .lg-calc-wrap; the resets at the end
- * of this file stop Webflow's rich text and embed wrappers changing layout.
+ * The calculator markup sits in a Rich Text element (class lg-calc-markup)
+ * inside .lg-calc-wrap; the resets at the end of this file stop Webflow's rich
+ * text and embed wrappers changing layout.
+ *
+ * After any change, run npm run build, npm test and npm run style-diff.
  */
 
 /* ------------------------------------------------------------------
@@ -59,7 +63,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools h3 {
+:where([data-calc="savings-goal"]) .lg-tools h3 {
   font-size: 19px;
   margin-top: 24px;
 }
@@ -83,7 +87,7 @@
   font: inherit;
   line-height: 1.4;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form), [data-calc="emergency-fund"], .lg-calc-wrap:has(#ef-monthly)) .lg-tools button {
+:where([data-calc="savings-goal"], [data-calc="emergency-fund"]) .lg-tools button {
   touch-action: manipulation;
 }
 .lg-tools .lg-card {
@@ -138,7 +142,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-options {
+:where([data-calc="savings-goal"]) .lg-tools .lg-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
@@ -154,11 +158,8 @@
    ------------------------------------------------------------------ */
 :where(
     [data-calc="emergency-fund"],
-    .lg-calc-wrap:has(#ef-monthly),
     [data-calc="pro-rata-salary"],
-    .lg-calc-wrap:has(#pr-salary),
-    [data-calc="salary-by-age"],
-    .lg-calc-wrap:has(#sa-salary)
+    [data-calc="salary-by-age"]
   )
   .lg-tools
   .lg-options {
@@ -255,7 +256,7 @@
   outline: 3px solid var(--lg-accent);
   outline-offset: 3px;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form), [data-calc="emergency-fund"], .lg-calc-wrap:has(#ef-monthly)) .lg-tools .lg-control > span {
+:where([data-calc="savings-goal"], [data-calc="emergency-fund"]) .lg-tools .lg-control > span {
   padding: 0 12px;
   color: var(--lg-muted);
   pointer-events: none;
@@ -264,7 +265,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-control input {
+:where([data-calc="savings-goal"]) .lg-tools .lg-control input {
   appearance: none;
   width: 100%;
   min-width: 0;
@@ -285,14 +286,14 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary)) .lg-tools .lg-control[data-invalid="true"] {
+:where([data-calc="pro-rata-salary"]) .lg-tools .lg-control[data-invalid="true"] {
   border-color: var(--lg-error);
 }
 
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary), [data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools .lg-control > span {
+:where([data-calc="pro-rata-salary"], [data-calc="salary-by-age"]) .lg-tools .lg-control > span {
   padding: 0 12px;
   color: var(--lg-muted);
   pointer-events: none;
@@ -300,11 +301,8 @@
 }
 :where(
     [data-calc="emergency-fund"],
-    .lg-calc-wrap:has(#ef-monthly),
     [data-calc="pro-rata-salary"],
-    .lg-calc-wrap:has(#pr-salary),
-    [data-calc="salary-by-age"],
-    .lg-calc-wrap:has(#sa-salary)
+    [data-calc="salary-by-age"]
   )
   .lg-tools
   .lg-control
@@ -325,7 +323,7 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary)) .lg-tools .lg-control input:first-child {
+:where([data-calc="pro-rata-salary"]) .lg-tools .lg-control input:first-child {
   padding-left: 12px;
 }
 
@@ -343,10 +341,10 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-control:has([aria-invalid="true"]) {
+:where([data-calc="savings-goal"]) .lg-tools .lg-control:has([aria-invalid="true"]) {
   border: 2px solid var(--lg-error);
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-error {
+:where([data-calc="savings-goal"]) .lg-tools .lg-error {
   color: var(--lg-error);
   font-size: 14px;
   font-weight: 600;
@@ -382,7 +380,7 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary)) .lg-tools .lg-error {
+:where([data-calc="pro-rata-salary"]) .lg-tools .lg-error {
   color: var(--lg-error);
   font-size: 14px;
   font-weight: 600;
@@ -441,7 +439,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools button:disabled {
+:where([data-calc="savings-goal"]) .lg-tools button:disabled {
   color: #48636a;
   background: #edf2f1;
   border-color: #a6bdbb;
@@ -467,13 +465,13 @@
   border-color: var(--lg-ink);
   color: #fff;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form), [data-calc="emergency-fund"], .lg-calc-wrap:has(#ef-monthly))
+:where([data-calc="savings-goal"], [data-calc="emergency-fund"])
   .lg-tools
   .lg-result-card
   :is(h2, h3, p, dt, dd, strong, span) {
   color: #fff;
 }
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary), [data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary))
+:where([data-calc="pro-rata-salary"], [data-calc="salary-by-age"])
   .lg-tools
   .lg-result-card
   :is(h2, h3, p, dt, dd, strong, span, li) {
@@ -519,7 +517,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-result-summary {
+:where([data-calc="savings-goal"]) .lg-tools .lg-result-summary {
   max-width: 68ch;
   min-height: 3.1em;
   margin: 12px 0 20px;
@@ -536,18 +534,15 @@
    ------------------------------------------------------------------ */
 :where(
     [data-calc="emergency-fund"],
-    .lg-calc-wrap:has(#ef-monthly),
     [data-calc="pro-rata-salary"],
-    .lg-calc-wrap:has(#pr-salary),
-    [data-calc="salary-by-age"],
-    .lg-calc-wrap:has(#sa-salary)
+    [data-calc="salary-by-age"]
   )
   .lg-tools
   .lg-result-summary {
   max-width: 68ch;
   margin: 12px 0 20px;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form), [data-calc="emergency-fund"], .lg-calc-wrap:has(#ef-monthly)) .lg-tools .lg-stats {
+:where([data-calc="savings-goal"], [data-calc="emergency-fund"]) .lg-tools .lg-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
@@ -555,7 +550,7 @@
   margin: 0;
   padding: 20px 0 0;
 }
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary), [data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools .lg-stats {
+:where([data-calc="pro-rata-salary"], [data-calc="salary-by-age"]) .lg-tools .lg-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
@@ -614,7 +609,7 @@
   border: 1px solid var(--lg-line);
   border-radius: 8px;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools table {
+:where([data-calc="savings-goal"]) .lg-tools table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
@@ -622,34 +617,34 @@
   font-size: 14px;
   font-variant-numeric: tabular-nums;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools caption {
+:where([data-calc="savings-goal"]) .lg-tools caption {
   text-align: left;
   font-size: 14px;
   font-weight: 600;
   padding: 12px 16px;
   color: var(--lg-muted);
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools th,
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools td {
+:where([data-calc="savings-goal"]) .lg-tools th,
+:where([data-calc="savings-goal"]) .lg-tools td {
   padding: 13px 16px;
   border-top: 1px solid var(--lg-line);
   color: var(--lg-ink);
   text-align: right;
   white-space: nowrap;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools thead th {
+:where([data-calc="savings-goal"]) .lg-tools thead th {
   background: #edf4f2;
   font-size: 13px;
   font-weight: 700;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools tbody th {
+:where([data-calc="savings-goal"]) .lg-tools tbody th {
   font-weight: 600;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools th:first-child,
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools td:first-child {
+:where([data-calc="savings-goal"]) .lg-tools th:first-child,
+:where([data-calc="savings-goal"]) .lg-tools td:first-child {
   text-align: left;
 }
-:where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools tbody tr:last-child {
+:where([data-calc="savings-goal"]) .lg-tools tbody tr:last-child {
   background: #edf7f3;
 }
 .lg-tools tbody td.lg-table-pending {
@@ -798,7 +793,7 @@
   color: var(--lg-ink);
 }
 @container lg-savings-form (max-width:560px) {
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-grid {
+  :where([data-calc="savings-goal"]) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -821,7 +816,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-:where([data-calc="emergency-fund"], .lg-calc-wrap:has(#ef-monthly), [data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary)) .lg-tools legend.lg-hint {
+:where([data-calc="emergency-fund"], [data-calc="pro-rata-salary"]) .lg-tools legend.lg-hint {
   font-weight: 400;
   margin: 0 0 4px;
 }
@@ -926,15 +921,6 @@
   padding: 12px 16px;
   margin: 20px 0 0;
 }
-.lg-tools .ef-cta {
-  border-top: 1px solid #486770;
-  margin-top: 20px;
-  padding-top: 20px;
-}
-.lg-tools .ef-cta p {
-  font-size: 14px;
-  margin: 0 0 12px;
-}
 
 /* ------------------------------------------------------------------
    Pro rata salary
@@ -986,7 +972,7 @@
   margin: 20px 0 0;
   padding-top: 16px;
 }
-:where([data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary)) .lg-tools :is(.pr-compare, .pr-notes) h3 {
+:where([data-calc="pro-rata-salary"]) .lg-tools :is(.pr-compare, .pr-notes) h3 {
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
@@ -1031,15 +1017,6 @@
   border-radius: 50%;
   background: #b5eedc;
 }
-.lg-tools .pr-cta {
-  border-top: 1px solid #486770;
-  margin-top: 20px;
-  padding-top: 20px;
-}
-.lg-tools .pr-cta p {
-  font-size: 14px;
-  margin: 0 0 12px;
-}
 
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
@@ -1047,11 +1024,8 @@
 @media (max-width: 700px) {
   :where(
       [data-calc="savings-goal"],
-      .lg-calc-wrap:has(#sg-form),
       [data-calc="emergency-fund"],
-      .lg-calc-wrap:has(#ef-monthly),
-      [data-calc="pro-rata-salary"],
-      .lg-calc-wrap:has(#pr-salary)
+      [data-calc="pro-rata-salary"]
     )
     .lg-tools
     .lg-stats {
@@ -1069,7 +1043,7 @@
   }
 }
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-grid {
+  :where([data-calc="savings-goal"]) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
@@ -1079,7 +1053,7 @@
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="emergency-fund"], .lg-calc-wrap:has(#ef-monthly), [data-calc="pro-rata-salary"], .lg-calc-wrap:has(#pr-salary)) .lg-tools .lg-grid {
+  :where([data-calc="emergency-fund"], [data-calc="pro-rata-salary"]) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -1091,7 +1065,7 @@
 .lg-tools .sa-gap {
   margin-top: 20px;
 }
-:where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools legend.lg-label {
+:where([data-calc="salary-by-age"]) .lg-tools legend.lg-label {
   margin: 0 0 4px;
 }
 .lg-tools .sa-ages,
@@ -1163,19 +1137,19 @@
   margin: 20px 0 0;
   padding-top: 16px;
 }
-:where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) h3 {
+:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) h3 {
   font-family: inherit;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0;
   margin: 0 0 8px;
 }
-:where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) ul {
+:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-:where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) li {
+:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) li {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -1184,25 +1158,17 @@
   border-top: 1px solid #2a4f5a;
   font-size: 15px;
 }
-:where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) li:first-child {
+:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) li:first-child {
   border-top: 0;
 }
-:where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) strong {
+:where([data-calc="salary-by-age"]) .lg-tools :is(.sa-compare, .sa-plan) strong {
   flex: none;
   font-size: 17px;
   text-align: right;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.lg-tools .sa-cta {
-  border-top: 1px solid #486770;
-  margin-top: 20px;
-  padding-top: 20px;
-}
-.lg-tools .sa-cta p {
-  font-size: 14px;
-  margin: 0 0 12px;
-}
+
 .lg-tools .sa-chart {
   margin: 0 0 8px;
 }
@@ -1387,10 +1353,10 @@
    Savings goal
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-options {
+  :where([data-calc="savings-goal"]) .lg-tools .lg-options {
     gap: 4px;
   }
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-choice {
+  :where([data-calc="savings-goal"]) .lg-tools .lg-choice {
     font-size: 14px;
     padding: 10px 6px;
     gap: 6px;
@@ -1417,7 +1383,7 @@
    Savings goal
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools .lg-stats dt {
+  :where([data-calc="savings-goal"]) .lg-tools .lg-stats dt {
     max-width: 55%;
   }
 }
@@ -1437,8 +1403,8 @@
    Savings goal
    ------------------------------------------------------------------ */
 @media (max-width: 560px) {
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools th,
-  :where([data-calc="savings-goal"], .lg-calc-wrap:has(#sg-form)) .lg-tools td {
+  :where([data-calc="savings-goal"]) .lg-tools th,
+  :where([data-calc="savings-goal"]) .lg-tools td {
     padding: 11px 12px;
   }
   .lg-tools .lg-section-top {
@@ -1515,633 +1481,13 @@
    Average salary by age
    ------------------------------------------------------------------ */
 @media (forced-colors: active) {
-  :where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-fill, .sa-box, .sa-med, .sa-you) {
+  :where([data-calc="salary-by-age"]) .lg-tools :is(.sa-fill, .sa-box, .sa-med, .sa-you) {
     background: Highlight;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  :where([data-calc="salary-by-age"], .lg-calc-wrap:has(#sa-salary)) .lg-tools :is(.sa-fill, .sa-you) {
+  :where([data-calc="salary-by-age"]) .lg-tools :is(.sa-fill, .sa-you) {
     transition: none;
-  }
-}
-
-/* ------------------------------------------------------------------
-   Loan repayment
-   ------------------------------------------------------------------ */
-:is(#lglc-input-panel, .lgc-input-panel) {
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  padding: 36px;
-  background: #fff;
-  border: 1px solid #dce7e7;
-  border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
-}
-:is(#lglc-input-panel, .lgc-input-panel) * {
-  box-sizing: border-box;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-eyebrow, .lgc-eyebrow) {
-  font-family: "Funnel Display", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.09em;
-  line-height: 1.5;
-  text-transform: uppercase;
-  color: #0c8778;
-  margin-bottom: 14px;
-}
-:is(#lglc-input-panel, .lgc-input-panel) h2 {
-  font-family: "Epilogue", sans-serif;
-  font-size: clamp(23px, 2.3vw, 30px);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.3;
-  color: #082c37;
-  margin: 0 0 12px;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-intro, .lgc-intro) {
-  font-family: "Manrope", sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
-  color: #526d77;
-  margin: 0 0 34px;
-  max-width: 560px;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-field-grid, .lgc-field-grid) {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px 18px;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-full, .lgc-full) {
-  grid-column: 1/-1;
-}
-:is(#lglc-input-panel, .lgc-input-panel) label {
-  display: block;
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 650;
-  color: #082c37;
-  margin: 0 0 10px;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-input-shell, .lgc-input-shell) {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 58px;
-  background: #f6faf9;
-  border: 1px solid #cfdddc;
-  border-radius: 8px;
-  overflow: hidden;
-  transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-input-shell, .lgc-input-shell):focus-within {
-  border-color: #078c7c;
-  box-shadow: 0 0 0 3px rgba(9, 157, 133, 0.12);
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-prefix, .lgc-prefix),
-:is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-suffix, .lgc-suffix) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  align-self: stretch;
-  padding: 0 18px;
-  font-family: "Manrope", sans-serif;
-  font-weight: 650;
-  font-size: 15px;
-  color: #526d77;
-  background: #edf4f2;
-}
-:is(#lglc-input-panel, .lgc-input-panel) input {
-  min-width: 0;
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #082c37;
-  padding: 0 18px;
-  margin: 0;
-  font-family: "Manrope", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  box-shadow: none;
-  border-radius: 0;
-}
-:is(#lglc-input-panel, .lgc-input-panel) input::placeholder {
-  color: #869da1;
-  opacity: 1;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is([data-calc-error], #lglc-error) {
-  font-family: "Manrope", sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #ad3535;
-  margin: 18px 0 0;
-}
-:is(#lglc-input-panel, .lgc-input-panel) :is([data-calc-error], #lglc-error)[hidden] {
-  display: none !important;
-}
-@media (max-width: 580px) {
-  :is(#lglc-input-panel, .lgc-input-panel) {
-    padding: 26px 20px;
-  }
-  :is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-field-grid, .lgc-field-grid) {
-    grid-template-columns: 1fr;
-    gap: 19px;
-  }
-  :is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-full, .lgc-full) {
-    grid-column: auto;
-  }
-  :is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-intro, .lgc-intro) {
-    margin-bottom: 26px;
-  }
-  :is(#lglc-input-panel, .lgc-input-panel) :is(.lglc-input-shell, .lgc-input-shell) {
-    height: 54px;
-  }
-}
-:is(#lglc-results-panel, .lgc-results-panel) {
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  padding: 36px;
-  background: #082c37;
-  border: 1px solid #082c37;
-  border-radius: 10px;
-  color: #fff;
-  font-family: "Manrope", sans-serif;
-}
-:is(#lglc-results-panel, .lgc-results-panel) * {
-  box-sizing: border-box;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-eyebrow, .lgc-eyebrow) {
-  font-family: "Funnel Display", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  font-size: 12px;
-  font-weight: 600;
-  color: #a8dfd1;
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-:is(#lglc-results-panel, .lgc-results-panel) h2 {
-  font-family: "Epilogue", sans-serif;
-  font-size: clamp(23px, 2.3vw, 30px);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.025em;
-  color: #fff;
-  margin: 0 0 32px;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-primary-result, .lgc-primary-result) {
-  padding: 0 0 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-main-label, .lgc-main-label) {
-  font-family: "Manrope", sans-serif;
-  color: #e0edeb;
-  font-size: 15px;
-  margin: 0 0 11px;
-  line-height: 1.5;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-monthly, .lgc-monthly) {
-  font-family: "Epilogue", sans-serif;
-  font-size: clamp(38px, 4.2vw, 59px);
-  font-weight: 600;
-  letter-spacing: -0.055em;
-  line-height: 1.14;
-  color: #fff;
-  overflow-wrap: anywhere;
-  font-variant-numeric: tabular-nums;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-assumption, .lgc-assumption) {
-  font-family: "Manrope", sans-serif;
-  font-size: 13px;
-  line-height: 1.7;
-  color: #c5d9d6;
-  margin: 17px 0 0;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-results-grid, .lgc-results-grid) {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-  padding: 29px 0 0;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-result-item, .lgc-result-item) {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-result-item, .lgc-result-item) span {
-  font-family: "Manrope", sans-serif;
-  color: #c7dedb;
-  font-size: 13px;
-  line-height: 1.45;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-result-item, .lgc-result-item) strong {
-  font-family: "Epilogue", sans-serif;
-  color: #fff;
-  font-weight: 600;
-  font-size: clamp(18px, 2vw, 25px);
-  line-height: 1.3;
-  overflow-wrap: anywhere;
-  font-variant-numeric: tabular-nums;
-}
-:is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-disclaimer, .lgc-disclaimer) {
-  font-family: "Manrope", sans-serif;
-  font-size: 12px;
-  line-height: 1.75;
-  color: #b3cfca;
-  margin: 30px 0 0;
-}
-@media (max-width: 650px) {
-  :is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-results-grid, .lgc-results-grid) {
-    grid-template-columns: 1fr 1fr;
-    row-gap: 24px;
-  }
-}
-@media (max-width: 480px) {
-  :is(#lglc-results-panel, .lgc-results-panel) {
-    padding: 28px 22px;
-  }
-  :is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-results-grid, .lgc-results-grid) {
-    gap: 21px 12px;
-  }
-  :is(#lglc-results-panel, .lgc-results-panel) :is(.lglc-result-item, .lgc-result-item) strong {
-    font-size: 19px;
-  }
-}
-:is(#lglc-methodology, .lgc-methodology) {
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  border: 1px solid #dce7e7;
-  border-radius: 10px;
-  background: #fff;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
-  overflow: hidden;
-}
-:is(#lglc-methodology, .lgc-methodology) * {
-  box-sizing: border-box;
-}
-:is(#lglc-methodology, .lgc-methodology) summary {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 25px 28px;
-  list-style: none;
-  font-family: "Epilogue", sans-serif;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #082c37;
-}
-:is(#lglc-methodology, .lgc-methodology) summary::-webkit-details-marker {
-  display: none;
-}
-:is(#lglc-methodology, .lgc-methodology) summary::marker {
-  content: "";
-}
-:is(#lglc-methodology, .lgc-methodology) summary:focus-visible {
-  outline: 3px solid #099d85;
-  outline-offset: -3px;
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-symbol, .lgc-accordion-symbol) {
-  position: relative;
-  flex: 0 0 24px;
-  width: 24px;
-  height: 24px;
-  border: 1px solid #c7dad6;
-  border-radius: 50%;
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-symbol, .lgc-accordion-symbol):before,
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-symbol, .lgc-accordion-symbol):after {
-  content: "";
-  position: absolute;
-  background: #082c37;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-symbol, .lgc-accordion-symbol):before {
-  width: 10px;
-  height: 1.5px;
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-symbol, .lgc-accordion-symbol):after {
-  width: 1.5px;
-  height: 10px;
-}
-:is(#lglc-methodology, .lgc-methodology)[open] :is(.lglc-accordion-symbol, .lgc-accordion-symbol):after {
-  display: none;
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-body, .lgc-accordion-body) {
-  border-top: 1px solid #e4eeeb;
-  padding: 24px 28px 28px;
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-body, .lgc-accordion-body) p {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  line-height: 1.85;
-  color: #38565e;
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-:is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-body, .lgc-accordion-body) :is(.lglc-accordion-note, .lgc-accordion-note) {
-  margin-top: 18px;
-  font-size: 12px;
-  color: #687e86;
-}
-@media (max-width: 480px) {
-  :is(#lglc-methodology, .lgc-methodology) summary {
-    padding: 21px 18px;
-    font-size: 16px;
-  }
-  :is(#lglc-methodology, .lgc-methodology) :is(.lglc-accordion-body, .lgc-accordion-body) {
-    padding: 20px 18px 24px;
-  }
-}
-:is(#lglc-breakdown, .lgc-breakdown) {
-  box-sizing: border-box;
-  container-type: inline-size;
-  width: 100%;
-  min-width: 0;
-  padding: 30px;
-  background: #fff;
-  border: 1px solid #dce7e7;
-  border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
-}
-:is(#lglc-breakdown, .lgc-breakdown) * {
-  box-sizing: border-box;
-}
-:is(#lglc-breakdown, .lgc-breakdown) h3 {
-  font-family: "Epilogue", sans-serif;
-  font-size: 21px;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  color: #082c37;
-  margin: 0 0 12px;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-intro, .lgc-viz-intro) {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #526d77;
-  margin: 0 0 30px;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-chart, .lgc-viz-chart) {
-  display: flex;
-  width: 100%;
-  height: 18px;
-  overflow: hidden;
-  border-radius: 20px;
-  background: #edf5f4;
-  margin-bottom: 28px;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-bar-principal, .lgc-viz-bar-principal) {
-  width: 0;
-  height: 100%;
-  background: #099d85;
-  transition: width 0.2s ease;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-bar-interest, .lgc-viz-bar-interest) {
-  width: 0;
-  height: 100%;
-  background: #a6e8db;
-  transition: width 0.2s ease;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend, .lgc-viz-legend) {
-  display: grid;
-  gap: 16px;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend-row, .lgc-viz-legend-row) {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 55px 100px;
-  align-items: center;
-  gap: 10px;
-  font-family: "Manrope", sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend-name, .lgc-viz-legend-name) {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-dot, .lgc-viz-dot) {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  display: inline-block;
-  flex-shrink: 0;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-dot-principal, .lgc-viz-dot-principal) {
-  background: #099d85;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-dot-interest, .lgc-viz-dot-interest) {
-  background: #a6e8db;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-muted, .lgc-viz-muted) {
-  color: #526d77;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-:is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend-row, .lgc-viz-legend-row) strong {
-  font-family: "Epilogue", sans-serif;
-  font-weight: 600;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-@container (max-width:390px) {
-  :is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend-row, .lgc-viz-legend-row) {
-    grid-template-columns: minmax(0, 1fr) 44px 88px;
-    gap: 6px;
-    font-size: 12px;
-  }
-}
-@container (max-width:290px) {
-  :is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend-row, .lgc-viz-legend-row) {
-    grid-template-columns: 1fr auto;
-  }
-  :is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-muted, .lgc-viz-muted) {
-    grid-column: 1;
-    text-align: left;
-    padding-left: 21px;
-  }
-  :is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-legend-row, .lgc-viz-legend-row) strong {
-    grid-column: 2;
-    grid-row: 2;
-  }
-}
-@media (max-width: 480px) {
-  :is(#lglc-breakdown, .lgc-breakdown) {
-    padding: 22px 18px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  :is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-bar-principal, .lgc-viz-bar-principal),
-  :is(#lglc-breakdown, .lgc-breakdown) :is(.lglc-viz-bar-interest, .lgc-viz-bar-interest) {
-    transition: none;
-  }
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) {
-  box-sizing: border-box;
-  container-type: inline-size;
-  width: 100%;
-  min-width: 0;
-  padding: 30px;
-  background: #fff;
-  border: 1px solid #dce7e7;
-  border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) * {
-  box-sizing: border-box;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) h3 {
-  font-family: "Epilogue", sans-serif;
-  font-size: 21px;
-  font-weight: 600;
-  line-height: 1.35;
-  color: #082c37;
-  margin: 0 0 12px;
-  letter-spacing: -0.02em;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-intro, .lgc-viz-intro) {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
-  color: #526d77;
-  margin: 0 0 30px;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-grid, .lgc-viz-rate-grid) {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-card, .lgc-viz-rate-card) {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  gap: 8px;
-  padding: 17px 13px;
-  border: 1px solid #dce7e7;
-  border-radius: 8px;
-  background: #f8fcfb;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-selected, .lgc-viz-selected) {
-  border-color: #099d85;
-  background: #eafaf5;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-label, .lgc-viz-rate-label) {
-  font-family: "Funnel Display", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.065em;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #082c37;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-amount, .lgc-viz-rate-amount) {
-  font-family: "Epilogue", sans-serif;
-  font-size: clamp(16px, 1.5vw, 22px);
-  line-height: 1.25;
-  font-weight: 600;
-  color: #082c37;
-  overflow-wrap: anywhere;
-  font-variant-numeric: tabular-nums;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) small {
-  font-family: "Manrope", sans-serif;
-  font-size: 12px;
-  line-height: 1.4;
-  color: #687e86;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-difference, .lgc-viz-difference) {
-  display: block;
-  margin-top: auto;
-  padding: 10px 7px;
-  border-radius: 5px;
-  background: #e7f6f2;
-  color: #087b69;
-  font-family: "Manrope", sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  min-height: 48px;
-  overflow-wrap: anywhere;
-}
-:is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-footnote, .lgc-viz-footnote) {
-  font-family: "Manrope", sans-serif;
-  font-size: 12px;
-  line-height: 1.65;
-  color: #687e86;
-  margin: 22px 0 0;
-}
-@container (max-width: 550px) {
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-grid, .lgc-viz-rate-grid) {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-card, .lgc-viz-rate-card) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto auto;
-    column-gap: 14px;
-    row-gap: 5px;
-    align-items: center;
-    padding: 16px;
-  }
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-label, .lgc-viz-rate-label) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-amount, .lgc-viz-rate-amount) {
-    grid-column: 1;
-    grid-row: 2;
-    font-size: 22px;
-  }
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) small {
-    grid-column: 1;
-    grid-row: 3;
-  }
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-difference, .lgc-viz-difference) {
-    grid-column: 2;
-    grid-row: 1 / 4;
-    margin: 0;
-    min-height: 0;
-    max-width: 130px;
-    padding: 10px;
-    text-align: center;
-  }
-}
-@media (max-width: 480px) {
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) {
-    padding: 22px 18px;
-  }
-}
-@media (max-width: 330px) {
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-rate-card, .lgc-viz-rate-card) {
-    grid-template-columns: 1fr;
-  }
-  :is(#lglc-rate-comparison, .lgc-rate-comparison) :is(.lglc-viz-difference, .lgc-viz-difference) {
-    grid-column: 1;
-    grid-row: 4;
-    max-width: none;
-    text-align: left;
   }
 }
 
@@ -3617,12 +2963,12 @@
 /* ------------------------------------------------------------------
    Inheritance tax
    ------------------------------------------------------------------ */
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) {
+:is(#iht-form, [data-calc="inheritance-tax"]) {
   --lgiht-ink: #082c37;
   --lgiht-muted: #506a70;
   --lgiht-teal: #005f55;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card {
   container-type: inline-size;
   position: relative;
   box-sizing: border-box;
@@ -3635,12 +2981,12 @@
   color: #082c37;
   font-family: "Manrope", sans-serif;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card *,
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card *:before,
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card *:after {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *,
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *:before,
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *:after {
   box-sizing: border-box;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-eyebrow {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-eyebrow {
   font-family: "Funnel Display", sans-serif;
   font-weight: 700;
   letter-spacing: 0.105em;
@@ -3648,15 +2994,15 @@
   text-transform: uppercase;
   color: #005f55;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-top {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
   margin: 0 0 11px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card h2,
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card h3.lgiht-card-title {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card h2,
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card h3.lgiht-card-title {
   font-family: "Epilogue", sans-serif;
   font-weight: 650;
   letter-spacing: -0.035em;
@@ -3665,7 +3011,7 @@
   color: #082c37;
   margin: 0 0 11px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card h3 {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card h3 {
   font-family: "Epilogue", sans-serif;
   font-weight: 650;
   letter-spacing: -0.025em;
@@ -3674,32 +3020,32 @@
   margin: 0;
   color: #082c37;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-lead {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-lead {
   font-size: 13.5px;
   color: #566f77;
   line-height: 1.75;
   margin: 0 0 26px;
   max-width: 770px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-total {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-total {
   font-family: "Epilogue", sans-serif;
   font-size: 18px;
   font-weight: 650;
   color: #087f70;
   font-variant-numeric: tabular-nums;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 23px 18px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields.lgi-fields-three {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields.lgi-fields-three {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-field {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-field {
   min-width: 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-field label {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-field label {
   font-family: "Manrope", sans-serif;
   display: block;
   font-size: 13px;
@@ -3708,13 +3054,13 @@
   color: #163a43;
   margin: 0 0 8px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-help {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-help {
   margin: 7px 0 0;
   font-size: 12px;
   line-height: 1.6;
   color: #506a70;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money {
   display: flex;
   align-items: center;
   width: 100%;
@@ -3727,12 +3073,12 @@
     box-shadow 0.15s,
     border-color 0.15s;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:focus-within {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:focus-within {
   border-color: #039a87;
   box-shadow: 0 0 0 3px rgba(9, 157, 133, 0.13);
   background: #fff;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money .lgi-symbol {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money .lgi-symbol {
   height: 100%;
   width: 42px;
   display: grid;
@@ -3744,7 +3090,7 @@
   font-weight: 750;
   font-size: 14px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input {
   min-width: 0;
   width: 100%;
   height: 100%;
@@ -3763,24 +3109,24 @@
   appearance: none;
   font-variant-numeric: tabular-nums;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input::placeholder {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input::placeholder {
   color: #506a70;
   font-weight: 400;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input:disabled {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card input.lgi-input[aria-invalid="true"] {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card input.lgi-input[aria-invalid="true"] {
   color: #a4403a;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:has(input[aria-invalid="true"]) {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:has(input[aria-invalid="true"]) {
   border-color: #d78981;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:has(input:disabled) {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:has(input:disabled) {
   opacity: 0.52;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card select.lgi-select {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select.lgi-select {
   display: block;
   min-height: 50px;
   width: 100%;
@@ -3796,11 +3142,11 @@
   outline: 0;
   cursor: pointer;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card select.lgi-select:focus-visible {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select.lgi-select:focus-visible {
   border-color: #039a87;
   outline: 3px solid rgba(9, 157, 133, 0.15);
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-note {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-note {
   margin: 25px 0 0;
   border-radius: 8px;
   background: #edf8f5;
@@ -3810,75 +3156,75 @@
   font-size: 12px;
   line-height: 1.65;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-error {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-error {
   color: #a03c37;
   font-size: 12px;
   font-weight: 650;
   line-height: 1.6;
   margin-top: 12px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-error[hidden],
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card [hidden] {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-error[hidden],
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card [hidden] {
   display: none !important;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-divide {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-divide {
   border-top: 1px solid #edf0ef;
   margin: 24px 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card a {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card a {
   color: #047b70;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 @supports (grid-template-rows: subgrid) {
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field {
     display: grid;
     grid-row: span 3;
     grid-template-rows: subgrid;
     row-gap: 0;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field > label {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field > label {
     align-self: end;
   }
 }
 @supports not (grid-template-rows: subgrid) {
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field > label {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field > label {
     display: flex;
     align-items: flex-end;
     min-height: 2.9em;
   }
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) #lgiht-pension-note {
+:is(#iht-form, [data-calc="inheritance-tax"]) #lgiht-pension-note {
   margin: 0;
   align-self: end;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card select.lgi-select[aria-invalid="true"] {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select.lgi-select[aria-invalid="true"] {
   border-color: #a03c37;
 }
 @container (max-width:750px) {
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields.lgi-fields-three {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields.lgi-fields-three {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @container (max-width:470px) {
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields,
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields.lgi-fields-three {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields,
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields.lgi-fields-three {
     grid-template-columns: 1fr;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card .lgi-top {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card .lgi-top {
     align-items: start;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field {
     display: block;
     grid-row: auto;
     grid-template-rows: none;
   }
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-fields > .lgi-field > label {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-fields > .lgi-field > label {
     min-height: 0;
   }
 }
 @media (max-width: 650px) {
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card {
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card {
     padding: 26px 22px;
   }
 }
@@ -4387,19 +3733,12 @@
   margin-top: 22px;
 }
 @media (prefers-reduced-motion: reduce) {
-  :is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-card *,
+  :is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-card *,
   #lgiht-results-card * {
     transition: none !important;
   }
 }
-.lgiht-faq[open] {
-  box-shadow:
-    0 109.603px 30.372px rgba(0, 0, 0, 0),
-    0 69.987px 27.731px rgba(0, 0, 0, 0.01),
-    0 39.615px 23.769px rgba(0, 0, 0, 0.04),
-    0 17.167px 17.167px rgba(0, 0, 0, 0.07),
-    0 3.962px 9.244px rgba(0, 0, 0, 0.08);
-}
+
 .lgiht-sr-only {
   position: absolute !important;
   width: 1px !important;
@@ -4411,120 +3750,35 @@
   white-space: nowrap !important;
   border: 0 !important;
 }
-.lgiht-skip-link {
-  position: absolute;
-  z-index: 100000;
-  left: 12px;
-  top: 8px;
-  transform: translateY(-180%);
-  background: #fff;
-  color: #082c37;
-  padding: 12px 16px;
-  border: 2px solid #005f55;
-  border-radius: 6px;
-}
-.lgiht-skip-link:focus {
-  transform: translateY(0);
-}
-:where([data-calc="inheritance-tax"], .lg-calc-wrap:has(#lgiht-assets-card)) #calc-heading {
+
+:where([data-calc="inheritance-tax"]) #calc-heading {
   scroll-margin-top: 85px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card {
   min-inline-size: 0;
   margin-inline: 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) fieldset.lgiht-card {
+:is(#iht-form, [data-calc="inheritance-tax"]) fieldset.lgiht-card {
   min-inline-size: 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-field-feedback {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-field-feedback {
   min-width: 0;
   align-self: start;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-field-feedback .lgi-help {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-field-feedback .lgi-help {
   margin-top: 7px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-field-feedback .lgi-error {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-field-feedback .lgi-error {
   margin: 7px 0 0;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card select[aria-invalid="true"],
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card .lgi-money:has([aria-invalid="true"]) {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card select[aria-invalid="true"],
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card .lgi-money:has([aria-invalid="true"]) {
   outline: 2px solid #a03c37;
   outline-offset: 1px;
 }
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-form-card :is(input, select):focus-visible {
+:is(#iht-form, [data-calc="inheritance-tax"]) .lgiht-form-card :is(input, select):focus-visible {
   outline: 3px solid #005f55;
   outline-offset: 3px;
-}
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-issue-summary {
-  border: 2px solid #a03c37;
-  border-radius: 8px;
-  padding: 16px;
-  margin: 15px 0;
-  background: #fff8f6;
-  color: #6d2723;
-}
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-issue-summary:focus {
-  outline: 3px solid #005f55;
-  outline-offset: 3px;
-}
-:is(#iht-form, [data-calc="inheritance-tax"], :where(.lg-calc-wrap:has(#lgiht-assets-card))) .lgiht-issue-summary a {
-  color: #6d2723;
-  text-decoration: underline;
-}
-.lgiht-breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.lgiht-breadcrumbs li + li:before {
-  content: " / ";
-  padding-right: 6px;
-  color: #506a70;
-}
-.lgiht-breadcrumbs [aria-current="page"] {
-  font-weight: 600;
-}
-.lgiht-faq {
-  border-bottom: 1px solid #dce9e6;
-  background: #fff;
-}
-.lgiht-faq summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 18px;
-  cursor: pointer;
-  color: #082c37;
-  font-weight: 650;
-  list-style: none;
-}
-.lgiht-faq summary::-webkit-details-marker {
-  display: none;
-}
-.lgiht-faq summary:focus-visible {
-  outline: 3px solid #005f55;
-  outline-offset: -3px;
-}
-.lgiht-faq-icon {
-  font-size: 20px;
-  flex: none;
-}
-.lgiht-faq[open] .lgiht-faq-icon {
-  transform: rotate(45deg);
-}
-.lgiht-faq-answer {
-  padding: 0 18px 18px;
-  color: #405c64;
-  line-height: 1.75;
-}
-@media (prefers-reduced-motion: reduce) {
-  .lgiht-faq-icon {
-    transition: none !important;
-  }
 }
 
 /* ------------------------------------------------------------------
@@ -4637,8 +3891,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px 18px;
 }
-#lgci-input-panel .lgci-full,
-#lgmc-input-panel .lgmc-full,
 #lglc-input-panel .lglc-full {
   grid-column: 1/-1;
 }
@@ -4772,8 +4024,6 @@
     grid-template-columns: 1fr;
     gap: 19px;
   }
-  #lgci-input-panel .lgci-full,
-  #lgmc-input-panel .lgmc-full,
   #lglc-input-panel .lglc-full {
     grid-column: auto;
   }
@@ -4792,23 +4042,6 @@
 /* ------------------------------------------------------------------
    Compound interest
    ------------------------------------------------------------------ */
-#lgci-input-panel .lgci-unused-choice {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 28px 0 0;
-  padding: 0;
-  border: 0;
-  min-width: 0;
-}
-#lgci-input-panel .lgci-unused-choice legend {
-  font-family: "Manrope", sans-serif;
-  font-size: 14px;
-  font-weight: 650;
-  color: #082c37;
-  padding: 0;
-  margin: 0 0 12px;
-}
 
 /* ------------------------------------------------------------------
    Mortgage
@@ -4834,7 +4067,6 @@
 /* ------------------------------------------------------------------
    Shared: panel-style calculators (compound interest, loan, mortgage)
    ------------------------------------------------------------------ */
-#lgci-input-panel .lgci-choice,
 #lgmc-input-panel .lgmc-choice {
   display: flex;
   gap: 11px;
@@ -4848,12 +4080,10 @@
   font-size: 14px;
   font-weight: 600;
 }
-#lgci-input-panel .lgci-choice:has(input:checked),
 #lgmc-input-panel .lgmc-choice:has(input:checked) {
   border-color: #099d85;
   background: #eafaf5;
 }
-#lgci-input-panel .lgci-choice input,
 #lgmc-input-panel .lgmc-choice input {
   flex: none;
   width: 17px;
@@ -4862,7 +4092,6 @@
   padding: 0;
   margin: 0;
 }
-#lgci-input-panel .lgci-choice:focus-within,
 #lgmc-input-panel .lgmc-choice:focus-within {
   outline: 2px solid #087b69;
   outline-offset: 2px;

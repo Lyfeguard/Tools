@@ -1,0 +1,445 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgmc-input-panel": {
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only"
+    },
+    "lgmc-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgmc-results-panel": {
+      "text": "02 — YOUR RESULTSYour mortgage estimate Estimated monthly repayment—Enter your mortgage details to see an estimate. Amount borrowed— Loan-to-value— Total interest— Total mortgage cost— Balance due at term end— Illustrative figures only. Assumes an unchanged annual borrowing rate throughout the term, and excludes fees, insurance and other costs. This is not an affordability assessment or mortgage offer."
+    },
+    "lgmc-monthly-label": {
+      "text": "Estimated monthly repayment"
+    },
+    "lgmc-monthly": {
+      "text": "—"
+    },
+    "lgmc-assumption": {
+      "text": "Enter your mortgage details to see an estimate."
+    },
+    "lgmc-loan": {
+      "text": "—"
+    },
+    "lgmc-ltv": {
+      "text": "—"
+    },
+    "lgmc-interest": {
+      "text": "—"
+    },
+    "lgmc-total-label": {
+      "text": "Total mortgage cost"
+    },
+    "lgmc-total": {
+      "text": "—"
+    },
+    "lgmc-outstanding": {
+      "text": "—"
+    },
+    "lgmc-breakdown": {
+      "text": "Repayment breakdown How the total mortgage cost is split between the amount borrowed and interest. Amount borrowed—— Total interest—— For interest-only mortgages, the capital is payable at the end of the term."
+    },
+    "lgmc-breakdown-intro": {
+      "text": "How the total mortgage cost is split between the amount borrowed and interest."
+    },
+    "lgmc-breakdown-chart": {
+      "text": "",
+      "label": "Mortgage repayment breakdown will appear once details are entered"
+    },
+    "lgmc-principal-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgmc-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgmc-principal-label": {
+      "text": "Amount borrowed"
+    },
+    "lgmc-principal-pct": {
+      "text": "—"
+    },
+    "lgmc-breakdown-principal": {
+      "text": "—"
+    },
+    "lgmc-interest-pct": {
+      "text": "—"
+    },
+    "lgmc-breakdown-interest": {
+      "text": "—"
+    },
+    "lgmc-breakdown-note": {
+      "text": "For interest-only mortgages, the capital is payable at the end of the term."
+    },
+    "lgmc-rate-comparison": {
+      "text": "What if the interest rate changed?Compare monthly payments at different rates, assuming each rate applies throughout the mortgage term. Lower rate—per month— Your rate—per monthYour rate Higher rate—per month— These are hypothetical rates, not live mortgage offers. Changes to fixed-rate deals, fees or affordability criteria are not modelled."
+    },
+    "lgmc-lower-label": {
+      "text": "Lower rate"
+    },
+    "lgmc-lower": {
+      "text": "—"
+    },
+    "lgmc-lower-diff": {
+      "text": "—"
+    },
+    "lgmc-current-label": {
+      "text": "Your rate"
+    },
+    "lgmc-current": {
+      "text": "—"
+    },
+    "lgmc-higher-label": {
+      "text": "Higher rate"
+    },
+    "lgmc-higher": {
+      "text": "—"
+    },
+    "lgmc-higher-diff": {
+      "text": "—"
+    },
+    "lgmc-methodology": {
+      "text": "How was this calculated? Enter your mortgage details to see how the estimate is calculated.Interest rates may change during the mortgage term. Interest-only mortgages require a separate plan to repay the outstanding capital."
+    },
+    "lgmc-method-text": {
+      "text": "Enter your mortgage details to see how the estimate is calculated."
+    }
+  },
+  "repayment": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgmc-input-panel": {
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only"
+    },
+    "lgmc-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgmc-results-panel": {
+      "text": "02 — YOUR RESULTSYour mortgage estimate Estimated monthly repayment£1,556.33Based on a £280,000 repayment mortgage at 4.5% over 25 years. Amount borrowed£280,000 Loan-to-value80% Total interest£186,899.28 Total mortgage cost£466,899.28 Balance due at term end£0 Illustrative figures only. Assumes an unchanged annual borrowing rate throughout the term, and excludes fees, insurance and other costs. This is not an affordability assessment or mortgage offer."
+    },
+    "lgmc-monthly-label": {
+      "text": "Estimated monthly repayment"
+    },
+    "lgmc-monthly": {
+      "text": "£1,556.33"
+    },
+    "lgmc-assumption": {
+      "text": "Based on a £280,000 repayment mortgage at 4.5% over 25 years."
+    },
+    "lgmc-loan": {
+      "text": "£280,000"
+    },
+    "lgmc-ltv": {
+      "text": "80%"
+    },
+    "lgmc-interest": {
+      "text": "£186,899.28"
+    },
+    "lgmc-total-label": {
+      "text": "Total mortgage cost"
+    },
+    "lgmc-total": {
+      "text": "£466,899.28"
+    },
+    "lgmc-outstanding": {
+      "text": "£0"
+    },
+    "lgmc-breakdown": {
+      "text": "Repayment breakdown How your total mortgage repayments are split between repaying capital and paying interest. Amount borrowed60.0%£280,000 Total interest40.0%£186,899.28 The mortgage balance is assumed to be fully repaid at the end of the term."
+    },
+    "lgmc-breakdown-intro": {
+      "text": "How your total mortgage repayments are split between repaying capital and paying interest."
+    },
+    "lgmc-breakdown-chart": {
+      "text": "",
+      "label": "60.0% capital and 40.0% interest of total mortgage cost"
+    },
+    "lgmc-principal-bar": {
+      "text": "",
+      "width": "59.97%"
+    },
+    "lgmc-interest-bar": {
+      "text": "",
+      "width": "40.03%"
+    },
+    "lgmc-principal-label": {
+      "text": "Amount borrowed"
+    },
+    "lgmc-principal-pct": {
+      "text": "60.0%"
+    },
+    "lgmc-breakdown-principal": {
+      "text": "£280,000"
+    },
+    "lgmc-interest-pct": {
+      "text": "40.0%"
+    },
+    "lgmc-breakdown-interest": {
+      "text": "£186,899.28"
+    },
+    "lgmc-breakdown-note": {
+      "text": "The mortgage balance is assumed to be fully repaid at the end of the term."
+    },
+    "lgmc-rate-comparison": {
+      "text": "What if the interest rate changed?Compare monthly payments at different rates, assuming each rate applies throughout the mortgage term. 3.5% rate£1,401.75per month£154.58 less per month 4.5% rate£1,556.33per monthYour rate 5.5% rate£1,719.44per month£163.11 more per month These are hypothetical rates, not live mortgage offers. Changes to fixed-rate deals, fees or affordability criteria are not modelled."
+    },
+    "lgmc-lower-label": {
+      "text": "3.5% rate"
+    },
+    "lgmc-lower": {
+      "text": "£1,401.75"
+    },
+    "lgmc-lower-diff": {
+      "text": "£154.58 less per month"
+    },
+    "lgmc-current-label": {
+      "text": "4.5% rate"
+    },
+    "lgmc-current": {
+      "text": "£1,556.33"
+    },
+    "lgmc-higher-label": {
+      "text": "5.5% rate"
+    },
+    "lgmc-higher": {
+      "text": "£1,719.44"
+    },
+    "lgmc-higher-diff": {
+      "text": "£163.11 more per month"
+    },
+    "lgmc-methodology": {
+      "text": "How was this calculated? Repayment mortgage: monthly payment = L × r ÷ (1 − (1 + r)^−n), where L is £280,000 borrowed, r is the monthly interest rate (annual nominal rate ÷ 12), and n is 300 monthly payments. Total interest = sum of monthly payments − original borrowing. This assumes a constant rate and excludes fees and other charges.Interest rates may change during the mortgage term. Interest-only mortgages require a separate plan to repay the outstanding capital."
+    },
+    "lgmc-method-text": {
+      "text": "Repayment mortgage: monthly payment = L × r ÷ (1 − (1 + r)^−n), where L is £280,000 borrowed, r is the monthly interest rate (annual nominal rate ÷ 12), and n is 300 monthly payments. Total interest = sum of monthly payments − original borrowing. This assumes a constant rate and excludes fees and other charges."
+    }
+  },
+  "interestOnly": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgmc-input-panel": {
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only"
+    },
+    "lgmc-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgmc-results-panel": {
+      "text": "02 — YOUR RESULTSYour mortgage estimate Estimated monthly interest payment£937.50Based on a £225,000 interest-only mortgage at 5% over 20 years. Amount borrowed£225,000 Loan-to-value75% Total interest£225,000.00 Total mortgage cost£450,000.00 Balance due at term end£225,000 Illustrative figures only. Assumes an unchanged annual borrowing rate throughout the term, and excludes fees, insurance and other costs. This is not an affordability assessment or mortgage offer."
+    },
+    "lgmc-monthly-label": {
+      "text": "Estimated monthly interest payment"
+    },
+    "lgmc-monthly": {
+      "text": "£937.50"
+    },
+    "lgmc-assumption": {
+      "text": "Based on a £225,000 interest-only mortgage at 5% over 20 years."
+    },
+    "lgmc-loan": {
+      "text": "£225,000"
+    },
+    "lgmc-ltv": {
+      "text": "75%"
+    },
+    "lgmc-interest": {
+      "text": "£225,000.00"
+    },
+    "lgmc-total-label": {
+      "text": "Total mortgage cost"
+    },
+    "lgmc-total": {
+      "text": "£450,000.00"
+    },
+    "lgmc-outstanding": {
+      "text": "£225,000"
+    },
+    "lgmc-breakdown": {
+      "text": "Repayment breakdown How your interest payments plus the final capital repayment make up the total mortgage cost. Capital due at term end50.0%£225,000 Total interest50.0%£225,000.00 You still need to repay £225,000 at the end of the term. Monthly payments do not reduce the mortgage balance."
+    },
+    "lgmc-breakdown-intro": {
+      "text": "How your interest payments plus the final capital repayment make up the total mortgage cost."
+    },
+    "lgmc-breakdown-chart": {
+      "text": "",
+      "label": "50.0% capital and 50.0% interest of total mortgage cost"
+    },
+    "lgmc-principal-bar": {
+      "text": "",
+      "width": "50%"
+    },
+    "lgmc-interest-bar": {
+      "text": "",
+      "width": "50%"
+    },
+    "lgmc-principal-label": {
+      "text": "Capital due at term end"
+    },
+    "lgmc-principal-pct": {
+      "text": "50.0%"
+    },
+    "lgmc-breakdown-principal": {
+      "text": "£225,000"
+    },
+    "lgmc-interest-pct": {
+      "text": "50.0%"
+    },
+    "lgmc-breakdown-interest": {
+      "text": "£225,000.00"
+    },
+    "lgmc-breakdown-note": {
+      "text": "You still need to repay £225,000 at the end of the term. Monthly payments do not reduce the mortgage balance."
+    },
+    "lgmc-rate-comparison": {
+      "text": "What if the interest rate changed?Compare monthly payments at different rates, assuming each rate applies throughout the mortgage term. 4% rate£750.00per month£187.50 less per month 5% rate£937.50per monthYour rate 6% rate£1,125.00per month£187.50 more per month These are hypothetical rates, not live mortgage offers. Changes to fixed-rate deals, fees or affordability criteria are not modelled."
+    },
+    "lgmc-lower-label": {
+      "text": "4% rate"
+    },
+    "lgmc-lower": {
+      "text": "£750.00"
+    },
+    "lgmc-lower-diff": {
+      "text": "£187.50 less per month"
+    },
+    "lgmc-current-label": {
+      "text": "5% rate"
+    },
+    "lgmc-current": {
+      "text": "£937.50"
+    },
+    "lgmc-higher-label": {
+      "text": "6% rate"
+    },
+    "lgmc-higher": {
+      "text": "£1,125.00"
+    },
+    "lgmc-higher-diff": {
+      "text": "£187.50 more per month"
+    },
+    "lgmc-methodology": {
+      "text": "How was this calculated? Interest-only: the monthly interest payment is the amount borrowed multiplied by the annual nominal rate and divided by 12. Over 240 months, total interest is £225,000.00. The original £225,000 remains due at the end. Total mortgage cost shown includes the final capital repayment. Fees and rate changes are excluded.Interest rates may change during the mortgage term. Interest-only mortgages require a separate plan to repay the outstanding capital."
+    },
+    "lgmc-method-text": {
+      "text": "Interest-only: the monthly interest payment is the amount borrowed multiplied by the annual nominal rate and divided by 12. Over 240 months, total interest is £225,000.00. The original £225,000 remains due at the end. Total mortgage cost shown includes the final capital repayment. Fees and rate changes are excluded."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgmc-input-panel": {
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only Enter a property price above £0, a deposit from £0 up to (but below) the price, an interest rate from 0% to 100%, and a term of 6 months to 40 years in whole months."
+    },
+    "lgmc-error": {
+      "text": "Enter a property price above £0, a deposit from £0 up to (but below) the price, an interest rate from 0% to 100%, and a term of 6 months to 40 years in whole months."
+    },
+    "lgmc-results-panel": {
+      "text": "02 — YOUR RESULTSYour mortgage estimate Estimated monthly repayment—Enter your mortgage details to see an estimate. Amount borrowed— Loan-to-value— Total interest— Total mortgage cost— Balance due at term end— Illustrative figures only. Assumes an unchanged annual borrowing rate throughout the term, and excludes fees, insurance and other costs. This is not an affordability assessment or mortgage offer."
+    },
+    "lgmc-monthly-label": {
+      "text": "Estimated monthly repayment"
+    },
+    "lgmc-monthly": {
+      "text": "—"
+    },
+    "lgmc-assumption": {
+      "text": "Enter your mortgage details to see an estimate."
+    },
+    "lgmc-loan": {
+      "text": "—"
+    },
+    "lgmc-ltv": {
+      "text": "—"
+    },
+    "lgmc-interest": {
+      "text": "—"
+    },
+    "lgmc-total-label": {
+      "text": "Total mortgage cost"
+    },
+    "lgmc-total": {
+      "text": "—"
+    },
+    "lgmc-outstanding": {
+      "text": "—"
+    },
+    "lgmc-breakdown": {
+      "text": "Repayment breakdown How the total mortgage cost is split between the amount borrowed and interest. Amount borrowed—— Total interest—— For interest-only mortgages, the capital is payable at the end of the term."
+    },
+    "lgmc-breakdown-intro": {
+      "text": "How the total mortgage cost is split between the amount borrowed and interest."
+    },
+    "lgmc-breakdown-chart": {
+      "text": "",
+      "label": "Mortgage repayment breakdown will appear once details are entered"
+    },
+    "lgmc-principal-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgmc-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgmc-principal-label": {
+      "text": "Amount borrowed"
+    },
+    "lgmc-principal-pct": {
+      "text": "—"
+    },
+    "lgmc-breakdown-principal": {
+      "text": "—"
+    },
+    "lgmc-interest-pct": {
+      "text": "—"
+    },
+    "lgmc-breakdown-interest": {
+      "text": "—"
+    },
+    "lgmc-breakdown-note": {
+      "text": "For interest-only mortgages, the capital is payable at the end of the term."
+    },
+    "lgmc-rate-comparison": {
+      "text": "What if the interest rate changed?Compare monthly payments at different rates, assuming each rate applies throughout the mortgage term. Lower rate—per month— Your rate—per monthYour rate Higher rate—per month— These are hypothetical rates, not live mortgage offers. Changes to fixed-rate deals, fees or affordability criteria are not modelled."
+    },
+    "lgmc-lower-label": {
+      "text": "Lower rate"
+    },
+    "lgmc-lower": {
+      "text": "—"
+    },
+    "lgmc-lower-diff": {
+      "text": "—"
+    },
+    "lgmc-current-label": {
+      "text": "Your rate"
+    },
+    "lgmc-current": {
+      "text": "—"
+    },
+    "lgmc-higher-label": {
+      "text": "Higher rate"
+    },
+    "lgmc-higher": {
+      "text": "—"
+    },
+    "lgmc-higher-diff": {
+      "text": "—"
+    },
+    "lgmc-methodology": {
+      "text": "How was this calculated? Enter your mortgage details to see how the estimate is calculated.Interest rates may change during the mortgage term. Interest-only mortgages require a separate plan to repay the outstanding capital."
+    },
+    "lgmc-method-text": {
+      "text": "Enter your mortgage details to see how the estimate is calculated."
+    }
+  }
+}

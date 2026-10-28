@@ -1,0 +1,567 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgci-input-panel": {
+      "text": "01 — YOUR DETAILS Grow your savings Choose your starting amount, regular contributions, frequency and growth assumptions. Starting amount£ Regular contribution£ Contribution frequencyMonthlyWeeklyEvery 2 weeksQuarterlyAnnuallyNo regular contributions Annual interest / growth rate (effective)% Projection periodyears Contributions are added at the end of each month."
+    },
+    "lgci-frequency-tip": {
+      "text": "Contributions are added at the end of each month."
+    },
+    "lgci-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgci-results-panel": {
+      "text": "02 — YOUR RESULTSYour savings projection Estimated future balance—Enter your savings details to see a projection. Starting amount— Regular contributions— Total contributed— Interest / growth earned— Illustrative projection assuming a constant annual effective growth rate and contributions at the end of each selected period. Excludes fees, taxes and inflation. Returns are not guaranteed."
+    },
+    "lgci-future": {
+      "text": "—"
+    },
+    "lgci-assumption": {
+      "text": "Enter your savings details to see a projection."
+    },
+    "lgci-start-result": {
+      "text": "—"
+    },
+    "lgci-contributions": {
+      "text": "—"
+    },
+    "lgci-invested": {
+      "text": "—"
+    },
+    "lgci-growth": {
+      "text": "—"
+    },
+    "lgci-projection": {
+      "text": "PROJECTED GROWTH Your savings over time See your balance grow and how much comes from your contributions. Projected final balance— Total balanceMoney contributed Enter your savings details to see the growth projection.",
+      "label": "Savings growth projection"
+    },
+    "lgci-chart-final": {
+      "text": "—"
+    },
+    "lgci-chart-area": {
+      "text": ""
+    },
+    "lgci-growth-svg": {
+      "text": "",
+      "label": "Enter details to view your growth projection"
+    },
+    "lgci-chart-caption": {
+      "text": "Enter your savings details to see the growth projection."
+    },
+    "lgci-breakdown": {
+      "text": "Savings growth breakdown How much of your projected balance comes from your money and from compound growth. Your contributions—— Interest / growth—— Regular contributions are added at the end of the selected period. Growth is illustrative and not guaranteed."
+    },
+    "lgci-breakdown-chart": {
+      "text": "",
+      "label": "Savings balance breakdown; enter details to see amounts"
+    },
+    "lgci-principal-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgci-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgci-principal-pct": {
+      "text": "—"
+    },
+    "lgci-breakdown-principal": {
+      "text": "—"
+    },
+    "lgci-interest-pct": {
+      "text": "—"
+    },
+    "lgci-breakdown-interest": {
+      "text": "—"
+    },
+    "lgci-rate-comparison": {
+      "text": "What if the growth rate changed?Compare the projected final balance at an annual rate one percentage point lower or higher. Lower rate—future balance— Your rate—future balanceYour rate Higher rate—future balance— Rates are illustrative scenarios, not forecasts. The model assumes an unchanged effective annual rate."
+    },
+    "lgci-lower-label": {
+      "text": "Lower rate"
+    },
+    "lgci-lower": {
+      "text": "—"
+    },
+    "lgci-lower-diff": {
+      "text": "—"
+    },
+    "lgci-current-label": {
+      "text": "Your rate"
+    },
+    "lgci-current": {
+      "text": "—"
+    },
+    "lgci-higher-label": {
+      "text": "Higher rate"
+    },
+    "lgci-higher": {
+      "text": "—"
+    },
+    "lgci-higher-diff": {
+      "text": "—"
+    },
+    "lgci-methodology": {
+      "text": "How was this calculated? Enter your savings details to see how the projection is calculated.The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns."
+    },
+    "lgci-method-text": {
+      "text": "Enter your savings details to see how the projection is calculated."
+    }
+  },
+  "monthly": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgci-input-panel": {
+      "text": "01 — YOUR DETAILS Grow your savings Choose your starting amount, regular contributions, frequency and growth assumptions. Starting amount£ Regular contribution£ Contribution frequencyMonthlyWeeklyEvery 2 weeksQuarterlyAnnuallyNo regular contributions Annual interest / growth rate (effective)% Projection periodyears Contributions are added at the end of each month."
+    },
+    "lgci-frequency-tip": {
+      "text": "Contributions are added at the end of each month."
+    },
+    "lgci-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgci-results-panel": {
+      "text": "02 — YOUR RESULTSYour savings projection Estimated future balance£39,017.11£5,000 initially, plus £200 every month, at 5% annual effective growth for 10 years. Starting amount£5,000 Regular contributions£24,000 Total contributed£29,000 Interest / growth earned£10,017 Illustrative projection assuming a constant annual effective growth rate and contributions at the end of each selected period. Excludes fees, taxes and inflation. Returns are not guaranteed."
+    },
+    "lgci-future": {
+      "text": "£39,017.11"
+    },
+    "lgci-assumption": {
+      "text": "£5,000 initially, plus £200 every month, at 5% annual effective growth for 10 years."
+    },
+    "lgci-start-result": {
+      "text": "£5,000"
+    },
+    "lgci-contributions": {
+      "text": "£24,000"
+    },
+    "lgci-invested": {
+      "text": "£29,000"
+    },
+    "lgci-growth": {
+      "text": "£10,017"
+    },
+    "lgci-projection": {
+      "text": "PROJECTED GROWTH Your savings over time See your balance grow and how much comes from your contributions. Projected final balance£39,017.11 Total balanceMoney contributed Projected savings balance versus contributions over time£0£11k£21k£32k£43k0y2.5y5y7.5y10y Illustrative 10-year projection assuming a constant 5% annual effective growth rate. Contributions: 120 payments of £200.",
+      "label": "Savings growth projection"
+    },
+    "lgci-chart-final": {
+      "text": "£39,017.11"
+    },
+    "lgci-chart-area": {
+      "text": "Projected savings balance versus contributions over time£0£11k£21k£32k£43k0y2.5y5y7.5y10y"
+    },
+    "lgci-growth-svg": {
+      "text": "Projected savings balance versus contributions over time£0£11k£21k£32k£43k0y2.5y5y7.5y10y",
+      "label": "Projected final savings £39,017; total money contributed £29,000 after 10 years"
+    },
+    "lgci-chart-caption": {
+      "text": "Illustrative 10-year projection assuming a constant 5% annual effective growth rate. Contributions: 120 payments of £200."
+    },
+    "lgci-breakdown": {
+      "text": "Savings growth breakdown How much of your projected balance comes from your money and from compound growth. Your contributions74.3%£29,000 Interest / growth25.7%£10,017 Regular contributions are added at the end of the selected period. Growth is illustrative and not guaranteed."
+    },
+    "lgci-breakdown-chart": {
+      "text": "",
+      "label": "Contributions 74.3%; growth 25.7%"
+    },
+    "lgci-principal-bar": {
+      "text": "",
+      "width": "74.326%"
+    },
+    "lgci-interest-bar": {
+      "text": "",
+      "width": "25.674%"
+    },
+    "lgci-principal-pct": {
+      "text": "74.3%"
+    },
+    "lgci-breakdown-principal": {
+      "text": "£29,000"
+    },
+    "lgci-interest-pct": {
+      "text": "25.7%"
+    },
+    "lgci-breakdown-interest": {
+      "text": "£10,017"
+    },
+    "lgci-rate-comparison": {
+      "text": "What if the growth rate changed?Compare the projected final balance at an annual rate one percentage point lower or higher. 4% effective rate£36,740.41future balance£2,276.70 less 5% effective rate£39,017.11future balanceYour rate 6% effective rate£41,448.93future balance£2,431.82 more Rates are illustrative scenarios, not forecasts. The model assumes an unchanged effective annual rate."
+    },
+    "lgci-lower-label": {
+      "text": "4% effective rate"
+    },
+    "lgci-lower": {
+      "text": "£36,740.41"
+    },
+    "lgci-lower-diff": {
+      "text": "£2,276.70 less"
+    },
+    "lgci-current-label": {
+      "text": "5% effective rate"
+    },
+    "lgci-current": {
+      "text": "£39,017.11"
+    },
+    "lgci-higher-label": {
+      "text": "6% effective rate"
+    },
+    "lgci-higher": {
+      "text": "£41,448.93"
+    },
+    "lgci-higher-diff": {
+      "text": "£2,431.82 more"
+    },
+    "lgci-methodology": {
+      "text": "How was this calculated? The starting balance of £5,000 grows at an assumed effective annual rate of 5% for 10 years. 120 end-of-period contributions totalling £24,000 are added at the selected frequency. Each payment then grows for the remaining portion of the term using (1 + annual rate) raised to the time remaining in years. Final balance = starting amount grown + accumulated value of contributions. Estimated growth = final balance minus £29,000 contributed. This illustration assumes no tax, fees, withdrawals, inflation or changing returns.The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns."
+    },
+    "lgci-method-text": {
+      "text": "The starting balance of £5,000 grows at an assumed effective annual rate of 5% for 10 years. 120 end-of-period contributions totalling £24,000 are added at the selected frequency. Each payment then grows for the remaining portion of the term using (1 + annual rate) raised to the time remaining in years. Final balance = starting amount grown + accumulated value of contributions. Estimated growth = final balance minus £29,000 contributed. This illustration assumes no tax, fees, withdrawals, inflation or changing returns."
+    }
+  },
+  "annual": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgci-input-panel": {
+      "text": "01 — YOUR DETAILS Grow your savings Choose your starting amount, regular contributions, frequency and growth assumptions. Starting amount£ Regular contribution£ Contribution frequencyMonthlyWeeklyEvery 2 weeksQuarterlyAnnuallyNo regular contributions Annual interest / growth rate (effective)% Projection periodyears Contributions are added at the end of each year."
+    },
+    "lgci-frequency-tip": {
+      "text": "Contributions are added at the end of each year."
+    },
+    "lgci-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgci-results-panel": {
+      "text": "02 — YOUR RESULTSYour savings projection Estimated future balance£123,100.64£10,000 initially, plus £1,000 every year, at 7.25% annual effective growth for 25 years. Starting amount£10,000 Regular contributions£25,000 Total contributed£35,000 Interest / growth earned£88,101 Illustrative projection assuming a constant annual effective growth rate and contributions at the end of each selected period. Excludes fees, taxes and inflation. Returns are not guaranteed."
+    },
+    "lgci-future": {
+      "text": "£123,100.64"
+    },
+    "lgci-assumption": {
+      "text": "£10,000 initially, plus £1,000 every year, at 7.25% annual effective growth for 25 years."
+    },
+    "lgci-start-result": {
+      "text": "£10,000"
+    },
+    "lgci-contributions": {
+      "text": "£25,000"
+    },
+    "lgci-invested": {
+      "text": "£35,000"
+    },
+    "lgci-growth": {
+      "text": "£88,101"
+    },
+    "lgci-projection": {
+      "text": "PROJECTED GROWTH Your savings over time See your balance grow and how much comes from your contributions. Projected final balance£123,100.64 Total balanceMoney contributed Projected savings balance versus contributions over time£0£34k£68k£102k£135k0y6.3y12.5y18.8y25y Illustrative 25-year projection assuming a constant 7.25% annual effective growth rate. Contributions: 25 payments of £1,000.",
+      "label": "Savings growth projection"
+    },
+    "lgci-chart-final": {
+      "text": "£123,100.64"
+    },
+    "lgci-chart-area": {
+      "text": "Projected savings balance versus contributions over time£0£34k£68k£102k£135k0y6.3y12.5y18.8y25y"
+    },
+    "lgci-growth-svg": {
+      "text": "Projected savings balance versus contributions over time£0£34k£68k£102k£135k0y6.3y12.5y18.8y25y",
+      "label": "Projected final savings £123,101; total money contributed £35,000 after 25 years"
+    },
+    "lgci-chart-caption": {
+      "text": "Illustrative 25-year projection assuming a constant 7.25% annual effective growth rate. Contributions: 25 payments of £1,000."
+    },
+    "lgci-breakdown": {
+      "text": "Savings growth breakdown How much of your projected balance comes from your money and from compound growth. Your contributions28.4%£35,000 Interest / growth71.6%£88,101 Regular contributions are added at the end of the selected period. Growth is illustrative and not guaranteed."
+    },
+    "lgci-breakdown-chart": {
+      "text": "",
+      "label": "Contributions 28.4%; growth 71.6%"
+    },
+    "lgci-principal-bar": {
+      "text": "",
+      "width": "28.432%"
+    },
+    "lgci-interest-bar": {
+      "text": "",
+      "width": "71.568%"
+    },
+    "lgci-principal-pct": {
+      "text": "28.4%"
+    },
+    "lgci-breakdown-principal": {
+      "text": "£35,000"
+    },
+    "lgci-interest-pct": {
+      "text": "71.6%"
+    },
+    "lgci-breakdown-interest": {
+      "text": "£88,101"
+    },
+    "lgci-rate-comparison": {
+      "text": "What if the growth rate changed?Compare the projected final balance at an annual rate one percentage point lower or higher. 6.25% effective rate£102,357.78future balance£20,742.86 less 7.25% effective rate£123,100.64future balanceYour rate 8.25% effective rate£148,390.43future balance£25,289.79 more Rates are illustrative scenarios, not forecasts. The model assumes an unchanged effective annual rate."
+    },
+    "lgci-lower-label": {
+      "text": "6.25% effective rate"
+    },
+    "lgci-lower": {
+      "text": "£102,357.78"
+    },
+    "lgci-lower-diff": {
+      "text": "£20,742.86 less"
+    },
+    "lgci-current-label": {
+      "text": "7.25% effective rate"
+    },
+    "lgci-current": {
+      "text": "£123,100.64"
+    },
+    "lgci-higher-label": {
+      "text": "8.25% effective rate"
+    },
+    "lgci-higher": {
+      "text": "£148,390.43"
+    },
+    "lgci-higher-diff": {
+      "text": "£25,289.79 more"
+    },
+    "lgci-methodology": {
+      "text": "How was this calculated? The starting balance of £10,000 grows at an assumed effective annual rate of 7.25% for 25 years. 25 end-of-period contributions totalling £25,000 are added at the selected frequency. Each payment then grows for the remaining portion of the term using (1 + annual rate) raised to the time remaining in years. Final balance = starting amount grown + accumulated value of contributions. Estimated growth = final balance minus £35,000 contributed. This illustration assumes no tax, fees, withdrawals, inflation or changing returns.The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns."
+    },
+    "lgci-method-text": {
+      "text": "The starting balance of £10,000 grows at an assumed effective annual rate of 7.25% for 25 years. 25 end-of-period contributions totalling £25,000 are added at the selected frequency. Each payment then grows for the remaining portion of the term using (1 + annual rate) raised to the time remaining in years. Final balance = starting amount grown + accumulated value of contributions. Estimated growth = final balance minus £35,000 contributed. This illustration assumes no tax, fees, withdrawals, inflation or changing returns."
+    }
+  },
+  "zeroRate": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgci-input-panel": {
+      "text": "01 — YOUR DETAILS Grow your savings Choose your starting amount, regular contributions, frequency and growth assumptions. Starting amount£ Regular contribution£ Contribution frequencyMonthlyWeeklyEvery 2 weeksQuarterlyAnnuallyNo regular contributions Annual interest / growth rate (effective)% Projection periodyears Contributions are added at the end of each month."
+    },
+    "lgci-frequency-tip": {
+      "text": "Contributions are added at the end of each month."
+    },
+    "lgci-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgci-results-panel": {
+      "text": "02 — YOUR RESULTSYour savings projection Estimated future balance£2,800.00£1,000 initially, plus £50 every month, at 0% annual effective growth for 3 years. Starting amount£1,000 Regular contributions£1,800 Total contributed£2,800 Interest / growth earned£0 Illustrative projection assuming a constant annual effective growth rate and contributions at the end of each selected period. Excludes fees, taxes and inflation. Returns are not guaranteed."
+    },
+    "lgci-future": {
+      "text": "£2,800.00"
+    },
+    "lgci-assumption": {
+      "text": "£1,000 initially, plus £50 every month, at 0% annual effective growth for 3 years."
+    },
+    "lgci-start-result": {
+      "text": "£1,000"
+    },
+    "lgci-contributions": {
+      "text": "£1,800"
+    },
+    "lgci-invested": {
+      "text": "£2,800"
+    },
+    "lgci-growth": {
+      "text": "£0"
+    },
+    "lgci-projection": {
+      "text": "PROJECTED GROWTH Your savings over time See your balance grow and how much comes from your contributions. Projected final balance£2,800.00 Total balanceMoney contributed Projected savings balance versus contributions over time£0£770£1.5k£2.3k£3.1k0y0.8y1.5y2.3y3y Illustrative 3-year projection assuming a constant 0% annual effective growth rate. Contributions: 36 payments of £50.",
+      "label": "Savings growth projection"
+    },
+    "lgci-chart-final": {
+      "text": "£2,800.00"
+    },
+    "lgci-chart-area": {
+      "text": "Projected savings balance versus contributions over time£0£770£1.5k£2.3k£3.1k0y0.8y1.5y2.3y3y"
+    },
+    "lgci-growth-svg": {
+      "text": "Projected savings balance versus contributions over time£0£770£1.5k£2.3k£3.1k0y0.8y1.5y2.3y3y",
+      "label": "Projected final savings £2,800; total money contributed £2,800 after 3 years"
+    },
+    "lgci-chart-caption": {
+      "text": "Illustrative 3-year projection assuming a constant 0% annual effective growth rate. Contributions: 36 payments of £50."
+    },
+    "lgci-breakdown": {
+      "text": "Savings growth breakdown How much of your projected balance comes from your money and from compound growth. Your contributions100.0%£2,800 Interest / growth0.0%£0 Regular contributions are added at the end of the selected period. Growth is illustrative and not guaranteed."
+    },
+    "lgci-breakdown-chart": {
+      "text": "",
+      "label": "Contributions 100.0%; growth 0.0%"
+    },
+    "lgci-principal-bar": {
+      "text": "",
+      "width": "100%"
+    },
+    "lgci-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgci-principal-pct": {
+      "text": "100.0%"
+    },
+    "lgci-breakdown-principal": {
+      "text": "£2,800"
+    },
+    "lgci-interest-pct": {
+      "text": "0.0%"
+    },
+    "lgci-breakdown-interest": {
+      "text": "£0"
+    },
+    "lgci-rate-comparison": {
+      "text": "What if the growth rate changed?Compare the projected final balance at an annual rate one percentage point lower or higher. 0% effective rate£2,800.00future balanceNo change 0% effective rate£2,800.00future balanceYour rate 1% effective rate£2,856.68future balance£56.68 more Rates are illustrative scenarios, not forecasts. The model assumes an unchanged effective annual rate."
+    },
+    "lgci-lower-label": {
+      "text": "0% effective rate"
+    },
+    "lgci-lower": {
+      "text": "£2,800.00"
+    },
+    "lgci-lower-diff": {
+      "text": "No change"
+    },
+    "lgci-current-label": {
+      "text": "0% effective rate"
+    },
+    "lgci-current": {
+      "text": "£2,800.00"
+    },
+    "lgci-higher-label": {
+      "text": "1% effective rate"
+    },
+    "lgci-higher": {
+      "text": "£2,856.68"
+    },
+    "lgci-higher-diff": {
+      "text": "£56.68 more"
+    },
+    "lgci-methodology": {
+      "text": "How was this calculated? The starting balance of £1,000 grows at an assumed effective annual rate of 0% for 3 years. 36 end-of-period contributions totalling £1,800 are added at the selected frequency. Each payment then grows for the remaining portion of the term using (1 + annual rate) raised to the time remaining in years. Final balance = starting amount grown + accumulated value of contributions. Estimated growth = final balance minus £2,800 contributed. This illustration assumes no tax, fees, withdrawals, inflation or changing returns.The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns."
+    },
+    "lgci-method-text": {
+      "text": "The starting balance of £1,000 grows at an assumed effective annual rate of 0% for 3 years. 36 end-of-period contributions totalling £1,800 are added at the selected frequency. Each payment then grows for the remaining portion of the term using (1 + annual rate) raised to the time remaining in years. Final balance = starting amount grown + accumulated value of contributions. Estimated growth = final balance minus £2,800 contributed. This illustration assumes no tax, fees, withdrawals, inflation or changing returns."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgci-input-panel": {
+      "text": "01 — YOUR DETAILS Grow your savings Choose your starting amount, regular contributions, frequency and growth assumptions. Starting amount£ Regular contribution£ Contribution frequencyMonthlyWeeklyEvery 2 weeksQuarterlyAnnuallyNo regular contributions Annual interest / growth rate (effective)% Projection periodyears Contributions are added at the end of each month."
+    },
+    "lgci-frequency-tip": {
+      "text": "Contributions are added at the end of each month."
+    },
+    "lgci-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgci-results-panel": {
+      "text": "02 — YOUR RESULTSYour savings projection Estimated future balance—Enter your savings details to see a projection. Starting amount— Regular contributions— Total contributed— Interest / growth earned— Illustrative projection assuming a constant annual effective growth rate and contributions at the end of each selected period. Excludes fees, taxes and inflation. Returns are not guaranteed."
+    },
+    "lgci-future": {
+      "text": "—"
+    },
+    "lgci-assumption": {
+      "text": "Enter your savings details to see a projection."
+    },
+    "lgci-start-result": {
+      "text": "—"
+    },
+    "lgci-contributions": {
+      "text": "—"
+    },
+    "lgci-invested": {
+      "text": "—"
+    },
+    "lgci-growth": {
+      "text": "—"
+    },
+    "lgci-projection": {
+      "text": "PROJECTED GROWTH Your savings over time See your balance grow and how much comes from your contributions. Projected final balance— Total balanceMoney contributed Enter your savings details to see the growth projection.",
+      "label": "Savings growth projection"
+    },
+    "lgci-chart-final": {
+      "text": "—"
+    },
+    "lgci-chart-area": {
+      "text": ""
+    },
+    "lgci-growth-svg": {
+      "text": "",
+      "label": "Enter details to view your growth projection"
+    },
+    "lgci-chart-caption": {
+      "text": "Enter your savings details to see the growth projection."
+    },
+    "lgci-breakdown": {
+      "text": "Savings growth breakdown How much of your projected balance comes from your money and from compound growth. Your contributions—— Interest / growth—— Regular contributions are added at the end of the selected period. Growth is illustrative and not guaranteed."
+    },
+    "lgci-breakdown-chart": {
+      "text": "",
+      "label": "Savings balance breakdown; enter details to see amounts"
+    },
+    "lgci-principal-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgci-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgci-principal-pct": {
+      "text": "—"
+    },
+    "lgci-breakdown-principal": {
+      "text": "—"
+    },
+    "lgci-interest-pct": {
+      "text": "—"
+    },
+    "lgci-breakdown-interest": {
+      "text": "—"
+    },
+    "lgci-rate-comparison": {
+      "text": "What if the growth rate changed?Compare the projected final balance at an annual rate one percentage point lower or higher. Lower rate—future balance— Your rate—future balanceYour rate Higher rate—future balance— Rates are illustrative scenarios, not forecasts. The model assumes an unchanged effective annual rate."
+    },
+    "lgci-lower-label": {
+      "text": "Lower rate"
+    },
+    "lgci-lower": {
+      "text": "—"
+    },
+    "lgci-lower-diff": {
+      "text": "—"
+    },
+    "lgci-current-label": {
+      "text": "Your rate"
+    },
+    "lgci-current": {
+      "text": "—"
+    },
+    "lgci-higher-label": {
+      "text": "Higher rate"
+    },
+    "lgci-higher": {
+      "text": "—"
+    },
+    "lgci-higher-diff": {
+      "text": "—"
+    },
+    "lgci-methodology": {
+      "text": "How was this calculated? Enter your savings details to see how the projection is calculated.The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns."
+    },
+    "lgci-method-text": {
+      "text": "Enter your savings details to see how the projection is calculated."
+    }
+  }
+}

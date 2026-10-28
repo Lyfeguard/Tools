@@ -1,0 +1,29 @@
+name: Check calculators
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      - name: dist/ is built from src/
+        run: |
+          npm run build
+          if ! git diff --exit-code -- dist; then
+            echo "::error::dist/ is out of date. Run npm run build and commit the result."
+            exit 1
+          fi
+
+      - name: Calculator tests
+        run: npm test
