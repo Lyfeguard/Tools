@@ -1,0 +1,130 @@
+<div id="lgdti-input-panel" class="lgdti-input-panel">
+  <div class="lgdti-eyebrow">01 — YOUR DETAILS</div>
+  <h2>Your income and debts</h2>
+  <p class="lgdti-intro">Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply.</p>
+  <h3 class="lgdti-group-title">Income before tax</h3>
+  <fieldset class="lgdti-period"><legend>I'm entering my income</legend>
+    <div class="lgdti-options">
+      <label class="lgdti-choice"><input id="lgdti-period-year" type="radio" name="lgdti-period" value="year" checked=""><span>Per year</span></label>
+      <label class="lgdti-choice"><input id="lgdti-period-month" type="radio" name="lgdti-period" value="month"><span>Per month</span></label>
+    </div>
+  </fieldset>
+  <div class="lgdti-field-grid">
+    <div class="lgdti-field">
+      <label for="lgdti-income" id="lgdti-income-label">Gross salary per year</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-income" name="lgdti-income" type="text" inputmode="decimal" autocomplete="off" placeholder="45,000" aria-describedby="lgdti-error"></div>
+    </div>
+    <div class="lgdti-field">
+      <label for="lgdti-other-income">Other income per month</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-other-income" name="lgdti-other-income" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-other-income-hint lgdti-error"></div>
+      <p id="lgdti-other-income-hint" class="lgdti-hint">e.g. regular self-employed, rental or benefit income, before tax.</p>
+    </div>
+  </div>
+  <h3 class="lgdti-group-title">Monthly debt repayments</h3>
+  <div class="lgdti-field-grid">
+    <div class="lgdti-field">
+      <label for="lgdti-housing">Mortgage or rent</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-housing" name="lgdti-housing" type="text" inputmode="decimal" autocomplete="off" placeholder="1,100" aria-describedby="lgdti-error"></div>
+    </div>
+    <div class="lgdti-field">
+      <label for="lgdti-car">Car finance</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-car" name="lgdti-car" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+    </div>
+    <div class="lgdti-field">
+      <label for="lgdti-loans">Personal loans</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-loans" name="lgdti-loans" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+    </div>
+    <div class="lgdti-field">
+      <label for="lgdti-cards">Credit cards (minimum payments)</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-cards" name="lgdti-cards" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+    </div>
+    <div class="lgdti-field">
+      <label for="lgdti-student">Student loan</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-student" name="lgdti-student" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+    </div>
+    <div class="lgdti-field">
+      <label for="lgdti-other">Other debts</label>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-other" name="lgdti-other" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-other-hint lgdti-error"></div>
+      <p id="lgdti-other-hint" class="lgdti-hint">e.g. buy now pay later, store cards, overdraft repayments.</p>
+    </div>
+  </div>
+  <div class="lgdti-subtotal"><span>Total monthly repayments</span><strong id="lgdti-debt-subtotal">—</strong></div>
+  <p id="lgdti-error" role="alert" hidden=""></p>
+</div>
+
+<div id="lgdti-results-panel" aria-live="polite" aria-atomic="true" data-band="none">
+  <div class="lgdti-eyebrow">02 — YOUR RESULTS</div>
+  <h2>Your debt-to-income ratio</h2>
+  <div class="lgdti-primary-result">
+    <p class="lgdti-main-label">Debt-to-income ratio</p>
+    <div class="lgdti-ratio-row"><div id="lgdti-ratio" class="lgdti-ratio">—</div><span id="lgdti-band" class="lgdti-band" hidden=""></span></div>
+    <p id="lgdti-assumption" class="lgdti-assumption">Enter your income and debt repayments to see your ratio.</p>
+  </div>
+  <div class="lgdti-results-grid">
+    <div class="lgdti-result-item"><span>Gross monthly income</span><strong id="lgdti-monthly-income">—</strong></div>
+    <div class="lgdti-result-item"><span>Monthly debt repayments</span><strong id="lgdti-monthly-debt">—</strong></div>
+    <div class="lgdti-result-item"><span>Left after repayments (before tax)</span><strong id="lgdti-left">—</strong></div>
+    <div class="lgdti-result-item"><span>Ratio excluding mortgage or rent</span><strong id="lgdti-ratio-ex-housing">—</strong></div>
+  </div>
+  <p class="lgdti-disclaimer">Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.</p>
+</div>
+
+<div id="lgdti-gauge" class="lgdti-viz-card">
+  <h3>Where your ratio sits</h3>
+  <p class="lgdti-viz-intro">A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits.</p>
+  <div class="lgdti-gauge-wrap">
+    <div id="lgdti-gauge-track" class="lgdti-gauge-track" role="img" aria-label="Your ratio will appear on the scale once you enter your details">
+      <span class="lgdti-zone lgdti-zone-low"></span><span class="lgdti-zone lgdti-zone-moderate"></span><span class="lgdti-zone lgdti-zone-high"></span><span class="lgdti-zone lgdti-zone-very-high"></span>
+      <span id="lgdti-gauge-marker" class="lgdti-gauge-marker" hidden=""></span>
+    </div>
+    <div class="lgdti-gauge-scale" aria-hidden="true"><span style="left:0%">0%</span><span style="left:33.333%">20%</span><span style="left:60%">36%</span><span style="left:83.333%">50%</span><span style="left:100%">60%+</span></div>
+  </div>
+  <ul class="lgdti-gauge-key">
+    <li><i class="lgdti-key-low"></i><span><strong>Low</strong> under 20%</span></li>
+    <li><i class="lgdti-key-moderate"></i><span><strong>Manageable</strong> 20% to 35.9%</span></li>
+    <li><i class="lgdti-key-high"></i><span><strong>High</strong> 36% to 49.9%</span></li>
+    <li><i class="lgdti-key-very-high"></i><span><strong>Very high</strong> 50% or more</span></li>
+  </ul>
+  <p id="lgdti-band-text" class="lgdti-band-text">Enter your details to see what your ratio may mean.</p>
+</div>
+
+<div id="lgdti-breakdown" class="lgdti-viz-card">
+  <h3>Where your income goes</h3>
+  <p class="lgdti-viz-intro">Each debt repayment as a share of your gross monthly income.</p>
+  <div id="lgdti-breakdown-chart" class="lgdti-viz-chart" role="img" aria-label="Your breakdown will appear once you enter your details"></div>
+  <div id="lgdti-breakdown-legend" class="lgdti-viz-legend"><p class="lgdti-viz-empty">Enter your income and debts to see the breakdown.</p></div>
+</div>
+
+<div id="lgdti-target" class="lgdti-viz-card">
+  <h3>What would bring your ratio to 36%?</h3>
+  <p class="lgdti-viz-intro">36% is a commonly used guide for a manageable level of debt. Compare it with your figures.</p>
+  <div class="lgdti-target-grid">
+    <div class="lgdti-target-card">
+      <span class="lgdti-target-label">Repayments at 36%</span>
+      <strong id="lgdti-target-max" class="lgdti-target-amount">—</strong>
+      <small>per month</small>
+      <span id="lgdti-target-headroom" class="lgdti-target-note">—</span>
+    </div>
+    <div class="lgdti-target-card">
+      <span class="lgdti-target-label">Reduce repayments by</span>
+      <strong id="lgdti-target-reduce" class="lgdti-target-amount">—</strong>
+      <small>per month</small>
+      <span id="lgdti-target-reduce-note" class="lgdti-target-note">—</span>
+    </div>
+    <div class="lgdti-target-card">
+      <span class="lgdti-target-label">Or income needed</span>
+      <strong id="lgdti-target-income" class="lgdti-target-amount">—</strong>
+      <small>gross per month</small>
+      <span id="lgdti-target-income-note" class="lgdti-target-note">—</span>
+    </div>
+  </div>
+  <p class="lgdti-viz-footnote">Each option assumes everything else stays the same.</p>
+</div>
+
+<details id="lgdti-methodology">
+  <summary><span>How was this calculated?</span><span class="lgdti-accordion-symbol" aria-hidden="true"></span></summary>
+  <div class="lgdti-accordion-body">
+    <p id="lgdti-method-text">Enter your income and debt repayments to see how your ratio is calculated.</p>
+    <p class="lgdti-accordion-note">Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria.</p>
+  </div>
+</details>

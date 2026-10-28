@@ -1,0 +1,8 @@
+{
+  "name": "lyfeguard-tools",
+  "private": true,
+  "description": "Shared CSS and JS for the calculators at lyfeguard.com/tools",
+  "scripts": {
+    "build": "bash scripts/build.sh"
+  }
+}

@@ -1,8 +1,8 @@
-# Tools CMS template: setup guide (lg-calc v1.0.1)
+# Tools CMS template: setup guide (lg-calc v1.1.0)
 
 ## 1. Host the two files
-Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.0.1) to your host and pin the version in the URL.
-- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.0.1/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
+Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.1.0) to your host and pin the version in the URL.
+- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.1.0/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
 - Cloudflare on your own domain: no CSP or preconnect change needed.
 
 ## 2. Collection fields (collection "Tools", currently slug `tool`)
@@ -10,9 +10,9 @@ Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.0.1) to your host and pin the 
 |---|---|---|
 | Name | built-in | e.g. Loan Repayment Calculator. Used in breadcrumb and schema |
 | Slug | built-in | must match today's URL, e.g. `loan-repayment-calculator` |
-| Calculator key | Plain text | net-worth, inheritance-tax, compound-interest, savings-goal, emergency-fund, loan-repayment, pro-rata-salary, salary-by-age, mortgage |
+| Calculator key | Plain text | net-worth, inheritance-tax, compound-interest, savings-goal, emergency-fund, loan-repayment, pro-rata-salary, salary-by-age, mortgage, debt-to-income |
 | H1 | Plain text | |
-| Hero intro | Plain text | optional; nw, iht, ci, lc, mc |
+| Hero intro | Plain text | optional; nw, iht, ci, lc, mc, dti |
 | Quick answer | Rich text | optional; sg, ef, pr, sa. Start with bold "Quick answer" |
 | Calculator markup | Rich text | one Custom Code block, pasted from `markup/<key>.html` |
 | Explainer | Rich text | the "how to use / how it works" copy below the calculator |
