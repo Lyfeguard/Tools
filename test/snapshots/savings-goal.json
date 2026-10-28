@@ -1,0 +1,672 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "sg-input-title": {
+      "text": "Your savings goal"
+    },
+    "sg-form": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures",
+      "data-ready": "true"
+    },
+    "sg-fields": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures"
+    },
+    "sg-errors": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-goal-help": {
+      "text": "The total you want to have saved."
+    },
+    "sg-goal-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-initial-help": {
+      "text": "Include only money set aside for this goal."
+    },
+    "sg-initial-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-field": {
+      "text": "Time to save Years Months For a shorter goal, enter just the months."
+    },
+    "sg-term-label": {
+      "text": "Time to save"
+    },
+    "sg-years-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-months-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-help": {
+      "text": "For a shorter goal, enter just the months."
+    },
+    "sg-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-monthly-field": {
+      "text": "Monthly saving (pounds) £ The amount you plan to add each month.",
+      "hidden": true
+    },
+    "sg-monthly@disabled": true,
+    "sg-monthly-help": {
+      "text": "The amount you plan to add each month."
+    },
+    "sg-monthly-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-rate-help": {
+      "text": "Leave at 0% to exclude interest."
+    },
+    "sg-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-live-help": {
+      "text": "Results update as you enter your figures."
+    },
+    "sg-example": {
+      "text": "Use example figures",
+      "hidden": true
+    },
+    "sg-reset": {
+      "text": "Clear figures"
+    },
+    "sg-startup": {
+      "text": "Enable JavaScript to use the calculator. You can still read the calculation method below.",
+      "hidden": true
+    },
+    "sg-state-badge": {
+      "text": "Example figures"
+    },
+    "sg-results-title": {
+      "text": "Your savings plan"
+    },
+    "sg-result": {
+      "text": "Monthly saving needed £314.41 Illustrative example Example: £10,000 target, £2,000 already saved, 2 years at 4% AER. Enter your own figures above. Already saved£2,000.00 New savings paid in£7,545.84 Estimated interest£454.22 Projected balance£10,000.06 £50 more a month (£364.41) could get you there 3 months sooner. 4% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-result-label": {
+      "text": "Monthly saving needed"
+    },
+    "sg-result-value": {
+      "text": "£314.41"
+    },
+    "sg-example-badge": {
+      "text": "Illustrative example"
+    },
+    "sg-result-summary": {
+      "text": "Example: £10,000 target, £2,000 already saved, 2 years at 4% AER. Enter your own figures above."
+    },
+    "sg-result-detail": {
+      "text": "Already saved£2,000.00 New savings paid in£7,545.84 Estimated interest£454.22 Projected balance£10,000.06 £50 more a month (£364.41) could get you there 3 months sooner."
+    },
+    "sg-out-initial": {
+      "text": "£2,000.00"
+    },
+    "sg-out-contributions": {
+      "text": "£7,545.84"
+    },
+    "sg-out-interest": {
+      "text": "£454.22"
+    },
+    "sg-out-balance": {
+      "text": "£10,000.06"
+    },
+    "sg-scenario": {
+      "text": "£50 more a month (£364.41) could get you there 3 months sooner."
+    },
+    "sg-assumptions": {
+      "text": "4% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-status": {
+      "text": ""
+    },
+    "sg-projection": {
+      "text": "Your savings breakdown Download CSV Paid in includes your starting savings. Figures are rounded to the nearest penny. Your savings breakdown When Total paid in Interest earned Savings balance Today£2,000.00£0.00£2,000.00Year 1£5,772.92£148.68£5,921.60Year 2£9,545.84£454.22£10,000.06 Scroll across to see all columns. Show all years View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-projection-title": {
+      "text": "Your savings breakdown"
+    },
+    "sg-download": {
+      "text": "Download CSV"
+    },
+    "sg-breakdown-note": {
+      "text": "Paid in includes your starting savings. Figures are rounded to the nearest penny."
+    },
+    "sg-table-caption": {
+      "text": "Your savings breakdown"
+    },
+    "sg-schedule": {
+      "text": "Today£2,000.00£0.00£2,000.00Year 1£5,772.92£148.68£5,921.60Year 2£9,545.84£454.22£10,000.06"
+    },
+    "sg-show-all": {
+      "text": "Show all years",
+      "hidden": true
+    },
+    "sg-chart-details": {
+      "text": "View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-chart-summary": {
+      "text": "The chart uses the balance at the end of every month."
+    },
+    "sg-chart": {
+      "text": "Open this section to see the chart."
+    },
+    "sg-method": {
+      "text": "How was this calculated? We start with your existing savings, add interest and then add your saving at the end of each month. Interest stays in the account and can earn further interest. Monthly saving needed Without interest, we subtract your starting savings from your target and divide the remaining amount by the number of months. With interest, we convert your AER to an equivalent monthly rate first. Monthly rate r = (1 + AER / 100)^(1 / 12) − 1Monthly saving = max(0, (T − P × (1 + r)^n) / (((1 + r)^n − 1) / r)) T is your target, P is your starting savings and n is the number of months. At 0% interest, monthly saving = max(0, (T − P) / n). We round the required monthly saving up to a sufficient penny. Time to your goal We project one month at a time until the balance reaches your target. The result is the first whole month in which you could reach it. If your starting savings already cover the target, no further saving is needed. Assumptions and limits The rate stays constant, deposits are equal and interest remains in the account. Every deposit, including the final one, is the full monthly amount, so the final balance may exceed your target. Your bank’s daily calculations and payment dates can produce a different result. The table shows cumulative figures. Total paid in includes your starting savings and subsequent deposits. Interest is the estimated total earned by that point. Calculations retain full precision; displayed money is rounded to pennies. The calculator excludes withdrawals, tax, fees, inflation, changing rates, account limits, introductory rates and bonuses, including Lifetime ISA bonuses. It models cash savings and does not model investment risk. You can model up to 50 years, targets and starting savings up to £10 million, and AERs from 0% to 25%. In time-to-goal mode, monthly saving can be up to £1 million. These are calculation limits, not suggested amounts or rates. For more detail, see HSBC’s explanation of AER and GOV.UK’s guidance on savings interest and tax."
+    }
+  },
+  "monthly": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "sg-input-title": {
+      "text": "Your savings goal"
+    },
+    "sg-form": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures",
+      "data-ready": "true"
+    },
+    "sg-fields": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures"
+    },
+    "sg-errors": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-goal-help": {
+      "text": "The total you want to have saved."
+    },
+    "sg-goal-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-initial-help": {
+      "text": "Include only money set aside for this goal."
+    },
+    "sg-initial-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-field": {
+      "text": "Time to save Years Months For a shorter goal, enter just the months."
+    },
+    "sg-term-label": {
+      "text": "Time to save"
+    },
+    "sg-years-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-months-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-help": {
+      "text": "For a shorter goal, enter just the months."
+    },
+    "sg-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-monthly-field": {
+      "text": "Monthly saving (pounds) £ The amount you plan to add each month.",
+      "hidden": true
+    },
+    "sg-monthly@disabled": true,
+    "sg-monthly-help": {
+      "text": "The amount you plan to add each month."
+    },
+    "sg-monthly-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-rate-help": {
+      "text": "Leave at 0% to exclude interest."
+    },
+    "sg-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-live-help": {
+      "text": "Results update as you enter your figures."
+    },
+    "sg-example": {
+      "text": "Use example figures",
+      "hidden": true
+    },
+    "sg-reset": {
+      "text": "Clear figures"
+    },
+    "sg-startup": {
+      "text": "Enable JavaScript to use the calculator. You can still read the calculation method below.",
+      "hidden": true
+    },
+    "sg-state-badge": {
+      "text": "Up to date"
+    },
+    "sg-results-title": {
+      "text": "Your savings plan"
+    },
+    "sg-result": {
+      "text": "Monthly saving needed £282.73 Illustrative example To reach £10,000.00 in 2 years and 6 months. Already saved£1,000.00 New savings paid in£8,481.90 Estimated interest£518.23 Projected balance£10,000.13 £50 more a month (£332.73) could get you there 4 months sooner. 4% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-result-label": {
+      "text": "Monthly saving needed"
+    },
+    "sg-result-value": {
+      "text": "£282.73"
+    },
+    "sg-example-badge": {
+      "text": "Illustrative example",
+      "hidden": true
+    },
+    "sg-result-summary": {
+      "text": "To reach £10,000.00 in 2 years and 6 months."
+    },
+    "sg-result-detail": {
+      "text": "Already saved£1,000.00 New savings paid in£8,481.90 Estimated interest£518.23 Projected balance£10,000.13 £50 more a month (£332.73) could get you there 4 months sooner."
+    },
+    "sg-out-initial": {
+      "text": "£1,000.00"
+    },
+    "sg-out-contributions": {
+      "text": "£8,481.90"
+    },
+    "sg-out-interest": {
+      "text": "£518.23"
+    },
+    "sg-out-balance": {
+      "text": "£10,000.13"
+    },
+    "sg-scenario": {
+      "text": "£50 more a month (£332.73) could get you there 4 months sooner."
+    },
+    "sg-assumptions": {
+      "text": "4% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-status": {
+      "text": "Monthly saving needed: £282.73."
+    },
+    "sg-projection": {
+      "text": "Your savings breakdown Download CSV Paid in includes your starting savings. Figures are rounded to the nearest penny. Your savings breakdown When Total paid in Interest earned Savings balance Today£1,000.00£0.00£1,000.00Year 1£4,392.76£101.76£4,494.52Year 2£7,785.52£343.30£8,128.82Month 30£9,481.90£518.23£10,000.13 Scroll across to see all columns. Show all years View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-projection-title": {
+      "text": "Your savings breakdown"
+    },
+    "sg-download": {
+      "text": "Download CSV"
+    },
+    "sg-breakdown-note": {
+      "text": "Paid in includes your starting savings. Figures are rounded to the nearest penny."
+    },
+    "sg-table-caption": {
+      "text": "Your savings breakdown"
+    },
+    "sg-schedule": {
+      "text": "Today£1,000.00£0.00£1,000.00Year 1£4,392.76£101.76£4,494.52Year 2£7,785.52£343.30£8,128.82Month 30£9,481.90£518.23£10,000.13"
+    },
+    "sg-show-all": {
+      "text": "Show all years",
+      "hidden": true
+    },
+    "sg-chart-details": {
+      "text": "View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-chart-summary": {
+      "text": "The chart uses the balance at the end of every month."
+    },
+    "sg-chart": {
+      "text": "Open this section to see the chart."
+    },
+    "sg-method": {
+      "text": "How was this calculated? We start with your existing savings, add interest and then add your saving at the end of each month. Interest stays in the account and can earn further interest. Monthly saving needed Without interest, we subtract your starting savings from your target and divide the remaining amount by the number of months. With interest, we convert your AER to an equivalent monthly rate first. Monthly rate r = (1 + AER / 100)^(1 / 12) − 1Monthly saving = max(0, (T − P × (1 + r)^n) / (((1 + r)^n − 1) / r)) T is your target, P is your starting savings and n is the number of months. At 0% interest, monthly saving = max(0, (T − P) / n). We round the required monthly saving up to a sufficient penny. Time to your goal We project one month at a time until the balance reaches your target. The result is the first whole month in which you could reach it. If your starting savings already cover the target, no further saving is needed. Assumptions and limits The rate stays constant, deposits are equal and interest remains in the account. Every deposit, including the final one, is the full monthly amount, so the final balance may exceed your target. Your bank’s daily calculations and payment dates can produce a different result. The table shows cumulative figures. Total paid in includes your starting savings and subsequent deposits. Interest is the estimated total earned by that point. Calculations retain full precision; displayed money is rounded to pennies. The calculator excludes withdrawals, tax, fees, inflation, changing rates, account limits, introductory rates and bonuses, including Lifetime ISA bonuses. It models cash savings and does not model investment risk. You can model up to 50 years, targets and starting savings up to £10 million, and AERs from 0% to 25%. In time-to-goal mode, monthly saving can be up to £1 million. These are calculation limits, not suggested amounts or rates. For more detail, see HSBC’s explanation of AER and GOV.UK’s guidance on savings interest and tax."
+    }
+  },
+  "time": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "sg-input-title": {
+      "text": "Your savings goal"
+    },
+    "sg-form": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures",
+      "data-ready": "true"
+    },
+    "sg-fields": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures"
+    },
+    "sg-errors": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-goal-help": {
+      "text": "The total you want to have saved."
+    },
+    "sg-goal-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-initial-help": {
+      "text": "Include only money set aside for this goal."
+    },
+    "sg-initial-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-field": {
+      "text": "Time to save Years Months For a shorter goal, enter just the months.",
+      "hidden": true
+    },
+    "sg-term-label": {
+      "text": "Time to save"
+    },
+    "sg-years@disabled": true,
+    "sg-years-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-months@disabled": true,
+    "sg-months-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-help": {
+      "text": "For a shorter goal, enter just the months."
+    },
+    "sg-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-monthly-field": {
+      "text": "Monthly saving (pounds) £ The amount you plan to add each month."
+    },
+    "sg-monthly-help": {
+      "text": "The amount you plan to add each month."
+    },
+    "sg-monthly-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-rate-help": {
+      "text": "Leave at 0% to exclude interest."
+    },
+    "sg-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-live-help": {
+      "text": "Results update as you enter your figures."
+    },
+    "sg-example": {
+      "text": "Use example figures",
+      "hidden": true
+    },
+    "sg-reset": {
+      "text": "Clear figures"
+    },
+    "sg-startup": {
+      "text": "Enable JavaScript to use the calculator. You can still read the calculation method below.",
+      "hidden": true
+    },
+    "sg-state-badge": {
+      "text": "Up to date"
+    },
+    "sg-results-title": {
+      "text": "Your savings plan"
+    },
+    "sg-result": {
+      "text": "Estimated time to goal 5 years Illustrative example To reach £20,000.00, saving £300.00 a month. Already saved£500.00 New savings paid in£18,000.00 Estimated interest£1,706.48 Projected balance£20,206.48 £50 more a month (£350.00) could get you there 8 months sooner. 3.5% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-result-label": {
+      "text": "Estimated time to goal"
+    },
+    "sg-result-value": {
+      "text": "5 years"
+    },
+    "sg-example-badge": {
+      "text": "Illustrative example",
+      "hidden": true
+    },
+    "sg-result-summary": {
+      "text": "To reach £20,000.00, saving £300.00 a month."
+    },
+    "sg-result-detail": {
+      "text": "Already saved£500.00 New savings paid in£18,000.00 Estimated interest£1,706.48 Projected balance£20,206.48 £50 more a month (£350.00) could get you there 8 months sooner."
+    },
+    "sg-out-initial": {
+      "text": "£500.00"
+    },
+    "sg-out-contributions": {
+      "text": "£18,000.00"
+    },
+    "sg-out-interest": {
+      "text": "£1,706.48"
+    },
+    "sg-out-balance": {
+      "text": "£20,206.48"
+    },
+    "sg-scenario": {
+      "text": "£50 more a month (£350.00) could get you there 8 months sooner."
+    },
+    "sg-assumptions": {
+      "text": "3.5% AER; deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-status": {
+      "text": "Estimated time to goal: 5 years."
+    },
+    "sg-projection": {
+      "text": "Your savings breakdown Download CSV Paid in includes your starting savings. Figures are rounded to the nearest penny. Your savings breakdown When Total paid in Interest earned Savings balance Today£500.00£0.00£500.00Year 1£4,100.00£74.89£4,174.89Year 2£7,700.00£278.40£7,978.40Year 3£11,300.00£615.04£11,915.04Year 4£14,900.00£1,089.46£15,989.46Year 5£18,500.00£1,706.48£20,206.48 Scroll across to see all columns. Show all years View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-projection-title": {
+      "text": "Your savings breakdown"
+    },
+    "sg-download": {
+      "text": "Download CSV"
+    },
+    "sg-breakdown-note": {
+      "text": "Paid in includes your starting savings. Figures are rounded to the nearest penny."
+    },
+    "sg-table-caption": {
+      "text": "Your savings breakdown"
+    },
+    "sg-schedule": {
+      "text": "Today£500.00£0.00£500.00Year 1£4,100.00£74.89£4,174.89Year 2£7,700.00£278.40£7,978.40Year 3£11,300.00£615.04£11,915.04Year 4£14,900.00£1,089.46£15,989.46Year 5£18,500.00£1,706.48£20,206.48"
+    },
+    "sg-show-all": {
+      "text": "Show all years",
+      "hidden": true
+    },
+    "sg-chart-details": {
+      "text": "View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-chart-summary": {
+      "text": "The chart uses the balance at the end of every month."
+    },
+    "sg-chart": {
+      "text": "Open this section to see the chart."
+    },
+    "sg-method": {
+      "text": "How was this calculated? We start with your existing savings, add interest and then add your saving at the end of each month. Interest stays in the account and can earn further interest. Monthly saving needed Without interest, we subtract your starting savings from your target and divide the remaining amount by the number of months. With interest, we convert your AER to an equivalent monthly rate first. Monthly rate r = (1 + AER / 100)^(1 / 12) − 1Monthly saving = max(0, (T − P × (1 + r)^n) / (((1 + r)^n − 1) / r)) T is your target, P is your starting savings and n is the number of months. At 0% interest, monthly saving = max(0, (T − P) / n). We round the required monthly saving up to a sufficient penny. Time to your goal We project one month at a time until the balance reaches your target. The result is the first whole month in which you could reach it. If your starting savings already cover the target, no further saving is needed. Assumptions and limits The rate stays constant, deposits are equal and interest remains in the account. Every deposit, including the final one, is the full monthly amount, so the final balance may exceed your target. Your bank’s daily calculations and payment dates can produce a different result. The table shows cumulative figures. Total paid in includes your starting savings and subsequent deposits. Interest is the estimated total earned by that point. Calculations retain full precision; displayed money is rounded to pennies. The calculator excludes withdrawals, tax, fees, inflation, changing rates, account limits, introductory rates and bonuses, including Lifetime ISA bonuses. It models cash savings and does not model investment risk. You can model up to 50 years, targets and starting savings up to £10 million, and AERs from 0% to 25%. In time-to-goal mode, monthly saving can be up to £1 million. These are calculation limits, not suggested amounts or rates. For more detail, see HSBC’s explanation of AER and GOV.UK’s guidance on savings interest and tax."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "sg-input-title": {
+      "text": "Your savings goal"
+    },
+    "sg-form": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Enter a target from £0.01 to £10,000,000, with up to two decimal places. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures",
+      "data-ready": "true"
+    },
+    "sg-fields": {
+      "text": "Savings goal details What would you like to calculate? Monthly saving Time to goal Savings target (pounds) £ The total you want to have saved. Enter a target from £0.01 to £10,000,000, with up to two decimal places. Already saved (pounds) £ Include only money set aside for this goal. Time to save Years Months For a shorter goal, enter just the months. Monthly saving (pounds) £ The amount you plan to add each month. Annual interest rate (AER) (percent) % Leave at 0% to exclude interest. Results update as you enter your figures. Use example figures Clear figures"
+    },
+    "sg-errors": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-goal@invalid": "true",
+    "sg-goal-help": {
+      "text": "The total you want to have saved."
+    },
+    "sg-goal-error": {
+      "text": "Enter a target from £0.01 to £10,000,000, with up to two decimal places."
+    },
+    "sg-initial-help": {
+      "text": "Include only money set aside for this goal."
+    },
+    "sg-initial-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-field": {
+      "text": "Time to save Years Months For a shorter goal, enter just the months."
+    },
+    "sg-term-label": {
+      "text": "Time to save"
+    },
+    "sg-years-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-months-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-term-help": {
+      "text": "For a shorter goal, enter just the months."
+    },
+    "sg-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-monthly-field": {
+      "text": "Monthly saving (pounds) £ The amount you plan to add each month.",
+      "hidden": true
+    },
+    "sg-monthly@disabled": true,
+    "sg-monthly-help": {
+      "text": "The amount you plan to add each month."
+    },
+    "sg-monthly-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-rate-help": {
+      "text": "Leave at 0% to exclude interest."
+    },
+    "sg-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "sg-live-help": {
+      "text": "Results update as you enter your figures."
+    },
+    "sg-example": {
+      "text": "Use example figures",
+      "hidden": true
+    },
+    "sg-reset": {
+      "text": "Clear figures"
+    },
+    "sg-startup": {
+      "text": "Enable JavaScript to use the calculator. You can still read the calculation method below.",
+      "hidden": true
+    },
+    "sg-state-badge": {
+      "text": "Complete your details"
+    },
+    "sg-results-title": {
+      "text": "Your savings plan"
+    },
+    "sg-result": {
+      "text": "Monthly saving needed — Illustrative example Complete valid figures above to update your plan. Already saved— New savings paid in— Estimated interest— Projected balance— Your saving comparison will update when your figures are complete. Monthly deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-result-label": {
+      "text": "Monthly saving needed"
+    },
+    "sg-result-value": {
+      "text": "—"
+    },
+    "sg-example-badge": {
+      "text": "Illustrative example",
+      "hidden": true
+    },
+    "sg-result-summary": {
+      "text": "Complete valid figures above to update your plan."
+    },
+    "sg-result-detail": {
+      "text": "Already saved— New savings paid in— Estimated interest— Projected balance— Your saving comparison will update when your figures are complete."
+    },
+    "sg-out-initial": {
+      "text": "—"
+    },
+    "sg-out-contributions": {
+      "text": "—"
+    },
+    "sg-out-interest": {
+      "text": "—"
+    },
+    "sg-out-balance": {
+      "text": "—"
+    },
+    "sg-scenario": {
+      "text": "Your saving comparison will update when your figures are complete."
+    },
+    "sg-assumptions": {
+      "text": "Monthly deposits at month-end. Excludes tax, fees, inflation and bonuses."
+    },
+    "sg-status": {
+      "text": "Complete your figures to update the plan."
+    },
+    "sg-projection": {
+      "text": "Your savings breakdown Download CSV Waiting for complete, valid figures. Your savings breakdown When Total paid in Interest earned Savings balance ———————————— Scroll across to see all columns. Show all years View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-projection-title": {
+      "text": "Your savings breakdown"
+    },
+    "sg-download": {
+      "text": "Download CSV",
+      "disabled": true
+    },
+    "sg-breakdown-note": {
+      "text": "Waiting for complete, valid figures."
+    },
+    "sg-table-caption": {
+      "text": "Your savings breakdown"
+    },
+    "sg-schedule": {
+      "text": "————————————"
+    },
+    "sg-show-all": {
+      "text": "Show all years",
+      "hidden": true,
+      "disabled": true
+    },
+    "sg-chart-details": {
+      "text": "View savings chart The chart uses the balance at the end of every month. Open this section to see the chart. Savings balance Total paid in"
+    },
+    "sg-chart-summary": {
+      "text": "The chart uses the balance at the end of every month."
+    },
+    "sg-chart": {
+      "text": "Open this section to see the chart."
+    },
+    "sg-method": {
+      "text": "How was this calculated? We start with your existing savings, add interest and then add your saving at the end of each month. Interest stays in the account and can earn further interest. Monthly saving needed Without interest, we subtract your starting savings from your target and divide the remaining amount by the number of months. With interest, we convert your AER to an equivalent monthly rate first. Monthly rate r = (1 + AER / 100)^(1 / 12) − 1Monthly saving = max(0, (T − P × (1 + r)^n) / (((1 + r)^n − 1) / r)) T is your target, P is your starting savings and n is the number of months. At 0% interest, monthly saving = max(0, (T − P) / n). We round the required monthly saving up to a sufficient penny. Time to your goal We project one month at a time until the balance reaches your target. The result is the first whole month in which you could reach it. If your starting savings already cover the target, no further saving is needed. Assumptions and limits The rate stays constant, deposits are equal and interest remains in the account. Every deposit, including the final one, is the full monthly amount, so the final balance may exceed your target. Your bank’s daily calculations and payment dates can produce a different result. The table shows cumulative figures. Total paid in includes your starting savings and subsequent deposits. Interest is the estimated total earned by that point. Calculations retain full precision; displayed money is rounded to pennies. The calculator excludes withdrawals, tax, fees, inflation, changing rates, account limits, introductory rates and bonuses, including Lifetime ISA bonuses. It models cash savings and does not model investment risk. You can model up to 50 years, targets and starting savings up to £10 million, and AERs from 0% to 25%. In time-to-goal mode, monthly saving can be up to £1 million. These are calculation limits, not suggested amounts or rates. For more detail, see HSBC’s explanation of AER and GOV.UK’s guidance on savings interest and tax."
+    }
+  }
+}

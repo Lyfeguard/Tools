@@ -1,0 +1,2548 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgiht-assets-card": {
+      "text": "Estate assets 01 / THE ESTATE— What is in the estate? Enter an approximate value for what the person owns. Use their share of anything jointly held and leave fields that do not apply blank. Main home (pounds sterling) £ Your share of the home at current market value. Other property (pounds sterling) £ Buy-to-let, second homes and other property interests. Cash & savings (pounds sterling) £ Bank accounts, Premium Bonds, cash ISAs. Investments (pounds sterling) £ Shares, funds, investment ISAs and similar investments. Personal possessions (pounds sterling) £ Vehicles, jewellery, valuables and collections. Life insurance (pounds sterling) £ Only policies that form part of the IHT estate, not those effectively held in trust. Pension funds already subject to inheritance tax (pounds sterling) £ Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here. Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above. Business & agricultural assets (pounds sterling) £ Full market value, before any confirmed tax relief. Other assets (pounds sterling) £ Anything not included above; avoid double-counting. Rules to estimate against 2026-27 (now) From 6 April 2027 Most unused pension funds and death benefits come within IHT from 6 April 2027. For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT. All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027.",
+      "data-ready": "true"
+    },
+    "lgiht-assets-subtotal": {
+      "text": "—"
+    },
+    "lgiht-assets-heading": {
+      "text": "What is in the estate?"
+    },
+    "lgiht-home@invalid": "false",
+    "lgiht-home-help": {
+      "text": "Your share of the home at current market value."
+    },
+    "lgiht-home-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other-property@invalid": "false",
+    "lgiht-other-property-help": {
+      "text": "Buy-to-let, second homes and other property interests."
+    },
+    "lgiht-other-property-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-cash@invalid": "false",
+    "lgiht-cash-help": {
+      "text": "Bank accounts, Premium Bonds, cash ISAs."
+    },
+    "lgiht-cash-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-investments@invalid": "false",
+    "lgiht-investments-help": {
+      "text": "Shares, funds, investment ISAs and similar investments."
+    },
+    "lgiht-investments-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-possessions@invalid": "false",
+    "lgiht-possessions-help": {
+      "text": "Vehicles, jewellery, valuables and collections."
+    },
+    "lgiht-possessions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-insurance@invalid": "false",
+    "lgiht-insurance-help": {
+      "text": "Only policies that form part of the IHT estate, not those effectively held in trust."
+    },
+    "lgiht-insurance-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pensions@invalid": "false",
+    "lgiht-pensions-help": {
+      "text": "Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here."
+    },
+    "lgiht-pensions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-2027-field": {
+      "text": "Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above.",
+      "hidden": true
+    },
+    "lgiht-pensions-2027@invalid": "false",
+    "lgiht-pensions-2027@disabled": true,
+    "lgiht-pensions-2027-help": {
+      "text": "Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business@invalid": "false",
+    "lgiht-business-help": {
+      "text": "Full market value, before any confirmed tax relief."
+    },
+    "lgiht-business-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other@invalid": "false",
+    "lgiht-other-help": {
+      "text": "Anything not included above; avoid double-counting."
+    },
+    "lgiht-other-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-period@invalid": "false",
+    "lgiht-period-help": {
+      "text": "Most unused pension funds and death benefits come within IHT from 6 April 2027."
+    },
+    "lgiht-period-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-note": {
+      "text": "For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT."
+    },
+    "lgiht-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-card": {
+      "text": "Debts and costs 02 / DEDUCTIONS— Debts and costs These amounts reduce the estate before we apply exemptions and tax-free allowances. Outstanding mortgages (pounds sterling) £ Include debts secured on property in this estate. Other outstanding debts (pounds sterling) £ Loans, credit cards and other allowable amounts. Reasonable funeral costs (pounds sterling) £ An estimated cost of the funeral, if payable by the estate. Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice."
+    },
+    "lgiht-debts-subtotal": {
+      "text": "—"
+    },
+    "lgiht-debts-heading": {
+      "text": "Debts and costs"
+    },
+    "lgiht-mortgage@invalid": "false",
+    "lgiht-mortgage-help": {
+      "text": "Include debts secured on property in this estate."
+    },
+    "lgiht-mortgage-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts@invalid": "false",
+    "lgiht-debts-help": {
+      "text": "Loans, credit cards and other allowable amounts."
+    },
+    "lgiht-debts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-funeral@invalid": "false",
+    "lgiht-funeral-help": {
+      "text": "An estimated cost of the funeral, if payable by the estate."
+    },
+    "lgiht-funeral-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-card": {
+      "text": "Who inherits 03 / WHO INHERITS Who will receive the estate? Where the estate goes matters. Transfers to a spouse or charity may be exempt; a home left to direct descendants may qualify for an extra allowance. Left to spouse or civil partner (pounds sterling) £ Only the amount expected to pass to a qualifying spouse or civil partner. Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Left to registered charities (pounds sterling) £ Only amounts expected to qualify for charity exemption. Will a qualifying home pass to children or grandchildren? Not sure — I need to check Yes — a qualifying share passes to descendants No — the home does not pass to qualifying descendants Includes qualifying stepchildren, adopted and foster children, and further direct descendants. Home equity inherited by those descendants (pounds sterling) £ Their share of the home, after associated mortgage debt; do not count property twice. The extra home allowance is not automatic. If you select Yes, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper."
+    },
+    "lgiht-family-heading": {
+      "text": "Who will receive the estate?"
+    },
+    "lgiht-spouse@invalid": "false",
+    "lgiht-spouse-help": {
+      "text": "Only the amount expected to pass to a qualifying spouse or civil partner."
+    },
+    "lgiht-spouse-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-spouse-scope-row": {
+      "text": "Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position.",
+      "hidden": true
+    },
+    "lgiht-spouse-scope@invalid": "false",
+    "lgiht-spouse-scope-help": {
+      "text": "IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position."
+    },
+    "lgiht-spouse-scope-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-charity@invalid": "false",
+    "lgiht-charity-help": {
+      "text": "Only amounts expected to qualify for charity exemption."
+    },
+    "lgiht-charity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-desc@invalid": "false",
+    "lgiht-home-desc-help": {
+      "text": "Includes qualifying stepchildren, adopted and foster children, and further direct descendants."
+    },
+    "lgiht-home-desc-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-equity@invalid": "false",
+    "lgiht-home-equity@disabled": true,
+    "lgiht-home-equity-help": {
+      "text": "Their share of the home, after associated mortgage debt; do not count property twice."
+    },
+    "lgiht-home-equity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-card": {
+      "text": "Allowances gifts and reliefs 04 / ADDITIONAL DETAILS Allowances, gifts and reliefs For a straightforward estimate, leave the amounts blank and choose No for inherited allowances. Complete the other fields only where they apply. Can you claim unused allowances from a late spouse or civil partner? No unused allowance is available Yes — I know the confirmed unused percentages Not sure — I need to check This is different from leaving assets to a living spouse. Unused standard allowance transferred (percent) % Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%. Unused home allowance transferred (percent) % Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death. Earlier gifts using the tax-free allowance (pounds sterling) £ Only the value of chargeable gifts made in the last 7 years, after gift exemptions. Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances. Confirmed business / agricultural relief (pounds sterling) £ Enter the total value of relief already established for the business/agricultural assets above. Gifts: Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill. Business & agricultural relief: from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. See HMRC guidance."
+    },
+    "lgiht-advanced-heading": {
+      "text": "Allowances, gifts and reliefs"
+    },
+    "lgiht-transfer@invalid": "false",
+    "lgiht-transfer-help": {
+      "text": "This is different from leaving assets to a living spouse."
+    },
+    "lgiht-transfer-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-nrb@invalid": "false",
+    "lgiht-transfer-nrb@disabled": true,
+    "lgiht-transfer-nrb-help": {
+      "text": "Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%."
+    },
+    "lgiht-transfer-nrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-rnrb@invalid": "false",
+    "lgiht-transfer-rnrb@disabled": true,
+    "lgiht-transfer-rnrb-help": {
+      "text": "Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death."
+    },
+    "lgiht-transfer-rnrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-gifts@invalid": "false",
+    "lgiht-gifts-help": {
+      "text": "Only the value of chargeable gifts made in the last 7 years, after gift exemptions."
+    },
+    "lgiht-gifts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation-row": {
+      "text": "Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances.",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation@invalid": "false",
+    "lgiht-relief-confirmation-help": {
+      "text": "Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances."
+    },
+    "lgiht-relief-confirmation-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business-relief@invalid": "false",
+    "lgiht-business-relief-help": {
+      "text": "Enter the total value of relief already established for the business/agricultural assets above."
+    },
+    "lgiht-business-relief-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-results-card": {
+      "text": "05 / YOUR ESTIMATE2026-27 tax year Your inheritance tax estimate Estimated inheritance tax — Enter estate figures above to see your estimate. Illustrative estimate Value included for IHT after allowable debts— Estate subject to inheritance tax— Value remaining after estimated IHT (including exempt inheritances)— Estimate calculated in this browser. No account required. Download ExcelClear figures",
+      "data-state": "empty"
+    },
+    "lgiht-status": {
+      "text": ""
+    },
+    "lgiht-period-label": {
+      "text": "2026-27 tax year"
+    },
+    "lgiht-results-heading": {
+      "text": "Your inheritance tax estimate"
+    },
+    "lgiht-tax": {
+      "text": "—"
+    },
+    "lgiht-result-description": {
+      "text": "Enter estate figures above to see your estimate."
+    },
+    "lgiht-rate-pill": {
+      "text": "Illustrative estimate"
+    },
+    "lgiht-net-estate": {
+      "text": "—"
+    },
+    "lgiht-taxable": {
+      "text": "—"
+    },
+    "lgiht-after-tax": {
+      "text": "—"
+    },
+    "lgiht-review-notice": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-download": {
+      "text": "Download Excel",
+      "disabled": true
+    },
+    "lgiht-clear": {
+      "text": "Clear figures"
+    },
+    "lgiht-allocation-card": {
+      "text": "06 / THE BIG PICTURE— Where the estate goes This shows how the estate after debts is allocated to exempt inheritances, tax reliefs, tax-free allowances and the amount still subject to IHT. Enter your estate figures to see the breakdown. This is a breakdown of the estate value, not how much tax each beneficiary personally pays. The final tax is calculated on the remaining taxable amount."
+    },
+    "lgiht-allocation-total": {
+      "text": "—"
+    },
+    "lgiht-allocation-heading": {
+      "text": "Where the estate goes"
+    },
+    "lgiht-alloc-bar": {
+      "text": "Enter your estate figures to see the breakdown.",
+      "label": "Enter estate figures to see the breakdown."
+    },
+    "lgiht-alloc-legend": {
+      "text": ""
+    },
+    "lgiht-allowance-card": {
+      "text": "07 / TAX-FREE ALLOWANCES How much allowance is available? The standard allowance and the home allowance have different rules. We show each separately, including transferred allowances, gifts and any taper reduction. Standard nil-rate band— Used against the estate —Used by prior gifts — Residence nil-rate band— Used against the estate —Lost to taper — Enter your estate details to see which allowances may apply."
+    },
+    "lgiht-allowance-heading": {
+      "text": "How much allowance is available?"
+    },
+    "lgiht-nrb-max": {
+      "text": "—"
+    },
+    "lgiht-nrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-nrb-used": {
+      "text": "—"
+    },
+    "lgiht-gift-use": {
+      "text": "—"
+    },
+    "lgiht-rnrb-max": {
+      "text": "—"
+    },
+    "lgiht-rnrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-rnrb-used": {
+      "text": "—"
+    },
+    "lgiht-rnrb-taper": {
+      "text": "—"
+    },
+    "lgiht-allowance-explain": {
+      "text": "Enter your estate details to see which allowances may apply."
+    },
+    "lgiht-ledger-card": {
+      "text": "08 / FULL CALCULATION2026-27 How your estimate adds up Follow the calculation from the full estate value through to the final tax estimate. Figures update as you type. Assets and debts +Gross value of assets— -Debts and funeral costs— =Net estate before exemptions— Exemptions and reliefs -Spouse / civil partner exemption— -Charitable gifts exemption— -Confirmed business / agricultural relief— Tax-free allowances Standard allowance available for estate— -Standard allowance applied— Home allowance lost to taper— -Home allowance applied— Taxable amount =Estate subject to IHT— xIllustrative inheritance tax rate— =Estimated IHT— IHT as % of net estate— This is a simplified single-component estimate at 40%. The reduced 36% rate for qualifying gifts to charity is not automatically applied; it requires a separate component-based assessment."
+    },
+    "lgiht-ledger-year": {
+      "text": "2026-27"
+    },
+    "lgiht-ledger-heading": {
+      "text": "How your estimate adds up"
+    },
+    "lgiht-gross": {
+      "text": "—"
+    },
+    "lgiht-debts-used": {
+      "text": "—"
+    },
+    "lgiht-net": {
+      "text": "—"
+    },
+    "lgiht-spouse-used": {
+      "text": "—"
+    },
+    "lgiht-charity-used": {
+      "text": "—"
+    },
+    "lgiht-relief-used": {
+      "text": "—"
+    },
+    "lgiht-nrb-available": {
+      "text": "—"
+    },
+    "lgiht-nrb-used-ledger": {
+      "text": "—"
+    },
+    "lgiht-rnrb-taper-ledger": {
+      "text": "—"
+    },
+    "lgiht-rnrb-used-ledger": {
+      "text": "—"
+    },
+    "lgiht-taxable-ledger": {
+      "text": "—"
+    },
+    "lgiht-tax-rate-ledger": {
+      "text": "—"
+    },
+    "lgiht-tax-ledger": {
+      "text": "—"
+    },
+    "lgiht-effective-rate": {
+      "text": "—"
+    },
+    "lgiht-ledger-note": {
+      "text": "This is a simplified single-component estimate at 40%. The reduced 36% rate for qualifying gifts to charity is not automatically applied; it requires a separate component-based assessment."
+    },
+    "lgiht-method-card": {
+      "text": "09 / UNDERSTANDING THE FIGURES How was this calculated? The calculation uses the tax rules for the selected period, but the correct IHT treatment of an actual estate may depend on valuations, gifts, residence eligibility and relief claims. Add values above to see which rules affect the result. Standard and inherited allowances+ The individual nil-rate band is £325,000. A surviving spouse or civil partner may claim the unused proportion of their late partner's band, potentially raising the combined standard allowance to £650,000. Chargeable gifts in the previous seven years may reduce the band available against the estate. The extra home allowance and £2m taper+ Where a qualifying home or share passes to direct descendants, the residence nil-rate band may add up to £175,000 per person, plus an eligible transferred amount. It cannot exceed the home equity closely inherited and reduces by £1 for every £2 by which the net estate exceeds £2m. The taper test uses the estate after debts, before spouse/charity exemptions and business reliefs. Why charitable gifts can reduce the rate+ Qualifying charitable bequests are exempt. A reduced 36% rate may apply if the charitable gift is at least 10% of a defined baseline amount. The headline calculation here uses 40%; it does not automatically apply the reduced rate. Where the simple 10% test is met, a possible 36% illustration appears in the explanation, but it is not a confirmed liability. Mixed estates, pensions, trusts and gifts free of tax can require a different HMRC calculation. Gifts, business relief and pensions+ This calculator uses declared non-exempt lifetime gifts and confirmed business/agricultural relief but does not calculate separate inheritance tax on lifetime gifts or all relief eligibility conditions. From 6 April 2027 most unused pension funds and death benefits fall within IHT, with exceptions. Enter amounts already within IHT and additional post-2027 pension values separately. Scope: simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice. Official sources: HMRC inheritance tax · Home allowance · Gift rules · Pensions from 2027."
+    },
+    "lgiht-method-heading": {
+      "text": "How was this calculated?"
+    },
+    "lgiht-method-dynamic": {
+      "text": "Add values above to see which rules affect the result."
+    }
+  },
+  "simple": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgiht-assets-card": {
+      "text": "Estate assets 01 / THE ESTATE£500,000 What is in the estate? Enter an approximate value for what the person owns. Use their share of anything jointly held and leave fields that do not apply blank. Main home (pounds sterling) £ Your share of the home at current market value. Other property (pounds sterling) £ Buy-to-let, second homes and other property interests. Cash & savings (pounds sterling) £ Bank accounts, Premium Bonds, cash ISAs. Investments (pounds sterling) £ Shares, funds, investment ISAs and similar investments. Personal possessions (pounds sterling) £ Vehicles, jewellery, valuables and collections. Life insurance (pounds sterling) £ Only policies that form part of the IHT estate, not those effectively held in trust. Pension funds already subject to inheritance tax (pounds sterling) £ Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here. Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above. Business & agricultural assets (pounds sterling) £ Full market value, before any confirmed tax relief. Other assets (pounds sterling) £ Anything not included above; avoid double-counting. Rules to estimate against 2026-27 (now) From 6 April 2027 Most unused pension funds and death benefits come within IHT from 6 April 2027. For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT. All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027.",
+      "data-ready": "true"
+    },
+    "lgiht-assets-subtotal": {
+      "text": "£500,000"
+    },
+    "lgiht-assets-heading": {
+      "text": "What is in the estate?"
+    },
+    "lgiht-home@invalid": "false",
+    "lgiht-home-help": {
+      "text": "Your share of the home at current market value."
+    },
+    "lgiht-home-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other-property@invalid": "false",
+    "lgiht-other-property-help": {
+      "text": "Buy-to-let, second homes and other property interests."
+    },
+    "lgiht-other-property-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-cash@invalid": "false",
+    "lgiht-cash-help": {
+      "text": "Bank accounts, Premium Bonds, cash ISAs."
+    },
+    "lgiht-cash-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-investments@invalid": "false",
+    "lgiht-investments-help": {
+      "text": "Shares, funds, investment ISAs and similar investments."
+    },
+    "lgiht-investments-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-possessions@invalid": "false",
+    "lgiht-possessions-help": {
+      "text": "Vehicles, jewellery, valuables and collections."
+    },
+    "lgiht-possessions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-insurance@invalid": "false",
+    "lgiht-insurance-help": {
+      "text": "Only policies that form part of the IHT estate, not those effectively held in trust."
+    },
+    "lgiht-insurance-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pensions@invalid": "false",
+    "lgiht-pensions-help": {
+      "text": "Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here."
+    },
+    "lgiht-pensions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-2027-field": {
+      "text": "Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above.",
+      "hidden": true
+    },
+    "lgiht-pensions-2027@invalid": "false",
+    "lgiht-pensions-2027@disabled": true,
+    "lgiht-pensions-2027-help": {
+      "text": "Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business@invalid": "false",
+    "lgiht-business-help": {
+      "text": "Full market value, before any confirmed tax relief."
+    },
+    "lgiht-business-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other@invalid": "false",
+    "lgiht-other-help": {
+      "text": "Anything not included above; avoid double-counting."
+    },
+    "lgiht-other-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-period@invalid": "false",
+    "lgiht-period-help": {
+      "text": "Most unused pension funds and death benefits come within IHT from 6 April 2027."
+    },
+    "lgiht-period-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-note": {
+      "text": "For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT."
+    },
+    "lgiht-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-card": {
+      "text": "Debts and costs 02 / DEDUCTIONS£0 Debts and costs These amounts reduce the estate before we apply exemptions and tax-free allowances. Outstanding mortgages (pounds sterling) £ Include debts secured on property in this estate. Other outstanding debts (pounds sterling) £ Loans, credit cards and other allowable amounts. Reasonable funeral costs (pounds sterling) £ An estimated cost of the funeral, if payable by the estate. Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice."
+    },
+    "lgiht-debts-subtotal": {
+      "text": "£0"
+    },
+    "lgiht-debts-heading": {
+      "text": "Debts and costs"
+    },
+    "lgiht-mortgage@invalid": "false",
+    "lgiht-mortgage-help": {
+      "text": "Include debts secured on property in this estate."
+    },
+    "lgiht-mortgage-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts@invalid": "false",
+    "lgiht-debts-help": {
+      "text": "Loans, credit cards and other allowable amounts."
+    },
+    "lgiht-debts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-funeral@invalid": "false",
+    "lgiht-funeral-help": {
+      "text": "An estimated cost of the funeral, if payable by the estate."
+    },
+    "lgiht-funeral-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-card": {
+      "text": "Who inherits 03 / WHO INHERITS Who will receive the estate? Where the estate goes matters. Transfers to a spouse or charity may be exempt; a home left to direct descendants may qualify for an extra allowance. Left to spouse or civil partner (pounds sterling) £ Only the amount expected to pass to a qualifying spouse or civil partner. Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Left to registered charities (pounds sterling) £ Only amounts expected to qualify for charity exemption. Will a qualifying home pass to children or grandchildren? Not sure — I need to check Yes — a qualifying share passes to descendants No — the home does not pass to qualifying descendants Includes qualifying stepchildren, adopted and foster children, and further direct descendants. Home equity inherited by those descendants (pounds sterling) £ Their share of the home, after associated mortgage debt; do not count property twice. The extra home allowance is not automatic. If you select Yes, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper."
+    },
+    "lgiht-family-heading": {
+      "text": "Who will receive the estate?"
+    },
+    "lgiht-spouse@invalid": "false",
+    "lgiht-spouse-help": {
+      "text": "Only the amount expected to pass to a qualifying spouse or civil partner."
+    },
+    "lgiht-spouse-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-spouse-scope-row": {
+      "text": "Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position.",
+      "hidden": true
+    },
+    "lgiht-spouse-scope@invalid": "false",
+    "lgiht-spouse-scope-help": {
+      "text": "IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position."
+    },
+    "lgiht-spouse-scope-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-charity@invalid": "false",
+    "lgiht-charity-help": {
+      "text": "Only amounts expected to qualify for charity exemption."
+    },
+    "lgiht-charity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-desc@invalid": "false",
+    "lgiht-home-desc-help": {
+      "text": "Includes qualifying stepchildren, adopted and foster children, and further direct descendants."
+    },
+    "lgiht-home-desc-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-equity@invalid": "false",
+    "lgiht-home-equity@disabled": true,
+    "lgiht-home-equity-help": {
+      "text": "Their share of the home, after associated mortgage debt; do not count property twice."
+    },
+    "lgiht-home-equity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-card": {
+      "text": "Allowances gifts and reliefs 04 / ADDITIONAL DETAILS Allowances, gifts and reliefs For a straightforward estimate, leave the amounts blank and choose No for inherited allowances. Complete the other fields only where they apply. Can you claim unused allowances from a late spouse or civil partner? No unused allowance is available Yes — I know the confirmed unused percentages Not sure — I need to check This is different from leaving assets to a living spouse. Unused standard allowance transferred (percent) % Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%. Unused home allowance transferred (percent) % Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death. Earlier gifts using the tax-free allowance (pounds sterling) £ Only the value of chargeable gifts made in the last 7 years, after gift exemptions. Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances. Confirmed business / agricultural relief (pounds sterling) £ Enter the total value of relief already established for the business/agricultural assets above. Gifts: Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill. Business & agricultural relief: from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. See HMRC guidance."
+    },
+    "lgiht-advanced-heading": {
+      "text": "Allowances, gifts and reliefs"
+    },
+    "lgiht-transfer@invalid": "false",
+    "lgiht-transfer-help": {
+      "text": "This is different from leaving assets to a living spouse."
+    },
+    "lgiht-transfer-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-nrb@invalid": "false",
+    "lgiht-transfer-nrb@disabled": true,
+    "lgiht-transfer-nrb-help": {
+      "text": "Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%."
+    },
+    "lgiht-transfer-nrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-rnrb@invalid": "false",
+    "lgiht-transfer-rnrb@disabled": true,
+    "lgiht-transfer-rnrb-help": {
+      "text": "Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death."
+    },
+    "lgiht-transfer-rnrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-gifts@invalid": "false",
+    "lgiht-gifts-help": {
+      "text": "Only the value of chargeable gifts made in the last 7 years, after gift exemptions."
+    },
+    "lgiht-gifts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation-row": {
+      "text": "Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances.",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation@invalid": "false",
+    "lgiht-relief-confirmation-help": {
+      "text": "Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances."
+    },
+    "lgiht-relief-confirmation-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business-relief@invalid": "false",
+    "lgiht-business-relief-help": {
+      "text": "Enter the total value of relief already established for the business/agricultural assets above."
+    },
+    "lgiht-business-relief-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-results-card": {
+      "text": "Estimate updated for 2026 to 2027. Estimated inheritance tax: £70,000. Illustrative estimate. 05 / YOUR ESTIMATE2026-27 tax year Your inheritance tax estimate Estimated inheritance tax £70,000 Based on the estate and allowances entered. A simplified UK estate estimate, not a formal tax calculation. 40% standard IHT rate Value included for IHT after allowable debts£500,000 Estate subject to inheritance tax£175,000 Value remaining after estimated IHT (including exempt inheritances)£430,000 Estimate calculated in this browser. No account required. Download ExcelClear figures",
+      "data-state": "positive"
+    },
+    "lgiht-status": {
+      "text": "Estimate updated for 2026 to 2027. Estimated inheritance tax: £70,000. Illustrative estimate."
+    },
+    "lgiht-period-label": {
+      "text": "2026-27 tax year"
+    },
+    "lgiht-results-heading": {
+      "text": "Your inheritance tax estimate"
+    },
+    "lgiht-tax": {
+      "text": "£70,000"
+    },
+    "lgiht-result-description": {
+      "text": "Based on the estate and allowances entered. A simplified UK estate estimate, not a formal tax calculation."
+    },
+    "lgiht-rate-pill": {
+      "text": "40% standard IHT rate"
+    },
+    "lgiht-net-estate": {
+      "text": "£500,000"
+    },
+    "lgiht-taxable": {
+      "text": "£175,000"
+    },
+    "lgiht-after-tax": {
+      "text": "£430,000"
+    },
+    "lgiht-review-notice": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-download": {
+      "text": "Download Excel"
+    },
+    "lgiht-clear": {
+      "text": "Clear figures"
+    },
+    "lgiht-allocation-card": {
+      "text": "06 / THE BIG PICTURE£500,000 Where the estate goes This shows how the estate after debts is allocated to exempt inheritances, tax reliefs, tax-free allowances and the amount still subject to IHT. Standard tax-free allowance£325,00065% of net estateSubject to IHT£175,00035% of net estate This is a breakdown of the estate value, not how much tax each beneficiary personally pays. The final tax is calculated on the remaining taxable amount."
+    },
+    "lgiht-allocation-total": {
+      "text": "£500,000"
+    },
+    "lgiht-allocation-heading": {
+      "text": "Where the estate goes"
+    },
+    "lgiht-alloc-bar": {
+      "text": "",
+      "label": "Standard tax-free allowance: £325,000; Subject to IHT: £175,000"
+    },
+    "lgiht-alloc-legend": {
+      "text": "Standard tax-free allowance£325,00065% of net estateSubject to IHT£175,00035% of net estate"
+    },
+    "lgiht-allowance-card": {
+      "text": "07 / TAX-FREE ALLOWANCES How much allowance is available? The standard allowance and the home allowance have different rules. We show each separately, including transferred allowances, gifts and any taper reduction. Standard nil-rate band£325,000 Used against the estate £325,000Used by prior gifts £0 Residence nil-rate band£175,000 Used against the estate £0Lost to taper £0 Standard allowance £325,000, with £0 allocated to earlier gifts. No home allowance applied because a qualifying home has not been specified as passing to direct descendants."
+    },
+    "lgiht-allowance-heading": {
+      "text": "How much allowance is available?"
+    },
+    "lgiht-nrb-max": {
+      "text": "£325,000"
+    },
+    "lgiht-nrb-bar": {
+      "text": "",
+      "width": "100%"
+    },
+    "lgiht-nrb-used": {
+      "text": "£325,000"
+    },
+    "lgiht-gift-use": {
+      "text": "£0"
+    },
+    "lgiht-rnrb-max": {
+      "text": "£175,000"
+    },
+    "lgiht-rnrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-rnrb-used": {
+      "text": "£0"
+    },
+    "lgiht-rnrb-taper": {
+      "text": "£0"
+    },
+    "lgiht-allowance-explain": {
+      "text": "Standard allowance £325,000, with £0 allocated to earlier gifts. No home allowance applied because a qualifying home has not been specified as passing to direct descendants."
+    },
+    "lgiht-ledger-card": {
+      "text": "08 / FULL CALCULATION2026-27 How your estimate adds up Follow the calculation from the full estate value through to the final tax estimate. Figures update as you type. Assets and debts +Gross value of assets£500,000 -Debts and funeral costs£0 =Net estate before exemptions£500,000 Exemptions and reliefs -Spouse / civil partner exemption£0 -Charitable gifts exemption£0 -Confirmed business / agricultural relief£0 Tax-free allowances Standard allowance available for estate£325,000 -Standard allowance applied£325,000 Home allowance lost to taper£0 -Home allowance applied£0 Taxable amount =Estate subject to IHT£175,000 xIllustrative inheritance tax rate40% =Estimated IHT£70,000 IHT as % of net estate14% This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-ledger-year": {
+      "text": "2026-27"
+    },
+    "lgiht-ledger-heading": {
+      "text": "How your estimate adds up"
+    },
+    "lgiht-gross": {
+      "text": "£500,000"
+    },
+    "lgiht-debts-used": {
+      "text": "£0"
+    },
+    "lgiht-net": {
+      "text": "£500,000"
+    },
+    "lgiht-spouse-used": {
+      "text": "£0"
+    },
+    "lgiht-charity-used": {
+      "text": "£0"
+    },
+    "lgiht-relief-used": {
+      "text": "£0"
+    },
+    "lgiht-nrb-available": {
+      "text": "£325,000"
+    },
+    "lgiht-nrb-used-ledger": {
+      "text": "£325,000"
+    },
+    "lgiht-rnrb-taper-ledger": {
+      "text": "£0"
+    },
+    "lgiht-rnrb-used-ledger": {
+      "text": "£0"
+    },
+    "lgiht-taxable-ledger": {
+      "text": "£175,000"
+    },
+    "lgiht-tax-rate-ledger": {
+      "text": "40%"
+    },
+    "lgiht-tax-ledger": {
+      "text": "£70,000"
+    },
+    "lgiht-effective-rate": {
+      "text": "14%"
+    },
+    "lgiht-ledger-note": {
+      "text": "This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-method-card": {
+      "text": "09 / UNDERSTANDING THE FIGURES How was this calculated? The calculation uses the tax rules for the selected period, but the correct IHT treatment of an actual estate may depend on valuations, gifts, residence eligibility and relief claims. Net estate after debts: £500,000. Standard allowance used: £325,000. Standard and inherited allowances+ The individual nil-rate band is £325,000. A surviving spouse or civil partner may claim the unused proportion of their late partner's band, potentially raising the combined standard allowance to £650,000. Chargeable gifts in the previous seven years may reduce the band available against the estate. The extra home allowance and £2m taper+ Where a qualifying home or share passes to direct descendants, the residence nil-rate band may add up to £175,000 per person, plus an eligible transferred amount. It cannot exceed the home equity closely inherited and reduces by £1 for every £2 by which the net estate exceeds £2m. The taper test uses the estate after debts, before spouse/charity exemptions and business reliefs. Why charitable gifts can reduce the rate+ Qualifying charitable bequests are exempt. A reduced 36% rate may apply if the charitable gift is at least 10% of a defined baseline amount. The headline calculation here uses 40%; it does not automatically apply the reduced rate. Where the simple 10% test is met, a possible 36% illustration appears in the explanation, but it is not a confirmed liability. Mixed estates, pensions, trusts and gifts free of tax can require a different HMRC calculation. Gifts, business relief and pensions+ This calculator uses declared non-exempt lifetime gifts and confirmed business/agricultural relief but does not calculate separate inheritance tax on lifetime gifts or all relief eligibility conditions. From 6 April 2027 most unused pension funds and death benefits fall within IHT, with exceptions. Enter amounts already within IHT and additional post-2027 pension values separately. Scope: simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice. Official sources: HMRC inheritance tax · Home allowance · Gift rules · Pensions from 2027."
+    },
+    "lgiht-method-heading": {
+      "text": "How was this calculated?"
+    },
+    "lgiht-method-dynamic": {
+      "text": "Net estate after debts: £500,000. Standard allowance used: £325,000."
+    }
+  },
+  "home": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgiht-assets-card": {
+      "text": "Estate assets 01 / THE ESTATE£750,000 What is in the estate? Enter an approximate value for what the person owns. Use their share of anything jointly held and leave fields that do not apply blank. Main home (pounds sterling) £ Your share of the home at current market value. Other property (pounds sterling) £ Buy-to-let, second homes and other property interests. Cash & savings (pounds sterling) £ Bank accounts, Premium Bonds, cash ISAs. Investments (pounds sterling) £ Shares, funds, investment ISAs and similar investments. Personal possessions (pounds sterling) £ Vehicles, jewellery, valuables and collections. Life insurance (pounds sterling) £ Only policies that form part of the IHT estate, not those effectively held in trust. Pension funds already subject to inheritance tax (pounds sterling) £ Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here. Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above. Business & agricultural assets (pounds sterling) £ Full market value, before any confirmed tax relief. Other assets (pounds sterling) £ Anything not included above; avoid double-counting. Rules to estimate against 2026-27 (now) From 6 April 2027 Most unused pension funds and death benefits come within IHT from 6 April 2027. For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT. All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027.",
+      "data-ready": "true"
+    },
+    "lgiht-assets-subtotal": {
+      "text": "£750,000"
+    },
+    "lgiht-assets-heading": {
+      "text": "What is in the estate?"
+    },
+    "lgiht-home@invalid": "false",
+    "lgiht-home-help": {
+      "text": "Your share of the home at current market value."
+    },
+    "lgiht-home-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other-property@invalid": "false",
+    "lgiht-other-property-help": {
+      "text": "Buy-to-let, second homes and other property interests."
+    },
+    "lgiht-other-property-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-cash@invalid": "false",
+    "lgiht-cash-help": {
+      "text": "Bank accounts, Premium Bonds, cash ISAs."
+    },
+    "lgiht-cash-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-investments@invalid": "false",
+    "lgiht-investments-help": {
+      "text": "Shares, funds, investment ISAs and similar investments."
+    },
+    "lgiht-investments-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-possessions@invalid": "false",
+    "lgiht-possessions-help": {
+      "text": "Vehicles, jewellery, valuables and collections."
+    },
+    "lgiht-possessions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-insurance@invalid": "false",
+    "lgiht-insurance-help": {
+      "text": "Only policies that form part of the IHT estate, not those effectively held in trust."
+    },
+    "lgiht-insurance-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pensions@invalid": "false",
+    "lgiht-pensions-help": {
+      "text": "Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here."
+    },
+    "lgiht-pensions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-2027-field": {
+      "text": "Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above.",
+      "hidden": true
+    },
+    "lgiht-pensions-2027@invalid": "false",
+    "lgiht-pensions-2027@disabled": true,
+    "lgiht-pensions-2027-help": {
+      "text": "Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business@invalid": "false",
+    "lgiht-business-help": {
+      "text": "Full market value, before any confirmed tax relief."
+    },
+    "lgiht-business-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other@invalid": "false",
+    "lgiht-other-help": {
+      "text": "Anything not included above; avoid double-counting."
+    },
+    "lgiht-other-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-period@invalid": "false",
+    "lgiht-period-help": {
+      "text": "Most unused pension funds and death benefits come within IHT from 6 April 2027."
+    },
+    "lgiht-period-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-note": {
+      "text": "For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT."
+    },
+    "lgiht-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-card": {
+      "text": "Debts and costs 02 / DEDUCTIONS£55,000 Debts and costs These amounts reduce the estate before we apply exemptions and tax-free allowances. Outstanding mortgages (pounds sterling) £ Include debts secured on property in this estate. Other outstanding debts (pounds sterling) £ Loans, credit cards and other allowable amounts. Reasonable funeral costs (pounds sterling) £ An estimated cost of the funeral, if payable by the estate. Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice."
+    },
+    "lgiht-debts-subtotal": {
+      "text": "£55,000"
+    },
+    "lgiht-debts-heading": {
+      "text": "Debts and costs"
+    },
+    "lgiht-mortgage@invalid": "false",
+    "lgiht-mortgage-help": {
+      "text": "Include debts secured on property in this estate."
+    },
+    "lgiht-mortgage-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts@invalid": "false",
+    "lgiht-debts-help": {
+      "text": "Loans, credit cards and other allowable amounts."
+    },
+    "lgiht-debts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-funeral@invalid": "false",
+    "lgiht-funeral-help": {
+      "text": "An estimated cost of the funeral, if payable by the estate."
+    },
+    "lgiht-funeral-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-card": {
+      "text": "Who inherits 03 / WHO INHERITS Who will receive the estate? Where the estate goes matters. Transfers to a spouse or charity may be exempt; a home left to direct descendants may qualify for an extra allowance. Left to spouse or civil partner (pounds sterling) £ Only the amount expected to pass to a qualifying spouse or civil partner. Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Left to registered charities (pounds sterling) £ Only amounts expected to qualify for charity exemption. Will a qualifying home pass to children or grandchildren? Not sure — I need to check Yes — a qualifying share passes to descendants No — the home does not pass to qualifying descendants Includes qualifying stepchildren, adopted and foster children, and further direct descendants. Home equity inherited by those descendants (pounds sterling) £ Their share of the home, after associated mortgage debt; do not count property twice. The extra home allowance is not automatic. If you select Yes, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper."
+    },
+    "lgiht-family-heading": {
+      "text": "Who will receive the estate?"
+    },
+    "lgiht-spouse@invalid": "false",
+    "lgiht-spouse-help": {
+      "text": "Only the amount expected to pass to a qualifying spouse or civil partner."
+    },
+    "lgiht-spouse-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-spouse-scope-row": {
+      "text": "Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position.",
+      "hidden": true
+    },
+    "lgiht-spouse-scope@invalid": "false",
+    "lgiht-spouse-scope-help": {
+      "text": "IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position."
+    },
+    "lgiht-spouse-scope-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-charity@invalid": "false",
+    "lgiht-charity-help": {
+      "text": "Only amounts expected to qualify for charity exemption."
+    },
+    "lgiht-charity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-desc@invalid": "false",
+    "lgiht-home-desc-help": {
+      "text": "Includes qualifying stepchildren, adopted and foster children, and further direct descendants."
+    },
+    "lgiht-home-desc-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-equity@invalid": "false",
+    "lgiht-home-equity-help": {
+      "text": "Their share of the home, after associated mortgage debt; do not count property twice."
+    },
+    "lgiht-home-equity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-card": {
+      "text": "Allowances gifts and reliefs 04 / ADDITIONAL DETAILS Allowances, gifts and reliefs For a straightforward estimate, leave the amounts blank and choose No for inherited allowances. Complete the other fields only where they apply. Can you claim unused allowances from a late spouse or civil partner? No unused allowance is available Yes — I know the confirmed unused percentages Not sure — I need to check This is different from leaving assets to a living spouse. Unused standard allowance transferred (percent) % Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%. Unused home allowance transferred (percent) % Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death. Earlier gifts using the tax-free allowance (pounds sterling) £ Only the value of chargeable gifts made in the last 7 years, after gift exemptions. Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances. Confirmed business / agricultural relief (pounds sterling) £ Enter the total value of relief already established for the business/agricultural assets above. Gifts: Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill. Business & agricultural relief: from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. See HMRC guidance."
+    },
+    "lgiht-advanced-heading": {
+      "text": "Allowances, gifts and reliefs"
+    },
+    "lgiht-transfer@invalid": "false",
+    "lgiht-transfer-help": {
+      "text": "This is different from leaving assets to a living spouse."
+    },
+    "lgiht-transfer-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-nrb@invalid": "false",
+    "lgiht-transfer-nrb-help": {
+      "text": "Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%."
+    },
+    "lgiht-transfer-nrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-rnrb@invalid": "false",
+    "lgiht-transfer-rnrb-help": {
+      "text": "Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death."
+    },
+    "lgiht-transfer-rnrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-gifts@invalid": "false",
+    "lgiht-gifts-help": {
+      "text": "Only the value of chargeable gifts made in the last 7 years, after gift exemptions."
+    },
+    "lgiht-gifts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation-row": {
+      "text": "Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances.",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation@invalid": "false",
+    "lgiht-relief-confirmation-help": {
+      "text": "Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances."
+    },
+    "lgiht-relief-confirmation-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business-relief@invalid": "false",
+    "lgiht-business-relief-help": {
+      "text": "Enter the total value of relief already established for the business/agricultural assets above."
+    },
+    "lgiht-business-relief-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-results-card": {
+      "text": "Estimate updated for 2026 to 2027. Estimated inheritance tax: £0. Illustrative estimate. 05 / YOUR ESTIMATE2026-27 tax year Your inheritance tax estimate Estimated inheritance tax £0 Based on the amounts entered, no IHT is estimated on the estate. This is not an HMRC assessment. No estimated tax payable Value included for IHT after allowable debts£695,000 Estate subject to inheritance tax£0 Value remaining after estimated IHT (including exempt inheritances)£695,000 Estimate calculated in this browser. No account required. Download ExcelClear figures",
+      "data-state": "zero"
+    },
+    "lgiht-status": {
+      "text": "Estimate updated for 2026 to 2027. Estimated inheritance tax: £0. Illustrative estimate."
+    },
+    "lgiht-period-label": {
+      "text": "2026-27 tax year"
+    },
+    "lgiht-results-heading": {
+      "text": "Your inheritance tax estimate"
+    },
+    "lgiht-tax": {
+      "text": "£0"
+    },
+    "lgiht-result-description": {
+      "text": "Based on the amounts entered, no IHT is estimated on the estate. This is not an HMRC assessment."
+    },
+    "lgiht-rate-pill": {
+      "text": "No estimated tax payable"
+    },
+    "lgiht-net-estate": {
+      "text": "£695,000"
+    },
+    "lgiht-taxable": {
+      "text": "£0"
+    },
+    "lgiht-after-tax": {
+      "text": "£695,000"
+    },
+    "lgiht-review-notice": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-download": {
+      "text": "Download Excel"
+    },
+    "lgiht-clear": {
+      "text": "Clear figures"
+    },
+    "lgiht-allocation-card": {
+      "text": "06 / THE BIG PICTURE£695,000 Where the estate goes This shows how the estate after debts is allocated to exempt inheritances, tax reliefs, tax-free allowances and the amount still subject to IHT. Standard tax-free allowance£650,00093.5% of net estateHome tax-free allowance£45,0006.5% of net estate This is a breakdown of the estate value, not how much tax each beneficiary personally pays. The final tax is calculated on the remaining taxable amount."
+    },
+    "lgiht-allocation-total": {
+      "text": "£695,000"
+    },
+    "lgiht-allocation-heading": {
+      "text": "Where the estate goes"
+    },
+    "lgiht-alloc-bar": {
+      "text": "",
+      "label": "Standard tax-free allowance: £650,000; Home tax-free allowance: £45,000"
+    },
+    "lgiht-alloc-legend": {
+      "text": "Standard tax-free allowance£650,00093.5% of net estateHome tax-free allowance£45,0006.5% of net estate"
+    },
+    "lgiht-allowance-card": {
+      "text": "07 / TAX-FREE ALLOWANCES How much allowance is available? The standard allowance and the home allowance have different rules. We show each separately, including transferred allowances, gifts and any taper reduction. Standard nil-rate band£650,000 Used against the estate £650,000Used by prior gifts £0 Residence nil-rate band£350,000 Used against the estate £45,000Lost to taper £0 Standard allowance £650,000, with £0 allocated to earlier gifts. Home allowance: £350,000 before taper, £45,000 used against this estate."
+    },
+    "lgiht-allowance-heading": {
+      "text": "How much allowance is available?"
+    },
+    "lgiht-nrb-max": {
+      "text": "£650,000"
+    },
+    "lgiht-nrb-bar": {
+      "text": "",
+      "width": "100%"
+    },
+    "lgiht-nrb-used": {
+      "text": "£650,000"
+    },
+    "lgiht-gift-use": {
+      "text": "£0"
+    },
+    "lgiht-rnrb-max": {
+      "text": "£350,000"
+    },
+    "lgiht-rnrb-bar": {
+      "text": "",
+      "width": "12.8571%"
+    },
+    "lgiht-rnrb-used": {
+      "text": "£45,000"
+    },
+    "lgiht-rnrb-taper": {
+      "text": "£0"
+    },
+    "lgiht-allowance-explain": {
+      "text": "Standard allowance £650,000, with £0 allocated to earlier gifts. Home allowance: £350,000 before taper, £45,000 used against this estate."
+    },
+    "lgiht-ledger-card": {
+      "text": "08 / FULL CALCULATION2026-27 How your estimate adds up Follow the calculation from the full estate value through to the final tax estimate. Figures update as you type. Assets and debts +Gross value of assets£750,000 -Debts and funeral costs£55,000 =Net estate before exemptions£695,000 Exemptions and reliefs -Spouse / civil partner exemption£0 -Charitable gifts exemption£0 -Confirmed business / agricultural relief£0 Tax-free allowances Standard allowance available for estate£650,000 -Standard allowance applied£650,000 Home allowance lost to taper£0 -Home allowance applied£45,000 Taxable amount =Estate subject to IHT£0 xIllustrative inheritance tax rate40% =Estimated IHT£0 IHT as % of net estate0% This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-ledger-year": {
+      "text": "2026-27"
+    },
+    "lgiht-ledger-heading": {
+      "text": "How your estimate adds up"
+    },
+    "lgiht-gross": {
+      "text": "£750,000"
+    },
+    "lgiht-debts-used": {
+      "text": "£55,000"
+    },
+    "lgiht-net": {
+      "text": "£695,000"
+    },
+    "lgiht-spouse-used": {
+      "text": "£0"
+    },
+    "lgiht-charity-used": {
+      "text": "£0"
+    },
+    "lgiht-relief-used": {
+      "text": "£0"
+    },
+    "lgiht-nrb-available": {
+      "text": "£650,000"
+    },
+    "lgiht-nrb-used-ledger": {
+      "text": "£650,000"
+    },
+    "lgiht-rnrb-taper-ledger": {
+      "text": "£0"
+    },
+    "lgiht-rnrb-used-ledger": {
+      "text": "£45,000"
+    },
+    "lgiht-taxable-ledger": {
+      "text": "£0"
+    },
+    "lgiht-tax-rate-ledger": {
+      "text": "40%"
+    },
+    "lgiht-tax-ledger": {
+      "text": "£0"
+    },
+    "lgiht-effective-rate": {
+      "text": "0%"
+    },
+    "lgiht-ledger-note": {
+      "text": "This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-method-card": {
+      "text": "09 / UNDERSTANDING THE FIGURES How was this calculated? The calculation uses the tax rules for the selected period, but the correct IHT treatment of an actual estate may depend on valuations, gifts, residence eligibility and relief claims. Net estate after debts: £695,000. Standard allowance used: £650,000. Residence allowance used: £45,000. Standard and inherited allowances+ The individual nil-rate band is £325,000. A surviving spouse or civil partner may claim the unused proportion of their late partner's band, potentially raising the combined standard allowance to £650,000. Chargeable gifts in the previous seven years may reduce the band available against the estate. The extra home allowance and £2m taper+ Where a qualifying home or share passes to direct descendants, the residence nil-rate band may add up to £175,000 per person, plus an eligible transferred amount. It cannot exceed the home equity closely inherited and reduces by £1 for every £2 by which the net estate exceeds £2m. The taper test uses the estate after debts, before spouse/charity exemptions and business reliefs. Why charitable gifts can reduce the rate+ Qualifying charitable bequests are exempt. A reduced 36% rate may apply if the charitable gift is at least 10% of a defined baseline amount. The headline calculation here uses 40%; it does not automatically apply the reduced rate. Where the simple 10% test is met, a possible 36% illustration appears in the explanation, but it is not a confirmed liability. Mixed estates, pensions, trusts and gifts free of tax can require a different HMRC calculation. Gifts, business relief and pensions+ This calculator uses declared non-exempt lifetime gifts and confirmed business/agricultural relief but does not calculate separate inheritance tax on lifetime gifts or all relief eligibility conditions. From 6 April 2027 most unused pension funds and death benefits fall within IHT, with exceptions. Enter amounts already within IHT and additional post-2027 pension values separately. Scope: simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice. Official sources: HMRC inheritance tax · Home allowance · Gift rules · Pensions from 2027."
+    },
+    "lgiht-method-heading": {
+      "text": "How was this calculated?"
+    },
+    "lgiht-method-dynamic": {
+      "text": "Net estate after debts: £695,000. Standard allowance used: £650,000. Residence allowance used: £45,000."
+    }
+  },
+  "taper2027": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgiht-assets-card": {
+      "text": "Estate assets 01 / THE ESTATE£2,600,000 What is in the estate? Enter an approximate value for what the person owns. Use their share of anything jointly held and leave fields that do not apply blank. Main home (pounds sterling) £ Your share of the home at current market value. Other property (pounds sterling) £ Buy-to-let, second homes and other property interests. Cash & savings (pounds sterling) £ Bank accounts, Premium Bonds, cash ISAs. Investments (pounds sterling) £ Shares, funds, investment ISAs and similar investments. Personal possessions (pounds sterling) £ Vehicles, jewellery, valuables and collections. Life insurance (pounds sterling) £ Only policies that form part of the IHT estate, not those effectively held in trust. Pension funds already subject to inheritance tax (pounds sterling) £ Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here. Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above. Business & agricultural assets (pounds sterling) £ Full market value, before any confirmed tax relief. Other assets (pounds sterling) £ Anything not included above; avoid double-counting. Rules to estimate against 2026-27 (now) From 6 April 2027 Most unused pension funds and death benefits come within IHT from 6 April 2027. From 6 April 2027, most unused pension funds and death benefits are included in the IHT estate, with exceptions. Enter only the amount in scope. All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027.",
+      "data-ready": "true"
+    },
+    "lgiht-assets-subtotal": {
+      "text": "£2,600,000"
+    },
+    "lgiht-assets-heading": {
+      "text": "What is in the estate?"
+    },
+    "lgiht-home@invalid": "false",
+    "lgiht-home-help": {
+      "text": "Your share of the home at current market value."
+    },
+    "lgiht-home-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other-property@invalid": "false",
+    "lgiht-other-property-help": {
+      "text": "Buy-to-let, second homes and other property interests."
+    },
+    "lgiht-other-property-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-cash@invalid": "false",
+    "lgiht-cash-help": {
+      "text": "Bank accounts, Premium Bonds, cash ISAs."
+    },
+    "lgiht-cash-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-investments@invalid": "false",
+    "lgiht-investments-help": {
+      "text": "Shares, funds, investment ISAs and similar investments."
+    },
+    "lgiht-investments-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-possessions@invalid": "false",
+    "lgiht-possessions-help": {
+      "text": "Vehicles, jewellery, valuables and collections."
+    },
+    "lgiht-possessions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-insurance@invalid": "false",
+    "lgiht-insurance-help": {
+      "text": "Only policies that form part of the IHT estate, not those effectively held in trust."
+    },
+    "lgiht-insurance-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pensions@invalid": "false",
+    "lgiht-pensions-help": {
+      "text": "Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here."
+    },
+    "lgiht-pensions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-2027-field": {
+      "text": "Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027@invalid": "false",
+    "lgiht-pensions-2027-help": {
+      "text": "Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business@invalid": "false",
+    "lgiht-business-help": {
+      "text": "Full market value, before any confirmed tax relief."
+    },
+    "lgiht-business-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other@invalid": "false",
+    "lgiht-other-help": {
+      "text": "Anything not included above; avoid double-counting."
+    },
+    "lgiht-other-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-period@invalid": "false",
+    "lgiht-period-help": {
+      "text": "Most unused pension funds and death benefits come within IHT from 6 April 2027."
+    },
+    "lgiht-period-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-note": {
+      "text": "From 6 April 2027, most unused pension funds and death benefits are included in the IHT estate, with exceptions. Enter only the amount in scope."
+    },
+    "lgiht-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-card": {
+      "text": "Debts and costs 02 / DEDUCTIONS£0 Debts and costs These amounts reduce the estate before we apply exemptions and tax-free allowances. Outstanding mortgages (pounds sterling) £ Include debts secured on property in this estate. Other outstanding debts (pounds sterling) £ Loans, credit cards and other allowable amounts. Reasonable funeral costs (pounds sterling) £ An estimated cost of the funeral, if payable by the estate. Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice."
+    },
+    "lgiht-debts-subtotal": {
+      "text": "£0"
+    },
+    "lgiht-debts-heading": {
+      "text": "Debts and costs"
+    },
+    "lgiht-mortgage@invalid": "false",
+    "lgiht-mortgage-help": {
+      "text": "Include debts secured on property in this estate."
+    },
+    "lgiht-mortgage-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts@invalid": "false",
+    "lgiht-debts-help": {
+      "text": "Loans, credit cards and other allowable amounts."
+    },
+    "lgiht-debts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-funeral@invalid": "false",
+    "lgiht-funeral-help": {
+      "text": "An estimated cost of the funeral, if payable by the estate."
+    },
+    "lgiht-funeral-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-card": {
+      "text": "Who inherits 03 / WHO INHERITS Who will receive the estate? Where the estate goes matters. Transfers to a spouse or charity may be exempt; a home left to direct descendants may qualify for an extra allowance. Left to spouse or civil partner (pounds sterling) £ Only the amount expected to pass to a qualifying spouse or civil partner. Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Left to registered charities (pounds sterling) £ Only amounts expected to qualify for charity exemption. Will a qualifying home pass to children or grandchildren? Not sure — I need to check Yes — a qualifying share passes to descendants No — the home does not pass to qualifying descendants Includes qualifying stepchildren, adopted and foster children, and further direct descendants. Home equity inherited by those descendants (pounds sterling) £ Their share of the home, after associated mortgage debt; do not count property twice. The extra home allowance is not automatic. If you select Yes, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper."
+    },
+    "lgiht-family-heading": {
+      "text": "Who will receive the estate?"
+    },
+    "lgiht-spouse@invalid": "false",
+    "lgiht-spouse-help": {
+      "text": "Only the amount expected to pass to a qualifying spouse or civil partner."
+    },
+    "lgiht-spouse-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-spouse-scope-row": {
+      "text": "Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position.",
+      "hidden": true
+    },
+    "lgiht-spouse-scope@invalid": "false",
+    "lgiht-spouse-scope-help": {
+      "text": "IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position."
+    },
+    "lgiht-spouse-scope-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-charity@invalid": "false",
+    "lgiht-charity-help": {
+      "text": "Only amounts expected to qualify for charity exemption."
+    },
+    "lgiht-charity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-desc@invalid": "false",
+    "lgiht-home-desc-help": {
+      "text": "Includes qualifying stepchildren, adopted and foster children, and further direct descendants."
+    },
+    "lgiht-home-desc-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-equity@invalid": "false",
+    "lgiht-home-equity-help": {
+      "text": "Their share of the home, after associated mortgage debt; do not count property twice."
+    },
+    "lgiht-home-equity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-card": {
+      "text": "Allowances gifts and reliefs 04 / ADDITIONAL DETAILS Allowances, gifts and reliefs For a straightforward estimate, leave the amounts blank and choose No for inherited allowances. Complete the other fields only where they apply. Can you claim unused allowances from a late spouse or civil partner? No unused allowance is available Yes — I know the confirmed unused percentages Not sure — I need to check This is different from leaving assets to a living spouse. Unused standard allowance transferred (percent) % Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%. Unused home allowance transferred (percent) % Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death. Earlier gifts using the tax-free allowance (pounds sterling) £ Only the value of chargeable gifts made in the last 7 years, after gift exemptions. Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances. Confirmed business / agricultural relief (pounds sterling) £ Enter the total value of relief already established for the business/agricultural assets above. Gifts: Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill. Business & agricultural relief: from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. See HMRC guidance."
+    },
+    "lgiht-advanced-heading": {
+      "text": "Allowances, gifts and reliefs"
+    },
+    "lgiht-transfer@invalid": "false",
+    "lgiht-transfer-help": {
+      "text": "This is different from leaving assets to a living spouse."
+    },
+    "lgiht-transfer-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-nrb@invalid": "false",
+    "lgiht-transfer-nrb@disabled": true,
+    "lgiht-transfer-nrb-help": {
+      "text": "Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%."
+    },
+    "lgiht-transfer-nrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-rnrb@invalid": "false",
+    "lgiht-transfer-rnrb@disabled": true,
+    "lgiht-transfer-rnrb-help": {
+      "text": "Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death."
+    },
+    "lgiht-transfer-rnrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-gifts@invalid": "false",
+    "lgiht-gifts-help": {
+      "text": "Only the value of chargeable gifts made in the last 7 years, after gift exemptions."
+    },
+    "lgiht-gifts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation-row": {
+      "text": "Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances.",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation@invalid": "false",
+    "lgiht-relief-confirmation-help": {
+      "text": "Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances."
+    },
+    "lgiht-relief-confirmation-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business-relief@invalid": "false",
+    "lgiht-business-relief-help": {
+      "text": "Enter the total value of relief already established for the business/agricultural assets above."
+    },
+    "lgiht-business-relief-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-results-card": {
+      "text": "Estimate updated for from April 2027. Estimated inheritance tax: £930,000. Illustrative estimate. 05 / YOUR ESTIMATEFrom 6 April 2027 Your inheritance tax estimate Estimated inheritance tax £930,000 Based on the estate and allowances entered. Earlier gifts have reduced the standard allowance. 40% standard IHT rate Value included for IHT after allowable debts£2,600,000 Estate subject to inheritance tax£2,325,000 Value remaining after estimated IHT (including exempt inheritances)£1,670,000 Lifetime gifts have reduced the standard band; separate tax or taper relief on gifts is not calculated. Post-April 2027 pension amount and beneficiaries must be verified with pension providers. Estimate calculated in this browser. No account required. Download ExcelClear figures",
+      "data-state": "positive"
+    },
+    "lgiht-status": {
+      "text": "Estimate updated for from April 2027. Estimated inheritance tax: £930,000. Illustrative estimate."
+    },
+    "lgiht-period-label": {
+      "text": "From 6 April 2027"
+    },
+    "lgiht-results-heading": {
+      "text": "Your inheritance tax estimate"
+    },
+    "lgiht-tax": {
+      "text": "£930,000"
+    },
+    "lgiht-result-description": {
+      "text": "Based on the estate and allowances entered. Earlier gifts have reduced the standard allowance."
+    },
+    "lgiht-rate-pill": {
+      "text": "40% standard IHT rate"
+    },
+    "lgiht-net-estate": {
+      "text": "£2,600,000"
+    },
+    "lgiht-taxable": {
+      "text": "£2,325,000"
+    },
+    "lgiht-after-tax": {
+      "text": "£1,670,000"
+    },
+    "lgiht-review-notice": {
+      "text": "Lifetime gifts have reduced the standard band; separate tax or taper relief on gifts is not calculated. Post-April 2027 pension amount and beneficiaries must be verified with pension providers."
+    },
+    "lgiht-download": {
+      "text": "Download Excel"
+    },
+    "lgiht-clear": {
+      "text": "Clear figures"
+    },
+    "lgiht-allocation-card": {
+      "text": "06 / THE BIG PICTURE£2,600,000 Where the estate goes This shows how the estate after debts is allocated to exempt inheritances, tax reliefs, tax-free allowances and the amount still subject to IHT. To charity£50,0001.9% of net estateStandard tax-free allowance£225,0008.7% of net estateSubject to IHT£2,325,00089.4% of net estate This is a breakdown of the estate value, not how much tax each beneficiary personally pays. The final tax is calculated on the remaining taxable amount."
+    },
+    "lgiht-allocation-total": {
+      "text": "£2,600,000"
+    },
+    "lgiht-allocation-heading": {
+      "text": "Where the estate goes"
+    },
+    "lgiht-alloc-bar": {
+      "text": "",
+      "label": "To charity: £50,000; Standard tax-free allowance: £225,000; Subject to IHT: £2,325,000"
+    },
+    "lgiht-alloc-legend": {
+      "text": "To charity£50,0001.9% of net estateStandard tax-free allowance£225,0008.7% of net estateSubject to IHT£2,325,00089.4% of net estate"
+    },
+    "lgiht-allowance-card": {
+      "text": "07 / TAX-FREE ALLOWANCES How much allowance is available? The standard allowance and the home allowance have different rules. We show each separately, including transferred allowances, gifts and any taper reduction. Standard nil-rate band£325,000 Used against the estate £225,000Used by prior gifts £100,000 Residence nil-rate band£175,000 Used against the estate £0Lost to taper £175,000 Standard allowance £325,000, with £100,000 allocated to earlier gifts. Home allowance: £175,000 before taper, £0 used against this estate. The net estate exceeds £2m, reducing the available home allowance by £175,000."
+    },
+    "lgiht-allowance-heading": {
+      "text": "How much allowance is available?"
+    },
+    "lgiht-nrb-max": {
+      "text": "£325,000"
+    },
+    "lgiht-nrb-bar": {
+      "text": "",
+      "width": "100%"
+    },
+    "lgiht-nrb-used": {
+      "text": "£225,000"
+    },
+    "lgiht-gift-use": {
+      "text": "£100,000"
+    },
+    "lgiht-rnrb-max": {
+      "text": "£175,000"
+    },
+    "lgiht-rnrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-rnrb-used": {
+      "text": "£0"
+    },
+    "lgiht-rnrb-taper": {
+      "text": "£175,000"
+    },
+    "lgiht-allowance-explain": {
+      "text": "Standard allowance £325,000, with £100,000 allocated to earlier gifts. Home allowance: £175,000 before taper, £0 used against this estate. The net estate exceeds £2m, reducing the available home allowance by £175,000."
+    },
+    "lgiht-ledger-card": {
+      "text": "08 / FULL CALCULATIONFrom 6 Apr 2027 How your estimate adds up Follow the calculation from the full estate value through to the final tax estimate. Figures update as you type. Assets and debts +Gross value of assets£2,600,000 -Debts and funeral costs£0 =Net estate before exemptions£2,600,000 Exemptions and reliefs -Spouse / civil partner exemption£0 -Charitable gifts exemption£50,000 -Confirmed business / agricultural relief£0 Tax-free allowances Standard allowance available for estate£225,000 -Standard allowance applied£225,000 Home allowance lost to taper£175,000 -Home allowance applied£0 Taxable amount =Estate subject to IHT£2,325,000 xIllustrative inheritance tax rate40% =Estimated IHT£930,000 IHT as % of net estate35.8% This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-ledger-year": {
+      "text": "From 6 Apr 2027"
+    },
+    "lgiht-ledger-heading": {
+      "text": "How your estimate adds up"
+    },
+    "lgiht-gross": {
+      "text": "£2,600,000"
+    },
+    "lgiht-debts-used": {
+      "text": "£0"
+    },
+    "lgiht-net": {
+      "text": "£2,600,000"
+    },
+    "lgiht-spouse-used": {
+      "text": "£0"
+    },
+    "lgiht-charity-used": {
+      "text": "£50,000"
+    },
+    "lgiht-relief-used": {
+      "text": "£0"
+    },
+    "lgiht-nrb-available": {
+      "text": "£225,000"
+    },
+    "lgiht-nrb-used-ledger": {
+      "text": "£225,000"
+    },
+    "lgiht-rnrb-taper-ledger": {
+      "text": "£175,000"
+    },
+    "lgiht-rnrb-used-ledger": {
+      "text": "£0"
+    },
+    "lgiht-taxable-ledger": {
+      "text": "£2,325,000"
+    },
+    "lgiht-tax-rate-ledger": {
+      "text": "40%"
+    },
+    "lgiht-tax-ledger": {
+      "text": "£930,000"
+    },
+    "lgiht-effective-rate": {
+      "text": "35.8%"
+    },
+    "lgiht-ledger-note": {
+      "text": "This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-method-card": {
+      "text": "09 / UNDERSTANDING THE FIGURES How was this calculated? The calculation uses the tax rules for the selected period, but the correct IHT treatment of an actual estate may depend on valuations, gifts, residence eligibility and relief claims. Net estate after debts: £2,600,000. Standard allowance used: £225,000. Residence allowance used: £0. Home allowance tapered by £175,000. Prior chargeable gifts use £100,000 of the standard nil-rate band; separate gift tax is not calculated. Pensions are entered using the post-April 2027 scope, where applicable. Standard and inherited allowances+ The individual nil-rate band is £325,000. A surviving spouse or civil partner may claim the unused proportion of their late partner's band, potentially raising the combined standard allowance to £650,000. Chargeable gifts in the previous seven years may reduce the band available against the estate. The extra home allowance and £2m taper+ Where a qualifying home or share passes to direct descendants, the residence nil-rate band may add up to £175,000 per person, plus an eligible transferred amount. It cannot exceed the home equity closely inherited and reduces by £1 for every £2 by which the net estate exceeds £2m. The taper test uses the estate after debts, before spouse/charity exemptions and business reliefs. Why charitable gifts can reduce the rate+ Qualifying charitable bequests are exempt. A reduced 36% rate may apply if the charitable gift is at least 10% of a defined baseline amount. The headline calculation here uses 40%; it does not automatically apply the reduced rate. Where the simple 10% test is met, a possible 36% illustration appears in the explanation, but it is not a confirmed liability. Mixed estates, pensions, trusts and gifts free of tax can require a different HMRC calculation. Gifts, business relief and pensions+ This calculator uses declared non-exempt lifetime gifts and confirmed business/agricultural relief but does not calculate separate inheritance tax on lifetime gifts or all relief eligibility conditions. From 6 April 2027 most unused pension funds and death benefits fall within IHT, with exceptions. Enter amounts already within IHT and additional post-2027 pension values separately. Scope: simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice. Official sources: HMRC inheritance tax · Home allowance · Gift rules · Pensions from 2027."
+    },
+    "lgiht-method-heading": {
+      "text": "How was this calculated?"
+    },
+    "lgiht-method-dynamic": {
+      "text": "Net estate after debts: £2,600,000. Standard allowance used: £225,000. Residence allowance used: £0. Home allowance tapered by £175,000. Prior chargeable gifts use £100,000 of the standard nil-rate band; separate gift tax is not calculated. Pensions are entered using the post-April 2027 scope, where applicable."
+    }
+  },
+  "unconfirmed": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgiht-assets-card": {
+      "text": "Estate assets 01 / THE ESTATE— What is in the estate? Enter an approximate value for what the person owns. Use their share of anything jointly held and leave fields that do not apply blank. Main home (pounds sterling) £ Your share of the home at current market value. Other property (pounds sterling) £ Buy-to-let, second homes and other property interests. Cash & savings (pounds sterling) £ Bank accounts, Premium Bonds, cash ISAs. Investments (pounds sterling) £ Shares, funds, investment ISAs and similar investments. Personal possessions (pounds sterling) £ Vehicles, jewellery, valuables and collections. Life insurance (pounds sterling) £ Only policies that form part of the IHT estate, not those effectively held in trust. Pension funds already subject to inheritance tax (pounds sterling) £ Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here. Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above. Business & agricultural assets (pounds sterling) £ Full market value, before any confirmed tax relief. Other assets (pounds sterling) £ Anything not included above; avoid double-counting. Rules to estimate against 2026-27 (now) From 6 April 2027 Most unused pension funds and death benefits come within IHT from 6 April 2027. For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT. All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027.",
+      "data-ready": "true"
+    },
+    "lgiht-assets-subtotal": {
+      "text": "—"
+    },
+    "lgiht-assets-heading": {
+      "text": "What is in the estate?"
+    },
+    "lgiht-home@invalid": "false",
+    "lgiht-home-help": {
+      "text": "Your share of the home at current market value."
+    },
+    "lgiht-home-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other-property@invalid": "false",
+    "lgiht-other-property-help": {
+      "text": "Buy-to-let, second homes and other property interests."
+    },
+    "lgiht-other-property-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-cash@invalid": "false",
+    "lgiht-cash-help": {
+      "text": "Bank accounts, Premium Bonds, cash ISAs."
+    },
+    "lgiht-cash-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-investments@invalid": "false",
+    "lgiht-investments-help": {
+      "text": "Shares, funds, investment ISAs and similar investments."
+    },
+    "lgiht-investments-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-possessions@invalid": "false",
+    "lgiht-possessions-help": {
+      "text": "Vehicles, jewellery, valuables and collections."
+    },
+    "lgiht-possessions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-insurance@invalid": "false",
+    "lgiht-insurance-help": {
+      "text": "Only policies that form part of the IHT estate, not those effectively held in trust."
+    },
+    "lgiht-insurance-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pensions@invalid": "false",
+    "lgiht-pensions-help": {
+      "text": "Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here."
+    },
+    "lgiht-pensions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-2027-field": {
+      "text": "Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above.",
+      "hidden": true
+    },
+    "lgiht-pensions-2027@invalid": "false",
+    "lgiht-pensions-2027@disabled": true,
+    "lgiht-pensions-2027-help": {
+      "text": "Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business@invalid": "false",
+    "lgiht-business-help": {
+      "text": "Full market value, before any confirmed tax relief."
+    },
+    "lgiht-business-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other@invalid": "false",
+    "lgiht-other-help": {
+      "text": "Anything not included above; avoid double-counting."
+    },
+    "lgiht-other-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-period@invalid": "false",
+    "lgiht-period-help": {
+      "text": "Most unused pension funds and death benefits come within IHT from 6 April 2027."
+    },
+    "lgiht-period-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-note": {
+      "text": "For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT."
+    },
+    "lgiht-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-card": {
+      "text": "Debts and costs 02 / DEDUCTIONS— Debts and costs These amounts reduce the estate before we apply exemptions and tax-free allowances. Outstanding mortgages (pounds sterling) £ Include debts secured on property in this estate. Other outstanding debts (pounds sterling) £ Loans, credit cards and other allowable amounts. Reasonable funeral costs (pounds sterling) £ An estimated cost of the funeral, if payable by the estate. Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice."
+    },
+    "lgiht-debts-subtotal": {
+      "text": "—"
+    },
+    "lgiht-debts-heading": {
+      "text": "Debts and costs"
+    },
+    "lgiht-mortgage@invalid": "false",
+    "lgiht-mortgage-help": {
+      "text": "Include debts secured on property in this estate."
+    },
+    "lgiht-mortgage-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts@invalid": "false",
+    "lgiht-debts-help": {
+      "text": "Loans, credit cards and other allowable amounts."
+    },
+    "lgiht-debts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-funeral@invalid": "false",
+    "lgiht-funeral-help": {
+      "text": "An estimated cost of the funeral, if payable by the estate."
+    },
+    "lgiht-funeral-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-card": {
+      "text": "Who inherits 03 / WHO INHERITS Who will receive the estate? Where the estate goes matters. Transfers to a spouse or charity may be exempt; a home left to direct descendants may qualify for an extra allowance. Left to spouse or civil partner (pounds sterling) £ Only the amount expected to pass to a qualifying spouse or civil partner. Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate. Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate. Left to registered charities (pounds sterling) £ Only amounts expected to qualify for charity exemption. Will a qualifying home pass to children or grandchildren? Not sure — I need to check Yes — a qualifying share passes to descendants No — the home does not pass to qualifying descendants Includes qualifying stepchildren, adopted and foster children, and further direct descendants. Home equity inherited by those descendants (pounds sterling) £ Their share of the home, after associated mortgage debt; do not count property twice. The extra home allowance is not automatic. If you select Yes, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper. Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate."
+    },
+    "lgiht-family-heading": {
+      "text": "Who will receive the estate?"
+    },
+    "lgiht-spouse@invalid": "true",
+    "lgiht-spouse-help": {
+      "text": "Only the amount expected to pass to a qualifying spouse or civil partner."
+    },
+    "lgiht-spouse-field-error": {
+      "text": "Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate."
+    },
+    "lgiht-spouse-scope-row": {
+      "text": "Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate."
+    },
+    "lgiht-spouse-scope@invalid": "true",
+    "lgiht-spouse-scope-help": {
+      "text": "IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position."
+    },
+    "lgiht-spouse-scope-field-error": {
+      "text": "Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate."
+    },
+    "lgiht-charity@invalid": "false",
+    "lgiht-charity-help": {
+      "text": "Only amounts expected to qualify for charity exemption."
+    },
+    "lgiht-charity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-desc@invalid": "true",
+    "lgiht-home-desc-help": {
+      "text": "Includes qualifying stepchildren, adopted and foster children, and further direct descendants."
+    },
+    "lgiht-home-desc-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-equity@invalid": "false",
+    "lgiht-home-equity@disabled": true,
+    "lgiht-home-equity-help": {
+      "text": "Their share of the home, after associated mortgage debt; do not count property twice."
+    },
+    "lgiht-home-equity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-error": {
+      "text": "Spouse exemption is not confirmed. Mixed long-term UK residence can restrict it; seek specialist advice before relying on an estimate."
+    },
+    "lgiht-advanced-card": {
+      "text": "Allowances gifts and reliefs 04 / ADDITIONAL DETAILS Allowances, gifts and reliefs For a straightforward estimate, leave the amounts blank and choose No for inherited allowances. Complete the other fields only where they apply. Can you claim unused allowances from a late spouse or civil partner? No unused allowance is available Yes — I know the confirmed unused percentages Not sure — I need to check This is different from leaving assets to a living spouse. Unused standard allowance transferred (percent) % Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%. Unused home allowance transferred (percent) % Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death. Earlier gifts using the tax-free allowance (pounds sterling) £ Only the value of chargeable gifts made in the last 7 years, after gift exemptions. Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances. Confirmed business / agricultural relief (pounds sterling) £ Enter the total value of relief already established for the business/agricultural assets above. Gifts: Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill. Business & agricultural relief: from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. See HMRC guidance."
+    },
+    "lgiht-advanced-heading": {
+      "text": "Allowances, gifts and reliefs"
+    },
+    "lgiht-transfer@invalid": "false",
+    "lgiht-transfer-help": {
+      "text": "This is different from leaving assets to a living spouse."
+    },
+    "lgiht-transfer-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-nrb@invalid": "false",
+    "lgiht-transfer-nrb@disabled": true,
+    "lgiht-transfer-nrb-help": {
+      "text": "Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%."
+    },
+    "lgiht-transfer-nrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-rnrb@invalid": "false",
+    "lgiht-transfer-rnrb@disabled": true,
+    "lgiht-transfer-rnrb-help": {
+      "text": "Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death."
+    },
+    "lgiht-transfer-rnrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-gifts@invalid": "false",
+    "lgiht-gifts-help": {
+      "text": "Only the value of chargeable gifts made in the last 7 years, after gift exemptions."
+    },
+    "lgiht-gifts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation-row": {
+      "text": "Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances.",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation@invalid": "false",
+    "lgiht-relief-confirmation-help": {
+      "text": "Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances."
+    },
+    "lgiht-relief-confirmation-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business-relief@invalid": "false",
+    "lgiht-business-relief-help": {
+      "text": "Enter the total value of relief already established for the business/agricultural assets above."
+    },
+    "lgiht-business-relief-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-results-card": {
+      "text": "05 / YOUR ESTIMATE2026-27 tax year Your inheritance tax estimate Estimated inheritance tax — Please check the highlighted inputs to complete your estimate. Illustrative estimate Value included for IHT after allowable debts— Estate subject to inheritance tax— Value remaining after estimated IHT (including exempt inheritances)— Estimate calculated in this browser. No account required. Download ExcelClear figures",
+      "data-state": "empty"
+    },
+    "lgiht-status": {
+      "text": ""
+    },
+    "lgiht-period-label": {
+      "text": "2026-27 tax year"
+    },
+    "lgiht-results-heading": {
+      "text": "Your inheritance tax estimate"
+    },
+    "lgiht-tax": {
+      "text": "—"
+    },
+    "lgiht-result-description": {
+      "text": "Please check the highlighted inputs to complete your estimate."
+    },
+    "lgiht-rate-pill": {
+      "text": "Illustrative estimate"
+    },
+    "lgiht-net-estate": {
+      "text": "—"
+    },
+    "lgiht-taxable": {
+      "text": "—"
+    },
+    "lgiht-after-tax": {
+      "text": "—"
+    },
+    "lgiht-review-notice": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-download": {
+      "text": "Download Excel",
+      "disabled": true
+    },
+    "lgiht-clear": {
+      "text": "Clear figures"
+    },
+    "lgiht-allocation-card": {
+      "text": "06 / THE BIG PICTURE— Where the estate goes This shows how the estate after debts is allocated to exempt inheritances, tax reliefs, tax-free allowances and the amount still subject to IHT. Check the amounts entered. This is a breakdown of the estate value, not how much tax each beneficiary personally pays. The final tax is calculated on the remaining taxable amount."
+    },
+    "lgiht-allocation-total": {
+      "text": "—"
+    },
+    "lgiht-allocation-heading": {
+      "text": "Where the estate goes"
+    },
+    "lgiht-alloc-bar": {
+      "text": "Check the amounts entered.",
+      "label": "Estate breakdown unavailable. Check the inputs."
+    },
+    "lgiht-alloc-legend": {
+      "text": ""
+    },
+    "lgiht-allowance-card": {
+      "text": "07 / TAX-FREE ALLOWANCES How much allowance is available? The standard allowance and the home allowance have different rules. We show each separately, including transferred allowances, gifts and any taper reduction. Standard nil-rate band— Used against the estate —Used by prior gifts — Residence nil-rate band— Used against the estate —Lost to taper — Enter your estate details to see which allowances may apply."
+    },
+    "lgiht-allowance-heading": {
+      "text": "How much allowance is available?"
+    },
+    "lgiht-nrb-max": {
+      "text": "—"
+    },
+    "lgiht-nrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-nrb-used": {
+      "text": "—"
+    },
+    "lgiht-gift-use": {
+      "text": "—"
+    },
+    "lgiht-rnrb-max": {
+      "text": "—"
+    },
+    "lgiht-rnrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-rnrb-used": {
+      "text": "—"
+    },
+    "lgiht-rnrb-taper": {
+      "text": "—"
+    },
+    "lgiht-allowance-explain": {
+      "text": "Enter your estate details to see which allowances may apply."
+    },
+    "lgiht-ledger-card": {
+      "text": "08 / FULL CALCULATION2026-27 How your estimate adds up Follow the calculation from the full estate value through to the final tax estimate. Figures update as you type. Assets and debts +Gross value of assets— -Debts and funeral costs— =Net estate before exemptions— Exemptions and reliefs -Spouse / civil partner exemption— -Charitable gifts exemption— -Confirmed business / agricultural relief— Tax-free allowances Standard allowance available for estate— -Standard allowance applied— Home allowance lost to taper— -Home allowance applied— Taxable amount =Estate subject to IHT— xIllustrative inheritance tax rate— =Estimated IHT— IHT as % of net estate— This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-ledger-year": {
+      "text": "2026-27"
+    },
+    "lgiht-ledger-heading": {
+      "text": "How your estimate adds up"
+    },
+    "lgiht-gross": {
+      "text": "—"
+    },
+    "lgiht-debts-used": {
+      "text": "—"
+    },
+    "lgiht-net": {
+      "text": "—"
+    },
+    "lgiht-spouse-used": {
+      "text": "—"
+    },
+    "lgiht-charity-used": {
+      "text": "—"
+    },
+    "lgiht-relief-used": {
+      "text": "—"
+    },
+    "lgiht-nrb-available": {
+      "text": "—"
+    },
+    "lgiht-nrb-used-ledger": {
+      "text": "—"
+    },
+    "lgiht-rnrb-taper-ledger": {
+      "text": "—"
+    },
+    "lgiht-rnrb-used-ledger": {
+      "text": "—"
+    },
+    "lgiht-taxable-ledger": {
+      "text": "—"
+    },
+    "lgiht-tax-rate-ledger": {
+      "text": "—"
+    },
+    "lgiht-tax-ledger": {
+      "text": "—"
+    },
+    "lgiht-effective-rate": {
+      "text": "—"
+    },
+    "lgiht-ledger-note": {
+      "text": "This is a simplified 40% estate estimate. The reduced 36% charity rate is not automatically applied; qualifying estate components need confirmation."
+    },
+    "lgiht-method-card": {
+      "text": "09 / UNDERSTANDING THE FIGURES How was this calculated? The calculation uses the tax rules for the selected period, but the correct IHT treatment of an actual estate may depend on valuations, gifts, residence eligibility and relief claims. Add values above to see which rules affect the result. Standard and inherited allowances+ The individual nil-rate band is £325,000. A surviving spouse or civil partner may claim the unused proportion of their late partner's band, potentially raising the combined standard allowance to £650,000. Chargeable gifts in the previous seven years may reduce the band available against the estate. The extra home allowance and £2m taper+ Where a qualifying home or share passes to direct descendants, the residence nil-rate band may add up to £175,000 per person, plus an eligible transferred amount. It cannot exceed the home equity closely inherited and reduces by £1 for every £2 by which the net estate exceeds £2m. The taper test uses the estate after debts, before spouse/charity exemptions and business reliefs. Why charitable gifts can reduce the rate+ Qualifying charitable bequests are exempt. A reduced 36% rate may apply if the charitable gift is at least 10% of a defined baseline amount. The headline calculation here uses 40%; it does not automatically apply the reduced rate. Where the simple 10% test is met, a possible 36% illustration appears in the explanation, but it is not a confirmed liability. Mixed estates, pensions, trusts and gifts free of tax can require a different HMRC calculation. Gifts, business relief and pensions+ This calculator uses declared non-exempt lifetime gifts and confirmed business/agricultural relief but does not calculate separate inheritance tax on lifetime gifts or all relief eligibility conditions. From 6 April 2027 most unused pension funds and death benefits fall within IHT, with exceptions. Enter amounts already within IHT and additional post-2027 pension values separately. Scope: simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice. Official sources: HMRC inheritance tax · Home allowance · Gift rules · Pensions from 2027."
+    },
+    "lgiht-method-heading": {
+      "text": "How was this calculated?"
+    },
+    "lgiht-method-dynamic": {
+      "text": "Add values above to see which rules affect the result."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgiht-assets-card": {
+      "text": "Estate assets 01 / THE ESTATE— What is in the estate? Enter an approximate value for what the person owns. Use their share of anything jointly held and leave fields that do not apply blank. Main home (pounds sterling) £ Your share of the home at current market value. Other property (pounds sterling) £ Buy-to-let, second homes and other property interests. Cash & savings (pounds sterling) £ Bank accounts, Premium Bonds, cash ISAs. Enter non-negative numbers with up to two decimal places (or a percentage from 0 to 100). Investments (pounds sterling) £ Shares, funds, investment ISAs and similar investments. Personal possessions (pounds sterling) £ Vehicles, jewellery, valuables and collections. Life insurance (pounds sterling) £ Only policies that form part of the IHT estate, not those effectively held in trust. Pension funds already subject to inheritance tax (pounds sterling) £ Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here. Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above. Business & agricultural assets (pounds sterling) £ Full market value, before any confirmed tax relief. Other assets (pounds sterling) £ Anything not included above; avoid double-counting. Rules to estimate against 2026-27 (now) From 6 April 2027 Most unused pension funds and death benefits come within IHT from 6 April 2027. For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT. All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027. Enter non-negative numbers with up to two decimal places (or a percentage from 0 to 100).",
+      "data-ready": "true"
+    },
+    "lgiht-assets-subtotal": {
+      "text": "—"
+    },
+    "lgiht-assets-heading": {
+      "text": "What is in the estate?"
+    },
+    "lgiht-home@invalid": "false",
+    "lgiht-home-help": {
+      "text": "Your share of the home at current market value."
+    },
+    "lgiht-home-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other-property@invalid": "false",
+    "lgiht-other-property-help": {
+      "text": "Buy-to-let, second homes and other property interests."
+    },
+    "lgiht-other-property-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-cash@invalid": "true",
+    "lgiht-cash-help": {
+      "text": "Bank accounts, Premium Bonds, cash ISAs."
+    },
+    "lgiht-cash-field-error": {
+      "text": "Enter non-negative numbers with up to two decimal places (or a percentage from 0 to 100)."
+    },
+    "lgiht-investments@invalid": "false",
+    "lgiht-investments-help": {
+      "text": "Shares, funds, investment ISAs and similar investments."
+    },
+    "lgiht-investments-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-possessions@invalid": "false",
+    "lgiht-possessions-help": {
+      "text": "Vehicles, jewellery, valuables and collections."
+    },
+    "lgiht-possessions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-insurance@invalid": "false",
+    "lgiht-insurance-help": {
+      "text": "Only policies that form part of the IHT estate, not those effectively held in trust."
+    },
+    "lgiht-insurance-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pensions@invalid": "false",
+    "lgiht-pensions-help": {
+      "text": "Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here."
+    },
+    "lgiht-pensions-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-2027-field": {
+      "text": "Additional unused pensions and death benefits from 6 April 2027 (pounds sterling) £ Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above.",
+      "hidden": true
+    },
+    "lgiht-pensions-2027@invalid": "false",
+    "lgiht-pensions-2027@disabled": true,
+    "lgiht-pensions-2027-help": {
+      "text": "Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above."
+    },
+    "lgiht-pensions-2027-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business@invalid": "false",
+    "lgiht-business-help": {
+      "text": "Full market value, before any confirmed tax relief."
+    },
+    "lgiht-business-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-other@invalid": "false",
+    "lgiht-other-help": {
+      "text": "Anything not included above; avoid double-counting."
+    },
+    "lgiht-other-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-period@invalid": "false",
+    "lgiht-period-help": {
+      "text": "Most unused pension funds and death benefits come within IHT from 6 April 2027."
+    },
+    "lgiht-period-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-pension-note": {
+      "text": "For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT."
+    },
+    "lgiht-assets-error": {
+      "text": "Enter non-negative numbers with up to two decimal places (or a percentage from 0 to 100)."
+    },
+    "lgiht-debts-card": {
+      "text": "Debts and costs 02 / DEDUCTIONS— Debts and costs These amounts reduce the estate before we apply exemptions and tax-free allowances. Outstanding mortgages (pounds sterling) £ Include debts secured on property in this estate. Other outstanding debts (pounds sterling) £ Loans, credit cards and other allowable amounts. Reasonable funeral costs (pounds sterling) £ An estimated cost of the funeral, if payable by the estate. Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice."
+    },
+    "lgiht-debts-subtotal": {
+      "text": "—"
+    },
+    "lgiht-debts-heading": {
+      "text": "Debts and costs"
+    },
+    "lgiht-mortgage@invalid": "false",
+    "lgiht-mortgage-help": {
+      "text": "Include debts secured on property in this estate."
+    },
+    "lgiht-mortgage-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts@invalid": "false",
+    "lgiht-debts-help": {
+      "text": "Loans, credit cards and other allowable amounts."
+    },
+    "lgiht-debts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-funeral@invalid": "false",
+    "lgiht-funeral-help": {
+      "text": "An estimated cost of the funeral, if payable by the estate."
+    },
+    "lgiht-funeral-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-debts-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-card": {
+      "text": "Who inherits 03 / WHO INHERITS Who will receive the estate? Where the estate goes matters. Transfers to a spouse or charity may be exempt; a home left to direct descendants may qualify for an extra allowance. Left to spouse or civil partner (pounds sterling) £ Only the amount expected to pass to a qualifying spouse or civil partner. Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position. Left to registered charities (pounds sterling) £ Only amounts expected to qualify for charity exemption. Will a qualifying home pass to children or grandchildren? Not sure — I need to check Yes — a qualifying share passes to descendants No — the home does not pass to qualifying descendants Includes qualifying stepchildren, adopted and foster children, and further direct descendants. Home equity inherited by those descendants (pounds sterling) £ Their share of the home, after associated mortgage debt; do not count property twice. The extra home allowance is not automatic. If you select Yes, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper."
+    },
+    "lgiht-family-heading": {
+      "text": "Who will receive the estate?"
+    },
+    "lgiht-spouse@invalid": "false",
+    "lgiht-spouse-help": {
+      "text": "Only the amount expected to pass to a qualifying spouse or civil partner."
+    },
+    "lgiht-spouse-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-spouse-scope-row": {
+      "text": "Can you confirm the full spouse or civil-partner exemption applies? Not sure — specialist check needed Yes — exemption confirmed unrestricted No — exemption may be restricted IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position.",
+      "hidden": true
+    },
+    "lgiht-spouse-scope@invalid": "false",
+    "lgiht-spouse-scope-help": {
+      "text": "IHT rules may restrict transfers from a long-term UK resident to a spouse or civil partner who is not a long-term UK resident. Do not select Yes without confirming this position."
+    },
+    "lgiht-spouse-scope-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-charity@invalid": "false",
+    "lgiht-charity-help": {
+      "text": "Only amounts expected to qualify for charity exemption."
+    },
+    "lgiht-charity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-desc@invalid": "false",
+    "lgiht-home-desc-help": {
+      "text": "Includes qualifying stepchildren, adopted and foster children, and further direct descendants."
+    },
+    "lgiht-home-desc-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-home-equity@invalid": "false",
+    "lgiht-home-equity@disabled": true,
+    "lgiht-home-equity-help": {
+      "text": "Their share of the home, after associated mortgage debt; do not count property twice."
+    },
+    "lgiht-home-equity-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-family-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-card": {
+      "text": "Allowances gifts and reliefs 04 / ADDITIONAL DETAILS Allowances, gifts and reliefs For a straightforward estimate, leave the amounts blank and choose No for inherited allowances. Complete the other fields only where they apply. Can you claim unused allowances from a late spouse or civil partner? No unused allowance is available Yes — I know the confirmed unused percentages Not sure — I need to check This is different from leaving assets to a living spouse. Unused standard allowance transferred (percent) % Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%. Unused home allowance transferred (percent) % Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death. Earlier gifts using the tax-free allowance (pounds sterling) £ Only the value of chargeable gifts made in the last 7 years, after gift exemptions. Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances. Confirmed business / agricultural relief (pounds sterling) £ Enter the total value of relief already established for the business/agricultural assets above. Gifts: Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill. Business & agricultural relief: from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. See HMRC guidance."
+    },
+    "lgiht-advanced-heading": {
+      "text": "Allowances, gifts and reliefs"
+    },
+    "lgiht-transfer@invalid": "false",
+    "lgiht-transfer-help": {
+      "text": "This is different from leaving assets to a living spouse."
+    },
+    "lgiht-transfer-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-nrb@invalid": "false",
+    "lgiht-transfer-nrb@disabled": true,
+    "lgiht-transfer-nrb-help": {
+      "text": "Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%."
+    },
+    "lgiht-transfer-nrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-transfer-rnrb@invalid": "false",
+    "lgiht-transfer-rnrb@disabled": true,
+    "lgiht-transfer-rnrb-help": {
+      "text": "Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death."
+    },
+    "lgiht-transfer-rnrb-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-gifts@invalid": "false",
+    "lgiht-gifts-help": {
+      "text": "Only the value of chargeable gifts made in the last 7 years, after gift exemptions."
+    },
+    "lgiht-gifts-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation-row": {
+      "text": "Has business or agricultural inheritance tax relief been verified? Not sure — needs professional assessment Confirmed — no relief applies Yes — I have a confirmed relief amount Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances.",
+      "hidden": true
+    },
+    "lgiht-relief-confirmation@invalid": "false",
+    "lgiht-relief-confirmation-help": {
+      "text": "Eligibility and the £2.5m combined 100% allowance introduced in April 2026 require checking. This simple calculator does not assess inherited business/agricultural allowances."
+    },
+    "lgiht-relief-confirmation-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-business-relief@invalid": "false",
+    "lgiht-business-relief-help": {
+      "text": "Enter the total value of relief already established for the business/agricultural assets above."
+    },
+    "lgiht-business-relief-field-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-advanced-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-results-card": {
+      "text": "05 / YOUR ESTIMATE2026-27 tax year Your inheritance tax estimate Estimated inheritance tax — Please check the highlighted inputs to complete your estimate. Illustrative estimate Value included for IHT after allowable debts— Estate subject to inheritance tax— Value remaining after estimated IHT (including exempt inheritances)— Estimate calculated in this browser. No account required. Download ExcelClear figures",
+      "data-state": "empty"
+    },
+    "lgiht-status": {
+      "text": ""
+    },
+    "lgiht-period-label": {
+      "text": "2026-27 tax year"
+    },
+    "lgiht-results-heading": {
+      "text": "Your inheritance tax estimate"
+    },
+    "lgiht-tax": {
+      "text": "—"
+    },
+    "lgiht-result-description": {
+      "text": "Please check the highlighted inputs to complete your estimate."
+    },
+    "lgiht-rate-pill": {
+      "text": "Illustrative estimate"
+    },
+    "lgiht-net-estate": {
+      "text": "—"
+    },
+    "lgiht-taxable": {
+      "text": "—"
+    },
+    "lgiht-after-tax": {
+      "text": "—"
+    },
+    "lgiht-review-notice": {
+      "text": "",
+      "hidden": true
+    },
+    "lgiht-download": {
+      "text": "Download Excel",
+      "disabled": true
+    },
+    "lgiht-clear": {
+      "text": "Clear figures"
+    },
+    "lgiht-allocation-card": {
+      "text": "06 / THE BIG PICTURE— Where the estate goes This shows how the estate after debts is allocated to exempt inheritances, tax reliefs, tax-free allowances and the amount still subject to IHT. Check the amounts entered. This is a breakdown of the estate value, not how much tax each beneficiary personally pays. The final tax is calculated on the remaining taxable amount."
+    },
+    "lgiht-allocation-total": {
+      "text": "—"
+    },
+    "lgiht-allocation-heading": {
+      "text": "Where the estate goes"
+    },
+    "lgiht-alloc-bar": {
+      "text": "Check the amounts entered.",
+      "label": "Estate breakdown unavailable. Check the inputs."
+    },
+    "lgiht-alloc-legend": {
+      "text": ""
+    },
+    "lgiht-allowance-card": {
+      "text": "07 / TAX-FREE ALLOWANCES How much allowance is available? The standard allowance and the home allowance have different rules. We show each separately, including transferred allowances, gifts and any taper reduction. Standard nil-rate band— Used against the estate —Used by prior gifts — Residence nil-rate band— Used against the estate —Lost to taper — Enter your estate details to see which allowances may apply."
+    },
+    "lgiht-allowance-heading": {
+      "text": "How much allowance is available?"
+    },
+    "lgiht-nrb-max": {
+      "text": "—"
+    },
+    "lgiht-nrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-nrb-used": {
+      "text": "—"
+    },
+    "lgiht-gift-use": {
+      "text": "—"
+    },
+    "lgiht-rnrb-max": {
+      "text": "—"
+    },
+    "lgiht-rnrb-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lgiht-rnrb-used": {
+      "text": "—"
+    },
+    "lgiht-rnrb-taper": {
+      "text": "—"
+    },
+    "lgiht-allowance-explain": {
+      "text": "Enter your estate details to see which allowances may apply."
+    },
+    "lgiht-ledger-card": {
+      "text": "08 / FULL CALCULATION2026-27 How your estimate adds up Follow the calculation from the full estate value through to the final tax estimate. Figures update as you type. Assets and debts +Gross value of assets— -Debts and funeral costs— =Net estate before exemptions— Exemptions and reliefs -Spouse / civil partner exemption— -Charitable gifts exemption— -Confirmed business / agricultural relief— Tax-free allowances Standard allowance available for estate— -Standard allowance applied— Home allowance lost to taper— -Home allowance applied— Taxable amount =Estate subject to IHT— xIllustrative inheritance tax rate— =Estimated IHT— IHT as % of net estate— This is a simplified single-component estimate at 40%. The reduced 36% rate for qualifying gifts to charity is not automatically applied; it requires a separate component-based assessment."
+    },
+    "lgiht-ledger-year": {
+      "text": "2026-27"
+    },
+    "lgiht-ledger-heading": {
+      "text": "How your estimate adds up"
+    },
+    "lgiht-gross": {
+      "text": "—"
+    },
+    "lgiht-debts-used": {
+      "text": "—"
+    },
+    "lgiht-net": {
+      "text": "—"
+    },
+    "lgiht-spouse-used": {
+      "text": "—"
+    },
+    "lgiht-charity-used": {
+      "text": "—"
+    },
+    "lgiht-relief-used": {
+      "text": "—"
+    },
+    "lgiht-nrb-available": {
+      "text": "—"
+    },
+    "lgiht-nrb-used-ledger": {
+      "text": "—"
+    },
+    "lgiht-rnrb-taper-ledger": {
+      "text": "—"
+    },
+    "lgiht-rnrb-used-ledger": {
+      "text": "—"
+    },
+    "lgiht-taxable-ledger": {
+      "text": "—"
+    },
+    "lgiht-tax-rate-ledger": {
+      "text": "—"
+    },
+    "lgiht-tax-ledger": {
+      "text": "—"
+    },
+    "lgiht-effective-rate": {
+      "text": "—"
+    },
+    "lgiht-ledger-note": {
+      "text": "This is a simplified single-component estimate at 40%. The reduced 36% rate for qualifying gifts to charity is not automatically applied; it requires a separate component-based assessment."
+    },
+    "lgiht-method-card": {
+      "text": "09 / UNDERSTANDING THE FIGURES How was this calculated? The calculation uses the tax rules for the selected period, but the correct IHT treatment of an actual estate may depend on valuations, gifts, residence eligibility and relief claims. Add values above to see which rules affect the result. Standard and inherited allowances+ The individual nil-rate band is £325,000. A surviving spouse or civil partner may claim the unused proportion of their late partner's band, potentially raising the combined standard allowance to £650,000. Chargeable gifts in the previous seven years may reduce the band available against the estate. The extra home allowance and £2m taper+ Where a qualifying home or share passes to direct descendants, the residence nil-rate band may add up to £175,000 per person, plus an eligible transferred amount. It cannot exceed the home equity closely inherited and reduces by £1 for every £2 by which the net estate exceeds £2m. The taper test uses the estate after debts, before spouse/charity exemptions and business reliefs. Why charitable gifts can reduce the rate+ Qualifying charitable bequests are exempt. A reduced 36% rate may apply if the charitable gift is at least 10% of a defined baseline amount. The headline calculation here uses 40%; it does not automatically apply the reduced rate. Where the simple 10% test is met, a possible 36% illustration appears in the explanation, but it is not a confirmed liability. Mixed estates, pensions, trusts and gifts free of tax can require a different HMRC calculation. Gifts, business relief and pensions+ This calculator uses declared non-exempt lifetime gifts and confirmed business/agricultural relief but does not calculate separate inheritance tax on lifetime gifts or all relief eligibility conditions. From 6 April 2027 most unused pension funds and death benefits fall within IHT, with exceptions. Enter amounts already within IHT and additional post-2027 pension values separately. Scope: simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice. Official sources: HMRC inheritance tax · Home allowance · Gift rules · Pensions from 2027."
+    },
+    "lgiht-method-heading": {
+      "text": "How was this calculated?"
+    },
+    "lgiht-method-dynamic": {
+      "text": "Add values above to see which rules affect the result."
+    }
+  }
+}

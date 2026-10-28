@@ -1,0 +1,344 @@
+{
+  "defaults": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "pr-h-salary": {
+      "text": "What is the full-time salary for the role?"
+    },
+    "pr-h-week": {
+      "text": "How much will you work?"
+    },
+    "pr-full-label": {
+      "text": "Full-time hours a week"
+    },
+    "pr-full@invalid": "false",
+    "pr-yours-label": {
+      "text": "Your hours a week"
+    },
+    "pr-yours@invalid": "false",
+    "pr-error": {
+      "text": "Your hours can’t be more than the full-time week. Use the full-time salary if you work full time.",
+      "hidden": true
+    },
+    "pr-h-extras": {
+      "text": "Pension and holiday"
+    },
+    "pr-result": {
+      "text": "04 / Your result Your pro rata salary £24,000 That’s £2,000 a month or £462 a week, for 22.5 of 37.5 hours (60% of full time). You’d work 40% fewer hours, but your take-home pay falls by about 35%. Time worked 60% Take-home kept 65% Take-home a month £1,653 Holiday a year 126 hours Pension a month (you and employer) £160 Compared with full time Full-time take-home£2,560 a month Your take-home£1,653 a month Difference£907 less a month Worth knowing Estimates use 2026/27 Income Tax and National Insurance rates for England, Wales and Northern Ireland, with your pension taken before tax. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
+    },
+    "pr-h-result": {
+      "text": "Your pro rata salary"
+    },
+    "pr-salary-out": {
+      "text": "£24,000"
+    },
+    "pr-summary": {
+      "text": "That’s £2,000 a month or £462 a week, for 22.5 of 37.5 hours (60% of full time)."
+    },
+    "pr-detail": {
+      "text": "You’d work 40% fewer hours, but your take-home pay falls by about 35%. Time worked 60% Take-home kept 65% Take-home a month £1,653 Holiday a year 126 hours Pension a month (you and employer) £160 Compared with full time Full-time take-home£2,560 a month Your take-home£1,653 a month Difference£907 less a month Worth knowing"
+    },
+    "pr-insight": {
+      "text": "You’d work 40% fewer hours, but your take-home pay falls by about 35%. Time worked 60% Take-home kept 65%"
+    },
+    "pr-insight-text": {
+      "text": "You’d work 40% fewer hours, but your take-home pay falls by about 35%."
+    },
+    "pr-bar-hours": {
+      "text": "",
+      "width": "60%"
+    },
+    "pr-bar-hours-val": {
+      "text": "60%"
+    },
+    "pr-bar-pay": {
+      "text": "",
+      "width": "65%"
+    },
+    "pr-bar-pay-val": {
+      "text": "65%"
+    },
+    "pr-st-net": {
+      "text": "£1,653"
+    },
+    "pr-st-holiday": {
+      "text": "126 hours"
+    },
+    "pr-st-pension": {
+      "text": "£160"
+    },
+    "pr-ft-net": {
+      "text": "£2,560 a month"
+    },
+    "pr-pt-net": {
+      "text": "£1,653 a month"
+    },
+    "pr-diff": {
+      "text": "£907 less a month"
+    },
+    "pr-notes": {
+      "text": "Worth knowing",
+      "hidden": true
+    },
+    "pr-notes-list": {
+      "text": ""
+    }
+  },
+  "days": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "pr-h-salary": {
+      "text": "What is the full-time salary for the role?"
+    },
+    "pr-h-week": {
+      "text": "How much will you work?"
+    },
+    "pr-full-label": {
+      "text": "Full-time days a week"
+    },
+    "pr-full@invalid": "false",
+    "pr-yours-label": {
+      "text": "Your days a week"
+    },
+    "pr-yours@invalid": "false",
+    "pr-error": {
+      "text": "Your days can’t be more than the full-time week. Use the full-time salary if you work full time.",
+      "hidden": true
+    },
+    "pr-h-extras": {
+      "text": "Pension and holiday"
+    },
+    "pr-result": {
+      "text": "04 / Your result Your pro rata salary £33,000 That’s £2,750 a month or £635 a week, for 3 of 5 days (60% of full time). You’d work 40% fewer days, but your take-home pay falls by about 36%. Time worked 60% Take-home kept 64% Take-home a month £2,163 Holiday a year 16.8 days Pension a month (you and employer) £220 Compared with full time Full-time take-home£3,401 a month Your take-home£2,163 a month Difference£1,238 less a month Worth knowing You’d move out of higher-rate tax, so none of your salary would be taxed at 40%. Estimates use 2026/27 Income Tax and National Insurance rates for England, Wales and Northern Ireland, with your pension taken before tax. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
+    },
+    "pr-h-result": {
+      "text": "Your pro rata salary"
+    },
+    "pr-salary-out": {
+      "text": "£33,000"
+    },
+    "pr-summary": {
+      "text": "That’s £2,750 a month or £635 a week, for 3 of 5 days (60% of full time)."
+    },
+    "pr-detail": {
+      "text": "You’d work 40% fewer days, but your take-home pay falls by about 36%. Time worked 60% Take-home kept 64% Take-home a month £2,163 Holiday a year 16.8 days Pension a month (you and employer) £220 Compared with full time Full-time take-home£3,401 a month Your take-home£2,163 a month Difference£1,238 less a month Worth knowing You’d move out of higher-rate tax, so none of your salary would be taxed at 40%."
+    },
+    "pr-insight": {
+      "text": "You’d work 40% fewer days, but your take-home pay falls by about 36%. Time worked 60% Take-home kept 64%"
+    },
+    "pr-insight-text": {
+      "text": "You’d work 40% fewer days, but your take-home pay falls by about 36%."
+    },
+    "pr-bar-hours": {
+      "text": "",
+      "width": "60%"
+    },
+    "pr-bar-hours-val": {
+      "text": "60%"
+    },
+    "pr-bar-pay": {
+      "text": "",
+      "width": "64%"
+    },
+    "pr-bar-pay-val": {
+      "text": "64%"
+    },
+    "pr-st-net": {
+      "text": "£2,163"
+    },
+    "pr-st-holiday": {
+      "text": "16.8 days"
+    },
+    "pr-st-pension": {
+      "text": "£220"
+    },
+    "pr-ft-net": {
+      "text": "£3,401 a month"
+    },
+    "pr-pt-net": {
+      "text": "£2,163 a month"
+    },
+    "pr-diff": {
+      "text": "£1,238 less a month"
+    },
+    "pr-notes": {
+      "text": "Worth knowing You’d move out of higher-rate tax, so none of your salary would be taxed at 40%."
+    },
+    "pr-notes-list": {
+      "text": "You’d move out of higher-rate tax, so none of your salary would be taxed at 40%."
+    }
+  },
+  "high": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "pr-h-salary": {
+      "text": "What is the full-time salary for the role?"
+    },
+    "pr-h-week": {
+      "text": "How much will you work?"
+    },
+    "pr-full-label": {
+      "text": "Full-time hours a week"
+    },
+    "pr-full@invalid": "false",
+    "pr-yours-label": {
+      "text": "Your hours a week"
+    },
+    "pr-yours@invalid": "false",
+    "pr-error": {
+      "text": "Your hours can’t be more than the full-time week. Use the full-time salary if you work full time.",
+      "hidden": true
+    },
+    "pr-h-extras": {
+      "text": "Pension and holiday"
+    },
+    "pr-result": {
+      "text": "04 / Your result Your pro rata salary £112,000 That’s £9,333 a month or £2,154 a week, for 30 of 37.5 hours (80% of full time). You’d work 20% fewer hours, but your take-home pay falls by about 13%. Time worked 80% Take-home kept 87% Take-home a month £5,794 Holiday a year 168 hours Pension a month (you and employer) £1,027 Compared with full time Full-time take-home£6,652 a month Your take-home£5,794 a month Difference£858 less a month Worth knowing You’d get some of your Personal Allowance back, because less of your income is above £100,000. Estimates use 2026/27 Income Tax and National Insurance rates for England, Wales and Northern Ireland, with your pension taken before tax. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
+    },
+    "pr-h-result": {
+      "text": "Your pro rata salary"
+    },
+    "pr-salary-out": {
+      "text": "£112,000"
+    },
+    "pr-summary": {
+      "text": "That’s £9,333 a month or £2,154 a week, for 30 of 37.5 hours (80% of full time)."
+    },
+    "pr-detail": {
+      "text": "You’d work 20% fewer hours, but your take-home pay falls by about 13%. Time worked 80% Take-home kept 87% Take-home a month £5,794 Holiday a year 168 hours Pension a month (you and employer) £1,027 Compared with full time Full-time take-home£6,652 a month Your take-home£5,794 a month Difference£858 less a month Worth knowing You’d get some of your Personal Allowance back, because less of your income is above £100,000."
+    },
+    "pr-insight": {
+      "text": "You’d work 20% fewer hours, but your take-home pay falls by about 13%. Time worked 80% Take-home kept 87%"
+    },
+    "pr-insight-text": {
+      "text": "You’d work 20% fewer hours, but your take-home pay falls by about 13%."
+    },
+    "pr-bar-hours": {
+      "text": "",
+      "width": "80%"
+    },
+    "pr-bar-hours-val": {
+      "text": "80%"
+    },
+    "pr-bar-pay": {
+      "text": "",
+      "width": "87%"
+    },
+    "pr-bar-pay-val": {
+      "text": "87%"
+    },
+    "pr-st-net": {
+      "text": "£5,794"
+    },
+    "pr-st-holiday": {
+      "text": "168 hours"
+    },
+    "pr-st-pension": {
+      "text": "£1,027"
+    },
+    "pr-ft-net": {
+      "text": "£6,652 a month"
+    },
+    "pr-pt-net": {
+      "text": "£5,794 a month"
+    },
+    "pr-diff": {
+      "text": "£858 less a month"
+    },
+    "pr-notes": {
+      "text": "Worth knowing You’d get some of your Personal Allowance back, because less of your income is above £100,000."
+    },
+    "pr-notes-list": {
+      "text": "You’d get some of your Personal Allowance back, because less of your income is above £100,000."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "pr-h-salary": {
+      "text": "What is the full-time salary for the role?"
+    },
+    "pr-h-week": {
+      "text": "How much will you work?"
+    },
+    "pr-full-label": {
+      "text": "Full-time hours a week"
+    },
+    "pr-full@invalid": "false",
+    "pr-yours-label": {
+      "text": "Your hours a week"
+    },
+    "pr-yours@invalid": "true",
+    "pr-error": {
+      "text": "Your hours can’t be more than the full-time week. Use the full-time salary if you work full time."
+    },
+    "pr-h-extras": {
+      "text": "Pension and holiday"
+    },
+    "pr-result": {
+      "text": "04 / Your result Your pro rata salary £– Enter your full-time salary and your working week to see your pro rata salary. You’d work 40% fewer hours, but your take-home pay falls by about 35%. Time worked 60% Take-home kept 65% Take-home a month £1,653 Holiday a year 126 hours Pension a month (you and employer) £160 Compared with full time Full-time take-home£2,560 a month Your take-home£1,653 a month Difference£907 less a month Worth knowing Estimates use 2026/27 Income Tax and National Insurance rates for England, Wales and Northern Ireland, with your pension taken before tax. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
+    },
+    "pr-h-result": {
+      "text": "Your pro rata salary"
+    },
+    "pr-salary-out": {
+      "text": "£–"
+    },
+    "pr-summary": {
+      "text": "Enter your full-time salary and your working week to see your pro rata salary."
+    },
+    "pr-detail": {
+      "text": "You’d work 40% fewer hours, but your take-home pay falls by about 35%. Time worked 60% Take-home kept 65% Take-home a month £1,653 Holiday a year 126 hours Pension a month (you and employer) £160 Compared with full time Full-time take-home£2,560 a month Your take-home£1,653 a month Difference£907 less a month Worth knowing",
+      "hidden": true
+    },
+    "pr-insight": {
+      "text": "You’d work 40% fewer hours, but your take-home pay falls by about 35%. Time worked 60% Take-home kept 65%"
+    },
+    "pr-insight-text": {
+      "text": "You’d work 40% fewer hours, but your take-home pay falls by about 35%."
+    },
+    "pr-bar-hours": {
+      "text": "",
+      "width": "60%"
+    },
+    "pr-bar-hours-val": {
+      "text": "60%"
+    },
+    "pr-bar-pay": {
+      "text": "",
+      "width": "65%"
+    },
+    "pr-bar-pay-val": {
+      "text": "65%"
+    },
+    "pr-st-net": {
+      "text": "£1,653"
+    },
+    "pr-st-holiday": {
+      "text": "126 hours"
+    },
+    "pr-st-pension": {
+      "text": "£160"
+    },
+    "pr-ft-net": {
+      "text": "£2,560 a month"
+    },
+    "pr-pt-net": {
+      "text": "£1,653 a month"
+    },
+    "pr-diff": {
+      "text": "£907 less a month"
+    },
+    "pr-notes": {
+      "text": "Worth knowing",
+      "hidden": true
+    },
+    "pr-notes-list": {
+      "text": ""
+    }
+  }
+}

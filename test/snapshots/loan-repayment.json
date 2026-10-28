@@ -1,0 +1,361 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglc-input-panel": {
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years"
+    },
+    "lglc-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglc-results-panel": {
+      "text": "02 — YOUR RESULTS Your loan estimate Estimated monthly repayment — — Amount borrowed— Total interest— Total repaid— Estimates assume a fixed annual interest rate and equal monthly repayments. Fees and additional charges are excluded."
+    },
+    "lglc-monthly": {
+      "text": "—"
+    },
+    "lglc-assumption": {
+      "text": "—"
+    },
+    "lglc-principal": {
+      "text": "—"
+    },
+    "lglc-interest": {
+      "text": "—"
+    },
+    "lglc-total": {
+      "text": "—"
+    },
+    "lglc-breakdown": {
+      "text": "Repayment breakdown How your total repayments are split between the amount borrowed and interest. Amount borrowed — — Total interest — —"
+    },
+    "lglc-breakdown-chart": {
+      "text": "",
+      "label": "Repayment breakdown will appear after entering loan details"
+    },
+    "lglc-principal-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lglc-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lglc-principal-pct": {
+      "text": "—"
+    },
+    "lglc-breakdown-principal": {
+      "text": "—"
+    },
+    "lglc-interest-pct": {
+      "text": "—"
+    },
+    "lglc-breakdown-interest": {
+      "text": "—"
+    },
+    "lglc-rate-comparison": {
+      "text": "What if the interest rate changed? Compare your estimated monthly repayments at different interest rates. Lower rate — per month — Your rate — per month Your rate Higher rate — per month — Illustrations assume each interest rate applies throughout the loan term."
+    },
+    "lglc-lower-label": {
+      "text": "Lower rate"
+    },
+    "lglc-lower": {
+      "text": "—"
+    },
+    "lglc-lower-diff": {
+      "text": "—"
+    },
+    "lglc-current-label": {
+      "text": "Your rate"
+    },
+    "lglc-current": {
+      "text": "—"
+    },
+    "lglc-higher-label": {
+      "text": "Higher rate"
+    },
+    "lglc-higher": {
+      "text": "—"
+    },
+    "lglc-higher-diff": {
+      "text": "—"
+    },
+    "lglc-methodology": {
+      "text": "How was this calculated? — This is an illustration, not a loan offer. The calculation uses a nominal annual borrowing rate, not a representative APR, and excludes fees and additional charges."
+    },
+    "lglc-method-text": {
+      "text": "—"
+    }
+  },
+  "typical": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglc-input-panel": {
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years"
+    },
+    "lglc-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglc-results-panel": {
+      "text": "02 — YOUR RESULTS Your loan estimate Estimated monthly repayment £200.38 Based on a £10,000 loan at 7.5% over 5 years. Amount borrowed£10,000 Total interest£2,022.77 Total repaid£12,022.77 Estimates assume a fixed annual interest rate and equal monthly repayments. Fees and additional charges are excluded."
+    },
+    "lglc-monthly": {
+      "text": "£200.38"
+    },
+    "lglc-assumption": {
+      "text": "Based on a £10,000 loan at 7.5% over 5 years."
+    },
+    "lglc-principal": {
+      "text": "£10,000"
+    },
+    "lglc-interest": {
+      "text": "£2,022.77"
+    },
+    "lglc-total": {
+      "text": "£12,022.77"
+    },
+    "lglc-breakdown": {
+      "text": "Repayment breakdown How your total repayments are split between the amount borrowed and interest. Amount borrowed 83.2% £10,000 Total interest 16.8% £2,022.77"
+    },
+    "lglc-breakdown-chart": {
+      "text": "",
+      "label": "Repayment breakdown: 83.2% borrowed amount and 16.8% interest"
+    },
+    "lglc-principal-bar": {
+      "text": "",
+      "width": "83.18%"
+    },
+    "lglc-interest-bar": {
+      "text": "",
+      "width": "16.82%"
+    },
+    "lglc-principal-pct": {
+      "text": "83.2%"
+    },
+    "lglc-breakdown-principal": {
+      "text": "£10,000"
+    },
+    "lglc-interest-pct": {
+      "text": "16.8%"
+    },
+    "lglc-breakdown-interest": {
+      "text": "£2,022.77"
+    },
+    "lglc-rate-comparison": {
+      "text": "What if the interest rate changed? Compare your estimated monthly repayments at different interest rates. 6.5% rate £195.66 per month £4.72 less per month 7.5% rate £200.38 per month Your rate 8.5% rate £205.17 per month £4.79 more per month Illustrations assume each interest rate applies throughout the loan term."
+    },
+    "lglc-lower-label": {
+      "text": "6.5% rate"
+    },
+    "lglc-lower": {
+      "text": "£195.66"
+    },
+    "lglc-lower-diff": {
+      "text": "£4.72 less per month"
+    },
+    "lglc-current-label": {
+      "text": "7.5% rate"
+    },
+    "lglc-current": {
+      "text": "£200.38"
+    },
+    "lglc-higher-label": {
+      "text": "8.5% rate"
+    },
+    "lglc-higher": {
+      "text": "£205.17"
+    },
+    "lglc-higher-diff": {
+      "text": "£4.79 more per month"
+    },
+    "lglc-methodology": {
+      "text": "How was this calculated? This estimate assumes 60 equal monthly payments at an unchanged nominal annual interest rate of 7.5%. Monthly interest rate = annual rate ÷ 12. Monthly repayment = P × r ÷ (1 − (1 + r)^−n), where P is the original loan amount, r the monthly interest rate and n the number of payments. Total interest = total repayments − amount borrowed. Fees and rate changes are excluded. This is an illustration, not a loan offer. The calculation uses a nominal annual borrowing rate, not a representative APR, and excludes fees and additional charges."
+    },
+    "lglc-method-text": {
+      "text": "This estimate assumes 60 equal monthly payments at an unchanged nominal annual interest rate of 7.5%. Monthly interest rate = annual rate ÷ 12. Monthly repayment = P × r ÷ (1 − (1 + r)^−n), where P is the original loan amount, r the monthly interest rate and n the number of payments. Total interest = total repayments − amount borrowed. Fees and rate changes are excluded."
+    }
+  },
+  "zeroRate": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglc-input-panel": {
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years"
+    },
+    "lglc-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglc-results-panel": {
+      "text": "02 — YOUR RESULTS Your loan estimate Estimated monthly repayment £100.00 Based on a £1,200 loan at 0% over 1 year. Amount borrowed£1,200 Total interest£0.00 Total repaid£1,200.00 Estimates assume a fixed annual interest rate and equal monthly repayments. Fees and additional charges are excluded."
+    },
+    "lglc-monthly": {
+      "text": "£100.00"
+    },
+    "lglc-assumption": {
+      "text": "Based on a £1,200 loan at 0% over 1 year."
+    },
+    "lglc-principal": {
+      "text": "£1,200"
+    },
+    "lglc-interest": {
+      "text": "£0.00"
+    },
+    "lglc-total": {
+      "text": "£1,200.00"
+    },
+    "lglc-breakdown": {
+      "text": "Repayment breakdown How your total repayments are split between the amount borrowed and interest. Amount borrowed 100.0% £1,200 Total interest 0.0% £0.00"
+    },
+    "lglc-breakdown-chart": {
+      "text": "",
+      "label": "Repayment breakdown: 100.0% borrowed amount and 0.0% interest"
+    },
+    "lglc-principal-bar": {
+      "text": "",
+      "width": "100%"
+    },
+    "lglc-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lglc-principal-pct": {
+      "text": "100.0%"
+    },
+    "lglc-breakdown-principal": {
+      "text": "£1,200"
+    },
+    "lglc-interest-pct": {
+      "text": "0.0%"
+    },
+    "lglc-breakdown-interest": {
+      "text": "£0.00"
+    },
+    "lglc-rate-comparison": {
+      "text": "What if the interest rate changed? Compare your estimated monthly repayments at different interest rates. 0% rate £100.00 per month No change 0% rate £100.00 per month Your rate 1% rate £100.54 per month £0.54 more per month Illustrations assume each interest rate applies throughout the loan term."
+    },
+    "lglc-lower-label": {
+      "text": "0% rate"
+    },
+    "lglc-lower": {
+      "text": "£100.00"
+    },
+    "lglc-lower-diff": {
+      "text": "No change"
+    },
+    "lglc-current-label": {
+      "text": "0% rate"
+    },
+    "lglc-current": {
+      "text": "£100.00"
+    },
+    "lglc-higher-label": {
+      "text": "1% rate"
+    },
+    "lglc-higher": {
+      "text": "£100.54"
+    },
+    "lglc-higher-diff": {
+      "text": "£0.54 more per month"
+    },
+    "lglc-methodology": {
+      "text": "How was this calculated? At 0% interest, the original loan is divided into 12 equal monthly payments, with no interest charged. This is an illustration, not a loan offer. The calculation uses a nominal annual borrowing rate, not a representative APR, and excludes fees and additional charges."
+    },
+    "lglc-method-text": {
+      "text": "At 0% interest, the original loan is divided into 12 equal monthly payments, with no interest charged."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglc-input-panel": {
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years Enter a loan above £0, an annual rate between 0% and 100%, and a term of 6 months to 40 years in whole months."
+    },
+    "lglc-error": {
+      "text": "Enter a loan above £0, an annual rate between 0% and 100%, and a term of 6 months to 40 years in whole months."
+    },
+    "lglc-results-panel": {
+      "text": "02 — YOUR RESULTS Your loan estimate Estimated monthly repayment — — Amount borrowed— Total interest— Total repaid— Estimates assume a fixed annual interest rate and equal monthly repayments. Fees and additional charges are excluded."
+    },
+    "lglc-monthly": {
+      "text": "—"
+    },
+    "lglc-assumption": {
+      "text": "—"
+    },
+    "lglc-principal": {
+      "text": "—"
+    },
+    "lglc-interest": {
+      "text": "—"
+    },
+    "lglc-total": {
+      "text": "—"
+    },
+    "lglc-breakdown": {
+      "text": "Repayment breakdown How your total repayments are split between the amount borrowed and interest. Amount borrowed — — Total interest — —"
+    },
+    "lglc-breakdown-chart": {
+      "text": "",
+      "label": "Repayment breakdown will appear after entering loan details"
+    },
+    "lglc-principal-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lglc-interest-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "lglc-principal-pct": {
+      "text": "—"
+    },
+    "lglc-breakdown-principal": {
+      "text": "—"
+    },
+    "lglc-interest-pct": {
+      "text": "—"
+    },
+    "lglc-breakdown-interest": {
+      "text": "—"
+    },
+    "lglc-rate-comparison": {
+      "text": "What if the interest rate changed? Compare your estimated monthly repayments at different interest rates. Lower rate — per month — Your rate — per month Your rate Higher rate — per month — Illustrations assume each interest rate applies throughout the loan term."
+    },
+    "lglc-lower-label": {
+      "text": "Lower rate"
+    },
+    "lglc-lower": {
+      "text": "—"
+    },
+    "lglc-lower-diff": {
+      "text": "—"
+    },
+    "lglc-current-label": {
+      "text": "Your rate"
+    },
+    "lglc-current": {
+      "text": "—"
+    },
+    "lglc-higher-label": {
+      "text": "Higher rate"
+    },
+    "lglc-higher": {
+      "text": "—"
+    },
+    "lglc-higher-diff": {
+      "text": "—"
+    },
+    "lglc-methodology": {
+      "text": "How was this calculated? — This is an illustration, not a loan offer. The calculation uses a nominal annual borrowing rate, not a representative APR, and excludes fees and additional charges."
+    },
+    "lglc-method-text": {
+      "text": "—"
+    }
+  }
+}

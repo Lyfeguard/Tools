@@ -1,0 +1,214 @@
+// Inputs used by the tests. Each scenario is a list of steps run on a fresh page.
+module.exports = {
+  'net-worth': {
+    empty: [],
+    typical: [
+      ['fill', '#lgnw-current-accounts', '2,500'],
+      ['fill', '#lgnw-cash', '12500'],
+      ['fill', '#lgnw-isa', '20000'],
+      ['fill', '#lgnw-pensions', '85000'],
+      ['fill', '#lgnw-property', '350000'],
+      ['fill', '#lgnw-vehicles', '12000'],
+      ['fill', '#lgnw-mortgage', '245000'],
+      ['fill', '#lgnw-car-finance', '7500'],
+      ['fill', '#lgnw-credit-cards', '1250.50'],
+      ['fill', '#lgnw-student-loan', '30000'],
+    ],
+    negative: [
+      ['check', 'input[name="lgnw-scope"][value="household"]'],
+      ['fill', '#lgnw-cash', '1000'],
+      ['fill', '#lgnw-personal-loans', '9000'],
+    ],
+    invalid: [
+      ['fill', '#lgnw-cash', 'abc'],
+      ['fill', '#lgnw-mortgage', '1.234'],
+    ],
+  },
+  'inheritance-tax': {
+    empty: [],
+    simple: [
+      ['fill', '#lgiht-cash', '500000'],
+      ['select', '#lgiht-home-desc', 'no'],
+      ['select', '#lgiht-transfer', 'no'],
+    ],
+    home: [
+      ['fill', '#lgiht-home', '450000'],
+      ['fill', '#lgiht-investments', '300000'],
+      ['fill', '#lgiht-mortgage', '50000'],
+      ['fill', '#lgiht-funeral', '5000'],
+      ['select', '#lgiht-home-desc', 'yes'],
+      ['fill', '#lgiht-home-equity', '400000'],
+      ['select', '#lgiht-transfer', 'yes'],
+      ['fill', '#lgiht-transfer-nrb', '100'],
+      ['fill', '#lgiht-transfer-rnrb', '100'],
+    ],
+    taper2027: [
+      ['select', '#lgiht-period', '2027'],
+      ['fill', '#lgiht-home', '1500000'],
+      ['fill', '#lgiht-investments', '900000'],
+      ['fill', '#lgiht-pensions-2027', '200000'],
+      ['fill', '#lgiht-gifts', '100000'],
+      ['fill', '#lgiht-charity', '50000'],
+      ['select', '#lgiht-home-desc', 'yes'],
+      ['fill', '#lgiht-home-equity', '1500000'],
+      ['select', '#lgiht-transfer', 'no'],
+    ],
+    unconfirmed: [
+      ['fill', '#lgiht-cash', '400000'],
+      ['fill', '#lgiht-spouse', '100000'],
+    ],
+    invalid: [['fill', '#lgiht-cash', '12.345']],
+  },
+  'compound-interest': {
+    empty: [],
+    monthly: [
+      ['fill', '#lgci-initial', '5,000'],
+      ['fill', '#lgci-contribution', '200'],
+      ['fill', '#lgci-rate', '5'],
+      ['fill', '#lgci-years', '10'],
+    ],
+    annual: [
+      ['fill', '#lgci-initial', '10000'],
+      ['fill', '#lgci-contribution', '1000'],
+      ['select', '#lgci-frequency', 'annually'],
+      ['fill', '#lgci-rate', '7.25'],
+      ['fill', '#lgci-years', '25'],
+    ],
+    zeroRate: [
+      ['fill', '#lgci-initial', '1000'],
+      ['fill', '#lgci-contribution', '50'],
+      ['fill', '#lgci-rate', '0'],
+      ['fill', '#lgci-years', '3'],
+    ],
+    invalid: [
+      ['fill', '#lgci-initial', '1000'],
+      ['fill', '#lgci-rate', '5'],
+      ['fill', '#lgci-years', '-2'],
+    ],
+  },
+  'savings-goal': {
+    empty: [],
+    monthly: [
+      ['fill', '#sg-goal', '10,000'],
+      ['fill', '#sg-initial', '1000'],
+      ['fill', '#sg-years', '2'],
+      ['fill', '#sg-months', '6'],
+      ['fill', '#sg-rate', '4'],
+    ],
+    time: [
+      ['check', 'input[name="sg-mode"][value="time"]'],
+      ['fill', '#sg-goal', '20000'],
+      ['fill', '#sg-initial', '500'],
+      ['fill', '#sg-monthly', '300'],
+      ['fill', '#sg-rate', '3.5'],
+    ],
+    invalid: [
+      ['fill', '#sg-goal', 'ten'],
+      ['fill', '#sg-years', '1'],
+    ],
+  },
+  'emergency-fund': {
+    empty: [],
+    typical: [
+      ['fill', '#ef-monthly', '2,000'],
+      ['check', 'input[name="ef-months"][value="6"]'],
+      ['fill', '#ef-saved', '4500'],
+    ],
+    breakdown: [
+      ['click', '#ef-toggle'],
+      ['fill', '#ef-b1', '1100'],
+      ['fill', '#ef-b2', '350'],
+      ['fill', '#ef-b3', '200'],
+      ['fill', '#ef-saved', '20000'],
+    ],
+  },
+  'loan-repayment': {
+    empty: [],
+    typical: [
+      ['fill', '#lglc-amount', '10,000'],
+      ['fill', '#lglc-rate', '7.5'],
+      ['fill', '#lglc-term', '5'],
+    ],
+    zeroRate: [
+      ['fill', '#lglc-amount', '1200'],
+      ['fill', '#lglc-rate', '0'],
+      ['fill', '#lglc-term', '1'],
+    ],
+    invalid: [
+      ['fill', '#lglc-amount', '1000'],
+      ['fill', '#lglc-rate', '5'],
+      ['fill', '#lglc-term', '0.1'],
+    ],
+  },
+  'pro-rata-salary': {
+    defaults: [],
+    days: [
+      ['fill', '#pr-salary', '55,000'],
+      ['check', 'input[name="pr-mode"][value="days"]'],
+      ['fill', '#pr-full', '5'],
+      ['fill', '#pr-yours', '3'],
+    ],
+    high: [
+      ['fill', '#pr-salary', '140000'],
+      ['fill', '#pr-yours', '30'],
+      ['fill', '#pr-ee', '8'],
+    ],
+    invalid: [['fill', '#pr-yours', '50']],
+  },
+  'salary-by-age': {
+    defaults: [],
+    young: [
+      ['check', 'input[name="sa-age"][value="22-29"]'],
+      ['fill', '#sa-salary', '28,500'],
+      ['check', 'input[name="sa-who2"][value="female"]'],
+    ],
+    high: [
+      ['check', 'input[name="sa-age"][value="50-59"]'],
+      ['fill', '#sa-salary', '150000'],
+    ],
+  },
+  mortgage: {
+    empty: [],
+    repayment: [
+      ['fill', '#lgmc-price', '350,000'],
+      ['fill', '#lgmc-deposit', '70,000'],
+      ['fill', '#lgmc-rate', '4.5'],
+      ['fill', '#lgmc-term', '25'],
+    ],
+    interestOnly: [
+      ['fill', '#lgmc-price', '300000'],
+      ['fill', '#lgmc-deposit', '75000'],
+      ['fill', '#lgmc-rate', '5'],
+      ['fill', '#lgmc-term', '20'],
+      ['check', '#lgmc-type-interest-only'],
+    ],
+    invalid: [
+      ['fill', '#lgmc-price', '200000'],
+      ['fill', '#lgmc-deposit', '250000'],
+      ['fill', '#lgmc-rate', '4'],
+      ['fill', '#lgmc-term', '25'],
+    ],
+  },
+  'debt-to-income': {
+    empty: [],
+    annual: [
+      ['fill', '#lgdti-income', '45,000'],
+      ['fill', '#lgdti-housing', '1,100'],
+      ['fill', '#lgdti-car', '250'],
+      ['fill', '#lgdti-cards', '75.50'],
+    ],
+    monthly: [
+      ['check', '#lgdti-period-month'],
+      ['fill', '#lgdti-income', '2000'],
+      ['fill', '#lgdti-other-income', '250'],
+      ['fill', '#lgdti-housing', '900'],
+      ['fill', '#lgdti-loans', '400'],
+      ['fill', '#lgdti-student', '60'],
+    ],
+    debtOnly: [['fill', '#lgdti-housing', '800']],
+    invalid: [
+      ['fill', '#lgdti-income', '30000'],
+      ['fill', '#lgdti-car', '12.345'],
+    ],
+  },
+};

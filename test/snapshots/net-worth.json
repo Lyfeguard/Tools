@@ -1,0 +1,660 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgnw-assets-panel": {
+      "text": "01 / WHAT YOU OWN— Your assets Enter what your assets are worth today, not what you originally paid. Leave anything that doesn't apply blank. Whose net worth? Just mine Our household For personal estimates include only your attributable share of jointly owned assets and shared debts. For household estimates include shared items once. Joint debt liability can exceed an allocated share. Cash & financial assets Current accounts £ Savings & cash £ Individual Savings Accounts (ISAs) £ Other investments £ Pension pots £ Property & other assets Your home £ Other property £ Vehicles £ Business interests £ Other valuable assets £ Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-subtotal": {
+      "text": "—"
+    },
+    "lgnw-assets-heading": {
+      "text": "Your assets"
+    },
+    "lgnw-current-accounts@invalid": "false",
+    "lgnw-cash@invalid": "false",
+    "lgnw-isa@invalid": "false",
+    "lgnw-investments@invalid": "false",
+    "lgnw-pensions@invalid": "false",
+    "lgnw-property@invalid": "false",
+    "lgnw-other-property@invalid": "false",
+    "lgnw-vehicles@invalid": "false",
+    "lgnw-business@invalid": "false",
+    "lgnw-other-assets@invalid": "false",
+    "lgnw-assets-note": {
+      "text": "Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgnw-liabilities-panel": {
+      "text": "02 / WHAT YOU OWE— Your liabilities Enter what you still owe, rather than your original borrowing or monthly repayments. Use the same personal or household basis throughout. Property & vehicle borrowing Mortgages £ Car finance £ Loans & other debts Credit cards £ Personal loans £ Overdrafts £ Student loans £ Other debts £ Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-subtotal": {
+      "text": "—"
+    },
+    "lgnw-liabilities-heading": {
+      "text": "Your liabilities"
+    },
+    "lgnw-mortgage@invalid": "false",
+    "lgnw-car-finance@invalid": "false",
+    "lgnw-credit-cards@invalid": "false",
+    "lgnw-personal-loans@invalid": "false",
+    "lgnw-overdraft@invalid": "false",
+    "lgnw-student-loan@invalid": "false",
+    "lgnw-other-debts@invalid": "false",
+    "lgnw-liabilities-note": {
+      "text": "Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgnw-results-panel": {
+      "text": "03 / YOUR FINANCIAL SNAPSHOTCalculated 28 Oct 2026 Your net worth, clearly. Estimated net worth — Enter your figures above to see your financial position. Total assets— Total liabilities— Net worth = assets − liabilities Calculated in your browser. No account required. Download ExcelClear figures",
+      "data-sign": "neutral"
+    },
+    "lgnw-snapshot-date": {
+      "text": "Calculated 28 Oct 2026"
+    },
+    "lgnw-results-heading": {
+      "text": "Your net worth, clearly."
+    },
+    "lgnw-scope-result": {
+      "text": "Estimated net worth"
+    },
+    "lgnw-net-worth": {
+      "text": "—"
+    },
+    "lgnw-results-context": {
+      "text": "Enter your figures above to see your financial position."
+    },
+    "lgnw-assets-total": {
+      "text": "—"
+    },
+    "lgnw-liabilities-total": {
+      "text": "—"
+    },
+    "lgnw-export": {
+      "text": "Download Excel",
+      "disabled": true
+    },
+    "lgnw-reset": {
+      "text": "Clear figures"
+    },
+    "lgnw-bridge-panel": {
+      "text": "YOUR FINANCIAL POSITION How your net worth adds up See how outstanding debts reduce the value of what you own. ASSETS − LIABILITIES = NET WORTH Add your figures to see how your net worth is calculated. 01 Total assets— 02 Less liabilities— 03 Your net worth— The middle bar represents debts deducted from your assets. Your net worth can be negative if liabilities exceed assets.",
+      "data-negative": "false"
+    },
+    "lgnw-bridge-heading": {
+      "text": "How your net worth adds up"
+    },
+    "lgnw-bridge-svg": {
+      "text": "",
+      "label": "Enter assets and liabilities to see how net worth is calculated"
+    },
+    "lgnw-bridge-empty": {
+      "text": "Add your figures to see how your net worth is calculated."
+    },
+    "lgnw-bridge-assets": {
+      "text": "—"
+    },
+    "lgnw-bridge-liabilities": {
+      "text": "—"
+    },
+    "lgnw-bridge-net": {
+      "text": "—"
+    },
+    "lgnw-composition-panel": {
+      "text": "WHERE YOUR WEALTH SITS Your asset mix A clearer view of where your assets are held — from everyday savings to property and pensions. TOTAL ASSETS— Enter assets above to see where your wealth sits. Categories with no value are omitted from the chart. Pensions are included at their estimated current value."
+    },
+    "lgnw-composition-heading": {
+      "text": "Your asset mix"
+    },
+    "lgnw-asset-donut": {
+      "text": "",
+      "label": "No positive asset values to chart"
+    },
+    "lgnw-asset-segments": {
+      "text": ""
+    },
+    "lgnw-asset-donut-total": {
+      "text": "—"
+    },
+    "lgnw-asset-legend": {
+      "text": "Enter assets above to see where your wealth sits.",
+      "label": "Asset categories"
+    },
+    "lgnw-debts-panel": {
+      "text": "WHERE YOUR DEBTS SIT Your liabilities, explained See which outstanding balances make up your total liabilities, without confusing them with monthly repayments. Combined outstanding debt— Enter outstanding debts to see the breakdown. Bars are scaled relative to your largest outstanding debt. Amounts remain full balances."
+    },
+    "lgnw-debts-heading": {
+      "text": "Your liabilities, explained"
+    },
+    "lgnw-debt-total": {
+      "text": "—"
+    },
+    "lgnw-debt-bars": {
+      "text": "Enter outstanding debts to see the breakdown."
+    },
+    "lgnw-insights-panel": {
+      "text": "GO BEYOND THE NUMBER What your numbers reveal Three factual measures that help explain your overall financial position. Cash, savings & investments— Positive current accounts, cash, savings, ISAs and other investments. These may not all be immediately accessible. Indicative property equity— Property values less the mortgages entered. Assumes those mortgages relate to the properties included. Liabilities to assets— Your outstanding liabilities as a percentage of your total asset value. Net worth excluding UK student loans (comparison): —. Your actual student loan balance remains outstanding; repayment obligations differ from ordinary loans. These are descriptive figures, not a credit score, affordability assessment or financial recommendation."
+    },
+    "lgnw-insights-heading": {
+      "text": "What your numbers reveal"
+    },
+    "lgnw-liquid-investments": {
+      "text": "—"
+    },
+    "lgnw-property-equity": {
+      "text": "—"
+    },
+    "lgnw-debt-asset-ratio": {
+      "text": "—"
+    },
+    "lgnw-net-ex-student": {
+      "text": "—"
+    },
+    "lgnw-methodology": {
+      "text": "How was this calculated?Method, assumptions and what to include Net worth is calculated by subtracting your outstanding liabilities from your estimated asset values. What counts as an asset? Cash and savings, ISAs, other investments, pension pots, property, vehicles, business interests and other valuable assets. Use current estimates and a consistent approach to jointly owned assets and debts. What counts as a liability? Outstanding mortgage balances, credit cards, personal loans, car finance, student loans and other debts. Enter remaining balances, not monthly payments, and don't subtract debts twice. Student loan repayment obligations may differ from conventional borrowing. Important to know This is a gross balance-sheet estimate, not cash available today or an inheritance-tax valuation. State Pension benefits and defined-benefit pension income are not ordinary pension-pot balances. UK student loans generally have income-related repayments and may be written off under scheme rules. Ownership, leases, taxes, selling costs, valuations and currency changes may affect realisable wealth. An allocated share of a joint loan may not equal legal liability."
+    },
+    "lgnw-method-dynamic": {
+      "text": "Net worth is calculated by subtracting your outstanding liabilities from your estimated asset values."
+    }
+  },
+  "typical": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgnw-assets-panel": {
+      "text": "01 / WHAT YOU OWN£482,000 Your assets Enter what your assets are worth today, not what you originally paid. Leave anything that doesn't apply blank. Whose net worth? Just mine Our household For personal estimates include only your attributable share of jointly owned assets and shared debts. For household estimates include shared items once. Joint debt liability can exceed an allocated share. Cash & financial assets Current accounts £ Savings & cash £ Individual Savings Accounts (ISAs) £ Other investments £ Pension pots £ Property & other assets Your home £ Other property £ Vehicles £ Business interests £ Other valuable assets £ Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-subtotal": {
+      "text": "£482,000"
+    },
+    "lgnw-assets-heading": {
+      "text": "Your assets"
+    },
+    "lgnw-current-accounts@invalid": "false",
+    "lgnw-cash@invalid": "false",
+    "lgnw-isa@invalid": "false",
+    "lgnw-investments@invalid": "false",
+    "lgnw-pensions@invalid": "false",
+    "lgnw-property@invalid": "false",
+    "lgnw-other-property@invalid": "false",
+    "lgnw-vehicles@invalid": "false",
+    "lgnw-business@invalid": "false",
+    "lgnw-other-assets@invalid": "false",
+    "lgnw-assets-note": {
+      "text": "Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgnw-liabilities-panel": {
+      "text": "02 / WHAT YOU OWE£283,750.50 Your liabilities Enter what you still owe, rather than your original borrowing or monthly repayments. Use the same personal or household basis throughout. Property & vehicle borrowing Mortgages £ Car finance £ Loans & other debts Credit cards £ Personal loans £ Overdrafts £ Student loans £ Other debts £ Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-subtotal": {
+      "text": "£283,750.50"
+    },
+    "lgnw-liabilities-heading": {
+      "text": "Your liabilities"
+    },
+    "lgnw-mortgage@invalid": "false",
+    "lgnw-car-finance@invalid": "false",
+    "lgnw-credit-cards@invalid": "false",
+    "lgnw-personal-loans@invalid": "false",
+    "lgnw-overdraft@invalid": "false",
+    "lgnw-student-loan@invalid": "false",
+    "lgnw-other-debts@invalid": "false",
+    "lgnw-liabilities-note": {
+      "text": "Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgnw-results-panel": {
+      "text": "03 / YOUR FINANCIAL SNAPSHOTCalculated 28 Oct 2026 Your net worth, clearly. Estimated personal net worth £198,249.50 The estimated value of your assets exceeds your outstanding liabilities by £198,249.50. Total assets£482,000 Total liabilities£283,750.50 Net worth = assets − liabilities Calculated in your browser. No account required. Download ExcelClear figures",
+      "data-sign": "positive"
+    },
+    "lgnw-snapshot-date": {
+      "text": "Calculated 28 Oct 2026"
+    },
+    "lgnw-results-heading": {
+      "text": "Your net worth, clearly."
+    },
+    "lgnw-scope-result": {
+      "text": "Estimated personal net worth"
+    },
+    "lgnw-net-worth": {
+      "text": "£198,249.50"
+    },
+    "lgnw-results-context": {
+      "text": "The estimated value of your assets exceeds your outstanding liabilities by £198,249.50."
+    },
+    "lgnw-assets-total": {
+      "text": "£482,000"
+    },
+    "lgnw-liabilities-total": {
+      "text": "£283,750.50"
+    },
+    "lgnw-export": {
+      "text": "Download Excel"
+    },
+    "lgnw-reset": {
+      "text": "Clear figures"
+    },
+    "lgnw-bridge-panel": {
+      "text": "YOUR FINANCIAL POSITION How your net worth adds up See how outstanding debts reduce the value of what you own. ASSETS − LIABILITIES = NET WORTH £0 Add your figures to see how your net worth is calculated. 01 Total assets£482,000 02 Less liabilities£283,750.50 03 Your net worth£198,249.50 The middle bar represents debts deducted from your assets. Your net worth can be negative if liabilities exceed assets.",
+      "data-negative": "false"
+    },
+    "lgnw-bridge-heading": {
+      "text": "How your net worth adds up"
+    },
+    "lgnw-bridge-svg": {
+      "text": "£0",
+      "label": "Assets £482,000, less liabilities £283,750.50, equals net worth £198,249.50."
+    },
+    "lgnw-bridge-empty": {
+      "text": "Add your figures to see how your net worth is calculated.",
+      "hidden": true
+    },
+    "lgnw-bridge-assets": {
+      "text": "£482,000"
+    },
+    "lgnw-bridge-liabilities": {
+      "text": "£283,750.50"
+    },
+    "lgnw-bridge-net": {
+      "text": "£198,249.50"
+    },
+    "lgnw-composition-panel": {
+      "text": "WHERE YOUR WEALTH SITS Your asset mix A clearer view of where your assets are held — from everyday savings to property and pensions. TOTAL ASSETS£482k Current accounts£2,5000.5% of assetsSavings & cash£12,5002.6% of assetsISAs£20,0004.1% of assetsPension pots£85,00017.6% of assetsYour home£350,00072.6% of assetsVehicles£12,0002.5% of assets Categories with no value are omitted from the chart. Pensions are included at their estimated current value."
+    },
+    "lgnw-composition-heading": {
+      "text": "Your asset mix"
+    },
+    "lgnw-asset-donut": {
+      "text": "",
+      "label": "Asset composition: Current accounts 0.5%; Savings & cash 2.6%; ISAs 4.1%; Pension pots 17.6%; Your home 72.6%; Vehicles 2.5%"
+    },
+    "lgnw-asset-segments": {
+      "text": ""
+    },
+    "lgnw-asset-donut-total": {
+      "text": "£482k"
+    },
+    "lgnw-asset-legend": {
+      "text": "Current accounts£2,5000.5% of assetsSavings & cash£12,5002.6% of assetsISAs£20,0004.1% of assetsPension pots£85,00017.6% of assetsYour home£350,00072.6% of assetsVehicles£12,0002.5% of assets",
+      "label": "Asset categories"
+    },
+    "lgnw-debts-panel": {
+      "text": "WHERE YOUR DEBTS SIT Your liabilities, explained See which outstanding balances make up your total liabilities, without confusing them with monthly repayments. Combined outstanding debt£283,750.50 Mortgages£245,00086.3% of total liabilitiesStudent loans£30,00010.6% of total liabilitiesCar finance£7,5002.6% of total liabilitiesCredit cards£1,250.500.4% of total liabilities Bars are scaled relative to your largest outstanding debt. Amounts remain full balances."
+    },
+    "lgnw-debts-heading": {
+      "text": "Your liabilities, explained"
+    },
+    "lgnw-debt-total": {
+      "text": "£283,750.50"
+    },
+    "lgnw-debt-bars": {
+      "text": "Mortgages£245,00086.3% of total liabilitiesStudent loans£30,00010.6% of total liabilitiesCar finance£7,5002.6% of total liabilitiesCredit cards£1,250.500.4% of total liabilities"
+    },
+    "lgnw-insights-panel": {
+      "text": "GO BEYOND THE NUMBER What your numbers reveal Three factual measures that help explain your overall financial position. Cash, savings & investments£35,000 Positive current accounts, cash, savings, ISAs and other investments. These may not all be immediately accessible. Indicative property equity£105,000 Property values less the mortgages entered. Assumes those mortgages relate to the properties included. Liabilities to assets58.9% Your outstanding liabilities as a percentage of your total asset value. Net worth excluding UK student loans (comparison): £228,249.50. Your actual student loan balance remains outstanding; repayment obligations differ from ordinary loans. These are descriptive figures, not a credit score, affordability assessment or financial recommendation."
+    },
+    "lgnw-insights-heading": {
+      "text": "What your numbers reveal"
+    },
+    "lgnw-liquid-investments": {
+      "text": "£35,000"
+    },
+    "lgnw-property-equity": {
+      "text": "£105,000"
+    },
+    "lgnw-debt-asset-ratio": {
+      "text": "58.9%"
+    },
+    "lgnw-net-ex-student": {
+      "text": "£228,249.50"
+    },
+    "lgnw-methodology": {
+      "text": "How was this calculated?Method, assumptions and what to include You entered total assets of £482,000 and liabilities of £283,750.50. Net worth = £482,000 − £283,750.50 = £198,249.50. Blank fields are treated as £0. This is a gross balance-sheet estimate and does not adjust for taxes or selling costs. What counts as an asset? Cash and savings, ISAs, other investments, pension pots, property, vehicles, business interests and other valuable assets. Use current estimates and a consistent approach to jointly owned assets and debts. What counts as a liability? Outstanding mortgage balances, credit cards, personal loans, car finance, student loans and other debts. Enter remaining balances, not monthly payments, and don't subtract debts twice. Student loan repayment obligations may differ from conventional borrowing. Important to know This is a gross balance-sheet estimate, not cash available today or an inheritance-tax valuation. State Pension benefits and defined-benefit pension income are not ordinary pension-pot balances. UK student loans generally have income-related repayments and may be written off under scheme rules. Ownership, leases, taxes, selling costs, valuations and currency changes may affect realisable wealth. An allocated share of a joint loan may not equal legal liability."
+    },
+    "lgnw-method-dynamic": {
+      "text": "You entered total assets of £482,000 and liabilities of £283,750.50. Net worth = £482,000 − £283,750.50 = £198,249.50. Blank fields are treated as £0. This is a gross balance-sheet estimate and does not adjust for taxes or selling costs."
+    }
+  },
+  "negative": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgnw-assets-panel": {
+      "text": "01 / WHAT YOU OWN£1,000 Your assets Enter what your assets are worth today, not what you originally paid. Leave anything that doesn't apply blank. Whose net worth? Just mine Our household For personal estimates include only your attributable share of jointly owned assets and shared debts. For household estimates include shared items once. Joint debt liability can exceed an allocated share. Cash & financial assets Current accounts £ Savings & cash £ Individual Savings Accounts (ISAs) £ Other investments £ Pension pots £ Property & other assets Your home £ Other property £ Vehicles £ Business interests £ Other valuable assets £ Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-subtotal": {
+      "text": "£1,000"
+    },
+    "lgnw-assets-heading": {
+      "text": "Your assets"
+    },
+    "lgnw-current-accounts@invalid": "false",
+    "lgnw-cash@invalid": "false",
+    "lgnw-isa@invalid": "false",
+    "lgnw-investments@invalid": "false",
+    "lgnw-pensions@invalid": "false",
+    "lgnw-property@invalid": "false",
+    "lgnw-other-property@invalid": "false",
+    "lgnw-vehicles@invalid": "false",
+    "lgnw-business@invalid": "false",
+    "lgnw-other-assets@invalid": "false",
+    "lgnw-assets-note": {
+      "text": "Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgnw-liabilities-panel": {
+      "text": "02 / WHAT YOU OWE£9,000 Your liabilities Enter what you still owe, rather than your original borrowing or monthly repayments. Use the same personal or household basis throughout. Property & vehicle borrowing Mortgages £ Car finance £ Loans & other debts Credit cards £ Personal loans £ Overdrafts £ Student loans £ Other debts £ Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-subtotal": {
+      "text": "£9,000"
+    },
+    "lgnw-liabilities-heading": {
+      "text": "Your liabilities"
+    },
+    "lgnw-mortgage@invalid": "false",
+    "lgnw-car-finance@invalid": "false",
+    "lgnw-credit-cards@invalid": "false",
+    "lgnw-personal-loans@invalid": "false",
+    "lgnw-overdraft@invalid": "false",
+    "lgnw-student-loan@invalid": "false",
+    "lgnw-other-debts@invalid": "false",
+    "lgnw-liabilities-note": {
+      "text": "Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgnw-results-panel": {
+      "text": "03 / YOUR FINANCIAL SNAPSHOTCalculated 28 Oct 2026 Your net worth, clearly. Estimated household net worth -£8,000 Your liabilities exceed your assets by £8,000. This is a snapshot, not a judgement of financial wellbeing. Total assets£1,000 Total liabilities£9,000 Net worth = assets − liabilities Calculated in your browser. No account required. Download ExcelClear figures",
+      "data-sign": "negative"
+    },
+    "lgnw-snapshot-date": {
+      "text": "Calculated 28 Oct 2026"
+    },
+    "lgnw-results-heading": {
+      "text": "Your net worth, clearly."
+    },
+    "lgnw-scope-result": {
+      "text": "Estimated household net worth"
+    },
+    "lgnw-net-worth": {
+      "text": "-£8,000"
+    },
+    "lgnw-results-context": {
+      "text": "Your liabilities exceed your assets by £8,000. This is a snapshot, not a judgement of financial wellbeing."
+    },
+    "lgnw-assets-total": {
+      "text": "£1,000"
+    },
+    "lgnw-liabilities-total": {
+      "text": "£9,000"
+    },
+    "lgnw-export": {
+      "text": "Download Excel"
+    },
+    "lgnw-reset": {
+      "text": "Clear figures"
+    },
+    "lgnw-bridge-panel": {
+      "text": "YOUR FINANCIAL POSITION How your net worth adds up See how outstanding debts reduce the value of what you own. ASSETS − LIABILITIES = NET WORTH £0 Add your figures to see how your net worth is calculated. 01 Total assets£1,000 02 Less liabilities£9,000 03 Your net worth-£8,000 The middle bar represents debts deducted from your assets. Your net worth can be negative if liabilities exceed assets.",
+      "data-negative": "true"
+    },
+    "lgnw-bridge-heading": {
+      "text": "How your net worth adds up"
+    },
+    "lgnw-bridge-svg": {
+      "text": "£0",
+      "label": "Assets £1,000, less liabilities £9,000, equals net worth -£8,000."
+    },
+    "lgnw-bridge-empty": {
+      "text": "Add your figures to see how your net worth is calculated.",
+      "hidden": true
+    },
+    "lgnw-bridge-assets": {
+      "text": "£1,000"
+    },
+    "lgnw-bridge-liabilities": {
+      "text": "£9,000"
+    },
+    "lgnw-bridge-net": {
+      "text": "-£8,000"
+    },
+    "lgnw-composition-panel": {
+      "text": "WHERE YOUR WEALTH SITS Your asset mix A clearer view of where your assets are held — from everyday savings to property and pensions. TOTAL ASSETS£1,000 Savings & cash£1,000100% of assets Categories with no value are omitted from the chart. Pensions are included at their estimated current value."
+    },
+    "lgnw-composition-heading": {
+      "text": "Your asset mix"
+    },
+    "lgnw-asset-donut": {
+      "text": "",
+      "label": "Asset composition: Savings & cash 100%"
+    },
+    "lgnw-asset-segments": {
+      "text": ""
+    },
+    "lgnw-asset-donut-total": {
+      "text": "£1,000"
+    },
+    "lgnw-asset-legend": {
+      "text": "Savings & cash£1,000100% of assets",
+      "label": "Asset categories"
+    },
+    "lgnw-debts-panel": {
+      "text": "WHERE YOUR DEBTS SIT Your liabilities, explained See which outstanding balances make up your total liabilities, without confusing them with monthly repayments. Combined outstanding debt£9,000 Personal loans£9,000100% of total liabilities Bars are scaled relative to your largest outstanding debt. Amounts remain full balances."
+    },
+    "lgnw-debts-heading": {
+      "text": "Your liabilities, explained"
+    },
+    "lgnw-debt-total": {
+      "text": "£9,000"
+    },
+    "lgnw-debt-bars": {
+      "text": "Personal loans£9,000100% of total liabilities"
+    },
+    "lgnw-insights-panel": {
+      "text": "GO BEYOND THE NUMBER What your numbers reveal Three factual measures that help explain your overall financial position. Cash, savings & investments£1,000 Positive current accounts, cash, savings, ISAs and other investments. These may not all be immediately accessible. Indicative property equity— Property values less the mortgages entered. Assumes those mortgages relate to the properties included. Liabilities to assets900% Your outstanding liabilities as a percentage of your total asset value. Net worth excluding UK student loans (comparison): -£8,000. Your actual student loan balance remains outstanding; repayment obligations differ from ordinary loans. These are descriptive figures, not a credit score, affordability assessment or financial recommendation."
+    },
+    "lgnw-insights-heading": {
+      "text": "What your numbers reveal"
+    },
+    "lgnw-liquid-investments": {
+      "text": "£1,000"
+    },
+    "lgnw-property-equity": {
+      "text": "—"
+    },
+    "lgnw-debt-asset-ratio": {
+      "text": "900%"
+    },
+    "lgnw-net-ex-student": {
+      "text": "-£8,000"
+    },
+    "lgnw-methodology": {
+      "text": "How was this calculated?Method, assumptions and what to include You entered total assets of £1,000 and liabilities of £9,000. Net worth = £1,000 − £9,000 = -£8,000. Blank fields are treated as £0. This is a gross balance-sheet estimate and does not adjust for taxes or selling costs. What counts as an asset? Cash and savings, ISAs, other investments, pension pots, property, vehicles, business interests and other valuable assets. Use current estimates and a consistent approach to jointly owned assets and debts. What counts as a liability? Outstanding mortgage balances, credit cards, personal loans, car finance, student loans and other debts. Enter remaining balances, not monthly payments, and don't subtract debts twice. Student loan repayment obligations may differ from conventional borrowing. Important to know This is a gross balance-sheet estimate, not cash available today or an inheritance-tax valuation. State Pension benefits and defined-benefit pension income are not ordinary pension-pot balances. UK student loans generally have income-related repayments and may be written off under scheme rules. Ownership, leases, taxes, selling costs, valuations and currency changes may affect realisable wealth. An allocated share of a joint loan may not equal legal liability."
+    },
+    "lgnw-method-dynamic": {
+      "text": "You entered total assets of £1,000 and liabilities of £9,000. Net worth = £1,000 − £9,000 = -£8,000. Blank fields are treated as £0. This is a gross balance-sheet estimate and does not adjust for taxes or selling costs."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgnw-assets-panel": {
+      "text": "01 / WHAT YOU OWN— Your assets Enter what your assets are worth today, not what you originally paid. Leave anything that doesn't apply blank. Whose net worth? Just mine Our household For personal estimates include only your attributable share of jointly owned assets and shared debts. For household estimates include shared items once. Joint debt liability can exceed an allocated share. Cash & financial assets Current accounts £ Savings & cash £ Individual Savings Accounts (ISAs) £ Other investments £ Pension pots £ Property & other assets Your home £ Other property £ Vehicles £ Business interests £ Other valuable assets £ Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance. Enter valid amounts of £0 or more, using up to two decimal places (maximum £1 trillion per field)."
+    },
+    "lgnw-assets-subtotal": {
+      "text": "—"
+    },
+    "lgnw-assets-heading": {
+      "text": "Your assets"
+    },
+    "lgnw-current-accounts@invalid": "false",
+    "lgnw-cash@invalid": "true",
+    "lgnw-isa@invalid": "false",
+    "lgnw-investments@invalid": "false",
+    "lgnw-pensions@invalid": "false",
+    "lgnw-property@invalid": "false",
+    "lgnw-other-property@invalid": "false",
+    "lgnw-vehicles@invalid": "false",
+    "lgnw-business@invalid": "false",
+    "lgnw-other-assets@invalid": "false",
+    "lgnw-assets-note": {
+      "text": "Count each asset once. Include ISA balances only under ISAs and personal business interests without separately repeating company-held assets. Use current estimated values. Pension pots exclude the State Pension; defined-benefit pensions may not have a comparable account balance."
+    },
+    "lgnw-assets-error": {
+      "text": "Enter valid amounts of £0 or more, using up to two decimal places (maximum £1 trillion per field)."
+    },
+    "lgnw-liabilities-panel": {
+      "text": "02 / WHAT YOU OWE— Your liabilities Enter what you still owe, rather than your original borrowing or monthly repayments. Use the same personal or household basis throughout. Property & vehicle borrowing Mortgages £ Car finance £ Loans & other debts Credit cards £ Personal loans £ Overdrafts £ Student loans £ Other debts £ Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership. Enter valid amounts of £0 or more, using up to two decimal places (maximum £1 trillion per field)."
+    },
+    "lgnw-liabilities-subtotal": {
+      "text": "—"
+    },
+    "lgnw-liabilities-heading": {
+      "text": "Your liabilities"
+    },
+    "lgnw-mortgage@invalid": "true",
+    "lgnw-car-finance@invalid": "false",
+    "lgnw-credit-cards@invalid": "false",
+    "lgnw-personal-loans@invalid": "false",
+    "lgnw-overdraft@invalid": "false",
+    "lgnw-student-loan@invalid": "false",
+    "lgnw-other-debts@invalid": "false",
+    "lgnw-liabilities-note": {
+      "text": "Enter outstanding balances, not original borrowing or monthly payments. Include mortgages separately from gross property values; use a consistent household or personal basis. UK student loans have income-contingent repayment and possible write-off terms. Finance agreements can differ in asset ownership."
+    },
+    "lgnw-liabilities-error": {
+      "text": "Enter valid amounts of £0 or more, using up to two decimal places (maximum £1 trillion per field)."
+    },
+    "lgnw-results-panel": {
+      "text": "03 / YOUR FINANCIAL SNAPSHOTCalculated 28 Oct 2026 Your net worth, clearly. Estimated net worth — Enter your figures above to see your financial position. Total assets— Total liabilities— Net worth = assets − liabilities Calculated in your browser. No account required. Download ExcelClear figures",
+      "data-sign": "neutral"
+    },
+    "lgnw-snapshot-date": {
+      "text": "Calculated 28 Oct 2026"
+    },
+    "lgnw-results-heading": {
+      "text": "Your net worth, clearly."
+    },
+    "lgnw-scope-result": {
+      "text": "Estimated net worth"
+    },
+    "lgnw-net-worth": {
+      "text": "—"
+    },
+    "lgnw-results-context": {
+      "text": "Enter your figures above to see your financial position."
+    },
+    "lgnw-assets-total": {
+      "text": "—"
+    },
+    "lgnw-liabilities-total": {
+      "text": "—"
+    },
+    "lgnw-export": {
+      "text": "Download Excel",
+      "disabled": true
+    },
+    "lgnw-reset": {
+      "text": "Clear figures"
+    },
+    "lgnw-bridge-panel": {
+      "text": "YOUR FINANCIAL POSITION How your net worth adds up See how outstanding debts reduce the value of what you own. ASSETS − LIABILITIES = NET WORTH Add your figures to see how your net worth is calculated. 01 Total assets— 02 Less liabilities— 03 Your net worth— The middle bar represents debts deducted from your assets. Your net worth can be negative if liabilities exceed assets.",
+      "data-negative": "false"
+    },
+    "lgnw-bridge-heading": {
+      "text": "How your net worth adds up"
+    },
+    "lgnw-bridge-svg": {
+      "text": "",
+      "label": "Enter assets and liabilities to see how net worth is calculated"
+    },
+    "lgnw-bridge-empty": {
+      "text": "Add your figures to see how your net worth is calculated."
+    },
+    "lgnw-bridge-assets": {
+      "text": "—"
+    },
+    "lgnw-bridge-liabilities": {
+      "text": "—"
+    },
+    "lgnw-bridge-net": {
+      "text": "—"
+    },
+    "lgnw-composition-panel": {
+      "text": "WHERE YOUR WEALTH SITS Your asset mix A clearer view of where your assets are held — from everyday savings to property and pensions. TOTAL ASSETS— Enter assets above to see where your wealth sits. Categories with no value are omitted from the chart. Pensions are included at their estimated current value."
+    },
+    "lgnw-composition-heading": {
+      "text": "Your asset mix"
+    },
+    "lgnw-asset-donut": {
+      "text": "",
+      "label": "No positive asset values to chart"
+    },
+    "lgnw-asset-segments": {
+      "text": ""
+    },
+    "lgnw-asset-donut-total": {
+      "text": "—"
+    },
+    "lgnw-asset-legend": {
+      "text": "Enter assets above to see where your wealth sits.",
+      "label": "Asset categories"
+    },
+    "lgnw-debts-panel": {
+      "text": "WHERE YOUR DEBTS SIT Your liabilities, explained See which outstanding balances make up your total liabilities, without confusing them with monthly repayments. Combined outstanding debt— Enter outstanding debts to see the breakdown. Bars are scaled relative to your largest outstanding debt. Amounts remain full balances."
+    },
+    "lgnw-debts-heading": {
+      "text": "Your liabilities, explained"
+    },
+    "lgnw-debt-total": {
+      "text": "—"
+    },
+    "lgnw-debt-bars": {
+      "text": "Enter outstanding debts to see the breakdown."
+    },
+    "lgnw-insights-panel": {
+      "text": "GO BEYOND THE NUMBER What your numbers reveal Three factual measures that help explain your overall financial position. Cash, savings & investments— Positive current accounts, cash, savings, ISAs and other investments. These may not all be immediately accessible. Indicative property equity— Property values less the mortgages entered. Assumes those mortgages relate to the properties included. Liabilities to assets— Your outstanding liabilities as a percentage of your total asset value. Net worth excluding UK student loans (comparison): —. Your actual student loan balance remains outstanding; repayment obligations differ from ordinary loans. These are descriptive figures, not a credit score, affordability assessment or financial recommendation."
+    },
+    "lgnw-insights-heading": {
+      "text": "What your numbers reveal"
+    },
+    "lgnw-liquid-investments": {
+      "text": "—"
+    },
+    "lgnw-property-equity": {
+      "text": "—"
+    },
+    "lgnw-debt-asset-ratio": {
+      "text": "—"
+    },
+    "lgnw-net-ex-student": {
+      "text": "—"
+    },
+    "lgnw-methodology": {
+      "text": "How was this calculated?Method, assumptions and what to include Net worth is calculated by subtracting your outstanding liabilities from your estimated asset values. What counts as an asset? Cash and savings, ISAs, other investments, pension pots, property, vehicles, business interests and other valuable assets. Use current estimates and a consistent approach to jointly owned assets and debts. What counts as a liability? Outstanding mortgage balances, credit cards, personal loans, car finance, student loans and other debts. Enter remaining balances, not monthly payments, and don't subtract debts twice. Student loan repayment obligations may differ from conventional borrowing. Important to know This is a gross balance-sheet estimate, not cash available today or an inheritance-tax valuation. State Pension benefits and defined-benefit pension income are not ordinary pension-pot balances. UK student loans generally have income-related repayments and may be written off under scheme rules. Ownership, leases, taxes, selling costs, valuations and currency changes may affect realisable wealth. An allocated share of a joint loan may not equal legal liability."
+    },
+    "lgnw-method-dynamic": {
+      "text": "Net worth is calculated by subtracting your outstanding liabilities from your estimated asset values."
+    }
+  }
+}
