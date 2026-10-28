@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.3.0 – 2026-10-28
+No visual change: every calculator's computed styles were checked against v1.2.1.
+- CSS design tokens: the shared colours and fonts are defined once in `:root` (`--lg-navy`, `--lg-teal`, `--lg-line-soft`, `--lg-surface-tint`, `--lg-surface-input`, four `--lg-on-dark-*` colours for the dark results cards, and `--lg-font-body`, `--lg-font-heading`, `--lg-font-label`) and used in 241 places instead of repeated values.
+- Each token keeps the exact value it replaced. Colours that differ slightly between calculators (the two accent and line colours, and six near-identical greys) are listed in the stylesheet for a later design pass rather than merged.
+- The style tools ignore CSS custom properties and compare only the resulting styles.
+
 ## v1.2.1 – 2026-10-28
 - Fix: v1.2.0 removed the fallback that styled savings goal, emergency fund, pro rata, salary by age and inheritance tax when the template wrapper has no `data-calc` attribute, so those calculators lost their layout. Each calculator's scoped styles now apply whenever its own markup is on the page (`:root:has(#...)`), so styling no longer depends on the template wrapper and `data-calc` is optional.
 - New test (`test/styles.test.js`) renders every calculator with and without the template wrapper and requires identical styles. It fails on v1.2.0 for exactly those five calculators.

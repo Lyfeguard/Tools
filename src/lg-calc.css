@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.2.1
+ * Lyfeguard calculators | lg-calc.css | v1.3.0
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -19,14 +19,44 @@
  * inside .lg-calc-wrap; the resets at the end of this file stop Webflow's rich
  * text and embed wrappers changing layout.
  *
+ * Colours and fonts used across calculators are named in the Design tokens
+ * section below; use those variables instead of typing the values again.
+ *
  * After any change, run npm run build, npm test and npm run style-diff.
  */
+
+/* ------------------------------------------------------------------
+   Design tokens
+   Shared values, defined once. Each token has exactly the value it
+   replaced, so introducing them changed nothing visually (v1.3.0).
+   Not yet unified (a visual change, planned for v1.4.0):
+   - Card-style calculators use their own accent and line colours
+     (--lg-accent #0b6351 and --lg-line #c8d9d9 on .lg-tools) where the
+     panel calculators use --lg-teal and --lg-line-soft.
+   - Near-identical greys: #526d77, #566b71, #506a70, #48636a, #687e86, #38565e.
+   ------------------------------------------------------------------ */
+:root {
+  --lg-navy: #082c37;
+  --lg-teal: #099d85;
+  --lg-line-soft: #dce7e7;
+  --lg-surface-tint: #edf4f2;
+  --lg-surface-input: #f6faf9;
+  /* On the dark results cards */
+  --lg-on-dark-line: #486770;
+  --lg-on-dark-track: #2a4f5a;
+  --lg-on-dark-highlight: #b5eedc;
+  --lg-on-dark-muted: #d4e7e7;
+  /* Fonts (loaded by the Webflow site) */
+  --lg-font-body: "Manrope", sans-serif;
+  --lg-font-heading: "Epilogue", sans-serif;
+  --lg-font-label: "Funnel Display", sans-serif;
+}
 
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
 .lg-tools {
-  --lg-ink: #082c37;
+  --lg-ink: var(--lg-navy);
   --lg-muted: #48636a;
   --lg-line: #c8d9d9;
   --lg-tint: #edf7f3;
@@ -149,7 +179,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   padding: 4px;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   border: 1px solid var(--lg-line);
   border-radius: 10px;
   margin: 8px 0 24px;
@@ -172,7 +202,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   padding: 4px;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   border: 1px solid var(--lg-line);
   border-radius: 10px;
   margin: 8px 0 0;
@@ -254,7 +284,7 @@
   align-items: center;
   border: 1px solid #6c8a8c;
   border-radius: 8px;
-  background: #f6faf9;
+  background: var(--lg-surface-input);
   min-height: 54px;
 }
 .lg-tools .lg-control:focus-within {
@@ -488,7 +518,7 @@
 .lg-tools .lg-result-card .lg-kicker,
 .lg-tools .lg-result-card .lg-hint,
 .lg-tools .lg-result-card dt {
-  color: #d4e7e7;
+  color: var(--lg-on-dark-muted);
 }
 
 /* ------------------------------------------------------------------
@@ -497,7 +527,7 @@
 .lg-tools .lg-state {
   font-size: 12px;
   line-height: 1.5;
-  color: #d4e7e7 !important;
+  color: var(--lg-on-dark-muted) !important;
 }
 
 /* ------------------------------------------------------------------
@@ -534,7 +564,7 @@
   display: inline-block;
   font-size: 12px;
   margin: 0 0 4px;
-  color: #d4e7e7;
+  color: var(--lg-on-dark-muted);
 }
 
 /* ------------------------------------------------------------------
@@ -557,7 +587,7 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  border-top: 1px solid #486770;
+  border-top: 1px solid var(--lg-on-dark-line);
   margin: 0;
   padding: 20px 0 0;
 }
@@ -565,7 +595,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
-  border-top: 1px solid #486770;
+  border-top: 1px solid var(--lg-on-dark-line);
   margin: 0;
   padding: 20px 0 0;
 }
@@ -591,7 +621,7 @@
    ------------------------------------------------------------------ */
 .lg-tools .lg-scenario {
   font-size: 15px;
-  border-top: 1px solid #486770;
+  border-top: 1px solid var(--lg-on-dark-line);
   padding-top: 16px;
   margin: 20px 0 0;
 }
@@ -607,7 +637,7 @@
   font-size: 13px;
 }
 .lg-tools .lg-result-card :is(a, button, [tabindex]):focus-visible {
-  outline-color: #b5eedc;
+  outline-color: var(--lg-on-dark-highlight);
 }
 
 /* ------------------------------------------------------------------
@@ -644,7 +674,7 @@
   white-space: nowrap;
 }
 :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools thead th {
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   font-size: 13px;
   font-weight: 700;
 }
@@ -857,7 +887,7 @@
 .lg-tools .ef-breakdown {
   margin-top: 16px;
   padding: 20px;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   border-radius: 8px;
 }
 .lg-tools .ef-breakdown .lg-label {
@@ -874,27 +904,27 @@
 }
 .lg-tools .ef-bar {
   height: 10px;
-  background: #2a4f5a;
+  background: var(--lg-on-dark-track);
   border-radius: 999px;
   overflow: hidden;
 }
 .lg-tools .ef-bar-fill {
   height: 100%;
   width: 0;
-  background: #b5eedc;
+  background: var(--lg-on-dark-highlight);
   border-radius: 999px;
   transition: width 0.35s ease;
 }
 .lg-tools .ef-bar-caption {
   font-size: 13px;
   margin: 8px 0 0;
-  color: #d4e7e7 !important;
+  color: var(--lg-on-dark-muted) !important;
 }
 .lg-tools .ef-stats {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .lg-tools .ef-plan {
-  border-top: 1px solid #486770;
+  border-top: 1px solid var(--lg-on-dark-line);
   margin: 20px 0 0;
   padding-top: 16px;
 }
@@ -916,7 +946,7 @@
   align-items: baseline;
   gap: 16px;
   padding: 10px 0;
-  border-top: 1px solid #2a4f5a;
+  border-top: 1px solid var(--lg-on-dark-track);
   font-size: 15px;
 }
 .lg-tools .ef-plan li:first-child {
@@ -927,7 +957,7 @@
   font-variant-numeric: tabular-nums;
 }
 .lg-tools .ef-done {
-  border: 1px solid #b5eedc;
+  border: 1px solid var(--lg-on-dark-highlight);
   border-radius: 8px;
   padding: 12px 16px;
   margin: 20px 0 0;
@@ -937,7 +967,7 @@
    Pro rata salary
    ------------------------------------------------------------------ */
 .lg-tools .pr-insight {
-  border: 1px solid #486770;
+  border: 1px solid var(--lg-on-dark-line);
   border-radius: 8px;
   padding: 16px;
   margin: 0 0 20px;
@@ -958,7 +988,7 @@
   margin-bottom: 0;
 }
 .lg-tools .pr-bar-row span {
-  color: #d4e7e7 !important;
+  color: var(--lg-on-dark-muted) !important;
 }
 .lg-tools .pr-bar-row strong {
   text-align: right;
@@ -966,20 +996,20 @@
 }
 .lg-tools .pr-bar {
   height: 10px;
-  background: #2a4f5a;
+  background: var(--lg-on-dark-track);
   border-radius: 999px;
   overflow: hidden;
 }
 .lg-tools .pr-bar-fill {
   height: 100%;
   width: 0;
-  background: #b5eedc;
+  background: var(--lg-on-dark-highlight);
   border-radius: 999px;
   transition: width 0.35s ease;
 }
 .lg-tools .pr-compare,
 .lg-tools .pr-notes {
-  border-top: 1px solid #486770;
+  border-top: 1px solid var(--lg-on-dark-line);
   margin: 20px 0 0;
   padding-top: 16px;
 }
@@ -1002,7 +1032,7 @@
   align-items: baseline;
   gap: 16px;
   padding: 10px 0;
-  border-top: 1px solid #2a4f5a;
+  border-top: 1px solid var(--lg-on-dark-track);
   font-size: 15px;
 }
 .lg-tools .pr-compare li:first-child {
@@ -1026,7 +1056,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #b5eedc;
+  background: var(--lg-on-dark-highlight);
 }
 
 /* ------------------------------------------------------------------
@@ -1098,14 +1128,14 @@
 .lg-tools .sa-track {
   position: relative;
   height: 10px;
-  background: #2a4f5a;
+  background: var(--lg-on-dark-track);
   border-radius: 999px;
 }
 .lg-tools .sa-fill {
   position: absolute;
   inset: 0 auto 0 0;
   width: 0;
-  background: #b5eedc;
+  background: var(--lg-on-dark-highlight);
   border-radius: 999px;
   transition: width 0.35s ease;
 }
@@ -1115,7 +1145,7 @@
   width: 2px;
   height: 16px;
   margin-left: -1px;
-  background: #486770;
+  background: var(--lg-on-dark-line);
 }
 .lg-tools .sa-you {
   position: absolute;
@@ -1126,7 +1156,7 @@
   border: 3px solid var(--lg-ink);
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 0 2px #b5eedc;
+  box-shadow: 0 0 0 2px var(--lg-on-dark-highlight);
   transition: left 0.35s ease;
 }
 .lg-tools .sa-tick-label {
@@ -1137,7 +1167,7 @@
   line-height: 1.3;
   text-align: center;
   white-space: nowrap;
-  color: #d4e7e7 !important;
+  color: var(--lg-on-dark-muted) !important;
 }
 .lg-tools .sa-tick-label b {
   display: block;
@@ -1147,7 +1177,7 @@
 }
 .lg-tools .sa-compare,
 .lg-tools .sa-plan {
-  border-top: 1px solid #486770;
+  border-top: 1px solid var(--lg-on-dark-line);
   margin: 20px 0 0;
   padding-top: 16px;
 }
@@ -1169,7 +1199,7 @@
   align-items: baseline;
   gap: 16px;
   padding: 10px 0;
-  border-top: 1px solid #2a4f5a;
+  border-top: 1px solid var(--lg-on-dark-track);
   font-size: 15px;
 }
 :where([data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools :is(.sa-compare, .sa-plan) li:first-child {
@@ -1337,7 +1367,7 @@
 }
 .lg-tools .sa-table thead th {
   border-top: 0;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   font-size: 13px;
   line-height: 1.35;
   font-weight: 700;
@@ -1518,8 +1548,8 @@
   border: 1px solid #dce7e5;
   border-radius: 14px;
   background: #fff;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
   box-shadow: 0 5px 25px rgba(8, 44, 55, 0.018);
 }
 #lgnw-assets-panel *,
@@ -1535,7 +1565,7 @@
   margin-bottom: 15px;
 }
 #lgnw-assets-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
@@ -1544,23 +1574,23 @@
   line-height: 1.5;
 }
 #lgnw-assets-panel .lgnw-subtotal {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 18px;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.025em;
   text-align: right;
   overflow-wrap: anywhere;
 }
 #lgnw-assets-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(24px, 2.3vw, 31px);
   letter-spacing: -0.037em;
   line-height: 1.2;
   font-weight: 630;
   margin: 0 0 13px;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgnw-assets-panel .lgnw-intro {
   color: #58717a;
@@ -1580,7 +1610,7 @@
   border: 0;
 }
 #lgnw-assets-panel legend {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   text-transform: uppercase;
   letter-spacing: 0.075em;
   font-weight: 650;
@@ -1643,10 +1673,10 @@
   padding: 0 10px 0 13px;
   margin: 0;
   height: 100%;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 16px;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   outline: 0;
   border: 0 !important;
   box-shadow: none !important;
@@ -1755,8 +1785,8 @@
   border: 1px solid #dce7e5;
   border-radius: 14px;
   background: #fff;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
   box-shadow: 0 5px 25px rgba(8, 44, 55, 0.018);
 }
 #lgnw-liabilities-panel *,
@@ -1772,7 +1802,7 @@
   margin-bottom: 15px;
 }
 #lgnw-liabilities-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-size: 12px;
   letter-spacing: 0.095em;
   text-transform: uppercase;
@@ -1781,23 +1811,23 @@
   line-height: 1.5;
 }
 #lgnw-liabilities-panel .lgnw-subtotal {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 18px;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.025em;
   text-align: right;
   overflow-wrap: anywhere;
 }
 #lgnw-liabilities-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(24px, 2.3vw, 31px);
   letter-spacing: -0.037em;
   line-height: 1.2;
   font-weight: 630;
   margin: 0 0 13px;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgnw-liabilities-panel .lgnw-intro {
   color: #58717a;
@@ -1817,7 +1847,7 @@
   border: 0;
 }
 #lgnw-liabilities-panel legend {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   text-transform: uppercase;
   letter-spacing: 0.075em;
   font-weight: 650;
@@ -1880,10 +1910,10 @@
   padding: 0 10px 0 13px;
   margin: 0;
   height: 100%;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 16px;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   outline: 0;
   border: 0 !important;
   box-shadow: none !important;
@@ -1950,12 +1980,12 @@
   width: 100%;
   min-width: 0;
   overflow: hidden;
-  background: #082c37;
+  background: var(--lg-navy);
   color: #fff;
-  border: 1px solid #082c37;
+  border: 1px solid var(--lg-navy);
   border-radius: 15px;
   padding: 37px 40px 30px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
 }
 #lgnw-results-panel:before {
   content: "";
@@ -1980,7 +2010,7 @@
   margin: 0 0 18px;
 }
 #lgnw-results-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.11em;
@@ -1992,7 +2022,7 @@
   color: #bfdbd7;
 }
 #lgnw-results-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(24px, 2.5vw, 32px);
   line-height: 1.26;
   letter-spacing: -0.035em;
@@ -2013,7 +2043,7 @@
   margin-bottom: 11px;
 }
 #lgnw-results-panel .lgnw-main-value {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(42px, 5.7vw, 75px);
   font-weight: 625;
   letter-spacing: -0.06em;
@@ -2065,7 +2095,7 @@
   background: #e7b48e;
 }
 #lgnw-results-panel .lgnw-summary-item strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(19px, 2.4vw, 26px);
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -2111,13 +2141,13 @@
   gap: 8px;
   min-height: 40px;
   padding: 10px 15px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 12px;
   font-weight: 750;
   line-height: 1.2;
   border: 1px solid #d2eee6;
   background: #dcf8ed;
-  color: #082c37;
+  color: var(--lg-navy);
   border-radius: 7px;
   cursor: pointer;
   white-space: nowrap;
@@ -2246,8 +2276,8 @@
   background: #fff;
   border: 1px solid #dce7e5;
   border-radius: 14px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 #lgnw-bridge-panel * {
   box-sizing: border-box;
@@ -2259,7 +2289,7 @@
   gap: 24px;
 }
 #lgnw-bridge-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   color: #0a7466;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -2268,12 +2298,12 @@
   margin-bottom: 12px;
 }
 #lgnw-bridge-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(23px, 2.4vw, 29px);
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 10px;
 }
 #lgnw-bridge-panel .lgnw-section-intro p {
@@ -2283,7 +2313,7 @@
   margin: 0;
 }
 #lgnw-bridge-panel .lgnw-mini-formula {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   letter-spacing: 0.06em;
   color: #0a7466;
   background: #f1f8f6;
@@ -2367,7 +2397,7 @@
   background: #0b6970;
 }
 #lgnw-bridge-panel .lgnw-bridge-metric strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(17px, 2vw, 23px);
   line-height: 1.3;
   font-weight: 650;
@@ -2424,15 +2454,15 @@
   border: 1px solid #dce7e5;
   background: #fff;
   border-radius: 14px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
   container-type: inline-size;
 }
 #lgnw-composition-panel * {
   box-sizing: border-box;
 }
 #lgnw-composition-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   color: #0a7466;
   text-transform: uppercase;
   letter-spacing: 0.095em;
@@ -2441,12 +2471,12 @@
   margin-bottom: 12px;
 }
 #lgnw-composition-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(22px, 2.3vw, 27px);
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 11px;
 }
 #lgnw-composition-panel .lgnw-intro {
@@ -2489,18 +2519,18 @@
   padding: 25px;
 }
 #lgnw-composition-panel .lgnw-ring-center span {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   color: #566b71;
   font-size: 9px;
   letter-spacing: 0.08em;
   font-weight: 650;
 }
 #lgnw-composition-panel .lgnw-ring-center strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(15px, 2vw, 25px);
   font-weight: 650;
   letter-spacing: -0.045em;
-  color: #082c37;
+  color: var(--lg-navy);
   overflow-wrap: anywhere;
   font-variant-numeric: tabular-nums;
 }
@@ -2540,8 +2570,8 @@
   background: var(--dot);
 }
 #lgnw-composition-panel .lgnw-legend-amount {
-  font-family: "Epilogue", sans-serif;
-  color: #082c37;
+  font-family: var(--lg-font-heading);
+  color: var(--lg-navy);
   font-weight: 650;
   font-size: 12.5px;
   white-space: nowrap;
@@ -2599,15 +2629,15 @@
   border: 1px solid #dce7e5;
   background: #fff;
   border-radius: 14px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
   container-type: inline-size;
 }
 #lgnw-debts-panel * {
   box-sizing: border-box;
 }
 #lgnw-debts-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   color: #0a7466;
   text-transform: uppercase;
   letter-spacing: 0.095em;
@@ -2616,12 +2646,12 @@
   margin-bottom: 12px;
 }
 #lgnw-debts-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(22px, 2.3vw, 27px);
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 11px;
 }
 #lgnw-debts-panel .lgnw-intro {
@@ -2647,7 +2677,7 @@
   font-size: 12px;
 }
 #lgnw-debts-panel .lgnw-debts-summary strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(18px, 2vw, 23px);
   font-weight: 650;
   letter-spacing: -0.03em;
@@ -2678,10 +2708,10 @@
   color: #1a4650;
 }
 #lgnw-debts-panel .lgnw-debt-row-head strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 12.5px;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -2729,14 +2759,14 @@
   background: #fff;
   border: 1px solid #dce7e5;
   border-radius: 14px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 #lgnw-insights-panel * {
   box-sizing: border-box;
 }
 #lgnw-insights-panel .lgnw-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   color: #0a7466;
   text-transform: uppercase;
   letter-spacing: 0.095em;
@@ -2745,12 +2775,12 @@
   margin-bottom: 13px;
 }
 #lgnw-insights-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(23px, 2.4vw, 29px);
   font-weight: 650;
   letter-spacing: -0.035em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 11px;
 }
 #lgnw-insights-panel .lgnw-intro {
@@ -2787,17 +2817,17 @@
   margin-bottom: 5px;
 }
 #lgnw-insights-panel .lgnw-insight-name {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 13px;
   color: #42636c;
   font-weight: 650;
   line-height: 1.4;
 }
 #lgnw-insights-panel .lgnw-insight strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(21px, 2.4vw, 27px);
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   letter-spacing: -0.04em;
   line-height: 1.25;
   overflow-wrap: anywhere;
@@ -2847,8 +2877,8 @@
   background: #fff;
   border: 1px solid #dce7e5;
   border-radius: 14px;
-  font-family: "Manrope", sans-serif;
-  color: #082c37;
+  font-family: var(--lg-font-body);
+  color: var(--lg-navy);
 }
 #lgnw-methodology * {
   box-sizing: border-box;
@@ -2886,12 +2916,12 @@
   min-width: 0;
 }
 #lgnw-methodology .lgnw-method-heading strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(17px, 2vw, 21px);
   font-weight: 650;
   letter-spacing: -0.025em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgnw-methodology .lgnw-method-heading small {
   color: #566b71;
@@ -2924,11 +2954,11 @@
   gap: 30px;
 }
 #lgnw-methodology h3 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 15px;
   line-height: 1.4;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 9px;
 }
 #lgnw-methodology .lgnw-method-grid p {
@@ -2945,7 +2975,7 @@
   border-radius: 0 8px 8px 0;
 }
 #lgnw-methodology .lgnw-method-warning strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 13px;
   font-weight: 650;
 }
@@ -2978,7 +3008,7 @@
    Inheritance tax
    ------------------------------------------------------------------ */
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) {
-  --lgiht-ink: #082c37;
+  --lgiht-ink: var(--lg-navy);
   --lgiht-muted: #506a70;
   --lgiht-teal: #005f55;
 }
@@ -2992,8 +3022,8 @@
   background: #fff;
   border: 1px solid #dce9e6;
   border-radius: 14px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card *,
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card *:before,
@@ -3001,7 +3031,7 @@
   box-sizing: border-box;
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-weight: 700;
   letter-spacing: 0.105em;
   font-size: 12px;
@@ -3017,22 +3047,22 @@
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card h2,
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card h3.lgiht-card-title {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-weight: 650;
   letter-spacing: -0.035em;
   font-size: clamp(23px, 2.5vw, 30px);
   line-height: 1.25;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 11px;
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card h3 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-weight: 650;
   letter-spacing: -0.025em;
   font-size: 17px;
   line-height: 1.4;
   margin: 0;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-lead {
   font-size: 13.5px;
@@ -3042,7 +3072,7 @@
   max-width: 770px;
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card .lgi-total {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 18px;
   font-weight: 650;
   color: #087f70;
@@ -3060,7 +3090,7 @@
   min-width: 0;
 }
 :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-form-card .lgi-field label {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   display: block;
   font-size: 13px;
   line-height: 1.45;
@@ -3111,10 +3141,10 @@
   flex: 1;
   margin: 0;
   padding: 0 12px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-weight: 650;
   font-size: 16px;
-  color: #082c37;
+  color: var(--lg-navy);
   background: transparent;
   border: 0 !important;
   outline: 0;
@@ -3144,7 +3174,7 @@
   display: block;
   min-height: 50px;
   width: 100%;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 14px;
   line-height: 1.4;
   font-weight: 650;
@@ -3250,11 +3280,11 @@
   overflow: hidden;
   width: 100%;
   padding: 42px 44px 29px;
-  background: #082c37 !important;
-  border: 1px solid #082c37;
+  background: var(--lg-navy) !important;
+  border: 1px solid var(--lg-navy);
   border-radius: 15px;
   color: #fff !important;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
 }
 #lgiht-results-card *,
 #lgiht-results-card *:before,
@@ -3385,7 +3415,7 @@
   border: 1px solid #c9e9df;
   border-radius: 7px;
   background: #d9f5e9;
-  color: #082c37;
+  color: var(--lg-navy);
   padding: 11px 14px;
   font:
     750 12px "Manrope",
@@ -3665,7 +3695,7 @@
   white-space: nowrap;
 }
 #lgiht-ledger-card .lgiht-ledger-major {
-  color: #082c37;
+  color: var(--lg-navy);
   font-weight: 800;
   border-bottom-color: #dde9e6;
 }
@@ -3808,7 +3838,7 @@
   border-collapse: collapse;
   font-size: 14px;
   font-variant-numeric: tabular-nums;
-  color: #082c37;
+  color: var(--lg-navy);
   background: #fff;
   border: 1px solid #c8d9d9;
 }
@@ -3827,7 +3857,7 @@
   white-space: nowrap;
 }
 .lg-faq-table thead th {
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   font-weight: 700;
   font-size: 13px;
 }
@@ -3855,10 +3885,10 @@
   min-width: 0;
   padding: 36px;
   background: #fff;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 #lgci-input-panel *,
 #lgmc-input-panel *,
@@ -3868,7 +3898,7 @@
 #lgci-input-panel .lgci-eyebrow,
 #lgmc-input-panel .lgmc-eyebrow,
 #lglc-input-panel .lglc-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.09em;
@@ -3880,18 +3910,18 @@
 #lgci-input-panel h2,
 #lgmc-input-panel h2,
 #lglc-input-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(23px, 2.3vw, 30px);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 12px;
 }
 #lgci-input-panel .lgci-intro,
 #lgmc-input-panel .lgmc-intro,
 #lglc-input-panel .lglc-intro {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 15px;
   line-height: 1.75;
   color: #526d77;
@@ -3912,11 +3942,11 @@
 #lgmc-input-panel label,
 #lglc-input-panel label {
   display: block;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 14px;
   line-height: 1.5;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 10px;
 }
 #lgci-input-panel .lgci-input-shell,
@@ -3926,7 +3956,7 @@
   align-items: center;
   width: 100%;
   height: 58px;
-  background: #f6faf9;
+  background: var(--lg-surface-input);
   border: 1px solid #cfdddc;
   border-radius: 8px;
   overflow: hidden;
@@ -3952,11 +3982,11 @@
   flex: none;
   align-self: stretch;
   padding: 0 18px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-weight: 650;
   font-size: 15px;
   color: #526d77;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
 }
 
 /* ------------------------------------------------------------------
@@ -3971,10 +4001,10 @@
   border: 0;
   outline: 0;
   background: transparent;
-  color: #082c37;
+  color: var(--lg-navy);
   padding: 0 18px;
   margin: 0;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 18px;
   font-weight: 600;
   box-shadow: none;
@@ -3997,10 +4027,10 @@
   border: 0;
   outline: 0;
   background: transparent;
-  color: #082c37;
+  color: var(--lg-navy);
   padding: 0 18px;
   margin: 0;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 18px;
   font-weight: 600;
   box-shadow: none;
@@ -4015,7 +4045,7 @@
 #lgci-input-panel #lgci-error,
 #lgmc-input-panel #lgmc-error,
 #lglc-input-panel #lglc-error {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 13px;
   line-height: 1.6;
   color: #ad3535;
@@ -4070,10 +4100,10 @@
   min-width: 0;
 }
 #lgmc-input-panel .lgmc-mortgage-type legend {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 14px;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   padding: 0;
   margin: 0 0 12px;
 }
@@ -4087,7 +4117,7 @@
   align-items: center;
   cursor: pointer;
   border: 1px solid #cfdddc;
-  background: #f6faf9;
+  background: var(--lg-surface-input);
   border-radius: 8px;
   padding: 13px 16px;
   margin: 0;
@@ -4095,7 +4125,7 @@
   font-weight: 600;
 }
 #lgmc-input-panel .lgmc-choice:has(input:checked) {
-  border-color: #099d85;
+  border-color: var(--lg-teal);
   background: #eafaf5;
 }
 #lgmc-input-panel .lgmc-choice input {
@@ -4135,11 +4165,11 @@
   width: 100%;
   min-width: 0;
   padding: 36px;
-  background: #082c37;
-  border: 1px solid #082c37;
+  background: var(--lg-navy);
+  border: 1px solid var(--lg-navy);
   border-radius: 10px;
   color: #fff;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
 }
 #lgci-results-panel *,
 #lgmc-results-panel *,
@@ -4149,7 +4179,7 @@
 #lgci-results-panel .lgci-eyebrow,
 #lgmc-results-panel .lgmc-eyebrow,
 #lglc-results-panel .lglc-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   font-size: 12px;
@@ -4161,7 +4191,7 @@
 #lgci-results-panel h2,
 #lgmc-results-panel h2,
 #lglc-results-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(23px, 2.3vw, 30px);
   font-weight: 600;
   line-height: 1.3;
@@ -4178,7 +4208,7 @@
 #lgci-results-panel .lgci-main-label,
 #lgmc-results-panel .lgmc-main-label,
 #lglc-results-panel .lglc-main-label {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   color: #e0edeb;
   font-size: 15px;
   margin: 0 0 11px;
@@ -4187,7 +4217,7 @@
 #lgci-results-panel .lgci-monthly,
 #lgmc-results-panel .lgmc-monthly,
 #lglc-results-panel .lglc-monthly {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(38px, 4.2vw, 59px);
   font-weight: 600;
   letter-spacing: -0.055em;
@@ -4199,7 +4229,7 @@
 #lgci-results-panel .lgci-assumption,
 #lgmc-results-panel .lgmc-assumption,
 #lglc-results-panel .lglc-assumption {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 13px;
   line-height: 1.7;
   color: #c5d9d6;
@@ -4237,7 +4267,7 @@
 #lgci-results-panel .lgci-result-item span,
 #lgmc-results-panel .lgmc-result-item span,
 #lglc-results-panel .lglc-result-item span {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   color: #c7dedb;
   font-size: 13px;
   line-height: 1.45;
@@ -4245,7 +4275,7 @@
 #lgci-results-panel .lgci-result-item strong,
 #lgmc-results-panel .lgmc-result-item strong,
 #lglc-results-panel .lglc-result-item strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   color: #fff;
   font-weight: 600;
   font-size: clamp(18px, 2vw, 25px);
@@ -4256,7 +4286,7 @@
 #lgci-results-panel .lgci-disclaimer,
 #lgmc-results-panel .lgmc-disclaimer,
 #lglc-results-panel .lglc-disclaimer {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 12px;
   line-height: 1.75;
   color: #b3cfca;
@@ -4329,10 +4359,10 @@
   min-width: 0;
   padding: 38px;
   background: #fff;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 #lgci-projection * {
   box-sizing: border-box;
@@ -4357,7 +4387,7 @@
     600 clamp(22px, 2.1vw, 29px)/1.3 "Epilogue",
     sans-serif;
   letter-spacing: -0.025em;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 10px;
 }
 #lgci-projection .lgci-chart-header p {
@@ -4382,7 +4412,7 @@
   font:
     600 clamp(19px, 2vw, 25px)/1.3 "Epilogue",
     sans-serif;
-  color: #082c37;
+  color: var(--lg-navy);
   font-variant-numeric: tabular-nums;
 }
 #lgci-projection .lgci-chart-legend {
@@ -4402,7 +4432,7 @@
 #lgci-projection .lgci-line-key {
   width: 21px;
   height: 0;
-  border-top: 3px solid #099d85;
+  border-top: 3px solid var(--lg-teal);
   display: inline-block;
 }
 #lgci-projection .lgci-contributed-key {
@@ -4461,10 +4491,10 @@
   min-width: 0;
   padding: 30px;
   background: #fff;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 #lgci-breakdown *,
 #lgmc-breakdown *,
@@ -4474,18 +4504,18 @@
 #lgci-breakdown h3,
 #lgmc-breakdown h3,
 #lglc-breakdown h3 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 21px;
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.02em;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 12px;
 }
 #lgci-breakdown .lgci-viz-intro,
 #lgmc-breakdown .lgmc-viz-intro,
 #lglc-breakdown .lglc-viz-intro {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 14px;
   line-height: 1.7;
   color: #526d77;
@@ -4507,7 +4537,7 @@
 #lglc-breakdown .lglc-viz-bar-principal {
   width: 0;
   height: 100%;
-  background: #099d85;
+  background: var(--lg-teal);
   transition: width 0.2s ease;
 }
 #lgci-breakdown .lgci-viz-bar-interest,
@@ -4531,7 +4561,7 @@
   grid-template-columns: minmax(0, 1fr) 55px 100px;
   align-items: center;
   gap: 10px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 13px;
   line-height: 1.6;
 }
@@ -4555,7 +4585,7 @@
 #lgci-breakdown .lgci-viz-dot-principal,
 #lgmc-breakdown .lgmc-viz-dot-principal,
 #lglc-breakdown .lglc-viz-dot-principal {
-  background: #099d85;
+  background: var(--lg-teal);
 }
 #lgci-breakdown .lgci-viz-dot-interest,
 #lgmc-breakdown .lgmc-viz-dot-interest,
@@ -4572,7 +4602,7 @@
 #lgci-breakdown .lgci-viz-legend-row strong,
 #lgmc-breakdown .lgmc-viz-legend-row strong,
 #lglc-breakdown .lglc-viz-legend-row strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-weight: 600;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -4638,10 +4668,10 @@
   min-width: 0;
   padding: 30px;
   background: #fff;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 10px;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
 }
 #lgci-rate-comparison *,
 #lgmc-rate-comparison *,
@@ -4651,18 +4681,18 @@
 #lgci-rate-comparison h3,
 #lgmc-rate-comparison h3,
 #lglc-rate-comparison h3 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 21px;
   font-weight: 600;
   line-height: 1.35;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 12px;
   letter-spacing: -0.02em;
 }
 #lgci-rate-comparison .lgci-viz-intro,
 #lgmc-rate-comparison .lgmc-viz-intro,
 #lglc-rate-comparison .lglc-viz-intro {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 14px;
   line-height: 1.7;
   color: #526d77;
@@ -4683,42 +4713,42 @@
   min-width: 0;
   gap: 8px;
   padding: 17px 13px;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 8px;
   background: #f8fcfb;
 }
 #lgci-rate-comparison .lgci-viz-selected,
 #lgmc-rate-comparison .lgmc-viz-selected,
 #lglc-rate-comparison .lglc-viz-selected {
-  border-color: #099d85;
+  border-color: var(--lg-teal);
   background: #eafaf5;
 }
 #lgci-rate-comparison .lgci-viz-rate-label,
 #lgmc-rate-comparison .lgmc-viz-rate-label,
 #lglc-rate-comparison .lglc-viz-rate-label {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   text-transform: uppercase;
   letter-spacing: 0.065em;
   font-size: 11px;
   font-weight: 600;
   line-height: 1.4;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgci-rate-comparison .lgci-viz-rate-amount,
 #lgmc-rate-comparison .lgmc-viz-rate-amount,
 #lglc-rate-comparison .lglc-viz-rate-amount {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(16px, 1.5vw, 22px);
   line-height: 1.25;
   font-weight: 600;
-  color: #082c37;
+  color: var(--lg-navy);
   overflow-wrap: anywhere;
   font-variant-numeric: tabular-nums;
 }
 #lgci-rate-comparison small,
 #lgmc-rate-comparison small,
 #lglc-rate-comparison small {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 12px;
   line-height: 1.4;
   color: #687e86;
@@ -4732,7 +4762,7 @@
   border-radius: 5px;
   background: #e7f6f2;
   color: #087b69;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 12px;
   line-height: 1.5;
   min-height: 48px;
@@ -4741,7 +4771,7 @@
 #lgci-rate-comparison .lgci-viz-footnote,
 #lgmc-rate-comparison .lgmc-viz-footnote,
 #lglc-rate-comparison .lglc-viz-footnote {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 12px;
   line-height: 1.65;
   color: #687e86;
@@ -4824,11 +4854,11 @@
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 10px;
   background: #fff;
-  color: #082c37;
-  font-family: "Manrope", sans-serif;
+  color: var(--lg-navy);
+  font-family: var(--lg-font-body);
   overflow: hidden;
 }
 #lgci-methodology *,
@@ -4846,11 +4876,11 @@
   gap: 20px;
   padding: 25px 28px;
   list-style: none;
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 17px;
   font-weight: 600;
   line-height: 1.4;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgci-methodology summary::-webkit-details-marker,
 #lgmc-methodology summary::-webkit-details-marker,
@@ -4865,7 +4895,7 @@
 #lgci-methodology summary:focus-visible,
 #lgmc-methodology summary:focus-visible,
 #lglc-methodology summary:focus-visible {
-  outline: 3px solid #099d85;
+  outline: 3px solid var(--lg-teal);
   outline-offset: -3px;
 }
 #lgci-methodology .lgci-accordion-symbol,
@@ -4886,7 +4916,7 @@
 #lglc-methodology .lglc-accordion-symbol:after {
   content: "";
   position: absolute;
-  background: #082c37;
+  background: var(--lg-navy);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -4917,7 +4947,7 @@
 #lgci-methodology .lgci-accordion-body p,
 #lgmc-methodology .lgmc-accordion-body p,
 #lglc-methodology .lglc-accordion-body p {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 14px;
   line-height: 1.85;
   color: #38565e;
@@ -4993,7 +5023,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   width: 100%;
   min-width: 0;
   border-radius: 10px;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
 }
 #lgdti-input-panel *,
 #lgdti-results-panel *,
@@ -5014,8 +5044,8 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 #lgdti-target,
 #lgdti-methodology {
   background: #fff;
-  border: 1px solid #dce7e7;
-  color: #082c37;
+  border: 1px solid var(--lg-line-soft);
+  color: var(--lg-navy);
 }
 #lgdti-input-panel,
 #lgdti-results-panel {
@@ -5029,7 +5059,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 #lgdti-input-panel .lgdti-eyebrow,
 #lgdti-results-panel .lgdti-eyebrow {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.09em;
@@ -5040,12 +5070,12 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 #lgdti-input-panel h2,
 #lgdti-results-panel h2 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(23px, 2.3vw, 30px);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.3;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 12px;
 }
 
@@ -5058,12 +5088,12 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   max-width: 560px;
 }
 #lgdti-input-panel .lgdti-group-title {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.015em;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 16px;
   padding-top: 26px;
   border-top: 1px solid #e4eeeb;
@@ -5086,7 +5116,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 650;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 10px;
 }
 #lgdti-input-panel .lgdti-input-shell {
@@ -5094,7 +5124,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   align-items: center;
   width: 100%;
   height: 58px;
-  background: #f6faf9;
+  background: var(--lg-surface-input);
   border: 1px solid #cfdddc;
   border-radius: 8px;
   overflow: hidden;
@@ -5119,7 +5149,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-weight: 650;
   font-size: 15px;
   color: #526d77;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
 }
 #lgdti-input-panel input[type="text"] {
   min-width: 0;
@@ -5129,10 +5159,10 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   border: 0;
   outline: 0;
   background: transparent;
-  color: #082c37;
+  color: var(--lg-navy);
   padding: 0 18px;
   margin: 0;
-  font-family: "Manrope", sans-serif;
+  font-family: var(--lg-font-body);
   font-size: 18px;
   font-weight: 600;
   box-shadow: none;
@@ -5161,7 +5191,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-size: 14px;
   font-weight: 650;
   line-height: 1.5;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgdti-input-panel .lgdti-options {
   display: grid;
@@ -5169,8 +5199,8 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: 6px;
   max-width: 360px;
   padding: 4px;
-  background: #edf4f2;
-  border: 1px solid #dce7e7;
+  background: var(--lg-surface-tint);
+  border: 1px solid var(--lg-line-soft);
   border-radius: 10px;
 }
 #lgdti-input-panel .lgdti-choice {
@@ -5189,10 +5219,10 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 #lgdti-input-panel .lgdti-choice:has(input:checked) {
   background: #fff;
-  border-color: #099d85;
+  border-color: var(--lg-teal);
 }
 #lgdti-input-panel .lgdti-choice:has(input:focus-visible) {
-  outline: 3px solid #099d85;
+  outline: 3px solid var(--lg-teal);
   outline-offset: 2px;
 }
 #lgdti-input-panel input[type="radio"] {
@@ -5201,7 +5231,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   height: 18px;
   margin: 0;
   flex-shrink: 0;
-  accent-color: #099d85;
+  accent-color: var(--lg-teal);
 }
 #lgdti-input-panel .lgdti-subtotal {
   display: flex;
@@ -5210,12 +5240,12 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: 16px;
   padding: 18px 20px;
   border-radius: 8px;
-  background: #edf4f2;
+  background: var(--lg-surface-tint);
   font-size: 14px;
   font-weight: 650;
 }
 #lgdti-input-panel .lgdti-subtotal strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 20px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -5229,8 +5259,8 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 
 /* Results panel */
 #lgdti-results-panel {
-  background: #082c37;
-  border: 1px solid #082c37;
+  background: var(--lg-navy);
+  border: 1px solid var(--lg-navy);
   color: #fff;
   container-type: inline-size;
 }
@@ -5258,7 +5288,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: 12px 18px;
 }
 #lgdti-results-panel .lgdti-ratio {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(38px, 4.2vw, 59px);
   font-weight: 600;
   letter-spacing: -0.055em;
@@ -5271,17 +5301,17 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   display: inline-block;
   padding: 5px 14px;
   border-radius: 999px;
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   line-height: 1.5;
   text-transform: uppercase;
-  color: #082c37;
+  color: var(--lg-navy);
   background: #a8dfd1;
 }
 #lgdti-results-panel[data-band="low"] .lgdti-band {
-  background: #b5eedc;
+  background: var(--lg-on-dark-highlight);
 }
 #lgdti-results-panel[data-band="moderate"] .lgdti-band {
   background: #d9eee4;
@@ -5317,7 +5347,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 #lgdti-results-panel .lgdti-result-item strong {
   margin-top: auto;
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   color: #fff;
   font-weight: 600;
   font-size: clamp(18px, 2vw, 25px);
@@ -5342,12 +5372,12 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 #lgdti-gauge h3,
 #lgdti-breakdown h3,
 #lgdti-target h3 {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 21px;
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.02em;
-  color: #082c37;
+  color: var(--lg-navy);
   margin: 0 0 12px;
 }
 #lgdti-gauge .lgdti-viz-intro,
@@ -5375,7 +5405,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 #lgdti-gauge .lgdti-zone-low {
   width: 33.333%;
-  background: #099d85;
+  background: var(--lg-teal);
   border-radius: 20px 0 0 20px;
 }
 #lgdti-gauge .lgdti-zone-moderate {
@@ -5397,7 +5427,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   width: 26px;
   height: 26px;
   margin: -13px 0 0 -13px;
-  border: 4px solid #082c37;
+  border: 4px solid var(--lg-navy);
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 2px 6px rgba(8, 44, 55, 0.25);
@@ -5441,7 +5471,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   min-width: 0;
 }
 #lgdti-gauge .lgdti-gauge-key strong {
-  color: #082c37;
+  color: var(--lg-navy);
   font-weight: 700;
 }
 #lgdti-gauge .lgdti-gauge-key i {
@@ -5451,7 +5481,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   border-radius: 50%;
 }
 #lgdti-gauge .lgdti-key-low {
-  background: #099d85;
+  background: var(--lg-teal);
 }
 #lgdti-gauge .lgdti-key-moderate {
   background: #a6e8db;
@@ -5466,8 +5496,8 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   margin: 24px 0 0;
   padding: 16px 18px;
   border-radius: 8px;
-  background: #f6faf9;
-  border-left: 4px solid #099d85;
+  background: var(--lg-surface-input);
+  border-left: 4px solid var(--lg-teal);
   font-size: 14px;
   line-height: 1.7;
   color: #38565e;
@@ -5493,7 +5523,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   transition: width 0.2s ease;
 }
 #lgdti-breakdown .lgdti-viz-chart > .lgdti-viz-left {
-  background: #dce7e7;
+  background: var(--lg-line-soft);
 }
 #lgdti-breakdown .lgdti-viz-legend {
   display: grid;
@@ -5530,7 +5560,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-variant-numeric: tabular-nums;
 }
 #lgdti-breakdown .lgdti-viz-legend-row strong {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-weight: 600;
   text-align: right;
   font-variant-numeric: tabular-nums;
@@ -5561,25 +5591,25 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: 8px;
   min-width: 0;
   padding: 17px 13px;
-  border: 1px solid #dce7e7;
+  border: 1px solid var(--lg-line-soft);
   border-radius: 8px;
   background: #f8fcfb;
 }
 #lgdti-target .lgdti-target-label {
-  font-family: "Funnel Display", sans-serif;
+  font-family: var(--lg-font-label);
   text-transform: uppercase;
   letter-spacing: 0.065em;
   font-size: 11px;
   font-weight: 600;
   line-height: 1.4;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgdti-target .lgdti-target-amount {
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: clamp(16px, 1.5vw, 22px);
   font-weight: 600;
   line-height: 1.25;
-  color: #082c37;
+  color: var(--lg-navy);
   overflow-wrap: anywhere;
   font-variant-numeric: tabular-nums;
 }
@@ -5661,11 +5691,11 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: 20px;
   padding: 25px 28px;
   list-style: none;
-  font-family: "Epilogue", sans-serif;
+  font-family: var(--lg-font-heading);
   font-size: 17px;
   font-weight: 600;
   line-height: 1.4;
-  color: #082c37;
+  color: var(--lg-navy);
 }
 #lgdti-methodology summary::-webkit-details-marker {
   display: none;
@@ -5674,7 +5704,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   content: "";
 }
 #lgdti-methodology summary:focus-visible {
-  outline: 3px solid #099d85;
+  outline: 3px solid var(--lg-teal);
   outline-offset: -3px;
 }
 #lgdti-methodology .lgdti-accordion-symbol {
@@ -5689,7 +5719,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 #lgdti-methodology .lgdti-accordion-symbol:after {
   content: "";
   position: absolute;
-  background: #082c37;
+  background: var(--lg-navy);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -1,8 +1,8 @@
-# Tools CMS template: setup guide (lg-calc v1.2.1)
+# Tools CMS template: setup guide (lg-calc v1.3.0)
 
 ## 1. Host the two files
-Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.2.1) to your host and pin the version in the URL.
-- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.2.1/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
+Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.3.0) to your host and pin the version in the URL.
+- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.3.0/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
 - Cloudflare on your own domain: no CSP or preconnect change needed.
 
 ## 2. Collection fields (collection "Tools", currently slug `tool`)
