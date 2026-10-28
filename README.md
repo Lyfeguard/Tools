@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 The Tools template loads two files in its head code, served by jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.0.1/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.0.1/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.1.0/dist/lg-calc.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.1.0/dist/lg-calc.min.js" defer></script>
 ```
 
 Each calculator starts only when its own markup is on the page.
@@ -21,17 +21,21 @@ Each calculator starts only when its own markup is on the page.
 
 ## Calculator keys
 net-worth, inheritance-tax, compound-interest, savings-goal, emergency-fund,
-loan-repayment, pro-rata-salary, salary-by-age, mortgage
+loan-repayment, pro-rata-salary, salary-by-age, mortgage, debt-to-income
 
 ## Making a change
 1. Edit `src/lg-calc.css` or `src/lg-calc.js`, and update the version number in the file header (and `LG.version` in the JS).
-2. Rebuild `dist/`:
+2. Rebuild `dist/` (needs Node.js):
+   ```
+   npm run build
+   ```
+   This runs `scripts/build.sh`, which does the same as these three commands and checks every file is ASCII-only:
    ```
    npx csso src/lg-calc.css --no-restructure -o dist/lg-calc.min.css
    sed -i 's/background:0 0\([;}]\)/background:transparent\1/g' dist/lg-calc.min.css
    npx terser src/lg-calc.js -c -m --comments '/^!/' --format ascii_only=true -o dist/lg-calc.min.js
    ```
-3. Commit, then create a release tagged with the new version (e.g. `v1.0.2`).
+3. Commit, then create a release tagged with the new version (e.g. `v1.1.1`).
 4. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).

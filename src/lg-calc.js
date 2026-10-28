@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.0.1
+ * Lyfeguard calculators | lg-calc.js | v1.1.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.0.1';
+  LG.version = '1.1.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -3139,6 +3139,313 @@
         el.addEventListener('change', update);
       });
       document.querySelectorAll('input[name="mortgage-type"]').forEach((el) => el.addEventListener('change', update));
+      if (form) form.addEventListener('submit', (event) => event.preventDefault());
+      update();
+    }
+    LG.ready(init);
+  });
+
+  /* ==================================================================
+     Debt-to-income calculator  [debt-to-income]
+     ================================================================== */
+  module('debt-to-income', function () {
+    'use strict';
+    const DEBTS = [
+      { id: 'housing', label: 'Mortgage or rent', color: '#099d85' },
+      { id: 'car', label: 'Car finance', color: '#164f60' },
+      { id: 'loans', label: 'Personal loans', color: '#68c6b4' },
+      { id: 'cards', label: 'Credit cards', color: '#e1a783' },
+      { id: 'student', label: 'Student loan', color: '#787ba6' },
+      { id: 'other', label: 'Other debts', color: '#819eae' },
+    ];
+    // Guide bands (upper bound exclusive). Lenders set their own limits.
+    const BANDS = [
+      {
+        max: 20,
+        key: 'low',
+        label: 'Low',
+        text: 'A ratio under 20% is generally seen as low. Most of your income is free for living costs, saving and unexpected bills.',
+      },
+      {
+        max: 36,
+        key: 'moderate',
+        label: 'Manageable',
+        text: 'A ratio of 20% to 35.9% is often seen as manageable, though lenders will still look closely at your spending and credit history.',
+      },
+      {
+        max: 50,
+        key: 'high',
+        label: 'High',
+        text: 'A ratio of 36% to 49.9% is often seen as high. Some lenders may offer less or charge more, and repayments could be hard to keep up if your circumstances change.',
+      },
+      {
+        max: Infinity,
+        key: 'very-high',
+        label: 'Very high',
+        text: 'A ratio of 50% or more is usually seen as very high. If repayments feel hard to manage, free, confidential help is available from MoneyHelper, StepChange or Citizens Advice.',
+      },
+    ];
+    const TARGET = 36;
+    const GAUGE_MAX = 60;
+    const MAX = 1e9;
+    function init() {
+      const panel = document.getElementById('lgdti-input-panel');
+      if (!panel) return; // not the debt-to-income page
+      const root = panel.closest('[data-calc], .lg-calc-wrap') || document.body;
+      if (root.dataset.lgdtiReady === 'true') return;
+      const get = (id) => document.getElementById('lgdti-' + id);
+      const fieldIds = ['income', 'other-income'].concat(DEBTS.map((d) => d.id));
+      const missing = fieldIds.concat(['ratio', 'monthly-income', 'monthly-debt']).filter((id) => !get(id));
+      if (missing.length) {
+        console.warn('[Lyfeguard Debt-to-Income Calculator] Missing IDs:', missing.map((id) => 'lgdti-' + id).join(', '));
+        return;
+      }
+      root.dataset.lgdtiReady = 'true';
+
+      const money = (n) => {
+        const digits = Math.abs(Math.round(n * 100)) % 100 === 0 ? 0 : 2;
+        return new Intl.NumberFormat('en-GB', {
+          style: 'currency',
+          currency: 'GBP',
+          minimumFractionDigits: digits,
+          maximumFractionDigits: digits,
+        }).format(n);
+      };
+      const pct = (n) => n.toFixed(1) + '%';
+      const write = (id, value) => {
+        const el = get(id);
+        if (el) el.textContent = value;
+      };
+      const period = () => {
+        const selected = document.querySelector('input[name="lgdti-period"]:checked');
+        return selected && selected.value === 'month' ? 'month' : 'year';
+      };
+      function parse(id) {
+        const raw = String(get(id).value ?? '').trim();
+        if (raw === '') return { entered: false, valid: true, value: 0 };
+        const clean = raw.replace(/[\u00A3,\s]/g, '');
+        if (!/^(?:\d+(?:\.\d{0,2})?|\.\d{1,2})$/.test(clean)) return { entered: true, valid: false, value: 0 };
+        const value = Number(clean);
+        const valid = Number.isFinite(value) && value >= 0 && value <= MAX;
+        return { entered: true, valid, value: valid ? value : 0 };
+      }
+      function showError(message, invalid) {
+        fieldIds.forEach((id) => get(id).setAttribute('aria-invalid', invalid.includes(id) ? 'true' : 'false'));
+        const el = get('error');
+        if (!el) return;
+        el.textContent = message;
+        el.hidden = !message;
+        el.style.display = message ? 'block' : 'none';
+      }
+
+      const resultIds = [
+        'ratio',
+        'monthly-income',
+        'monthly-debt',
+        'left',
+        'ratio-ex-housing',
+        'target-max',
+        'target-headroom',
+        'target-reduce',
+        'target-reduce-note',
+        'target-income',
+        'target-income-note',
+      ];
+      function clearResults(assumption) {
+        resultIds.forEach((id) => write(id, '\u2014'));
+        write('assumption', assumption || 'Enter your income and debt repayments to see your ratio.');
+        write('band-text', 'Enter your details to see what your ratio may mean.');
+        write('method-text', 'Enter your income and debt repayments to see how your ratio is calculated.');
+        const band = get('band');
+        if (band) band.hidden = true;
+        const results = get('results-panel');
+        if (results) results.dataset.band = 'none';
+        const marker = get('gauge-marker');
+        if (marker) marker.hidden = true;
+        const track = get('gauge-track');
+        if (track) track.setAttribute('aria-label', 'Your ratio will appear on the scale once you enter your details');
+        const chart = get('breakdown-chart'),
+          legend = get('breakdown-legend');
+        if (chart) {
+          chart.replaceChildren();
+          chart.setAttribute('aria-label', 'Your breakdown will appear once you enter your details');
+        }
+        if (legend) {
+          const empty = document.createElement('p');
+          empty.className = 'lgdti-viz-empty';
+          empty.textContent = 'Enter your income and debts to see the breakdown.';
+          legend.replaceChildren(empty);
+        }
+      }
+
+      function legendRow(label, color, share, amount) {
+        const row = document.createElement('div');
+        row.className = 'lgdti-viz-legend-row';
+        const name = document.createElement('span');
+        name.className = 'lgdti-viz-legend-name';
+        const dot = document.createElement('i');
+        dot.className = 'lgdti-viz-dot';
+        dot.style.backgroundColor = color;
+        dot.setAttribute('aria-hidden', 'true');
+        name.append(dot, document.createTextNode(label));
+        const muted = document.createElement('span');
+        muted.className = 'lgdti-viz-muted';
+        muted.textContent = share;
+        const value = document.createElement('strong');
+        value.textContent = amount;
+        row.append(name, muted, value);
+        return row;
+      }
+
+      function renderBreakdown(income, values, debt) {
+        const chart = get('breakdown-chart'),
+          legend = get('breakdown-legend');
+        if (!chart || !legend) return;
+        chart.replaceChildren();
+        legend.replaceChildren();
+        // The bar is the whole of income; if debts exceed income it scales to the debts instead.
+        const whole = Math.max(income, debt);
+        const described = [];
+        DEBTS.forEach((d) => {
+          const amount = values[d.id];
+          if (amount <= 0) return;
+          const seg = document.createElement('span');
+          seg.style.width = ((amount / whole) * 100).toFixed(3) + '%';
+          seg.style.backgroundColor = d.color;
+          chart.appendChild(seg);
+          legend.appendChild(legendRow(d.label, d.color, pct((amount / income) * 100), money(amount)));
+          described.push(d.label + ' ' + pct((amount / income) * 100));
+        });
+        const left = income - debt;
+        if (left > 0) {
+          const seg = document.createElement('span');
+          seg.className = 'lgdti-viz-left';
+          seg.style.width = ((left / whole) * 100).toFixed(3) + '%';
+          chart.appendChild(seg);
+        }
+        if (!debt) {
+          const none = document.createElement('p');
+          none.className = 'lgdti-viz-empty';
+          none.textContent = 'No debt repayments entered.';
+          legend.appendChild(none);
+        }
+        legend.appendChild(legendRow('Left after repayments', '#dce7e7', pct((Math.max(0, left) / income) * 100), money(left)));
+        described.push('left after repayments ' + pct((Math.max(0, left) / income) * 100));
+        chart.setAttribute('aria-label', 'Share of gross monthly income: ' + described.join('; '));
+      }
+
+      function update() {
+        const items = {};
+        const invalid = [];
+        let anyDebt = false;
+        fieldIds.forEach((id) => {
+          const item = parse(id);
+          if (!item.valid) invalid.push(id);
+          if (item.entered && id !== 'income' && id !== 'other-income') anyDebt = true;
+          items[id] = item;
+        });
+        write('income-label', period() === 'month' ? 'Gross salary per month' : 'Gross salary per year');
+        const values = {};
+        DEBTS.forEach((d) => {
+          values[d.id] = items[d.id].value;
+        });
+        const debt = DEBTS.reduce((sum, d) => sum + values[d.id], 0);
+        write('debt-subtotal', anyDebt && !invalid.length ? money(debt) : '\u2014');
+        if (invalid.length) {
+          clearResults('Please check the highlighted amounts.');
+          showError('Enter amounts of \u00A30 or more using numbers only, with up to two decimal places (for example 1,250 or 1250.50).', invalid);
+          return;
+        }
+        const incomeEntered = items.income.entered || items['other-income'].entered;
+        if (!incomeEntered) {
+          clearResults(anyDebt ? 'Enter your income to see your ratio.' : '');
+          showError('', []);
+          return;
+        }
+        const salaryMonthly = period() === 'month' ? items.income.value : items.income.value / 12;
+        const income = salaryMonthly + items['other-income'].value;
+        if (income <= 0) {
+          clearResults('Enter your income to see your ratio.');
+          showError('Enter an income above \u00A30 to work out your debt-to-income ratio.', ['income']);
+          return;
+        }
+        showError('', []);
+        const ratio = (debt / income) * 100;
+        const shown = Math.round(ratio * 10) / 10;
+        const band = BANDS.find((b) => shown < b.max);
+        const housingRatio = ((debt - values.housing) / income) * 100;
+        const left = income - debt;
+
+        write('ratio', pct(ratio));
+        const bandEl = get('band');
+        if (bandEl) {
+          bandEl.textContent = band.label;
+          bandEl.hidden = false;
+        }
+        const results = get('results-panel');
+        if (results) results.dataset.band = band.key;
+        write('monthly-income', money(income));
+        write('monthly-debt', money(debt));
+        write('left', money(left));
+        write('ratio-ex-housing', pct(housingRatio));
+        write(
+          'assumption',
+          debt > 0
+            ? `Monthly debt repayments of ${money(debt)} are ${pct(ratio)} of your gross monthly income of ${money(income)}.`
+            : `No debt repayments entered, so none of your ${money(income)} gross monthly income goes on debt.`,
+        );
+        write('band-text', band.text);
+
+        const marker = get('gauge-marker');
+        if (marker) {
+          marker.hidden = false;
+          marker.dataset.band = band.key;
+          marker.style.left = ((Math.min(ratio, GAUGE_MAX) / GAUGE_MAX) * 100).toFixed(3) + '%';
+        }
+        const track = get('gauge-track');
+        if (track) track.setAttribute('aria-label', `Your ratio of ${pct(ratio)} is in the ${band.label.toLowerCase()} band`);
+        renderBreakdown(income, values, debt);
+
+        const maxDebt = (income * TARGET) / 100;
+        const reduce = Math.max(0, debt - maxDebt);
+        const incomeNeeded = (debt * 100) / TARGET;
+        write('target-max', money(maxDebt));
+        write(
+          'target-headroom',
+          debt <= maxDebt ? `${money(maxDebt - debt)} below this level` : `You're ${money(debt - maxDebt)} above this level`,
+        );
+        write('target-reduce', money(reduce));
+        write('target-reduce-note', reduce > 0 ? `Brings repayments down to ${money(maxDebt)}` : `You're already at or below ${TARGET}%`);
+        write('target-income', debt > 0 ? money(incomeNeeded) : '\u2014');
+        write(
+          'target-income-note',
+          debt <= 0
+            ? 'No debt repayments entered'
+            : incomeNeeded > income
+              ? `${money(incomeNeeded * 12)} a year, ${money(incomeNeeded - income)} a month more than now`
+              : `${money(incomeNeeded * 12)} a year. Your income is already enough`,
+        );
+
+        const incomeText =
+          period() === 'month'
+            ? `a gross salary of ${money(items.income.value)} a month`
+            : `a gross salary of ${money(items.income.value)} a year (${money(salaryMonthly)} a month)`;
+        write(
+          'method-text',
+          `Gross monthly income = ${incomeText}` +
+            (items['other-income'].value > 0 ? ` plus ${money(items['other-income'].value)} other income` : '') +
+            ` = ${money(income)}. Total monthly debt repayments = ${money(debt)}. Debt-to-income ratio = ${money(debt)} \u00F7 ${money(income)} \u00D7 100 = ${pct(ratio)}. ` +
+            `Excluding mortgage or rent, the ratio is ${pct(housingRatio)}. Blank fields are treated as \u00A30.`,
+        );
+      }
+
+      root.addEventListener('input', (event) => {
+        if (event.target.id && event.target.id.indexOf('lgdti-') === 0) update();
+      });
+      root.addEventListener('change', (event) => {
+        if (event.target.id && event.target.id.indexOf('lgdti-') === 0) update();
+      });
+      const form = panel.closest('form');
       if (form) form.addEventListener('submit', (event) => event.preventDefault());
       update();
     }
