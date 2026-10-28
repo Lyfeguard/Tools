@@ -7,25 +7,28 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const FIXED_NOW = Date.UTC(2026, 9, 28, 12, 0, 0);
 
-function pageHtml(key, dist) {
+// wrapper 'cms': .lg-calc-wrap[data-calc] as in the Webflow template.
+// wrapper 'plain': no data-calc and no lg-calc-wrap class, to prove styling
+// depends only on the pasted markup.
+function pageHtml(key, dist, wrapper = 'cms') {
   const markup = fs.readFileSync(path.join(ROOT, 'markup', key + '.html'), 'utf8');
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="file://${dist}/lg-calc.min.css">
 <script src="file://${dist}/lg-calc.min.js" defer></script>
 <style>body{margin:0;background:#f3f7f6;font-family:Arial,sans-serif}.container{max-width:960px;margin:0 auto;padding:24px 16px}
-.lg-calc-wrap{display:flex;flex-direction:column;gap:24px}*,*::before,*::after{transition:none!important;animation:none!important}</style>
-</head><body><div class="container"><div class="lg-calc-wrap" data-calc="${key}">
+.lg-calc-wrap,.plain-wrap{display:flex;flex-direction:column;gap:24px}*,*::before,*::after{transition:none!important;animation:none!important}</style>
+</head><body><div class="container">${wrapper === 'plain' ? '<div class="plain-wrap">' : `<div class="lg-calc-wrap" data-calc="${key}">`}
 <div class="lg-heading-wrap calculator"><h1 id="calc-heading">Calculator</h1></div>
 <div class="lg-calc-markup w-richtext"><div class="w-embed">${markup}</div></div>
 </div></div></body></html>`;
 }
 
 // Writes the page to a temp file and opens it. dist defaults to the repo's dist/.
-async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist') } = {}) {
+async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist'), wrapper = 'cms' } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-calc-'));
   const file = path.join(dir, key + '.html');
-  fs.writeFileSync(file, pageHtml(key, dist));
+  fs.writeFileSync(file, pageHtml(key, dist, wrapper));
   const page = await browser.newPage({ viewport: { width, height: 900 } });
   page.lgErrors = [];
   page.on('pageerror', (e) => page.lgErrors.push(String(e)));

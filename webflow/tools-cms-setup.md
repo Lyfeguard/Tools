@@ -31,7 +31,7 @@ Keep double quotes and & out of fields used in the schema; use the curly apostro
 ```
 Section (current calculator section classes)
   Container
-    Div  .lg-calc-wrap            attribute data-calc = Calculator key
+    Div  .lg-calc-wrap            attribute data-calc = Calculator key (optional, see below)
       Div .lg-heading-wrap.calculator
         Breadcrumb (Home / Tools / Name)
         H1  id="calc-heading"      ← H1
@@ -44,6 +44,7 @@ Section  FAQs
 Section  Related guides
 ```
 - No Form element. v1.0.1 runs without one.
+- From v1.2.0 each calculator's styles are found from its own markup, so the `data-calc` attribute is optional. It's still a useful label, and harmless to keep.
 - The Rich Text must have class `lg-calc-markup` and sit directly inside `.lg-calc-wrap`.
 
 ## 4. Template head code
