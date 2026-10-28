@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.6.0 – 2026-10-28
+- New Retirement Income calculator (key `retirement-income`, markup in `markup/retirement-income.html`). How long a pension pot could last, in today's money:
+  - The pot pays whatever the State Pension and other guaranteed income don't cover, so it covers the full income before State Pension age.
+  - Tax-free cash taken as you go (25% of each withdrawal) or 25% upfront, both within the £268,275 Lump Sum Allowance.
+  - Estimated income tax and take-home pay before and after State Pension age, and after the pot runs out (2026/27 rates).
+  - The highest income that would last to your chosen age, growth 1% lower and higher, a chart of the pot over time and a year-by-year table.
+- New shared `lgc-` components and the markup pattern for calculators (see README): a self-contained `.lg-calc` root with container-query layout, field-level errors with an error summary, a Clear figures button, one debounced screen-reader announcement, and a sticky result bar on narrow screens.
+- No change to the existing calculators: their computed styles match v1.5.0.
+
 ## v1.5.0 – 2026-10-28
 No visual change: computed styles match v1.4.0, and results for valid input are unchanged.
 - Every calculator now uses the shared JS helpers for start-up (`LG.start`), reading numbers (`LG.parseNumber`), money and percentages (`LG.money`, `LG.percent`) and marking invalid fields (`LG.markInvalid`). Net worth, inheritance tax, savings goal, emergency fund, pro rata and salary by age were moved over; no calculator has its own number parser or currency formatter any more.

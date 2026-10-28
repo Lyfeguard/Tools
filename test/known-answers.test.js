@@ -216,3 +216,50 @@ test('input handling: malformed numbers are never read as a different number', a
   const good = await results('inheritance-tax', [['fill', '#lgiht-cash', '£500,000'], ['select', '#lgiht-home-desc', 'no'], ['select', '#lgiht-transfer', 'no']], ['lgiht-tax']);
   assert.equal(good['lgiht-tax'], '£70,000');
 });
+
+test('retirement income: pot duration, tax-free cash and sustainable income', async () => {
+  // With growth equal to inflation there is no real growth, so a £200,000 pot paying
+  // £20,000 a year lasts exactly 10 years (ages 65 to 74) and runs out at 75.
+  // Lasting to 95 means 30 years: £200,000 / 30 = £6,667 a year.
+  const flat = await results(
+    'retirement-income',
+    [
+      ['fill', '#lgri-pot', '200000'],
+      ['fill', '#lgri-age', '65'],
+      ['fill', '#lgri-target', '20000'],
+      ['fill', '#lgri-sp', '0'],
+      ['fill', '#lgri-growth', '2.5'],
+    ],
+    ['lgri-headline', 'lgri-sustainable', 'lgri-first-withdrawal'],
+  );
+  assert.deepEqual(flat, { 'lgri-headline': 'Age 75', 'lgri-sustainable': '£6,667 a year', 'lgri-first-withdrawal': '£20,000' });
+
+  // Taking 25% upfront leaves £150,000: 7 full years (65 to 71), runs out at 72.
+  const upfront = await results(
+    'retirement-income',
+    [
+      ['fill', '#lgri-pot', '200000'],
+      ['fill', '#lgri-age', '65'],
+      ['fill', '#lgri-target', '20000'],
+      ['fill', '#lgri-sp', '0'],
+      ['fill', '#lgri-growth', '2.5'],
+      ['check', 'input[name="lgri-lump"][value="upfront"]'],
+    ],
+    ['lgri-headline', 'lgri-cash'],
+  );
+  assert.deepEqual(upfront, { 'lgri-headline': 'Age 72', 'lgri-cash': '£50,000' });
+
+  // £25,000 from the pot with 25% tax-free: tax = (18,750 - 12,570) x 20% = 1,236.
+  const page = await openCalculator(browser, 'retirement-income');
+  await run(page, [
+    ['fill', '#lgri-pot', '300000'],
+    ['fill', '#lgri-age', '60'],
+    ['fill', '#lgri-target', '25000'],
+  ]);
+  const year1 = await page.evaluate(() => {
+    const r = window.LyfeTools.retirementIncome.project({ pot: 300000, age: 60, target: 25000, sp: 12548, spAge: 67, other: 0, growth: 4, inflation: 2.5, lump: 'spread' });
+    return { tax: Math.round(r.years[0].tax), spAt67: r.years[7].sp, needAt67: Math.round(r.years[7].need) };
+  });
+  assert.deepEqual(year1, { tax: 1236, spAt67: 12548, needAt67: 12452 });
+  await page.close();
+});

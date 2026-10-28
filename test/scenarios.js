@@ -211,4 +211,36 @@ module.exports = {
       ['fill', '#lgdti-car', '12.345'],
     ],
   },
+  'retirement-income': {
+    empty: [],
+    typical: [
+      ['fill', '#lgri-pot', '300,000'],
+      ['fill', '#lgri-age', '60'],
+      ['fill', '#lgri-target', '25000'],
+    ],
+    upfront: [
+      ['fill', '#lgri-pot', '500000'],
+      ['fill', '#lgri-age', '67'],
+      ['fill', '#lgri-target', '35000'],
+      ['check', 'input[name="lgri-lump"][value="upfront"]'],
+      ['fill', '#lgri-other', '6000'],
+    ],
+    covered: [
+      ['fill', '#lgri-pot', '50000'],
+      ['fill', '#lgri-age', '68'],
+      ['fill', '#lgri-target', '12000'],
+    ],
+    short: [
+      ['fill', '#lgri-pot', '120000'],
+      ['fill', '#lgri-age', '57'],
+      ['fill', '#lgri-target', '30000'],
+      ['fill', '#lgri-growth', '-1'],
+    ],
+    invalid: [
+      ['fill', '#lgri-pot', '300k'],
+      ['click', '#lgri-age'],
+      ['fill', '#lgri-age', '40'],
+      ['click', '#lgri-target'],
+    ],
+  },
 };

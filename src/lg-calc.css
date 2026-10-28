@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.5.0
+ * Lyfeguard calculators | lg-calc.css | v1.6.0
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -57,6 +57,7 @@
   --lg-radius: 20px; /* cards and panels */
   --lg-radius-small: 14px; /* inputs, buttons, inner cards */
   --lg-radius-tiny: 10px; /* chips, toggles, small notes */
+  --lg-error: #a12626; /* errors (not a brand colour) */
   --lg-shadow-raised: 0 1px 2px rgba(10, 45, 58, 0.1), 0 1px 1px rgba(10, 45, 58, 0.04); /* selected option */
   /* Fonts (loaded by the Webflow site) */
   --lg-font-body: "Manrope", sans-serif;
@@ -5827,6 +5828,710 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   }
   #lgdti-breakdown .lgdti-viz-chart > span {
     border-right: 1px solid CanvasText;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Shared components (.lg-calc): the markup pattern for new calculators
+   Each calculator's markup is one .lg-calc[data-calc] element, so it
+   styles and lays itself out without depending on the Webflow template.
+   Only class selectors, no ids or !important, so Webflow can override.
+   Layout responds to the calculator's own width (container queries).
+   First used by: retirement income.
+   ------------------------------------------------------------------ */
+.lg-calc {
+  --lg-section-gap: 24px;
+  container: lg-calc / inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: var(--lg-section-gap);
+  width: 100%;
+  min-width: 0;
+  color: var(--lg-ink);
+  font-family: var(--lg-font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  text-align: left;
+}
+.lg-calc,
+.lg-calc *,
+.lg-calc *::before,
+.lg-calc *::after {
+  box-sizing: border-box;
+}
+.lg-calc [hidden] {
+  display: none !important; /* the one exception: hidden must always hide */
+}
+.lg-calc :is(h2, h3, h4, p, ul, ol, dl, dd, fieldset, figure, label, legend) {
+  margin: 0; /* Webflow's base styles add margins to labels and paragraphs */
+}
+.lg-calc :is(h2, h3, h4) {
+  font-family: var(--lg-font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: inherit;
+}
+.lg-calc h2 {
+  font-size: clamp(23px, 2.4vw, 30px);
+}
+.lg-calc h3 {
+  font-size: 21px;
+}
+.lg-calc h4 {
+  font-size: 16px;
+}
+.lg-calc a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--lg-mint-ink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.lg-calc :is(a, button, input, select, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--lg-mint-ink);
+  outline-offset: 3px;
+}
+.lg-calc .lgc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Cards */
+.lg-calc .lgc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: clamp(22px, 4cqi, 36px);
+  background: var(--lg-white);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius);
+}
+.lg-calc .lgc-card-dark {
+  background: var(--lg-ocean);
+  border-color: var(--lg-ocean);
+  color: var(--lg-on-ocean);
+}
+.lg-calc .lgc-eyebrow {
+  font-family: var(--lg-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-card-dark .lgc-eyebrow {
+  color: var(--lg-mint);
+}
+.lg-calc .lgc-intro {
+  max-width: 62ch;
+  font-size: 15px;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-small {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-card-dark :is(.lgc-intro, .lgc-small) {
+  color: var(--lg-on-ocean-soft);
+}
+.lg-calc .lgc-empty {
+  font-size: 14px;
+  color: var(--lg-ink-soft);
+}
+
+/* Form */
+.lg-calc .lgc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid var(--lg-border);
+}
+.lg-calc .lgc-group-title {
+  padding: 0;
+  font-family: var(--lg-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+}
+.lg-calc .lgc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 18px;
+}
+.lg-calc .lgc-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.lg-calc .lgc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.lg-calc .lgc-field-full {
+  grid-column: 1 / -1;
+}
+.lg-calc .lgc-field > label,
+.lg-calc .lgc-choice-group > legend {
+  padding: 0;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+.lg-calc .lgc-input {
+  display: flex;
+  align-items: stretch;
+  min-height: 52px;
+  overflow: hidden;
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border-strong);
+  border-radius: var(--lg-radius-small);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.lg-calc .lgc-input:focus-within {
+  border-color: var(--lg-mint-ink);
+  box-shadow: 0 0 0 3px rgba(10, 163, 118, 0.18);
+}
+.lg-calc .lgc-input:has([aria-invalid="true"]) {
+  border-color: var(--lg-error);
+  box-shadow: 0 0 0 1px var(--lg-error);
+}
+.lg-calc .lgc-input input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: var(--lg-ink);
+  font: 600 17px/1.4 var(--lg-font-body);
+  font-variant-numeric: tabular-nums;
+  box-shadow: none;
+}
+.lg-calc .lgc-input input:focus {
+  outline: 0;
+}
+.lg-calc .lgc-input input::placeholder {
+  color: var(--lg-ink-faint);
+  opacity: 1;
+}
+.lg-calc .lgc-affix {
+  display: flex;
+  align-items: center;
+  flex: none;
+  padding: 0 14px;
+  background: var(--lg-mist-alt);
+  color: var(--lg-ink-soft);
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+.lg-calc .lgc-hint {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-field-error {
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+  color: var(--lg-error);
+}
+.lg-calc .lgc-error-summary {
+  padding: 14px 16px;
+  border-left: 4px solid var(--lg-error);
+  border-radius: var(--lg-radius-tiny);
+  background: #fff1ef;
+  color: var(--lg-error);
+}
+.lg-calc .lgc-error-summary-title {
+  font-weight: 700;
+}
+.lg-calc .lgc-error-summary ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.lg-calc .lgc-error-summary a {
+  color: inherit;
+  text-decoration-color: currentColor;
+}
+.lg-calc .lgc-choice-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Option switcher: a light track with a raised selected option */
+.lg-calc .lgc-switch {
+  display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 4px;
+  padding: 4px;
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
+}
+.lg-calc .lgc-switch-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: var(--lg-radius-tiny);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+.lg-calc .lgc-switch-option:hover {
+  background: rgba(10, 45, 58, 0.04);
+}
+.lg-calc .lgc-switch-option:has(input:checked) {
+  background: var(--lg-white);
+  box-shadow: var(--lg-shadow-raised);
+}
+.lg-calc .lgc-switch-option:has(input:focus-visible) {
+  outline: 3px solid var(--lg-mint-ink);
+  outline-offset: 2px;
+}
+.lg-calc .lgc-switch input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--lg-mint-ink);
+}
+.lg-calc .lgc-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--lg-border);
+}
+
+/* Buttons */
+.lg-calc .lgc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid var(--lg-ocean);
+  border-radius: var(--lg-radius-small);
+  background: var(--lg-ocean);
+  color: var(--lg-white);
+  font: 700 14px/1.2 var(--lg-font-body);
+  cursor: pointer;
+}
+.lg-calc .lgc-button:hover {
+  background: var(--lg-ocean-lift);
+}
+.lg-calc .lgc-button-quiet {
+  border-color: var(--lg-border-strong);
+  background: var(--lg-white);
+  color: var(--lg-ink);
+}
+.lg-calc .lgc-button-quiet:hover {
+  background: var(--lg-mist);
+}
+
+/* Results on Ocean */
+.lg-calc .lgc-result-label {
+  font-size: 15px;
+  color: var(--lg-on-ocean-soft);
+}
+.lg-calc .lgc-result-value {
+  font-family: var(--lg-font-heading);
+  font-size: clamp(38px, 7cqi, 58px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: var(--lg-on-ocean);
+  font-variant-numeric: tabular-nums;
+}
+.lg-calc .lgc-badge {
+  align-self: flex-start;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--lg-mint);
+  color: var(--lg-ocean);
+  font-family: var(--lg-font-label);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.lg-calc .lgc-badge[data-tone="warn"] {
+  background: #f2c9a8;
+}
+.lg-calc .lgc-result-summary {
+  max-width: 64ch;
+  color: var(--lg-on-ocean);
+}
+.lg-calc .lgc-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--lg-on-ocean-line);
+}
+.lg-calc .lgc-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.lg-calc .lgc-stats dt {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--lg-on-ocean-soft);
+}
+.lg-calc .lgc-stats dd {
+  margin-top: auto;
+  font-family: var(--lg-font-heading);
+  font-size: clamp(18px, 2.4cqi, 24px);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+/* Income columns */
+.lg-calc .lgc-income-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.lg-calc .lgc-income-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
+}
+.lg-calc .lgc-income-col dl {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lg-calc .lgc-income-col dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+.lg-calc .lgc-income-col dt {
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-income-col dd {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.lg-calc .lgc-income-col .lgc-total {
+  padding-top: 8px;
+  border-top: 1px solid var(--lg-border);
+}
+.lg-calc .lgc-income-col .lgc-total :is(dt, dd) {
+  color: var(--lg-ink);
+  font-weight: 700;
+}
+
+/* Chart */
+.lg-calc .lgc-chart {
+  min-height: 220px;
+  padding: 8px 4px 0;
+  background: var(--lg-mist);
+  border-radius: var(--lg-radius-small);
+}
+.lg-calc .lgc-chart svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.lg-calc .lgc-chart-grid {
+  stroke: var(--lg-border);
+  stroke-width: 1;
+}
+.lg-calc .lgc-chart-text {
+  fill: var(--lg-ink-soft);
+  font: 12px var(--lg-font-body);
+}
+.lg-calc .lgc-chart-line {
+  fill: none;
+  stroke: var(--lg-mint-ink);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.lg-calc .lgc-chart-area {
+  fill: var(--lg-mint-ink);
+  fill-opacity: 0.12;
+}
+.lg-calc .lgc-chart-plan {
+  stroke: var(--lg-ocean);
+  stroke-width: 2;
+  stroke-dasharray: 5 5;
+}
+.lg-calc .lgc-chart-sp {
+  stroke: var(--lg-ink-faint);
+  stroke-width: 2;
+  stroke-dasharray: 2 4;
+}
+.lg-calc .lgc-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lg-calc .lgc-key {
+  display: inline-block;
+  width: 22px;
+  height: 0;
+  border-top: 3px solid var(--lg-mint-ink);
+}
+.lg-calc .lgc-key-plan {
+  border-top: 2px dashed var(--lg-ocean);
+}
+.lg-calc .lgc-key-sp {
+  border-top: 2px dotted var(--lg-ink-faint);
+}
+
+/* Disclosure and table */
+.lg-calc .lgc-details > summary,
+.lg-calc .lgc-method > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 650;
+}
+.lg-calc .lgc-details > summary,
+.lg-calc .lgc-method > summary {
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+}
+.lg-calc :is(.lgc-details, .lgc-method) > summary::-webkit-details-marker {
+  display: none;
+}
+.lg-calc :is(.lgc-details, .lgc-method) > summary::after {
+  content: "";
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--lg-border-strong);
+  border-radius: 50%;
+  /* a plus sign drawn with two lines; open shows only the horizontal one */
+  background:
+    linear-gradient(currentColor, currentColor) center / 10px 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1.5px 10px no-repeat;
+}
+.lg-calc :is(.lgc-details, .lgc-method)[open] > summary::after {
+  background: linear-gradient(currentColor, currentColor) center / 10px 1.5px no-repeat;
+}
+.lg-calc .lgc-method > summary {
+  font-family: var(--lg-font-heading);
+  font-size: 17px;
+  font-weight: 600;
+}
+.lg-calc .lgc-method-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.lg-calc .lgc-table-wrap {
+  max-height: 440px;
+  margin-top: 8px;
+  overflow: auto;
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
+}
+.lg-calc .lgc-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.lg-calc .lgc-table caption {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-table :is(th, td) {
+  padding: 9px 14px;
+  border-top: 1px solid var(--lg-border);
+  text-align: right;
+  white-space: nowrap;
+}
+.lg-calc .lgc-table :is(th, td):first-child {
+  text-align: left;
+}
+.lg-calc .lgc-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--lg-mist-alt);
+  font-size: 13px;
+}
+.lg-calc .lgc-table .lgc-row-out {
+  color: var(--lg-ink-soft);
+}
+
+/* Comparison cards */
+.lg-calc .lgc-compare {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.lg-calc .lgc-compare-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 16px;
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
+}
+.lg-calc .lgc-compare-current {
+  border-color: var(--lg-mint-ink);
+  background: var(--lg-white);
+}
+.lg-calc .lgc-compare-label {
+  font-family: var(--lg-font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lg-calc .lgc-compare-item strong {
+  font-family: var(--lg-font-heading);
+  font-size: 20px;
+  font-weight: 600;
+}
+.lg-calc .lgc-compare-note {
+  font-size: 13px;
+  color: var(--lg-ink-soft);
+}
+
+/* Mobile result bar: shown by the JS while the results are below the screen */
+.lg-calc .lgc-sticky {
+  position: sticky;
+  bottom: 12px;
+  z-index: 5;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: calc(-1 * var(--lg-section-gap) + 12px);
+  padding: 12px 16px;
+  background: var(--lg-ocean);
+  color: var(--lg-on-ocean);
+  border-radius: var(--lg-radius-small);
+  box-shadow: 0 6px 20px rgba(10, 45, 58, 0.25);
+  font-size: 14px;
+}
+.lg-calc .lgc-sticky strong {
+  color: var(--lg-mint);
+  font-family: var(--lg-font-heading);
+  font-size: 17px;
+}
+.lg-calc .lgc-sticky-label {
+  color: var(--lg-on-ocean-soft);
+}
+.lg-calc .lgc-sticky-link {
+  flex: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  text-decoration-color: var(--lg-mint);
+}
+.lg-calc .lgc-sticky-link:focus-visible {
+  outline-color: var(--lg-mint);
+}
+
+/* Layout at the calculator's own width */
+@container lg-calc (max-width: 760px) {
+  .lg-calc .lgc-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lg-calc .lgc-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lg-calc .lgc-sticky:not([hidden]) {
+    display: flex;
+  }
+}
+@container lg-calc (max-width: 560px) {
+  .lg-calc .lgc-grid,
+  .lg-calc .lgc-grid-3,
+  .lg-calc .lgc-compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lg-calc .lgc-switch {
+    grid-auto-flow: row;
+  }
+  .lg-calc .lgc-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .lg-calc .lgc-stats > div {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .lg-calc .lgc-stats dd {
+    margin-top: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-calc .lgc-input {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .lg-calc .lgc-switch-option:has(input:checked) {
+    outline: 2px solid Highlight;
+  }
+  .lg-calc .lgc-chart-line {
+    stroke: CanvasText;
   }
 }
 

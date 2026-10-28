@@ -1,0 +1,167 @@
+<div class="lg-calc" data-calc="retirement-income" id="lgri">
+  <form id="lgri-form" class="lgc-card" novalidate="" aria-labelledby="lgri-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lgri-form-title">Your pension and retirement income</h2>
+    <p class="lgc-intro">Enter your pension pot and the income you want. All amounts are before tax and in today’s money, so £20,000 means what £20,000 buys now.</p>
+
+    <div id="lgri-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
+      <p class="lgc-error-summary-title">Check the highlighted fields</p>
+      <ul id="lgri-error-list"></ul>
+    </div>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your pension</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field">
+          <label for="lgri-pot">Pension pot when you start taking income</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgri-pot" name="pot" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="300,000" aria-describedby="lgri-pot-hint lgri-pot-error"></div>
+          <p id="lgri-pot-hint" class="lgc-hint">Defined contribution pensions only, such as workplace pensions and SIPPs.</p>
+          <p id="lgri-pot-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgri-age">Your age when you start</label>
+          <div class="lgc-input"><input id="lgri-age" name="age" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" placeholder="66" aria-describedby="lgri-age-hint lgri-age-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
+          <p id="lgri-age-hint" class="lgc-hint">The earliest age is 55, rising to 57 from 6 April 2028.</p>
+          <p id="lgri-age-error" class="lgc-field-error" hidden=""></p>
+        </div>
+      </div>
+      <fieldset class="lgc-choice-group">
+        <legend>Tax-free cash</legend>
+        <div class="lgc-switch">
+          <label class="lgc-switch-option"><input type="radio" name="lgri-lump" value="spread" checked=""><span>Take it as you go</span></label>
+          <label class="lgc-switch-option"><input type="radio" name="lgri-lump" value="upfront"><span>Take 25% at the start</span></label>
+        </div>
+        <p class="lgc-hint">Taking it as you go makes 25% of each withdrawal tax-free. Taking it at the start pays up to £268,275 as a lump sum and leaves the rest invested.</p>
+      </fieldset>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your retirement income</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field lgc-field-full">
+          <label for="lgri-target">Income you want each year, before tax</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgri-target" name="target" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="25,000" aria-describedby="lgri-target-hint lgri-target-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgri-target-hint" class="lgc-hint">Your total income from all sources, including the State Pension.</p>
+          <p id="lgri-target-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgri-sp">State Pension</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgri-sp" name="sp" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" value="12,548" aria-describedby="lgri-sp-hint lgri-sp-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgri-sp-hint" class="lgc-hint">The full new State Pension for 2026/27 is £12,548 (£241.30 a week). Check yours at <a href="https://www.gov.uk/check-state-pension" target="_blank" rel="noopener">GOV.UK<span class="lgc-sr-only"> (opens in a new tab)</span></a>, or enter 0.</p>
+          <p id="lgri-sp-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgri-sp-age">State Pension age</label>
+          <div class="lgc-input"><input id="lgri-sp-age" name="sp-age" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" value="67" aria-describedby="lgri-sp-age-hint lgri-sp-age-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
+          <p id="lgri-sp-age-hint" class="lgc-hint">66 if you were born before 6 April 1960, and 67 if born after 5 March 1961. Check yours on GOV.UK.</p>
+          <p id="lgri-sp-age-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgri-other">Other guaranteed income</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgri-other" name="other" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" aria-describedby="lgri-other-hint lgri-other-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgri-other-hint" class="lgc-hint">For example a final salary pension or an annuity, before tax.</p>
+          <p id="lgri-other-error" class="lgc-field-error" hidden=""></p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Assumptions</legend>
+      <div class="lgc-grid lgc-grid-3">
+        <div class="lgc-field">
+          <label for="lgri-growth">Investment growth</label>
+          <div class="lgc-input"><input id="lgri-growth" name="growth" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" value="4" aria-describedby="lgri-growth-hint lgri-growth-error"><span class="lgc-affix" aria-hidden="true">% a year</span></div>
+          <p id="lgri-growth-hint" class="lgc-hint">After charges.</p>
+          <p id="lgri-growth-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgri-inflation">Inflation</label>
+          <div class="lgc-input"><input id="lgri-inflation" name="inflation" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" value="2.5" aria-describedby="lgri-inflation-hint lgri-inflation-error"><span class="lgc-affix" aria-hidden="true">% a year</span></div>
+          <p id="lgri-inflation-hint" class="lgc-hint">Your income rises with this each year.</p>
+          <p id="lgri-inflation-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgri-plan-age">Plan for income until age</label>
+          <div class="lgc-input"><input id="lgri-plan-age" name="plan-age" type="text" inputmode="numeric" enterkeyhint="done" autocomplete="off" value="95" aria-describedby="lgri-plan-age-hint lgri-plan-age-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
+          <p id="lgri-plan-age-hint" class="lgc-hint">Many people live into their 90s.</p>
+          <p id="lgri-plan-age-error" class="lgc-field-error" hidden=""></p>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you type. Nothing you enter leaves your browser.</p>
+      <button type="button" id="lgri-clear" class="lgc-button lgc-button-quiet">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lgri-results" class="lgc-card lgc-card-dark" aria-labelledby="lgri-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lgri-results-title">How long your pension could last</h2>
+    <p class="lgc-result-label" id="lgri-headline-label">Your pot could last until</p>
+    <p class="lgc-result-value" id="lgri-headline">—</p>
+    <p class="lgc-badge" id="lgri-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lgri-summary">Enter your pension pot, your age and the income you want to see how long your pot could last.</p>
+    <dl class="lgc-stats">
+      <div><dt>Taken from your pot in year one</dt><dd id="lgri-first-withdrawal">—</dd></div>
+      <div><dt>Withdrawal rate in year one</dt><dd id="lgri-rate">—</dd></div>
+      <div><dt id="lgri-cash-label">Tax-free cash</dt><dd id="lgri-cash">—</dd></div>
+      <div><dt>Income you could sustain to your plan age</dt><dd id="lgri-sustainable">—</dd></div>
+    </dl>
+    <p class="lgc-small">Illustration only, in today’s money. It assumes steady growth and inflation every year; real returns go up and down, and poor returns early in retirement can shorten how long a pot lasts. This is not financial advice.</p>
+    <p class="lgc-sr-only" id="lgri-announce" aria-live="polite"></p>
+  </section>
+
+  <section id="lgri-income" class="lgc-card" aria-labelledby="lgri-income-title">
+    <h3 id="lgri-income-title">Your income, year by year</h3>
+    <p class="lgc-intro">What makes up your income, and an estimate of the income tax on it.</p>
+    <div id="lgri-income-cols" class="lgc-income-cols">
+      <p class="lgc-empty">Enter your details to see your income.</p>
+    </div>
+    <p class="lgc-small">Tax uses 2026/27 rates for England, Wales and Northern Ireland, kept at today’s values. Scottish rates differ.</p>
+  </section>
+
+  <section id="lgri-chart-card" class="lgc-card" aria-labelledby="lgri-chart-title">
+    <h3 id="lgri-chart-title">Your pot over time</h3>
+    <p class="lgc-intro">Your pot’s value in today’s money at the start of each year.</p>
+    <div class="lgc-chart" id="lgri-chart" role="img" aria-label="Your pot over time will appear once you enter your details"></div>
+    <ul class="lgc-legend" aria-hidden="true">
+      <li><i class="lgc-key lgc-key-line"></i>Pot value</li>
+      <li><i class="lgc-key lgc-key-plan"></i>Your plan age</li>
+      <li><i class="lgc-key lgc-key-sp"></i>State Pension starts</li>
+    </ul>
+    <details class="lgc-details">
+      <summary>Show the figures for each year</summary>
+      <div class="lgc-table-wrap" tabindex="0" role="region" aria-labelledby="lgri-table-caption">
+        <table class="lgc-table">
+          <caption id="lgri-table-caption">Year by year, in today’s money</caption>
+          <thead><tr><th scope="col">Age</th><th scope="col">Pot at start</th><th scope="col">From pot</th><th scope="col">State Pension</th><th scope="col">Other income</th><th scope="col">Tax</th><th scope="col">Take-home</th></tr></thead>
+          <tbody id="lgri-table-body"><tr><td colspan="7">Enter your details to see the figures.</td></tr></tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <section id="lgri-growth-card" class="lgc-card" aria-labelledby="lgri-growth-title">
+    <h3 id="lgri-growth-title">What if growth is different?</h3>
+    <p class="lgc-intro">How long your pot could last if investments grow 1% a year more or less than you assumed.</p>
+    <div class="lgc-compare">
+      <div class="lgc-compare-item"><span id="lgri-low-label" class="lgc-compare-label">Lower growth</span><strong id="lgri-low">—</strong><span id="lgri-low-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item lgc-compare-current"><span id="lgri-mid-label" class="lgc-compare-label">Your assumption</span><strong id="lgri-mid">—</strong><span class="lgc-compare-note">Your figures</span></div>
+      <div class="lgc-compare-item"><span id="lgri-high-label" class="lgc-compare-label">Higher growth</span><strong id="lgri-high">—</strong><span id="lgri-high-note" class="lgc-compare-note">—</span></div>
+    </div>
+  </section>
+
+  <details id="lgri-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lgri-method-text">Enter your details to see how the figures are worked out.</p>
+      <p class="lgc-small">Each year starts with taking the income your pot needs to provide: the income you want, less the State Pension (from State Pension age) and any other guaranteed income. What is left grows at your growth rate less inflation, so every figure stays in today’s money. The State Pension is assumed to rise with inflation. Income tax uses 2026/27 rates and allowances, and the Lump Sum Allowance of £268,275, kept at today’s values. Charges should already be taken off your growth rate.</p>
+    </div>
+  </details>
+
+  <div class="lgc-sticky" id="lgri-sticky" hidden="">
+    <p><span class="lgc-sticky-label">Your pot could last until</span> <strong id="lgri-sticky-value">—</strong></p>
+    <a href="#lgri-results" class="lgc-sticky-link">See results</a>
+  </div>
+</div>
