@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="loan-repayment">
 <div id="lglc-input-panel" class="lglc-input-panel">
   <div class="lglc-eyebrow">01 — YOUR DETAILS</div>
   <h2>About your loan</h2>
@@ -5,21 +6,22 @@
   <div class="lglc-field-grid">
     <div class="lglc-field lglc-full">
       <label for="lglc-amount">Loan amount</label>
-      <div class="lglc-input-shell"><span class="lglc-prefix" aria-hidden="true">£</span><input id="lglc-amount" name="lglc-amount" type="text" inputmode="decimal" autocomplete="off" placeholder="10,000" aria-describedby="lglc-error"></div>
+      <div class="lglc-input-shell"><span class="lglc-prefix" aria-hidden="true">£</span><input id="lglc-amount" name="lglc-amount" type="text" inputmode="decimal" autocomplete="off" placeholder="10,000" aria-describedby="lglc-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lglc-field">
       <label for="lglc-rate">Annual interest rate</label>
-      <div class="lglc-input-shell"><input id="lglc-rate" name="lglc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="7.5" aria-describedby="lglc-error"><span class="lglc-suffix" aria-hidden="true">%</span></div>
+      <div class="lglc-input-shell"><input id="lglc-rate" name="lglc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="7.5" aria-describedby="lglc-error" enterkeyhint="next"><span class="lglc-suffix" aria-hidden="true">%</span></div>
     </div>
     <div class="lglc-field">
       <label for="lglc-term">Loan term</label>
-      <div class="lglc-input-shell"><input id="lglc-term" name="lglc-term" type="text" inputmode="decimal" autocomplete="off" placeholder="5" aria-describedby="lglc-error"><span class="lglc-suffix" aria-hidden="true">years</span></div>
+      <div class="lglc-input-shell"><input id="lglc-term" name="lglc-term" type="text" inputmode="decimal" autocomplete="off" placeholder="5" aria-describedby="lglc-error" enterkeyhint="done"><span class="lglc-suffix" aria-hidden="true">years</span></div>
     </div>
   </div>
   <p id="lglc-error" role="alert" hidden=""></p>
+<div class="lgc-actions"><button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear all</button></div>
 </div>
 
-<div id="lglc-results-panel" aria-live="polite" aria-atomic="true">
+<div id="lglc-results-panel">
   <div class="lglc-eyebrow">02 — YOUR RESULTS</div>
   <h2>Your loan estimate</h2>
   <div class="lglc-primary-result">
@@ -89,3 +91,7 @@
     <p class="lglc-accordion-note">This is an illustration, not a loan offer. The calculation uses a nominal annual borrowing rate, not a representative APR, and excludes fees and additional charges.</p>
   </div>
 </details>
+
+<p class="lgc-sr-only" aria-live="polite" data-announce="lglc-monthly lglc-assumption" data-announce-prefix="Monthly repayment"></p>
+<div class="lgc-sticky" data-source="lglc-monthly" data-results="lglc-results-panel" hidden=""><p><span class="lgc-sticky-label">Monthly repayment</span> <strong data-sticky-value="">—</strong></p><a href="#lglc-results-panel" class="lgc-sticky-link">See results</a></div>
+</div>

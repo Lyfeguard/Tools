@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="emergency-fund">
 <div class="lg-tools">
   <section class="lg-card" aria-labelledby="ef-h-essentials">
     <p class="lg-kicker">01 / Your essentials</p>
@@ -6,7 +7,7 @@
 
     <div class="lg-field ef-gap">
       <label class="lg-label" for="ef-monthly">Monthly essentials</label>
-      <div class="lg-control"><span>£</span><input id="ef-monthly" class="ef-money" type="text" inputmode="decimal" autocomplete="off" placeholder="2,000"></div>
+      <div class="lg-control"><span>£</span><input id="ef-monthly" class="ef-money" type="text" inputmode="decimal" autocomplete="off" placeholder="2,000" enterkeyhint="next"></div>
     </div>
 
     <button type="button" class="lg-text-button" id="ef-toggle" aria-expanded="false" aria-controls="ef-breakdown">Not sure? Help me add it up</button>
@@ -15,27 +16,27 @@
       <div class="lg-grid">
         <div class="lg-field">
           <label class="lg-label" for="ef-b1">Rent or mortgage</label>
-          <div class="lg-control"><span>£</span><input id="ef-b1" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+          <div class="lg-control"><span>£</span><input id="ef-b1" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="next"></div>
         </div>
         <div class="lg-field">
           <label class="lg-label" for="ef-b2">Energy, water and council tax</label>
-          <div class="lg-control"><span>£</span><input id="ef-b2" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+          <div class="lg-control"><span>£</span><input id="ef-b2" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="next"></div>
         </div>
         <div class="lg-field">
           <label class="lg-label" for="ef-b3">Food and household</label>
-          <div class="lg-control"><span>£</span><input id="ef-b3" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+          <div class="lg-control"><span>£</span><input id="ef-b3" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="next"></div>
         </div>
         <div class="lg-field">
           <label class="lg-label" for="ef-b4">Transport</label>
-          <div class="lg-control"><span>£</span><input id="ef-b4" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+          <div class="lg-control"><span>£</span><input id="ef-b4" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="next"></div>
         </div>
         <div class="lg-field">
           <label class="lg-label" for="ef-b5">Insurance and debt repayments</label>
-          <div class="lg-control"><span>£</span><input id="ef-b5" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+          <div class="lg-control"><span>£</span><input id="ef-b5" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="next"></div>
         </div>
         <div class="lg-field">
           <label class="lg-label" for="ef-b6">Other essentials</label>
-          <div class="lg-control"><span>£</span><input id="ef-b6" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+          <div class="lg-control"><span>£</span><input id="ef-b6" class="ef-money ef-part" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="next"></div>
         </div>
       </div>
     </div>
@@ -65,18 +66,20 @@
 
     <div class="lg-field ef-gap">
       <label class="lg-label" for="ef-saved">Emergency savings</label>
-      <div class="lg-control"><span>£</span><input id="ef-saved" class="ef-money" type="text" inputmode="decimal" autocomplete="off" placeholder="0"></div>
+      <div class="lg-control"><span>£</span><input id="ef-saved" class="ef-money" type="text" inputmode="decimal" autocomplete="off" placeholder="0" enterkeyhint="done"></div>
     </div>
+    <button type="button" class="lg-text-button ef-clear" data-clear="">Clear all figures</button>
   </section>
 </div>
 
 <div class="lg-tools">
-  <section class="lg-card lg-result-card" aria-labelledby="ef-h-result">
+  <section class="lg-card lg-result-card" id="ef-result" aria-labelledby="ef-h-result">
     <p class="lg-kicker">04 / Your result</p>
     <div aria-live="polite">
       <h2 class="lg-result-label" id="ef-h-result">Your emergency fund target</h2>
       <p class="lg-result-amount"><span class="lg-value" id="ef-target">£–</span></p>
       <p class="lg-result-summary" id="ef-summary">Enter your monthly essentials to see your target.</p>
+      <p class="lg-error" id="ef-error" role="alert" hidden=""></p>
 
       <div id="ef-progress-block" hidden="">
         <div class="ef-progress">
@@ -105,4 +108,7 @@
 
     <p class="lg-hint">Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure.</p>
   </section>
+</div>
+
+<div class="lgc-sticky" data-source="ef-target" data-results="ef-result" hidden=""><p><span class="lgc-sticky-label">Your target</span> <strong data-sticky-value="">—</strong></p><a href="#ef-result" class="lgc-sticky-link">See results</a></div>
 </div>

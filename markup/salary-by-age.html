@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="salary-by-age">
 <div class="lg-tools">
   <section class="lg-card" aria-labelledby="sa-h-you">
     <p class="lg-kicker">01 / About you</p>
@@ -33,8 +34,9 @@
 
     <div class="lg-field sa-gap">
       <label class="lg-label" for="sa-salary">Salary a year before tax</label>
-      <div class="lg-control"><span>£</span><input id="sa-salary" type="text" inputmode="decimal" autocomplete="off" placeholder="40,000" value="40,000"></div>
+      <div class="lg-control"><span>£</span><input id="sa-salary" type="text" inputmode="decimal" autocomplete="off" placeholder="40,000" value="40,000" enterkeyhint="done"></div>
     </div>
+    <p class="lg-error" id="sa-error" role="alert" hidden=""></p>
   </section>
 </div>
 
@@ -174,4 +176,7 @@
     </div>
     <p class="lg-hint">Source: ONS Annual Survey of Hours and Earnings 2025 (provisional), Table 6.7a. Full-time employees on adult rates who had been in the same job for more than a year, UK. Take-home is the median salary after 2026/27 Income Tax and National Insurance (England, Wales and Northern Ireland), before pension or student loan.</p>
   </section>
+</div>
+
+<div class="lgc-sticky" data-source="sa-value" data-source-label="sa-label" data-results="sa-result" hidden=""><p><span class="lgc-sticky-label">You earn more than about</span> <strong data-sticky-value="">—</strong></p><a href="#sa-result" class="lgc-sticky-link">See results</a></div>
 </div>

@@ -1,21 +1,23 @@
+<div class="lg-calc lg-calc-classic" data-calc="mortgage">
 <div id="lgmc-input-panel" class="lgmc-input-panel">
  <div class="lgmc-eyebrow">01 — YOUR DETAILS</div>
  <h2>About your mortgage</h2>
  <p class="lgmc-intro">Enter the property price, deposit, interest rate and mortgage term.</p>
  <div class="lgmc-field-grid">
-  <div class="lgmc-field"><label for="lgmc-price">Property price</label><div class="lgmc-input-shell"><span class="lgmc-prefix" aria-hidden="true">£</span><input id="lgmc-price" name="lgmc-price" type="text" inputmode="decimal" autocomplete="off" placeholder="350,000" aria-describedby="lgmc-error"></div></div>
-  <div class="lgmc-field"><label for="lgmc-deposit">Deposit</label><div class="lgmc-input-shell"><span class="lgmc-prefix" aria-hidden="true">£</span><input id="lgmc-deposit" name="lgmc-deposit" type="text" inputmode="decimal" autocomplete="off" placeholder="70,000" aria-describedby="lgmc-error"></div></div>
-  <div class="lgmc-field"><label for="lgmc-rate">Annual interest rate</label><div class="lgmc-input-shell"><input id="lgmc-rate" name="lgmc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="4.5" aria-describedby="lgmc-error"><span class="lgmc-suffix" aria-hidden="true">%</span></div></div>
-  <div class="lgmc-field"><label for="lgmc-term">Mortgage term</label><div class="lgmc-input-shell"><input id="lgmc-term" name="lgmc-term" type="text" inputmode="decimal" autocomplete="off" placeholder="25" aria-describedby="lgmc-error"><span class="lgmc-suffix" aria-hidden="true">years</span></div></div>
+  <div class="lgmc-field"><label for="lgmc-price">Property price</label><div class="lgmc-input-shell"><span class="lgmc-prefix" aria-hidden="true">£</span><input id="lgmc-price" name="lgmc-price" type="text" inputmode="decimal" autocomplete="off" placeholder="350,000" aria-describedby="lgmc-error" data-format="money" enterkeyhint="next"></div></div>
+  <div class="lgmc-field"><label for="lgmc-deposit">Deposit</label><div class="lgmc-input-shell"><span class="lgmc-prefix" aria-hidden="true">£</span><input id="lgmc-deposit" name="lgmc-deposit" type="text" inputmode="decimal" autocomplete="off" placeholder="70,000" aria-describedby="lgmc-error" data-format="money" enterkeyhint="next"></div></div>
+  <div class="lgmc-field"><label for="lgmc-rate">Annual interest rate</label><div class="lgmc-input-shell"><input id="lgmc-rate" name="lgmc-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="4.5" aria-describedby="lgmc-error" enterkeyhint="next"><span class="lgmc-suffix" aria-hidden="true">%</span></div></div>
+  <div class="lgmc-field"><label for="lgmc-term">Mortgage term</label><div class="lgmc-input-shell"><input id="lgmc-term" name="lgmc-term" type="text" inputmode="decimal" autocomplete="off" placeholder="25" aria-describedby="lgmc-error" enterkeyhint="done"><span class="lgmc-suffix" aria-hidden="true">years</span></div></div>
  </div>
  <fieldset class="lgmc-mortgage-type"><legend>Repayment type</legend>
   <label class="lgmc-choice"><input id="lgmc-type-repayment" type="radio" name="mortgage-type" value="repayment" checked=""><span>Repayment</span></label>
   <label class="lgmc-choice"><input id="lgmc-type-interest-only" type="radio" name="mortgage-type" value="interest-only"><span>Interest-only</span></label>
  </fieldset>
  <p id="lgmc-error" role="alert" hidden=""></p>
+<div class="lgc-actions"><button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear all</button></div>
 </div>
 
-<div id="lgmc-results-panel" aria-live="polite" aria-atomic="true">
+<div id="lgmc-results-panel">
  <div class="lgmc-eyebrow">02 — YOUR RESULTS</div><h2>Your mortgage estimate</h2>
  <div class="lgmc-primary-result"><p class="lgmc-main-label" id="lgmc-monthly-label">Estimated monthly repayment</p><div id="lgmc-monthly" class="lgmc-monthly">—</div><p id="lgmc-assumption" class="lgmc-assumption">Enter your mortgage details to see an estimate.</p></div>
  <div class="lgmc-results-grid">
@@ -51,3 +53,7 @@
  <summary><span>How was this calculated?</span><span class="lgmc-accordion-symbol" aria-hidden="true"></span></summary>
  <div class="lgmc-accordion-body"><p id="lgmc-method-text">Enter your mortgage details to see how the estimate is calculated.</p><p class="lgmc-accordion-note">Interest rates may change during the mortgage term. Interest-only mortgages require a separate plan to repay the outstanding capital.</p></div>
 </details>
+
+<p class="lgc-sr-only" aria-live="polite" data-announce="lgmc-monthly-label lgmc-monthly lgmc-assumption"></p>
+<div class="lgc-sticky" data-source="lgmc-monthly" data-source-label="lgmc-monthly-label" data-results="lgmc-results-panel" hidden=""><p><span class="lgc-sticky-label">Monthly repayment</span> <strong data-sticky-value="">—</strong></p><a href="#lgmc-results-panel" class="lgc-sticky-link">See results</a></div>
+</div>

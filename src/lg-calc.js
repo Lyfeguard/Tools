@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.6.0
+ * Lyfeguard calculators | lg-calc.js | v1.7.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.6.0';
+  LG.version = '1.7.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -204,6 +204,121 @@
     if (invalid) el.setAttribute('aria-invalid', 'true');
     else el.removeAttribute('aria-invalid');
   };
+
+  /* ------------------------------------------------------------------
+     Core: shared behaviours, switched on by data attributes in the markup
+     ------------------------------------------------------------------ */
+  // Text that means "no result yet".
+  var NO_RESULT = /^(?:|\u2014|\u2013|\u00A3\u2013|\u00A3\u2014)$/;
+  function textOf(id) {
+    var el = document.getElementById(id);
+    return el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+  }
+  function watchText(ids, fn) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) new MutationObserver(fn).observe(el, { childList: true, characterData: true, subtree: true });
+    });
+  }
+
+  // <div class="lgc-sticky" data-source="id" data-results="id" hidden> with a
+  // [data-sticky-value] inside: on narrow screens, shows the source's text while
+  // the results are further down the page.
+  function initSticky(bar) {
+    var results = document.getElementById(bar.getAttribute('data-results'));
+    var value = bar.querySelector('[data-sticky-value]');
+    var sourceId = bar.getAttribute('data-source');
+    // Optional: data-source-label="id" keeps the label in step with a heading that changes.
+    var labelId = bar.getAttribute('data-source-label');
+    var label = bar.querySelector('.lgc-sticky-label');
+    if (!results || !value || !document.getElementById(sourceId)) return;
+    var below = false;
+    function update() {
+      var text = textOf(sourceId);
+      value.textContent = text;
+      if (labelId && label && textOf(labelId)) label.textContent = textOf(labelId);
+      bar.hidden = NO_RESULT.test(text) || !below;
+    }
+    watchText(labelId ? [sourceId, labelId] : [sourceId], update);
+    if (typeof IntersectionObserver !== 'undefined') {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          below = !e.isIntersecting && e.boundingClientRect.top > 0;
+        });
+        update();
+      }).observe(results);
+    }
+    update();
+  }
+
+  // <p class="lgc-sr-only" aria-live="polite" data-announce="id id">: reads out
+  // those elements' text once, after typing pauses, instead of a whole panel.
+  function initAnnouncer(el) {
+    var ids = el.getAttribute('data-announce').split(/\s+/).filter(Boolean);
+    var prefix = el.getAttribute('data-announce-prefix') || '';
+    var timer = null;
+    watchText(ids, function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        var parts = ids.map(textOf);
+        var ready = parts.length && !parts.some(function (t) { return NO_RESULT.test(t); });
+        // A label then an amount reads as one phrase; whole sentences get a full stop.
+        var text = parts.reduce(function (acc, t) {
+          return acc ? acc + (/[A-Za-z]$/.test(acc) && /^[^A-Za-z]/.test(t) ? ' ' : '. ') + t : t;
+        }, '');
+        el.textContent = ready ? (prefix ? prefix + ' ' : '') + text.replace(/\.\s*\./g, '.') : '';
+      }, 900);
+    });
+  }
+
+  // <button data-clear>: puts every field in the calculator back to how the
+  // page loaded it, then lets the calculator update.
+  function initClear(button, root) {
+    button.addEventListener('click', function () {
+      var fields = root.querySelectorAll('input, select, textarea');
+      var first = null;
+      fields.forEach(function (el) {
+        if (el.type === 'radio' || el.type === 'checkbox') el.checked = el.defaultChecked;
+        else if (el.tagName === 'SELECT')
+          Array.prototype.forEach.call(el.options, function (o) {
+            o.selected = o.defaultSelected;
+          });
+        else el.value = el.defaultValue;
+        if (!first && el.type !== 'radio' && el.type !== 'checkbox' && !el.disabled) first = el;
+      });
+      fields.forEach(function (el) {
+        // An unchecked radio firing change would look like the user picked it.
+        if (el.type === 'radio' && !el.checked) return;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+      if (first) first.focus();
+    });
+  }
+
+  LG.ready(function () {
+    document.querySelectorAll('.lg-calc').forEach(function (root) {
+      if (root.dataset.lgShared === 'true') return;
+      root.dataset.lgShared = 'true';
+      root.querySelectorAll('.lgc-sticky[data-source]').forEach(initSticky);
+      root.querySelectorAll('[data-announce]').forEach(initAnnouncer);
+      root.querySelectorAll('[data-clear]').forEach(function (b) {
+        initClear(b, root);
+      });
+    });
+  });
+
+  // Inputs with data-format="money" are tidied to 12,500 style when you leave them.
+  document.addEventListener(
+    'focusout',
+    function (event) {
+      var el = event.target;
+      if (!el || !el.matches || !el.matches('.lg-calc input[data-format="money"]')) return;
+      var item = LG.parseNumber(el.value, 2);
+      if (item.entered && item.valid) el.value = item.value.toLocaleString('en-GB', { maximumFractionDigits: 2 });
+    },
+    true,
+  );
 
   // Show or clear a calculator's error message (an element with role="alert").
   LG.showError = function (el, message) {
@@ -2261,6 +2376,10 @@
         var monthly = num(monthlyEl);
         var saved = num(savedEl);
         var m = selectedMonths();
+        var bad = Array.prototype.some.call(document.querySelectorAll('.ef-money'), function (el) {
+          return el.getAttribute('aria-invalid') === 'true';
+        });
+        LG.showError(document.getElementById('ef-error'), bad ? 'Enter amounts using numbers only, for example 1,250 or 1250.50.' : '');
 
         if (!monthly) {
           $('ef-target').textContent = '\u00A3\u2013';
@@ -2864,6 +2983,10 @@
         var sex = checked('sa-who', 'all');
         var age = checked('sa-age', '30-39');
         var salary = num($('sa-salary'));
+        LG.showError(
+          document.getElementById('sa-error'),
+          $('sa-salary').getAttribute('aria-invalid') === 'true' ? 'Enter your salary using numbers only, for example 40,000.' : '',
+        );
         renderData(sex, age, salary);
 
         var groupText = people[sex] + ' aged ' + dash(age);

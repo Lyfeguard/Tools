@@ -76,7 +76,7 @@ async function readOutputs(page) {
       if (el.style.width) entry.width = el.style.width;
       if (el.style.left) entry.left = el.style.left;
       Object.keys(el.dataset).forEach((k) => {
-        if (!/^ready$|Ready$/.test(k)) entry['data-' + k] = el.dataset[k]; // start-up markers aren't user-visible
+        if (!/^ready$|Ready$|^lgShared$/.test(k)) entry['data-' + k] = el.dataset[k]; // start-up markers aren't user-visible
       });
       if (el.tagName === 'svg' || el.closest('svg')) entry.text = entry.text.slice(0, 400);
       out[el.id] = entry;

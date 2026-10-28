@@ -19,6 +19,9 @@
     "ef-h-saved": {
       "text": "How much have you already put aside?"
     },
+    "ef-result": {
+      "text": "04 / Your result Your emergency fund target £– Enter your monthly essentials to see your target. Saved Still to save Covers you for To get there, save about Within 6 months Within 12 months Within 2 years You've reached your target. Keep it in an easy-access account and check it again whenever your costs change. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure."
+    },
     "ef-h-result": {
       "text": "Your emergency fund target"
     },
@@ -27,6 +30,10 @@
     },
     "ef-summary": {
       "text": "Enter your monthly essentials to see your target."
+    },
+    "ef-error": {
+      "text": "",
+      "hidden": true
     },
     "ef-progress-block": {
       "text": "Saved Still to save Covers you for To get there, save about Within 6 months Within 12 months Within 2 years You've reached your target. Keep it in an easy-access account and check it again whenever your costs change.",
@@ -88,6 +95,9 @@
     "ef-h-saved": {
       "text": "How much have you already put aside?"
     },
+    "ef-result": {
+      "text": "04 / Your result Your emergency fund target £12,000 That’s 6 months of essentials at £2,000 a month. 37% of your target Saved£4,500 Still to save£7,500 Covers you for2.3 months To get there, save about Within 6 months£1,250 a month Within 12 months£625 a month Within 2 years£313 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure."
+    },
     "ef-h-result": {
       "text": "Your emergency fund target"
     },
@@ -96,6 +106,10 @@
     },
     "ef-summary": {
       "text": "That’s 6 months of essentials at £2,000 a month."
+    },
+    "ef-error": {
+      "text": "",
+      "hidden": true
     },
     "ef-progress-block": {
       "text": "37% of your target Saved£4,500 Still to save£7,500 Covers you for2.3 months To get there, save about Within 6 months£1,250 a month Within 12 months£625 a month Within 2 years£313 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change."
@@ -156,6 +170,9 @@
     "ef-h-saved": {
       "text": "How much have you already put aside?"
     },
+    "ef-result": {
+      "text": "04 / Your result Your emergency fund target £4,950 That’s 3 months of essentials at £1,650 a month. 100% of your target Saved£20,000 Still to save£0 Covers you for12 months To get there, save about Within 6 months£825 a month Within 12 months£413 a month Within 2 years£207 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure."
+    },
     "ef-h-result": {
       "text": "Your emergency fund target"
     },
@@ -164,6 +181,10 @@
     },
     "ef-summary": {
       "text": "That’s 3 months of essentials at £1,650 a month."
+    },
+    "ef-error": {
+      "text": "",
+      "hidden": true
     },
     "ef-progress-block": {
       "text": "100% of your target Saved£20,000 Still to save£0 Covers you for12 months To get there, save about Within 6 months£825 a month Within 12 months£413 a month Within 2 years£207 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change."
@@ -203,6 +224,159 @@
     },
     "ef-done": {
       "text": "You've reached your target. Keep it in an easy-access account and check it again whenever your costs change."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "ef-h-essentials": {
+      "text": "What do your essentials cost each month?"
+    },
+    "ef-toggle": {
+      "text": "Not sure? Help me add it up"
+    },
+    "ef-breakdown": {
+      "text": "Rent or mortgage £ Energy, water and council tax £ Food and household £ Transport £ Insurance and debt repayments £ Other essentials £",
+      "hidden": true
+    },
+    "ef-h-situation": {
+      "text": "How secure is your income?"
+    },
+    "ef-h-saved": {
+      "text": "How much have you already put aside?"
+    },
+    "ef-saved@invalid": "true",
+    "ef-result": {
+      "text": "04 / Your result Your emergency fund target £6,000 That’s 3 months of essentials at £2,000 a month. Enter amounts using numbers only, for example 1,250 or 1250.50. 0% of your target Saved£0 Still to save£6,000 Covers you for0 months To get there, save about Within 6 months£1,000 a month Within 12 months£500 a month Within 2 years£250 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure."
+    },
+    "ef-h-result": {
+      "text": "Your emergency fund target"
+    },
+    "ef-target": {
+      "text": "£6,000"
+    },
+    "ef-summary": {
+      "text": "That’s 3 months of essentials at £2,000 a month."
+    },
+    "ef-error": {
+      "text": "Enter amounts using numbers only, for example 1,250 or 1250.50."
+    },
+    "ef-progress-block": {
+      "text": "0% of your target Saved£0 Still to save£6,000 Covers you for0 months To get there, save about Within 6 months£1,000 a month Within 12 months£500 a month Within 2 years£250 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change."
+    },
+    "ef-barwrap": {
+      "text": "",
+      "label": "Progress towards your target"
+    },
+    "ef-bar": {
+      "text": "",
+      "width": "0%"
+    },
+    "ef-caption": {
+      "text": "0% of your target"
+    },
+    "ef-st-saved": {
+      "text": "£0"
+    },
+    "ef-st-gap": {
+      "text": "£6,000"
+    },
+    "ef-st-cover": {
+      "text": "0 months"
+    },
+    "ef-plan": {
+      "text": "To get there, save about Within 6 months£1,000 a month Within 12 months£500 a month Within 2 years£250 a month"
+    },
+    "ef-p6": {
+      "text": "£1,000 a month"
+    },
+    "ef-p12": {
+      "text": "£500 a month"
+    },
+    "ef-p24": {
+      "text": "£250 a month"
+    },
+    "ef-done": {
+      "text": "You've reached your target. Keep it in an easy-access account and check it again whenever your costs change.",
+      "hidden": true
+    }
+  },
+  "cleared": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "ef-h-essentials": {
+      "text": "What do your essentials cost each month?"
+    },
+    "ef-toggle": {
+      "text": "Not sure? Help me add it up"
+    },
+    "ef-breakdown": {
+      "text": "Rent or mortgage £ Energy, water and council tax £ Food and household £ Transport £ Insurance and debt repayments £ Other essentials £",
+      "hidden": true
+    },
+    "ef-h-situation": {
+      "text": "How secure is your income?"
+    },
+    "ef-h-saved": {
+      "text": "How much have you already put aside?"
+    },
+    "ef-result": {
+      "text": "04 / Your result Your emergency fund target £– Enter your monthly essentials to see your target. 37% of your target Saved£4,500 Still to save£7,500 Covers you for2.3 months To get there, save about Within 6 months£1,250 a month Within 12 months£625 a month Within 2 years£313 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice: MoneyHelper suggests keeping at least three months' essential outgoings in an easy-access savings account, and we suggest more where income is less secure."
+    },
+    "ef-h-result": {
+      "text": "Your emergency fund target"
+    },
+    "ef-target": {
+      "text": "£–"
+    },
+    "ef-summary": {
+      "text": "Enter your monthly essentials to see your target."
+    },
+    "ef-error": {
+      "text": "",
+      "hidden": true
+    },
+    "ef-progress-block": {
+      "text": "37% of your target Saved£4,500 Still to save£7,500 Covers you for2.3 months To get there, save about Within 6 months£1,250 a month Within 12 months£625 a month Within 2 years£313 a month You've reached your target. Keep it in an easy-access account and check it again whenever your costs change.",
+      "hidden": true
+    },
+    "ef-barwrap": {
+      "text": "",
+      "label": "Progress towards your target"
+    },
+    "ef-bar": {
+      "text": "",
+      "width": "37.5%"
+    },
+    "ef-caption": {
+      "text": "37% of your target"
+    },
+    "ef-st-saved": {
+      "text": "£4,500"
+    },
+    "ef-st-gap": {
+      "text": "£7,500"
+    },
+    "ef-st-cover": {
+      "text": "2.3 months"
+    },
+    "ef-plan": {
+      "text": "To get there, save about Within 6 months£1,250 a month Within 12 months£625 a month Within 2 years£313 a month"
+    },
+    "ef-p6": {
+      "text": "£1,250 a month"
+    },
+    "ef-p12": {
+      "text": "£625 a month"
+    },
+    "ef-p24": {
+      "text": "£313 a month"
+    },
+    "ef-done": {
+      "text": "You've reached your target. Keep it in an easy-access account and check it again whenever your costs change.",
+      "hidden": true
     }
   }
 }

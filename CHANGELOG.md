@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.7.0 – 2026-10-28
+Every calculator now uses the markup pattern from Retirement Income. **All ten older embeds must be re-pasted** in the same publish as the head code moving to v1.7.0. Calculations are unchanged.
+- Markup: each embed has one root, `<div class="lg-calc lg-calc-classic" data-calc="key">`, so it no longer depends on the Webflow wrapper. Removed leftover browser-extension attributes from the net worth embed and inline styles from the debt-to-income gauge.
+- Layout: the phone and tablet layouts respond to the calculator's own width (container queries) instead of the screen width. In the standard template they switch at the same screen widths as before. Card-style calculators (savings goal, emergency fund, pro rata, salary by age) now have 24px between cards, like the others (was 48px).
+- Sticky result bar on narrow screens for all ten: the main result and a "See results" link while the results are below.
+- Screen readers: loan, mortgage, compound interest, debt-to-income and net worth read one short sentence once typing pauses, instead of the whole results panel on every key press. Inheritance tax section errors are announced.
+- "Clear all" for loan, mortgage, compound interest and debt-to-income, and "Clear all figures" for emergency fund.
+- Emergency fund and salary by age now say when an entry isn't a number (they were silent).
+- Money fields in net worth, inheritance tax, compound interest, loan, mortgage, debt-to-income and savings goal are tidied to 12,500 style when you leave them. Phone keyboards show Next between fields and Done on the last one.
+- Tap targets: net worth's "Just mine / Our household" options and buttons, and inheritance tax's buttons, are now at least 44px tall.
+- Tests: new scenarios for invalid entries in emergency fund and salary by age, and for Clear in emergency fund and debt-to-income.
+
 ## v1.6.0 – 2026-10-28
 - New Retirement Income calculator (key `retirement-income`, markup in `markup/retirement-income.html`). How long a pension pot could last, in today's money:
   - The pot pays whatever the State Pension and other guaranteed income don't cover, so it covers the full income before State Pension age.

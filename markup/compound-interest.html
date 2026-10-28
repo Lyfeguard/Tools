@@ -1,19 +1,21 @@
+<div class="lg-calc lg-calc-classic" data-calc="compound-interest">
 <div id="lgci-input-panel" class="lgci-input-panel">
  <div class="lgci-eyebrow">01 — YOUR DETAILS</div>
  <h2>Grow your savings</h2>
  <p class="lgci-intro">Choose your starting amount, regular contributions, frequency and growth assumptions.</p>
  <div class="lgci-field-grid">
-  <div class="lgci-field"><label for="lgci-initial">Starting amount</label><div class="lgci-input-shell"><span class="lgci-prefix" aria-hidden="true">£</span><input id="lgci-initial" type="text" inputmode="decimal" autocomplete="off" placeholder="5,000" aria-describedby="lgci-error"></div></div>
-  <div class="lgci-field"><label for="lgci-contribution">Regular contribution</label><div class="lgci-input-shell"><span class="lgci-prefix" aria-hidden="true">£</span><input id="lgci-contribution" type="text" inputmode="decimal" autocomplete="off" placeholder="200" aria-describedby="lgci-error"></div></div>
+  <div class="lgci-field"><label for="lgci-initial">Starting amount</label><div class="lgci-input-shell"><span class="lgci-prefix" aria-hidden="true">£</span><input id="lgci-initial" type="text" inputmode="decimal" autocomplete="off" placeholder="5,000" aria-describedby="lgci-error" data-format="money" enterkeyhint="next"></div></div>
+  <div class="lgci-field"><label for="lgci-contribution">Regular contribution</label><div class="lgci-input-shell"><span class="lgci-prefix" aria-hidden="true">£</span><input id="lgci-contribution" type="text" inputmode="decimal" autocomplete="off" placeholder="200" aria-describedby="lgci-error" data-format="money" enterkeyhint="next"></div></div>
   <div class="lgci-field"><label for="lgci-frequency">Contribution frequency</label><div class="lgci-input-shell"><select id="lgci-frequency" aria-describedby="lgci-error"><option value="monthly" selected="">Monthly</option><option value="weekly">Weekly</option><option value="fortnightly">Every 2 weeks</option><option value="quarterly">Quarterly</option><option value="annually">Annually</option><option value="none">No regular contributions</option></select></div></div>
-  <div class="lgci-field"><label for="lgci-rate">Annual interest / growth rate (effective)</label><div class="lgci-input-shell"><input id="lgci-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="5" aria-describedby="lgci-error"><span class="lgci-suffix" aria-hidden="true">%</span></div></div>
-  <div class="lgci-field"><label for="lgci-years">Projection period</label><div class="lgci-input-shell"><input id="lgci-years" type="text" inputmode="decimal" autocomplete="off" placeholder="10" aria-describedby="lgci-error"><span class="lgci-suffix" aria-hidden="true">years</span></div></div>
+  <div class="lgci-field"><label for="lgci-rate">Annual interest / growth rate (effective)</label><div class="lgci-input-shell"><input id="lgci-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="5" aria-describedby="lgci-error" enterkeyhint="next"><span class="lgci-suffix" aria-hidden="true">%</span></div></div>
+  <div class="lgci-field"><label for="lgci-years">Projection period</label><div class="lgci-input-shell"><input id="lgci-years" type="text" inputmode="decimal" autocomplete="off" placeholder="10" aria-describedby="lgci-error" enterkeyhint="done"><span class="lgci-suffix" aria-hidden="true">years</span></div></div>
  </div>
  <p class="lgci-frequency-tip" id="lgci-frequency-tip">Contributions are assumed to be made at the end of each selected period.</p>
  <p id="lgci-error" role="alert" hidden=""></p>
+<div class="lgc-actions"><button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear all</button></div>
 </div>
 
-<div id="lgci-results-panel" aria-live="polite" aria-atomic="true">
+<div id="lgci-results-panel">
  <div class="lgci-eyebrow">02 — YOUR RESULTS</div><h2>Your savings projection</h2>
  <div class="lgci-primary-result"><p class="lgci-main-label">Estimated future balance</p><div id="lgci-future" class="lgci-monthly">—</div><p id="lgci-assumption" class="lgci-assumption">Enter your savings details to see a projection.</p></div>
  <div class="lgci-results-grid">
@@ -67,3 +69,7 @@
  <summary><span>How was this calculated?</span><span class="lgci-accordion-symbol" aria-hidden="true"></span></summary>
  <div class="lgci-accordion-body"><p id="lgci-method-text">Enter your savings details to see how the projection is calculated.</p><p class="lgci-accordion-note">The annual rate is treated as an effective annual growth rate (AER-equivalent), with contributions at the end of each selected interval. The model excludes tax, fees, inflation and variable returns.</p></div>
 </details>
+
+<p class="lgc-sr-only" aria-live="polite" data-announce="lgci-future lgci-assumption" data-announce-prefix="Estimated future balance"></p>
+<div class="lgc-sticky" data-source="lgci-future" data-results="lgci-results-panel" hidden=""><p><span class="lgc-sticky-label">Future balance</span> <strong data-sticky-value="">—</strong></p><a href="#lgci-results-panel" class="lgc-sticky-link">See results</a></div>
+</div>

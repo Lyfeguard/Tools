@@ -1,8 +1,8 @@
-# Tools CMS template: setup guide (lg-calc v1.6.0)
+# Tools CMS template: setup guide (lg-calc v1.7.0)
 
 ## 1. Host the two files
-Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.6.0) to your host and pin the version in the URL.
-- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.6.0/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
+Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.7.0) to your host and pin the version in the URL.
+- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.7.0/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
 - Cloudflare on your own domain: no CSP or preconnect change needed.
 
 ## 2. Collection fields (collection "Tools", currently slug `tool`)
@@ -45,6 +45,7 @@ Section  Related guides
 ```
 - No Form element. v1.0.1 runs without one.
 - From v1.2.1 each calculator's styles are found from its own markup, so the `data-calc` attribute is optional. It's still a useful label, and harmless to keep.
+- From v1.7.0 each embed carries its own `.lg-calc` root, and the phone layouts depend on it: an embed pasted before v1.7.0 loses its phone layout with the v1.7.0 head code. Re-paste every embed when you move the head code to v1.7.0.
 - The Rich Text must have class `lg-calc-markup` and sit directly inside `.lg-calc-wrap`.
 
 ## 4. Template head code

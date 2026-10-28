@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 The Tools template loads two files in its head code, served by jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.6.0/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.6.0/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.7.0/dist/lg-calc.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.7.0/dist/lg-calc.min.js" defer></script>
 ```
 
 Each calculator starts only when its own markup is on the page.
@@ -48,7 +48,7 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
 4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
    ```
-   npm run style-diff -- v1.6.0
+   npm run style-diff -- v1.7.0
    ```
 5. Commit, then create a release tagged with the new version (e.g. `v1.6.1`). GitHub runs the build and tests on every pull request ("Check calculators").
 6. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
@@ -56,13 +56,20 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).
 
 ## Markup pattern for calculators
-New calculators follow the pattern in `markup/retirement-income.html`; the older ones will move to it.
+New calculators follow the pattern in `markup/retirement-income.html`.
 - One root element: `<div class="lg-calc" data-calc="key" id="prefix">`. It styles and lays itself out (spacing, and layout that responds to its own width with container queries), so nothing depends on the Webflow template.
+- The ten older calculators have the same root with `lg-calc-classic` added (`<div class="lg-calc lg-calc-classic" data-calc="key">`). That keeps their own styles and switches off the base text styles meant for new calculators. All their layout rules are container queries on this root, so each embed needs it.
 - Use the shared `lgc-` components in `src/lg-calc.css` (cards, fields, option switcher, stats, comparison cards, chart, table, sticky result bar). They use class selectors only, so Webflow styles can override them.
 - Every input has a `<label>`, a hint and an error line linked with `aria-describedby`, `inputmode` and `enterkeyhint`. Groups of fields and radio buttons sit in a `<fieldset>` with a `<legend>`.
 - One error summary (`role="alert"`) at the top of the form, a "Clear figures" button, and one short screen-reader announcement (`aria-live`) once typing pauses, not the whole results panel.
 - Charts are SVG with a text description (`role="img"` and `aria-label`) and the same figures in a table.
 - No inline styles and no `<script>` in the markup.
+
+Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, used by every calculator):
+- `<div class="lgc-sticky" data-source="id" data-results="id" hidden>` with a `[data-sticky-value]` inside: a result bar at the bottom of narrow screens while the results are below. `data-source-label="id"` keeps its label in step with a heading that changes.
+- `<p class="lgc-sr-only" aria-live="polite" data-announce="id id">` (optional `data-announce-prefix`): reads out those elements once typing pauses, and stays silent while any of them shows a dash.
+- `<button type="button" data-clear>`: puts every field back to how the page loaded it, then lets the calculator update.
+- `data-format="money"` on an input: tidied to 12,500 style when you leave it.
 
 ## Rules
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.
