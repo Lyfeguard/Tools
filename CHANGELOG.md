@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.0.1 – 2026-10-29
+Fixes from the first day live. **Change the two Tools template head lines from `@v2.0.0` to `@v2.0.1`.** No markup or CMS changes; the footer's `lg-track.min.js` is unchanged (`@v2.0.0` or `@v2.0.1` both fine).
+- The "Download PDF summary" button's text was invisible on Savings Goal, Emergency Fund, Pro Rata Salary and Salary by Age (their result cards make every span white), and Net Worth and Inheritance Tax restyled the button with their own. It now looks the same on every calculator, whatever its styles (`src/v2/download.css`).
+- "Use these figures" links carry the figures however they're opened: a middle-click, "Open in new tab", the keyboard or a long press, not only a plain click.
+- Net worth to Inheritance Tax: the figures did arrive, but the estimate waits for the questions about the home and who inherits, so it looked as if nothing had. The note now says to answer them.
+- Tests (269): the button's look on every calculator, and opening a link without a click.
+
 ## v2.0.0 (and v1.8.6) – 2026-10-29
 v2 complete. Every calculator in its own shadow root, loading only its own files, with PDF summaries, analytics, versioned data and calculators that work together. **Update the Tools template head and the site-wide code** (`webflow/template-head.html`, `webflow/site-custom-code.md`, all at `@v2.0.0`), **then run Sync calculator markup** to stage the new markup (the links) for six items; it goes live with the next publish.
 - Calculators that work together: "Use these figures" links from take-home pay, mortgage, pro rata salary, salary by age, emergency fund and net worth to the calculators that take the figures on (`markup/links.js`, written into the markup by `scripts/links.js`). Plain internal links in the page; the figures travel after the `#` as one is clicked, are filled in on arrival (with a note saying so) and taken out of the address. Only plain numbers, only into the calculator's own fields. New analytics event `calculator_handoff`.

@@ -209,3 +209,20 @@ test('remembered per guide, insight or calculator, and Insights blocks', async (
   assert.deepEqual(await page.evaluate(() => window.dataLayer.pop()), { event: 'pdf_download', resource_slug: 'held-away', resource_title: 'Held-away assets', resource_type: 'insight' });
   await page.close();
 });
+
+test('the PDF button looks the same on every calculator, whatever its own styles', async () => {
+  const looks = [];
+  for (const key of Object.keys(scenarios)) {
+    const page = await open(key, { remembered: true });
+    looks.push([key, await page.evaluate(() => {
+      const button = document.querySelector('lg-calculator').shadowRoot.querySelector('.lgc-pdf-button');
+      const b = getComputedStyle(button);
+      const t = getComputedStyle(button.querySelector('span'));
+      return [b.backgroundColor, b.color, t.color, t.fontSize, b.fontWeight, Math.round(button.getBoundingClientRect().width)].join(' ');
+    })]);
+    await page.close();
+  }
+  const expected = 'rgb(255, 255, 255) rgb(10, 45, 58) rgb(10, 45, 58) 15px 700';
+  for (const [key, look] of looks) assert.ok(look.startsWith(expected), key + ': ' + look);
+  assert.equal(new Set(looks.map(([, l]) => l)).size, 1, 'same size everywhere');
+});

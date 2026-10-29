@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 Each page on the Tools template loads only its own calculator, served by jsDelivr and named by the item's Component key field (`webflow/template-head.html`):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/v2/{{Component key}}.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/v2/{{Component key}}.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.1/dist/v2/{{Component key}}.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.1/dist/v2/{{Component key}}.min.js" defer></script>
 ```
 
 That's 10 to 21 KB gzipped a page, against about 120 KB when every page loaded v1 and every v2 calculator. v1 (`dist/lg-calc.min.css` and `.min.js`, all calculators in one) is still built and tested, for any page that uses it. The site loads `dist/lg-track.min.js` on every page for click tracking (`webflow/site-custom-code.md`).

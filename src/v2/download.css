@@ -1,33 +1,50 @@
 /* v2: the PDF summary button under the results (src/v2/download.js). Its
-   look matches the Guides' download button (src/lg-dl.css). */
+   look matches the Guides' download button (src/lg-dl.css). !important
+   because some calculators style every button or span in their results
+   panel (with ids, too); this one button must look the same everywhere. */
 .lgc-pdf {
   margin-top: 24px;
 }
 .lgc-pdf[hidden] {
   display: none;
 }
-.lgc-pdf-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 10px 18px;
-  border: 1px solid #0a2d3a;
-  border-radius: 14px;
-  background: #fff;
-  color: #0a2d3a;
-  font: 700 15px/1.2 var(--lg-font-body);
+.lgc-pdf .lgc-pdf-button {
+  display: inline-flex !important;
+  flex: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: auto !important;
+  min-height: 44px !important;
+  margin: 0 !important;
+  padding: 10px 18px !important;
+  border: 1px solid #0a2d3a !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  color: #0a2d3a !important;
+  font: 700 15px/1.2 var(--lg-font-body) !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  text-decoration: none !important;
   cursor: pointer;
   transition: background 0.15s, color 0.15s;
 }
-.lgc-pdf-button:hover {
-  background: #0a2d3a;
-  color: #fff;
+.lgc-pdf .lgc-pdf-button span,
+.lgc-pdf .lgc-pdf-button svg {
+  color: inherit !important;
+  font: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
 }
-.lgc-pdf-button:focus-visible {
+.lgc-pdf .lgc-pdf-button:hover {
+  background: #0a2d3a !important;
+  color: #fff !important;
+}
+.lgc-pdf .lgc-pdf-button:focus-visible {
   outline: 3px solid #0aa376;
   outline-offset: 2px;
 }
-.lgc-pdf-button:disabled {
+.lgc-pdf .lgc-pdf-button:disabled {
   cursor: progress;
 }

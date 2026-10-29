@@ -29,7 +29,7 @@ Replace both scripts (the `gtag('js', ...)` one, which nothing uses, and
 the click tracking) with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/lg-track.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.1/dist/lg-track.min.js" defer></script>
 ```
 
 ## What gets sent
