@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.8.2
+ * Lyfeguard calculators | lg-calc.js | v1.8.3
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.8.2';
+  LG.version = '1.8.3';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -96,6 +96,7 @@
   }
   LG.xlsx = { zip: workbookZip, crc32: crc32 };
 
+  /* @v2:core-start (scripts/build-v2.js copies from here to @v2:core-end) */
   /* ------------------------------------------------------------------
      Core: UK Income Tax, employee National Insurance and student loans, 2026/27
      Update here once a year (each April); the pro rata, salary-by-age,
@@ -259,6 +260,8 @@
     if (invalid) el.setAttribute('aria-invalid', 'true');
     else el.removeAttribute('aria-invalid');
   };
+
+  /* @v2:core-end */
 
   /* ------------------------------------------------------------------
      Core: shared behaviours, switched on by data attributes in the markup
@@ -4061,7 +4064,9 @@
 
   /* ==================================================================
      Take-home pay calculator  [take-home-pay]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:take-home-pay-start */
   module('take-home-pay', function () {
     'use strict';
     const PERIODS = { year: 1, month: 12, week: 52 };
@@ -4111,7 +4116,9 @@
     });
 
     function setup(root) {
-      const get = (id) => document.getElementById('lgth-' + id);
+      // The document, or the component's shadow root when built into <lg-calculator>.
+      const scope = root.getRootNode();
+      const get = (id) => scope.getElementById('lgth-' + id);
       const write = (id, text) => {
         const el = get(id);
         if (el) el.textContent = text;
@@ -4449,4 +4456,5 @@
       render();
     }
   });
+  /* @v2:take-home-pay-end */
 })(window, document);

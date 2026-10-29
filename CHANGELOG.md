@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0.0-alpha.1 (and v1.8.3) – 2026-10-29
+First step of v2: calculators that the site's CSS can't change. **Staging only for now.** Nothing changes for v1 pages.
+- New `<lg-calculator key="take-home-pay"></lg-calculator>` web component in `dist/v2/lg-calculator.min.js`. It draws the calculator inside its own shadow root, so Webflow's styles (white paragraph text, label margins, checkbox styles, the template's container widths and so on) can't reach it. The site's fonts still apply.
+- One Code Embed on the Tools template, `<lg-calculator key="{Calculator key}">`, serves every item: the key comes from the CMS field. It hides itself, taking no space, on items whose calculator isn't in v2 yet or whose v1 markup is still pasted in, so an item moves to v2 when its Calculator markup field is emptied (and back when it's pasted again).
+- Built from the same sources as v1 by `scripts/build-v2.js`: the tax core and the Take-Home Pay module are copied from `src/lg-calc.js`, the styles from the shared components in `src/lg-calc.css`, and the markup from `markup/take-home-pay.html`. Fix something once and both versions get it.
+- v1 and v2 can be loaded on the same page. v2 uses its own global (`window.LyfeCalculators`), and v1 can't see inside the component.
+- v1.8.3: Take-Home Pay looks up its elements from its own root, so the module works inside the component, and the template's `<lg-calculator>` embed takes no space while hidden. No change to what any v1 calculator shows; no need to re-paste anything.
+- Tests (`test/v2.test.js`): every Take-Home Pay scenario shows exactly what the v1 snapshot shows, and every element's styles and position are the same with and without the staging site's CSS (`test/fixtures/webflow-site.css`) plus deliberately hostile rules, at 1280px and 375px. The template embed is checked on every v1 calculator (hidden, same figures and layout) and on Take-Home Pay with its markup field empty.
+
 ## v1.8.2 – 2026-10-29
 CSS only, no embed changes.
 - Fix: the first paragraph of "How was this calculated?" on Take-Home Pay and Retirement Income showed as white on white. It has no class of its own, so it took a colour from the site's rich-text styles; it now sets its own (Ocean). The sticky result bar's text inherits the bar's colour for the same reason.
