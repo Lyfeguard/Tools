@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.8.0
+ * Lyfeguard calculators | lg-calc.css | v1.8.1
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -6363,6 +6363,8 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   display: flex;
   align-items: center;
   min-height: 44px;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   font-weight: 650;
 }
@@ -6395,11 +6397,15 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-size: 17px;
   font-weight: 600;
 }
+/* Block, not flex: a closed <details> still adds a flex gap below its summary */
+.lg-calc .lgc-method {
+  display: block;
+}
 .lg-calc .lgc-method-body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding-top: 12px;
+  padding-top: 16px;
   font-size: 14px;
   line-height: 1.75;
 }
@@ -6519,7 +6525,8 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-weight: 650;
   line-height: 1.45;
 }
-.lg-calc .lgc-check {
+/* label.lgc-check outranks the .lgc-field > label rule */
+.lg-calc label.lgc-check {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -6536,14 +6543,31 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   border-color: var(--lg-mint-ink);
   box-shadow: 0 0 0 3px rgba(10, 163, 118, 0.18);
 }
-.lg-calc .lgc-check input {
+/* Drawn here, so site-wide checkbox styles don't change it */
+.lg-calc .lgc-check input[type="checkbox"] {
   flex: none;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
   margin: 0;
-  accent-color: var(--lg-mint-ink);
+  padding: 0;
+  border: 1.5px solid var(--lg-border-strong);
+  border-radius: 6px;
+  background: var(--lg-white) center / 14px 14px no-repeat;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
-.lg-calc .lgc-check input:focus-visible {
+.lg-calc .lgc-check input[type="checkbox"]:checked {
+  border-color: var(--lg-mint-ink);
+  background-color: var(--lg-mint-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7.5l3 3 6-7' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.lg-calc .lgc-check:hover input[type="checkbox"]:not(:checked) {
+  border-color: var(--lg-mint-ink);
+}
+.lg-calc .lgc-check input[type="checkbox"]:focus-visible {
   outline: 0;
 }
 
@@ -6597,6 +6621,112 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 .lg-calc .lgc-table .lgc-row-total :is(th, td) {
   border-top: 2px solid var(--lg-ocean);
   font-weight: 700;
+}
+
+/* Slider with a matching amount box, and its results */
+.lg-calc .lgc-range-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius-small);
+  background: var(--lg-mist);
+}
+.lg-calc .lgc-range-title {
+  margin: 0;
+  padding: 0;
+  font-family: var(--lg-font-heading);
+  font-size: 17px;
+  font-weight: 600;
+}
+.lg-calc .lgc-range-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+  gap: 20px;
+  align-items: center;
+}
+.lg-calc .lgc-range-row .lgc-input {
+  background: var(--lg-white);
+}
+.lg-calc input[type="range"].lgc-range {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.lg-calc .lgc-range::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--lg-mint-ink) var(--lgc-fill, 0%), var(--lg-border-strong) var(--lgc-fill, 0%));
+}
+.lg-calc .lgc-range::-webkit-slider-thumb {
+  width: 28px;
+  height: 28px;
+  margin-top: -10px;
+  border: 2px solid var(--lg-mint-ink);
+  border-radius: 50%;
+  background: var(--lg-white);
+  box-shadow: 0 1px 4px rgba(10, 45, 58, 0.25);
+  -webkit-appearance: none;
+}
+.lg-calc .lgc-range::-moz-range-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--lg-border-strong);
+}
+.lg-calc .lgc-range::-moz-range-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--lg-mint-ink);
+}
+.lg-calc .lgc-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--lg-mint-ink);
+  border-radius: 50%;
+  background: var(--lg-white);
+  box-shadow: 0 1px 4px rgba(10, 45, 58, 0.25);
+}
+.lg-calc .lgc-range:focus-visible {
+  outline: 0;
+}
+.lg-calc .lgc-range:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--lg-mint-ink);
+  outline-offset: 3px;
+}
+.lg-calc .lgc-range:focus-visible::-moz-range-thumb {
+  outline: 3px solid var(--lg-mint-ink);
+  outline-offset: 3px;
+}
+.lg-calc .lgc-range-result {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 4px 0 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--lg-border);
+}
+.lg-calc .lgc-range-result > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lg-calc .lgc-range-result dt {
+  font-size: 13px;
+  color: var(--lg-ink-soft);
+}
+.lg-calc .lgc-range-result dd {
+  margin: auto 0 0;
+  font-family: var(--lg-font-heading);
+  font-size: 20px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Notes that depend on the figures */
@@ -6722,6 +6852,13 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   .lg-calc .lgc-table-fit .lgc-table tbody th {
     white-space: normal;
   }
+  .lg-calc .lgc-range-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .lg-calc .lgc-range-result {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   /* Short options stay side by side */
   .lg-calc .lgc-switch-compact {
     grid-auto-flow: column;
@@ -6739,6 +6876,10 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   }
 }
 @media (forced-colors: active) {
+  .lg-calc .lgc-check input[type="checkbox"],
+  .lg-calc input[type="range"].lgc-range {
+    appearance: auto;
+  }
   .lg-calc :is(.lgc-split > span, .lgc-swatch) {
     forced-color-adjust: none;
     border: 1px solid CanvasText;

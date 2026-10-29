@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.8.0
+ * Lyfeguard calculators | lg-calc.js | v1.8.1
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.8.0';
+  LG.version = '1.8.1';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -4065,11 +4065,13 @@
   module('take-home-pay', function () {
     'use strict';
     const PERIODS = { year: 1, month: 12, week: 52 };
+    // Pay rises shown as cards, a year; the slider picks any other amount.
     const RISES = [
-      ['rise1', 'A \u00A31,000 pay rise', (g) => g + 1000],
-      ['rise2', 'A \u00A35,000 pay rise', (g) => g + 5000],
-      ['rise3', 'A 10% pay rise', (g) => g * 1.1],
+      ['rise1', 5000],
+      ['rise2', 10000],
+      ['rise3', 20000],
     ];
+    const RISE_MAX = 1000000;
 
     // Everything a year. input: { gross, region, pensionPct, pensionType
     // ('netpay' | 'sacrifice' | 'ras'), pensionBasis ('total' | 'qualifying'),
@@ -4104,7 +4106,7 @@
     LG.start({
       name: 'Take-Home Pay',
       panel: 'lgth-form',
-      required: ['lgth-salary', 'lgth-pension', 'lgth-pension-type', 'lgth-loan', 'lgth-postgrad', 'lgth-results', 'lgth-headline', 'lgth-table-body', 'lgth-split', 'lgth-notes'],
+      required: ['lgth-salary', 'lgth-pension', 'lgth-pension-type', 'lgth-loan', 'lgth-postgrad', 'lgth-results', 'lgth-headline', 'lgth-table-body', 'lgth-split', 'lgth-notes', 'lgth-rise-range', 'lgth-rise-amount'],
       setup: setup,
     });
 
@@ -4118,6 +4120,7 @@
       const pence = (n) => LG.money(Math.round(n * 100) / 100, 2);
       const choice = (name, fallback) => (root.querySelector('input[name="lgth-' + name + '"]:checked') || {}).value || fallback;
       const touched = new Set();
+      let last = null; // the latest input and result, for the pay rise slider
 
       function readField(id) {
         const rule = FIELDS[id];
@@ -4188,10 +4191,12 @@
         get('status').hidden = true;
         write('summary', message);
         ['year', 'week', 'deductions', 'keep'].forEach((id) => write(id, '\u2014'));
+        last = null;
         RISES.forEach(([id]) => {
           write(id, '\u2014');
           write(id + '-note', '\u2014');
         });
+        renderCustomRise();
         get('split').replaceChildren();
         get('split').setAttribute('aria-label', 'Where your pay goes will appear once you enter your pay');
         get('legend').replaceChildren();
@@ -4297,16 +4302,70 @@
         row('Take-home pay', r.net, false, 'lgc-row-total');
       }
 
-      function renderRises(input, r) {
-        RISES.forEach(([id, label, raise]) => {
-          const next = calculate(Object.assign({}, input, { gross: raise(r.gross) }));
-          const extra = next.net - r.net;
-          const rise = next.gross - r.gross;
-          write(id + '-label', label);
-          write(id, '+' + pence(extra / 12) + ' a month');
-          write(id + '-note', 'You keep ' + LG.percent(Math.round(percentOf(extra, rise))) + (next.pension > r.pension ? ', plus ' + pounds(next.pension - r.pension) + ' a year into your pension' : ''));
-        });
+      // Your figures with a pay rise of `rise` a year.
+      function withRise(input, r, rise) {
+        const next = calculate(Object.assign({}, input, { gross: r.gross + rise }));
+        const extra = next.net - r.net;
+        return { next, extra, keep: rise > 0 ? Math.round(percentOf(extra, rise)) : null };
       }
+
+      function renderRises(input, r) {
+        last = { input, r };
+        RISES.forEach(([id, rise]) => {
+          const w = withRise(input, r, rise);
+          write(id, '+' + pence(w.extra / 12) + ' a month');
+          write(id + '-note', pounds(w.next.gross) + ' a year. You keep ' + LG.percent(w.keep) + ' of the rise.');
+        });
+        renderCustomRise();
+      }
+
+      // The slider and the amount box show the same pay rise.
+      const range = get('rise-range');
+      const amount = get('rise-amount');
+      function readRise() {
+        const item = LG.parseNumber(amount.value, 2);
+        const ok = !item.entered || (item.valid && item.value <= RISE_MAX);
+        LG.markInvalid(amount, !ok);
+        return item.entered && ok ? item.value : item.entered ? NaN : 0;
+      }
+      function paintRange() {
+        const max = Number(range.max) || 1;
+        range.style.setProperty('--lgc-fill', Math.min(100, (Number(range.value) / max) * 100) + '%');
+        range.setAttribute('aria-valuetext', pounds(Number(range.value)) + ' a year');
+      }
+      function renderCustomRise() {
+        const rise = readRise();
+        const ids = ['custom-pay', 'custom-net', 'custom-extra', 'custom-keep'];
+        if (!last || !Number.isFinite(rise)) {
+          ids.forEach((id) => write(id, '\u2014'));
+          write('custom-note', Number.isFinite(rise) ? 'Enter your pay above to see what this rise is worth.' : 'Enter a pay rise in numbers, up to \u00A31,000,000 a year.');
+          return;
+        }
+        const w = withRise(last.input, last.r, rise);
+        const pensionExtra = w.next.pension - last.r.pension;
+        write('custom-pay', pounds(w.next.gross));
+        write('custom-net', pence(w.next.net / 12));
+        write('custom-extra', '+' + pence(w.extra / 12));
+        write('custom-keep', w.keep === null ? '\u2014' : LG.percent(w.keep));
+        write(
+          'custom-note',
+          rise > 0
+            ? 'A ' + pounds(rise) + ' rise adds ' + pounds(w.extra) + ' a year to your take-home pay' + (pensionExtra >= 1 ? ' and ' + pounds(pensionExtra) + ' a year to your pension' : '') + '.'
+            : 'Move the slider or type an amount to see what a pay rise is worth.',
+        );
+      }
+      range.addEventListener('input', () => {
+        amount.value = Number(range.value).toLocaleString('en-GB');
+        paintRange();
+        renderCustomRise();
+      });
+      amount.addEventListener('input', () => {
+        const rise = readRise();
+        if (Number.isFinite(rise)) range.value = String(Math.min(rise, Number(range.max)));
+        paintRange();
+        renderCustomRise();
+      });
+      paintRange();
 
       function renderNotes(input, r) {
         const notes = [];

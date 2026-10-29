@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.8.1 – 2026-10-29
+Take-home pay fixes and a new pay rise tool. **Re-paste `markup/take-home-pay.html`.**
+- "What a pay rise is worth" now shows +£5,000, +£10,000 and +£20,000 a year (was £1,000, £5,000 and 10%), each with your new salary, and adds "Try your own pay rise": a slider up to £50,000 with an amount box for any figure, showing your new pay, take-home a month, the extra a month and the share of the rise you keep.
+- Fix: the "How was this calculated?" card had extra space below its title when closed (a closed `<details>` still added a flex gap in Chrome, and site styles could add a margin to the summary). This also tightens the same card on Retirement Income.
+- Fix: the Postgraduate Loan checkbox is now drawn by the calculator (white box, Mint Ink with a tick when checked), so site-wide checkbox styles no longer change it, and it sits inside its box with the right padding.
+- New shared components: `lgc-range` (slider), `lgc-range-panel` and `lgc-range-result`.
+
 ## v1.8.0 – 2026-10-29
 - New Take-Home Pay calculator (key `take-home-pay`, markup in `markup/take-home-pay.html`). Pay a year, month or week becomes take-home pay after 2026/27 income tax, National Insurance, pension and student loans:
   - England, Wales and Northern Ireland or Scottish income tax rates, including the Personal Allowance taper over £100,000.
