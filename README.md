@@ -20,6 +20,7 @@ Each calculator starts only when its own markup is on the page.
 - `webflow/` – template head code, item field values and the setup guide.
 - `test/` – automated tests that open every calculator in a browser (see below).
 - `scripts/` – the build script and the style check.
+- `pdf-generator/` – branded PDF copies of the guides, kept in step with the CMS by its own workflow. Separate from the calculators (see below).
 
 ## Calculator keys
 net-worth, inheritance-tax, compound-interest, savings-goal, emergency-fund,
@@ -90,7 +91,13 @@ A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comment
 
 `test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); no change from the site's CSS or hostile rules; and the same text and headings as v1, both without JavaScript and once rendered.
 
+## Guide PDFs (`pdf-generator/`)
+A branded PDF of every published guide, built from the Webflow CMS, uploaded to the site's assets and linked from each guide's PDF Download field for the gated download block. The **Guide PDFs** workflow (`.github/workflows/guide-pdfs.yml`) checks hourly and rebuilds only PDFs whose article has changed. It needs the `WEBFLOW_TOKEN` repository secret.
+
+It is kept apart from the calculators: its own `package.json` and tests inside the folder, and its own workflow, so `npm ci`, the build, the ASCII check and "Check calculators" never touch it. Details in `pdf-generator/README.md`.
+
 ## Rules
+- Nothing private in this repository: it's public and jsDelivr serves every committed file. That includes unpublished guides, CMS exports, built PDFs and client material.
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.
 - In the CSS, use the design tokens (`--lg-ocean`, `--lg-mint-ink`, `--lg-ink-soft`, `--lg-radius` and so on, defined at the top of `src/lg-calc.css` from the brand kit) instead of typing colours, fonts or radii again. Neon Mint (`--lg-mint`) is only for Ocean backgrounds.
 - Tax rates, National Insurance and student loan thresholds (2026/27, including Scottish rates) are in `LG.ukTax` in `src/lg-calc.js` and need updating each April.

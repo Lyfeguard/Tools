@@ -1,0 +1,96 @@
+name: Guide PDFs
+
+# Keeps a branded PDF of every published guide in step with the live article.
+# Everything lives in pdf-generator/ (see its README). Separate from "Check calculators".
+
+on:
+  schedule:
+    - cron: '17 * * * *' # hourly
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Build the PDFs but don't upload them or change the CMS (download them from the run's artifacts)
+        type: boolean
+        default: false
+      force:
+        description: Rebuild every PDF, even if the content hasn't changed (e.g. after a template change)
+        type: boolean
+        default: false
+      slug:
+        description: Only this guide (its slug), or leave blank for all
+        type: string
+        default: ''
+  pull_request:
+    paths:
+      - 'pdf-generator/**'
+      - '.github/workflows/guide-pdfs.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: guide-pdfs-${{ github.event_name == 'pull_request' && github.ref || 'sync' }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: pdf-generator
+
+jobs:
+  test:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pdf-generator/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
+
+  sync:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      WEBFLOW_TOKEN: ${{ secrets.WEBFLOW_TOKEN }}
+      PDF_LINK_MODE: ${{ vars.PDF_LINK_MODE || 'staged' }}
+      OPTIONS: >-
+        ${{ inputs.dry_run && '--dry-run' || '' }}
+        ${{ inputs.force && '--force' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: pdf-generator/package-lock.json
+      - run: npm ci
+
+      - name: Check what needs building
+        id: plan
+        env:
+          SLUG: ${{ inputs.slug }}
+        run: node sync.js plan $OPTIONS ${SLUG:+--slug "$SLUG"}
+
+      - name: Install Chromium
+        if: steps.plan.outputs.count != '0'
+        run: npx playwright install --with-deps chromium
+
+      - name: Build, upload and link
+        if: steps.plan.outputs.count != '0'
+        env:
+          SLUG: ${{ inputs.slug }}
+        run: node sync.js run $OPTIONS ${SLUG:+--slug "$SLUG"}
+
+      - name: Keep the dry-run PDFs
+        if: inputs.dry_run && steps.plan.outputs.count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: guide-pdfs
+          path: pdf-generator/out/*.pdf
+          retention-days: 7
