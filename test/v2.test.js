@@ -143,7 +143,8 @@ async function looks(key, steps, width, version) {
   const out = await page.evaluate(([LOOK, FIXES]) => {
     const host = document.querySelector('lg-calculator');
     const root = (host && host.shadowRoot) || document;
-    return [...root.querySelector('.lg-calc').querySelectorAll('*')].map((el, i) => {
+    // Leaving out v2's PDF summary button, which v1 doesn't have.
+    return [...root.querySelector('.lg-calc').querySelectorAll('*')].filter((el) => !el.closest('.lgc-pdf')).map((el, i) => {
       const cs = getComputedStyle(el);
       const fixed = !!el.closest(FIXES.join(', '));
       // The font list after the first font doesn't matter: the site loads Manrope and Epilogue.

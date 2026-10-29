@@ -1,0 +1,33 @@
+/* v2: the PDF summary button under the results (src/v2/download.js). Its
+   look matches the Guides' download button (src/lg-dl.css). */
+.lgc-pdf {
+  margin-top: 24px;
+}
+.lgc-pdf[hidden] {
+  display: none;
+}
+.lgc-pdf-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid #0a2d3a;
+  border-radius: 14px;
+  background: #fff;
+  color: #0a2d3a;
+  font: 700 15px/1.2 var(--lg-font-body);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.lgc-pdf-button:hover {
+  background: #0a2d3a;
+  color: #fff;
+}
+.lgc-pdf-button:focus-visible {
+  outline: 3px solid #0aa376;
+  outline-offset: 2px;
+}
+.lgc-pdf-button:disabled {
+  cursor: progress;
+}

@@ -121,7 +121,10 @@ async function readOutputs(page) {
         if (el.disabled) out[el.id + '@disabled'] = true;
         return;
       }
-      const entry = { text: el.textContent.replace(/\s+/g, ' ').trim() };
+      // v2's PDF summary button (not in v1) is left out of the text.
+      let text = el.textContent;
+      el.querySelectorAll('.lgc-pdf').forEach((b) => (text = text.replace(b.textContent, '')));
+      const entry = { text: text.replace(/\s+/g, ' ').trim() };
       if (el.hidden) entry.hidden = true;
       if (el.disabled) entry.disabled = true;
       const label = el.getAttribute('aria-label');
