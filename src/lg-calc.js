@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.7.0
+ * Lyfeguard calculators | lg-calc.js | v1.8.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.7.0';
+  LG.version = '1.8.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -97,9 +97,9 @@
   LG.xlsx = { zip: workbookZip, crc32: crc32 };
 
   /* ------------------------------------------------------------------
-     Core: UK Income Tax and employee National Insurance, 2026/27
-     England, Wales and Northern Ireland. Update here once a year; the
-     pro rata salary and salary-by-age calculators both read from it.
+     Core: UK Income Tax, employee National Insurance and student loans, 2026/27
+     Update here once a year (each April); the pro rata, salary-by-age,
+     retirement income and take-home pay calculators all read from it.
      ------------------------------------------------------------------ */
   var TAX = {
     taxYear: '2026/27',
@@ -109,24 +109,79 @@
     additionalThreshold: 125140,
     niPrimary: 12570,
     niUpper: 50270,
+    // Auto-enrolment qualifying earnings
+    qualifyingLower: 6240,
+    qualifyingUpper: 50270,
   };
-  function incomeTax(taxableIncome) {
+  // Scottish rates on taxable income above the Personal Allowance: [band top, rate, name].
+  // Starter to 16,537, basic to 29,526, intermediate to 43,662, higher to 75,000
+  // (with the full allowance), advanced to 125,140, then top rate.
+  var SCOTLAND = [
+    [3967, 0.19, 'Starter rate'],
+    [16956, 0.2, 'Basic rate'],
+    [31092, 0.21, 'Intermediate rate'],
+    [62430, 0.42, 'Higher rate'],
+    [125140, 0.45, 'Advanced rate'],
+    [Infinity, 0.48, 'Top rate'],
+  ];
+  var REST_OF_UK = [
+    [TAX.basicBand, 0.2, 'Basic rate'],
+    [TAX.additionalThreshold, 0.4, 'Higher rate'],
+    [Infinity, 0.45, 'Additional rate'],
+  ];
+  // Repayment thresholds a year and rates; repayments are on pay above the threshold.
+  var STUDENT_LOANS = {
+    plan1: { name: 'Plan 1', threshold: 26900, rate: 0.09 },
+    plan2: { name: 'Plan 2', threshold: 29385, rate: 0.09 },
+    plan4: { name: 'Plan 4', threshold: 33795, rate: 0.09 },
+    plan5: { name: 'Plan 5', threshold: 25000, rate: 0.09 },
+    postgrad: { name: 'Postgraduate Loan', threshold: 21000, rate: 0.06 },
+  };
+  // The allowance shrinks by 1 for every 2 of income over 100,000.
+  function personalAllowance(taxableIncome) {
     var pa = TAX.personalAllowance;
-    if (taxableIncome > TAX.taperStart) {
-      pa = Math.max(0, pa - Math.floor((taxableIncome - TAX.taperStart) / 2));
-    }
-    var t = Math.max(0, taxableIncome - pa);
-    var basic = Math.min(t, TAX.basicBand);
-    var higher = Math.min(Math.max(t - TAX.basicBand, 0), TAX.additionalThreshold - TAX.basicBand);
-    var additional = Math.max(t - TAX.additionalThreshold, 0);
-    return basic * 0.2 + higher * 0.4 + additional * 0.45;
+    if (taxableIncome > TAX.taperStart) pa = Math.max(0, pa - Math.floor((taxableIncome - TAX.taperStart) / 2));
+    return pa;
+  }
+  // region: 'scotland' for Scottish rates; anything else is England, Wales and Northern Ireland.
+  function incomeTax(taxableIncome, region) {
+    var t = Math.max(0, taxableIncome - personalAllowance(taxableIncome));
+    var bands = region === 'scotland' ? SCOTLAND : REST_OF_UK;
+    var tax = 0;
+    var low = 0;
+    bands.forEach(function (b) {
+      tax += Math.max(0, Math.min(t, b[0]) - low) * b[1];
+      low = b[0];
+    });
+    return tax;
+  }
+  // The rate band the next pound of taxable income falls in, or null if it's tax-free.
+  function taxBand(taxableIncome, region) {
+    var t = taxableIncome - personalAllowance(taxableIncome);
+    if (t <= 0) return null;
+    var bands = region === 'scotland' ? SCOTLAND : REST_OF_UK;
+    for (var i = 0; i < bands.length; i++) if (t <= bands[i][0]) return { name: bands[i][2], rate: bands[i][1] };
+    return null;
   }
   function employeeNI(gross) {
     var main = Math.min(Math.max(gross - TAX.niPrimary, 0), TAX.niUpper - TAX.niPrimary);
     var upper = Math.max(gross - TAX.niUpper, 0);
     return main * 0.08 + upper * 0.02;
   }
-  LG.ukTax = { rates: TAX, incomeTax: incomeTax, employeeNI: employeeNI };
+  // Yearly repayment, in whole pounds as payroll rounds down.
+  function studentLoan(pay, plan) {
+    var p = STUDENT_LOANS[plan];
+    return p ? Math.floor(Math.max(0, pay - p.threshold) * p.rate) : 0;
+  }
+  LG.ukTax = {
+    rates: TAX,
+    incomeTax: incomeTax,
+    employeeNI: employeeNI,
+    personalAllowance: personalAllowance,
+    taxBand: taxBand,
+    studentLoan: studentLoan,
+    studentLoans: STUDENT_LOANS,
+  };
 
   /* ------------------------------------------------------------------
      Core: shared helpers used by every calculator
@@ -4000,6 +4055,338 @@
           width = w;
         }).observe(get('chart'));
       }
+      render();
+    }
+  });
+
+  /* ==================================================================
+     Take-home pay calculator  [take-home-pay]
+     ================================================================== */
+  module('take-home-pay', function () {
+    'use strict';
+    const PERIODS = { year: 1, month: 12, week: 52 };
+    const RISES = [
+      ['rise1', 'A \u00A31,000 pay rise', (g) => g + 1000],
+      ['rise2', 'A \u00A35,000 pay rise', (g) => g + 5000],
+      ['rise3', 'A 10% pay rise', (g) => g * 1.1],
+    ];
+
+    // Everything a year. input: { gross, region, pensionPct, pensionType
+    // ('netpay' | 'sacrifice' | 'ras'), pensionBasis ('total' | 'qualifying'),
+    // loan ('' | 'plan1' | 'plan2' | 'plan4' | 'plan5'), postgrad }.
+    function calculate(input) {
+      const T = LG.ukTax.rates;
+      const base = input.pensionBasis === 'qualifying' ? Math.min(Math.max(input.gross - T.qualifyingLower, 0), T.qualifyingUpper - T.qualifyingLower) : input.gross;
+      const pension = (base * input.pensionPct) / 100; // the full contribution, including any tax relief
+      // Salary sacrifice lowers your pay; net pay comes off before tax; relief at
+      // source comes off after tax, and the provider adds 20% basic-rate relief.
+      const sacrifice = input.pensionType === 'sacrifice' ? pension : 0;
+      const netPay = input.pensionType === 'netpay' ? pension : 0;
+      const ras = input.pensionType === 'ras' ? pension * 0.8 : 0;
+      const pay = input.gross - sacrifice;
+      const taxable = pay - netPay;
+      const tax = LG.ukTax.incomeTax(taxable, input.region);
+      const ni = LG.ukTax.employeeNI(pay);
+      const loan = LG.ukTax.studentLoan(pay, input.loan);
+      const postgrad = input.postgrad ? LG.ukTax.studentLoan(pay, 'postgrad') : 0;
+      const net = pay - netPay - ras - tax - ni - loan - postgrad;
+      // Relief above the basic rate on relief-at-source contributions is claimed back separately.
+      const rasClaim = ras ? Math.max(0, tax - LG.ukTax.incomeTax(taxable - pension, input.region) - pension * 0.2) : 0;
+      return { gross: input.gross, pension, sacrifice, netPay, ras, pay, taxable, tax, ni, loan, postgrad, net, rasClaim, band: LG.ukTax.taxBand(taxable, input.region) };
+    }
+    LG.takeHomePay = { calculate };
+
+    const FIELDS = {
+      salary: { kind: 'money', min: 1, max: 10000000, required: true, msg: 'Enter your pay before tax, from \u00A31 to \u00A310,000,000.' },
+      pension: { kind: 'rate', min: 0, max: 100, blank: 0, msg: 'Enter a pension contribution from 0% to 100%, or 0.' },
+    };
+
+    LG.start({
+      name: 'Take-Home Pay',
+      panel: 'lgth-form',
+      required: ['lgth-salary', 'lgth-pension', 'lgth-pension-type', 'lgth-loan', 'lgth-postgrad', 'lgth-results', 'lgth-headline', 'lgth-table-body', 'lgth-split', 'lgth-notes'],
+      setup: setup,
+    });
+
+    function setup(root) {
+      const get = (id) => document.getElementById('lgth-' + id);
+      const write = (id, text) => {
+        const el = get(id);
+        if (el) el.textContent = text;
+      };
+      const pounds = (n) => LG.money(Math.round(n), 0);
+      const pence = (n) => LG.money(Math.round(n * 100) / 100, 2);
+      const choice = (name, fallback) => (root.querySelector('input[name="lgth-' + name + '"]:checked') || {}).value || fallback;
+      const touched = new Set();
+
+      function readField(id) {
+        const rule = FIELDS[id];
+        let raw = get(id).value;
+        if (rule.kind === 'rate') raw = raw.replace(/%\s*$/, '');
+        const item = LG.parseNumber(raw, 2);
+        if (!item.entered) return { blank: true, value: rule.blank, ok: rule.blank !== undefined };
+        const ok = item.valid && item.value >= rule.min && item.value <= rule.max;
+        return { blank: false, value: item.value, ok, error: ok ? '' : rule.msg };
+      }
+
+      function showErrors(errors) {
+        const shown = errors.filter((e) => touched.has(e.id));
+        Object.keys(FIELDS).forEach((id) => {
+          const e = shown.find((x) => x.id === id);
+          LG.markInvalid(get(id), Boolean(e));
+          const box = get(id + '-error');
+          box.textContent = e ? e.message : '';
+          box.hidden = !e;
+        });
+        const list = get('error-list');
+        list.replaceChildren();
+        shown.forEach((e) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#lgth-' + e.id;
+          a.textContent = e.message;
+          a.addEventListener('click', (event) => {
+            event.preventDefault();
+            get(e.id).focus();
+          });
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        get('error-summary').hidden = shown.length === 0;
+      }
+
+      function readInput() {
+        const errors = [];
+        const values = {};
+        let complete = true;
+        Object.keys(FIELDS).forEach((id) => {
+          const r = readField(id);
+          values[id] = r.value;
+          if (r.blank && !r.ok) complete = false;
+          if (r.error) errors.push({ id, message: r.error });
+        });
+        const period = choice('period', 'year');
+        return {
+          errors,
+          complete,
+          period,
+          input: {
+            gross: values.salary * PERIODS[period],
+            region: choice('region', 'ruk'),
+            pensionPct: values.pension,
+            pensionType: get('pension-type').value,
+            pensionBasis: choice('basis', 'total'),
+            loan: get('loan').value,
+            postgrad: get('postgrad').checked,
+          },
+        };
+      }
+
+      function resetResults(state, message) {
+        get('results').dataset.state = state;
+        write('headline', '\u2014');
+        get('status').hidden = true;
+        write('summary', message);
+        ['year', 'week', 'deductions', 'keep'].forEach((id) => write(id, '\u2014'));
+        RISES.forEach(([id]) => {
+          write(id, '\u2014');
+          write(id + '-note', '\u2014');
+        });
+        get('split').replaceChildren();
+        get('split').setAttribute('aria-label', 'Where your pay goes will appear once you enter your pay');
+        get('legend').replaceChildren();
+        const body = get('table-body');
+        body.innerHTML = '';
+        const td = body.insertRow().insertCell();
+        td.colSpan = 4;
+        td.textContent = 'Enter your pay to see the breakdown.';
+        get('notes').replaceChildren();
+        get('notes').hidden = true;
+        write('method-text', 'Enter your pay to see how the figures are worked out.');
+      }
+
+      const percentOf = (part, whole) => (whole > 0 ? (part / whole) * 100 : 0);
+
+      function render() {
+        const { errors, complete, input } = readInput();
+        showErrors(errors);
+        if (errors.length) return resetResults('invalid', 'Check the highlighted fields to see your take-home pay.');
+        if (!complete) return resetResults('empty', 'Enter your pay before tax to see what you take home.');
+        const r = calculate(input);
+        const deductions = r.gross - r.net;
+        get('results').dataset.state = 'ready';
+        write('headline', pence(r.net / 12));
+        write('summary', pounds(r.net) + ' a year, or ' + pence(r.net / 52) + ' a week, from ' + pounds(r.gross) + ' a year before tax.');
+        const status = get('status');
+        status.hidden = false;
+        status.textContent = r.band ? r.band.name + ' taxpayer' + (input.region === 'scotland' ? ' (Scotland)' : '') : 'No income tax to pay';
+        write('year', pounds(r.net));
+        write('week', pence(r.net / 52));
+        write('deductions', pounds(deductions));
+        write('keep', LG.percent(percentOf(r.net, r.gross)));
+        renderSplit(r);
+        renderTable(input, r);
+        renderRises(input, r);
+        renderNotes(input, r);
+        renderMethod(input, r);
+      }
+
+      const PARTS = [
+        ['net', 'Take-home pay', (r) => r.net],
+        ['tax', 'Income tax', (r) => r.tax],
+        ['ni', 'National Insurance', (r) => r.ni],
+        ['pension', 'Pension', (r) => r.sacrifice + r.netPay + r.ras],
+        ['loan', 'Student loans', (r) => r.loan + r.postgrad],
+      ];
+
+      function renderSplit(r) {
+        const bar = get('split');
+        const legend = get('legend');
+        bar.replaceChildren();
+        legend.replaceChildren();
+        const described = [];
+        PARTS.forEach(([part, label, value]) => {
+          const n = value(r);
+          if (n <= 0) return;
+          const share = percentOf(n, r.gross);
+          const seg = document.createElement('span');
+          seg.dataset.part = part;
+          seg.style.width = share + '%';
+          bar.appendChild(seg);
+          const li = document.createElement('li');
+          const key = document.createElement('i');
+          key.className = 'lgc-swatch';
+          key.dataset.part = part;
+          const text = document.createElement('span');
+          text.textContent = label + ' ';
+          const strong = document.createElement('strong');
+          strong.textContent = LG.percent(share);
+          text.appendChild(strong);
+          li.append(key, text);
+          legend.appendChild(li);
+          described.push(label + ' ' + LG.percent(share));
+        });
+        bar.setAttribute('aria-label', 'Where your pay goes: ' + described.join(', ') + '.');
+      }
+
+      function renderTable(input, r) {
+        const body = get('table-body');
+        body.innerHTML = '';
+        const row = (label, n, minus, cls) => {
+          const tr = body.insertRow();
+          if (cls) tr.className = cls;
+          const th = document.createElement('th');
+          th.scope = 'row';
+          th.textContent = label;
+          tr.appendChild(th);
+          [n, n / 12, n / 52].forEach((v, i) => {
+            const text = i ? pence(v) : pounds(v);
+            const td = tr.insertCell();
+            td.textContent = minus && v > 0 ? '\u2212' + text : text;
+            if (i === 2) td.className = 'lgc-col-week';
+          });
+        };
+        row('Pay before tax', r.gross);
+        if (r.sacrifice) row('Salary sacrifice to pension', r.sacrifice, true);
+        if (r.netPay) row('Pension (taken before tax)', r.netPay, true);
+        row('Income tax', r.tax, true);
+        row('National Insurance', r.ni, true);
+        if (input.loan) row('Student loan (' + LG.ukTax.studentLoans[input.loan].name + ')', r.loan, true);
+        if (input.postgrad) row('Postgraduate Loan', r.postgrad, true);
+        if (r.ras) row('Pension (taken after tax)', r.ras, true);
+        row('Take-home pay', r.net, false, 'lgc-row-total');
+      }
+
+      function renderRises(input, r) {
+        RISES.forEach(([id, label, raise]) => {
+          const next = calculate(Object.assign({}, input, { gross: raise(r.gross) }));
+          const extra = next.net - r.net;
+          const rise = next.gross - r.gross;
+          write(id + '-label', label);
+          write(id, '+' + pence(extra / 12) + ' a month');
+          write(id + '-note', 'You keep ' + LG.percent(Math.round(percentOf(extra, rise))) + (next.pension > r.pension ? ', plus ' + pounds(next.pension - r.pension) + ' a year into your pension' : ''));
+        });
+      }
+
+      function renderNotes(input, r) {
+        const notes = [];
+        if (r.taxable > LG.ukTax.rates.taperStart && r.taxable < LG.ukTax.rates.additionalThreshold) {
+          notes.push(
+            'Between \u00A3100,000 and \u00A3125,140 you lose \u00A31 of your tax-free Personal Allowance for every \u00A32 you earn, so pay in that range is taxed at an effective ' +
+              (input.region === 'scotland' ? '67.5%' : '60%') +
+              '. Paying more into your pension by salary sacrifice or from pay before tax could bring your income under \u00A3100,000.',
+          );
+        }
+        if (r.pension > 0) {
+          notes.push(
+            pounds(r.pension) +
+              ' a year goes into your pension from your pay' +
+              (r.ras ? ', including ' + pounds(r.pension - r.ras) + ' basic-rate tax relief your provider claims' : '') +
+              ', not counting anything your employer adds.',
+          );
+        }
+        if (r.rasClaim >= 1) notes.push('You could claim about ' + pounds(r.rasClaim) + ' more tax relief on your pension through Self Assessment or by contacting HMRC.');
+        if (r.taxable > 60000) notes.push('If you or your partner get Child Benefit, the High Income Child Benefit Charge applies above \u00A360,000. It isn\u2019t included here.');
+        if (r.sacrifice) notes.push('Salary sacrifice can\u2019t take your pay below the National Minimum Wage, and it can lower things worked out from your salary, such as mortgage applications.');
+        const list = get('notes');
+        list.replaceChildren(
+          ...notes.map((t) => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            return li;
+          }),
+        );
+        list.hidden = notes.length === 0;
+      }
+
+      function renderMethod(input, r) {
+        const pa = LG.ukTax.personalAllowance(r.taxable);
+        const parts = [];
+        parts.push('Your pay of ' + pounds(r.gross) + ' a year');
+        if (r.sacrifice) parts.push(' falls to ' + pounds(r.pay) + ' after salary sacrifice');
+        if (r.netPay) parts.push(', less ' + pounds(r.netPay) + ' pension taken before tax,');
+        parts.push(' gives taxable pay of ' + pounds(r.taxable) + '. ');
+        parts.push(
+          'After a Personal Allowance of ' +
+            pounds(pa) +
+            ', income tax at ' +
+            (input.region === 'scotland' ? 'Scottish' : 'England, Wales and Northern Ireland') +
+            ' rates is ' +
+            pounds(r.tax) +
+            '. National Insurance is 8% of pay from \u00A312,570 to \u00A350,270 and 2% above that: ' +
+            pounds(r.ni) +
+            '.',
+        );
+        if (input.loan) {
+          const p = LG.ukTax.studentLoans[input.loan];
+          parts.push(' ' + p.name + ' repayments are 9% of pay over ' + pounds(p.threshold) + ': ' + pounds(r.loan) + '.');
+        }
+        if (input.postgrad) parts.push(' Postgraduate Loan repayments are 6% of pay over \u00A321,000: ' + pounds(r.postgrad) + '.');
+        write('method-text', parts.join(''));
+      }
+
+      Object.keys(FIELDS).forEach((id) => {
+        get(id).addEventListener('input', render);
+        get(id).addEventListener('blur', () => {
+          touched.add(id);
+          render();
+        });
+      });
+      // Radios, selects and the checkbox (text fields update on input).
+      get('form').addEventListener('change', (event) => {
+        if (!FIELDS[event.target.name]) render();
+      });
+      get('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        Object.keys(FIELDS).forEach((id) => touched.add(id));
+        render();
+        if (!get('error-summary').hidden) get('error-summary').focus();
+      });
+      // The shared Clear button resets the fields; forget which ones were visited.
+      root.querySelector('[data-clear]').addEventListener('click', () => {
+        touched.clear();
+        render();
+      });
       render();
     }
   });

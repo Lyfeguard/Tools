@@ -260,4 +260,31 @@ module.exports = {
       ['click', '#lgri-target'],
     ],
   },
+  'take-home-pay': {
+    empty: [],
+    typical: [['fill', '#lgth-salary', '35,000']],
+    scotland: [
+      ['check', 'input[name="lgth-region"][value="scotland"]'],
+      ['fill', '#lgth-salary', '45000'],
+      ['fill', '#lgth-pension', '0'],
+    ],
+    taper: [
+      ['fill', '#lgth-salary', '110000'],
+      ['select', '#lgth-pension-type', 'sacrifice'],
+      ['fill', '#lgth-pension', '8'],
+    ],
+    monthlyLoans: [
+      ['check', 'input[name="lgth-period"][value="month"]'],
+      ['fill', '#lgth-salary', '4,000'],
+      ['select', '#lgth-pension-type', 'ras'],
+      ['select', '#lgth-loan', 'plan2'],
+      ['check', '#lgth-postgrad'],
+    ],
+    invalid: [
+      ['fill', '#lgth-salary', '35k'],
+      ['click', '#lgth-pension'],
+      ['fill', '#lgth-pension', '120'],
+      ['click', '#lgth-salary'],
+    ],
+  },
 };

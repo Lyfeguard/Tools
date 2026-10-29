@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.8.0 – 2026-10-29
+- New Take-Home Pay calculator (key `take-home-pay`, markup in `markup/take-home-pay.html`). Pay a year, month or week becomes take-home pay after 2026/27 income tax, National Insurance, pension and student loans:
+  - England, Wales and Northern Ireland or Scottish income tax rates, including the Personal Allowance taper over £100,000.
+  - Pension paid from pay before tax, after tax (relief at source, with the higher-rate relief you can claim back) or by salary sacrifice, on all pay or qualifying earnings.
+  - Plan 1, 2, 4 and 5 student loans and the Postgraduate Loan.
+  - A breakdown by year, month and week, a bar of where your pay goes, and what a £1,000, £5,000 or 10% pay rise is worth.
+- `LG.ukTax` now also has Scottish rates, student loan thresholds, `taxBand` and `personalAllowance`. Existing calculators are unchanged.
+- New shared components: select and checkbox fields, a stacked share bar, notes, a total row for tables, and option switches that stay side by side on phones (`lgc-switch-compact`).
+- Tests: known answers for the new tax figures and pension types.
+
 ## v1.7.0 – 2026-10-28
 Every calculator now uses the markup pattern from Retirement Income. **All ten older embeds must be re-pasted** in the same publish as the head code moving to v1.7.0. Calculations are unchanged.
 - Markup: each embed has one root, `<div class="lg-calc lg-calc-classic" data-calc="key">`, so it no longer depends on the Webflow wrapper. Removed leftover browser-extension attributes from the net worth embed and inline styles from the debt-to-income gauge.
