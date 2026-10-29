@@ -16,7 +16,7 @@ const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
 
 // Calculators in the component. Each key's module sits between
 // /* @v2:<key>-start */ and /* @v2:<key>-end */ in src/lg-calc.js.
-const CALCULATORS = ['take-home-pay'];
+const CALCULATORS = ['net-worth', 'inheritance-tax', 'compound-interest', 'savings-goal', 'emergency-fund', 'loan-repayment', 'pro-rata-salary', 'salary-by-age', 'mortgage', 'debt-to-income', 'retirement-income', 'take-home-pay'];
 
 function between(text, start, end, file) {
   const from = text.indexOf(start);
@@ -33,7 +33,10 @@ function styles() {
   const css = read('src/lg-calc.css');
   // The design tokens move from :root to the component's host element.
   const tokens = between(css, ':root {', '}', 'src/lg-calc.css').slice(':root {'.length);
-  const components = between(css, '/* ------------------------------------------------------------------\n   Shared components (.lg-calc)', '/* ------------------------------------------------------------------\n   CMS template: Rich Text wrapper resets', 'src/lg-calc.css');
+  // Every calculator's styles: everything after the tokens, up to the rules
+  // for the page around the calculators (<lg-calculator> and the CMS template).
+  const calculators = between(css, ':root {', '/* ------------------------------------------------------------------\n   v2: <lg-calculator>', 'src/lg-calc.css');
+  const rest = calculators.slice(calculators.indexOf('}') + 1);
   const host = [
     '/* The component starts from browser defaults: nothing inherits in from the page. */',
     ':host {',
@@ -45,18 +48,44 @@ function styles() {
     ':host([hidden]) {',
     '  display: none !important;',
     '}',
-    '/* Form controls take the calculator\'s font, as Webflow\'s base styles do on the page. */',
+    '/* What the site\'s base styles give the calculators on the page, so each looks as it does today. */',
     'button, input, select, textarea {',
     '  font: inherit;',
     '  color: inherit;',
     '  margin: 0;',
+    '}',
+    'input {',
+    '  line-height: normal;',
+    '}',
+    '.lg-calc-classic {',
+    '  font-family: var(--lg-font-body);',
+    '  font-size: 16px;',
+    '  line-height: 1.6em; /* a fixed 25.6px, inherited as is, as on the site */',
+    '}',
+    '*, *::before, *::after {',
+    '  box-sizing: border-box;',
+    '}',
+    'p {',
+    '  margin-top: 0;',
+    '  margin-bottom: 0;',
+    '  line-height: 1.6em;',
+    '}',
+    'label {',
+    '  margin-bottom: 5px;',
+    '}',
+    'summary {',
+    '  display: block;',
+    '}',
+    'a {',
+    '  font-family: var(--lg-font-heading);',
+    '  font-weight: 500;',
     '}',
     '',
   ].join('\n');
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-v2-'));
   const src = path.join(tmp, 'in.css');
   const out = path.join(tmp, 'out.css');
-  fs.writeFileSync(src, host + components);
+  fs.writeFileSync(src, host + rest);
   execFileSync('npx', ['--yes', '-p', 'csso-cli@4.0.2', 'csso', src, '--no-restructure', '-o', out], { stdio: 'inherit' });
   // csso writes transparent backgrounds as "0 0"; keep the explicit keyword.
   const min = fs.readFileSync(out, 'utf8').replace(/background:0 0([;}])/g, 'background:transparent$1');

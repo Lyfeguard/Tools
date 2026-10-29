@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 The Tools template loads two files in its head code, served by jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.4/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.4/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.5/dist/lg-calc.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.5/dist/lg-calc.min.js" defer></script>
 ```
 
 Each calculator starts only when its own markup is on the page.
@@ -48,7 +48,7 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
 4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
    ```
-   npm run style-diff -- v1.8.4
+   npm run style-diff -- v1.8.5
    ```
 5. Commit, then create a release tagged with the new version (e.g. `v1.6.1`). GitHub runs the build and tests on every pull request ("Check calculators").
 6. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
@@ -75,7 +75,7 @@ Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, 
 A calculator drawn inside its own shadow root, so the site's CSS can't change it. The template head loads the script alongside v1 while calculators move over:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.2/dist/v2/lg-calculator.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.3/dist/v2/lg-calculator.min.js" defer></script>
 ```
 
 SEO comes first: a calculator must be indexed exactly as with v1.
@@ -84,11 +84,11 @@ SEO comes first: a calculator must be indexed exactly as with v1.
 - v1 starts its calculators at DOMContentLoaded, after every deferred script, so it never runs a calculator v2 has taken.
 - Nothing is pasted by hand: `scripts/webflow-markup.js` builds each item's field from `markup/` (item ids in `webflow/cms-items.json`), and it's written through the Webflow CMS API, then published with the site. `check` lists the items whose field differs from the repo.
 
-Nothing is written twice. `scripts/build-v2.js` (run by `npm run build`) copies the tax core and each calculator's module from `src/lg-calc.js` (between `/* @v2:...-start */` and `/* @v2:...-end */` comments), and the shared components section and design tokens from `src/lg-calc.css`. `src/v2/` holds only what's different: the start-up, the shared behaviours looked up inside the component, and the element itself. So far only `take-home-pay` is built in.
+Nothing is written twice. `scripts/build-v2.js` (run by `npm run build`) copies the tax core and each calculator's module from `src/lg-calc.js` (between `/* @v2:...-start */` and `/* @v2:...-end */` comments), and the shared components section and design tokens from `src/lg-calc.css`. `src/v2/` holds only what's different: the start-up, the shared behaviours looked up inside the component, and the element itself. All twelve calculators are built in. The component's styles are the whole of `src/lg-calc.css` (bar the page-level rules), plus a small base layer in `scripts/build-v2.js` that reproduces what the site's base styles give the calculators on the page today (body font and line height, paragraph and label spacing, link font, border-box sizing), so each looks as it does on the site.
 
-To move a calculator to v2: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comments, make it look elements up from `root.getRootNode()` instead of `document`, add it to `CALCULATORS` in `scripts/build-v2.js` and `KEYS` in `test/v2.test.js`, wrap `markup/<key>.html` in `<lg-calculator key="<key>">`, then sync the field.
+A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comments, look elements up through `root.getRootNode()` (or the `get` that `LG.start` passes to setup), never `document`, add it to `CALCULATORS` in `scripts/build-v2.js`, add its scenarios to `test/scenarios.js`, wrap `markup/<key>.html` in `<lg-calculator key="<key>">`, then sync the field.
 
-`test/v2.test.js` checks, for each calculator in v2: the same figures as v1 (the v1 snapshots); no change from the staging site's CSS (`test/fixtures/webflow-site.css`) or hostile rules; and the same text and headings as v1, both without JavaScript and once rendered.
+`test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); no change from the site's CSS or hostile rules; and the same text and headings as v1, both without JavaScript and once rendered.
 
 ## Rules
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.

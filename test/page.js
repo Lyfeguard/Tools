@@ -13,13 +13,14 @@ const FIXED_NOW = Date.UTC(2026, 9, 28, 12, 0, 0);
 // template: the CMS template with the v2 script loaded too. { embed: true }
 // adds an empty <lg-calculator> Code Embed after the Rich Text (as the v2
 // pilot did), which should show nothing.
-function pageHtml(key, dist, wrapper = 'cms', template = null) {
+function pageHtml(key, dist, wrapper = 'cms', template = null, siteCss = false) {
   const markup = fs.readFileSync(path.join(ROOT, 'markup', key + '.html'), 'utf8');
   const embed = template && template.embed ? `<div class="w-embed"><lg-calculator key="${key}"></lg-calculator></div>` : '';
   const v2 = template ? `<script src="file://${dist}/v2/lg-calculator.min.js" defer></script>` : '';
+  const site = siteCss ? `<link rel="stylesheet" href="file://${path.join(__dirname, 'fixtures', 'webflow-site.css')}">` : '';
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="file://${dist}/lg-calc.min.css">
+${site}<link rel="stylesheet" href="file://${dist}/lg-calc.min.css">
 <script src="file://${dist}/lg-calc.min.js" defer></script>${v2}
 <style>body{margin:0;background:#f3f7f6;font-family:Arial,sans-serif}.container{max-width:960px;margin:0 auto;padding:24px 16px}
 .lg-calc-wrap,.plain-wrap{display:flex;flex-direction:column;gap:24px}*,*::before,*::after{transition:none!important;animation:none!important}</style>
@@ -57,7 +58,7 @@ ${markup}
 async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist'), wrapper = 'cms', version = 'v1', siteCss = false, template = null } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-calc-'));
   const file = path.join(dir, key + '.html');
-  fs.writeFileSync(file, version === 'v2' ? componentPageHtml(key, dist, siteCss) : pageHtml(key, dist, wrapper, template));
+  fs.writeFileSync(file, version === 'v2' ? componentPageHtml(key, dist, siteCss) : pageHtml(key, dist, wrapper, template, siteCss));
   // The page's no-transition rule can't reach inside the component; reduced
   // motion switches its transitions off instead.
   const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: version === 'v2' || template ? 'reduce' : 'no-preference' });
@@ -74,6 +75,16 @@ async function openCalculator(browser, key, { width = 1280, dist = path.join(ROO
   // checked in a real browser instead.
   await page.addInitScript(() => {
     window.IntersectionObserver = undefined;
+    // The page's no-transition rule can't reach inside a component, so add it
+    // there too (components are set up before DOMContentLoaded).
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('lg-calculator').forEach((el) => {
+        if (!el.shadowRoot) return;
+        const style = document.createElement('style');
+        style.textContent = '*,*::before,*::after{transition:none!important;animation:none!important}';
+        el.shadowRoot.appendChild(style);
+      });
+    });
   });
   // The site CSS refers to fonts and images on Webflow's CDN; the tests run offline.
   // Those requests are refused, and the failures left out of page.lgErrors.

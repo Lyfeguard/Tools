@@ -53,7 +53,10 @@
       if (missing.length) return report(key, 'missing elements: ' + missing.join(', '));
       try {
         initShared(scope);
-        calc.setup(scope.querySelector('.lg-calc'));
+        // As LG.start does in v1: the calculator's root, and get(id) to look up an element.
+        calc.setup(scope.querySelector('.lg-calc'), function (id) {
+          return scope.getElementById(id);
+        });
       } catch (error) {
         report(key, error);
       }
