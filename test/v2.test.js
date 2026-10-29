@@ -11,9 +11,18 @@ const { ROOT, openCalculator, run, readOutputs, pageHtml } = require('./page');
 const scenarios = require('./scenarios');
 
 // Calculators built into the component so far.
-const KEYS = ['take-home-pay'];
+const KEYS = Object.keys(scenarios);
 // Ids from the test page around the v1 markup, not the calculator.
 const PAGE_IDS = ['calc-heading'];
+
+// What the component should show: the v1 snapshot without the test page's
+// own ids and v1's start-up marker (data-lg-ready-...).
+function expectedFrom(snapshot) {
+  const expected = JSON.parse(JSON.stringify(snapshot));
+  PAGE_IDS.forEach((id) => delete expected[id]);
+  Object.values(expected).forEach((entry) => Object.keys(entry).forEach((k) => /^data-lgReady/.test(k) && delete entry[k]));
+  return expected;
+}
 
 let browser;
 before(async () => {
@@ -33,11 +42,7 @@ for (const key of KEYS) {
         const outputs = await readOutputs(page);
         assert.deepEqual(page.lgErrors, [], 'console errors or warnings');
         await page.close();
-        const expected = JSON.parse(JSON.stringify(saved[name]));
-        PAGE_IDS.forEach((id) => delete expected[id]);
-        // v1's start-up marker (data-lg-ready-...) on the calculator's root.
-        Object.values(expected).forEach((entry) => Object.keys(entry).forEach((k) => /^data-lgReady/.test(k) && delete entry[k]));
-        assert.deepEqual(outputs, expected);
+        assert.deepEqual(outputs, expectedFrom(saved[name]));
       });
     }
   });
@@ -54,21 +59,17 @@ for (const key of KEYS) {
   });
 }
 
-// The Tools template, with the v2 script loaded and the pilot's empty
-// <lg-calculator> embed still in place.
-test('template: calculators not in v2 run as v1, and an empty embed takes no space', async () => {
-  for (const key of Object.keys(scenarios).filter((k) => !KEYS.includes(k))) {
-    const steps = Object.values(scenarios[key])[1] || [];
-    const plain = await openCalculator(browser, key, { width: 375 });
-    await run(plain, steps);
-    const withV2 = await openCalculator(browser, key, { width: 375, template: { embed: true } });
-    await run(withV2, steps);
-    assert.deepEqual(withV2.lgErrors, [], key + ': console errors or warnings');
-    assert.deepEqual(await readOutputs(withV2), await readOutputs(plain), key);
+// The Tools template with the pilot's empty <lg-calculator> Code Embed still
+// in place: it shows nothing and takes no space.
+test('template: an empty <lg-calculator> embed takes no space', async () => {
+  for (const key of ['net-worth', 'take-home-pay']) {
     const height = (page) => page.evaluate(() => document.querySelector('.lg-calc-wrap').getBoundingClientRect().height);
-    assert.equal(await height(withV2), await height(plain), key + ': the embed changed the layout');
-    await plain.close();
-    await withV2.close();
+    const without = await openCalculator(browser, key, { width: 375, template: { embed: false } });
+    const withEmbed = await openCalculator(browser, key, { width: 375, template: { embed: true } });
+    assert.equal(await height(withEmbed), await height(without), key);
+    assert.deepEqual(withEmbed.lgErrors, [], key + ': console errors or warnings');
+    await without.close();
+    await withEmbed.close();
   }
 });
 
@@ -83,7 +84,7 @@ for (const key of KEYS) {
     const outputs = await readOutputs(page);
     assert.deepEqual(page.lgErrors, [], 'console errors or warnings');
     await page.close();
-    assert.equal(outputs[Object.keys(outputs).find((id) => /headline$/.test(id))].text, saved[name][Object.keys(outputs).find((id) => /headline$/.test(id))].text);
+    assert.deepEqual(outputs, expectedFrom(saved[name]));
   });
 
   // SEO: the page must be indexed exactly as with v1.
@@ -108,13 +109,60 @@ for (const key of KEYS) {
       return out;
     };
     const dist = path.join(ROOT, 'dist');
-    const v1 = await text(pageHtml(key, dist), true);
-    const noJs = await text(pageHtml(key, dist, 'cms', { embed: true }), false);
-    const rendered = await text(pageHtml(key, dist, 'cms', { embed: true }), true);
-    assert.equal(noJs.visible, true, 'shows without JavaScript');
-    assert.equal(noJs.text, v1.text, 'same text without JavaScript');
-    assert.equal(rendered.text, v1.text, 'same text once rendered');
-    assert.deepEqual(rendered.headings, v1.headings.filter((h) => h !== 'Calculator'), 'same headings');
+    const v1Html = pageHtml(key, dist).replace(/<lg-calculator[^>]*>|<\/lg-calculator>/g, ''); // the markup as it was
+    const v2Html = pageHtml(key, dist, 'cms', { embed: true });
+    const v1NoJs = await text(v1Html, false);
+    const v2NoJs = await text(v2Html, false);
+    const v1 = await text(v1Html, true);
+    const v2 = await text(v2Html, true);
+    assert.equal(v2NoJs.visible, true, 'shows without JavaScript');
+    assert.equal(v2NoJs.text, v1NoJs.text, 'same text without JavaScript');
+    assert.deepEqual(v2NoJs.headings, v1NoJs.headings, 'same headings without JavaScript');
+    assert.equal(v2.text, v1.text, 'same text once rendered');
+    assert.deepEqual(v2.headings, v1.headings.filter((h) => h !== 'Calculator'), 'same headings once rendered');
+  });
+}
+
+// v2 must look as v1 does on the site today (with the Webflow CSS), apart from
+// site styles that leaked in by mistake and that v2 now keeps out:
+const LEAK_FIXES = [
+  '.lgc-legend, .sa-key, .lgdti-gauge-key, .lgc-notes', // lists at their designed size, not the site's 17px
+  '.lgc-error-summary-title', // red, not the site's white paragraph text
+  '[id$="-method-text"]', // the designed 14px, not the site's 16px paragraphs
+  '.lgc-sticky', // the result bar's text at its designed size
+  '.lgc-sr-only', // screen reader only
+];
+const LOOK = ['font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'color', 'background-color', 'text-transform', 'text-align',
+  'border-top-width', 'border-top-color', 'border-radius', 'display', 'margin-top', 'margin-bottom', 'margin-left', 'margin-right',
+  'padding-top', 'padding-bottom', 'padding-left', 'padding-right', 'list-style-type', 'vertical-align', 'box-sizing'];
+async function looks(key, steps, width, version) {
+  const page = await openCalculator(browser, key, { width, siteCss: true, version });
+  await run(page, steps);
+  await page.mouse.move(0, 0);
+  await page.clock.runFor(100);
+  const out = await page.evaluate(([LOOK, FIXES]) => {
+    const host = document.querySelector('lg-calculator');
+    const root = (host && host.shadowRoot) || document;
+    return [...root.querySelector('.lg-calc').querySelectorAll('*')].map((el, i) => {
+      const cs = getComputedStyle(el);
+      const fixed = !!el.closest(FIXES.join(', '));
+      // The font list after the first font doesn't matter: the site loads Manrope and Epilogue.
+      return [i + ' ' + el.tagName.toLowerCase() + (el.id ? '#' + el.id : ''), fixed, LOOK.map((k) => k + ':' + (k === 'font-family' ? cs.fontFamily.split(',')[0] : cs.getPropertyValue(k))).join(';')];
+    });
+  }, [LOOK, LEAK_FIXES]);
+  await page.close();
+  return out;
+}
+for (const key of KEYS) {
+  test(`${key}: looks as v1 does on the site`, async () => {
+    const steps = Object.values(scenarios[key])[1] || [];
+    for (const width of [1280, 375]) {
+      const v1 = await looks(key, steps, width, 'v1');
+      const v2 = await looks(key, steps, width, 'v2');
+      assert.equal(v2.length, v1.length);
+      const differing = v1.filter(([name, fixed, css], i) => !fixed && v2[i][2] !== css).map(([name]) => name);
+      assert.deepEqual(differing.slice(0, 10), [], `${differing.length} elements look different at ${width}px`);
+    }
   });
 }
 
@@ -122,6 +170,9 @@ for (const key of KEYS) {
 async function componentStyles(key, steps, width, siteCss) {
   const page = await openCalculator(browser, key, { version: 'v2', siteCss, width });
   await run(page, steps);
+  // The last click leaves the mouse over an option; when :hover applies is timing.
+  await page.mouse.move(0, 0);
+  await page.clock.runFor(100);
   const styles = await page.evaluate(() => {
     const host = document.querySelector('lg-calculator');
     const box = (el) => {

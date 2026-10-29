@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.8.4
+ * Lyfeguard calculators | lg-calc.js | v1.8.5
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.8.4';
+  LG.version = '1.8.5';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -46,6 +46,7 @@
     }
   }
 
+  /* @v2:core-start (scripts/build-v2.js copies from here to @v2:core-end) */
   /* ------------------------------------------------------------------
      Core: shared .xlsx writer (net worth and inheritance tax downloads)
      Builds a real Excel workbook without loading any external library.
@@ -103,7 +104,6 @@
   }
   LG.xlsx = { zip: workbookZip, crc32: crc32 };
 
-  /* @v2:core-start (scripts/build-v2.js copies from here to @v2:core-end) */
   /* ------------------------------------------------------------------
      Core: UK Income Tax, employee National Insurance and student loans, 2026/27
      Update here once a year (each April); the pro rata, salary-by-age,
@@ -268,6 +268,14 @@
     else el.removeAttribute('aria-invalid');
   };
 
+  // Show or clear a calculator's error message (an element with role="alert").
+  LG.showError = function (el, message) {
+    if (!el) return;
+    el.textContent = message;
+    el.hidden = !message;
+    el.style.display = message ? 'block' : 'none';
+  };
+
   /* @v2:core-end */
 
   /* ------------------------------------------------------------------
@@ -385,18 +393,13 @@
     true,
   );
 
-  // Show or clear a calculator's error message (an element with role="alert").
-  LG.showError = function (el, message) {
-    if (!el) return;
-    el.textContent = message;
-    el.hidden = !message;
-    el.style.display = message ? 'block' : 'none';
-  };
-
   /* ==================================================================
      Net worth calculator  [net-worth]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:net-worth-start */
   module('net-worth', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     'use strict';
 
     const ASSETS = [
@@ -422,7 +425,7 @@
     ];
     const ALL = ASSETS.concat(LIABILITIES);
     const NS = 'http://www.w3.org/2000/svg';
-    const get = (id) => document.getElementById(id);
+    const get = (id) => scope.getElementById(id);
     const set = (id, value) => {
       const node = get(id);
       if (node) node.textContent = value;
@@ -506,7 +509,7 @@
         totalAssets,
         totalLiabilities,
         net: totalAssets - totalLiabilities,
-        scope: (document.querySelector('input[name="lgnw-scope"]:checked') || {}).value || 'personal',
+        scope: (scope.querySelector('input[name="lgnw-scope"]:checked') || {}).value || 'personal',
       };
     }
 
@@ -837,14 +840,15 @@
       ]);
     }
 
-    function init() {
+    function init(root) {
+      scope = root.getRootNode();
       set('lgnw-snapshot-date', 'Calculated ' + dateLabel());
       ALL.forEach((item) => {
         const input = get('lgnw-' + item.id);
         input.addEventListener('input', update);
         input.addEventListener('change', update);
       });
-      document.querySelectorAll('input[name="lgnw-scope"]').forEach((input) => input.addEventListener('change', update));
+      scope.querySelectorAll('input[name="lgnw-scope"]').forEach((input) => input.addEventListener('change', update));
       const exportButton = get('lgnw-export');
       if (exportButton)
         exportButton.addEventListener('click', () => {
@@ -886,15 +890,19 @@
     }
     LG.start({ name: 'Net Worth', panel: 'lgnw-assets-panel', required: ALL.map((item) => 'lgnw-' + item.id), setup: init });
   });
+  /* @v2:net-worth-end */
 
   /* ==================================================================
      Inheritance tax calculator  [inheritance-tax]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:inheritance-tax-start */
   module('inheritance-tax', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     'use strict';
 
     const PREFIX = 'lgiht-';
-    const get = (id) => document.getElementById(PREFIX + id);
+    const get = (id) => scope.getElementById(PREFIX + id);
     const write = (id, value) => {
       const el = get(id);
       if (el) el.textContent = value;
@@ -925,7 +933,7 @@
     }
 
     function announce(message) {
-      const status = document.getElementById('lgiht-status');
+      const status = scope.getElementById('lgiht-status');
       if (!status) return;
       clearTimeout(announceTimer);
       announceTimer = setTimeout(() => {
@@ -966,7 +974,7 @@
         if (!element) return;
         const group = Object.keys(fieldErrors).find((key) => fieldErrors[key].includes(id));
         const errorId = 'lgiht-' + id + '-field-error';
-        const errorNode = document.getElementById(errorId);
+        const errorNode = scope.getElementById(errorId);
         if (errorNode) {
           errorNode.textContent = group ? errors[group] || '' : '';
           errorNode.hidden = !group;
@@ -993,12 +1001,12 @@
       const period = get('period')?.value || '2026';
       const pension2027 = get('pensions-2027');
       if (pension2027) pension2027.disabled = period !== '2027';
-      const pension2027Row = document.getElementById('lgiht-pension-2027-field');
+      const pension2027Row = scope.getElementById('lgiht-pension-2027-field');
       if (pension2027Row) pension2027Row.hidden = period !== '2027';
-      const spouseRow = document.getElementById('lgiht-spouse-scope-row');
+      const spouseRow = scope.getElementById('lgiht-spouse-scope-row');
       const spouseValue = parseAmount('spouse');
       if (spouseRow) spouseRow.hidden = !(spouseValue.valid && spouseValue.value > 0);
-      const reliefRow = document.getElementById('lgiht-relief-confirmation-row');
+      const reliefRow = scope.getElementById('lgiht-relief-confirmation-row');
       const businessValue = parseAmount('business');
       if (reliefRow) reliefRow.hidden = !(businessValue.valid && businessValue.value > 0);
       const message =
@@ -1374,7 +1382,7 @@
       lastModel = model && model.any ? model : null;
       if (!lastModel) {
         clearView(!model);
-        const st = document.getElementById('lgiht-status');
+        const st = scope.getElementById('lgiht-status');
         clearTimeout(announceTimer);
         if (st) st.textContent = '';
         return;
@@ -1471,7 +1479,8 @@
     }
 
     const REQUIRED = ALL_INPUTS.concat(['period', 'home-desc', 'transfer', 'spouse-scope', 'relief-confirmation']);
-    function init() {
+    function init(root) {
+      scope = root.getRootNode();
       const required = REQUIRED;
       for (const id of required) {
         get(id).addEventListener('input', update);
@@ -1506,15 +1515,20 @@
     }
     LG.start({ name: 'IHT', panel: PREFIX + 'assets-card', required: REQUIRED.map((id) => PREFIX + id), setup: init });
   });
+  /* @v2:inheritance-tax-end */
 
   /* ==================================================================
      Compound interest calculator  [compound-interest]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:compound-interest-start */
   module('compound-interest', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     'use strict';
     const ids = ['lgci-initial', 'lgci-contribution', 'lgci-frequency', 'lgci-rate', 'lgci-years'];
     LG.start({ name: 'Compound Interest', panel: 'lgci-input-panel', required: ids, setup: setup });
     function setup(root, el) {
+      scope = root.getRootNode();
       const money = (n, digits = 0) => LG.money(n, digits);
       const compact = (n) =>
         n >= 1e6 ? '\u00A3' + (n / 1e6).toFixed(n >= 1e7 ? 0 : 1) + 'm' : n >= 1000 ? '\u00A3' + (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k' : money(n);
@@ -1760,17 +1774,20 @@
       update();
     }
   });
+  /* @v2:compound-interest-end */
 
   /* ==================================================================
      Savings goal calculator  [savings-goal]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:savings-goal-start */
   module('savings-goal', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     (function (root, factory) {
       'use strict';
       const api = factory();
       if (typeof module === 'object' && module.exports) module.exports = api;
-      root.LyfeTools = root.LyfeTools || {};
-      root.LyfeTools.savingsGoal = api;
+      LG.savingsGoal = api; // window.LyfeTools.savingsGoal in v1
     })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
       'use strict';
       const MAX_MONTHS = 600;
@@ -1885,10 +1902,11 @@
         'status',
         'startup',
       ];
-      function boot() {
-        const $ = (id) => document.getElementById('sg-' + id);
+      function boot(root) {
+        scope = root.getRootNode();
+        const $ = (id) => scope.getElementById('sg-' + id);
         const form = $('form');
-        const engine = window.LyfeTools && window.LyfeTools.savingsGoal;
+        const engine = LG.savingsGoal;
         if (!engine) return;
         const fieldIds = ['goal', 'initial', 'years', 'months', 'monthly', 'rate'];
         const touched = new Set();
@@ -2396,13 +2414,18 @@
       LG.start({ name: 'Savings Goal', panel: 'sg-form', required: required.map((id) => 'sg-' + id), setup: boot });
     })();
   });
+  /* @v2:savings-goal-end */
 
   /* ==================================================================
      Emergency fund calculator  [emergency-fund]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:emergency-fund-start */
   module('emergency-fund', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     LG.start({ name: 'Emergency Fund', panel: 'ef-monthly', required: ['ef-monthly', 'ef-saved', 'ef-target'], setup: setup });
     function setup(root, $) {
+      scope = root.getRootNode();
       var monthlyEl = $('ef-monthly');
       var savedEl = $('ef-saved');
 
@@ -2418,10 +2441,10 @@
       var months = function (n) {
         return n === 1 ? '1 month' : n + ' months';
       };
-      var parts = document.querySelectorAll('.ef-part');
+      var parts = scope.querySelectorAll('.ef-part');
 
       function selectedMonths() {
-        var r = document.querySelector('input[name="ef-months"]:checked');
+        var r = scope.querySelector('input[name="ef-months"]:checked');
         return r ? parseInt(r.value, 10) : 3;
       }
 
@@ -2441,10 +2464,10 @@
         var monthly = num(monthlyEl);
         var saved = num(savedEl);
         var m = selectedMonths();
-        var bad = Array.prototype.some.call(document.querySelectorAll('.ef-money'), function (el) {
+        var bad = Array.prototype.some.call(scope.querySelectorAll('.ef-money'), function (el) {
           return el.getAttribute('aria-invalid') === 'true';
         });
-        LG.showError(document.getElementById('ef-error'), bad ? 'Enter amounts using numbers only, for example 1,250 or 1250.50.' : '');
+        LG.showError(scope.getElementById('ef-error'), bad ? 'Enter amounts using numbers only, for example 1,250 or 1250.50.' : '');
 
         if (!monthly) {
           $('ef-target').textContent = '\u00A3\u2013';
@@ -2481,7 +2504,7 @@
         }
       }
 
-      document.querySelectorAll('.ef-money').forEach(function (el) {
+      scope.querySelectorAll('.ef-money').forEach(function (el) {
         el.addEventListener('input', function () {
           if (el.classList.contains('ef-part')) sumParts();
           render();
@@ -2493,7 +2516,7 @@
         });
       });
 
-      document.querySelectorAll('input[name="ef-months"]').forEach(function (r) {
+      scope.querySelectorAll('input[name="ef-months"]').forEach(function (r) {
         r.addEventListener('change', render);
       });
 
@@ -2511,11 +2534,15 @@
       render();
     }
   });
+  /* @v2:emergency-fund-end */
 
   /* ==================================================================
      Loan repayment calculator  [loan-repayment]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:loan-repayment-start */
   module('loan-repayment', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     'use strict';
     const fieldIds = ['lglc-amount', 'lglc-rate', 'lglc-term'];
     LG.start({
@@ -2525,6 +2552,7 @@
       setup: setup,
     });
     function setup(root, get) {
+      scope = root.getRootNode();
       const money = (value, digits = 2) => LG.money(value, digits);
       const read = (id, decimals) => {
         const item = LG.parseNumber(get(id).value, decimals);
@@ -2651,11 +2679,15 @@
       update();
     }
   });
+  /* @v2:loan-repayment-end */
 
   /* ==================================================================
      Pro rata salary calculator  [pro-rata-salary]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:pro-rata-salary-start */
   module('pro-rata-salary', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     // 2026/27 rates: England, Wales and Northern Ireland
     var R = {
       personalAllowance: LG.ukTax.rates.personalAllowance,
@@ -2731,6 +2763,7 @@
 
     LG.start({ name: 'Pro Rata Salary', panel: 'pr-salary', required: ['pr-salary', 'pr-full', 'pr-yours', 'pr-result', 'pr-error'], setup: setup });
     function setup(root, $) {
+      scope = root.getRootNode();
       var money = function (n) {
         return LG.money(Math.round(n), 0);
       };
@@ -2758,7 +2791,7 @@
       var defaults = { hours: { full: '37.5', yours: '22.5' }, days: { full: '5', yours: '3' } };
 
       function mode() {
-        var r = document.querySelector('input[name="pr-mode"]:checked');
+        var r = scope.querySelector('input[name="pr-mode"]:checked');
         return r ? r.value : 'hours';
       }
 
@@ -2857,7 +2890,7 @@
 
       function applyMode(reset) {
         var m = mode();
-        document.querySelectorAll('.pr-unit').forEach(function (el) {
+        scope.querySelectorAll('.pr-unit').forEach(function (el) {
           el.textContent = m;
         });
         $('pr-full-label').textContent = m === 'hours' ? 'Full-time hours a week' : 'Full-time days a week';
@@ -2869,7 +2902,7 @@
         }
       }
 
-      document.querySelectorAll('.pr-input').forEach(function (el) {
+      scope.querySelectorAll('.pr-input').forEach(function (el) {
         el.addEventListener('input', render);
       });
       $('pr-salary').addEventListener('blur', function () {
@@ -2877,7 +2910,7 @@
         if (!item.entered || !item.valid) return; // leave invalid text for the person to correct
         $('pr-salary').value = item.value ? item.value.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
       });
-      document.querySelectorAll('input[name="pr-mode"]').forEach(function (r) {
+      scope.querySelectorAll('input[name="pr-mode"]').forEach(function (r) {
         r.addEventListener('change', function () {
           applyMode(true);
           render();
@@ -2888,11 +2921,15 @@
       render();
     }
   });
+  /* @v2:pro-rata-salary-end */
 
   /* ==================================================================
      Average salary by age  [salary-by-age]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:salary-by-age-start */
   module('salary-by-age', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     // ONS Annual Survey of Hours and Earnings (ASHE) 2026 provisional, Table 6.7a, UK.
     // Gross annual pay, full-time employees on adult rates in the same job for more than a year.
     // Order: median, mean, p10, p20, p25, p30, p40, p60, p70, p75, p80, p90
@@ -2983,6 +3020,7 @@
 
     LG.start({ name: 'Salary by Age', panel: 'sa-salary', required: ['sa-salary', 'sa-result'], setup: setup });
     function setup(root, $) {
+      scope = root.getRootNode();
       var money = function (n) {
         return LG.money(Math.round(n), 0);
       };
@@ -3006,7 +3044,7 @@
       };
 
       function checked(name, fallback) {
-        var r = document.querySelector('input[name="' + name + '"]:checked');
+        var r = scope.querySelector('input[name="' + name + '"]:checked');
         return r ? r.value : fallback;
       }
 
@@ -3021,7 +3059,7 @@
         $('sa-data-who').textContent = sexLabel[sex];
         DATA.ages.concat('all').forEach(function (a) {
           var g = group(sex, a);
-          var row = document.querySelector('.sa-row[data-age="' + a + '"]');
+          var row = scope.querySelector('.sa-row[data-age="' + a + '"]');
           if (row) {
             row.querySelector('.sa-whisker').style.cssText = 'left:' + pos(g.p[10]) + '%;width:' + (pos(g.p[90]) - pos(g.p[10])) + '%';
             row.querySelector('.sa-box').style.cssText = 'left:' + pos(g.p[25]) + '%;width:' + (pos(g.p[75]) - pos(g.p[25])) + '%';
@@ -3032,7 +3070,7 @@
             line.hidden = !salary;
             if (salary) line.style.left = pos(salary) + '%';
           }
-          var tr = document.querySelector('.sa-table tr[data-age="' + a + '"]');
+          var tr = scope.querySelector('.sa-table tr[data-age="' + a + '"]');
           if (tr) {
             var td = tr.querySelectorAll('td');
             td[0].textContent = money(g.median);
@@ -3049,7 +3087,7 @@
         var age = checked('sa-age', '30-39');
         var salary = num($('sa-salary'));
         LG.showError(
-          document.getElementById('sa-error'),
+          scope.getElementById('sa-error'),
           $('sa-salary').getAttribute('aria-invalid') === 'true' ? 'Enter your salary using numbers only, for example 40,000.' : '',
         );
         renderData(sex, age, salary);
@@ -3109,10 +3147,10 @@
       function sync(source) {
         var v = checked(source, 'all');
         var other = source === 'sa-who' ? 'sa-who2' : 'sa-who';
-        var target = document.querySelector('input[name="' + other + '"][value="' + v + '"]');
+        var target = scope.querySelector('input[name="' + other + '"][value="' + v + '"]');
         if (target) target.checked = true;
         if (source === 'sa-who2') {
-          var main = document.querySelector('input[name="sa-who"][value="' + v + '"]');
+          var main = scope.querySelector('input[name="sa-who"][value="' + v + '"]');
           if (main) main.checked = true;
         }
       }
@@ -3124,11 +3162,11 @@
         if (!item.entered || !item.valid) return; // leave invalid text for the person to correct
         el.value = item.value ? item.value.toLocaleString('en-GB', { maximumFractionDigits: 2 }) : '';
       });
-      document.querySelectorAll('input[name="sa-age"]').forEach(function (r) {
+      scope.querySelectorAll('input[name="sa-age"]').forEach(function (r) {
         r.addEventListener('change', render);
       });
       ['sa-who', 'sa-who2'].forEach(function (name) {
-        document.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
+        scope.querySelectorAll('input[name="' + name + '"]').forEach(function (r) {
           r.addEventListener('change', function () {
             sync(name);
             render();
@@ -3139,11 +3177,15 @@
       render();
     }
   });
+  /* @v2:salary-by-age-end */
 
   /* ==================================================================
      Mortgage calculator  [mortgage]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:mortgage-start */
   module('mortgage', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     'use strict';
     const fieldIds = ['lgmc-price', 'lgmc-deposit', 'lgmc-rate', 'lgmc-term'];
     LG.start({
@@ -3153,6 +3195,7 @@
       setup: setup,
     });
     function setup(root, get) {
+      scope = root.getRootNode();
       const fields = fieldIds.map(get);
       const money = (n, digits = 2) => LG.money(n, digits);
       const write = (id, value) => {
@@ -3169,7 +3212,7 @@
         return item.valid ? item.value : NaN;
       };
       const mortgageType = () => {
-        const selected = document.querySelector('input[name="mortgage-type"]:checked');
+        const selected = scope.querySelector('input[name="mortgage-type"]:checked');
         return selected && selected.value === 'interest-only' ? 'interest-only' : 'repayment';
       };
       function calculate(loan, rate, months, type) {
@@ -3312,15 +3355,19 @@
         el.addEventListener('input', update);
         el.addEventListener('change', update);
       });
-      document.querySelectorAll('input[name="mortgage-type"]').forEach((el) => el.addEventListener('change', update));
+      scope.querySelectorAll('input[name="mortgage-type"]').forEach((el) => el.addEventListener('change', update));
       update();
     }
   });
+  /* @v2:mortgage-end */
 
   /* ==================================================================
      Debt-to-income calculator  [debt-to-income]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:debt-to-income-start */
   module('debt-to-income', function () {
+    let scope = document; // the document, or the component's shadow root (set in setup)
     'use strict';
     const DEBTS = [
       { id: 'housing', label: 'Mortgage or rent', color: '#099d85' },
@@ -3368,7 +3415,8 @@
       setup: setup,
     });
     function setup(root) {
-      const get = (id) => document.getElementById('lgdti-' + id);
+      scope = root.getRootNode();
+      const get = (id) => scope.getElementById('lgdti-' + id);
       const money = LG.money;
       const pct = (n) => n.toFixed(1) + '%';
       const write = (id, value) => {
@@ -3376,7 +3424,7 @@
         if (el) el.textContent = value;
       };
       const period = () => {
-        const selected = document.querySelector('input[name="lgdti-period"]:checked');
+        const selected = scope.querySelector('input[name="lgdti-period"]:checked');
         return selected && selected.value === 'month' ? 'month' : 'year';
       };
       function parse(id) {
@@ -3599,10 +3647,13 @@
       update();
     }
   });
+  /* @v2:debt-to-income-end */
 
   /* ==================================================================
      Retirement income calculator  [retirement-income]
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
      ================================================================== */
+  /* @v2:retirement-income-start */
   module('retirement-income', function () {
     'use strict';
     const MAX_AGE = 100;
@@ -3676,7 +3727,9 @@
     });
 
     function setup(root) {
-      const get = (id) => document.getElementById('lgri-' + id);
+      // The document, or the component's shadow root when built into <lg-calculator>.
+      const scope = root.getRootNode();
+      const get = (id) => scope.getElementById('lgri-' + id);
       const write = (id, text) => {
         const el = get(id);
         if (el) el.textContent = text;
@@ -4068,6 +4121,7 @@
       render();
     }
   });
+  /* @v2:retirement-income-end */
 
   /* ==================================================================
      Take-home pay calculator  [take-home-pay]

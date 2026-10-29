@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.0.0-alpha.3 (and v1.8.5) – 2026-10-29
+Every calculator moves to v2. **Update the template head to v1.8.5 and v2.0.0-alpha.3, then the markup for all twelve items is synced** (each wrapped in `<lg-calculator>`, still in the page HTML).
+- All twelve calculators are built into `<lg-calculator>`. The component's styles are the whole calculator stylesheet, plus a small base layer reproducing what the site's base styles give the calculators today (body font, 25.6px line height, paragraph and label spacing, link font, border-box sizing), so each looks as it does on the site.
+- Changes you'll see: some site styles that leaked in by mistake are kept out. Chart legends and notes show at their designed 13–14px (the site made them 17px), the error summary title is red (it was white on a light card), the "How was this calculated?" text is the designed 14px, and the sticky result bar's label is its designed size.
+- v1.8.5: each module looks up its elements through its own root (the document in v1, the shadow root in v2); the savings goal engine is read from the calculators' own namespace; `LG.showError` moves into the shared core. No change to what any v1 calculator shows.
+- Tests (218): for every calculator, the same figures as v1, the same look as v1 on the site apart from the listed leak fixes, no change from the site's CSS or hostile rules, and the same text and headings for search engines with and without JavaScript.
+
 ## v2.0.0-alpha.2 (and v1.8.4) – 2026-10-29
 SEO first: calculators on v2 are indexed exactly as on v1. **Update the template head to v1.8.4 and v2.0.0-alpha.2 before the Take-Home Pay markup is synced**: older versions hide markup wrapped in `<lg-calculator>`.
 - The markup stays in the page HTML (the CMS field), wrapped in `<lg-calculator key="...">`. The script moves it into the shadow root and runs it there, instead of drawing it from a copy inside the script (alpha.1, where crawlers that don't run JavaScript saw an empty element). Without JavaScript, or if the script doesn't load, the calculator shows and runs as v1.
