@@ -53,7 +53,7 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    npm run style-diff -- v2.0.0
    ```
 6. Commit, then create a release tagged with the new version (e.g. `v2.0.1`). GitHub runs the build and tests on every pull request ("Check calculators").
-7. If `markup/` changed, the Calculator markup field is synced through the Webflow CMS API (`scripts/webflow-markup.js`). Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
+7. Update the version in the template head code. If `markup/` changed, run **Sync calculator markup** (Actions > Sync calculator markup > Run workflow, `.github/workflows/sync-markup.yml`): it writes each item's Calculator markup field and Component key from `markup/` through the Webflow CMS API, as staged changes, only where they differ. It uses the `WEBFLOW_TOKEN` secret (CMS read and write). Then test on the webflow.io staging site and publish.
 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).
 
