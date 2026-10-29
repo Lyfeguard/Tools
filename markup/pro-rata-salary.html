@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="pro-rata-salary">
 <div class="lg-tools">
   <section class="lg-card" aria-labelledby="pr-h-salary">
     <p class="lg-kicker">01 / Full-time salary</p>
@@ -6,7 +7,7 @@
 
     <div class="lg-field pr-gap">
       <label class="lg-label" for="pr-salary">Full-time salary a year</label>
-      <div class="lg-control"><span>£</span><input id="pr-salary" class="pr-input" type="text" inputmode="decimal" autocomplete="off" placeholder="40,000" value="40,000"></div>
+      <div class="lg-control"><span>£</span><input id="pr-salary" class="pr-input" type="text" inputmode="decimal" autocomplete="off" placeholder="40,000" value="40,000" enterkeyhint="next"></div>
     </div>
   </section>
 </div>
@@ -26,11 +27,11 @@
     <div class="lg-grid pr-gap">
       <div class="lg-field">
         <label class="lg-label" for="pr-full" id="pr-full-label">Full-time hours a week</label>
-        <div class="lg-control"><input id="pr-full" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="37.5"><span class="pr-unit">hours</span></div>
+        <div class="lg-control"><input id="pr-full" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="37.5" enterkeyhint="next"><span class="pr-unit">hours</span></div>
       </div>
       <div class="lg-field">
         <label class="lg-label" for="pr-yours" id="pr-yours-label">Your hours a week</label>
-        <div class="lg-control"><input id="pr-yours" class="pr-input" type="text" inputmode="decimal" autocomplete="off" placeholder="22.5" value="22.5"><span class="pr-unit">hours</span></div>
+        <div class="lg-control"><input id="pr-yours" class="pr-input" type="text" inputmode="decimal" autocomplete="off" placeholder="22.5" value="22.5" enterkeyhint="next"><span class="pr-unit">hours</span></div>
       </div>
     </div>
     <p class="lg-error" id="pr-error" role="alert" hidden=""></p>
@@ -46,15 +47,15 @@
     <div class="lg-grid pr-gap">
       <div class="lg-field">
         <label class="lg-label" for="pr-ee">Your pension contribution</label>
-        <div class="lg-control"><input id="pr-ee" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="5"><span>% of salary</span></div>
+        <div class="lg-control"><input id="pr-ee" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="5" enterkeyhint="next"><span>% of salary</span></div>
       </div>
       <div class="lg-field">
         <label class="lg-label" for="pr-er">Your employer's contribution</label>
-        <div class="lg-control"><input id="pr-er" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="3"><span>% of salary</span></div>
+        <div class="lg-control"><input id="pr-er" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="3" enterkeyhint="next"><span>% of salary</span></div>
       </div>
       <div class="lg-field">
         <label class="lg-label" for="pr-holiday">Full-time holiday a year</label>
-        <div class="lg-control"><input id="pr-holiday" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="28"><span>days</span></div>
+        <div class="lg-control"><input id="pr-holiday" class="pr-input" type="text" inputmode="decimal" autocomplete="off" value="28" enterkeyhint="done"><span>days</span></div>
         <span class="lg-hint">Including bank holidays. 28 days is the legal minimum for a five-day week.</span>
       </div>
     </div>
@@ -117,4 +118,7 @@
 
     <p class="lg-hint">Estimates use 2026/27 Income Tax and National Insurance rates for England, Wales and Northern Ireland, with your pension taken before tax. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice.</p>
   </section>
+</div>
+
+<div class="lgc-sticky" data-source="pr-salary-out" data-results="pr-result" hidden=""><p><span class="lgc-sticky-label">Pro rata salary</span> <strong data-sticky-value="">—</strong></p><a href="#pr-result" class="lgc-sticky-link">See results</a></div>
 </div>

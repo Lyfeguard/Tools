@@ -121,6 +121,16 @@ module.exports = {
       ['fill', '#ef-b3', '200'],
       ['fill', '#ef-saved', '20000'],
     ],
+    invalid: [
+      ['fill', '#ef-monthly', '2,000'],
+      ['fill', '#ef-saved', '4,5OO'],
+    ],
+    cleared: [
+      ['fill', '#ef-monthly', '2,000'],
+      ['check', 'input[name="ef-months"][value="6"]'],
+      ['fill', '#ef-saved', '4500'],
+      ['click', '[data-clear]'],
+    ],
   },
   'loan-repayment': {
     empty: [],
@@ -166,6 +176,7 @@ module.exports = {
       ['check', 'input[name="sa-age"][value="50-59"]'],
       ['fill', '#sa-salary', '150000'],
     ],
+    invalid: [['fill', '#sa-salary', '40k']],
   },
   mortgage: {
     empty: [],
@@ -209,6 +220,12 @@ module.exports = {
     invalid: [
       ['fill', '#lgdti-income', '30000'],
       ['fill', '#lgdti-car', '12.345'],
+    ],
+    cleared: [
+      ['check', '#lgdti-period-month'],
+      ['fill', '#lgdti-income', '2000'],
+      ['fill', '#lgdti-housing', '900'],
+      ['click', '[data-clear]'],
     ],
   },
   'retirement-income': {

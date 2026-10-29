@@ -4,7 +4,7 @@
       "text": "Calculator"
     },
     "lgdti-input-panel": {
-      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments—"
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments— Clear all"
     },
     "lgdti-income-label": {
       "text": "Gross salary per year"
@@ -113,7 +113,7 @@
       "text": "Calculator"
     },
     "lgdti-input-panel": {
-      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£1,425.50"
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£1,425.50 Clear all"
     },
     "lgdti-income-label": {
       "text": "Gross salary per year"
@@ -222,7 +222,7 @@
       "text": "Calculator"
     },
     "lgdti-input-panel": {
-      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per month £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£1,360"
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per month £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£1,360 Clear all"
     },
     "lgdti-income-label": {
       "text": "Gross salary per month"
@@ -331,7 +331,7 @@
       "text": "Calculator"
     },
     "lgdti-input-panel": {
-      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£800"
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments£800 Clear all"
     },
     "lgdti-income-label": {
       "text": "Gross salary per year"
@@ -440,7 +440,7 @@
       "text": "Calculator"
     },
     "lgdti-input-panel": {
-      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments— Enter amounts of £0 or more using numbers only, with up to two decimal places (for example 1,250 or 1250.50)."
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments— Enter amounts of £0 or more using numbers only, with up to two decimal places (for example 1,250 or 1250.50). Clear all"
     },
     "lgdti-income-label": {
       "text": "Gross salary per year"
@@ -503,6 +503,117 @@
       "hidden": true,
       "left": "0%",
       "data-band": "low"
+    },
+    "lgdti-band-text": {
+      "text": "Enter your details to see what your ratio may mean."
+    },
+    "lgdti-breakdown": {
+      "text": "Where your income goes Each debt repayment as a share of your gross monthly income. Enter your income and debts to see the breakdown."
+    },
+    "lgdti-breakdown-chart": {
+      "text": "",
+      "label": "Your breakdown will appear once you enter your details"
+    },
+    "lgdti-breakdown-legend": {
+      "text": "Enter your income and debts to see the breakdown."
+    },
+    "lgdti-target": {
+      "text": "What would bring your ratio to 36%? 36% is a commonly used guide for a manageable level of debt. Compare it with your figures. Repayments at 36% — per month — Reduce repayments by — per month — Or income needed — gross per month — Each option assumes everything else stays the same."
+    },
+    "lgdti-target-max": {
+      "text": "—"
+    },
+    "lgdti-target-headroom": {
+      "text": "—"
+    },
+    "lgdti-target-reduce": {
+      "text": "—"
+    },
+    "lgdti-target-reduce-note": {
+      "text": "—"
+    },
+    "lgdti-target-income": {
+      "text": "—"
+    },
+    "lgdti-target-income-note": {
+      "text": "—"
+    },
+    "lgdti-methodology": {
+      "text": "How was this calculated? Enter your income and debt repayments to see how your ratio is calculated. Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria."
+    },
+    "lgdti-method-text": {
+      "text": "Enter your income and debt repayments to see how your ratio is calculated."
+    }
+  },
+  "cleared": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgdti-input-panel": {
+      "text": "01 — YOUR DETAILS Your income and debts Enter your income before tax, then the monthly repayments you make on any debts. Leave blank anything that doesn't apply. Income before tax I'm entering my income Per year Per month Gross salary per year £ Other income per month £ e.g. regular self-employed, rental or benefit income, before tax. Monthly debt repayments Mortgage or rent £ Car finance £ Personal loans £ Credit cards (minimum payments) £ Student loan £ Other debts £ e.g. buy now pay later, store cards, overdraft repayments. Total monthly repayments— Clear all"
+    },
+    "lgdti-income-label": {
+      "text": "Gross salary per year"
+    },
+    "lgdti-income@invalid": "false",
+    "lgdti-other-income@invalid": "false",
+    "lgdti-other-income-hint": {
+      "text": "e.g. regular self-employed, rental or benefit income, before tax."
+    },
+    "lgdti-housing@invalid": "false",
+    "lgdti-car@invalid": "false",
+    "lgdti-loans@invalid": "false",
+    "lgdti-cards@invalid": "false",
+    "lgdti-student@invalid": "false",
+    "lgdti-other@invalid": "false",
+    "lgdti-other-hint": {
+      "text": "e.g. buy now pay later, store cards, overdraft repayments."
+    },
+    "lgdti-debt-subtotal": {
+      "text": "—"
+    },
+    "lgdti-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgdti-results-panel": {
+      "text": "02 — YOUR RESULTS Your debt-to-income ratio Debt-to-income ratio —High Enter your income and debt repayments to see your ratio. Gross monthly income— Monthly debt repayments— Left after repayments (before tax)— Ratio excluding mortgage or rent— Illustrative figures only, based on gross (pre-tax) income. Lenders each use their own rules and also look at your credit history, spending and circumstances. This is not an affordability assessment or credit decision.",
+      "data-band": "none"
+    },
+    "lgdti-ratio": {
+      "text": "—"
+    },
+    "lgdti-band": {
+      "text": "High",
+      "hidden": true
+    },
+    "lgdti-assumption": {
+      "text": "Enter your income and debt repayments to see your ratio."
+    },
+    "lgdti-monthly-income": {
+      "text": "—"
+    },
+    "lgdti-monthly-debt": {
+      "text": "—"
+    },
+    "lgdti-left": {
+      "text": "—"
+    },
+    "lgdti-ratio-ex-housing": {
+      "text": "—"
+    },
+    "lgdti-gauge": {
+      "text": "Where your ratio sits A general guide to how debt-to-income ratios are often viewed. Lenders set their own limits. 0%20%36%50%60%+ Low under 20% Manageable 20% to 35.9% High 36% to 49.9% Very high 50% or more Enter your details to see what your ratio may mean."
+    },
+    "lgdti-gauge-track": {
+      "text": "",
+      "label": "Your ratio will appear on the scale once you enter your details"
+    },
+    "lgdti-gauge-marker": {
+      "text": "",
+      "hidden": true,
+      "left": "75%",
+      "data-band": "high"
     },
     "lgdti-band-text": {
       "text": "Enter your details to see what your ratio may mean."

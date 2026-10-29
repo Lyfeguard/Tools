@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="savings-goal">
 <section class="lg-tools" aria-labelledby="sg-input-title">
   <div class="lg-card">
     <p class="lg-kicker">01 — Your details</p>
@@ -34,7 +35,7 @@
 
             <div class="lg-control">
               <span aria-hidden="true">£</span>
-              <input id="sg-goal" type="text" inputmode="decimal" maxlength="18" placeholder="10,000" aria-describedby="sg-goal-help sg-goal-error" required="">
+              <input id="sg-goal" type="text" inputmode="decimal" maxlength="18" placeholder="10,000" aria-describedby="sg-goal-help sg-goal-error" required="" data-format="money" enterkeyhint="next">
             </div>
 
             <p id="sg-goal-help" class="lg-hint">The total you want to have saved.</p>
@@ -49,7 +50,7 @@
 
             <div class="lg-control">
               <span aria-hidden="true">£</span>
-              <input id="sg-initial" type="text" inputmode="decimal" maxlength="18" value="0" aria-describedby="sg-initial-help sg-initial-error" required="">
+              <input id="sg-initial" type="text" inputmode="decimal" maxlength="18" value="0" aria-describedby="sg-initial-help sg-initial-error" required="" data-format="money" enterkeyhint="next">
             </div>
 
             <p id="sg-initial-help" class="lg-hint">Include only money set aside for this goal.</p>
@@ -62,7 +63,7 @@
             <div class="lg-term-inputs">
               <div>
                 <div class="lg-control">
-                  <input id="sg-years" type="text" inputmode="numeric" maxlength="2" placeholder="2" aria-describedby="sg-years-error sg-term-error">
+                  <input id="sg-years" type="text" inputmode="numeric" maxlength="2" placeholder="2" aria-describedby="sg-years-error sg-term-error" enterkeyhint="next">
                   <label class="lg-unit-label" for="sg-years"> Years </label>
                 </div>
 
@@ -71,7 +72,7 @@
 
               <div>
                 <div class="lg-control">
-                  <input id="sg-months" type="text" inputmode="numeric" maxlength="2" placeholder="0" aria-describedby="sg-months-error sg-term-error">
+                  <input id="sg-months" type="text" inputmode="numeric" maxlength="2" placeholder="0" aria-describedby="sg-months-error sg-term-error" enterkeyhint="next">
                   <label class="lg-unit-label" for="sg-months"> Months </label>
                 </div>
 
@@ -91,7 +92,7 @@
 
             <div class="lg-control">
               <span aria-hidden="true">£</span>
-              <input id="sg-monthly" type="text" inputmode="decimal" maxlength="18" placeholder="250" aria-describedby="sg-monthly-help sg-monthly-error" disabled="">
+              <input id="sg-monthly" type="text" inputmode="decimal" maxlength="18" placeholder="250" aria-describedby="sg-monthly-help sg-monthly-error" disabled="" data-format="money" enterkeyhint="next">
             </div>
 
             <p id="sg-monthly-help" class="lg-hint">The amount you plan to add each month.</p>
@@ -105,7 +106,7 @@
             </label>
 
             <div class="lg-control">
-              <input id="sg-rate" type="text" inputmode="decimal" maxlength="8" value="0" aria-describedby="sg-rate-help sg-rate-error" required="">
+              <input id="sg-rate" type="text" inputmode="decimal" maxlength="8" value="0" aria-describedby="sg-rate-help sg-rate-error" required="" enterkeyhint="done">
               <span aria-hidden="true">%</span>
             </div>
 
@@ -236,3 +237,6 @@
     </div>
   </details>
 </section>
+
+<div class="lgc-sticky" data-source="sg-result-value" data-source-label="sg-result-label" data-results="sg-result" hidden=""><p><span class="lgc-sticky-label">Monthly saving needed</span> <strong data-sticky-value="">—</strong></p><a href="#sg-result" class="lgc-sticky-link">See results</a></div>
+</div>

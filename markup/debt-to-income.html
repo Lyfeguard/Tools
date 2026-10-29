@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="debt-to-income">
 <div id="lgdti-input-panel" class="lgdti-input-panel">
   <div class="lgdti-eyebrow">01 — YOUR DETAILS</div>
   <h2>Your income and debts</h2>
@@ -12,11 +13,11 @@
   <div class="lgdti-field-grid">
     <div class="lgdti-field">
       <label for="lgdti-income" id="lgdti-income-label">Gross salary per year</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-income" name="lgdti-income" type="text" inputmode="decimal" autocomplete="off" placeholder="45,000" aria-describedby="lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-income" name="lgdti-income" type="text" inputmode="decimal" autocomplete="off" placeholder="45,000" aria-describedby="lgdti-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lgdti-field">
       <label for="lgdti-other-income">Other income per month</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-other-income" name="lgdti-other-income" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-other-income-hint lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-other-income" name="lgdti-other-income" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-other-income-hint lgdti-error" data-format="money" enterkeyhint="next"></div>
       <p id="lgdti-other-income-hint" class="lgdti-hint">e.g. regular self-employed, rental or benefit income, before tax.</p>
     </div>
   </div>
@@ -24,35 +25,36 @@
   <div class="lgdti-field-grid">
     <div class="lgdti-field">
       <label for="lgdti-housing">Mortgage or rent</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-housing" name="lgdti-housing" type="text" inputmode="decimal" autocomplete="off" placeholder="1,100" aria-describedby="lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-housing" name="lgdti-housing" type="text" inputmode="decimal" autocomplete="off" placeholder="1,100" aria-describedby="lgdti-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lgdti-field">
       <label for="lgdti-car">Car finance</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-car" name="lgdti-car" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-car" name="lgdti-car" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lgdti-field">
       <label for="lgdti-loans">Personal loans</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-loans" name="lgdti-loans" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-loans" name="lgdti-loans" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lgdti-field">
       <label for="lgdti-cards">Credit cards (minimum payments)</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-cards" name="lgdti-cards" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-cards" name="lgdti-cards" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lgdti-field">
       <label for="lgdti-student">Student loan</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-student" name="lgdti-student" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-student" name="lgdti-student" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-error" data-format="money" enterkeyhint="next"></div>
     </div>
     <div class="lgdti-field">
       <label for="lgdti-other">Other debts</label>
-      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-other" name="lgdti-other" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-other-hint lgdti-error"></div>
+      <div class="lgdti-input-shell"><span class="lgdti-prefix" aria-hidden="true">£</span><input id="lgdti-other" name="lgdti-other" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="lgdti-other-hint lgdti-error" data-format="money" enterkeyhint="done"></div>
       <p id="lgdti-other-hint" class="lgdti-hint">e.g. buy now pay later, store cards, overdraft repayments.</p>
     </div>
   </div>
   <div class="lgdti-subtotal"><span>Total monthly repayments</span><strong id="lgdti-debt-subtotal">—</strong></div>
   <p id="lgdti-error" role="alert" hidden=""></p>
+<div class="lgc-actions"><button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear all</button></div>
 </div>
 
-<div id="lgdti-results-panel" aria-live="polite" aria-atomic="true" data-band="none">
+<div id="lgdti-results-panel" data-band="none">
   <div class="lgdti-eyebrow">02 — YOUR RESULTS</div>
   <h2>Your debt-to-income ratio</h2>
   <div class="lgdti-primary-result">
@@ -77,7 +79,7 @@
       <span class="lgdti-zone lgdti-zone-low"></span><span class="lgdti-zone lgdti-zone-moderate"></span><span class="lgdti-zone lgdti-zone-high"></span><span class="lgdti-zone lgdti-zone-very-high"></span>
       <span id="lgdti-gauge-marker" class="lgdti-gauge-marker" hidden=""></span>
     </div>
-    <div class="lgdti-gauge-scale" aria-hidden="true"><span style="left:0%">0%</span><span style="left:33.333%">20%</span><span style="left:60%">36%</span><span style="left:83.333%">50%</span><span style="left:100%">60%+</span></div>
+    <div class="lgdti-gauge-scale" aria-hidden="true"><span>0%</span><span>20%</span><span>36%</span><span>50%</span><span>60%+</span></div>
   </div>
   <ul class="lgdti-gauge-key">
     <li><i class="lgdti-key-low"></i><span><strong>Low</strong> under 20%</span></li>
@@ -128,3 +130,7 @@
     <p class="lgdti-accordion-note">Debt-to-income ratio = total monthly debt repayments ÷ gross monthly income × 100. Everyday bills such as council tax, utilities and insurance are not debts and are not included. The bands shown are a general guide, not lending criteria.</p>
   </div>
 </details>
+
+<p class="lgc-sr-only" aria-live="polite" data-announce="lgdti-ratio lgdti-assumption" data-announce-prefix="Debt-to-income ratio"></p>
+<div class="lgc-sticky" data-source="lgdti-ratio" data-results="lgdti-results-panel" hidden=""><p><span class="lgc-sticky-label">Debt-to-income ratio</span> <strong data-sticky-value="">—</strong></p><a href="#lgdti-results-panel" class="lgc-sticky-link">See results</a></div>
+</div>

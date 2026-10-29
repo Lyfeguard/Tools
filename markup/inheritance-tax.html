@@ -1,3 +1,4 @@
+<div class="lg-calc lg-calc-classic" data-calc="inheritance-tax">
 <fieldset class="lgiht-card lgiht-form-card" id="lgiht-assets-card">
   <legend class="lgiht-sr-only">Estate assets</legend>
   <div class="lgi-top"><span class="lgi-eyebrow">01 / THE ESTATE</span><strong class="lgi-total" id="lgiht-assets-subtotal">—</strong></div>
@@ -6,7 +7,7 @@
   <div class="lgi-fields lgi-fields-three">
     <div class="lgi-field">
       <label for="lgiht-home">Main home <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-home-help" autocomplete="off" class="lgi-input" id="lgiht-home" inputmode="decimal" placeholder="350,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-home-help" autocomplete="off" class="lgi-input" id="lgiht-home" inputmode="decimal" placeholder="350,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-home-help">Your share of the home at current market value.</p>
         <p class="lgi-error" hidden="" id="lgiht-home-field-error"></p>
@@ -14,7 +15,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-other-property">Other property <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-other-property-help" autocomplete="off" class="lgi-input" id="lgiht-other-property" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-other-property-help" autocomplete="off" class="lgi-input" id="lgiht-other-property" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-other-property-help">Buy-to-let, second homes and other property interests.</p>
         <p class="lgi-error" hidden="" id="lgiht-other-property-field-error"></p>
@@ -22,7 +23,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-cash">Cash &amp; savings <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-cash-help" autocomplete="off" class="lgi-input" id="lgiht-cash" inputmode="decimal" placeholder="25,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-cash-help" autocomplete="off" class="lgi-input" id="lgiht-cash" inputmode="decimal" placeholder="25,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-cash-help">Bank accounts, Premium Bonds, cash ISAs.</p>
         <p class="lgi-error" hidden="" id="lgiht-cash-field-error"></p>
@@ -30,7 +31,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-investments">Investments <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-investments-help" autocomplete="off" class="lgi-input" id="lgiht-investments" inputmode="decimal" placeholder="50,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-investments-help" autocomplete="off" class="lgi-input" id="lgiht-investments" inputmode="decimal" placeholder="50,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-investments-help">Shares, funds, investment ISAs and similar investments.</p>
         <p class="lgi-error" hidden="" id="lgiht-investments-field-error"></p>
@@ -38,7 +39,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-possessions">Personal possessions <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-possessions-help" autocomplete="off" class="lgi-input" id="lgiht-possessions" inputmode="decimal" placeholder="10,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-possessions-help" autocomplete="off" class="lgi-input" id="lgiht-possessions" inputmode="decimal" placeholder="10,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-possessions-help">Vehicles, jewellery, valuables and collections.</p>
         <p class="lgi-error" hidden="" id="lgiht-possessions-field-error"></p>
@@ -46,7 +47,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-insurance">Life insurance <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-insurance-help" autocomplete="off" class="lgi-input" id="lgiht-insurance" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-insurance-help" autocomplete="off" class="lgi-input" id="lgiht-insurance" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-insurance-help">Only policies that form part of the IHT estate, not those effectively held in trust.</p>
         <p class="lgi-error" hidden="" id="lgiht-insurance-field-error"></p>
@@ -54,7 +55,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-pensions">Pension funds already subject to inheritance tax <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-pensions-help" autocomplete="off" class="lgi-input" id="lgiht-pensions" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-pensions-help" autocomplete="off" class="lgi-input" id="lgiht-pensions" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-pensions-help">Only pensions or pension death benefits that are already within IHT under current rules. Do not include most discretionary unused pension pots here.</p>
         <p class="lgi-error" hidden="" id="lgiht-pensions-field-error"></p>
@@ -62,7 +63,7 @@
     </div>
     <div class="lgi-field" hidden="" id="lgiht-pension-2027-field">
       <label for="lgiht-pensions-2027">Additional unused pensions and death benefits from 6 April 2027 <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span> <input aria-describedby="lgiht-pensions-2027-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-pensions-2027" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span> <input aria-describedby="lgiht-pensions-2027-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-pensions-2027" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-pensions-2027-help">Enter the additional amount brought into IHT by the 2027 reforms. Exclude qualifying death-in-service benefits and other excluded benefits; do not repeat amounts above.</p>
         <p class="lgi-error" hidden="" id="lgiht-pensions-2027-field-error"></p>
@@ -70,7 +71,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-business">Business &amp; agricultural assets <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-business-help" autocomplete="off" class="lgi-input" id="lgiht-business" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-business-help" autocomplete="off" class="lgi-input" id="lgiht-business" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-business-help">Full market value, before any confirmed tax relief.</p>
         <p class="lgi-error" hidden="" id="lgiht-business-field-error"></p>
@@ -78,7 +79,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-other">Other assets <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-other-help" autocomplete="off" class="lgi-input" id="lgiht-other" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-other-help" autocomplete="off" class="lgi-input" id="lgiht-other" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-other-help">Anything not included above; avoid double-counting.</p>
         <p class="lgi-error" hidden="" id="lgiht-other-field-error"></p>
@@ -102,7 +103,7 @@
     <div class="lgi-note" id="lgiht-pension-note">For 2026-27, many discretionary pension benefits are normally outside the estate. Include only pensions actually subject to IHT.</div>
   </div>
   <div class="lgi-note">All amounts should be estimated estate values, not the combined value of everything owned by a couple. The pension rules change in April 2027.</div>
-  <p class="lgi-error" hidden="" id="lgiht-assets-error"></p>
+  <p class="lgi-error" hidden="" id="lgiht-assets-error" role="alert"></p>
 </fieldset>
 
 <fieldset class="lgiht-card lgiht-form-card" id="lgiht-debts-card">
@@ -113,7 +114,7 @@
   <div class="lgi-fields">
     <div class="lgi-field">
       <label for="lgiht-mortgage">Outstanding mortgages <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-mortgage-help" autocomplete="off" class="lgi-input" id="lgiht-mortgage" inputmode="decimal" placeholder="180,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-mortgage-help" autocomplete="off" class="lgi-input" id="lgiht-mortgage" inputmode="decimal" placeholder="180,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-mortgage-help">Include debts secured on property in this estate.</p>
         <p class="lgi-error" hidden="" id="lgiht-mortgage-field-error"></p>
@@ -121,7 +122,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-debts">Other outstanding debts <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-debts-help" autocomplete="off" class="lgi-input" id="lgiht-debts" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-debts-help" autocomplete="off" class="lgi-input" id="lgiht-debts" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-debts-help">Loans, credit cards and other allowable amounts.</p>
         <p class="lgi-error" hidden="" id="lgiht-debts-field-error"></p>
@@ -129,7 +130,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-funeral">Reasonable funeral costs <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-funeral-help" autocomplete="off" class="lgi-input" id="lgiht-funeral" inputmode="decimal" placeholder="5,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-funeral-help" autocomplete="off" class="lgi-input" id="lgiht-funeral" inputmode="decimal" placeholder="5,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-funeral-help">An estimated cost of the funeral, if payable by the estate.</p>
         <p class="lgi-error" hidden="" id="lgiht-funeral-field-error"></p>
@@ -137,7 +138,7 @@
     </div>
   </div>
   <div class="lgi-note">Enter outstanding debts as positive numbers. Do not subtract them from the asset valuations above or they will be counted twice.</div>
-  <p class="lgi-error" hidden="" id="lgiht-debts-error"></p>
+  <p class="lgi-error" hidden="" id="lgiht-debts-error" role="alert"></p>
 </fieldset>
 
 <fieldset class="lgiht-card lgiht-form-card" id="lgiht-family-card">
@@ -148,7 +149,7 @@
   <div class="lgi-fields">
     <div class="lgi-field">
       <label for="lgiht-spouse">Left to spouse or civil partner <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-spouse-help" autocomplete="off" class="lgi-input" id="lgiht-spouse" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-spouse-help" autocomplete="off" class="lgi-input" id="lgiht-spouse" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-spouse-help">Only the amount expected to pass to a qualifying spouse or civil partner.</p>
         <p class="lgi-error" hidden="" id="lgiht-spouse-field-error"></p>
@@ -168,7 +169,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-charity">Left to registered charities <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-charity-help" autocomplete="off" class="lgi-input" id="lgiht-charity" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-charity-help" autocomplete="off" class="lgi-input" id="lgiht-charity" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-charity-help">Only amounts expected to qualify for charity exemption.</p>
         <p class="lgi-error" hidden="" id="lgiht-charity-field-error"></p>
@@ -187,7 +188,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-home-equity">Home equity inherited by those descendants <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-home-equity-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-home-equity" inputmode="decimal" placeholder="150,000" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-home-equity-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-home-equity" inputmode="decimal" placeholder="150,000" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-home-equity-help">Their share of the home, after associated mortgage debt; do not count property twice.</p>
         <p class="lgi-error" hidden="" id="lgiht-home-equity-field-error"></p>
@@ -195,7 +196,7 @@
     </div>
   </div>
   <div class="lgi-note">The extra home allowance is not automatic. If you select <strong>Yes</strong>, enter the value of the home equity the descendants will inherit. The calculator also checks the £2m estate taper.</div>
-  <p class="lgi-error" hidden="" id="lgiht-family-error"></p>
+  <p class="lgi-error" hidden="" id="lgiht-family-error" role="alert"></p>
 </fieldset>
 
 <fieldset class="lgiht-card lgiht-form-card" id="lgiht-advanced-card">
@@ -217,7 +218,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-transfer-nrb">Unused standard allowance transferred <span class="lgiht-sr-only">(percent)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">%</span><input aria-describedby="lgiht-transfer-nrb-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-transfer-nrb" inputmode="decimal" placeholder="100" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">%</span><input aria-describedby="lgiht-transfer-nrb-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-transfer-nrb" inputmode="decimal" placeholder="100" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-transfer-nrb-help">Enter the verified unused percentage, 0–100. Enter 100 only if the full band is confirmed available. Blank is not treated as 100%.</p>
         <p class="lgi-error" hidden="" id="lgiht-transfer-nrb-field-error"></p>
@@ -225,7 +226,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-transfer-rnrb">Unused home allowance transferred <span class="lgiht-sr-only">(percent)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">%</span><input aria-describedby="lgiht-transfer-rnrb-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-transfer-rnrb" inputmode="decimal" placeholder="100" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">%</span><input aria-describedby="lgiht-transfer-rnrb-help" autocomplete="off" class="lgi-input" disabled="" id="lgiht-transfer-rnrb" inputmode="decimal" placeholder="100" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-transfer-rnrb-help">Enter the verified unused residence-band percentage, 0–100. This is different from the standard band and may be affected by taper on the first death.</p>
         <p class="lgi-error" hidden="" id="lgiht-transfer-rnrb-field-error"></p>
@@ -233,7 +234,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-gifts">Earlier gifts using the tax-free allowance <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-gifts-help" autocomplete="off" class="lgi-input" id="lgiht-gifts" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-gifts-help" autocomplete="off" class="lgi-input" id="lgiht-gifts" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="next"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-gifts-help">Only the value of chargeable gifts made in the last 7 years, after gift exemptions.</p>
         <p class="lgi-error" hidden="" id="lgiht-gifts-field-error"></p>
@@ -253,7 +254,7 @@
     </div>
     <div class="lgi-field">
       <label for="lgiht-business-relief">Confirmed business / agricultural relief <span class="lgiht-sr-only">(pounds sterling)</span></label>
-      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-business-relief-help" autocomplete="off" class="lgi-input" id="lgiht-business-relief" inputmode="decimal" placeholder="0" spellcheck="false" type="text"></div>
+      <div class="lgi-money"><span aria-hidden="true" class="lgi-symbol">£</span><input aria-describedby="lgiht-business-relief-help" autocomplete="off" class="lgi-input" id="lgiht-business-relief" inputmode="decimal" placeholder="0" spellcheck="false" type="text" data-format="money" enterkeyhint="done"></div>
       <div class="lgiht-field-feedback">
         <p class="lgi-help" id="lgiht-business-relief-help">Enter the total value of relief already established for the business/agricultural assets above.</p>
         <p class="lgi-error" hidden="" id="lgiht-business-relief-field-error"></p>
@@ -262,7 +263,7 @@
   </div>
   <div class="lgi-note"><strong>Gifts:</strong> Non-exempt gifts in the previous seven years can reduce the standard allowance. Gifts above that allowance may create separate tax; this calculator stops rather than imply the estate-only figure is a complete bill.</div>
   <div class="lgi-note"><strong>Business &amp; agricultural relief:</strong> from April 2026, the combined 100% relief allowance is generally £2.5m before any transferable amount, with certain excess property eligible for 50% relief. Only enter an amount of relief you can substantiate. <a href="https://www.gov.uk/guidance/work-out-how-to-apportion-agricultural-and-business-relief-for-inheritance-tax" rel="noopener noreferrer" target="_blank">See HMRC guidance</a>.</div>
-  <p class="lgi-error" hidden="" id="lgiht-advanced-error"></p>
+  <p class="lgi-error" hidden="" id="lgiht-advanced-error" role="alert"></p>
 </fieldset>
 
 <section aria-labelledby="lgiht-results-heading" data-state="empty" id="lgiht-results-card">
@@ -372,3 +373,6 @@
   <div class="lgi-note"><strong>Scope:</strong> simplified UK estate estimate. Trusts, non-UK assets and long-term residence, downsizing relief, lifetime gift tax and taper, seven-year gift ordering, multiple estate components, grossing-up, jointly owned property, tax-free legacies and some pensions require specialist treatment. Not legal or tax advice.</div>
   <div class="lgiht-method-sources">Official sources: <a href="https://www.gov.uk/inheritance-tax" rel="noopener noreferrer" target="_blank">HMRC inheritance tax</a> · <a href="https://www.gov.uk/guidance/inheritance-tax-residence-nil-rate-band" rel="noopener noreferrer" target="_blank">Home allowance</a> · <a href="https://www.gov.uk/inheritance-tax/gifts" rel="noopener noreferrer" target="_blank">Gift rules</a> · <a href="https://www.gov.uk/government/publications/inheritance-tax-on-pensions-technical-note" rel="noopener noreferrer" target="_blank">Pensions from 2027</a>.</div>
 </section>
+
+<div class="lgc-sticky" data-source="lgiht-tax" data-results="lgiht-results-card" hidden=""><p><span class="lgc-sticky-label">Estimated inheritance tax</span> <strong data-sticky-value="">—</strong></p><a href="#lgiht-results-card" class="lgc-sticky-link">See results</a></div>
+</div>

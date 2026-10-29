@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.6.0
+ * Lyfeguard calculators | lg-calc.css | v1.7.0
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -442,7 +442,7 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-:where([data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools .lg-error {
+:where([data-calc="pro-rata-salary"], :root:has(#pr-salary), [data-calc="emergency-fund"], :root:has(#ef-monthly), [data-calc="salary-by-age"], :root:has(#sa-salary)) .lg-tools .lg-error {
   color: var(--lg-error);
   font-size: 14px;
   font-weight: 600;
@@ -1086,7 +1086,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-@media (max-width: 700px) {
+@container lg-calc (max-width: 668px) {
   :where(
       [data-calc="savings-goal"],
       :root:has(#sg-form),
@@ -1105,12 +1105,12 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-@media (max-width: 700px) {
+@container lg-calc (max-width: 668px) {
   .lg-tools .lg-scroll-hint {
     display: block;
   }
 }
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1120,7 +1120,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   :where([data-calc="emergency-fund"], :root:has(#ef-monthly), [data-calc="pro-rata-salary"], :root:has(#pr-salary)) .lg-tools .lg-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -1411,7 +1411,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   .lg-tools .lg-card {
     padding: 20px;
   }
@@ -1420,7 +1420,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-options {
     gap: 4px;
   }
@@ -1434,7 +1434,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   .lg-tools .lg-stats {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -1450,7 +1450,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools .lg-stats dt {
     max-width: 55%;
   }
@@ -1459,7 +1459,7 @@
 /* ------------------------------------------------------------------
    Shared: card-style calculators (savings goal, emergency fund, pro rata, salary by age)
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   .lg-tools .lg-stats dd {
     font-size: 18px;
     margin: 0;
@@ -1470,7 +1470,7 @@
 /* ------------------------------------------------------------------
    Savings goal
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools th,
   :where([data-calc="savings-goal"], :root:has(#sg-form)) .lg-tools td {
     padding: 11px 12px;
@@ -1487,7 +1487,7 @@
 /* ------------------------------------------------------------------
    Pro rata salary
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   .lg-tools .pr-bar-row {
     grid-template-columns: 112px minmax(0, 1fr) 40px;
   }
@@ -1496,7 +1496,7 @@
 /* ------------------------------------------------------------------
    Average salary by age
    ------------------------------------------------------------------ */
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   .lg-tools .sa-row {
     grid-template-columns: 44px minmax(0, 1fr) 58px;
     gap: 8px;
@@ -1751,7 +1751,7 @@
     font-size: 16px;
   }
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgnw-assets-panel {
     padding: 26px 20px 23px;
   }
@@ -1780,7 +1780,7 @@
   align-items: center;
   gap: 8px;
   font-size: 14px;
-  min-height: 36px;
+  min-height: 44px;
   margin: 0;
   color: var(--lg-ocean);
 }
@@ -1988,7 +1988,7 @@
     font-size: 16px;
   }
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgnw-liabilities-panel {
     padding: 26px 20px 23px;
   }
@@ -2163,7 +2163,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 10px 15px;
   font-family: var(--lg-font-body);
   font-size: 12px;
@@ -2237,7 +2237,7 @@
     flex: 1;
   }
 }
-@media (max-width: 820px) {
+@container lg-calc (max-width: 788px) {
   #lgnw-results-panel .lgnw-hero-grid {
     gap: 25px;
     grid-template-columns: 1fr 210px;
@@ -2246,7 +2246,7 @@
     padding-left: 22px;
   }
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgnw-results-panel {
     padding: 29px 24px 23px;
   }
@@ -2281,7 +2281,7 @@
     font-size: clamp(38px, 10vw, 56px);
   }
 }
-@media (max-width: 390px) {
+@container lg-calc (max-width: 358px) {
   #lgnw-results-panel .lgnw-hero-top {
     flex-direction: column;
     align-items: flex-start;
@@ -2443,12 +2443,12 @@
   line-height: 1.6;
   margin: 19px 0 0;
 }
-@media (max-width: 750px) {
+@container lg-calc (max-width: 718px) {
   #lgnw-bridge-panel .lgnw-mini-formula {
     display: none;
   }
 }
-@media (max-width: 500px) {
+@container lg-calc (max-width: 468px) {
   #lgnw-bridge-panel {
     padding: 26px 20px;
   }
@@ -2639,7 +2639,7 @@
     gap: 6px;
   }
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgnw-composition-panel {
     padding: 27px 22px 24px;
   }
@@ -2770,7 +2770,7 @@
   line-height: 1.6;
   font-size: 11.5px;
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgnw-debts-panel {
     padding: 27px 22px 24px;
   }
@@ -2870,7 +2870,7 @@
   line-height: 1.6;
   margin: 20px 0 0;
 }
-@media (max-width: 830px) {
+@container lg-calc (max-width: 798px) {
   #lgnw-insights-panel .lgnw-insights-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -2878,7 +2878,7 @@
     grid-column: 1/-1;
   }
 }
-@media (max-width: 560px) {
+@container lg-calc (max-width: 528px) {
   #lgnw-insights-panel {
     padding: 27px 22px 23px;
   }
@@ -3009,7 +3009,7 @@
   color: var(--lg-ink-soft);
   margin: 7px 0 0;
 }
-@media (max-width: 600px) {
+@container lg-calc (max-width: 568px) {
   #lgnw-methodology summary {
     padding: 20px 17px;
     gap: 13px;
@@ -3291,7 +3291,7 @@
     min-height: 0;
   }
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   :is(#iht-form, [data-calc="inheritance-tax"], :where(:root:has(#lgiht-assets-card))) .lgiht-card {
     padding: 26px 22px;
   }
@@ -3445,7 +3445,7 @@
     750 12px "Manrope",
     sans-serif;
   cursor: pointer;
-  min-height: 41px;
+  min-height: 44px;
 }
 #lgiht-results-card button:last-child {
   background: transparent;
@@ -3491,7 +3491,7 @@
     font-size: clamp(37px, 10cqw, 56px);
   }
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgiht-results-card {
     padding: 28px 23px 24px;
   }
@@ -4080,7 +4080,7 @@
 #lglc-input-panel #lglc-error[hidden] {
   display: none !important;
 }
-@media (max-width: 580px) {
+@container lg-calc (max-width: 548px) {
   #lgci-input-panel,
   #lgmc-input-panel,
   #lglc-input-panel {
@@ -4316,7 +4316,7 @@
   color: var(--lg-on-ocean-soft);
   margin: 30px 0 0;
 }
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgci-results-panel .lgci-results-grid,
   #lgmc-results-panel .lgmc-results-grid,
   #lglc-results-panel .lglc-results-grid {
@@ -4324,7 +4324,7 @@
     row-gap: 24px;
   }
 }
-@media (max-width: 480px) {
+@container lg-calc (max-width: 448px) {
   #lgci-results-panel,
   #lgmc-results-panel,
   #lglc-results-panel {
@@ -4359,7 +4359,7 @@
 /* ------------------------------------------------------------------
    Shared: panel-style calculators (compound interest, loan, mortgage)
    ------------------------------------------------------------------ */
-@media (max-width: 650px) {
+@container lg-calc (max-width: 618px) {
   #lgci-results-panel .lgci-results-grid,
   #lgmc-results-panel .lgmc-results-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4484,7 +4484,7 @@
   line-height: 1.7;
   margin: 18px 0 0;
 }
-@media (max-width: 640px) {
+@container lg-calc (max-width: 608px) {
   #lgci-projection {
     padding: 26px 20px;
   }
@@ -4660,7 +4660,7 @@
     grid-row: 2;
   }
 }
-@media (max-width: 480px) {
+@container lg-calc (max-width: 448px) {
   #lgci-breakdown,
   #lgmc-breakdown,
   #lglc-breakdown {
@@ -4850,14 +4850,14 @@
     text-align: center;
   }
 }
-@media (max-width: 480px) {
+@container lg-calc (max-width: 448px) {
   #lgci-rate-comparison,
   #lgmc-rate-comparison,
   #lglc-rate-comparison {
     padding: 22px 18px;
   }
 }
-@media (max-width: 330px) {
+@container lg-calc (max-width: 298px) {
   #lgci-rate-comparison .lgci-viz-rate-card,
   #lgmc-rate-comparison .lgmc-viz-rate-card,
   #lglc-rate-comparison .lglc-viz-rate-card {
@@ -4985,7 +4985,7 @@
   font-size: 12px;
   color: var(--lg-ink-soft);
 }
-@media (max-width: 480px) {
+@container lg-calc (max-width: 448px) {
   #lgci-methodology summary,
   #lgmc-methodology summary,
   #lglc-methodology summary {
@@ -5473,9 +5473,21 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   white-space: nowrap;
 }
 #lgdti-gauge .lgdti-gauge-scale span:first-child {
+  left: 0;
   transform: none;
 }
+/* Scale marks at 20%, 36% and 50% of a 0 to 60% track */
+#lgdti-gauge .lgdti-gauge-scale span:nth-child(2) {
+  left: 33.333%;
+}
+#lgdti-gauge .lgdti-gauge-scale span:nth-child(3) {
+  left: 60%;
+}
+#lgdti-gauge .lgdti-gauge-scale span:nth-child(4) {
+  left: 83.333%;
+}
 #lgdti-gauge .lgdti-gauge-scale span:last-child {
+  left: 100%;
   transform: translateX(-80%);
 }
 #lgdti-gauge .lgdti-gauge-key {
@@ -5778,7 +5790,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 
 /* Debt to income: small screens and accessibility */
-@media (max-width: 580px) {
+@container lg-calc (max-width: 548px) {
   #lgdti-input-panel {
     padding: 26px 20px;
   }
@@ -5793,7 +5805,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
     max-width: none;
   }
 }
-@media (max-width: 480px) {
+@container lg-calc (max-width: 448px) {
   #lgdti-results-panel {
     padding: 28px 22px;
   }
@@ -5837,7 +5849,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
    styles and lays itself out without depending on the Webflow template.
    Only class selectors, no ids or !important, so Webflow can override.
    Layout responds to the calculator's own width (container queries).
-   First used by: retirement income.
+   Every calculator now has this root; classic ones add .lg-calc-classic.
    ------------------------------------------------------------------ */
 .lg-calc {
   --lg-section-gap: 24px;
@@ -5847,48 +5859,58 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   gap: var(--lg-section-gap);
   width: 100%;
   min-width: 0;
+}
+.lg-calc [hidden] {
+  display: none !important; /* the one exception: hidden must always hide */
+}
+/* Calculators still on their original components: the root sets layout and
+   spacing only, so their own styles are unchanged. Sections are spaced by the
+   root's gap, not their own margins. */
+.lg-calc-classic > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* Base styles for calculators built on the lgc- components */
+.lg-calc:not(.lg-calc-classic) {
   color: var(--lg-ink);
   font-family: var(--lg-font-body);
   font-size: 16px;
   line-height: 1.55;
   text-align: left;
 }
-.lg-calc,
-.lg-calc *,
-.lg-calc *::before,
-.lg-calc *::after {
+.lg-calc:not(.lg-calc-classic),
+.lg-calc:not(.lg-calc-classic) *,
+.lg-calc:not(.lg-calc-classic) *::before,
+.lg-calc:not(.lg-calc-classic) *::after {
   box-sizing: border-box;
 }
-.lg-calc [hidden] {
-  display: none !important; /* the one exception: hidden must always hide */
-}
-.lg-calc :is(h2, h3, h4, p, ul, ol, dl, dd, fieldset, figure, label, legend) {
+.lg-calc:not(.lg-calc-classic) :where(h2, h3, h4, p, ul, ol, dl, dd, fieldset, figure, label, legend) {
   margin: 0; /* Webflow's base styles add margins to labels and paragraphs */
 }
-.lg-calc :is(h2, h3, h4) {
+.lg-calc:not(.lg-calc-classic) :where(h2, h3, h4) {
   font-family: var(--lg-font-heading);
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.3;
   color: inherit;
 }
-.lg-calc h2 {
+.lg-calc:not(.lg-calc-classic) :where(h2) {
   font-size: clamp(23px, 2.4vw, 30px);
 }
-.lg-calc h3 {
+.lg-calc:not(.lg-calc-classic) :where(h3) {
   font-size: 21px;
 }
-.lg-calc h4 {
+.lg-calc:not(.lg-calc-classic) :where(h4) {
   font-size: 16px;
 }
-.lg-calc a {
+.lg-calc:not(.lg-calc-classic) :where(a) {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--lg-mint-ink);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
-.lg-calc :is(a, button, input, select, summary, [tabindex]):focus-visible {
+.lg-calc:not(.lg-calc-classic) :where(a, button, input, select, summary, [tabindex]):focus-visible {
   outline: 3px solid var(--lg-mint-ink);
   outline-offset: 3px;
 }
@@ -6450,6 +6472,9 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 
 /* Mobile result bar: shown by the JS while the results are below the screen */
 .lg-calc .lgc-sticky {
+  box-sizing: border-box;
+  font-family: var(--lg-font-body);
+  line-height: 1.55;
   position: sticky;
   bottom: 12px;
   z-index: 5;
@@ -6483,6 +6508,31 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 .lg-calc .lgc-sticky-link:focus-visible {
   outline-color: var(--lg-mint);
+}
+.lg-calc .lgc-sticky p {
+  margin: 0;
+}
+/* Classic calculators: the shared parts style themselves, as the base rules are off there */
+.lg-calc-classic .lgc-sticky-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.lg-calc-classic :where(.lgc-button, .lgc-sticky-link):focus-visible {
+  outline: 3px solid var(--lg-mint-ink);
+  outline-offset: 3px;
+}
+.lg-calc-classic .lgc-sticky-link:focus-visible {
+  outline-color: var(--lg-mint);
+}
+.lg-calc .lgc-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.lg-tools .ef-clear {
+  margin-top: 12px;
 }
 
 /* Layout at the calculator's own width */

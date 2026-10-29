@@ -4,7 +4,7 @@
       "text": "Calculator"
     },
     "lgmc-input-panel": {
-      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only"
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only Clear all"
     },
     "lgmc-error": {
       "text": "",
@@ -115,7 +115,7 @@
       "text": "Calculator"
     },
     "lgmc-input-panel": {
-      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only"
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only Clear all"
     },
     "lgmc-error": {
       "text": "",
@@ -226,7 +226,7 @@
       "text": "Calculator"
     },
     "lgmc-input-panel": {
-      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only"
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only Clear all"
     },
     "lgmc-error": {
       "text": "",
@@ -337,7 +337,7 @@
       "text": "Calculator"
     },
     "lgmc-input-panel": {
-      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only Enter a property price above £0, a deposit from £0 up to (but below) the price, an interest rate from 0% to 100%, and a term of 6 months to 40 years in whole months."
+      "text": "01 — YOUR DETAILS About your mortgage Enter the property price, deposit, interest rate and mortgage term. Property price£ Deposit£ Annual interest rate% Mortgage termyears Repayment type Repayment Interest-only Enter a property price above £0, a deposit from £0 up to (but below) the price, an interest rate from 0% to 100%, and a term of 6 months to 40 years in whole months. Clear all"
     },
     "lgmc-error": {
       "text": "Enter a property price above £0, a deposit from £0 up to (but below) the price, an interest rate from 0% to 100%, and a term of 6 months to 40 years in whole months."

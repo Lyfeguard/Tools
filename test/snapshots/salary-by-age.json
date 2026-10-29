@@ -9,6 +9,10 @@
     "sa-h-salary": {
       "text": "What do you earn a year?"
     },
+    "sa-error": {
+      "text": "",
+      "hidden": true
+    },
     "sa-result": {
       "text": "03 / Where you sit You earn more than about 48% of full-time employees aged 30–39. The median for this group is £40,668. 10th£25k 25th£30.7k Median£40.7k 75th£54.6k 90th£75k Median for your age£40,668 UK median, all ages£39,039 Your take-home a month£2,693 How your salary compares Against the median for your age£668 below (2%) Against the UK median£961 above (2%) Above the median for3 of 6 age groups To move up in your age group The top 25% earn from£54,620 The top 10% earn from£75,041 Compared with ONS full-time pay figures for April 2025 (provisional). Take-home uses 2026/27 Income Tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
     },
@@ -94,6 +98,10 @@
     },
     "sa-h-salary": {
       "text": "What do you earn a year?"
+    },
+    "sa-error": {
+      "text": "",
+      "hidden": true
     },
     "sa-result": {
       "text": "03 / Where you sit You earn more than about 39% of women working full time aged 22–29. The median for this group is £31,261. 10th£21.7k 25th£25.6k Median£31.3k 75th£38.9k 90th£48.8k Median for your age£31,261 UK median for women, all ages£35,670 Your take-home a month£2,003 How your salary compares Against the median for your age£2,761 below (9%) Against the UK median£7,170 below (20%) Above the median for1 of 6 age groups To move up in your age group The top 25% earn from£38,850 The top 10% earn from£48,839 Compared with ONS full-time pay figures for April 2025 (provisional). Take-home uses 2026/27 Income Tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
@@ -181,6 +189,10 @@
     "sa-h-salary": {
       "text": "What do you earn a year?"
     },
+    "sa-error": {
+      "text": "",
+      "hidden": true
+    },
     "sa-result": {
       "text": "03 / Where you sit You’re in the Top 10% of full-time employees aged 50–59. The top 10% start at £85,226. 10th£24.8k 25th£30.3k Median£41.9k 75th£58.4k 90th£85.2k Median for your age£41,866 UK median, all ages£39,039 Your take-home a month£7,607 How your salary compares Against the median for your age£108,134 above (258%) Against the UK median£110,961 above (284%) Above the median for6 of 6 age groups To move up in your age group The top 25% earn fromReached The top 10% earn fromReached Compared with ONS full-time pay figures for April 2025 (provisional). Take-home uses 2026/27 Income Tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
     },
@@ -249,6 +261,97 @@
     },
     "sa-top10": {
       "text": "Reached"
+    },
+    "sa-h-data": {
+      "text": "Full-time salary by age in the UK"
+    },
+    "sa-data-who": {
+      "text": "everyone"
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "sa-h-you": {
+      "text": "How old are you?"
+    },
+    "sa-h-salary": {
+      "text": "What do you earn a year?"
+    },
+    "sa-salary@invalid": "true",
+    "sa-error": {
+      "text": "Enter your salary using numbers only, for example 40,000."
+    },
+    "sa-result": {
+      "text": "03 / Where you sit Where you sit – Enter your salary to see how it compares with full-time employees aged 30–39. 10th£25k 25th£30.7k Median£40.7k 75th£54.6k 90th£75k Median for your age£40,668 UK median, all ages£39,039 Your take-home a month£2,693 How your salary compares Against the median for your age£668 below (2%) Against the UK median£961 above (2%) Above the median for3 of 6 age groups To move up in your age group The top 25% earn from£54,620 The top 10% earn from£75,041 Compared with ONS full-time pay figures for April 2025 (provisional). Take-home uses 2026/27 Income Tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan. Calculated in your browser. Nothing you enter is stored. A guide, not financial advice."
+    },
+    "sa-label": {
+      "text": "Where you sit"
+    },
+    "sa-value": {
+      "text": "–"
+    },
+    "sa-summary": {
+      "text": "Enter your salary to see how it compares with full-time employees aged 30–39."
+    },
+    "sa-detail": {
+      "text": "10th£25k 25th£30.7k Median£40.7k 75th£54.6k 90th£75k Median for your age£40,668 UK median, all ages£39,039 Your take-home a month£2,693 How your salary compares Against the median for your age£668 below (2%) Against the UK median£961 above (2%) Above the median for3 of 6 age groups To move up in your age group The top 25% earn from£54,620 The top 10% earn from£75,041",
+      "hidden": true
+    },
+    "sa-scale": {
+      "text": "10th£25k 25th£30.7k Median£40.7k 75th£54.6k 90th£75k",
+      "label": "Your salary ranks at about 48 out of 100 for full-time employees aged 30–39"
+    },
+    "sa-fill": {
+      "text": "",
+      "width": "48.4038%"
+    },
+    "sa-you": {
+      "text": "",
+      "left": "48.4038%"
+    },
+    "sa-t10": {
+      "text": "£25k"
+    },
+    "sa-t25": {
+      "text": "£30.7k"
+    },
+    "sa-t50": {
+      "text": "£40.7k"
+    },
+    "sa-t75": {
+      "text": "£54.6k"
+    },
+    "sa-t90": {
+      "text": "£75k"
+    },
+    "sa-st-median": {
+      "text": "£40,668"
+    },
+    "sa-uk-label": {
+      "text": "UK median, all ages"
+    },
+    "sa-st-uk": {
+      "text": "£39,039"
+    },
+    "sa-st-net": {
+      "text": "£2,693"
+    },
+    "sa-vs-age": {
+      "text": "£668 below (2%)"
+    },
+    "sa-vs-uk": {
+      "text": "£961 above (2%)"
+    },
+    "sa-ages-above": {
+      "text": "3 of 6 age groups"
+    },
+    "sa-top25": {
+      "text": "£54,620"
+    },
+    "sa-top10": {
+      "text": "£75,041"
     },
     "sa-h-data": {
       "text": "Full-time salary by age in the UK"

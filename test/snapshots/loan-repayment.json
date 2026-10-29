@@ -4,7 +4,7 @@
       "text": "Calculator"
     },
     "lglc-input-panel": {
-      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years"
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years Clear all"
     },
     "lglc-error": {
       "text": "",
@@ -94,7 +94,7 @@
       "text": "Calculator"
     },
     "lglc-input-panel": {
-      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years"
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years Clear all"
     },
     "lglc-error": {
       "text": "",
@@ -184,7 +184,7 @@
       "text": "Calculator"
     },
     "lglc-input-panel": {
-      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years"
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years Clear all"
     },
     "lglc-error": {
       "text": "",
@@ -274,7 +274,7 @@
       "text": "Calculator"
     },
     "lglc-input-panel": {
-      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years Enter a loan above £0, an annual rate between 0% and 100%, and a term of 6 months to 40 years in whole months."
+      "text": "01 — YOUR DETAILS About your loan Enter how much you'd like to borrow, the annual interest rate and repayment term. Loan amount £ Annual interest rate % Loan term years Enter a loan above £0, an annual rate between 0% and 100%, and a term of 6 months to 40 years in whole months. Clear all"
     },
     "lglc-error": {
       "text": "Enter a loan above £0, an annual rate between 0% and 100%, and a term of 6 months to 40 years in whole months."
