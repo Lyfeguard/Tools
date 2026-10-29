@@ -9,6 +9,7 @@
 - `LG.ukTax` now also has Scottish rates, student loan thresholds, `taxBand` and `personalAllowance`. Existing calculators are unchanged.
 - New shared components: select and checkbox fields, a stacked share bar, notes, a total row for tables, and option switches that stay side by side on phones (`lgc-switch-compact`).
 - Tests: known answers for the new tax figures and pension types.
+- Salary by age: updated to ONS ASHE 2026 provisional figures (Table 6.7a, released 22 October 2026). The UK full-time median is now £40,911 (was £39,039 in the 2025 provisional figures). The chart's axis now runs to £110k, as the top 10% of men aged 40 to 59 now start above £100k. **Re-paste `markup/salary-by-age.html`**: its default figures, chart and table are in the markup.
 
 ## v1.7.0 – 2026-10-28
 Every calculator now uses the markup pattern from Retirement Income. **All ten older embeds must be re-pasted** in the same publish as the head code moving to v1.7.0. Calculations are unchanged.

@@ -1259,9 +1259,18 @@
 .lg-tools .sa-plot {
   position: relative;
   height: 40px;
-  background-image: linear-gradient(to right, var(--lg-border) 1px, transparent 1px);
-  background-size: 22.222% 100%;
-  background-position: 11.111% 0;
+  /* Gridlines at 20k, 40k, 60k, 80k and 100k on a 10k to 110k scale */
+  background-image:
+    linear-gradient(var(--lg-border), var(--lg-border)), linear-gradient(var(--lg-border), var(--lg-border)), linear-gradient(var(--lg-border), var(--lg-border)),
+    linear-gradient(var(--lg-border), var(--lg-border)), linear-gradient(var(--lg-border), var(--lg-border));
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+  background-position:
+    10% 0,
+    30% 0,
+    50% 0,
+    70% 0,
+    90% 0;
 }
 .lg-tools .sa-whisker {
   position: absolute;
