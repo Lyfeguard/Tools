@@ -194,3 +194,50 @@ async function componentStyles(key, steps, width, siteCss) {
   await page.close();
   return styles;
 }
+
+// Load only what's needed: each page has its own calculator's files.
+// Without JavaScript (or before the script runs), its stylesheet gives the
+// markup exactly the look the whole v1 stylesheet does, on the site.
+async function noJsLooks(key, width, version) {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width, height: 900 } });
+  await context.route(/^https?:/, (route) => route.abort());
+  const page = await context.newPage();
+  const dir = fs.mkdtempSync(path.join(require('os').tmpdir(), 'lg-nojs-'));
+  fs.writeFileSync(path.join(dir, 'page.html'), pageHtml(key, path.join(ROOT, 'dist'), 'cms', version === 'v2' ? { embed: false } : null, true));
+  await page.goto('file://' + path.join(dir, 'page.html'));
+  const out = await page.evaluate((LOOK) => [...document.querySelectorAll('.lg-calc, .lg-calc *')].map((el, i) => {
+    const cs = getComputedStyle(el);
+    const box = el.getBoundingClientRect();
+    return [i + ' ' + el.tagName.toLowerCase() + (el.id ? '#' + el.id : ''), LOOK.map((k) => k + ':' + cs.getPropertyValue(k)).join(';') + ';box:' + [box.width, box.height].map(Math.round).join(',')];
+  }), LOOK);
+  await context.close();
+  return out;
+}
+for (const key of KEYS) {
+  test(`${key}: without JavaScript, its own stylesheet looks as v1's`, async () => {
+    for (const width of [1280, 375]) {
+      const v1 = await noJsLooks(key, width, 'v1');
+      const v2 = await noJsLooks(key, width, 'v2');
+      assert.equal(v2.length, v1.length);
+      const differing = v1.filter(([name, css], i) => v2[i][1] !== css).map(([name]) => name);
+      assert.deepEqual(differing.slice(0, 10), [], `${differing.length} elements look different at ${width}px`);
+    }
+  });
+}
+
+test('each page loads only its own calculator, and little of it', async () => {
+  const gz = (file) => require('zlib').gzipSync(fs.readFileSync(path.join(ROOT, 'dist/v2', file))).length;
+  for (const key of KEYS) {
+    const page = await browser.newPage();
+    const files = [];
+    page.on('request', (r) => /\.(js|css)$/.test(r.url()) && files.push(r.url().split('/').slice(-2).join('/')));
+    const dir = fs.mkdtempSync(path.join(require('os').tmpdir(), 'lg-weight-'));
+    fs.writeFileSync(path.join(dir, 'page.html'), pageHtml(key, path.join(ROOT, 'dist'), 'cms', { embed: false }));
+    await page.goto('file://' + path.join(dir, 'page.html'));
+    await page.waitForFunction(() => document.readyState === 'complete');
+    await page.close();
+    assert.deepEqual(files.sort(), [`v2/${key}.min.css`, `v2/${key}.min.js`].sort(), key);
+    const total = gz(key + '.min.js') + gz(key + '.min.css');
+    assert.ok(total < 25000, `${key}: ${total} bytes gzipped`);
+  }
+});

@@ -7,6 +7,7 @@
 //   node scripts/webflow-markup.js field <key>     the field value, as JSON
 //   node scripts/webflow-markup.js check <file>    compare with a saved
 //        list_collection_items response; lists the items that are out of date
+//        or whose Component key field isn't their calculator's key
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -44,8 +45,10 @@ if (command === 'field' && CMS.items[arg]) {
     const item = items.find((i) => i.id === id);
     const current = item ? item.fieldData[CMS.field] || '' : null;
     const ok = current !== null && normal(current) === normal(field(key));
-    if (!ok) stale++;
-    console.log((ok ? 'up to date  ' : current === null ? 'not found   ' : 'out of date ') + key);
+    // The template head loads dist/v2/<Component key>.min.js and .min.css.
+    const keyed = item && item.fieldData['component-key'] === key;
+    if (!ok || !keyed) stale++;
+    console.log((ok ? (keyed ? 'up to date  ' : 'key not set ') : current === null ? 'not found   ' : 'out of date ') + key);
   }
   process.exitCode = stale ? 1 : 0;
 } else {

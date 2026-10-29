@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.8.5
+ * Lyfeguard calculators | lg-calc.js | v1.8.6
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.8.5';
+  LG.version = '1.8.6';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -105,46 +105,36 @@
   LG.xlsx = { zip: workbookZip, crc32: crc32 };
 
   /* ------------------------------------------------------------------
-     Core: UK Income Tax, employee National Insurance and student loans, 2026/27
-     Update here once a year (each April); the pro rata, salary-by-age,
-     retirement income and take-home pay calculators all read from it.
+     Core: UK Income Tax, employee National Insurance and student loans
+     The figures for the tax year are in data/2026-27.json, put in here by
+     the build (scripts/data.js). Each April, add the new year's file and
+     point the marker below at it. Every calculator reads from LG.taxYear.
      ------------------------------------------------------------------ */
+  var YEAR = (LG.taxYear = /* @data:2026-27 */ null);
   var TAX = {
-    taxYear: '2026/27',
-    personalAllowance: 12570,
-    taperStart: 100000,
-    basicBand: 37700,
-    additionalThreshold: 125140,
-    niPrimary: 12570,
-    niUpper: 50270,
+    taxYear: YEAR.taxYear,
+    personalAllowance: YEAR.incomeTax.personalAllowance,
+    taperStart: YEAR.incomeTax.taperStart,
+    basicBand: YEAR.incomeTax.basicBand,
+    additionalThreshold: YEAR.incomeTax.additionalThreshold,
+    niPrimary: YEAR.nationalInsurance.primaryThreshold,
+    niUpper: YEAR.nationalInsurance.upperEarningsLimit,
     // Auto-enrolment qualifying earnings
-    qualifyingLower: 6240,
-    qualifyingUpper: 50270,
+    qualifyingLower: YEAR.autoEnrolment.qualifyingLower,
+    qualifyingUpper: YEAR.autoEnrolment.qualifyingUpper,
   };
-  // Scottish rates on taxable income above the Personal Allowance: [band top, rate, name].
-  // Starter to 16,537, basic to 29,526, intermediate to 43,662, higher to 75,000
-  // (with the full allowance), advanced to 125,140, then top rate.
-  var SCOTLAND = [
-    [3967, 0.19, 'Starter rate'],
-    [16956, 0.2, 'Basic rate'],
-    [31092, 0.21, 'Intermediate rate'],
-    [62430, 0.42, 'Higher rate'],
-    [125140, 0.45, 'Advanced rate'],
-    [Infinity, 0.48, 'Top rate'],
-  ];
+  // Rates on taxable income above the Personal Allowance: [band top, rate, name].
+  // Scotland: the Scottish bands as they apply after the full allowance.
+  var SCOTLAND = YEAR.incomeTax.scotland.map(function (b) {
+    return [b.upTo === null ? Infinity : b.upTo, b.rate, b.name];
+  });
   var REST_OF_UK = [
-    [TAX.basicBand, 0.2, 'Basic rate'],
-    [TAX.additionalThreshold, 0.4, 'Higher rate'],
-    [Infinity, 0.45, 'Additional rate'],
+    [TAX.basicBand, YEAR.incomeTax.rates.basic, 'Basic rate'],
+    [TAX.additionalThreshold, YEAR.incomeTax.rates.higher, 'Higher rate'],
+    [Infinity, YEAR.incomeTax.rates.additional, 'Additional rate'],
   ];
   // Repayment thresholds a year and rates; repayments are on pay above the threshold.
-  var STUDENT_LOANS = {
-    plan1: { name: 'Plan 1', threshold: 26900, rate: 0.09 },
-    plan2: { name: 'Plan 2', threshold: 29385, rate: 0.09 },
-    plan4: { name: 'Plan 4', threshold: 33795, rate: 0.09 },
-    plan5: { name: 'Plan 5', threshold: 25000, rate: 0.09 },
-    postgrad: { name: 'Postgraduate Loan', threshold: 21000, rate: 0.06 },
-  };
+  var STUDENT_LOANS = YEAR.studentLoans;
   // The allowance shrinks by 1 for every 2 of income over 100,000.
   function personalAllowance(taxableIncome) {
     var pa = TAX.personalAllowance;
@@ -174,7 +164,7 @@
   function employeeNI(gross) {
     var main = Math.min(Math.max(gross - TAX.niPrimary, 0), TAX.niUpper - TAX.niPrimary);
     var upper = Math.max(gross - TAX.niUpper, 0);
-    return main * 0.08 + upper * 0.02;
+    return main * YEAR.nationalInsurance.mainRate + upper * YEAR.nationalInsurance.upperRate;
   }
   // Yearly repayment, in whole pounds as payroll rounds down.
   function studentLoan(pay, plan) {
@@ -914,9 +904,10 @@
     const ALL_INPUTS = MONETARY.concat(['transfer-nrb', 'transfer-rnrb']);
     let announceTimer = null;
     const MAX = 100000000000;
-    const NRB = 32500000;
-    const RNRB = 17500000;
-    const TWO_MILLION = 200000000;
+    // In pence, from the tax year's figures (data/2026-27.json).
+    const NRB = LG.taxYear.inheritanceTax.nilRateBand * 100;
+    const RNRB = LG.taxYear.inheritanceTax.residenceNilRateBand * 100;
+    const TWO_MILLION = LG.taxYear.inheritanceTax.taperThreshold * 100;
     const pounds = (pence) => pence / 100;
     const money = (pence) => LG.money(pounds(pence), pence % 100 === 0 ? 0 : 2);
     const ratio = (n) => LG.percent(n);
@@ -1085,7 +1076,7 @@
         errors.advanced = 'You selected Confirmed relief but have not entered a positive verified relief amount.';
       // Basic upper bound with one \u00A32.5m 100% APR/BPR allowance.
       // Transferred APR/BPR allowances are specialist and deliberately unsupported here.
-      const APR_BPR_100_CAP = 250000000; // pence
+      const APR_BPR_100_CAP = LG.taxYear.inheritanceTax.fullReliefCap * 100; // pence
       const reliefUpperBound = Math.min(v.business, APR_BPR_100_CAP) + Math.max(0, v.business - APR_BPR_100_CAP) / 2;
       if (v.business > 0 && v['business-relief'] > reliefUpperBound)
         errors.advanced =
@@ -2688,7 +2679,7 @@
   /* @v2:pro-rata-salary-start */
   module('pro-rata-salary', function () {
     let scope = document; // the document, or the component's shadow root (set in setup)
-    // 2026/27 rates: England, Wales and Northern Ireland
+    // The tax year's rates (LG.taxYear): England, Wales and Northern Ireland
     var R = {
       personalAllowance: LG.ukTax.rates.personalAllowance,
       taperStart: LG.ukTax.rates.taperStart,
@@ -2697,9 +2688,9 @@
       niPrimary: LG.ukTax.rates.niPrimary,
       niUpper: LG.ukTax.rates.niUpper,
       higherRateStart: LG.ukTax.rates.personalAllowance + LG.ukTax.rates.basicBand,
-      hicbcStart: 60000,
-      hicbcEnd: 80000,
-      aeTrigger: 10000,
+      hicbcStart: LG.taxYear.childBenefitCharge.start,
+      hicbcEnd: LG.taxYear.childBenefitCharge.end,
+      aeTrigger: LG.taxYear.autoEnrolment.trigger,
     };
     // Income Tax and employee NI come from the shared UK tax core (LG.ukTax).
     var incomeTax = LG.ukTax.incomeTax;
@@ -2930,39 +2921,10 @@
   /* @v2:salary-by-age-start */
   module('salary-by-age', function () {
     let scope = document; // the document, or the component's shadow root (set in setup)
-    // ONS Annual Survey of Hours and Earnings (ASHE) 2026 provisional, Table 6.7a, UK.
-    // Gross annual pay, full-time employees on adult rates in the same job for more than a year.
-    // Order: median, mean, p10, p20, p25, p30, p40, p60, p70, p75, p80, p90
-    var DATA = {
-      ages: ['18-21', '22-29', '30-39', '40-49', '50-59', '60+'],
-      all: {
-        all: [40911, 52109, 25288, 28857, 30600, 32393, 36398, 46367, 52647, 56842, 62500, 82680],
-        '18-21': [24578, 26595, 15369, 18865, 20194, 21132, 23223, 26000, 27600, 28527, 29637, 34362],
-        '22-29': [33678, 37980, 23850, 26500, 27589, 28680, 31032, 36842, 40444, 42839, 45604, 54877],
-        '30-39': [42593, 51145, 26460, 30428, 32302, 34205, 38284, 47491, 53281, 57201, 62334, 79870],
-        '40-49': [46280, 58785, 26650, 31087, 33304, 35632, 40684, 51818, 59141, 64326, 70927, 94240],
-        '50-59': [43860, 58130, 26054, 29961, 31812, 33836, 38645, 49868, 56954, 62074, 68631, 92757],
-        '60+': [38060, 50372, 24652, 27641, 29203, 30684, 34030, 43185, 49795, 53558, 59074, 79916],
-      },
-      male: {
-        all: [43934, 57161, 26624, 30583, 32500, 34542, 38918, 49779, 56826, 61863, 68308, 90703],
-        '18-21': [25328, 29132, 16096, 20014, 21177, 22208, 23942, 27063, 28839, 29901, 31209, 36638],
-        '22-29': [35000, 40342, 24782, 27352, 28459, 29750, 32133, 38204, 42526, 45049, 48039, 58250],
-        '30-39': [45199, 54950, 27787, 31966, 34008, 36043, 40279, 50444, 56904, 61530, 67114, 86185],
-        '40-49': [49702, 64539, 28650, 33674, 36101, 38673, 44009, 55934, 64353, 70166, 77394, 101194],
-        '50-59': [47462, 65634, 27883, 32253, 34481, 36876, 41851, 53936, 62838, 68835, 76656, 104215],
-        '60+': [41081, 54832, 25908, 29324, 30910, 32620, 36343, 46547, 53098, 57575, 64070, 88472],
-      },
-      female: {
-        all: [37471, 45203, 23789, 27030, 28508, 30078, 33427, 42003, 47750, 51021, 55046, 70000],
-        '18-21': [23660, 22856, 14650, 17640, 18813, 19944, 21643, 24765, 26138, 26796, 27551, 30062],
-        '22-29': [32330, 35282, 22758, 25706, 26671, 27690, 29988, 35307, 38556, 40355, 42918, 50279],
-        '30-39': [39528, 45857, 24862, 28661, 30331, 32075, 35676, 43955, 48849, 51806, 55824, 69484],
-        '40-49': [41516, 50957, 24773, 28504, 30247, 32145, 36574, 47296, 52840, 56639, 61756, 80809],
-        '50-59': [39336, 48007, 24415, 27564, 29071, 30612, 34380, 44833, 50707, 54289, 58977, 75836],
-        '60+': [33536, 42198, 22883, 25610, 26598, 27838, 30502, 37300, 42573, 46296, 50796, 65106],
-      },
-    };
+    // ONS Annual Survey of Hours and Earnings (ASHE) 2026 provisional, Table 6.7a, UK:
+    // data/ons-ashe-2026.json, put in here by the build. Each row: median, mean,
+    // p10, p20, p25, p30, p40, p60, p70, p75, p80, p90.
+    var DATA = /* @data:ons-ashe-2026 */ null;
 
     var PCTS = [10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90];
     var CHART = { min: 10000, max: 110000 };
@@ -3657,8 +3619,8 @@
   module('retirement-income', function () {
     'use strict';
     const MAX_AGE = 100;
-    const LUMP_SUM_ALLOWANCE = 268275; // 2026/27, frozen
-    const TAX_FREE_SHARE = 0.25;
+    const LUMP_SUM_ALLOWANCE = LG.taxYear.pensions.lumpSumAllowance;
+    const TAX_FREE_SHARE = LG.taxYear.pensions.taxFreeShare;
 
     // Year-by-year projection in today's money. Each year the pot pays what
     // the State Pension and other income don't cover, then the rest grows at
@@ -3717,7 +3679,7 @@
       inflation: { kind: 'rate', min: 0, max: 10, blank: 2.5, msg: 'Enter inflation from 0% to 10% a year.' },
       'plan-age': { kind: 'whole', min: 60, max: 100, blank: 95, msg: 'Enter a plan age from 60 to 100, older than the age you start.' },
     };
-    const DEFAULTS = { sp: '12,548', 'sp-age': '67', growth: '4', inflation: '2.5', 'plan-age': '95' };
+    const DEFAULTS = { sp: LG.taxYear.pensions.fullStatePension.toLocaleString('en-GB'), 'sp-age': '67', growth: '4', inflation: '2.5', 'plan-age': '95' };
 
     LG.start({
       name: 'Retirement Income',
@@ -4453,7 +4415,8 @@
           );
         }
         if (r.rasClaim >= 1) notes.push('You could claim about ' + pounds(r.rasClaim) + ' more tax relief on your pension through Self Assessment or by contacting HMRC.');
-        if (r.taxable > 60000) notes.push('If you or your partner get Child Benefit, the High Income Child Benefit Charge applies above \u00A360,000. It isn\u2019t included here.');
+        const hicbc = LG.taxYear.childBenefitCharge.start;
+        if (r.taxable > hicbc) notes.push('If you or your partner get Child Benefit, the High Income Child Benefit Charge applies above \u00A3' + hicbc.toLocaleString('en-GB') + '. It isn\u2019t included here.');
         if (r.sacrifice) notes.push('Salary sacrifice can\u2019t take your pay below the National Minimum Wage, and it can lower things worked out from your salary, such as mortgage applications.');
         const list = get('notes');
         list.replaceChildren(

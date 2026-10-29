@@ -4,18 +4,19 @@ Shared CSS and JavaScript for the calculators at lyfeguard.com/tools, plus the
 markup and template code for the Webflow "Tools" CMS collection.
 
 ## How it's used
-The Tools template loads two files in its head code, served by jsDelivr:
+Each page on the Tools template loads only its own calculator, served by jsDelivr and named by the item's Component key field (`webflow/template-head.html`):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.5/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.5/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-beta.1/dist/v2/{{Component key}}.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-beta.1/dist/v2/{{Component key}}.min.js" defer></script>
 ```
 
-Each calculator starts only when its own markup is on the page.
+That's 10 to 21 KB gzipped a page, against about 120 KB when every page loaded v1 and every v2 calculator. v1 (`dist/lg-calc.min.css` and `.min.js`, all calculators in one) is still built and tested, for any page that uses it. The site loads `dist/lg-track.min.js` on every page for click tracking (`webflow/site-custom-code.md`).
 
 ## Folders
 - `src/` – readable CSS and JS. Make every change here.
 - `dist/` – minified files that Webflow loads. Rebuild them from `src/`; never edit them by hand.
+- `data/` – the figures that change: each tax year's rates and thresholds (`2026-27.json`) and the ONS salary tables (`ons-ashe-2026.json`). The build puts them into the code.
 - `markup/` – HTML for each item's "Calculator markup" field (paste it as one Custom Code block).
 - `webflow/` – template head code, item field values and the setup guide.
 - `test/` – automated tests that open every calculator in a browser (see below).
@@ -35,12 +36,7 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    ```
    npm run build
    ```
-   This runs `scripts/build.sh`, which does the same as these three commands and checks every file is ASCII-only:
-   ```
-   npx csso src/lg-calc.css --no-restructure -o dist/lg-calc.min.css
-   sed -i 's/background:0 0\([;}]\)/background:transparent\1/g' dist/lg-calc.min.css
-   npx terser src/lg-calc.js -c -m --comments '/^!/' --format ascii_only=true -o dist/lg-calc.min.js
-   ```
+   This runs `scripts/build.sh`: it puts the data files in (`scripts/data.js`), minifies v1 (`dist/lg-calc.min.*`), builds v2 for each calculator (`scripts/build-v2.js`) and the files beside it (`scripts/build-extras.js`: the download dialog, the PDF maker and the click tracking), and checks every file is ASCII-only.
 3. Run the tests:
    ```
    npm test
@@ -72,24 +68,34 @@ Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, 
 - `<button type="button" data-clear>`: puts every field back to how the page loaded it, then lets the calculator update.
 - `data-format="money"` on an input: tidied to 12,500 style when you leave it.
 
-## v2: the `<lg-calculator>` component (alpha)
-A calculator drawn inside its own shadow root, so the site's CSS can't change it. The template head loads the script alongside v1 while calculators move over:
+## v2: the `<lg-calculator>` component
+A calculator drawn inside its own shadow root, so the site's CSS can't change it. `scripts/build-v2.js` makes, for each calculator:
+- `dist/v2/<key>.min.js`: the component, the shared code and that calculator's module, with only its own styles for inside the shadow root.
+- `dist/v2/<key>.min.css`: the same styles for the page, so the markup looks right before the script runs and without JavaScript.
+- And `dist/v2/lg-calculator.min.js`, every calculator in one file, for a page with several.
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.5/dist/v2/lg-calculator.min.js" defer></script>
-```
+A calculator's styles are the rules of `src/lg-calc.css` whose classes and ids it uses: in its markup, its module or the shared component code, or built in its code from a quoted prefix (`'lgdti-band-' + name`). `scripts/css-subset.js` does this; classes inside `:not()` don't count, and `:is()` needs one of its alternatives. The tests prove each calculator looks the same with its own styles as with the whole stylesheet, with JavaScript and without.
 
 SEO comes first: a calculator must be indexed exactly as with v1.
 - The markup stays in the page HTML. `markup/<key>.html` (the CMS Calculator markup field) wraps the calculator in `<lg-calculator key="...">`. The script moves that markup into the element's shadow root and runs it there, so crawlers that don't run JavaScript read the same HTML as before, and Google (which flattens shadow DOM when it renders) sees the same text.
-- If the script doesn't load, or the calculator isn't in v2 yet, the markup stays where it is and v1 runs it as before.
-- v1 starts its calculators at DOMContentLoaded, after every deferred script, so it never runs a calculator v2 has taken.
+- If the script doesn't load, the markup stays where it is, styled by its stylesheet.
 - Nothing is pasted by hand: `scripts/webflow-markup.js` builds each item's field from `markup/` (item ids in `webflow/cms-items.json`), and it's written through the Webflow CMS API, then published with the site. `check` lists the items whose field differs from the repo.
 
 Nothing is written twice. `scripts/build-v2.js` (run by `npm run build`) copies the tax core and each calculator's module from `src/lg-calc.js` (between `/* @v2:...-start */` and `/* @v2:...-end */` comments), and the shared components section and design tokens from `src/lg-calc.css`. `src/v2/` holds only what's different: the start-up, the shared behaviours looked up inside the component, and the element itself. All twelve calculators are built in. The component's styles are the whole of `src/lg-calc.css` (bar the page-level rules), plus a small base layer in `scripts/build-v2.js` that reproduces what the site's base styles give the calculators on the page today (body font and line height, paragraph and label spacing, link font, border-box sizing), so each looks as it does on the site.
 
 A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comments, look elements up through `root.getRootNode()` (or the `get` that `LG.start` passes to setup), never `document`, add it to `CALCULATORS` in `scripts/build-v2.js`, add its scenarios to `test/scenarios.js`, wrap `markup/<key>.html` in `<lg-calculator key="<key>">`, then sync the field.
 
-`test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); no change from the site's CSS or hostile rules; and the same text and headings as v1, both without JavaScript and once rendered.
+`test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); without JavaScript, exactly v1's look from its own stylesheet; no change from the site's CSS or hostile rules; the same text and headings as v1, both without JavaScript and once rendered; and that a page requests only its own two files, under 25 KB gzipped.
+
+## Analytics
+GA4 through Google Tag Manager. Everything is a `lyf_event` dataLayer push (details in `webflow/site-custom-code.md`):
+- `src/lg-track.js` → `dist/lg-track.min.js`: the site-wide click tracking, moved here from Webflow's footer code. It looks through shadow roots, so clicks inside calculators are tracked (`element_location: calculator`). `test/analytics.test.js` replays the old footer code (`test/fixtures/lg-track-before.js`) and the new file on the same clicks and checks they match.
+- `src/v2/track.js`: each calculator's own events: `calculator_start`, `calculator_result`, `calculator_see_results`, `calculator_download`, `calculator_pdf_request`, `calculator_clear` and `calculator_error`. Never the figures entered.
+
+## Data
+The rates, thresholds and tables that change are in `data/`, not the code. `scripts/data.js` puts each file in at its `/* @data:<name> */ null` marker in `src/lg-calc.js` when you build, for v1 and v2 alike; every calculator reads the tax year from `LG.taxYear`. Keys starting with `$` are notes and stay out of the built files.
+
+Each April: copy `data/2026-27.json` to the new year (`data/2027-28.json`), update the figures from GOV.UK, point the marker in `src/lg-calc.js` at it, rebuild, and update the snapshots where results change on purpose (`UPDATE_SNAPSHOTS=1 npm test`). `test/data.test.js` checks every figure is there and makes sense (bands rise, rates are fractions). New ONS tables work the same way.
 
 ## PDF summaries and the download dialog
 Every v2 calculator offers a branded PDF of the figures entered and the results, behind an email form. The calculators, the Guides and the Insights all use the same dialog.
@@ -108,5 +114,5 @@ The calculators' PDF summaries use its fonts and logo (`assets/`), so keep those
 - Nothing private in this repository: it's public and jsDelivr serves every committed file. That includes unpublished guides, CMS exports, built PDFs and client material.
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.
 - In the CSS, use the design tokens (`--lg-ocean`, `--lg-mint-ink`, `--lg-ink-soft`, `--lg-radius` and so on, defined at the top of `src/lg-calc.css` from the brand kit) instead of typing colours, fonts or radii again. Neon Mint (`--lg-mint`) is only for Ocean backgrounds.
-- Tax rates, National Insurance and student loan thresholds (2026/27, including Scottish rates) are in `LG.ukTax` in `src/lg-calc.js` and need updating each April.
+- Tax rates, National Insurance, student loan thresholds and the other yearly figures (2026/27, including Scottish rates) are in `data/2026-27.json` and need updating each April (see Data above). The calculators read them through `LG.ukTax` and `LG.taxYear`.
 - In the JS, every calculator uses the shared helpers in the core section: `LG.start` (start-up and missing-element check), `LG.parseNumber` (reading typed numbers: never use `parseFloat` on user input), `LG.money`, `LG.percent`, `LG.markInvalid` and `LG.showError`. New calculators should too.
