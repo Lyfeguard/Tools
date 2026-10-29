@@ -8,6 +8,7 @@
        calculator_download      an Excel or CSV download
        calculator_pdf_request   "Download PDF summary"
        calculator_clear         "Clear all"
+       calculator_handoff       a "Use these figures" link to another calculator
        calculator_error         the first error message shown
      ------------------------------------------------------------------ */
   function slug(value) {
@@ -58,6 +59,7 @@
       var text = el.textContent;
       if (el.matches('.lgc-sticky-link')) pushEvent(key, 'calculator_see_results', 'see_results', text);
       else if (el.matches('.lgc-pdf-button')) pushEvent(key, 'calculator_pdf_request', 'pdf_request', text);
+      else if (el.matches('[data-handoff]')) pushEvent(key, 'calculator_handoff', 'handoff_' + slug(el.getAttribute('data-handoff')), text);
       else if (el.matches('[data-clear], [id$="-clear"], [id$="-reset"]')) pushEvent(key, 'calculator_clear', 'clear', text);
       else if (el.matches('[id$="-download"]')) pushEvent(key, 'calculator_download', /csv/i.test(text) ? 'download_csv' : 'download_excel', text);
     });

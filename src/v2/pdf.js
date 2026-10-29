@@ -9,13 +9,13 @@
   // The logo as PDF drawing operators, in its SVG's units (1004 x 220).
   // Made from pdf-generator/assets/logo/lyfeguard-white.svg by scripts/build-extras.js.
   var LOGO = '/* @logo */';
-  var SITE = 'https://www.lyfeguard.com';
+  var SITE = 'https://lyfeguard.com';
   var SIGN_UP = 'https://app.lyfeguard.com/register';
 
   /* ------------------------------------------------------------------
      What the calculator shows, read from its shadow root.
      ------------------------------------------------------------------ */
-  var SKIP = 'button, svg, script, style, template, input, select, textarea, summary, [role="img"], [aria-hidden="true"], [class*="sr-only"], .lgc-sticky, .lgc-actions, .lgc-pdf, [data-announce]';
+  var SKIP = 'button, svg, script, style, template, input, select, textarea, summary, [role="img"], [aria-hidden="true"], [class*="sr-only"], .lgc-sticky, .lgc-actions, .lgc-pdf, .lgc-next, .lgc-handoff, [data-announce]';
   var BLOCK = 'div, p, ul, ol, li, dl, table, h1, h2, h3, h4, h5, h6, section, details, fieldset, form';
   var NO_RESULT = /^(?:|\u2014|\u2013|\u00A3\u2013|\u00A3\u2014)$/;
 

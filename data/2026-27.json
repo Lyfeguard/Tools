@@ -1,5 +1,6 @@
 {
   "$about": "UK tax year figures the calculators use, 2026/27. Copied into dist/ by npm run build (scripts/data.js). For a new tax year, add data/<year>.json and point the @data marker in src/lg-calc.js at it. Amounts in pounds a year; rates as fractions.",
+  "$checked": "29 October 2026: Scottish Income Tax bands (GOV.UK) and student loan thresholds and rates (Student Loans Company terms for 2026 to 2027) confirmed.",
   "taxYear": "2026/27",
   "incomeTax": {
     "personalAllowance": 12570,

@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.8.5
+ * Lyfeguard calculators | lg-calc.css | v1.8.6
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -6902,6 +6902,80 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   .lg-calc .lgc-chart-line {
     stroke: CanvasText;
   }
+}
+
+/* ------------------------------------------------------------------
+   "Use these figures": links to calculators that take the figures on
+   (markup/links.js, src/v2/handoff.js), and the note on the calculator
+   they open.
+   ------------------------------------------------------------------ */
+.lg-calc .lgc-next {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: clamp(18px, 3cqi, 26px) clamp(20px, 4cqi, 32px);
+  background: var(--lg-mist);
+  border: 1px solid var(--lg-border);
+  border-radius: var(--lg-radius);
+  color: var(--lg-ink);
+  font-family: var(--lg-font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+.lg-calc .lgc-next-title {
+  margin: 0;
+  color: var(--lg-ocean);
+  font-family: var(--lg-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.lg-calc .lgc-next ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lg-calc .lgc-next li {
+  margin: 0;
+  padding: 0;
+  color: var(--lg-ink);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  list-style: none;
+}
+.lg-calc .lgc-next a {
+  color: var(--lg-ocean);
+  font-family: var(--lg-font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.lg-calc .lgc-next a::after {
+  content: " \2192";
+}
+.lg-calc .lgc-next a:hover {
+  color: var(--lg-mint-ink);
+}
+.lg-calc .lgc-handoff {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--lg-mist);
+  border-left: 3px solid var(--lg-mint-ink);
+  border-radius: var(--lg-radius-small);
+  color: var(--lg-ink);
+  font-family: var(--lg-font-body);
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 /* ------------------------------------------------------------------

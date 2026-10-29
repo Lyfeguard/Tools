@@ -17,20 +17,20 @@ after(async () => {
   await browser.close();
 });
 
-// A page at https://www.lyfeguard.com<pathname> (served from memory), with
+// A page at https://lyfeguard.com<pathname> (served from memory), with
 // the given scripts.
 async function sitePage(pathname, html, scripts) {
   const page = await browser.newPage();
   page.lgErrors = [];
   page.on('pageerror', (e) => page.lgErrors.push(String(e)));
-  await page.route('https://www.lyfeguard.com/**', (route) => {
+  await page.route('https://lyfeguard.com/**', (route) => {
     const url = new URL(route.request().url());
-    if (url.pathname === pathname) return route.fulfill({ contentType: 'text/html', body: html.replace('</head>', scripts.map((s) => `<script src="https://www.lyfeguard.com/__/${s}"></script>`).join('') + '</head>') });
+    if (url.pathname === pathname) return route.fulfill({ contentType: 'text/html', body: html.replace('</head>', scripts.map((s) => `<script src="https://lyfeguard.com/__/${s}"></script>`).join('') + '</head>') });
     if (url.pathname.startsWith('/__/')) return route.fulfill({ contentType: 'text/javascript', body: fs.readFileSync(path.join(ROOT, url.pathname.slice(4))) });
     return route.fulfill({ status: 204 });
   });
-  await page.route(/^https?:\/\/(?!www\.lyfeguard\.com)/, (route) => route.abort());
-  await page.goto('https://www.lyfeguard.com' + pathname);
+  await page.route(/^https?:\/\/(?!lyfeguard\.com)/, (route) => route.abort());
+  await page.goto('https://lyfeguard.com' + pathname);
   // Clicks don't navigate, so each one's event can be read.
   await page.evaluate(() => document.addEventListener('click', (e) => e.preventDefault()));
   return page;
@@ -74,7 +74,7 @@ test('lg-track: buttons with data-track-event, in-page links, loading twice', as
 
 test('calculators: clicks inside are tracked, with the calculator events', async () => {
   const key = 'mortgage';
-  const html = componentPageHtml(key, 'DIST', false).replace(/file:\/\/DIST\//g, 'https://www.lyfeguard.com/__/dist/');
+  const html = componentPageHtml(key, 'DIST', false).replace(/file:\/\/DIST\//g, 'https://lyfeguard.com/__/dist/');
   const page = await sitePage('/tools/mortgage-calculator', html.replace(/<script src="https:\/\/www\.lyfeguard\.com\/__\/dist\/v2\/mortgage\.min\.js" defer><\/script>/, ''), ['dist/lg-track.min.js', 'dist/v2/mortgage.min.js']);
   await page.waitForFunction(() => document.querySelector('lg-calculator').shadowRoot);
   const inside = (fn) => page.evaluate(fn);
