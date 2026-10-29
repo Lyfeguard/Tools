@@ -6905,49 +6905,10 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 
 /* ------------------------------------------------------------------
-   Worked example: the section at the end of every calculator with real
-   figures from it (written by scripts/examples.js). Its own fonts and
-   colours, so it looks the same in classic and lgc- calculators.
+   "Use these figures": links to calculators that take the figures on
+   (markup/links.js, src/v2/handoff.js), and the note on the calculator
+   they open.
    ------------------------------------------------------------------ */
-.lg-calc .lgc-example {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 0;
-  padding: clamp(20px, 4cqi, 32px);
-  background: var(--lg-white);
-  border: 1px solid var(--lg-border);
-  border-radius: var(--lg-radius);
-  color: var(--lg-ink);
-  font-family: var(--lg-font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: left;
-}
-.lg-calc .lgc-example-title {
-  margin: 0;
-  color: var(--lg-ocean);
-  font-family: var(--lg-font-heading);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: normal;
-  text-transform: none;
-}
-.lg-calc .lgc-example p {
-  margin: 0;
-  color: var(--lg-ink);
-  font-size: 16px;
-  line-height: 1.6;
-}
-.lg-calc .lgc-example .lgc-example-sources {
-  color: var(--lg-ink-soft);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-/* "Use these figures": links to calculators that take the figures on
-   (src/v2/handoff.js), and the note on the calculator they open. */
 .lg-calc .lgc-next {
   display: flex;
   flex-direction: column;

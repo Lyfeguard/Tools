@@ -1,6 +1,6 @@
   /* ------------------------------------------------------------------
      Calculators that work together. A "Use these figures" link (in the
-     markup, written by scripts/examples.js) opens another calculator with
+     markup, written by scripts/links.js) opens another calculator with
      the figures carried after the # in its address: that part never goes to
      the server, the click tracking records links without it, and the
      calculator that receives it removes it from the address once read.

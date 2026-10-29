@@ -43,17 +43,12 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    ```
    - `test/known-answers.test.js` checks results against figures worked out by hand (tax, loan and mortgage formulas, IHT bands and so on).
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
-4. If a result changed (a calculator or the data), update the worked examples and check their sentences still read right:
-   ```
-   node scripts/examples.js
-   ```
-   `test/examples.test.js` fails until they match.
-5. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
+4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
    ```
    npm run style-diff -- v2.0.0
    ```
-6. Commit, then create a release tagged with the new version (e.g. `v2.0.1`). GitHub runs the build and tests on every pull request ("Check calculators").
-7. Update the version in the template head code. If `markup/` changed, run **Sync calculator markup** (Actions > Sync calculator markup > Run workflow, `.github/workflows/sync-markup.yml`): it writes each item's Calculator markup field and Component key from `markup/` through the Webflow CMS API, as staged changes, only where they differ. It uses the `WEBFLOW_TOKEN` secret (CMS read and write). Then test on the webflow.io staging site and publish.
+5. Commit, then create a release tagged with the new version (e.g. `v2.0.1`). GitHub runs the build and tests on every pull request ("Check calculators").
+6. Update the version in the template head code. If `markup/` changed, run **Sync calculator markup** (Actions > Sync calculator markup > Run workflow, `.github/workflows/sync-markup.yml`): it writes each item's Calculator markup field and Component key from `markup/` through the Webflow CMS API, as staged changes, only where they differ. It uses the `WEBFLOW_TOKEN` secret (CMS read and write). Then test on the webflow.io staging site and publish.
 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).
 
@@ -92,10 +87,12 @@ A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comment
 
 `test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); without JavaScript, exactly v1's look from its own stylesheet; no change from the site's CSS or hostile rules; the same text and headings as v1, both without JavaScript and once rendered; and that a page requests only its own two files, under 25 KB gzipped.
 
-## Worked examples and "Use these figures"
-Every calculator ends with a worked example: a sentence or two with real figures, so the page HTML has a concrete, quotable answer for search engines, AI answers and anyone who doesn't use the calculator. `markup/examples.js` sets each example's figures and wording; `scripts/examples.js` runs the calculator with those figures and writes what it shows into `markup/<key>.html`, with the sources of the rates where it uses them. Nothing is typed by hand, so there's no rich-text upkeep, and `test/examples.test.js` fails if an example no longer matches its calculator (after a data change, say).
+## Calculators that work together
+`markup/links.js` lists the "Use these figures" links from each calculator to the ones that take its figures on (take-home pay to debt-to-income, mortgage to debt-to-income, pro rata salary and salary by age to take-home pay, emergency fund to savings goal, net worth to inheritance tax). `scripts/links.js` writes them into `markup/<key>.html` as plain links, so they're in the page HTML. As one is clicked, `src/v2/handoff.js` adds the figures after the `#` (never sent to the server, and the click tracking records links without it); the calculator it opens fills them in, says where they came from, and takes them out of the address. It accepts only plain numbers into its own fields. Net worth hands over only figures entered for one person, as Inheritance Tax works on one person's estate. `test/links.test.js` checks the markup has the links, and `test/handoff.test.js` checks every link fills the right fields.
 
-Calculators that work together: `next` in `markup/examples.js` adds a "Use these figures" link to the calculators that take the figures on (take-home pay to debt-to-income, mortgage to debt-to-income, pro rata salary and salary by age to take-home pay, emergency fund to savings goal, net worth to inheritance tax). They're plain links in the page. As one is clicked, `src/v2/handoff.js` adds the figures after the `#` (never sent to the server, and the click tracking records links without it); the calculator it opens fills them in, says where they came from, and takes them out of the address. It accepts only plain numbers into its own fields. Net worth hands over only figures entered for one person, as Inheritance Tax works on one person's estate. `test/handoff.test.js` checks every link.
+## What's edited where
+- In Webflow (the Tools collection), by people: the name, SEO title and description, Quick Answer, At a Glance, Extended Content (including the worked examples and "How we calculate"), FAQs, Guides, Glossary, the call to action and the icon.
+- From this repository, never by hand: the Calculator markup field ("Embed") and Component Key, written by the **Sync calculator markup** workflow from `markup/`. Anything typed into them in Webflow is overwritten at the next sync.
 
 ## Analytics
 GA4 through Google Tag Manager. Everything is a `lyf_event` dataLayer push (details in `webflow/site-custom-code.md`):
@@ -105,7 +102,7 @@ GA4 through Google Tag Manager. Everything is a `lyf_event` dataLayer push (deta
 ## Data
 The rates, thresholds and tables that change are in `data/`, not the code. `scripts/data.js` puts each file in at its `/* @data:<name> */ null` marker in `src/lg-calc.js` when you build, for v1 and v2 alike; every calculator reads the tax year from `LG.taxYear`. Keys starting with `$` are notes and stay out of the built files.
 
-Each April: copy `data/2026-27.json` to the new year (`data/2027-28.json`), update the figures from GOV.UK, point the marker in `src/lg-calc.js` at it, rebuild, and update the snapshots where results change on purpose (`UPDATE_SNAPSHOTS=1 npm test`). `test/data.test.js` checks every figure is there and makes sense (bands rise, rates are fractions). New ONS tables work the same way.
+Each April: copy `data/2026-27.json` to the new year (`data/2027-28.json`), update the figures from GOV.UK, point the marker in `src/lg-calc.js` at it, rebuild, and update the snapshots where results change on purpose (`UPDATE_SNAPSHOTS=1 npm test`). Then re-check the worked examples in each Tools item's Extended Content in Webflow: any that use tax rates or allowances will need new figures. `test/data.test.js` checks every figure is there and makes sense (bands rise, rates are fractions). New ONS tables work the same way.
 
 ## PDF summaries and the download dialog
 Every v2 calculator offers a branded PDF of the figures entered and the results, behind an email form. The calculators, the Guides and the Insights all use the same dialog.

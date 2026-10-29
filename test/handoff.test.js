@@ -5,7 +5,10 @@ const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
 const { openCalculator, run, readOutputs } = require('./page');
-const EXAMPLES = require('../markup/examples');
+const LINKS = require('../markup/links');
+const scenarios = require('./scenarios');
+// Each calculator's figures: its second scenario (the typical case).
+const steps = (key) => Object.values(scenarios[key])[1];
 
 let browser;
 before(async () => {
@@ -26,7 +29,7 @@ async function follow(page, to) {
 }
 const value = (page, id) => page.evaluate((id) => document.querySelector('lg-calculator').shadowRoot.getElementById(id).value, id);
 
-// What each link should fill in, after the example's figures.
+// What each link should fill in, after those figures.
 const EXPECT = {
   'take-home-pay>debt-to-income': { 'lgdti-income': '35,000' },
   'mortgage>debt-to-income': { 'lgdti-housing': '1,556.33' },
@@ -36,11 +39,11 @@ const EXPECT = {
   'net-worth>inheritance-tax': { 'lgiht-home': '350,000', 'lgiht-cash': '15,000', 'lgiht-investments': '20,000', 'lgiht-possessions': '12,000', 'lgiht-mortgage': '245,000', 'lgiht-debts': '8,750.5' } // as IHT shows a typed 8750.50,
 };
 
-for (const [from, example] of Object.entries(EXAMPLES)) {
-  for (const { to } of example.next || []) {
+for (const [from, links] of Object.entries(LINKS)) {
+  for (const { to } of links) {
     test(`${from} hands its figures to ${to}`, async () => {
       const source = await openCalculator(browser, from, { version: 'v2' });
-      await run(source, example.steps);
+      await run(source, steps(from));
       const href = await follow(source, to);
       assert.deepEqual(source.lgErrors, []);
       await source.close();
@@ -91,7 +94,7 @@ test('only plain numbers, into its own fields', async () => {
 
 test('household net worth opens Inheritance Tax without figures', async () => {
   const page = await openCalculator(browser, 'net-worth', { version: 'v2' });
-  await run(page, [['check', 'input[name="lgnw-scope"][value="household"]'], ...EXAMPLES['net-worth'].steps]);
+  await run(page, [['check', 'input[name="lgnw-scope"][value="household"]'], ...steps('net-worth')]);
   const href = await follow(page, 'inheritance-tax');
   assert.equal(href, '/tools/inheritance-tax-calculator');
   await page.close();
