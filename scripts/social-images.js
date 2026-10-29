@@ -1,27 +1,18 @@
 #!/usr/bin/env node
 // Social sharing images (Open Graph, 1200 x 630) for the calculator pages,
-// in the guide PDFs' style: the calculator's name, its icon from the CMS and
-// the Lyfeguard logo on navy. Each Tools item's "Social Image" field holds
-// its image; the Tools template's Open Graph image is bound to that field.
-//
-//   node scripts/social-images.js sync [--dry-run] [--force]
-//        make the image for every item whose name or icon changed, upload it
-//        to the site's assets and set the field (staged: live at the next
-//        publish). --dry-run writes the images to out/social/ instead.
-//        Needs WEBFLOW_TOKEN (CMS and Assets, read and write). Run by the
-//        "Calculator social images" workflow.
+// in the guide PDFs' style: the calculator's name, its icon and the
+// Lyfeguard logo on navy. The images live in each Tools item's Social Image
+// field in Webflow (editable there); this makes one for a new calculator.
+//   node scripts/social-images.js "Mortgage Calculator" [icon.svg] [out.png]
+// icon.svg: the calculator's icon (the CMS Icon field's SVG). out.png
+// defaults to out/social/<name>.png.
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
 const { pathToFileURL } = require('url');
 
 const ROOT = path.join(__dirname, '..');
-const CMS = JSON.parse(fs.readFileSync(path.join(ROOT, 'webflow/cms-items.json'), 'utf8'));
 const ASSETS = path.join(ROOT, 'pdf-generator/assets');
-const FIELD = 'social-image';
-// Bump to remake every image after a design change.
-const DESIGN = '1';
 
 const esc = (s) => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -77,101 +68,28 @@ async function render(browser, item) {
   }
 }
 
-const fingerprint = (item) => crypto.createHash('sha256').update(JSON.stringify([DESIGN, item.name, item.svg])).digest('hex').slice(0, 8);
-const fileName = (slug, hash) => `lyfeguard-tool-${slug}-${hash}.png`;
-
-async function sync({ dryRun, force }) {
-  const token = process.env.WEBFLOW_TOKEN;
-  if (!token) throw new Error('WEBFLOW_TOKEN is not set');
-  const api = async (method, url, body) => {
-    const res = await fetch('https://api.webflow.com/v2' + url, {
-      method,
-      headers: { authorization: 'Bearer ' + token, accept: 'application/json', ...(body ? { 'content-type': 'application/json' } : {}) },
-      body: body ? JSON.stringify(body) : undefined,
-    });
-    if (!res.ok) throw new Error(method + ' ' + url + ' -> ' + res.status + ': ' + (await res.text()).slice(0, 300));
-    return res.status === 204 ? null : res.json();
-  };
-  const items = (await api('GET', '/collections/' + CMS.collection + '/items?limit=100')).items;
-  const { chromium } = require('playwright');
-  const browser = await chromium.launch();
-  const lines = [];
-  const updates = [];
-  const keep = new Set();
-  try {
-    for (const [key, { id, slug }] of Object.entries(CMS.items)) {
-      const cms = items.find((i) => i.id === id);
-      if (!cms) throw new Error(key + ': no CMS item ' + id);
-      const item = { name: cms.fieldData.name, svg: icon(cms.fieldData.svg) };
-      const name = fileName(slug, fingerprint(item));
-      const current = cms.fieldData[FIELD] && cms.fieldData[FIELD].url;
-      if (!force && current && decodeURIComponent(current).endsWith('_' + name)) {
-        keep.add(current);
-        lines.push('up to date   ' + key);
-        continue;
-      }
-      const png = await render(browser, item);
-      if (dryRun) {
-        const out = path.join(ROOT, 'out/social');
-        fs.mkdirSync(out, { recursive: true });
-        fs.writeFileSync(path.join(out, name), png);
-        lines.push('would update ' + key + ' (out/social/' + name + ')');
-        continue;
-      }
-      const md5 = crypto.createHash('md5').update(png).digest('hex');
-      const meta = await api('POST', '/sites/' + CMS.site + '/assets', { fileName: name, fileHash: md5 });
-      const form = new FormData();
-      for (const [k, v] of Object.entries(meta.uploadDetails)) form.append(S3_FIELDS[k] || k, String(v));
-      form.append('file', new Blob([png], { type: 'image/png' }), name);
-      const up = await fetch(meta.uploadUrl, { method: 'POST', body: form });
-      if (up.status !== 201) throw new Error('Upload of ' + name + ' failed: ' + up.status);
-      keep.add(meta.hostedUrl);
-      updates.push({ id, fieldData: { [FIELD]: { fileId: meta.id, url: meta.hostedUrl, alt: item.name + ' from Lyfeguard' } } });
-      lines.push('updated      ' + key);
-    }
-  } finally {
-    await browser.close();
-  }
-  // Staged; draft or ready stays as it is.
-  if (updates.length) await api('PATCH', '/collections/' + CMS.collection + '/items', { items: updates });
-  // Tidy up images this script made that nothing uses any more.
-  if (updates.length) {
-    const slugs = Object.values(CMS.items).map((i) => i.slug);
-    for (let offset = 0; ; offset += 100) {
-      const page = await api('GET', '/sites/' + CMS.site + '/assets?limit=100&offset=' + offset);
-      for (const a of page.assets || []) {
-        const m = /lyfeguard-tool-(.+)-[0-9a-f]{8}\.png$/.exec(a.originalFileName || a.displayName || '');
-        if (m && slugs.includes(m[1]) && !keep.has(a.hostedUrl)) await api('DELETE', '/assets/' + a.id);
-      }
-      if ((page.assets || []).length < 100) break;
-    }
-  }
-  console.log(lines.join('\n'));
-  if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '```\n' + lines.join('\n') + '\n```\n');
-}
-
-// The upload details can come back camelCased; S3 needs its own names.
-const S3_FIELDS = {
-  xAmzAlgorithm: 'X-Amz-Algorithm',
-  xAmzCredential: 'X-Amz-Credential',
-  xAmzDate: 'X-Amz-Date',
-  xAmzSignature: 'X-Amz-Signature',
-  policy: 'Policy',
-  successActionStatus: 'success_action_status',
-  contentType: 'Content-Type',
-  cacheControl: 'Cache-Control',
-};
-
 if (require.main === module) {
-  const [command] = process.argv.slice(2);
-  if (command !== 'sync') {
-    console.error('Usage: node scripts/social-images.js sync [--dry-run] [--force]');
+  const [name, svgFile, outFile] = process.argv.slice(2);
+  if (!name) {
+    console.error('Usage: node scripts/social-images.js "<calculator name>" [icon.svg] [out.png]');
     process.exitCode = 2;
   } else {
-    sync({ dryRun: process.argv.includes('--dry-run'), force: process.argv.includes('--force') }).catch((error) => {
+    const out = outFile || path.join(ROOT, 'out/social', name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.png');
+    (async () => {
+      const { chromium } = require('playwright');
+      const browser = await chromium.launch();
+      try {
+        const png = await render(browser, { name, svg: icon(svgFile ? fs.readFileSync(svgFile, 'utf8') : '') });
+        fs.mkdirSync(path.dirname(out), { recursive: true });
+        fs.writeFileSync(out, png);
+        console.log('Wrote ' + path.relative(process.cwd(), out));
+      } finally {
+        await browser.close();
+      }
+    })().catch((error) => {
       console.error(error.message);
       process.exitCode = 1;
     });
   }
 }
-module.exports = { html, icon, render, fingerprint, fileName };
+module.exports = { html, icon, render };

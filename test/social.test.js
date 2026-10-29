@@ -3,7 +3,7 @@
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
-const { html, icon, render, fingerprint, fileName } = require('../scripts/social-images');
+const { html, icon, render } = require('../scripts/social-images');
 
 let browser;
 before(async () => {
@@ -27,11 +27,4 @@ test('the name is escaped, and the icon keeps only its drawing', () => {
   assert.ok(!/onload|<script|alert/.test(svg));
   assert.match(html({ name: 'A <b>&</b> B', svg: '' }), /A &lt;b&gt;&amp;&lt;\/b&gt; B/);
   assert.equal(icon('<p>no icon</p>'), '');
-});
-
-test('a new image only when the name or icon changes', () => {
-  const a = fingerprint({ name: 'Mortgage Calculator', svg: icon(SVG) });
-  assert.equal(fingerprint({ name: 'Mortgage Calculator', svg: icon(SVG) }), a);
-  assert.notEqual(fingerprint({ name: 'Mortgage Calculator UK', svg: icon(SVG) }), a);
-  assert.match(fileName('mortgage-calculator', a), /^lyfeguard-tool-mortgage-calculator-[0-9a-f]{8}\.png$/);
 });
