@@ -1,11 +1,12 @@
 # Changelog
 
 ## v2.0.1 – 2026-10-29
-Fixes from the first day live. **Change the two Tools template head lines from `@v2.0.0` to `@v2.0.1`.** No markup or CMS changes; the footer's `lg-track.min.js` is unchanged (`@v2.0.0` or `@v2.0.1` both fine).
+Fixes from the first day live, and no more version numbers to change in Webflow. **Once:** the Tools template head moves to `@{{Release}}` (`webflow/template-head.html`), and the site-wide footer and the Guides and Insights download embeds to `@2`. After that, publishing a GitHub release is enough: the new **Release to Webflow** workflow stages each Tools item's new Release field (and the markup), and refreshes jsDelivr's `@2` copies.
+- Releases: `.github/workflows/release.yml` replaces Sync calculator markup. It runs when a release is published (not pre-releases), and by hand to roll back, to try a release on some calculators first (`only`), or as a dry run. `node scripts/webflow-markup.js sync` takes `--release` and `--only`. New Tools field Release (managed by code), staged as v2.0.0.
 - The "Download PDF summary" button's text was invisible on Savings Goal, Emergency Fund, Pro Rata Salary and Salary by Age (their result cards make every span white), and Net Worth and Inheritance Tax restyled the button with their own. It now looks the same on every calculator, whatever its styles (`src/v2/download.css`).
 - "Use these figures" links carry the figures however they're opened: a middle-click, "Open in new tab", the keyboard or a long press, not only a plain click.
 - Net worth to Inheritance Tax: the figures did arrive, but the estimate waits for the questions about the home and who inherits, so it looked as if nothing had. The note now says to answer them.
-- Tests (269): the button's look on every calculator, and opening a link without a click.
+- Tests (273): the button's look on every calculator, opening a link without a click, and the release sync (only what differs, staged, draft status untouched, --only, bad tags refused).
 
 ## v2.0.0 (and v1.8.6) – 2026-10-29
 v2 complete. Every calculator in its own shadow root, loading only its own files, with PDF summaries, analytics, versioned data and calculators that work together. **Update the Tools template head and the site-wide code** (`webflow/template-head.html`, `webflow/site-custom-code.md`, all at `@v2.0.0`), **then run Sync calculator markup** to stage the new markup (the links) for six items; it goes live with the next publish.

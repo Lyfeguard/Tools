@@ -7,9 +7,11 @@ markup and template code for the Webflow "Tools" CMS collection.
 Each page on the Tools template loads only its own calculator, served by jsDelivr and named by the item's Component key field (`webflow/template-head.html`):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.1/dist/v2/{{Component key}}.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.1/dist/v2/{{Component key}}.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@{{Release}}/dist/v2/{{Component key}}.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@{{Release}}/dist/v2/{{Component key}}.min.js" defer></script>
 ```
+
+The release comes from each item's Release field, set by the **Release to Webflow** workflow, so this code doesn't change between releases. The site-wide click tracking and the Guides and Insights download dialog load from `@2`, the newest 2.x release (see Releasing below).
 
 That's 10 to 21 KB gzipped a page, against about 120 KB when every page loaded v1 and every v2 calculator. v1 (`dist/lg-calc.min.css` and `.min.js`, all calculators in one) is still built and tested, for any page that uses it. The site loads `dist/lg-track.min.js` on every page for click tracking (`webflow/site-custom-code.md`).
 
@@ -47,8 +49,15 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    ```
    npm run style-diff -- v2.0.0
    ```
-5. Commit, then create a release tagged with the new version (e.g. `v2.0.1`). GitHub runs the build and tests on every pull request ("Check calculators").
-6. Update the version in the template head code. If `markup/` changed, run **Sync calculator markup** (Actions > Sync calculator markup > Run workflow, `.github/workflows/sync-markup.yml`): it writes each item's Calculator markup field and Component key from `markup/` through the Webflow CMS API, as staged changes, only where they differ. It uses the `WEBFLOW_TOKEN` secret (CMS read and write). Then test on the webflow.io staging site and publish.
+5. Commit and merge. GitHub runs the build and tests on every pull request ("Check calculators").
+6. Release (below).
+
+## Releasing
+1. Publish a GitHub release tagged with the new version (e.g. `v2.0.2`; Releases > Draft a new release).
+2. The **Release to Webflow** workflow (`.github/workflows/release.yml`) runs by itself. Through the Webflow CMS API, as staged changes, it sets every Tools item's Release field to the tag (the template head loads the calculators from it) and writes the Calculator markup field from `markup/` where it differs. It also refreshes jsDelivr's `@2` copies of `lg-track.min.js` and `lg-dl.min.js`. It uses the `WEBFLOW_TOKEN` secret (CMS read and write).
+3. Publish to the webflow.io staging site and check, then publish live.
+
+Nothing in Webflow's code changes. Run the workflow by hand (Actions > Release to Webflow > Run workflow) to roll back (an earlier tag, then publish), to try a release on one calculator first (`only`, e.g. `take-home-pay`), or with a dry run. Pre-releases (`v2.1.0-beta.1`) don't run it by themselves; try them by hand with `only`. A new major version (v3) means changing `@2` to `@3` in the footer and the Guides and Insights embeds.
 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).
 
@@ -92,7 +101,7 @@ A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comment
 
 ## What's edited where
 - In Webflow (the Tools collection), by people: the name, SEO title and description, Quick Answer, At a Glance, Extended Content (including the worked examples and "How we calculate"), FAQs, Guides, Glossary, the call to action, the icon and Social Image.
-- From this repository, never by hand (the "Managed by code (don't edit)" group): the Calculator markup field ("Embed") and Component Key, written by the **Sync calculator markup** workflow from `markup/`. Anything typed into them in Webflow is overwritten.
+- From this repository, never by hand (the "Managed by code (don't edit)" group): the Calculator markup field ("Embed"), Component Key and Release, written by the **Release to Webflow** workflow. Anything typed into them in Webflow is overwritten.
 
 ## Social sharing images
 Each Tools item's Social Image field holds the page's Open Graph image (1200 x 630, what LinkedIn, WhatsApp and Slack show when the page is shared); the Tools template's Open Graph image is bound to it. They were made in the guide PDFs' style (the calculator's name and icon on navy, with the Lyfeguard logo) and can be replaced in Webflow with any design. For a new calculator, make one the same way:

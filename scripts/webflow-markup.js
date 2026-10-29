@@ -8,10 +8,13 @@
 //   node scripts/webflow-markup.js check <file>    compare with a saved
 //        list_collection_items response; lists the items that are out of date
 //        or whose Component key field isn't their calculator's key
-//   node scripts/webflow-markup.js sync [--dry-run]   write the field and the
-//        Component key to every item that differs, as staged changes (they
-//        go live with the next publish). Needs WEBFLOW_TOKEN (CMS read and
-//        write); run by the "Sync calculator markup" workflow.
+//   node scripts/webflow-markup.js sync [--release v2.0.1] [--only key,key] [--dry-run]
+//        write the markup field and Component key (and with --release, the
+//        Release field the template head loads that version from) to every
+//        item that differs, as staged changes (they go live with the next
+//        publish). --only limits it to some calculators (try a release on
+//        one first). Needs WEBFLOW_TOKEN (CMS read and write); run by the
+//        "Release to Webflow" workflow.
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -38,15 +41,20 @@ const normal = (html) =>
     .trim();
 
 // What differs between an item in the CMS and the repo.
-function differs(item, key) {
+function differs(item, key, release) {
   const current = item ? item.fieldData[CMS.field] || '' : null;
   return {
     markup: current === null || normal(current) !== normal(field(key)),
     key: !item || item.fieldData['component-key'] !== key,
+    release: !!release && (!item || item.fieldData.release !== release),
   };
 }
 
-async function sync(dryRun) {
+async function sync({ dryRun = false, release = null, only = null } = {}) {
+  if (release && !/^v\d+\.\d+\.\d+(-[\w.]+)?$/.test(release)) throw new Error('Not a release tag: ' + release);
+  if (only) only.forEach((key) => {
+    if (!CMS.items[key]) throw new Error('No calculator ' + key);
+  });
   const token = process.env.WEBFLOW_TOKEN;
   if (!token) throw new Error('WEBFLOW_TOKEN is not set');
   const api = async (method, url, body) => {
@@ -67,13 +75,16 @@ async function sync(dryRun) {
   const updates = [];
   const lines = [];
   for (const [key, { id }] of Object.entries(CMS.items)) {
+    if (only && !only.includes(key)) continue;
     const item = items.find((i) => i.id === id);
     if (!item) throw new Error(key + ': no CMS item ' + id);
-    const d = differs(item, key);
-    const what = [d.markup && 'markup', d.key && 'Component key'].filter(Boolean);
-    lines.push((what.length ? (dryRun ? 'would update ' : 'updated      ') + what.join(' and ') + ': ' : 'up to date   ') + key);
+    const d = differs(item, key, release);
+    const what = [d.markup && 'markup', d.key && 'Component key', d.release && 'Release ' + release].filter(Boolean);
+    lines.push((what.length ? (dryRun ? 'would update ' : 'updated      ') + what.join(', ') + ': ' : 'up to date   ') + key);
     // Draft or ready stays as it is: isDraft isn't sent.
-    if (what.length) updates.push({ id, fieldData: { [CMS.field]: field(key), 'component-key': key } });
+    const fieldData = { [CMS.field]: field(key), 'component-key': key };
+    if (release) fieldData.release = release;
+    if (what.length) updates.push({ id, fieldData });
   }
   if (updates.length && !dryRun) await api('PATCH', '/collections/' + CMS.collection + '/items', { items: updates });
   console.log(lines.join('\n'));
@@ -81,9 +92,16 @@ async function sync(dryRun) {
   if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '```\n' + lines.join('\n') + '\n```\n');
 }
 
+const option = (name) => {
+  const i = process.argv.indexOf(name);
+  return i > -1 && process.argv[i + 1] && !process.argv[i + 1].startsWith('--') ? process.argv[i + 1] : null;
+};
 const [command, arg] = process.argv.slice(2);
-if (command === 'sync') {
-  sync(process.argv.includes('--dry-run')).catch((error) => {
+if (require.main !== module) {
+  // Required by the tests.
+} else if (command === 'sync') {
+  const only = option('--only');
+  sync({ dryRun: process.argv.includes('--dry-run'), release: option('--release'), only: only ? only.split(',').map((k) => k.trim()).filter(Boolean) : null }).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
   });
@@ -106,6 +124,7 @@ if (command === 'sync') {
   }
   process.exitCode = stale ? 1 : 0;
 } else {
-  console.error('Usage: node scripts/webflow-markup.js field <key> | check <list_collection_items.json> | sync [--dry-run]');
+  console.error('Usage: node scripts/webflow-markup.js field <key> | check <list_collection_items.json> | sync [--release vX.Y.Z] [--only key,key] [--dry-run]');
   process.exitCode = 2;
 }
+module.exports = { field, normal, differs, sync };
