@@ -1,5 +1,13 @@
 # Changelog
 
+Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
+
+## Unreleased
+Documentation only; no change to anything the site loads.
+- The README is now a short overview, and the detail is in focused guides in `docs/`: architecture, development, writing a calculator, releasing, Webflow, data, analytics, and PDFs and downloads. The PDF generator's README covers Guides and Insights side by side.
+- Removed outdated files: `webflow/tools-cms-setup.md` (the original v1 set-up), `webflow/tools-items.csv` (the v1 import), `pdf-generator/webflow/download-block.html` (superseded by the download embeds), and `webflow/site-custom-code.md` (now in `docs/webflow.md` and `docs/analytics.md`).
+- `webflow/template-head.html` holds only the two lines the template uses. The structured data it used to carry was never live, and it named fields that don't exist.
+
 ## v2.0.1 – 2026-10-29
 Fixes from the first day live, and no more version numbers to change in Webflow. **Once:** the Tools template head moves to `@{{Release}}` (`webflow/template-head.html`), and the site-wide footer and the Guides and Insights download embeds to `@2`. After that, publishing a GitHub release is enough: the new **Release to Webflow** workflow stages each Tools item's new Release field (and the markup), and refreshes jsDelivr's `@2` copies.
 - Releases: `.github/workflows/release.yml` replaces Sync calculator markup. It runs when a release is published (not pre-releases), and by hand to roll back, to try a release on some calculators first (`only`), or as a dry run. `node scripts/webflow-markup.js sync` takes `--release` and `--only`. New Tools field Release (managed by code), staged as v2.0.0.
