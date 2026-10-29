@@ -1,0 +1,16 @@
+{
+  "name": "lyfeguard-pdf-generator",
+  "private": true,
+  "description": "Builds branded PDF copies of published guides from the Webflow CMS and links them on each item",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "plan": "node sync.js plan",
+    "sync": "node sync.js run",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

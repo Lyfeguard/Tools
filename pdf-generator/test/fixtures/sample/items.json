@@ -1,0 +1,25 @@
+[
+  {
+    "id": "000000000000000000000001",
+    "isArchived": false,
+    "isDraft": false,
+    "lastPublished": "2026-01-15T10:00:00.000Z",
+    "lastUpdated": "2026-01-15T09:00:00.000Z",
+    "fieldData": {
+      "name": "Sample Guide for Tests",
+      "slug": "sample-guide",
+      "post-summary": "A short summary of the sample guide.",
+      "read-time": 3,
+      "post-body": "<p>This sample guide is test content for the PDF generator. It is not a real article.</p><p>A second paragraph with a <a href=\"/tools/net-worth-calculator\">relative link</a> and an <a href=\"https://example.com/page\">external link</a>. <em>Last reviewed January 2026.</em></p><div data-rt-embed-type='true'><span id='first-section'></span></div><h2>First section</h2><p>Text before a table.</p><div data-rt-embed-type='true'><div style='overflow-x: auto;'><table style='width: 100%;'><thead><tr><th style='padding: 8px;'>Item</th><th>Value</th></tr></thead><tbody><tr><td style='padding: 8px;'>Example row</td><td>100</td></tr><tr><td>Second row</td><td>200</td></tr></tbody></table></div></div><div data-rt-embed-type='true'><span id='second-section'></span></div><h2>Second section</h2><ul><li>One</li><li>Two</li></ul><h2>Section without an anchor</h2><p>Closing text.</p><div data-rt-embed-type='true'><script>alert(1)</script></div>",
+      "main-image": null,
+      "category": "4a0f0461570d30ea5eccbc1dff8ee801",
+      "faqs": [
+        "000000000000000000000002"
+      ],
+      "author-2": "000000000000000000000003",
+      "cta-heading": "Sample call to action",
+      "cta-description": "A sample description for the call to action",
+      "cta-button-text": "Create free account"
+    }
+  }
+]

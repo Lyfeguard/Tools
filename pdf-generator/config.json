@@ -1,0 +1,39 @@
+{
+  "site": "69d54ef24a10ef9131d434dc",
+  "siteUrl": "https://www.lyfeguard.com",
+  "pdfField": "pdf-download",
+  "faqCollection": "69e9fbeb45cb0fb5f4219db0",
+  "authorCollection": "6a72178385dd9bddd55b76be",
+  "collections": {
+    "guides": {
+      "enabled": true,
+      "id": "69dd30ddd5599d324edc7707",
+      "path": "guides",
+      "kind": "Guide",
+      "ctaUrl": "https://app.lyfeguard.com/register",
+      "ctaFallback": "Create free account",
+      "categories": {
+        "1ed4cdd3c4fac15afe12dfd25338ba9f": "Life Admin & Documents",
+        "15f5380fcb92171171926df3dab451b5": "Money & Assets",
+        "d3004c702026acfab6a416a9ae99f5d4": "Estate & Legacy Planning",
+        "23f24652cac85a125301ebe70c207e40": "Digital Life",
+        "4a0f0461570d30ea5eccbc1dff8ee801": "Net Worth",
+        "6bcbbac129681782e49cf2c452fe6296": "Pensions & Retirement",
+        "ea1e1a5ecd60c3db3b1b904cfdefcf95": "Investments & Wealth",
+        "f91d865eb0126ec6b7c23cf1cf358d36": "Protection",
+        "cae34d12997207481de576327fce1321": "Tax",
+        "d57f08b6195b22f9437125d6c23dcb41": "Property",
+        "521131b451b16a60a1ffa6ba5eb63859": "Business"
+      }
+    },
+    "insights": {
+      "enabled": false,
+      "id": "69e87d592d41e3859e4158c4",
+      "path": "insights",
+      "kind": "Insight",
+      "ctaUrl": "",
+      "ctaFallback": "Book a demo",
+      "categories": {}
+    }
+  }
+}

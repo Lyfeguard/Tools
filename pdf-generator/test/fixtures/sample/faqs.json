@@ -1,0 +1,14 @@
+[
+  {
+    "id": "000000000000000000000002",
+    "fieldData": {
+      "name": "Sample",
+      "slug": "sample",
+      "1-question": "What is this?",
+      "1-answer": "Test content.",
+      "1-answer-rt": "<p>Test content with a <a href=\"/guides/other\">link</a>.</p><div data-rt-embed-type='true'><div><table><tr><td>dup</td></tr></table></div></div>",
+      "2-question": "Is there a plain-text answer?",
+      "2-answer": "Yes, used when there is no rich-text answer."
+    }
+  }
+]
