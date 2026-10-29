@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.8.3
+ * Lyfeguard calculators | lg-calc.js | v1.8.4
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.8.3';
+  LG.version = '1.8.4';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -17,7 +17,14 @@
     if (window.console && console.error) console.error('[Lyfeguard calculators] ' + key + ':', error);
   }
 
-  // Run fn once the DOM is parsed. Works with defer, async or inline loading.
+  // Run fn once the DOM is parsed and every deferred script has run (at
+  // DOMContentLoaded), so a calculator the v2 <lg-calculator> script has
+  // already taken over is left alone. Works with defer, async or inline loading.
+  function domContentLoaded() {
+    if (document.readyState === 'complete') return true;
+    var nav = window.performance && performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+    return !!(nav && nav.domContentLoadedEventStart > 0);
+  }
   LG.ready = function (fn) {
     function run() {
       try {
@@ -26,8 +33,8 @@
         report('init', error);
       }
     }
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run, { once: true });
-    else run();
+    if (domContentLoaded()) run();
+    else document.addEventListener('DOMContentLoaded', run, { once: true });
   };
 
   // Each calculator is isolated: an error in one never stops the others.

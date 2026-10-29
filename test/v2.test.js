@@ -7,7 +7,7 @@ const assert = require('node:assert/strict');
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
-const { openCalculator, run, readOutputs } = require('./page');
+const { ROOT, openCalculator, run, readOutputs, pageHtml } = require('./page');
 const scenarios = require('./scenarios');
 
 // Calculators built into the component so far.
@@ -54,36 +54,69 @@ for (const key of KEYS) {
   });
 }
 
-// The Tools template holds <lg-calculator key="Calculator key"> on every item.
-test('template embed: hidden and takes no space on items still using v1 markup', async () => {
-  for (const key of Object.keys(scenarios)) {
+// The Tools template, with the v2 script loaded and the pilot's empty
+// <lg-calculator> embed still in place.
+test('template: calculators not in v2 run as v1, and an empty embed takes no space', async () => {
+  for (const key of Object.keys(scenarios).filter((k) => !KEYS.includes(k))) {
     const steps = Object.values(scenarios[key])[1] || [];
     const plain = await openCalculator(browser, key, { width: 375 });
     await run(plain, steps);
-    const withEmbed = await openCalculator(browser, key, { width: 375, template: { embed: key, pasted: true } });
-    await run(withEmbed, steps);
-    assert.deepEqual(withEmbed.lgErrors, [], key + ': console errors or warnings');
-    assert.deepEqual(await readOutputs(withEmbed), await readOutputs(plain), key);
+    const withV2 = await openCalculator(browser, key, { width: 375, template: { embed: true } });
+    await run(withV2, steps);
+    assert.deepEqual(withV2.lgErrors, [], key + ': console errors or warnings');
+    assert.deepEqual(await readOutputs(withV2), await readOutputs(plain), key);
     const height = (page) => page.evaluate(() => document.querySelector('.lg-calc-wrap').getBoundingClientRect().height);
-    assert.equal(await height(withEmbed), await height(plain), key + ': the embed changed the layout');
-    assert.equal(await withEmbed.evaluate(() => document.querySelector('lg-calculator').hidden && !document.querySelector('lg-calculator').shadowRoot), true, key);
+    assert.equal(await height(withV2), await height(plain), key + ': the embed changed the layout');
     await plain.close();
-    await withEmbed.close();
+    await withV2.close();
   }
 });
 
-test('template embed: shows the calculator once its markup field is empty', async () => {
-  const saved = JSON.parse(fs.readFileSync(path.join(__dirname, 'snapshots', 'take-home-pay.json'), 'utf8'));
-  // The key from the embed, or from the wrapper's data-calc when the embed has none.
-  for (const embed of ['take-home-pay', ' take-home-pay ', null]) {
-    const page = await openCalculator(browser, 'take-home-pay', { template: { embed, pasted: false } });
-    await run(page, scenarios['take-home-pay'].typical);
+for (const key of KEYS) {
+  test(`${key}: in the template, v2 runs the markup from the page`, async () => {
+    const saved = JSON.parse(fs.readFileSync(path.join(__dirname, 'snapshots', key + '.json'), 'utf8'));
+    const [name, steps] = Object.entries(scenarios[key])[1];
+    const page = await openCalculator(browser, key, { template: { embed: true } });
+    await run(page, steps);
+    const state = await page.evaluate(() => [...document.querySelectorAll('lg-calculator')].map((el) => [!!el.shadowRoot, el.hidden, el.children.length]));
+    assert.deepEqual(state, [[true, false, 0], [false, true, 0]], 'the pasted one upgraded, the empty embed hidden');
     const outputs = await readOutputs(page);
     assert.deepEqual(page.lgErrors, [], 'console errors or warnings');
     await page.close();
-    assert.equal(outputs['lgth-headline'].text, saved.typical['lgth-headline'].text, String(embed));
-  }
-});
+    assert.equal(outputs[Object.keys(outputs).find((id) => /headline$/.test(id))].text, saved[name][Object.keys(outputs).find((id) => /headline$/.test(id))].text);
+  });
+
+  // SEO: the page must be indexed exactly as with v1.
+  test(`${key}: search engines see the same content as v1`, async () => {
+    // Without JavaScript (crawlers that don't run it): the calculator is in
+    // the HTML and shows, with the same text as v1.
+    const text = async (html, js) => {
+      const context = await browser.newContext({ javaScriptEnabled: js });
+      const page = await context.newPage();
+      const dir = fs.mkdtempSync(path.join(require('os').tmpdir(), 'lg-seo-'));
+      fs.writeFileSync(path.join(dir, 'page.html'), html);
+      await page.goto('file://' + path.join(dir, 'page.html'));
+      if (js) await page.waitForFunction(() => document.readyState === 'complete');
+      const out = await page.evaluate(() => {
+        const host = document.querySelector('lg-calculator');
+        const root = (host && host.shadowRoot) || document;
+        const calc = root.querySelector('.lg-calc');
+        const box = calc.getBoundingClientRect();
+        return { text: calc.innerText.replace(/\s+/g, ' ').trim(), visible: box.height > 0 && box.width > 0, headings: [...root.querySelectorAll('h1, h2, h3, h4')].map((h) => h.textContent.trim()) };
+      });
+      await context.close();
+      return out;
+    };
+    const dist = path.join(ROOT, 'dist');
+    const v1 = await text(pageHtml(key, dist), true);
+    const noJs = await text(pageHtml(key, dist, 'cms', { embed: true }), false);
+    const rendered = await text(pageHtml(key, dist, 'cms', { embed: true }), true);
+    assert.equal(noJs.visible, true, 'shows without JavaScript');
+    assert.equal(noJs.text, v1.text, 'same text without JavaScript');
+    assert.equal(rendered.text, v1.text, 'same text once rendered');
+    assert.deepEqual(rendered.headings, v1.headings.filter((h) => h !== 'Calculator'), 'same headings');
+  });
+}
 
 // Every computed style and box inside the component (and the host's own box).
 async function componentStyles(key, steps, width, siteCss) {

@@ -1,0 +1,55 @@
+{
+  "site": "69d54ef24a10ef9131d434dc",
+  "collection": "6adb231bd68542e4dfb08593",
+  "field": "embed",
+  "items": {
+    "net-worth": {
+      "slug": "net-worth-calculator",
+      "id": "6adb26427488723eebe5bb56"
+    },
+    "inheritance-tax": {
+      "slug": "inheritance-tax-calculator",
+      "id": "6adb37ab3c930442bc74718b"
+    },
+    "compound-interest": {
+      "slug": "compound-interest-calculator",
+      "id": "6adb36b5f6bc834a9ea397a0"
+    },
+    "savings-goal": {
+      "slug": "savings-goal-calculator",
+      "id": "6adb39b346d763ce5c0aeda6"
+    },
+    "emergency-fund": {
+      "slug": "emergency-fund-calculator",
+      "id": "6adb39584e23270dbfdee555"
+    },
+    "loan-repayment": {
+      "slug": "loan-repayment-calculator",
+      "id": "6adb38e0219b448dded18308"
+    },
+    "pro-rata-salary": {
+      "slug": "pro-rata-salary-calculator",
+      "id": "6adb397f6befe9a9939abe66"
+    },
+    "salary-by-age": {
+      "slug": "average-salary-by-age",
+      "id": "6adb39ec064775f25a1db92e"
+    },
+    "mortgage": {
+      "slug": "mortgage-calculator",
+      "id": "6adb39306befe9a9939a9b74"
+    },
+    "debt-to-income": {
+      "slug": "dti-calculator",
+      "id": "6ae24d5882391a044de92494"
+    },
+    "retirement-income": {
+      "slug": "retirement-income-calculator",
+      "id": "6ae2703c55168fcdfe1ef6da"
+    },
+    "take-home-pay": {
+      "slug": "take-home-pay-calculator",
+      "id": "6ae30faa99544e5048e3dec0"
+    }
+  }
+}
