@@ -85,7 +85,7 @@ function styles() {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-v2-'));
   const src = path.join(tmp, 'in.css');
   const out = path.join(tmp, 'out.css');
-  fs.writeFileSync(src, host + rest);
+  fs.writeFileSync(src, host + rest + read('src/v2/download.css'));
   execFileSync('npx', ['--yes', '-p', 'csso-cli@4.0.2', 'csso', src, '--no-restructure', '-o', out], { stdio: 'inherit' });
   // csso writes transparent backgrounds as "0 0"; keep the explicit keyword.
   const min = fs.readFileSync(out, 'utf8').replace(/background:0 0([;}])/g, 'background:transparent$1');
@@ -110,6 +110,7 @@ function script() {
     between(js, '/* @v2:core-start', '/* @v2:core-end */', 'src/lg-calc.js'),
     read('src/v2/shared.js'),
     ...modules,
+    read('src/v2/download.js'),
     read('src/v2/element.js'),
     '})(window, document);',
     '',

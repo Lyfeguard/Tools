@@ -1,0 +1,17 @@
+<!--
+  Guides (and Insights) template: the gated PDF download, as one Code Embed.
+  Replaces the embed with the dialog's HTML, CSS and JS pasted in: the dialog,
+  its styles and the HubSpot set-up now come from dist/lg-dl.min.js, the same
+  file the calculators' PDF summaries use. Pin the version.
+
+  Insert each {{wf:...}} with "+ Add Field". Keep conditional visibility on
+  the wrapper (show only when PDF Download is set); a block without a PDF
+  hides itself anyway.
+-->
+<div class="lg-dl" data-pdf="{{wf:PDF Download|Dynamo}}" data-name="{{wf:Name|Dynamo}}" data-slug="{{wf:Slug|Dynamo}}" data-title="{{wf:PDF Download Title|Dynamo}}" data-form-id="bd1160d4-2c27-4e02-a991-abb4c2319fa5">
+  <button type="button" class="lg-dl-trigger" aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    <span>Download PDF</span>
+  </button>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.4/dist/lg-dl.min.js" defer></script>

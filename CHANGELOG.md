@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.0.0-alpha.4 – 2026-10-29
+PDF summaries, gated by email, with the same dialog as the Guides. **Update the template head's v2 script to v2.0.0-alpha.4.** There are no markup or CMS changes, and v1 (1.8.5) stays as it is.
+- Every calculator gets a "Download PDF summary" button at the end of its results. It shows once someone has used the calculator and there's a result, so the page is indexed as before. Pressing it opens the email dialog (HubSpot form `9d095c21-...`). After the form is sent, or straight away for someone who has given their email before, it downloads a branded A4 PDF with the details entered, the headline result, the results, any tables and "How this was calculated", plus the call to action with UTM tags.
+- The PDF is made in the browser (`dist/v2/lg-pdf.min.js`, 15 KB gzipped, plus the Manrope fonts, all loaded on the first click), so the figures never leave the page. HubSpot's hidden fields get only the calculator's name and the page's address.
+- New `dist/lg-dl.min.js`: the Guides' download dialog as one shared file. It holds the HubSpot embed loaded on open, the fallback link, the "already gave their email" memory and the `pdf_download` dataLayer event, now with `resource_type`. Fix: success events from other HubSpot forms on the page (a newsletter sign-up, say) no longer reveal the download. The Guides template can swap its pasted HTML, CSS and JS for `webflow/guides-download-embed.html`.
+- Tests (233): every calculator's PDF is made and read back, and the dialog, hidden fields, tracking and Guides block are checked. CI installs `poppler-utils` for this.
+
 ## v2.0.0-alpha.3 (and v1.8.5) – 2026-10-29
 Every calculator moves to v2. **Update the template head to v1.8.5 and v2.0.0-alpha.3, then the markup for all twelve items is synced** (each wrapped in `<lg-calculator>`, still in the page HTML).
 - All twelve calculators are built into `<lg-calculator>`. The component's styles are the whole calculator stylesheet, plus a small base layer reproducing what the site's base styles give the calculators today (body font, 25.6px line height, paragraph and label spacing, link font, border-box sizing), so each looks as it does on the site.

@@ -57,6 +57,7 @@
         calc.setup(scope.querySelector('.lg-calc'), function (id) {
           return scope.getElementById(id);
         });
+        addDownload(this, scope, key);
       } catch (error) {
         report(key, error);
       }

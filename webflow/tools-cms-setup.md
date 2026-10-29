@@ -65,7 +65,7 @@ Fill each calculator, check results, downloads (net worth, IHT, savings goal), a
 
 ## v2: `<lg-calculator>`
 The staging site (lyfeguard-stage.webflow.io) is the Webflow subdomain of the live site, so they share the CMS: a staged CMS change shows on staging when you publish to the Webflow subdomain only, and goes live with the next publish to the custom domains.
-- Template head code: `lg-calc` v1.8.5 and `<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.3/dist/v2/lg-calculator.min.js" defer></script>`. Update these before any item gets `<lg-calculator>` markup (older versions hide it).
+- Template head code: `lg-calc` v1.8.5 and `<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.4/dist/v2/lg-calculator.min.js" defer></script>`. Update these before any item gets `<lg-calculator>` markup (older versions hide it).
 - The Calculator markup field ("Embed", slug `embed`) holds `markup/<key>.html`, written by Claude through the Webflow CMS API (`scripts/webflow-markup.js`); item ids are in `cms-items.json`. A calculator moved to v2 has its markup wrapped in `<lg-calculator key="...">`, still in the field, so the page HTML is the same as before.
 - The Code Embed added for the v2 pilot (`<lg-calculator key="{Calculator key}">` after the Rich Text) isn't needed. While it's there it shows nothing and takes no space; remove it when convenient.
 - Keep `overflow-x: auto` off `.lg-tools-embed-slot` (it stops the sticky result bar sticking on phones).
