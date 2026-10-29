@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0.0-alpha.2 (and v1.8.4) – 2026-10-29
+SEO first: calculators on v2 are indexed exactly as on v1. **Update the template head to v1.8.4 and v2.0.0-alpha.2 before the Take-Home Pay markup is synced**: older versions hide markup wrapped in `<lg-calculator>`.
+- The markup stays in the page HTML (the CMS field), wrapped in `<lg-calculator key="...">`. The script moves it into the shadow root and runs it there, instead of drawing it from a copy inside the script (alpha.1, where crawlers that don't run JavaScript saw an empty element). Without JavaScript, or if the script doesn't load, the calculator shows and runs as v1.
+- The CMS field is written from `markup/` through the Webflow CMS API (`scripts/webflow-markup.js`, items in `webflow/cms-items.json`): no pasting by hand. `check` lists items that differ from the repo.
+- `markup/take-home-pay.html` is wrapped in `<lg-calculator key="take-home-pay">`.
+- An empty `<lg-calculator>` (the pilot's template embed) shows nothing and takes no space, so it can be removed when convenient.
+- v1.8.4: calculators start at DOMContentLoaded, after every deferred script, so v1 never runs a calculator v2 has taken. `lg-calculator` displays as a block, and its markup shows until the v2 script takes it. No change to what any v1 calculator shows.
+- Tests: for Take-Home Pay, the same text and headings as v1 with JavaScript off and once rendered; v2 runs the markup from the page; every other calculator runs as v1 with the v2 script loaded.
+
 ## v2.0.0-alpha.1 (and v1.8.3) – 2026-10-29
 First step of v2: calculators that the site's CSS can't change. **Staging only for now.** Nothing changes for v1 pages.
 - New `<lg-calculator key="take-home-pay"></lg-calculator>` web component in `dist/v2/lg-calculator.min.js`. It draws the calculator inside its own shadow root, so Webflow's styles (white paragraph text, label margins, checkbox styles, the template's container widths and so on) can't reach it. The site's fonts still apply.

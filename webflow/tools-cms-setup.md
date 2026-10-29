@@ -1,8 +1,8 @@
-# Tools CMS template: setup guide (lg-calc v1.8.3)
+# Tools CMS template: setup guide (lg-calc v1.8.4)
 
 ## 1. Host the two files
-Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.8.3) to your host and pin the version in the URL.
-- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.8.3/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
+Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.8.4) to your host and pin the version in the URL.
+- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.8.4/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
 - Cloudflare on your own domain: no CSP or preconnect change needed.
 
 ## 2. Collection fields (collection "Tools", currently slug `tool`)
@@ -63,10 +63,9 @@ Fill each calculator, check results, downloads (net worth, IHT, savings goal), a
 2. Collection settings → rename to Tools, slug `tools`.
 3. Publish, then re-test the live URLs and re-run PageSpeed.
 
-## v2 pilot: `<lg-calculator>` on staging (lyfeguard-stage.webflow.io)
-Try changes on the real Tools template on the staging site first, then copy them to the live site.
-1. Template head code: keep the v1 lines and add `<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.1/dist/v2/lg-calculator.min.js" defer></script>`.
-2. Template: add a Code Embed inside `.lg-calc-wrap`, straight after the `.lg-calc-markup` Rich Text, with `<lg-calculator key=""></lg-calculator>`. Put the cursor between the quotes and use "+ Add Field" → Calculator key. Every item now has the embed; it stays hidden and takes no space on items still using pasted markup, or whose calculator isn't in v2 yet.
-3. Take-Home Pay item: empty the "Calculator markup" field. That's the switch: with the field empty the component shows; with the markup still there, v1 shows and the component stands down (so it never shows twice). To go back, paste `markup/take-home-pay.html` in again.
-4. Remove `overflow-x: auto` from `.lg-tools-embed-slot` (it makes the slot a scroll box, which stops the sticky result bar sticking on phones).
-5. Publish to staging only, then check Take-Home Pay on a phone and a desktop: results, the slider, Clear figures, the sticky bar and "See results", and the browser console. Check one v1 calculator too.
+## v2: `<lg-calculator>`
+The staging site (lyfeguard-stage.webflow.io) is the Webflow subdomain of the live site, so they share the CMS: a staged CMS change shows on staging when you publish to the Webflow subdomain only, and goes live with the next publish to the custom domains.
+- Template head code: `lg-calc` v1.8.4 and `<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.2/dist/v2/lg-calculator.min.js" defer></script>`. Update these before any item gets `<lg-calculator>` markup (older versions hide it).
+- The Calculator markup field ("Embed", slug `embed`) holds `markup/<key>.html`, written by Claude through the Webflow CMS API (`scripts/webflow-markup.js`); item ids are in `cms-items.json`. A calculator moved to v2 has its markup wrapped in `<lg-calculator key="...">`, still in the field, so the page HTML is the same as before.
+- The Code Embed added for the v2 pilot (`<lg-calculator key="{Calculator key}">` after the Rich Text) isn't needed. While it's there it shows nothing and takes no space; remove it when convenient.
+- Keep `overflow-x: auto` off `.lg-tools-embed-slot` (it stops the sticky result bar sticking on phones).

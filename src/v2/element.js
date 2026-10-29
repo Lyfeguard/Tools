@@ -19,27 +19,34 @@
     }
   }
 
+  // <lg-calculator> wraps the calculator's markup, which is in the page HTML
+  // (the CMS field), so search engines read it exactly as before. The element
+  // moves that markup into its shadow root and starts the calculator there.
+  // Until then, or if this script doesn't load, v1 shows and runs it as usual.
   class LgCalculator extends HTMLElement {
     connectedCallback() {
       if (this.shadowRoot) return; // already set up (the element was moved)
-      // The key comes from the CMS item ("Calculator key" in the template's
-      // embed), or from the nearest data-calc on the page.
-      var holder = this.closest('[data-calc]');
-      var key = (this.getAttribute('key') || (holder && holder.getAttribute('data-calc')) || '').trim();
-      var calc = LG.calculators[key];
-      // The template has the element on every item, so it stays hidden, and
-      // quiet, on items whose calculator isn't in the component yet or whose
-      // v1 markup is still pasted in.
-      if (!calc || !TEMPLATES[key] || document.querySelector('.lg-calc[data-calc="' + key + '"]')) {
+      var self = this;
+      if (!this.firstElementChild && document.readyState === 'loading') {
+        // Loaded without defer: wait for the markup inside to be parsed.
+        document.addEventListener('DOMContentLoaded', function () {
+          self.connectedCallback();
+        }, { once: true });
+        return;
+      }
+      var markup = this.querySelector('.lg-calc[data-calc]');
+      // An empty element (such as a template embed) shows nothing.
+      if (!markup) {
         this.hidden = true;
         return;
       }
-      this.hidden = false;
+      var key = (this.getAttribute('key') || markup.getAttribute('data-calc')).trim();
+      var calc = LG.calculators[key];
+      // Not in v2 yet: leave the markup where it is, for v1 to run.
+      if (!calc) return;
       var scope = this.attachShadow({ mode: 'open' });
       addStyles(scope);
-      var template = document.createElement('template');
-      template.innerHTML = TEMPLATES[key];
-      scope.appendChild(template.content);
+      while (this.firstChild) scope.appendChild(this.firstChild);
       var missing = (calc.required || []).filter(function (id) {
         return !scope.getElementById(id);
       });

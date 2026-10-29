@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 // Build dist/v2/lg-calculator.min.js: the <lg-calculator> web component.
 // Nothing is written twice: the tax core and each calculator's module are
-// copied from src/lg-calc.js (between @v2: marker comments), the styles from
-// the shared components section of src/lg-calc.css, and the markup from
-// markup/. Run through npm run build (scripts/build.sh), which minifies it.
+// copied from src/lg-calc.js (between @v2: marker comments) and the styles
+// from the shared components section of src/lg-calc.css. The markup stays in
+// the page (markup/<key>.html in the CMS), so it's indexed as it always was.
+// Run through npm run build (scripts/build.sh), which minifies it.
 'use strict';
 const fs = require('fs');
 const os = require('os');
@@ -13,9 +14,9 @@ const { execFileSync } = require('child_process');
 const ROOT = path.join(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
 
-// Calculators in the component: key -> markup file. Each key's module sits
-// between /* @v2:<key>-start */ and /* @v2:<key>-end */ in src/lg-calc.js.
-const CALCULATORS = { 'take-home-pay': 'markup/take-home-pay.html' };
+// Calculators in the component. Each key's module sits between
+// /* @v2:<key>-start */ and /* @v2:<key>-end */ in src/lg-calc.js.
+const CALCULATORS = ['take-home-pay'];
 
 function between(text, start, end, file) {
   const from = text.indexOf(start);
@@ -66,11 +67,7 @@ function styles() {
 function script() {
   const js = read('src/lg-calc.js');
   const version = /LG\.version = '([^']+)'/.exec(read('src/v2/prelude.js'))[1];
-  const templates = {};
-  const modules = Object.keys(CALCULATORS).map((key) => {
-    templates[key] = read(CALCULATORS[key]).trim();
-    return between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js');
-  });
+  const modules = CALCULATORS.map((key) => between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js'));
   return [
     '/*!',
     ' * Lyfeguard calculators | lg-calculator.js | v' + version,
@@ -80,7 +77,6 @@ function script() {
     '(function (window, document) {',
     "  'use strict';",
     '  var STYLES = ' + literal(styles()) + ';',
-    '  var TEMPLATES = ' + literal(templates) + ';',
     read('src/v2/prelude.js'),
     between(js, '/* @v2:core-start', '/* @v2:core-end */', 'src/lg-calc.js'),
     read('src/v2/shared.js'),

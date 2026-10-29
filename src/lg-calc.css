@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.8.3
+ * Lyfeguard calculators | lg-calc.css | v1.8.4
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -6905,17 +6905,21 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 
 /* ------------------------------------------------------------------
-   CMS template: the v2 <lg-calculator> embed
-   One Code Embed on the template holds <lg-calculator key="Calculator key">.
-   Its wrapper is display:contents, and the element takes no space (or flex
-   gap) until it shows a calculator: on items still using v1 markup it hides.
+   v2: <lg-calculator>
+   The element wraps a calculator's markup in the CMS field. Until the v2
+   script moves the markup into its shadow root (or if it doesn't load), the
+   markup shows and runs as v1, styled by this file. An empty one shows
+   nothing and takes no space (or flex gap).
    ------------------------------------------------------------------ */
+lg-calculator {
+  display: block;
+}
+lg-calculator[hidden],
+lg-calculator:not(:defined):not(:has(> *)) {
+  display: none;
+}
 .lg-calc-wrap > .w-embed:has(> lg-calculator) {
   display: contents;
-}
-lg-calculator:not(:defined),
-lg-calculator[hidden] {
-  display: none;
 }
 
 /* ------------------------------------------------------------------
