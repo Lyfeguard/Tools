@@ -263,3 +263,49 @@ test('retirement income: pot duration, tax-free cash and sustainable income', as
   assert.deepEqual(year1, { tax: 1236, spAt67: 12548, needAt67: 12452 });
   await page.close();
 });
+
+test('take-home pay: tax, NI, pensions and student loans (2026/27)', async () => {
+  const page = await openCalculator(browser, 'take-home-pay');
+  const out = await page.evaluate(() => {
+    const calc = window.LyfeTools.takeHomePay.calculate;
+    const base = { region: 'ruk', pensionPct: 0, pensionType: 'netpay', pensionBasis: 'total', loan: '', postgrad: false };
+    const net = (o) => Math.round(calc(Object.assign({}, base, o)).net * 100) / 100;
+    const t = window.LyfeTools.ukTax;
+    return {
+      plain: net({ gross: 35000 }),
+      netPay: net({ gross: 60000, pensionPct: 5 }),
+      qualifying: net({ gross: 30000, pensionPct: 5, pensionBasis: 'qualifying' }),
+      sacrifice: net({ gross: 110000, pensionPct: 10, pensionType: 'sacrifice' }),
+      ras: net({ gross: 60000, pensionPct: 5, pensionType: 'ras' }),
+      rasClaim: Math.round(calc(Object.assign({}, base, { gross: 60000, pensionPct: 5, pensionType: 'ras' })).rasClaim * 100) / 100,
+      scotland: net({ gross: 45000, region: 'scotland' }),
+      scotTax30k: Math.round(t.incomeTax(30000, 'scotland') * 100) / 100,
+      scotBand: t.taxBand(45000, 'scotland').name,
+      plan2: t.studentLoan(40000, 'plan2'),
+      postgrad: t.studentLoan(40000, 'postgrad'),
+    };
+  });
+  await page.close();
+  assert.deepEqual(out, {
+    // 35k: tax (35,000 - 12,570) x 20% = 4,486; NI 22,430 x 8% = 1,794.40
+    plain: 28719.6,
+    // 60k, 5% before tax: taxable 57,000; tax 7,540 + 6,730 x 40% = 10,232; NI 3,016 + 9,730 x 2% = 3,210.60
+    netPay: 43557.4,
+    // 30k, 5% of 30,000 - 6,240 = 1,188; tax (28,812 - 12,570) x 20% = 3,248.40; NI 1,394.40
+    qualifying: 24169.2,
+    // 110k, 10% sacrifice: pay 99,000 keeps the full allowance; tax 7,540 + 48,730 x 40% = 27,032; NI 3,016 + 48,730 x 2% = 3,990.60
+    sacrifice: 67977.4,
+    // 60k, 5% relief at source: 2,400 from pay; tax 7,540 + 9,730 x 40% = 11,432; NI 3,210.60
+    ras: 42957.4,
+    // Higher-rate relief to claim: 3,000 x (40% - 20%)
+    rasClaim: 600,
+    // Scotland 45k: taxable 32,430 = 3,967 x 19% + 12,989 x 20% + 14,136 x 21% + 1,338 x 42% = 6,882.05; NI 2,594.40
+    scotland: 35523.55,
+    // Scotland 30k: 3,967 x 19% + 12,989 x 20% + 474 x 21% = 3,451.07
+    scotTax30k: 3451.07,
+    scotBand: 'Higher rate',
+    // Plan 2: (40,000 - 29,385) x 9% = 955.35, rounded down; postgraduate (40,000 - 21,000) x 6% = 1,140
+    plan2: 955,
+    postgrad: 1140,
+  });
+});

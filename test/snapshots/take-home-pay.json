@@ -1,0 +1,816 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgth": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results What you take home Your take-home pay a month — Enter your pay before tax to see what you take home. Take-home a year— Take-home a week— Deductions a year— Share of your pay you keep— An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Where your pay goes Each deduction as a share of your pay before tax. Your pay a year, a month and a week ItemYearMonthWeek Enter your pay to see the breakdown. What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise—— A £5,000 pay rise—— A 10% pay rise—— How was this calculated? Enter your pay to see how the figures are worked out. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included. Take-home a month —See results",
+      "data-calc": "take-home-pay",
+      "data-lgReadylgthform": "true"
+    },
+    "lgth-form": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgth-form-title": {
+      "text": "Your pay and deductions"
+    },
+    "lgth-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgth-error-list": {
+      "text": ""
+    },
+    "lgth-salary-hint": {
+      "text": "Your salary including any regular overtime or bonus, before anything is taken off."
+    },
+    "lgth-salary-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-hint": {
+      "text": "Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one."
+    },
+    "lgth-pension-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-type-hint": {
+      "text": "Your payslip or pension provider can tell you. If you’re not sure, leave it as it is."
+    },
+    "lgth-loan-hint": {
+      "text": "Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK."
+    },
+    "lgth-results": {
+      "text": "02 — Your results What you take home Your take-home pay a month — Enter your pay before tax to see what you take home. Take-home a year— Take-home a week— Deductions a year— Share of your pay you keep— An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits.",
+      "data-state": "empty"
+    },
+    "lgth-results-title": {
+      "text": "What you take home"
+    },
+    "lgth-headline-label": {
+      "text": "Your take-home pay a month"
+    },
+    "lgth-headline": {
+      "text": "—"
+    },
+    "lgth-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-summary": {
+      "text": "Enter your pay before tax to see what you take home."
+    },
+    "lgth-year": {
+      "text": "—"
+    },
+    "lgth-week": {
+      "text": "—"
+    },
+    "lgth-deductions": {
+      "text": "—"
+    },
+    "lgth-keep": {
+      "text": "—"
+    },
+    "lgth-breakdown": {
+      "text": "Where your pay goes Each deduction as a share of your pay before tax. Your pay a year, a month and a week ItemYearMonthWeek Enter your pay to see the breakdown."
+    },
+    "lgth-breakdown-title": {
+      "text": "Where your pay goes"
+    },
+    "lgth-split": {
+      "text": "",
+      "label": "Where your pay goes will appear once you enter your pay"
+    },
+    "lgth-legend": {
+      "text": ""
+    },
+    "lgth-table-caption": {
+      "text": "Your pay a year, a month and a week"
+    },
+    "lgth-table-body": {
+      "text": "Enter your pay to see the breakdown."
+    },
+    "lgth-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-rises": {
+      "text": "What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise—— A £5,000 pay rise—— A 10% pay rise——"
+    },
+    "lgth-rises-title": {
+      "text": "What a pay rise is worth"
+    },
+    "lgth-rise1-label": {
+      "text": "A £1,000 pay rise"
+    },
+    "lgth-rise1": {
+      "text": "—"
+    },
+    "lgth-rise1-note": {
+      "text": "—"
+    },
+    "lgth-rise2-label": {
+      "text": "A £5,000 pay rise"
+    },
+    "lgth-rise2": {
+      "text": "—"
+    },
+    "lgth-rise2-note": {
+      "text": "—"
+    },
+    "lgth-rise3-label": {
+      "text": "A 10% pay rise"
+    },
+    "lgth-rise3": {
+      "text": "—"
+    },
+    "lgth-rise3-note": {
+      "text": "—"
+    },
+    "lgth-method": {
+      "text": "How was this calculated? Enter your pay to see how the figures are worked out. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included."
+    },
+    "lgth-method-text": {
+      "text": "Enter your pay to see how the figures are worked out."
+    }
+  },
+  "typical": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgth": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results What you take home Your take-home pay a month £2,276.63 Basic rate taxpayer £27,320 a year, or £525.38 a week, from £35,000 a year before tax. Take-home a year£27,320 Take-home a week£525.38 Deductions a year£7,680 Share of your pay you keep78.1% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £2,276.63. £27,320 a year, or £525.38 a week, from £35,000 a year before tax. Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 78.1%Income tax 11.8%National Insurance 5.1%Pension 5% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£35,000£2,916.67£673.08Pension (taken before tax)−£1,750−£145.83−£33.65Income tax−£4,136−£344.67−£79.54National Insurance−£1,794−£149.53−£34.51Take-home pay£27,320£2,276.63£525.38 £1,750 a year goes into your pension from your pay, not counting anything your employer adds. What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£56.67 a monthYou keep 68%, plus £50 a year into your pension A £5,000 pay rise+£283.33 a monthYou keep 68%, plus £250 a year into your pension A 10% pay rise+£198.33 a monthYou keep 68%, plus £175 a year into your pension How was this calculated? Your pay of £35,000 a year, less £1,750 pension taken before tax, gives taxable pay of £33,250. After a Personal Allowance of £12,570, income tax at England, Wales and Northern Ireland rates is £4,136. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £1,794. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included. Take-home a month £2,276.63See results",
+      "data-calc": "take-home-pay",
+      "data-lgReadylgthform": "true"
+    },
+    "lgth-form": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgth-form-title": {
+      "text": "Your pay and deductions"
+    },
+    "lgth-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgth-error-list": {
+      "text": ""
+    },
+    "lgth-salary-hint": {
+      "text": "Your salary including any regular overtime or bonus, before anything is taken off."
+    },
+    "lgth-salary-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-hint": {
+      "text": "Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one."
+    },
+    "lgth-pension-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-type-hint": {
+      "text": "Your payslip or pension provider can tell you. If you’re not sure, leave it as it is."
+    },
+    "lgth-loan-hint": {
+      "text": "Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK."
+    },
+    "lgth-results": {
+      "text": "02 — Your results What you take home Your take-home pay a month £2,276.63 Basic rate taxpayer £27,320 a year, or £525.38 a week, from £35,000 a year before tax. Take-home a year£27,320 Take-home a week£525.38 Deductions a year£7,680 Share of your pay you keep78.1% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £2,276.63. £27,320 a year, or £525.38 a week, from £35,000 a year before tax.",
+      "data-state": "ready"
+    },
+    "lgth-results-title": {
+      "text": "What you take home"
+    },
+    "lgth-headline-label": {
+      "text": "Your take-home pay a month"
+    },
+    "lgth-headline": {
+      "text": "£2,276.63"
+    },
+    "lgth-status": {
+      "text": "Basic rate taxpayer"
+    },
+    "lgth-summary": {
+      "text": "£27,320 a year, or £525.38 a week, from £35,000 a year before tax."
+    },
+    "lgth-year": {
+      "text": "£27,320"
+    },
+    "lgth-week": {
+      "text": "£525.38"
+    },
+    "lgth-deductions": {
+      "text": "£7,680"
+    },
+    "lgth-keep": {
+      "text": "78.1%"
+    },
+    "lgth-breakdown": {
+      "text": "Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 78.1%Income tax 11.8%National Insurance 5.1%Pension 5% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£35,000£2,916.67£673.08Pension (taken before tax)−£1,750−£145.83−£33.65Income tax−£4,136−£344.67−£79.54National Insurance−£1,794−£149.53−£34.51Take-home pay£27,320£2,276.63£525.38 £1,750 a year goes into your pension from your pay, not counting anything your employer adds."
+    },
+    "lgth-breakdown-title": {
+      "text": "Where your pay goes"
+    },
+    "lgth-split": {
+      "text": "",
+      "label": "Where your pay goes: Take-home pay 78.1%, Income tax 11.8%, National Insurance 5.1%, Pension 5%."
+    },
+    "lgth-legend": {
+      "text": "Take-home pay 78.1%Income tax 11.8%National Insurance 5.1%Pension 5%"
+    },
+    "lgth-table-caption": {
+      "text": "Your pay a year, a month and a week"
+    },
+    "lgth-table-body": {
+      "text": "Pay before tax£35,000£2,916.67£673.08Pension (taken before tax)−£1,750−£145.83−£33.65Income tax−£4,136−£344.67−£79.54National Insurance−£1,794−£149.53−£34.51Take-home pay£27,320£2,276.63£525.38"
+    },
+    "lgth-notes": {
+      "text": "£1,750 a year goes into your pension from your pay, not counting anything your employer adds."
+    },
+    "lgth-rises": {
+      "text": "What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£56.67 a monthYou keep 68%, plus £50 a year into your pension A £5,000 pay rise+£283.33 a monthYou keep 68%, plus £250 a year into your pension A 10% pay rise+£198.33 a monthYou keep 68%, plus £175 a year into your pension"
+    },
+    "lgth-rises-title": {
+      "text": "What a pay rise is worth"
+    },
+    "lgth-rise1-label": {
+      "text": "A £1,000 pay rise"
+    },
+    "lgth-rise1": {
+      "text": "+£56.67 a month"
+    },
+    "lgth-rise1-note": {
+      "text": "You keep 68%, plus £50 a year into your pension"
+    },
+    "lgth-rise2-label": {
+      "text": "A £5,000 pay rise"
+    },
+    "lgth-rise2": {
+      "text": "+£283.33 a month"
+    },
+    "lgth-rise2-note": {
+      "text": "You keep 68%, plus £250 a year into your pension"
+    },
+    "lgth-rise3-label": {
+      "text": "A 10% pay rise"
+    },
+    "lgth-rise3": {
+      "text": "+£198.33 a month"
+    },
+    "lgth-rise3-note": {
+      "text": "You keep 68%, plus £175 a year into your pension"
+    },
+    "lgth-method": {
+      "text": "How was this calculated? Your pay of £35,000 a year, less £1,750 pension taken before tax, gives taxable pay of £33,250. After a Personal Allowance of £12,570, income tax at England, Wales and Northern Ireland rates is £4,136. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £1,794. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included."
+    },
+    "lgth-method-text": {
+      "text": "Your pay of £35,000 a year, less £1,750 pension taken before tax, gives taxable pay of £33,250. After a Personal Allowance of £12,570, income tax at England, Wales and Northern Ireland rates is £4,136. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £1,794."
+    }
+  },
+  "scotland": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgth": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results What you take home Your take-home pay a month £2,960.30 Higher rate taxpayer (Scotland) £35,524 a year, or £683.15 a week, from £45,000 a year before tax. Take-home a year£35,524 Take-home a week£683.15 Deductions a year£9,476 Share of your pay you keep78.9% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £2,960.30. £35,524 a year, or £683.15 a week, from £45,000 a year before tax. Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 78.9%Income tax 15.3%National Insurance 5.8% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£45,000£3,750.00£865.38Income tax−£6,882−£573.50−£132.35National Insurance−£2,594−£216.20−£49.89Take-home pay£35,524£2,960.30£683.15 What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£41.67 a monthYou keep 50% A £5,000 pay rise+£208.33 a monthYou keep 50% A 10% pay rise+£187.50 a monthYou keep 50% How was this calculated? Your pay of £45,000 a year gives taxable pay of £45,000. After a Personal Allowance of £12,570, income tax at Scottish rates is £6,882. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £2,594. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included. Take-home a month £2,960.30See results",
+      "data-calc": "take-home-pay",
+      "data-lgReadylgthform": "true"
+    },
+    "lgth-form": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgth-form-title": {
+      "text": "Your pay and deductions"
+    },
+    "lgth-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgth-error-list": {
+      "text": ""
+    },
+    "lgth-salary-hint": {
+      "text": "Your salary including any regular overtime or bonus, before anything is taken off."
+    },
+    "lgth-salary-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-hint": {
+      "text": "Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one."
+    },
+    "lgth-pension-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-type-hint": {
+      "text": "Your payslip or pension provider can tell you. If you’re not sure, leave it as it is."
+    },
+    "lgth-loan-hint": {
+      "text": "Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK."
+    },
+    "lgth-results": {
+      "text": "02 — Your results What you take home Your take-home pay a month £2,960.30 Higher rate taxpayer (Scotland) £35,524 a year, or £683.15 a week, from £45,000 a year before tax. Take-home a year£35,524 Take-home a week£683.15 Deductions a year£9,476 Share of your pay you keep78.9% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £2,960.30. £35,524 a year, or £683.15 a week, from £45,000 a year before tax.",
+      "data-state": "ready"
+    },
+    "lgth-results-title": {
+      "text": "What you take home"
+    },
+    "lgth-headline-label": {
+      "text": "Your take-home pay a month"
+    },
+    "lgth-headline": {
+      "text": "£2,960.30"
+    },
+    "lgth-status": {
+      "text": "Higher rate taxpayer (Scotland)"
+    },
+    "lgth-summary": {
+      "text": "£35,524 a year, or £683.15 a week, from £45,000 a year before tax."
+    },
+    "lgth-year": {
+      "text": "£35,524"
+    },
+    "lgth-week": {
+      "text": "£683.15"
+    },
+    "lgth-deductions": {
+      "text": "£9,476"
+    },
+    "lgth-keep": {
+      "text": "78.9%"
+    },
+    "lgth-breakdown": {
+      "text": "Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 78.9%Income tax 15.3%National Insurance 5.8% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£45,000£3,750.00£865.38Income tax−£6,882−£573.50−£132.35National Insurance−£2,594−£216.20−£49.89Take-home pay£35,524£2,960.30£683.15"
+    },
+    "lgth-breakdown-title": {
+      "text": "Where your pay goes"
+    },
+    "lgth-split": {
+      "text": "",
+      "label": "Where your pay goes: Take-home pay 78.9%, Income tax 15.3%, National Insurance 5.8%."
+    },
+    "lgth-legend": {
+      "text": "Take-home pay 78.9%Income tax 15.3%National Insurance 5.8%"
+    },
+    "lgth-table-caption": {
+      "text": "Your pay a year, a month and a week"
+    },
+    "lgth-table-body": {
+      "text": "Pay before tax£45,000£3,750.00£865.38Income tax−£6,882−£573.50−£132.35National Insurance−£2,594−£216.20−£49.89Take-home pay£35,524£2,960.30£683.15"
+    },
+    "lgth-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-rises": {
+      "text": "What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£41.67 a monthYou keep 50% A £5,000 pay rise+£208.33 a monthYou keep 50% A 10% pay rise+£187.50 a monthYou keep 50%"
+    },
+    "lgth-rises-title": {
+      "text": "What a pay rise is worth"
+    },
+    "lgth-rise1-label": {
+      "text": "A £1,000 pay rise"
+    },
+    "lgth-rise1": {
+      "text": "+£41.67 a month"
+    },
+    "lgth-rise1-note": {
+      "text": "You keep 50%"
+    },
+    "lgth-rise2-label": {
+      "text": "A £5,000 pay rise"
+    },
+    "lgth-rise2": {
+      "text": "+£208.33 a month"
+    },
+    "lgth-rise2-note": {
+      "text": "You keep 50%"
+    },
+    "lgth-rise3-label": {
+      "text": "A 10% pay rise"
+    },
+    "lgth-rise3": {
+      "text": "+£187.50 a month"
+    },
+    "lgth-rise3-note": {
+      "text": "You keep 50%"
+    },
+    "lgth-method": {
+      "text": "How was this calculated? Your pay of £45,000 a year gives taxable pay of £45,000. After a Personal Allowance of £12,570, income tax at Scottish rates is £6,882. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £2,594. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included."
+    },
+    "lgth-method-text": {
+      "text": "Your pay of £45,000 a year gives taxable pay of £45,000. After a Personal Allowance of £12,570, income tax at Scottish rates is £6,882. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £2,594."
+    }
+  },
+  "taper": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgth": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results What you take home Your take-home pay a month £5,751.12 Higher rate taxpayer £69,013 a year, or £1,327.18 a week, from £110,000 a year before tax. Take-home a year£69,013 Take-home a week£1,327.18 Deductions a year£40,987 Share of your pay you keep62.7% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £5,751.12. £69,013 a year, or £1,327.18 a week, from £110,000 a year before tax. Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 62.7%Income tax 25.6%National Insurance 3.7%Pension 8% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£110,000£9,166.67£2,115.38Salary sacrifice to pension−£8,800−£733.33−£169.23Income tax−£28,152−£2,346.00−£541.38National Insurance−£4,035−£336.22−£77.59Take-home pay£69,013£5,751.12£1,327.18 Between £100,000 and £125,140 you lose £1 of your tax-free Personal Allowance for every £2 you earn, so pay in that range is taxed at an effective 60%. Paying more into your pension by salary sacrifice or from pay before tax could bring your income under £100,000.£8,800 a year goes into your pension from your pay, not counting anything your employer adds.If you or your partner get Child Benefit, the High Income Child Benefit Charge applies above £60,000. It isn’t included here.Salary sacrifice can’t take your pay below the National Minimum Wage, and it can lower things worked out from your salary, such as mortgage applications. What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£29.13 a monthYou keep 35%, plus £80 a year into your pension A £5,000 pay rise+£145.67 a monthYou keep 35%, plus £400 a year into your pension A 10% pay rise+£320.47 a monthYou keep 35%, plus £880 a year into your pension How was this calculated? Your pay of £110,000 a year falls to £101,200 after salary sacrifice gives taxable pay of £101,200. After a Personal Allowance of £11,970, income tax at England, Wales and Northern Ireland rates is £28,152. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £4,035. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included. Take-home a month £5,751.12See results",
+      "data-calc": "take-home-pay",
+      "data-lgReadylgthform": "true"
+    },
+    "lgth-form": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgth-form-title": {
+      "text": "Your pay and deductions"
+    },
+    "lgth-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgth-error-list": {
+      "text": ""
+    },
+    "lgth-salary-hint": {
+      "text": "Your salary including any regular overtime or bonus, before anything is taken off."
+    },
+    "lgth-salary-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-hint": {
+      "text": "Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one."
+    },
+    "lgth-pension-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-type-hint": {
+      "text": "Your payslip or pension provider can tell you. If you’re not sure, leave it as it is."
+    },
+    "lgth-loan-hint": {
+      "text": "Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK."
+    },
+    "lgth-results": {
+      "text": "02 — Your results What you take home Your take-home pay a month £5,751.12 Higher rate taxpayer £69,013 a year, or £1,327.18 a week, from £110,000 a year before tax. Take-home a year£69,013 Take-home a week£1,327.18 Deductions a year£40,987 Share of your pay you keep62.7% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £5,751.12. £69,013 a year, or £1,327.18 a week, from £110,000 a year before tax.",
+      "data-state": "ready"
+    },
+    "lgth-results-title": {
+      "text": "What you take home"
+    },
+    "lgth-headline-label": {
+      "text": "Your take-home pay a month"
+    },
+    "lgth-headline": {
+      "text": "£5,751.12"
+    },
+    "lgth-status": {
+      "text": "Higher rate taxpayer"
+    },
+    "lgth-summary": {
+      "text": "£69,013 a year, or £1,327.18 a week, from £110,000 a year before tax."
+    },
+    "lgth-year": {
+      "text": "£69,013"
+    },
+    "lgth-week": {
+      "text": "£1,327.18"
+    },
+    "lgth-deductions": {
+      "text": "£40,987"
+    },
+    "lgth-keep": {
+      "text": "62.7%"
+    },
+    "lgth-breakdown": {
+      "text": "Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 62.7%Income tax 25.6%National Insurance 3.7%Pension 8% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£110,000£9,166.67£2,115.38Salary sacrifice to pension−£8,800−£733.33−£169.23Income tax−£28,152−£2,346.00−£541.38National Insurance−£4,035−£336.22−£77.59Take-home pay£69,013£5,751.12£1,327.18 Between £100,000 and £125,140 you lose £1 of your tax-free Personal Allowance for every £2 you earn, so pay in that range is taxed at an effective 60%. Paying more into your pension by salary sacrifice or from pay before tax could bring your income under £100,000.£8,800 a year goes into your pension from your pay, not counting anything your employer adds.If you or your partner get Child Benefit, the High Income Child Benefit Charge applies above £60,000. It isn’t included here.Salary sacrifice can’t take your pay below the National Minimum Wage, and it can lower things worked out from your salary, such as mortgage applications."
+    },
+    "lgth-breakdown-title": {
+      "text": "Where your pay goes"
+    },
+    "lgth-split": {
+      "text": "",
+      "label": "Where your pay goes: Take-home pay 62.7%, Income tax 25.6%, National Insurance 3.7%, Pension 8%."
+    },
+    "lgth-legend": {
+      "text": "Take-home pay 62.7%Income tax 25.6%National Insurance 3.7%Pension 8%"
+    },
+    "lgth-table-caption": {
+      "text": "Your pay a year, a month and a week"
+    },
+    "lgth-table-body": {
+      "text": "Pay before tax£110,000£9,166.67£2,115.38Salary sacrifice to pension−£8,800−£733.33−£169.23Income tax−£28,152−£2,346.00−£541.38National Insurance−£4,035−£336.22−£77.59Take-home pay£69,013£5,751.12£1,327.18"
+    },
+    "lgth-notes": {
+      "text": "Between £100,000 and £125,140 you lose £1 of your tax-free Personal Allowance for every £2 you earn, so pay in that range is taxed at an effective 60%. Paying more into your pension by salary sacrifice or from pay before tax could bring your income under £100,000.£8,800 a year goes into your pension from your pay, not counting anything your employer adds.If you or your partner get Child Benefit, the High Income Child Benefit Charge applies above £60,000. It isn’t included here.Salary sacrifice can’t take your pay below the National Minimum Wage, and it can lower things worked out from your salary, such as mortgage applications."
+    },
+    "lgth-rises": {
+      "text": "What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£29.13 a monthYou keep 35%, plus £80 a year into your pension A £5,000 pay rise+£145.67 a monthYou keep 35%, plus £400 a year into your pension A 10% pay rise+£320.47 a monthYou keep 35%, plus £880 a year into your pension"
+    },
+    "lgth-rises-title": {
+      "text": "What a pay rise is worth"
+    },
+    "lgth-rise1-label": {
+      "text": "A £1,000 pay rise"
+    },
+    "lgth-rise1": {
+      "text": "+£29.13 a month"
+    },
+    "lgth-rise1-note": {
+      "text": "You keep 35%, plus £80 a year into your pension"
+    },
+    "lgth-rise2-label": {
+      "text": "A £5,000 pay rise"
+    },
+    "lgth-rise2": {
+      "text": "+£145.67 a month"
+    },
+    "lgth-rise2-note": {
+      "text": "You keep 35%, plus £400 a year into your pension"
+    },
+    "lgth-rise3-label": {
+      "text": "A 10% pay rise"
+    },
+    "lgth-rise3": {
+      "text": "+£320.47 a month"
+    },
+    "lgth-rise3-note": {
+      "text": "You keep 35%, plus £880 a year into your pension"
+    },
+    "lgth-method": {
+      "text": "How was this calculated? Your pay of £110,000 a year falls to £101,200 after salary sacrifice gives taxable pay of £101,200. After a Personal Allowance of £11,970, income tax at England, Wales and Northern Ireland rates is £28,152. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £4,035. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included."
+    },
+    "lgth-method-text": {
+      "text": "Your pay of £110,000 a year falls to £101,200 after salary sacrifice gives taxable pay of £101,200. After a Personal Allowance of £11,970, income tax at England, Wales and Northern Ireland rates is £28,152. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £4,035."
+    }
+  },
+  "monthlyLoans": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgth": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results What you take home Your take-home pay a month £2,738.72 Basic rate taxpayer £32,865 a year, or £632.01 a week, from £48,000 a year before tax. Take-home a year£32,865 Take-home a week£632.01 Deductions a year£15,135 Share of your pay you keep68.5% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £2,738.72. £32,865 a year, or £632.01 a week, from £48,000 a year before tax. Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 68.5%Income tax 14.8%National Insurance 5.9%Pension 4%Student loans 6.9% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£48,000£4,000.00£923.08Income tax−£7,086−£590.50−£136.27National Insurance−£2,834−£236.20−£54.51Student loan (Plan 2)−£1,675−£139.58−£32.21Postgraduate Loan−£1,620−£135.00−£31.15Pension (taken after tax)−£1,920−£160.00−£36.92Take-home pay£32,865£2,738.72£632.01 £2,400 a year goes into your pension from your pay, including £480 basic-rate tax relief your provider claims, not counting anything your employer adds. What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£44.17 a monthYou keep 53%, plus £50 a year into your pension A £5,000 pay rise+£188.98 a monthYou keep 45%, plus £250 a year into your pension A 10% pay rise+£182.48 a monthYou keep 46%, plus £240 a year into your pension How was this calculated? Your pay of £48,000 a year gives taxable pay of £48,000. After a Personal Allowance of £12,570, income tax at England, Wales and Northern Ireland rates is £7,086. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £2,834. Plan 2 repayments are 9% of pay over £29,385: £1,675. Postgraduate Loan repayments are 6% of pay over £21,000: £1,620. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included. Take-home a month £2,738.72See results",
+      "data-calc": "take-home-pay",
+      "data-lgReadylgthform": "true"
+    },
+    "lgth-form": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgth-form-title": {
+      "text": "Your pay and deductions"
+    },
+    "lgth-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgth-error-list": {
+      "text": ""
+    },
+    "lgth-salary-hint": {
+      "text": "Your salary including any regular overtime or bonus, before anything is taken off."
+    },
+    "lgth-salary-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-hint": {
+      "text": "Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one."
+    },
+    "lgth-pension-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-pension-type-hint": {
+      "text": "Your payslip or pension provider can tell you. If you’re not sure, leave it as it is."
+    },
+    "lgth-loan-hint": {
+      "text": "Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK."
+    },
+    "lgth-results": {
+      "text": "02 — Your results What you take home Your take-home pay a month £2,738.72 Basic rate taxpayer £32,865 a year, or £632.01 a week, from £48,000 a year before tax. Take-home a year£32,865 Take-home a week£632.01 Deductions a year£15,135 Share of your pay you keep68.5% An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Your take-home pay a month £2,738.72. £32,865 a year, or £632.01 a week, from £48,000 a year before tax.",
+      "data-state": "ready"
+    },
+    "lgth-results-title": {
+      "text": "What you take home"
+    },
+    "lgth-headline-label": {
+      "text": "Your take-home pay a month"
+    },
+    "lgth-headline": {
+      "text": "£2,738.72"
+    },
+    "lgth-status": {
+      "text": "Basic rate taxpayer"
+    },
+    "lgth-summary": {
+      "text": "£32,865 a year, or £632.01 a week, from £48,000 a year before tax."
+    },
+    "lgth-year": {
+      "text": "£32,865"
+    },
+    "lgth-week": {
+      "text": "£632.01"
+    },
+    "lgth-deductions": {
+      "text": "£15,135"
+    },
+    "lgth-keep": {
+      "text": "68.5%"
+    },
+    "lgth-breakdown": {
+      "text": "Where your pay goes Each deduction as a share of your pay before tax. Take-home pay 68.5%Income tax 14.8%National Insurance 5.9%Pension 4%Student loans 6.9% Your pay a year, a month and a week ItemYearMonthWeek Pay before tax£48,000£4,000.00£923.08Income tax−£7,086−£590.50−£136.27National Insurance−£2,834−£236.20−£54.51Student loan (Plan 2)−£1,675−£139.58−£32.21Postgraduate Loan−£1,620−£135.00−£31.15Pension (taken after tax)−£1,920−£160.00−£36.92Take-home pay£32,865£2,738.72£632.01 £2,400 a year goes into your pension from your pay, including £480 basic-rate tax relief your provider claims, not counting anything your employer adds."
+    },
+    "lgth-breakdown-title": {
+      "text": "Where your pay goes"
+    },
+    "lgth-split": {
+      "text": "",
+      "label": "Where your pay goes: Take-home pay 68.5%, Income tax 14.8%, National Insurance 5.9%, Pension 4%, Student loans 6.9%."
+    },
+    "lgth-legend": {
+      "text": "Take-home pay 68.5%Income tax 14.8%National Insurance 5.9%Pension 4%Student loans 6.9%"
+    },
+    "lgth-table-caption": {
+      "text": "Your pay a year, a month and a week"
+    },
+    "lgth-table-body": {
+      "text": "Pay before tax£48,000£4,000.00£923.08Income tax−£7,086−£590.50−£136.27National Insurance−£2,834−£236.20−£54.51Student loan (Plan 2)−£1,675−£139.58−£32.21Postgraduate Loan−£1,620−£135.00−£31.15Pension (taken after tax)−£1,920−£160.00−£36.92Take-home pay£32,865£2,738.72£632.01"
+    },
+    "lgth-notes": {
+      "text": "£2,400 a year goes into your pension from your pay, including £480 basic-rate tax relief your provider claims, not counting anything your employer adds."
+    },
+    "lgth-rises": {
+      "text": "What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise+£44.17 a monthYou keep 53%, plus £50 a year into your pension A £5,000 pay rise+£188.98 a monthYou keep 45%, plus £250 a year into your pension A 10% pay rise+£182.48 a monthYou keep 46%, plus £240 a year into your pension"
+    },
+    "lgth-rises-title": {
+      "text": "What a pay rise is worth"
+    },
+    "lgth-rise1-label": {
+      "text": "A £1,000 pay rise"
+    },
+    "lgth-rise1": {
+      "text": "+£44.17 a month"
+    },
+    "lgth-rise1-note": {
+      "text": "You keep 53%, plus £50 a year into your pension"
+    },
+    "lgth-rise2-label": {
+      "text": "A £5,000 pay rise"
+    },
+    "lgth-rise2": {
+      "text": "+£188.98 a month"
+    },
+    "lgth-rise2-note": {
+      "text": "You keep 45%, plus £250 a year into your pension"
+    },
+    "lgth-rise3-label": {
+      "text": "A 10% pay rise"
+    },
+    "lgth-rise3": {
+      "text": "+£182.48 a month"
+    },
+    "lgth-rise3-note": {
+      "text": "You keep 46%, plus £240 a year into your pension"
+    },
+    "lgth-method": {
+      "text": "How was this calculated? Your pay of £48,000 a year gives taxable pay of £48,000. After a Personal Allowance of £12,570, income tax at England, Wales and Northern Ireland rates is £7,086. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £2,834. Plan 2 repayments are 9% of pay over £29,385: £1,675. Postgraduate Loan repayments are 6% of pay over £21,000: £1,620. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included."
+    },
+    "lgth-method-text": {
+      "text": "Your pay of £48,000 a year gives taxable pay of £48,000. After a Personal Allowance of £12,570, income tax at England, Wales and Northern Ireland rates is £7,086. National Insurance is 8% of pay from £12,570 to £50,270 and 2% above that: £2,834. Plan 2 repayments are 9% of pay over £29,385: £1,675. Postgraduate Loan repayments are 6% of pay over £21,000: £1,620."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgth": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Enter your pay before tax, from £1 to £10,000,000.Enter a pension contribution from 0% to 100%, or 0. Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. Enter your pay before tax, from £1 to £10,000,000. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. Enter a pension contribution from 0% to 100%, or 0. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results What you take home Your take-home pay a month — Check the highlighted fields to see your take-home pay. Take-home a year— Take-home a week— Deductions a year— Share of your pay you keep— An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits. Where your pay goes Each deduction as a share of your pay before tax. Your pay a year, a month and a week ItemYearMonthWeek Enter your pay to see the breakdown. What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise—— A £5,000 pay rise—— A 10% pay rise—— How was this calculated? Enter your pay to see how the figures are worked out. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included. Take-home a month —See results",
+      "data-calc": "take-home-pay",
+      "data-lgReadylgthform": "true"
+    },
+    "lgth-form": {
+      "text": "01 — Your details Your pay and deductions Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year. Check the highlighted fields Enter your pay before tax, from £1 to £10,000,000.Enter a pension contribution from 0% to 100%, or 0. Your pay Pay before tax £ Your salary including any regular overtime or bonus, before anything is taken off. Enter your pay before tax, from £1 to £10,000,000. I’m entering my pay Yearly Monthly Weekly Where you pay tax England, Wales or NI Scotland Your pension Your contribution % of pay Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one. Enter a pension contribution from 0% to 100%, or 0. How it’s paid Taken from pay before tax Taken after tax (relief at source) Salary sacrifice Your payslip or pension provider can tell you. If you’re not sure, leave it as it is. Worked out on All my pay Qualifying earnings Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings). Student loans Student loan plan None Plan 1 Plan 2 Plan 4 (Scotland) Plan 5 Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK. Postgraduate I’m repaying a Postgraduate Loan Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgth-form-title": {
+      "text": "Your pay and deductions"
+    },
+    "lgth-error-summary": {
+      "text": "Check the highlighted fields Enter your pay before tax, from £1 to £10,000,000.Enter a pension contribution from 0% to 100%, or 0."
+    },
+    "lgth-error-list": {
+      "text": "Enter your pay before tax, from £1 to £10,000,000.Enter a pension contribution from 0% to 100%, or 0."
+    },
+    "lgth-salary@invalid": "true",
+    "lgth-salary-hint": {
+      "text": "Your salary including any regular overtime or bonus, before anything is taken off."
+    },
+    "lgth-salary-error": {
+      "text": "Enter your pay before tax, from £1 to £10,000,000."
+    },
+    "lgth-pension@invalid": "true",
+    "lgth-pension-hint": {
+      "text": "Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one."
+    },
+    "lgth-pension-error": {
+      "text": "Enter a pension contribution from 0% to 100%, or 0."
+    },
+    "lgth-pension-type-hint": {
+      "text": "Your payslip or pension provider can tell you. If you’re not sure, leave it as it is."
+    },
+    "lgth-loan-hint": {
+      "text": "Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK."
+    },
+    "lgth-results": {
+      "text": "02 — Your results What you take home Your take-home pay a month — Check the highlighted fields to see your take-home pay. Take-home a year— Take-home a week— Deductions a year— Share of your pay you keep— An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits.",
+      "data-state": "invalid"
+    },
+    "lgth-results-title": {
+      "text": "What you take home"
+    },
+    "lgth-headline-label": {
+      "text": "Your take-home pay a month"
+    },
+    "lgth-headline": {
+      "text": "—"
+    },
+    "lgth-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-summary": {
+      "text": "Check the highlighted fields to see your take-home pay."
+    },
+    "lgth-year": {
+      "text": "—"
+    },
+    "lgth-week": {
+      "text": "—"
+    },
+    "lgth-deductions": {
+      "text": "—"
+    },
+    "lgth-keep": {
+      "text": "—"
+    },
+    "lgth-breakdown": {
+      "text": "Where your pay goes Each deduction as a share of your pay before tax. Your pay a year, a month and a week ItemYearMonthWeek Enter your pay to see the breakdown."
+    },
+    "lgth-breakdown-title": {
+      "text": "Where your pay goes"
+    },
+    "lgth-split": {
+      "text": "",
+      "label": "Where your pay goes will appear once you enter your pay"
+    },
+    "lgth-legend": {
+      "text": ""
+    },
+    "lgth-table-caption": {
+      "text": "Your pay a year, a month and a week"
+    },
+    "lgth-table-body": {
+      "text": "Enter your pay to see the breakdown."
+    },
+    "lgth-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgth-rises": {
+      "text": "What a pay rise is worth How much more you’d take home each month, after tax and everything else. A £1,000 pay rise—— A £5,000 pay rise—— A 10% pay rise——"
+    },
+    "lgth-rises-title": {
+      "text": "What a pay rise is worth"
+    },
+    "lgth-rise1-label": {
+      "text": "A £1,000 pay rise"
+    },
+    "lgth-rise1": {
+      "text": "—"
+    },
+    "lgth-rise1-note": {
+      "text": "—"
+    },
+    "lgth-rise2-label": {
+      "text": "A £5,000 pay rise"
+    },
+    "lgth-rise2": {
+      "text": "—"
+    },
+    "lgth-rise2-note": {
+      "text": "—"
+    },
+    "lgth-rise3-label": {
+      "text": "A 10% pay rise"
+    },
+    "lgth-rise3": {
+      "text": "—"
+    },
+    "lgth-rise3-note": {
+      "text": "—"
+    },
+    "lgth-method": {
+      "text": "How was this calculated? Enter your pay to see how the figures are worked out. Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included."
+    },
+    "lgth-method-text": {
+      "text": "Enter your pay to see how the figures are worked out."
+    }
+  }
+}

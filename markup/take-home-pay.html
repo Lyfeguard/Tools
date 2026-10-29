@@ -1,0 +1,146 @@
+<div class="lg-calc" data-calc="take-home-pay" id="lgth">
+  <form id="lgth-form" class="lgc-card" novalidate="" aria-labelledby="lgth-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lgth-form-title">Your pay and deductions</h2>
+    <p class="lgc-intro">Enter your pay before tax. We’ll take off income tax, National Insurance, your pension and any student loan for the 2026/27 tax year.</p>
+
+    <div id="lgth-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
+      <p class="lgc-error-summary-title">Check the highlighted fields</p>
+      <ul id="lgth-error-list"></ul>
+    </div>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your pay</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field lgc-field-full">
+          <label for="lgth-salary">Pay before tax</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgth-salary" name="salary" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="35,000" data-format="money" aria-describedby="lgth-salary-hint lgth-salary-error"></div>
+          <p id="lgth-salary-hint" class="lgc-hint">Your salary including any regular overtime or bonus, before anything is taken off.</p>
+          <p id="lgth-salary-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group">
+          <legend>I’m entering my pay</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgth-period" value="year" checked=""><span>Yearly</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgth-period" value="month"><span>Monthly</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgth-period" value="week"><span>Weekly</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="lgc-choice-group">
+          <legend>Where you pay tax</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgth-region" value="ruk" checked=""><span>England, Wales or NI</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgth-region" value="scotland"><span>Scotland</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your pension</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field">
+          <label for="lgth-pension">Your contribution</label>
+          <div class="lgc-input"><input id="lgth-pension" name="pension" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" value="5" aria-describedby="lgth-pension-hint lgth-pension-error"><span class="lgc-affix" aria-hidden="true">% of pay</span></div>
+          <p id="lgth-pension-hint" class="lgc-hint">Most workplace pensions take at least 5%. Enter 0 if you don’t pay into one.</p>
+          <p id="lgth-pension-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgth-pension-type">How it’s paid</label>
+          <div class="lgc-input lgc-select"><select id="lgth-pension-type" name="pension-type" aria-describedby="lgth-pension-type-hint">
+            <option value="netpay" selected="">Taken from pay before tax</option>
+            <option value="ras">Taken after tax (relief at source)</option>
+            <option value="sacrifice">Salary sacrifice</option>
+          </select></div>
+          <p id="lgth-pension-type-hint" class="lgc-hint">Your payslip or pension provider can tell you. If you’re not sure, leave it as it is.</p>
+        </div>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>Worked out on</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgth-basis" value="total" checked=""><span>All my pay</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgth-basis" value="qualifying"><span>Qualifying earnings</span></label>
+          </div>
+          <p class="lgc-hint">Some employers only count pay between £6,240 and £50,270 a year (qualifying earnings).</p>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Student loans</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field">
+          <label for="lgth-loan">Student loan plan</label>
+          <div class="lgc-input lgc-select"><select id="lgth-loan" name="loan" aria-describedby="lgth-loan-hint">
+            <option value="" selected="">None</option>
+            <option value="plan1">Plan 1</option>
+            <option value="plan2">Plan 2</option>
+            <option value="plan4">Plan 4 (Scotland)</option>
+            <option value="plan5">Plan 5</option>
+          </select></div>
+          <p id="lgth-loan-hint" class="lgc-hint">Plan 2 is most common for courses in England and Wales started from 2012 to 2022, and Plan 5 from 2023. Check yours on GOV.UK.</p>
+        </div>
+        <div class="lgc-field">
+          <span class="lgc-field-label" aria-hidden="true">Postgraduate</span>
+          <label class="lgc-check"><input id="lgth-postgrad" name="postgrad" type="checkbox"><span>I’m repaying a Postgraduate Loan</span></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you type. Nothing you enter leaves your browser.</p>
+      <button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lgth-results" class="lgc-card lgc-card-dark" aria-labelledby="lgth-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lgth-results-title">What you take home</h2>
+    <p class="lgc-result-label" id="lgth-headline-label">Your take-home pay a month</p>
+    <p class="lgc-result-value" id="lgth-headline">—</p>
+    <p class="lgc-badge" id="lgth-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lgth-summary">Enter your pay before tax to see what you take home.</p>
+    <dl class="lgc-stats">
+      <div><dt>Take-home a year</dt><dd id="lgth-year">—</dd></div>
+      <div><dt>Take-home a week</dt><dd id="lgth-week">—</dd></div>
+      <div><dt>Deductions a year</dt><dd id="lgth-deductions">—</dd></div>
+      <div><dt>Share of your pay you keep</dt><dd id="lgth-keep">—</dd></div>
+    </dl>
+    <p class="lgc-small">An estimate using 2026/27 rates and a standard tax code (1257L). Your payslip may differ slightly, for example if your tax code is different or you have taxable benefits.</p>
+    <p class="lgc-sr-only" aria-live="polite" data-announce="lgth-headline-label lgth-headline lgth-summary"></p>
+  </section>
+
+  <section id="lgth-breakdown" class="lgc-card" aria-labelledby="lgth-breakdown-title">
+    <h3 id="lgth-breakdown-title">Where your pay goes</h3>
+    <p class="lgc-intro">Each deduction as a share of your pay before tax.</p>
+    <div id="lgth-split" class="lgc-split" role="img" aria-label="Where your pay goes will appear once you enter your pay"></div>
+    <ul id="lgth-legend" class="lgc-legend lgc-legend-values" aria-hidden="true"></ul>
+    <div class="lgc-table-wrap lgc-table-fit" tabindex="0" role="region" aria-labelledby="lgth-table-caption">
+      <table class="lgc-table">
+        <caption id="lgth-table-caption">Your pay a year, a month and a week</caption>
+        <thead><tr><th scope="col"><span class="lgc-sr-only">Item</span></th><th scope="col">Year</th><th scope="col">Month</th><th scope="col" class="lgc-col-week">Week</th></tr></thead>
+        <tbody id="lgth-table-body"><tr><td colspan="4">Enter your pay to see the breakdown.</td></tr></tbody>
+      </table>
+    </div>
+    <ul id="lgth-notes" class="lgc-notes" hidden=""></ul>
+  </section>
+
+  <section id="lgth-rises" class="lgc-card" aria-labelledby="lgth-rises-title">
+    <h3 id="lgth-rises-title">What a pay rise is worth</h3>
+    <p class="lgc-intro">How much more you’d take home each month, after tax and everything else.</p>
+    <div class="lgc-compare">
+      <div class="lgc-compare-item"><span id="lgth-rise1-label" class="lgc-compare-label">A £1,000 pay rise</span><strong id="lgth-rise1">—</strong><span id="lgth-rise1-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span id="lgth-rise2-label" class="lgc-compare-label">A £5,000 pay rise</span><strong id="lgth-rise2">—</strong><span id="lgth-rise2-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span id="lgth-rise3-label" class="lgc-compare-label">A 10% pay rise</span><strong id="lgth-rise3">—</strong><span id="lgth-rise3-note" class="lgc-compare-note">—</span></div>
+    </div>
+  </section>
+
+  <details id="lgth-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lgth-method-text">Enter your pay to see how the figures are worked out.</p>
+      <p class="lgc-small">Uses 2026/27 rates: a Personal Allowance of £12,570, which shrinks by £1 for every £2 of income over £100,000; income tax at England, Wales and Northern Ireland rates (20%, 40%, 45%) or Scottish rates (19% to 48%); employee National Insurance (Class 1, category A); and student loan thresholds for the year. Pay is spread evenly over the year, so a month is a twelfth and a week is a fifty-second. Pension taken before tax gets tax relief straight away; with relief at source your provider adds 20% and you claim any higher-rate relief yourself; salary sacrifice also saves National Insurance. Employer pension contributions, taxable benefits and tax code adjustments are not included.</p>
+    </div>
+  </details>
+
+  <div class="lgc-sticky" data-source="lgth-headline" data-results="lgth-results" hidden=""><p><span class="lgc-sticky-label">Take-home a month</span> <strong data-sticky-value="">—</strong></p><a href="#lgth-results" class="lgc-sticky-link">See results</a></div>
+</div>

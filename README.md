@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 The Tools template loads two files in its head code, served by jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.7.0/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.7.0/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.0/dist/lg-calc.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.0/dist/lg-calc.min.js" defer></script>
 ```
 
 Each calculator starts only when its own markup is on the page.
@@ -24,7 +24,7 @@ Each calculator starts only when its own markup is on the page.
 ## Calculator keys
 net-worth, inheritance-tax, compound-interest, savings-goal, emergency-fund,
 loan-repayment, pro-rata-salary, salary-by-age, mortgage, debt-to-income,
-retirement-income
+retirement-income, take-home-pay
 
 ## Making a change
 Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for the tests.
@@ -48,7 +48,7 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
 4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
    ```
-   npm run style-diff -- v1.7.0
+   npm run style-diff -- v1.8.0
    ```
 5. Commit, then create a release tagged with the new version (e.g. `v1.6.1`). GitHub runs the build and tests on every pull request ("Check calculators").
 6. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
@@ -74,5 +74,5 @@ Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, 
 ## Rules
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.
 - In the CSS, use the design tokens (`--lg-ocean`, `--lg-mint-ink`, `--lg-ink-soft`, `--lg-radius` and so on, defined at the top of `src/lg-calc.css` from the brand kit) instead of typing colours, fonts or radii again. Neon Mint (`--lg-mint`) is only for Ocean backgrounds.
-- Tax rates (2026/27) are in `LG.ukTax` in `src/lg-calc.js` and need updating each April.
+- Tax rates, National Insurance and student loan thresholds (2026/27, including Scottish rates) are in `LG.ukTax` in `src/lg-calc.js` and need updating each April.
 - In the JS, every calculator uses the shared helpers in the core section: `LG.start` (start-up and missing-element check), `LG.parseNumber` (reading typed numbers: never use `parseFloat` on user input), `LG.money`, `LG.percent`, `LG.markInvalid` and `LG.showError`. New calculators should too.

@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.7.0
+ * Lyfeguard calculators | lg-calc.css | v1.8.0
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -1259,9 +1259,18 @@
 .lg-tools .sa-plot {
   position: relative;
   height: 40px;
-  background-image: linear-gradient(to right, var(--lg-border) 1px, transparent 1px);
-  background-size: 22.222% 100%;
-  background-position: 11.111% 0;
+  /* Gridlines at 20k, 40k, 60k, 80k and 100k on a 10k to 110k scale */
+  background-image:
+    linear-gradient(var(--lg-border), var(--lg-border)), linear-gradient(var(--lg-border), var(--lg-border)), linear-gradient(var(--lg-border), var(--lg-border)),
+    linear-gradient(var(--lg-border), var(--lg-border)), linear-gradient(var(--lg-border), var(--lg-border));
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+  background-position:
+    10% 0,
+    30% 0,
+    50% 0,
+    70% 0,
+    90% 0;
 }
 .lg-tools .sa-whisker {
   position: absolute;
@@ -6470,6 +6479,143 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   color: var(--lg-ink-soft);
 }
 
+/* Select inside .lgc-input, with a drawn arrow */
+.lg-calc .lgc-select {
+  position: relative;
+}
+.lg-calc .lgc-select select {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0 44px 0 14px;
+  border: 0;
+  background: transparent;
+  color: var(--lg-ink);
+  font: 600 16px/1.4 var(--lg-font-body);
+  appearance: none;
+  cursor: pointer;
+}
+.lg-calc .lgc-select select:focus {
+  outline: 0;
+}
+.lg-calc .lgc-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 8px;
+  height: 8px;
+  margin-top: -6px;
+  border-right: 2px solid var(--lg-ink-soft);
+  border-bottom: 2px solid var(--lg-ink-soft);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* Checkbox with its label */
+.lg-calc .lgc-field-label {
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+.lg-calc .lgc-check {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 1px solid var(--lg-border-strong);
+  border-radius: var(--lg-radius-small);
+  background: var(--lg-mist);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lg-calc .lgc-check:has(:focus-visible) {
+  border-color: var(--lg-mint-ink);
+  box-shadow: 0 0 0 3px rgba(10, 163, 118, 0.18);
+}
+.lg-calc .lgc-check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--lg-mint-ink);
+}
+.lg-calc .lgc-check input:focus-visible {
+  outline: 0;
+}
+
+/* Stacked bar of shares, with a legend that shows each share */
+.lg-calc .lgc-split {
+  display: flex;
+  gap: 2px;
+  height: 28px;
+  overflow: hidden;
+  border-radius: var(--lg-radius-tiny);
+  background: var(--lg-mist-alt);
+}
+.lg-calc .lgc-split > span {
+  flex: none;
+  min-width: 3px;
+}
+.lg-calc :is(.lgc-split > span, .lgc-swatch)[data-part="net"] {
+  background: var(--lg-mint-ink);
+}
+.lg-calc :is(.lgc-split > span, .lgc-swatch)[data-part="tax"] {
+  background: var(--lg-ocean);
+}
+.lg-calc :is(.lgc-split > span, .lgc-swatch)[data-part="ni"] {
+  background: #819eae;
+}
+.lg-calc :is(.lgc-split > span, .lgc-swatch)[data-part="pension"] {
+  background: #787ba6;
+}
+.lg-calc :is(.lgc-split > span, .lgc-swatch)[data-part="loan"] {
+  background: #d8aa77;
+}
+.lg-calc .lgc-swatch {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.lg-calc .lgc-legend-values strong {
+  color: var(--lg-ink);
+  font-weight: 700;
+}
+
+/* A short table that fits its card: no minimum width, and a total row */
+.lg-calc .lgc-table-fit {
+  max-height: none;
+}
+.lg-calc .lgc-table-fit .lgc-table {
+  min-width: 0;
+}
+.lg-calc .lgc-table .lgc-row-total :is(th, td) {
+  border-top: 2px solid var(--lg-ocean);
+  font-weight: 700;
+}
+
+/* Notes that depend on the figures */
+.lg-calc .lgc-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.lg-calc .lgc-notes li {
+  padding: 12px 14px;
+  border-left: 3px solid var(--lg-mint-ink);
+  border-radius: var(--lg-radius-tiny);
+  background: var(--lg-mist);
+}
+
 /* Mobile result bar: shown by the JS while the results are below the screen */
 .lg-calc .lgc-sticky {
   box-sizing: border-box;
@@ -6569,6 +6715,33 @@ details.lg-faq-accordian summary::-webkit-details-marker {
     margin-top: 0;
     text-align: right;
     white-space: nowrap;
+  }
+  .lg-calc .lgc-table-fit .lgc-table :is(th, td) {
+    padding: 9px 8px;
+  }
+  .lg-calc .lgc-table-fit .lgc-table tbody th {
+    white-space: normal;
+  }
+  /* Short options stay side by side */
+  .lg-calc .lgc-switch-compact {
+    grid-auto-flow: column;
+  }
+  .lg-calc .lgc-switch-compact .lgc-switch-option {
+    gap: 6px;
+    padding: 8px 6px;
+    font-size: 14px;
+  }
+}
+@container lg-calc (max-width: 440px) {
+  /* The week column is in the results already */
+  .lg-calc .lgc-table-fit .lgc-col-week {
+    display: none;
+  }
+}
+@media (forced-colors: active) {
+  .lg-calc :is(.lgc-split > span, .lgc-swatch) {
+    forced-color-adjust: none;
+    border: 1px solid CanvasText;
   }
 }
 @media (prefers-reduced-motion: reduce) {
