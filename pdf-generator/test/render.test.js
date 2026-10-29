@@ -6,7 +6,7 @@ const os = require('os');
 const path = require('path');
 const { chromium } = require('playwright');
 const config = require('../config.json');
-const { openPage, renderPdf } = require('../lib/render');
+const { openPage, renderPdf, LAUNCH } = require('../lib/render');
 const items = require('./fixtures/sample/items.json');
 const faqs = require('./fixtures/sample/faqs.json');
 const authors = require('./fixtures/sample/authors.json');
@@ -15,7 +15,7 @@ const data = { item: items[0], faqs, author: authors[0], cfg: config.collections
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-pdf-'));
 let browser;
 before(async () => {
-  browser = await chromium.launch();
+  browser = await chromium.launch(LAUNCH);
 });
 after(async () => {
   await browser.close();

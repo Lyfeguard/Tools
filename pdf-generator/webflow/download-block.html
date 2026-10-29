@@ -1,63 +1,181 @@
 <!--
-  Lyfeguard gated PDF download block — for the Guides (and later Insights) collection templates.
+  Lyfeguard gated PDF download: a "Download PDF" button that opens a popup with the HubSpot form.
+  After the form is sent, the popup shows a download button for this guide's PDF. People who have
+  already filled it in on this browser get the PDF straight away next time.
 
-  Designer set-up:
-  1. Add a Code Embed inside a styled wrapper on the collection template (suggested spot: after the
-     article body, before the FAQs; optionally a slim "Download as PDF" link near the top that scrolls here).
-  2. In the embed, replace the {{...}} placeholders with CMS fields using "+ Add Field":
-       {{PDF Download}} -> PDF Download (Link field)   {{Name}} -> Name   {{Slug}} -> Slug
-  3. Set conditional visibility on the wrapper: show only when "PDF Download" is set.
-  4. Replace FORM_ID with the HubSpot form ID (Marketing > Forms > Share > Embed code).
-  5. Style the classes below (lg-download*) to the site's design system; the HubSpot form can be styled
-     in the form editor (Style tab) to match.
+  Webflow (Guides template):
+  1. Add a Code Embed near the top of the article (e.g. next to the author / reading time line)
+     and paste this whole file into it.
+  2. Use "+ Add Field" to replace the {{...}} placeholders:
+       {{PDF Download}} -> PDF Download        {{Name}} -> Name        {{Slug}} -> Slug
+       {{PDF Download Title}} -> PDF Download Title (optional; leave as is if the field isn't used)
+  3. Conditional visibility on the embed: show only when "PDF Download" is set.
+  The embed carries its own styles (scoped to .lg-dl), so it needs no Webflow classes.
 
-  HubSpot set-up (before going live):
-  - Contact properties (single-line text): last_resource_requested, last_resource_url
-  - Form "Guide PDF download": Email (required), First name (optional), the two properties as hidden fields,
-    plus a marketing consent checkbox. Inline thank-you message: "Thanks, your download is ready."
-  - Optional (Marketing Hub Professional+): workflow triggered by this form submission that sends an email
-    containing the {{ contact.last_resource_url }} personalisation token.
+  HubSpot: the form ID below is FORM_ID until the "Guide PDF download" form is published.
+  The HubSpot script loads only when someone opens the popup, so it adds nothing to page load.
 -->
-<div class="lg-download" data-pdf="{{PDF Download}}" data-title="{{Name}}" data-slug="{{Slug}}">
-  <div class="lg-download__copy">
-    <p class="lg-download__eyebrow">Free PDF</p>
-    <h3 class="lg-download__title">Download this guide</h3>
-    <p class="lg-download__text">Keep a branded copy to read offline, print or share. Enter your email and it's yours.</p>
-  </div>
-  <div class="lg-download__form">
-    <div class="hs-form-frame" data-region="eu1" data-form-id="FORM_ID" data-portal-id="139576714"></div>
-  </div>
-  <div class="lg-download__done" hidden>
-    <a class="lg-download__button" href="#" target="_blank" rel="noopener">Download the PDF</a>
-  </div>
+<div class="lg-dl" data-pdf="{{PDF Download}}" data-name="{{Name}}" data-slug="{{Slug}}" data-title="{{PDF Download Title}}"
+     data-form-id="FORM_ID" data-portal-id="139576714" data-region="eu1">
+  <button type="button" class="lg-dl-trigger" aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>Download PDF</span>
+  </button>
+
+  <dialog class="lg-dl-dialog" aria-labelledby="lg-dl-heading">
+    <button type="button" class="lg-dl-close" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="lg-dl-step lg-dl-ask">
+      <div class="lg-dl-head">
+        <p class="lg-dl-eyebrow">Free PDF</p>
+        <h2 class="lg-dl-title" id="lg-dl-heading">Get this guide as a PDF</h2>
+        <p class="lg-dl-text">Read it offline, print it or share it. Enter your email and your download appears straight away.</p>
+      </div>
+      <div class="lg-dl-form"></div>
+      <p class="lg-dl-fallback" hidden>The form hasn't loaded (an ad blocker can stop it). <a class="lg-dl-link" href="#" target="_blank" rel="noopener">Download the PDF here</a>.</p>
+    </div>
+
+    <div class="lg-dl-step lg-dl-done" hidden>
+      <span class="lg-dl-tick" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <h2 class="lg-dl-title" tabindex="-1">Your PDF is ready</h2>
+      <p class="lg-dl-text">Thanks. Your download is below, and it's yours to keep.</p>
+      <a class="lg-dl-button lg-dl-link" href="#" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Download the PDF</span>
+      </a>
+    </div>
+  </dialog>
 </div>
-<script src="https://js-eu1.hsforms.net/forms/embed/139576714.js" defer></script>
+
+<style>
+.lg-dl{--dl-ocean:#0a2d3a;--dl-ocean-lift:#0e3a49;--dl-mint:#00ffb2;--dl-mint-ink:#0aa376;--dl-mist:#f0fff9;--dl-soft:#587079;--dl-border:rgba(10,45,58,.12);display:inline-block;font-family:Manrope,Arial,sans-serif}
+.lg-dl .lg-dl-trigger{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border:1px solid var(--dl-ocean);border-radius:14px;background:#fff;color:var(--dl-ocean);font:700 15px/1.2 Manrope,Arial,sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.lg-dl .lg-dl-trigger:hover{background:var(--dl-ocean);color:#fff}
+.lg-dl .lg-dl-trigger:focus-visible,.lg-dl-dialog :focus-visible{outline:3px solid var(--dl-mint-ink);outline-offset:2px}
+.lg-dl-dialog{width:min(480px,calc(100vw - 32px));max-height:calc(100vh - 32px);padding:0;border:0;border-radius:20px;background:#fff;color:var(--dl-ocean);box-shadow:0 24px 64px rgba(10,45,58,.28);overflow:auto}
+.lg-dl-dialog::backdrop{background:rgba(10,45,58,.55);backdrop-filter:blur(2px)}
+.lg-dl-dialog[open]{animation:lg-dl-in .18s ease-out}
+@keyframes lg-dl-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.lg-dl-dialog .lg-dl-close{position:absolute;top:14px;right:14px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer}
+.lg-dl-dialog .lg-dl-close:hover{background:rgba(255,255,255,.22)}
+.lg-dl-dialog .lg-dl-head{background:var(--dl-ocean);padding:28px 28px 24px;border-radius:20px 20px 0 0}
+.lg-dl-dialog .lg-dl-eyebrow{margin:0 0 8px;color:var(--dl-mint);font:700 12px/1.2 Manrope,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.lg-dl-dialog .lg-dl-title{margin:0 48px 8px 0;color:#fff;font:800 24px/1.2 Epilogue,Manrope,Arial,sans-serif;letter-spacing:-.01em}
+.lg-dl-dialog .lg-dl-text{margin:0;color:rgba(234,255,247,.78);font:400 15px/1.5 Manrope,Arial,sans-serif}
+.lg-dl-dialog .lg-dl-form{padding:20px 28px 8px;min-height:220px}
+.lg-dl-dialog .lg-dl-fallback{margin:0 28px 24px;color:var(--dl-soft);font:400 14px/1.5 Manrope,Arial,sans-serif}
+.lg-dl-dialog .lg-dl-fallback a{color:var(--dl-ocean);font-weight:700}
+.lg-dl-dialog .lg-dl-done{padding:40px 28px 32px;text-align:center}
+.lg-dl-dialog .lg-dl-done .lg-dl-title{margin:0 0 8px;color:var(--dl-ocean)}
+.lg-dl-dialog .lg-dl-done .lg-dl-title:focus,.lg-dl-dialog .lg-dl-done .lg-dl-title:focus-visible{outline:none}
+.lg-dl-dialog .lg-dl-done .lg-dl-text{margin:0 0 24px;color:var(--dl-soft)}
+.lg-dl-dialog .lg-dl-tick{display:inline-grid;place-items:center;width:56px;height:56px;margin-bottom:16px;border-radius:50%;background:var(--dl-mist);color:var(--dl-mint-ink)}
+.lg-dl-dialog .lg-dl-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:14px;background:var(--dl-ocean);color:#fff;font:700 16px/1.2 Manrope,Arial,sans-serif;text-decoration:none}
+.lg-dl-dialog .lg-dl-button:hover{background:var(--dl-ocean-lift);color:#fff}
+/* The HubSpot form, styled through HubSpot's own CSS variables. Scoped to this popup, so other
+   HubSpot forms on the site are untouched; !important beats the form's Style tab settings. */
+.lg-dl-dialog .lg-dl-form,.lg-dl-dialog .lg-dl-form *{
+  --hsf-global__font-family:Manrope,Arial,sans-serif!important;--hsf-global__font-size:15px!important;--hsf-global__color:#0a2d3a!important;--hsf-global-error__color:#a12626!important;
+  --hsf-row__horizontal-spacing:12px!important;--hsf-row__vertical-spacing:14px!important;--hsf-module__vertical-spacing:14px!important;
+  --hsf-background__background-color:transparent!important;--hsf-background__background-image:none!important;--hsf-background__border-style:none!important;--hsf-background__border-width:0!important;--hsf-background__border-radius:0!important;--hsf-background__padding:0!important;
+  --hsf-heading__font-family:Manrope,Arial,sans-serif!important;--hsf-heading__color:#0a2d3a!important;
+  --hsf-richtext__font-family:Manrope,Arial,sans-serif!important;--hsf-richtext__font-size:13px!important;--hsf-richtext__color:#587079!important;
+  --hsf-field-label__font-family:Manrope,Arial,sans-serif!important;--hsf-field-label__font-size:14px!important;--hsf-field-label__color:#0a2d3a!important;--hsf-field-label-requiredindicator__color:#a12626!important;
+  --hsf-field-description__font-family:Manrope,Arial,sans-serif!important;--hsf-field-description__color:#587079!important;--hsf-field-footer__font-family:Manrope,Arial,sans-serif!important;--hsf-field-footer__color:#587079!important;
+  --hsf-field-input__font-family:Manrope,Arial,sans-serif!important;--hsf-field-input__color:#0a2d3a!important;--hsf-field-input__background-color:#fff!important;--hsf-field-input__placeholder-color:#788c93!important;--hsf-field-input__border-color:rgba(10,45,58,.28)!important;--hsf-field-input__border-width:1px!important;--hsf-field-input__border-style:solid!important;--hsf-field-input__border-radius:14px!important;--hsf-field-input__padding:12px 14px!important;
+  --hsf-field-checkbox__background-color:#fff!important;--hsf-field-checkbox__color:#0aa376!important;--hsf-field-checkbox__border-color:rgba(10,45,58,.28)!important;--hsf-field-checkbox__border-width:1px!important;--hsf-field-checkbox__border-style:solid!important;
+  --hsf-button__font-family:Manrope,Arial,sans-serif!important;--hsf-button__font-size:16px!important;--hsf-button__color:#fff!important;--hsf-button__background-color:#0a2d3a!important;--hsf-button__background-image:none!important;--hsf-button__border-radius:14px!important;--hsf-button__padding:14px 24px!important;--hsf-button__box-shadow:none!important;
+  --hsf-erroralert__font-family:Manrope,Arial,sans-serif!important;--hsf-erroralert__font-size:14px!important;--hsf-erroralert__color:#a12626!important;
+  --hsf-infoalert__font-family:Manrope,Arial,sans-serif!important;--hsf-infoalert__color:#0a2d3a!important}
+.lg-dl-dialog .lg-dl-form button[type=submit],.lg-dl-dialog .lg-dl-form input[type=submit]{width:100%}
+.lg-dl-dialog .lg-dl-form p{color:#587079}
+html.lg-dl-lock{overflow:hidden}
+@media (max-width:560px){
+  .lg-dl-dialog{width:100vw;max-width:100vw;max-height:92vh;margin:auto 0 0;border-radius:20px 20px 0 0}
+  .lg-dl-dialog .lg-dl-head{padding:24px 20px 20px}
+  .lg-dl-dialog .lg-dl-form{padding:16px 20px 8px}
+  .lg-dl-dialog .lg-dl-title{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){.lg-dl-dialog[open]{animation:none}}
+</style>
+
 <script>
 (function () {
-  var box = document.querySelector('.lg-download');
-  if (!box) return;
-  var pdf = box.getAttribute('data-pdf');
-  var title = box.getAttribute('data-title');
-  var slug = box.getAttribute('data-slug');
+  var box = document.querySelector('.lg-dl');
+  if (!box || box.dataset.ready) return;
+  box.dataset.ready = '1';
+  var d = box.dataset;
+  var pdf = d.pdf;
+  var trigger = box.querySelector('.lg-dl-trigger');
+  var dialog = box.querySelector('.lg-dl-dialog');
+  var ask = box.querySelector('.lg-dl-ask');
+  var done = box.querySelector('.lg-dl-done');
+  var KEY = 'lg-dl-ok';
+  if (!pdf || pdf.indexOf('{{') > -1) { box.style.display = 'none'; return; }
 
-  // Tell HubSpot which resource was requested (hidden fields).
+  // A custom title from the CMS (e.g. "The UK Life Admin Checklist"), if one is set.
+  if (d.title && d.title.indexOf('{{') === -1) box.querySelector('#lg-dl-heading').textContent = 'Get ' + d.title;
+  box.querySelectorAll('.lg-dl-link').forEach(function (a) { a.href = pdf; });
+
+  function remembered() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
+  function remember() { try { localStorage.setItem(KEY, '1'); } catch (e) {} }
+  function track(extra) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: 'pdf_download', resource_slug: d.slug, resource_title: d.name }, extra || {}));
+  }
+
+  var loaded = false;
+  function loadForm() {
+    if (loaded) return;
+    loaded = true;
+    var frame = document.createElement('div');
+    frame.className = 'hs-form-frame';
+    frame.setAttribute('data-region', d.region);
+    frame.setAttribute('data-form-id', d.formId);
+    frame.setAttribute('data-portal-id', d.portalId);
+    box.querySelector('.lg-dl-form').appendChild(frame);
+    var s = document.createElement('script');
+    s.src = 'https://js-' + d.region + '.hsforms.net/forms/embed/' + d.portalId + '.js';
+    s.defer = true;
+    s.onerror = showFallback;
+    document.head.appendChild(s);
+    setTimeout(function () { if (!frame.childElementCount) showFallback(); }, 8000);
+  }
+  function showFallback() { box.querySelector('.lg-dl-fallback').hidden = false; }
+
+  // Fill the hidden fields so HubSpot records which guide was requested.
   window.addEventListener('hs-form-event:on-ready', function (event) {
-    var form = HubSpotFormsV4.getFormFromEvent(event);
+    var form = window.HubSpotFormsV4 && HubSpotFormsV4.getFormFromEvent(event);
     if (!form) return;
     try {
-      form.setFieldValue('0-1/last_resource_requested', title);
+      form.setFieldValue('0-1/last_resource_requested', d.title && d.title.indexOf('{{') === -1 ? d.title : d.name);
       form.setFieldValue('0-1/last_resource_url', pdf);
-    } catch (e) { /* hidden fields missing from the form: submission still works */ }
+    } catch (e) { /* the form still sends without them */ }
+  });
+  window.addEventListener('hs-form-event:on-submission:success', function () {
+    remember();
+    track();
+    ask.hidden = true;
+    done.hidden = false;
+    done.querySelector('.lg-dl-title').focus();
   });
 
-  // Reveal the download after a successful submission and log it for GA4 (via GTM).
-  window.addEventListener('hs-form-event:on-submission:success', function () {
-    var done = box.querySelector('.lg-download__done');
-    var link = box.querySelector('.lg-download__button');
-    link.href = pdf;
-    done.hidden = false;
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'pdf_download', resource_slug: slug, resource_title: title });
+  function open() {
+    if (remembered()) { track({ returning: true }); window.open(pdf, '_blank', 'noopener'); return; }
+    loadForm();
+    dialog.showModal();
+    document.documentElement.classList.add('lg-dl-lock');
+  }
+  trigger.addEventListener('click', open);
+  box.querySelector('.lg-dl-close').addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', function () {
+    document.documentElement.classList.remove('lg-dl-lock');
+    trigger.focus();
   });
 })();
 </script>

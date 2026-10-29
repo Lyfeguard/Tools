@@ -175,4 +175,8 @@ async function renderPdf(browser, data, outFile) {
   }
 }
 
-module.exports = { buildHtml, tidy, openPage, renderPdf };
+// Chromium on Linux snaps each letter to whole pixels when font hinting is on, which prints
+// uneven letter spacing ("t he", "EST AT E") in the PDF. Hinting off keeps the font's own spacing.
+const LAUNCH = { args: ['--font-render-hinting=none'] };
+
+module.exports = { buildHtml, tidy, openPage, renderPdf, LAUNCH };
