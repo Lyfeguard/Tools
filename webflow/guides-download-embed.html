@@ -2,7 +2,9 @@
   Guides (and Insights) template: the gated PDF download, as one Code Embed.
   Replaces the embed with the dialog's HTML, CSS and JS pasted in: the dialog,
   its styles and the HubSpot set-up now come from dist/lg-dl.min.js, the same
-  file the calculators' PDF summaries use. Pin the version.
+  file the calculators' PDF summaries use. It loads from @2, the newest 2.x release:
+  the Release to Webflow workflow refreshes it on each release, and a v3 would
+  be switched to by hand.
 
   Insert each {{wf:...}} with "+ Add Field". Keep conditional visibility on
   the wrapper (show only when PDF Download is set); a block without a PDF
@@ -14,4 +16,4 @@
     <span>Download PDF</span>
   </button>
 </div>
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/lg-dl.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@2/dist/lg-dl.min.js" defer></script>

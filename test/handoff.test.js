@@ -61,6 +61,7 @@ for (const [from, links] of Object.entries(LINKS)) {
       }));
       assert.equal(state.hash, '', 'the figures are taken out of the address');
       assert.match(state.note, /filled in your figures from the/);
+      if (to === 'inheritance-tax') assert.match(state.note, /answer the questions about your home/, 'says what IHT still needs');
       assert.deepEqual(target.lgErrors, []);
       await target.close();
     });
@@ -104,5 +105,18 @@ test('a page without figures in the address is left as it is', async () => {
   const page = await openCalculator(browser, 'take-home-pay', { version: 'v2', hash: '#lgth-results' });
   assert.equal(await page.evaluate(() => location.hash), '#lgth-results');
   assert.equal(await page.evaluate(() => !!document.querySelector('lg-calculator').shadowRoot.querySelector('.lgc-handoff')), false);
+  await page.close();
+});
+
+test('the figures go with the link however it is opened (middle-click, new tab, keyboard)', async () => {
+  const page = await openCalculator(browser, 'take-home-pay', { version: 'v2' });
+  await run(page, steps('take-home-pay'));
+  // No click: a middle-click or "Open in new tab" starts with the pointer going down.
+  const href = await page.evaluate(() => {
+    const a = document.querySelector('lg-calculator').shadowRoot.querySelector('a[data-handoff]');
+    a.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true, button: 1 }));
+    return a.getAttribute('href');
+  });
+  assert.match(href, /#lg-from=take-home-pay&.*lgdti-income=35000/);
   await page.close();
 });

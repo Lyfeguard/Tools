@@ -1,12 +1,14 @@
 <!--
   Tools template: Page settings > Custom code > Inside <head> tag
   Each page loads only its own calculator: its stylesheet and its script, named by the
-  item's Component key. Pin the version (never @main or @latest).
+  item's Component key, from the release in the item's Release field. The Release to
+  Webflow workflow sets that field when a release is published, so this code doesn't
+  change between releases. Never @main or @latest.
   Each {{...}} is a CMS field: delete the placeholder and insert the field with "+ Add field".
   Keep double quotes and & out of the fields used here; use the curly apostrophe (’) not '.
 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/v2/{{Component key}}.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/v2/{{Component key}}.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@{{Release}}/dist/v2/{{Component key}}.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@{{Release}}/dist/v2/{{Component key}}.min.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

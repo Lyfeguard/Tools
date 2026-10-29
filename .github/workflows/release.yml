@@ -1,0 +1,75 @@
+name: Release to Webflow
+
+# When a release is published, points the calculator pages at it: each Tools
+# item's Release field (which the template head loads the calculators from)
+# and Calculator markup field are written through the Webflow CMS API, as
+# staged changes. Check on the webflow.io staging site, then publish.
+# It also refreshes jsDelivr's copies of the site-wide click tracking and the
+# Guides and Insights download dialog, which load from @<major> (e.g. @2).
+#
+# Run it by hand (Actions > Release to Webflow > Run workflow) to roll back
+# (an earlier tag), to try a release on one calculator first (only), or to
+# re-sync the markup.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to point the calculators at, e.g. v2.0.1 (blank for the latest release)
+        type: string
+        default: ''
+      only:
+        description: Only these calculators (keys, comma-separated, e.g. take-home-pay), to try a release on one first; blank for all
+        type: string
+        default: ''
+      dry_run:
+        description: List what would change, without writing anything
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-to-webflow
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # Pre-releases (alpha, beta) are tried by hand, with only.
+    if: github.event_name == 'workflow_dispatch' || !github.event.release.prerelease
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      WEBFLOW_TOKEN: ${{ secrets.WEBFLOW_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      ONLY: ${{ inputs.only }}
+      DRY_RUN: ${{ inputs.dry_run && '--dry-run' || '' }}
+    steps:
+      - name: Which release
+        id: tag
+        env:
+          TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: |
+          if [ -z "$TAG" ]; then TAG=$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName -q .tagName); fi
+          case "$TAG" in v[0-9]*.[0-9]*.[0-9]*) ;; *) echo "::error::Not a release tag: $TAG"; exit 1 ;; esac
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "major=$(echo "$TAG" | sed -E 's/^v([0-9]+).*/\1/')" >> "$GITHUB_OUTPUT"
+          echo "Release: $TAG" >> "$GITHUB_STEP_SUMMARY"
+      # The markup as it was in that release.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.tag.outputs.tag }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Point the calculators at the release (staged)
+        run: node scripts/webflow-markup.js sync --release "${{ steps.tag.outputs.tag }}" ${ONLY:+--only "$ONLY"} $DRY_RUN
+      - name: Refresh jsDelivr's @${{ steps.tag.outputs.major }} copies (click tracking, download dialog)
+        if: ${{ !inputs.dry_run && !inputs.only }}
+        run: |
+          for file in dist/lg-track.min.js dist/lg-dl.min.js; do
+            curl -fsS "https://purge.jsdelivr.net/gh/Lyfeguard/tools@${{ steps.tag.outputs.major }}/$file" > /dev/null && echo "Refreshed @${{ steps.tag.outputs.major }}/$file"
+          done

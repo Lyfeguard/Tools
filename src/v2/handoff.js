@@ -19,6 +19,10 @@
     'net-worth': 'net worth',
     'inheritance-tax': 'inheritance tax',
   };
+  // What's still needed on a calculator after the figures arrive.
+  var NEXT = {
+    'inheritance-tax': ' Then answer the questions about your home and who inherits to see the estimate.',
+  };
   function amount(el) {
     if (!el) return null;
     // A field's value, or the text of a result.
@@ -94,9 +98,11 @@
   };
   LG.handoffs = SEND;
 
-  // Sending: the link gets the figures as it's clicked.
+  // Sending: the link gets the figures as it's about to be followed, however
+  // that happens: a click, a middle-click or "Open in new tab", the keyboard,
+  // or a long press on a phone.
   function addHandoffLinks(scope, key) {
-    scope.addEventListener('click', function (event) {
+    function update(event) {
       var link = event.target.closest && event.target.closest('a[data-handoff]');
       if (!link) return;
       var to = link.getAttribute('data-handoff');
@@ -115,6 +121,9 @@
         if (figures[k]) params.push(encodeURIComponent(k) + '=' + encodeURIComponent(figures[k]));
       });
       link.setAttribute('href', params.length > 1 ? base + '#' + params.join('&') : base);
+    }
+    ['pointerdown', 'focusin', 'contextmenu', 'auxclick', 'click'].forEach(function (type) {
+      scope.addEventListener(type, update, true);
     });
   }
 
@@ -166,7 +175,7 @@
     var note = document.createElement('p');
     note.className = 'lgc-handoff';
     note.setAttribute('role', 'status');
-    note.textContent = 'We\u2019ve filled in your figures from the ' + (NAMES[from] || 'other') + ' calculator. Check them, and change anything that\u2019s different.';
+    note.textContent = 'We\u2019ve filled in your figures from the ' + (NAMES[from] || 'other') + ' calculator. Check them, and change anything that\u2019s different.' + (NEXT[key] || '');
     var root = scope.querySelector('.lg-calc');
     root.insertBefore(note, root.firstChild);
   }
