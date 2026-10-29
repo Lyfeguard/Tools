@@ -78,7 +78,7 @@ A calculator drawn inside its own shadow root, so the site's CSS can't change it
 <script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.1/dist/v2/lg-calculator.min.js" defer></script>
 ```
 
-and the item's embed is one line: `<lg-calculator key="take-home-pay"></lg-calculator>`. So far only `take-home-pay` is built in.
+and add one Code Embed to the Tools template, with the key taken from the item's Calculator key field: `<lg-calculator key="{Calculator key}"></lg-calculator>` (with no `key`, it uses the nearest `data-calc`). On an item whose calculator isn't in v2 yet, or whose v1 markup is still pasted in, the element hides itself and takes no space. So moving an item to v2 means emptying its Calculator markup field. So far only `take-home-pay` is built in. Setup steps: `webflow/tools-cms-setup.md`.
 
 - Nothing is written twice. `scripts/build-v2.js` (run by `npm run build`) copies the tax core and each calculator's module from `src/lg-calc.js` (between `/* @v2:...-start */` and `/* @v2:...-end */` comments), the shared components section and design tokens from `src/lg-calc.css`, and the markup from `markup/`. `src/v2/` holds only what's different: the start-up, the shared behaviours looked up inside the component, and the element itself.
 - To add a calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comments, make it look elements up from `root.getRootNode()` instead of `document`, add it to `CALCULATORS` in `scripts/build-v2.js` and to `KEYS` in `test/v2.test.js`.

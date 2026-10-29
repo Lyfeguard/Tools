@@ -6905,6 +6905,20 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 
 /* ------------------------------------------------------------------
+   CMS template: the v2 <lg-calculator> embed
+   One Code Embed on the template holds <lg-calculator key="Calculator key">.
+   Its wrapper is display:contents, and the element takes no space (or flex
+   gap) until it shows a calculator: on items still using v1 markup it hides.
+   ------------------------------------------------------------------ */
+.lg-calc-wrap > .w-embed:has(> lg-calculator) {
+  display: contents;
+}
+lg-calculator:not(:defined),
+lg-calculator[hidden] {
+  display: none;
+}
+
+/* ------------------------------------------------------------------
    CMS template: Rich Text wrapper resets
    The Calculator markup field is a Rich Text element (class lg-calc-markup)
    inside .lg-calc-wrap. Webflow renders it as div.w-richtext > div.w-embed

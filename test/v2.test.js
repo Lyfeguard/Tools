@@ -54,6 +54,37 @@ for (const key of KEYS) {
   });
 }
 
+// The Tools template holds <lg-calculator key="Calculator key"> on every item.
+test('template embed: hidden and takes no space on items still using v1 markup', async () => {
+  for (const key of Object.keys(scenarios)) {
+    const steps = Object.values(scenarios[key])[1] || [];
+    const plain = await openCalculator(browser, key, { width: 375 });
+    await run(plain, steps);
+    const withEmbed = await openCalculator(browser, key, { width: 375, template: { embed: key, pasted: true } });
+    await run(withEmbed, steps);
+    assert.deepEqual(withEmbed.lgErrors, [], key + ': console errors or warnings');
+    assert.deepEqual(await readOutputs(withEmbed), await readOutputs(plain), key);
+    const height = (page) => page.evaluate(() => document.querySelector('.lg-calc-wrap').getBoundingClientRect().height);
+    assert.equal(await height(withEmbed), await height(plain), key + ': the embed changed the layout');
+    assert.equal(await withEmbed.evaluate(() => document.querySelector('lg-calculator').hidden && !document.querySelector('lg-calculator').shadowRoot), true, key);
+    await plain.close();
+    await withEmbed.close();
+  }
+});
+
+test('template embed: shows the calculator once its markup field is empty', async () => {
+  const saved = JSON.parse(fs.readFileSync(path.join(__dirname, 'snapshots', 'take-home-pay.json'), 'utf8'));
+  // The key from the embed, or from the wrapper's data-calc when the embed has none.
+  for (const embed of ['take-home-pay', ' take-home-pay ', null]) {
+    const page = await openCalculator(browser, 'take-home-pay', { template: { embed, pasted: false } });
+    await run(page, scenarios['take-home-pay'].typical);
+    const outputs = await readOutputs(page);
+    assert.deepEqual(page.lgErrors, [], 'console errors or warnings');
+    await page.close();
+    assert.equal(outputs['lgth-headline'].text, saved.typical['lgth-headline'].text, String(embed));
+  }
+});
+
 // Every computed style and box inside the component (and the host's own box).
 async function componentStyles(key, steps, width, siteCss) {
   const page = await openCalculator(browser, key, { version: 'v2', siteCss, width });

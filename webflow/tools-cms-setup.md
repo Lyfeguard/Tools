@@ -66,6 +66,7 @@ Fill each calculator, check results, downloads (net worth, IHT, savings goal), a
 ## v2 pilot: `<lg-calculator>` on staging (lyfeguard-stage.webflow.io)
 Try changes on the real Tools template on the staging site first, then copy them to the live site.
 1. Template head code: keep the v1 lines and add `<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.1/dist/v2/lg-calculator.min.js" defer></script>`.
-2. Take-Home Pay item, "Calculator markup": replace the pasted markup with one Custom code block: `<lg-calculator key="take-home-pay"></lg-calculator>`. Other items stay as they are.
-3. Remove `overflow-x: auto` from `.lg-tools-embed-slot` (it makes the slot a scroll box, which stops the sticky result bar sticking on phones).
-4. Publish to staging only, then check Take-Home Pay on a phone and a desktop: results, the slider, Clear figures, the sticky bar and "See results", and the browser console.
+2. Template: add a Code Embed inside `.lg-calc-wrap`, straight after the `.lg-calc-markup` Rich Text, with `<lg-calculator key=""></lg-calculator>`. Put the cursor between the quotes and use "+ Add Field" → Calculator key. Every item now has the embed; it stays hidden and takes no space on items still using pasted markup, or whose calculator isn't in v2 yet.
+3. Take-Home Pay item: empty the "Calculator markup" field. That's the switch: with the field empty the component shows; with the markup still there, v1 shows and the component stands down (so it never shows twice). To go back, paste `markup/take-home-pay.html` in again.
+4. Remove `overflow-x: auto` from `.lg-tools-embed-slot` (it makes the slot a scroll box, which stops the sticky result bar sticking on phones).
+5. Publish to staging only, then check Take-Home Pay on a phone and a desktop: results, the slider, Clear figures, the sticky bar and "See results", and the browser console. Check one v1 calculator too.

@@ -22,9 +22,19 @@
   class LgCalculator extends HTMLElement {
     connectedCallback() {
       if (this.shadowRoot) return; // already set up (the element was moved)
-      var key = this.getAttribute('key');
+      // The key comes from the CMS item ("Calculator key" in the template's
+      // embed), or from the nearest data-calc on the page.
+      var holder = this.closest('[data-calc]');
+      var key = (this.getAttribute('key') || (holder && holder.getAttribute('data-calc')) || '').trim();
       var calc = LG.calculators[key];
-      if (!calc || !TEMPLATES[key]) return report('lg-calculator', 'no calculator with key "' + key + '"');
+      // The template has the element on every item, so it stays hidden, and
+      // quiet, on items whose calculator isn't in the component yet or whose
+      // v1 markup is still pasted in.
+      if (!calc || !TEMPLATES[key] || document.querySelector('.lg-calc[data-calc="' + key + '"]')) {
+        this.hidden = true;
+        return;
+      }
+      this.hidden = false;
       var scope = this.attachShadow({ mode: 'open' });
       addStyles(scope);
       var template = document.createElement('template');
