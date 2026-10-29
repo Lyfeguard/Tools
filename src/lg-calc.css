@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.8.1
+ * Lyfeguard calculators | lg-calc.css | v1.8.2
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -6409,6 +6409,10 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   font-size: 14px;
   line-height: 1.75;
 }
+/* Own colour, as site rich-text styles can recolour plain paragraphs */
+.lg-calc .lgc-method-body p:not(.lgc-small) {
+  color: var(--lg-ink);
+}
 .lg-calc .lgc-table-wrap {
   max-height: 440px;
   margin-top: 8px;
@@ -6787,6 +6791,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 .lg-calc .lgc-sticky p {
   margin: 0;
+  color: inherit;
 }
 /* Classic calculators: the shared parts style themselves, as the base rules are off there */
 .lg-calc-classic .lgc-sticky-link {
