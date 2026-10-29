@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.0.0-beta.1 (and v1.8.6) – 2026-10-29
+Each page loads only its own calculator, analytics are built in, and the yearly figures live in data files. **Update the Tools template head to `webflow/template-head.html`** (the page's own `dist/v2/{{Component key}}.min.css` and `.min.js`, no v1). Every item's Component key is staged in the CMS, and goes live with the next publish. **Then the site-wide code** (`webflow/site-custom-code.md`): Google's standard GTM snippet in the head, and `dist/lg-track.min.js` in place of the footer scripts.
+- Load only what's needed: `dist/v2/<key>.min.js` (the component, the shared code and one calculator, with only its own styles) and `dist/v2/<key>.min.css` (the same styles for the page, before the script runs and without JavaScript). A calculator page now loads 10 to 21 KB gzipped, against about 120 KB (v1 plus every v2 calculator). `scripts/css-subset.js` keeps the rules whose classes the calculator uses. `dist/v2/lg-calculator.min.js` still holds them all, for a page with several.
+- Analytics: the footer click tracking moves into the repo as `dist/lg-track.min.js`, the same on every click outside calculators (tested against the old code), and now sees clicks inside them (`element_location: calculator`). Fixes: a button with `data-track-event` and no link was logged as a link to "/null", and links to a spot on the same page counted as visits. Each calculator pushes `calculator_start`, `calculator_result`, `calculator_see_results`, `calculator_download`, `calculator_pdf_request`, `calculator_clear` and `calculator_error`, as `lyf_event`, never with the figures entered.
+- Data as versioned files: `data/2026-27.json` (Income Tax including Scotland, NI rates and thresholds, student loans, auto-enrolment, the Child Benefit charge, IHT bands, the lump sum allowance and the full State Pension) and `data/ons-ashe-2026.json` (the salary tables). The build puts them into v1 and v2 (`scripts/data.js`); no result changes. Each April is a new data file.
+- v1.8.6: built with the data files; no change to anything it shows.
+- `scripts/webflow-markup.js check` also reports items whose Component key isn't their calculator's key.
+- Tests (253): without JavaScript, each calculator's own stylesheet gives exactly v1's look; a page requests only its own two files, under 25 KB gzipped; the click tracking matches the old footer code; the calculator events; and the data files.
+
 ## v2.0.0-alpha.5 – 2026-10-29
 Gated PDFs for Insights, and every download asked for on its own. **Update the template heads' scripts to v2.0.0-alpha.5** (Tools, and the Guides embed if it uses `dist/lg-dl.min.js`).
 - Each download is remembered on its own (`lg-dl-ok:<type>:<slug>`): someone who has given their email for one guide, insight or calculator is asked again for the next, so HubSpot records every download.

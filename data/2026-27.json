@@ -1,0 +1,31 @@
+{
+  "$about": "UK tax year figures the calculators use, 2026/27. Copied into dist/ by npm run build (scripts/data.js). For a new tax year, add data/<year>.json and point the @data marker in src/lg-calc.js at it. Amounts in pounds a year; rates as fractions.",
+  "taxYear": "2026/27",
+  "incomeTax": {
+    "personalAllowance": 12570,
+    "taperStart": 100000,
+    "basicBand": 37700,
+    "additionalThreshold": 125140,
+    "rates": { "basic": 0.2, "higher": 0.4, "additional": 0.45 },
+    "scotland": [
+      { "upTo": 3967, "rate": 0.19, "name": "Starter rate" },
+      { "upTo": 16956, "rate": 0.2, "name": "Basic rate" },
+      { "upTo": 31092, "rate": 0.21, "name": "Intermediate rate" },
+      { "upTo": 62430, "rate": 0.42, "name": "Higher rate" },
+      { "upTo": 125140, "rate": 0.45, "name": "Advanced rate" },
+      { "upTo": null, "rate": 0.48, "name": "Top rate" }
+    ]
+  },
+  "nationalInsurance": { "primaryThreshold": 12570, "upperEarningsLimit": 50270, "mainRate": 0.08, "upperRate": 0.02 },
+  "studentLoans": {
+    "plan1": { "name": "Plan 1", "threshold": 26900, "rate": 0.09 },
+    "plan2": { "name": "Plan 2", "threshold": 29385, "rate": 0.09 },
+    "plan4": { "name": "Plan 4", "threshold": 33795, "rate": 0.09 },
+    "plan5": { "name": "Plan 5", "threshold": 25000, "rate": 0.09 },
+    "postgrad": { "name": "Postgraduate Loan", "threshold": 21000, "rate": 0.06 }
+  },
+  "autoEnrolment": { "trigger": 10000, "qualifyingLower": 6240, "qualifyingUpper": 50270 },
+  "childBenefitCharge": { "start": 60000, "end": 80000 },
+  "inheritanceTax": { "nilRateBand": 325000, "residenceNilRateBand": 175000, "taperThreshold": 2000000, "fullReliefCap": 2500000 },
+  "pensions": { "lumpSumAllowance": 268275, "taxFreeShare": 0.25, "fullStatePension": 12548 }
+}

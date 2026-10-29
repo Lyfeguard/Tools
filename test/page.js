@@ -10,18 +10,20 @@ const FIXED_NOW = Date.UTC(2026, 9, 28, 12, 0, 0);
 // wrapper 'cms': .lg-calc-wrap[data-calc] as in the Webflow template.
 // wrapper 'plain': no data-calc and no lg-calc-wrap class, to prove styling
 // depends only on the pasted markup.
-// template: the CMS template with the v2 script loaded too. { embed: true }
-// adds an empty <lg-calculator> Code Embed after the Rich Text (as the v2
-// pilot did), which should show nothing.
+// template: the CMS template as v2 runs it: only this calculator's files
+// (dist/v2/<key>.min.css and .min.js), no v1. { embed: true } adds an empty
+// <lg-calculator> Code Embed after the Rich Text (as the v2 pilot did),
+// which should show nothing.
 function pageHtml(key, dist, wrapper = 'cms', template = null, siteCss = false) {
   const markup = fs.readFileSync(path.join(ROOT, 'markup', key + '.html'), 'utf8');
   const embed = template && template.embed ? `<div class="w-embed"><lg-calculator key="${key}"></lg-calculator></div>` : '';
-  const v2 = template ? `<script src="file://${dist}/v2/lg-calculator.min.js" defer></script>` : '';
+  const files = template
+    ? `<link rel="stylesheet" href="file://${dist}/v2/${key}.min.css">\n<script src="file://${dist}/v2/${key}.min.js" defer></script>`
+    : `<link rel="stylesheet" href="file://${dist}/lg-calc.min.css">\n<script src="file://${dist}/lg-calc.min.js" defer></script>`;
   const site = siteCss ? `<link rel="stylesheet" href="file://${path.join(__dirname, 'fixtures', 'webflow-site.css')}">` : '';
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-${site}<link rel="stylesheet" href="file://${dist}/lg-calc.min.css">
-<script src="file://${dist}/lg-calc.min.js" defer></script>${v2}
+${site}${files}
 <style>body{margin:0;background:#f3f7f6;font-family:Arial,sans-serif}.container{max-width:960px;margin:0 auto;padding:24px 16px}
 .lg-calc-wrap,.plain-wrap{display:flex;flex-direction:column;gap:24px}*,*::before,*::after{transition:none!important;animation:none!important}</style>
 </head><body><div class="container">${wrapper === 'plain' ? '<div class="plain-wrap">' : `<div class="lg-calc-wrap" data-calc="${key}">`}
@@ -36,7 +38,7 @@ text-transform:uppercase!important;text-align:right!important;display:inline!imp
 p,label,h2,h3,input,select,button{color:red!important;margin:30px!important;font-size:40px!important}`;
 
 // v2: the <lg-calculator> component (its markup, as in the CMS field), on a
-// page that also loads v1, as the site will while calculators move over.
+// page that loads only that calculator's files, as the Tools template does.
 // siteCss adds the Webflow site's CSS (test/fixtures/webflow-site.css) and
 // the hostile rules above.
 function componentPageHtml(key, dist, siteCss) {
@@ -44,9 +46,8 @@ function componentPageHtml(key, dist, siteCss) {
   const site = siteCss ? `<link rel="stylesheet" href="file://${path.join(__dirname, 'fixtures', 'webflow-site.css')}"><style>${HOSTILE_CSS}</style>` : '';
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-${site}<link rel="stylesheet" href="file://${dist}/lg-calc.min.css">
-<script src="file://${dist}/lg-calc.min.js" defer></script>
-<script src="file://${dist}/v2/lg-calculator.min.js" defer></script>
+${site}<link rel="stylesheet" href="file://${dist}/v2/${key}.min.css">
+<script src="file://${dist}/v2/${key}.min.js" defer></script>
 <style>body{margin:0!important}*,*::before,*::after{transition:none!important;animation:none!important}</style>
 </head><body><main style="display:block;max-width:960px;margin:0 auto;padding:24px 16px;box-sizing:border-box">
 ${markup}

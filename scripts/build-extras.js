@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Build the files loaded when someone downloads a PDF:
-//   lg-dl.js   the email-gated download dialog (src/lg-dl.js with
-//              src/lg-dl.css), shared by the Guides and the calculators
-//   lg-pdf.js  the calculators' PDF maker (src/v2/pdf.js), with the logo
-//              from pdf-generator/assets/logo as PDF drawing operators
+// Build the files beside the calculators:
+//   lg-dl.js     the email-gated download dialog (src/lg-dl.js with
+//                src/lg-dl.css), shared by the Guides and the calculators
+//   lg-pdf.js    the calculators' PDF maker (src/v2/pdf.js), with the logo
+//                from pdf-generator/assets/logo as PDF drawing operators
+//   lg-track.js  the site-wide click tracking (src/lg-track.js)
 // Run through npm run build (scripts/build.sh), which minifies them.
 'use strict';
 const fs = require('fs');
@@ -80,4 +81,5 @@ const ascii = (s) => s.replace(/[^\x00-\x7f]/g, (c) => '\\u' + c.charCodeAt(0).t
 fs.mkdirSync(path.join(out, 'v2'), { recursive: true });
 fs.writeFileSync(path.join(out, 'lg-dl.js'), ascii(read('src/lg-dl.js').replace('VERSION', 'v' + version).replace("'/* @css */'", () => JSON.stringify(css('src/lg-dl.css')))));
 fs.writeFileSync(path.join(out, 'v2/lg-pdf.js'), ascii(read('src/v2/pdf.js').replace('VERSION', 'v' + version).replace("'/* @logo */'", () => JSON.stringify(logo('pdf-generator/assets/logo/lyfeguard-white.svg')))));
-console.log('Wrote lg-dl.js and v2/lg-pdf.js in ' + path.relative(process.cwd(), out));
+fs.writeFileSync(path.join(out, 'lg-track.js'), ascii(read('src/lg-track.js').replace('VERSION', 'v' + version)));
+console.log('Wrote lg-dl.js, lg-track.js and v2/lg-pdf.js in ' + path.relative(process.cwd(), out));

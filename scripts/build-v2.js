@@ -1,16 +1,23 @@
 #!/usr/bin/env node
-// Build dist/v2/lg-calculator.min.js: the <lg-calculator> web component.
+// Build the <lg-calculator> web component (dist/v2/):
+//   <key>.min.js          one calculator: the component, the shared code and
+//                         that calculator's module, with only its own styles
+//   <key>.min.css         the same styles for the page, so the markup looks
+//                         right before the script runs and without JavaScript
+//   lg-calculator.min.js  every calculator in one file (pages with several)
 // Nothing is written twice: the tax core and each calculator's module are
 // copied from src/lg-calc.js (between @v2: marker comments) and the styles
 // from the shared components section of src/lg-calc.css. The markup stays in
 // the page (markup/<key>.html in the CMS), so it's indexed as it always was.
-// Run through npm run build (scripts/build.sh), which minifies it.
+// Run through npm run build (scripts/build.sh), which minifies the scripts.
 'use strict';
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
+const { parse, subset, usage } = require('./css-subset');
+const { inline } = require('./data');
 const ROOT = path.join(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
 
@@ -29,7 +36,39 @@ function between(text, start, end, file) {
 const ascii = (s) => s.replace(/[^\x00-\x7f]/g, (c) => '\\u' + c.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0'));
 const literal = (value) => ascii(JSON.stringify(value));
 
-function styles() {
+// Classes and ids a calculator can use: in its markup, its module, the
+// shared component code, and the CMS template's wrappers.
+const SHARED = ['src/v2/shared.js', 'src/v2/download.js', 'src/v2/track.js', 'src/v2/element.js'];
+const TEMPLATE = 'lg-calc-wrap lg-calc-markup w-richtext w-embed lg-heading-wrap calculator';
+function usedBy(keys) {
+  const js = read('src/lg-calc.js');
+  const corpus = [TEMPLATE, ...SHARED.map(read), between(js, '/* @v2:core-start', '/* @v2:core-end */', 'src/lg-calc.js')];
+  for (const key of keys) corpus.push(read('markup/' + key + '.html'), between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js'));
+  return usage(corpus.join('\n'));
+}
+function only(css, keys) {
+  return keys.length === CALCULATORS.length ? css : subset(parse(css), usedBy(keys));
+}
+
+function minify(css) {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-v2-'));
+  const src = path.join(tmp, 'in.css');
+  const out = path.join(tmp, 'out.css');
+  fs.writeFileSync(src, css);
+  execFileSync('npx', ['--yes', '-p', 'csso-cli@4.0.2', 'csso', src, '--no-restructure', '-o', out], { stdio: 'inherit' });
+  // csso writes transparent backgrounds as "0 0"; keep the explicit keyword.
+  const min = fs.readFileSync(out, 'utf8').replace(/background:0 0([;}])/g, 'background:transparent$1');
+  fs.rmSync(tmp, { recursive: true, force: true });
+  return min.trim();
+}
+
+// The calculator's styles for the page: the tokens, its rules and the rules
+// for the page around it (<lg-calculator> and the CMS template).
+function pageStyles(keys) {
+  return minify(only(read('src/lg-calc.css'), keys));
+}
+
+function styles(keys) {
   const css = read('src/lg-calc.css');
   // The design tokens move from :root to the component's host element.
   const tokens = between(css, ':root {', '}', 'src/lg-calc.css').slice(':root {'.length);
@@ -82,42 +121,41 @@ function styles() {
     '}',
     '',
   ].join('\n');
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-v2-'));
-  const src = path.join(tmp, 'in.css');
-  const out = path.join(tmp, 'out.css');
-  fs.writeFileSync(src, host + rest + read('src/v2/download.css'));
-  execFileSync('npx', ['--yes', '-p', 'csso-cli@4.0.2', 'csso', src, '--no-restructure', '-o', out], { stdio: 'inherit' });
-  // csso writes transparent backgrounds as "0 0"; keep the explicit keyword.
-  const min = fs.readFileSync(out, 'utf8').replace(/background:0 0([;}])/g, 'background:transparent$1');
-  fs.rmSync(tmp, { recursive: true, force: true });
-  return min.trim();
+  return minify(host + only(rest, keys) + read('src/v2/download.css'));
 }
 
-function script() {
-  const js = read('src/lg-calc.js');
+function script(keys) {
+  const js = inline(read('src/lg-calc.js'));
   const version = /LG\.version = '([^']+)'/.exec(read('src/v2/prelude.js'))[1];
-  const modules = CALCULATORS.map((key) => between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js'));
+  const modules = keys.map((key) => between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js'));
   return [
     '/*!',
-    ' * Lyfeguard calculators | lg-calculator.js | v' + version,
+    ' * Lyfeguard calculators | ' + (keys.length === 1 ? keys[0] : 'lg-calculator') + '.js | v' + version,
     ' * The <lg-calculator key="..."> web component: each calculator in its own',
     ' * shadow root, so the site\'s CSS can\'t change it. Built by scripts/build-v2.js.',
     ' */',
     '(function (window, document) {',
     "  'use strict';",
-    '  var STYLES = ' + literal(styles()) + ';',
+    '  var STYLES = ' + literal(styles(keys)) + ';',
     read('src/v2/prelude.js'),
     between(js, '/* @v2:core-start', '/* @v2:core-end */', 'src/lg-calc.js'),
     read('src/v2/shared.js'),
     ...modules,
     read('src/v2/download.js'),
+    read('src/v2/track.js'),
     read('src/v2/element.js'),
     '})(window, document);',
     '',
   ].join('\n');
 }
 
-const out = process.argv[2] || path.join(ROOT, 'dist/v2/lg-calculator.js');
-fs.mkdirSync(path.dirname(out), { recursive: true });
-fs.writeFileSync(out, ascii(script()));
-console.log('Wrote ' + path.relative(process.cwd(), out));
+// Scripts go to the folder given (for minifying), stylesheets to dist/v2.
+const out = process.argv[2] || path.join(ROOT, 'dist/v2');
+fs.mkdirSync(out, { recursive: true });
+fs.mkdirSync(path.join(ROOT, 'dist/v2'), { recursive: true });
+fs.writeFileSync(path.join(out, 'lg-calculator.js'), ascii(script(CALCULATORS)));
+for (const key of CALCULATORS) {
+  fs.writeFileSync(path.join(out, key + '.js'), ascii(script([key])));
+  fs.writeFileSync(path.join(ROOT, 'dist/v2', key + '.min.css'), ascii(pageStyles([key])) + '\n');
+}
+console.log('Wrote lg-calculator.js and ' + CALCULATORS.length + ' calculators in ' + path.relative(process.cwd(), out));

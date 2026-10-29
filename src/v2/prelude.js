@@ -4,8 +4,12 @@
      src/lg-calc.js by scripts/build-v2.js, so both versions share them.
      ------------------------------------------------------------------ */
   var LG = (window.LyfeCalculators = window.LyfeCalculators || {});
-  LG.version = '2.0.0-alpha.5';
+  LG.version = '2.0.0-beta.1';
   LG.calculators = LG.calculators || {};
+  // Each calculator's styles (from whichever file brought it), and the
+  // elements on the page waiting for a calculator that hasn't loaded yet.
+  LG.styles = LG.styles || {};
+  LG.waiting = LG.waiting || {};
 
   function report(key, error) {
     if (window.console && console.error) console.error('[Lyfeguard calculators] ' + key + ':', error);
@@ -22,4 +26,9 @@
       report(key, error);
     }
     currentKey = null;
+    LG.styles[key] = STYLES;
+    // Its <lg-calculator> elements may already be on the page.
+    (LG.waiting[key] || []).splice(0).forEach(function (el) {
+      el.connectedCallback();
+    });
   }

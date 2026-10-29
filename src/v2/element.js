@@ -3,18 +3,19 @@
      The element. Its markup and styles live in a shadow root, so the
      site's CSS can't reach them; the site's fonts still apply.
      ------------------------------------------------------------------ */
-  var sheet = null;
-  function addStyles(scope) {
+  var sheets = {};
+  function addStyles(scope, key) {
+    var css = LG.styles[key] || STYLES;
     var canAdopt = 'adoptedStyleSheets' in scope && typeof CSSStyleSheet === 'function' && 'replaceSync' in CSSStyleSheet.prototype;
     if (canAdopt) {
-      if (!sheet) {
-        sheet = new CSSStyleSheet();
-        sheet.replaceSync(STYLES);
+      if (!sheets[key]) {
+        sheets[key] = new CSSStyleSheet();
+        sheets[key].replaceSync(css);
       }
-      scope.adoptedStyleSheets = [sheet];
+      scope.adoptedStyleSheets = [sheets[key]];
     } else {
       var style = document.createElement('style');
-      style.textContent = STYLES;
+      style.textContent = css;
       scope.appendChild(style);
     }
   }
@@ -22,7 +23,8 @@
   // <lg-calculator> wraps the calculator's markup, which is in the page HTML
   // (the CMS field), so search engines read it exactly as before. The element
   // moves that markup into its shadow root and starts the calculator there.
-  // Until then, or if this script doesn't load, v1 shows and runs it as usual.
+  // Until then, or if this script doesn't load, the markup shows as it is,
+  // styled by the calculator's stylesheet (dist/v2/<key>.min.css).
   class LgCalculator extends HTMLElement {
     connectedCallback() {
       if (this.shadowRoot) return; // already set up (the element was moved)
@@ -42,10 +44,14 @@
       }
       var key = (this.getAttribute('key') || markup.getAttribute('data-calc')).trim();
       var calc = LG.calculators[key];
-      // Not in v2 yet: leave the markup where it is, for v1 to run.
-      if (!calc) return;
+      // Its code hasn't loaded yet (it comes in its own file): wait for it.
+      // Until then the markup shows as it is in the page.
+      if (!calc) {
+        (LG.waiting[key] = LG.waiting[key] || []).push(this);
+        return;
+      }
       var scope = this.attachShadow({ mode: 'open' });
-      addStyles(scope);
+      addStyles(scope, key);
       while (this.firstChild) scope.appendChild(this.firstChild);
       var missing = (calc.required || []).filter(function (id) {
         return !scope.getElementById(id);
@@ -58,6 +64,7 @@
           return scope.getElementById(id);
         });
         addDownload(this, scope, key);
+        addTracking(scope, key);
       } catch (error) {
         report(key, error);
       }
