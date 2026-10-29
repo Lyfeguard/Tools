@@ -382,7 +382,8 @@
       "text": "Growth of 4% less inflation of 2.5% gives growth of 1.46% a year in today’s money. Your £300,000 stays invested and 25% of each withdrawal is tax-free. In your first year your pot pays £25,000, the gap between the £25,000 you want and your other income of £0. Your income could stay at £20,359 a year until age 95 before the pot runs out."
     },
     "lgri-sticky": {
-      "text": "Your pot could last until Age 79 See results"
+      "text": "Your pot could last until Age 79 See results",
+      "hidden": true
     },
     "lgri-sticky-value": {
       "text": "Age 79"
@@ -576,7 +577,8 @@
       "text": "Growth of 4% less inflation of 2.5% gives growth of 1.46% a year in today’s money. Taking £125,000 tax-free at the start leaves £375,000 invested. In your first year your pot pays £16,452, the gap between the £35,000 you want and your other income of £18,548. Your income could stay at £34,731 a year until age 95 before the pot runs out."
     },
     "lgri-sticky": {
-      "text": "Your pot could last until Age 94 See results"
+      "text": "Your pot could last until Age 94 See results",
+      "hidden": true
     },
     "lgri-sticky-value": {
       "text": "Age 94"
@@ -770,7 +772,8 @@
       "text": "Growth of 4% less inflation of 2.5% gives growth of 1.46% a year in today’s money. Your £50,000 stays invested and 25% of each withdrawal is tax-free. In your first year your pot pays £0, the gap between the £12,000 you want and your other income of £12,548. Your income could stay at £14,771 a year until age 95 before the pot runs out."
     },
     "lgri-sticky": {
-      "text": "Your pot could last until Not needed See results"
+      "text": "Your pot could last until Not needed See results",
+      "hidden": true
     },
     "lgri-sticky-value": {
       "text": "Not needed"
@@ -964,7 +967,8 @@
       "text": "Growth of -1% less inflation of 2.5% gives growth of -3.41% a year in today’s money. Your £120,000 stays invested and 25% of each withdrawal is tax-free. In your first year your pot pays £30,000, the gap between the £30,000 you want and your other income of £0. Your income could stay at £10,212 a year until age 95 before the pot runs out."
     },
     "lgri-sticky": {
-      "text": "Your pot could last until Age 60 See results"
+      "text": "Your pot could last until Age 60 See results",
+      "hidden": true
     },
     "lgri-sticky-value": {
       "text": "Age 60"
