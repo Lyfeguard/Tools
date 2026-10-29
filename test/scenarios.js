@@ -280,6 +280,14 @@ module.exports = {
       ['select', '#lgth-loan', 'plan2'],
       ['check', '#lgth-postgrad'],
     ],
+    customRise: [
+      ['fill', '#lgth-salary', '35,000'],
+      ['fill', '#lgth-rise-amount', '7,500'],
+    ],
+    slider: [
+      ['fill', '#lgth-salary', '60000'],
+      ['fill', '#lgth-rise-range', '30000'],
+    ],
     invalid: [
       ['fill', '#lgth-salary', '35k'],
       ['click', '#lgth-pension'],

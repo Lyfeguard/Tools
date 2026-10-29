@@ -309,3 +309,18 @@ test('take-home pay: tax, NI, pensions and student loans (2026/27)', async () =>
     postgrad: 1140,
   });
 });
+
+test('take-home pay: what a pay rise is worth', async () => {
+  // 35k with 5% pension before tax, all in the basic rate: of each extra pound,
+  // 5% goes to the pension, 19% (20% of the 95% left) to tax and 8% to NI, so you keep 68%.
+  // +5,000: 3,400 a year = 283.33 a month. +7,500: 5,100 a year = 425 a month.
+  const out = await results(
+    'take-home-pay',
+    [
+      ['fill', '#lgth-salary', '35,000'],
+      ['fill', '#lgth-rise-amount', '7,500'],
+    ],
+    ['lgth-rise1', 'lgth-custom-extra', 'lgth-custom-keep', 'lgth-custom-pay'],
+  );
+  assert.deepEqual(out, { 'lgth-rise1': '+£283.33 a month', 'lgth-custom-extra': '+£425.00', 'lgth-custom-keep': '68%', 'lgth-custom-pay': '£42,500' });
+});

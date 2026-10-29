@@ -126,11 +126,26 @@
 
   <section id="lgth-rises" class="lgc-card" aria-labelledby="lgth-rises-title">
     <h3 id="lgth-rises-title">What a pay rise is worth</h3>
-    <p class="lgc-intro">How much more you’d take home each month, after tax and everything else.</p>
+    <p class="lgc-intro">Your pay with a rise, and how much more you’d take home each month after tax and everything else.</p>
     <div class="lgc-compare">
-      <div class="lgc-compare-item"><span id="lgth-rise1-label" class="lgc-compare-label">A £1,000 pay rise</span><strong id="lgth-rise1">—</strong><span id="lgth-rise1-note" class="lgc-compare-note">—</span></div>
-      <div class="lgc-compare-item"><span id="lgth-rise2-label" class="lgc-compare-label">A £5,000 pay rise</span><strong id="lgth-rise2">—</strong><span id="lgth-rise2-note" class="lgc-compare-note">—</span></div>
-      <div class="lgc-compare-item"><span id="lgth-rise3-label" class="lgc-compare-label">A 10% pay rise</span><strong id="lgth-rise3">—</strong><span id="lgth-rise3-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span class="lgc-compare-label">+£5,000 a year</span><strong id="lgth-rise1">—</strong><span id="lgth-rise1-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span class="lgc-compare-label">+£10,000 a year</span><strong id="lgth-rise2">—</strong><span id="lgth-rise2-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span class="lgc-compare-label">+£20,000 a year</span><strong id="lgth-rise3">—</strong><span id="lgth-rise3-note" class="lgc-compare-note">—</span></div>
+    </div>
+    <div class="lgc-range-panel">
+      <label id="lgth-rise-label" for="lgth-rise-amount" class="lgc-range-title">Try your own pay rise</label>
+      <div class="lgc-range-row">
+        <input id="lgth-rise-range" class="lgc-range" type="range" min="0" max="50000" step="500" value="15000" aria-labelledby="lgth-rise-label" aria-describedby="lgth-rise-hint">
+        <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgth-rise-amount" name="rise" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" value="15,000" data-format="money" aria-describedby="lgth-rise-hint"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+      </div>
+      <p id="lgth-rise-hint" class="lgc-hint">Drag the slider up to £50,000, or type any amount.</p>
+      <dl class="lgc-range-result">
+        <div><dt>New pay a year</dt><dd id="lgth-custom-pay">—</dd></div>
+        <div><dt>Take-home a month</dt><dd id="lgth-custom-net">—</dd></div>
+        <div><dt>Extra a month</dt><dd id="lgth-custom-extra">—</dd></div>
+        <div><dt>Share of the rise you keep</dt><dd id="lgth-custom-keep">—</dd></div>
+      </dl>
+      <p id="lgth-custom-note" class="lgc-small">Enter your pay above to see what this rise is worth.</p>
     </div>
   </section>
 

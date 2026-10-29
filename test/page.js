@@ -37,6 +37,12 @@ async function openCalculator(browser, key, { width = 1280, dist = path.join(ROO
   });
   // A fixed clock keeps dates stable; timers (debounced updates) are run with runFor.
   await page.clock.install({ time: FIXED_NOW });
+  // The sticky result bars depend on when the browser reports scroll position,
+  // which isn't tied to the fake clock, so they stay hidden here. They're
+  // checked in a real browser instead.
+  await page.addInitScript(() => {
+    window.IntersectionObserver = undefined;
+  });
   await page.goto('file://' + file);
   await page.waitForFunction(() => document.readyState === 'complete');
   await page.clock.runFor(1000);
