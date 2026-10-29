@@ -1,7 +1,6 @@
 {
   "site": "69d54ef24a10ef9131d434dc",
   "siteUrl": "https://www.lyfeguard.com",
-  "pdfField": "pdf-download",
   "faqCollection": "69e9fbeb45cb0fb5f4219db0",
   "authorCollection": "6a72178385dd9bddd55b76be",
   "collections": {
@@ -27,11 +26,12 @@
       }
     },
     "insights": {
-      "enabled": false,
+      "enabled": true,
       "id": "69e87d592d41e3859e4158c4",
       "path": "insights",
       "kind": "Insight",
-      "ctaUrl": "",
+      "fields": { "pdf": "pdf-link", "faqs": "faqs-2", "ctaText": "cta-subheading", "sources": "sources" },
+      "ctaUrl": "https://www.lyfeguard.com/contact",
       "ctaFallback": "Book a demo",
       "categories": {}
     }

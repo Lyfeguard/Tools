@@ -69,3 +69,21 @@ test('file names and the review date', () => {
   undated.fieldData['post-body'] = '<p>No date here.</p>';
   assert.equal(reviewedLabel(undated), 'January 2026'); // from lastPublished
 });
+
+test('field names per collection: Guides as before, Insights mapped', () => {
+  const config = require('../config.json');
+  const { fieldsOf } = require('../lib/content');
+  const guides = fieldsOf(config.collections.guides);
+  // The Guides' fingerprints don't change, so no Guide PDF is rebuilt.
+  assert.deepEqual(source(item, faqs, authors[0], guides), source(item, faqs, authors[0]));
+  assert.equal('sources' in source(item, faqs, authors[0], guides), false);
+
+  const insights = fieldsOf(config.collections.insights);
+  assert.deepEqual(insights, { pdf: 'pdf-link', faqs: 'faqs-2', ctaText: 'cta-subheading', sources: 'sources' });
+  const insight = structuredClone(item);
+  insight.fieldData['cta-subheading'] = 'See it working';
+  insight.fieldData.sources = '<p>FCA, 2026</p>';
+  const src = source(insight, faqs, authors[0], insights);
+  assert.equal(src.cta[1], 'See it working');
+  assert.equal(src.sources, '<p>FCA, 2026</p>');
+});

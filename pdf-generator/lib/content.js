@@ -7,10 +7,15 @@ const crypto = require('crypto');
 // Bump when the template changes in a way every PDF should pick up.
 const TEMPLATE_VERSION = '1';
 
+// The CMS fields each collection uses, by role. A collection's "fields" in
+// config.json overrides these (Guides' own names) where its fields differ.
+const FIELDS = { pdf: 'pdf-download', faqs: 'faqs', ctaText: 'cta-description', sources: '' };
+const fieldsOf = (cfg) => ({ ...FIELDS, ...((cfg && cfg.fields) || {}) });
+
 // The parts of an item (and its FAQs and author) that appear in the PDF.
-function source(item, faqs, author) {
+function source(item, faqs, author, fields = FIELDS) {
   const f = item.fieldData;
-  return {
+  const src = {
     template: TEMPLATE_VERSION,
     name: f.name,
     slug: f.slug,
@@ -19,10 +24,13 @@ function source(item, faqs, author) {
     readTime: f['read-time'] || '',
     image: (f['main-image'] && f['main-image'].url) || '',
     category: f.category || '',
-    cta: [f['cta-heading'] || '', f['cta-description'] || '', f['cta-button-text'] || ''],
+    cta: [f['cta-heading'] || '', f[fields.ctaText] || '', f['cta-button-text'] || ''],
     author: author ? [author.fieldData.name, author.fieldData['job-title'] || '', author.fieldData.organisation || ''] : null,
     faqs: faqs.map((q) => q.fieldData),
   };
+  // Only when there are any, so the Guides' fingerprints stay as they were.
+  if (fields.sources && f[fields.sources]) src.sources = f[fields.sources];
+  return src;
 }
 
 // Eight hex characters: short enough for a file name, long enough to spot any change.
@@ -78,4 +86,4 @@ function escapeRe(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-module.exports = { TEMPLATE_VERSION, source, fingerprint, fileName, assetParts, classify, sweepable, reviewedLabel };
+module.exports = { TEMPLATE_VERSION, FIELDS, fieldsOf, source, fingerprint, fileName, assetParts, classify, sweepable, reviewedLabel };

@@ -6,7 +6,7 @@
 const fs = require('fs');
 const path = require('path');
 const { pathToFileURL } = require('url');
-const { reviewedLabel } = require('./content');
+const { reviewedLabel, fieldsOf } = require('./content');
 
 const ROOT = path.join(__dirname, '..');
 const CSS = fs.readFileSync(path.join(ROOT, 'template/pdf.css'), 'utf8')
@@ -53,6 +53,9 @@ function buildHtml({ item, faqs, author, cfg, site }) {
     ? `<div><b>${esc(a.name)}</b>${esc([a['job-title'], a.organisation || 'Lyfeguard'].filter(Boolean).join(', '))}</div>`
     : '';
   const ctaButton = f['cta-button-text'] || cfg.ctaFallback;
+  const fields = fieldsOf(cfg);
+  const ctaText = f[fields.ctaText];
+  const sources = fields.sources && f[fields.sources];
 
   const html = `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>${esc(f.name)}</title>
 <style>${CSS}</style></head><body>
@@ -72,11 +75,12 @@ function buildHtml({ item, faqs, author, cfg, site }) {
   </div>
 </section>
 <main class="article">${f['post-body'] || ''}</main>
+${sources ? `<section class="sources"><h2>Sources</h2>${sources}</section>` : ''}
 ${faqHtml ? `<section class="faqs" id="faqs">${faqHtml.replace('<div class="faq">', '<div class="faq"><h2>Frequently asked questions</h2>')}</section>` : ''}
 <section class="cta">
   <p class="eyebrow">Lyfeguard</p>
   <h2>${esc(f['cta-heading'] || 'Keep your important information in one place')}</h2>
-  ${f['cta-description'] ? `<p>${esc(f['cta-description'])}</p>` : ''}
+  ${ctaText ? `<p>${esc(ctaText)}</p>` : ''}
   ${cfg.ctaUrl ? `<a class="btn" href="${esc(utm(cfg.ctaUrl, f.slug))}">${esc(ctaButton)}</a>` : ''}
   <span class="alt">Read the latest version online: <a href="${esc(url)}">${esc(shortUrl)}</a></span>
 </section>
@@ -88,7 +92,7 @@ ${faqHtml ? `<section class="faqs" id="faqs">${faqHtml.replace('<div class="faq"
 // Runs in the page. Turns Webflow rich text into print-ready HTML.
 function tidy(siteUrl) {
   const absolute = (href) => (href && href.startsWith('/') ? siteUrl + href : href);
-  const scopes = [...document.querySelectorAll('.article, .faq .answer')];
+  const scopes = [...document.querySelectorAll('.article, .faq .answer, .sources')];
   for (const scope of scopes) {
     const inFaq = scope.classList.contains('answer');
     for (const embed of [...scope.querySelectorAll('div[data-rt-embed-type]')]) {

@@ -1,0 +1,16 @@
+<!--
+  Insights template: the gated PDF download, as one Code Embed. The same as
+  the Guides' (webflow/guides-download-embed.html), with the Insights field
+  names and data-type="insight". Pin the version.
+
+  Insert each {{wf:...}} with "+ Add Field". Keep conditional visibility on
+  the wrapper (show only when PDF Link is set); a block without a PDF hides
+  itself anyway. PDF Link is filled in by the PDF generator.
+-->
+<div class="lg-dl" data-type="insight" data-pdf="{{wf:PDF Link|Dynamo}}" data-name="{{wf:Name|Dynamo}}" data-slug="{{wf:Slug|Dynamo}}" data-title="{{wf:PDF Title|Dynamo}}" data-form-id="6702e583-4328-40b1-a84d-58f41a01e327">
+  <button type="button" class="lg-dl-trigger" aria-haspopup="dialog">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    <span>Download PDF</span>
+  </button>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.4/dist/lg-dl.min.js" defer></script>

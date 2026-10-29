@@ -62,8 +62,8 @@ async function open(key, { remembered = false, steps = Object.values(scenarios[k
   await page.clock.install({ time: FIXED_NOW });
   await page.addInitScript((remembered) => {
     window.IntersectionObserver = undefined;
-    if (remembered) localStorage.setItem('lg-dl-ok', '1');
-  }, remembered);
+    if (remembered) localStorage.setItem('lg-dl-ok:calculator:' + remembered, '1');
+  }, remembered && key);
   await page.goto(base + '/page/' + key);
   await page.waitForFunction(() => document.readyState === 'complete');
   await run(page, steps);
@@ -141,7 +141,8 @@ test('the email dialog: HubSpot gets the name and page only, then the PDF downlo
 
   await page.evaluate((FORM) => window.dispatchEvent(new CustomEvent('hs-form-event:on-submission:success', { detail: { formId: FORM } })), FORM);
   await page.waitForSelector('.lg-dl-done:not([hidden])');
-  assert.equal(await page.evaluate(() => localStorage.getItem('lg-dl-ok')), '1');
+  // Remembered for this calculator only: HubSpot hears about each download.
+  assert.deepEqual(await page.evaluate(() => Object.keys(localStorage)), ['lg-dl-ok:calculator:mortgage']);
   assert.deepEqual(await page.evaluate(() => window.dataLayer.filter((e) => e.event === 'pdf_download')), [
     { event: 'pdf_download', resource_slug: 'mortgage', resource_title: 'mortgage calculator (PDF summary)', resource_type: 'calculator' },
   ]);
@@ -177,12 +178,34 @@ test('Guides: a .lg-dl block opens the same dialog for its PDF', async () => {
   // A returning visitor gets the PDF straight away.
   await page.keyboard.press('Escape');
   const opened = await page.evaluate(() => {
-    localStorage.setItem('lg-dl-ok', '1');
+    localStorage.setItem('lg-dl-ok:guide:life-admin', '1');
     let url = null;
     window.open = (u) => (url = u);
     document.querySelector('.lg-dl-trigger').click();
     return [url, window.dataLayer.pop()];
   });
   assert.deepEqual(opened, ['https://example.com/guide.pdf', { event: 'pdf_download', resource_slug: 'life-admin', resource_title: 'Life admin guide', resource_type: 'guide', returning: true }]);
+  await page.close();
+});
+
+test('remembered per guide, insight or calculator, and Insights blocks', async () => {
+  pages.insight = `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><script src="${base}/dist/lg-dl.min.js" defer></script></head><body>
+<div class="lg-dl" data-type="insight" data-pdf="https://example.com/insight.pdf" data-name="Held-away assets" data-slug="held-away" data-title="" data-form-id="6702e583-4328-40b1-a84d-58f41a01e327">
+<button type="button" class="lg-dl-trigger">Download PDF</button></div></body></html>`;
+  const page = await browser.newPage();
+  await page.route(/hsforms\.net/, (route) => route.abort());
+  await page.goto(base + '/page/insight');
+  await page.waitForFunction(() => document.readyState === 'complete');
+  // An email given for a guide, or for another insight, doesn't skip this one's form.
+  await page.evaluate(() => {
+    localStorage.setItem('lg-dl-ok:guide:held-away', '1');
+    localStorage.setItem('lg-dl-ok:insight:another', '1');
+  });
+  await page.click('.lg-dl-trigger');
+  await page.waitForSelector('dialog.lg-dl-dialog[open]');
+  assert.equal(await page.textContent('#lg-dl-heading'), 'Get this insight as a PDF');
+  await page.evaluate(() => window.dispatchEvent(new CustomEvent('hs-form-event:on-submission:success', { detail: { formId: '6702e583-4328-40b1-a84d-58f41a01e327' } })));
+  assert.equal(await page.evaluate(() => localStorage.getItem('lg-dl-ok:insight:held-away')), '1');
+  assert.deepEqual(await page.evaluate(() => window.dataLayer.pop()), { event: 'pdf_download', resource_slug: 'held-away', resource_title: 'Held-away assets', resource_type: 'insight' });
   await page.close();
 });
