@@ -65,6 +65,8 @@
         });
         addDownload(this, scope, key);
         addTracking(scope, key);
+        addHandoffLinks(scope, key);
+        receiveHandoff(scope, key);
       } catch (error) {
         report(key, error);
       }

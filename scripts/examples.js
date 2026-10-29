@@ -15,6 +15,8 @@ const EXAMPLES = require('../markup/examples');
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const SECTION = /\n*[ \t]*<section class="lgc-example"[\s\S]*?<\/section>\n*/;
+const NEXT = /\n*[ \t]*<nav class="lgc-next"[\s\S]*?<\/nav>\n*/;
+const CMS = JSON.parse(fs.readFileSync(path.join(ROOT, 'webflow/cms-items.json'), 'utf8'));
 
 function html(example, values) {
   const v = (id) => {
@@ -23,13 +25,24 @@ function html(example, values) {
   };
   const paragraphs = example.text(v).map((p) => '  <p>' + esc(p) + '</p>');
   if (example.sources.length) paragraphs.push('  <p class="lgc-example-sources">Figures from ' + esc(example.sources.join('; ')) + '.</p>');
-  return ['<section class="lgc-example" aria-label="Worked example">', '  <h2 class="lgc-example-title">' + esc(example.title) + '</h2>', ...paragraphs, '</section>'].join('\n');
+  const out = ['<section class="lgc-example" aria-label="Worked example">', '  <h2 class="lgc-example-title">' + esc(example.title) + '</h2>', ...paragraphs, '</section>'];
+  // Links to calculators that take these figures on, as plain links in the
+  // page (useful to search engines too); the figures go as they're clicked.
+  if (example.next && example.next.length) {
+    out.push('', '<nav class="lgc-next" aria-label="Use these figures in another calculator">', '  <h2 class="lgc-next-title">Use these figures</h2>', '  <ul>');
+    for (const link of example.next) {
+      if (!CMS.items[link.to]) throw new Error('No CMS item for ' + link.to);
+      out.push('    <li><a href="/tools/' + CMS.items[link.to].slug + '" data-handoff="' + link.to + '">' + esc(link.text) + '</a></li>');
+    }
+    out.push('  </ul>', '</nav>');
+  }
+  return out.join('\n');
 }
 
 // Before the result bar (and the live region just before it), so the bar
 // stays the calculator's last element.
 function place(markup, section) {
-  const clean = markup.replace(SECTION, '\n\n');
+  const clean = markup.replace(NEXT, '\n\n').replace(SECTION, '\n\n');
   let at = clean.lastIndexOf('<div class="lgc-sticky"');
   if (at < 0) throw new Error('No result bar to place the example before');
   at = clean.lastIndexOf('\n', at) + 1;

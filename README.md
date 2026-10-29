@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 Each page on the Tools template loads only its own calculator, served by jsDelivr and named by the item's Component key field (`webflow/template-head.html`):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-beta.1/dist/v2/{{Component key}}.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-beta.1/dist/v2/{{Component key}}.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/v2/{{Component key}}.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/v2/{{Component key}}.min.js" defer></script>
 ```
 
 That's 10 to 21 KB gzipped a page, against about 120 KB when every page loaded v1 and every v2 calculator. v1 (`dist/lg-calc.min.css` and `.min.js`, all calculators in one) is still built and tested, for any page that uses it. The site loads `dist/lg-track.min.js` on every page for click tracking (`webflow/site-custom-code.md`).
@@ -43,12 +43,17 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    ```
    - `test/known-answers.test.js` checks results against figures worked out by hand (tax, loan and mortgage formulas, IHT bands and so on).
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
-4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
+4. If a result changed (a calculator or the data), update the worked examples and check their sentences still read right:
    ```
-   npm run style-diff -- v1.8.5
+   node scripts/examples.js
    ```
-5. Commit, then create a release tagged with the new version (e.g. `v1.6.1`). GitHub runs the build and tests on every pull request ("Check calculators").
-6. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
+   `test/examples.test.js` fails until they match.
+5. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
+   ```
+   npm run style-diff -- v2.0.0
+   ```
+6. Commit, then create a release tagged with the new version (e.g. `v2.0.1`). GitHub runs the build and tests on every pull request ("Check calculators").
+7. If `markup/` changed, the Calculator markup field is synced through the Webflow CMS API (`scripts/webflow-markup.js`). Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
 
 Keep all files ASCII-only (write £ as `\u00A3` in JS), so the files can't be mis-encoded (the old "Â£" bug).
 
@@ -87,10 +92,15 @@ A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comment
 
 `test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); without JavaScript, exactly v1's look from its own stylesheet; no change from the site's CSS or hostile rules; the same text and headings as v1, both without JavaScript and once rendered; and that a page requests only its own two files, under 25 KB gzipped.
 
+## Worked examples and "Use these figures"
+Every calculator ends with a worked example: a sentence or two with real figures, so the page HTML has a concrete, quotable answer for search engines, AI answers and anyone who doesn't use the calculator. `markup/examples.js` sets each example's figures and wording; `scripts/examples.js` runs the calculator with those figures and writes what it shows into `markup/<key>.html`, with the sources of the rates where it uses them. Nothing is typed by hand, so there's no rich-text upkeep, and `test/examples.test.js` fails if an example no longer matches its calculator (after a data change, say).
+
+Calculators that work together: `next` in `markup/examples.js` adds a "Use these figures" link to the calculators that take the figures on (take-home pay to debt-to-income, mortgage to debt-to-income, pro rata salary and salary by age to take-home pay, emergency fund to savings goal, net worth to inheritance tax). They're plain links in the page. As one is clicked, `src/v2/handoff.js` adds the figures after the `#` (never sent to the server, and the click tracking records links without it); the calculator it opens fills them in, says where they came from, and takes them out of the address. It accepts only plain numbers into its own fields. Net worth hands over only figures entered for one person, as Inheritance Tax works on one person's estate. `test/handoff.test.js` checks every link.
+
 ## Analytics
 GA4 through Google Tag Manager. Everything is a `lyf_event` dataLayer push (details in `webflow/site-custom-code.md`):
 - `src/lg-track.js` → `dist/lg-track.min.js`: the site-wide click tracking, moved here from Webflow's footer code. It looks through shadow roots, so clicks inside calculators are tracked (`element_location: calculator`). `test/analytics.test.js` replays the old footer code (`test/fixtures/lg-track-before.js`) and the new file on the same clicks and checks they match.
-- `src/v2/track.js`: each calculator's own events: `calculator_start`, `calculator_result`, `calculator_see_results`, `calculator_download`, `calculator_pdf_request`, `calculator_clear` and `calculator_error`. Never the figures entered.
+- `src/v2/track.js`: each calculator's own events: `calculator_start`, `calculator_result`, `calculator_see_results`, `calculator_download`, `calculator_pdf_request`, `calculator_clear`, `calculator_handoff` and `calculator_error`. Never the figures entered.
 
 ## Data
 The rates, thresholds and tables that change are in `data/`, not the code. `scripts/data.js` puts each file in at its `/* @data:<name> */ null` marker in `src/lg-calc.js` when you build, for v1 and v2 alike; every calculator reads the tax year from `LG.taxYear`. Keys starting with `$` are notes and stay out of the built files.

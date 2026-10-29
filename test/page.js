@@ -56,7 +56,8 @@ ${markup}
 
 // Writes the page to a temp file and opens it. dist defaults to the repo's dist/.
 // version 'v2' renders the <lg-calculator> component instead of the pasted markup.
-async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist'), wrapper = 'cms', version = 'v1', siteCss = false, template = null } = {}) {
+// hash: what follows # in the address (figures handed over by another calculator).
+async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist'), wrapper = 'cms', version = 'v1', siteCss = false, template = null, hash = '' } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-calc-'));
   const file = path.join(dir, key + '.html');
   fs.writeFileSync(file, version === 'v2' ? componentPageHtml(key, dist, siteCss) : pageHtml(key, dist, wrapper, template, siteCss));
@@ -90,7 +91,7 @@ async function openCalculator(browser, key, { width = 1280, dist = path.join(ROO
   // The site CSS refers to fonts and images on Webflow's CDN; the tests run offline.
   // Those requests are refused, and the failures left out of page.lgErrors.
   if (siteCss) await page.route(/^https?:/, (route) => route.abort());
-  await page.goto('file://' + file);
+  await page.goto('file://' + file + hash);
   await page.waitForFunction(() => document.readyState === 'complete');
   await page.clock.runFor(1000);
   return page;

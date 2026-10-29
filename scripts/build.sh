@@ -6,6 +6,8 @@ cd "$(dirname "$0")/.."
 npx --yes -p csso-cli@4.0.2 csso src/lg-calc.css --no-restructure -o dist/lg-calc.min.css
 # csso writes transparent backgrounds as "0 0"; keep the explicit keyword.
 sed -i.bak 's/background:0 0\([;}]\)/background:transparent\1/g' dist/lg-calc.min.css && rm -f dist/lg-calc.min.css.bak
+# csso writes CSS escapes (\2192) as the characters; put them back as escapes.
+node -e "const f='dist/lg-calc.min.css',fs=require('fs');fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace(/[^\x00-\x7f]/g,(c)=>'\\\\'+c.charCodeAt(0).toString(16).toUpperCase()+' '))"
 # v1, with the data files (data/) put in.
 v2_tmp="$(mktemp -d)"
 trap 'rm -rf "$v2_tmp"' EXIT

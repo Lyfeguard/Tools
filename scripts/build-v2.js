@@ -35,10 +35,12 @@ function between(text, start, end, file) {
 // Non-ASCII characters as \uXXXX, so the output stays ASCII-only.
 const ascii = (s) => s.replace(/[^\x00-\x7f]/g, (c) => '\\u' + c.charCodeAt(0).toString(16).toUpperCase().padStart(4, '0'));
 const literal = (value) => ascii(JSON.stringify(value));
+// In CSS the escape is a backslash, the hex code and a space (\2192 ).
+const cssAscii = (s) => s.replace(/[^\x00-\x7f]/g, (c) => '\\' + c.charCodeAt(0).toString(16).toUpperCase() + ' ');
 
 // Classes and ids a calculator can use: in its markup, its module, the
 // shared component code, and the CMS template's wrappers.
-const SHARED = ['src/v2/shared.js', 'src/v2/download.js', 'src/v2/track.js', 'src/v2/element.js'];
+const SHARED = ['src/v2/shared.js', 'src/v2/download.js', 'src/v2/track.js', 'src/v2/handoff.js', 'src/v2/element.js'];
 const TEMPLATE = 'lg-calc-wrap lg-calc-markup w-richtext w-embed lg-heading-wrap calculator';
 function usedBy(keys) {
   const js = read('src/lg-calc.js');
@@ -143,6 +145,7 @@ function script(keys) {
     ...modules,
     read('src/v2/download.js'),
     read('src/v2/track.js'),
+    read('src/v2/handoff.js'),
     read('src/v2/element.js'),
     '})(window, document);',
     '',
@@ -156,6 +159,6 @@ fs.mkdirSync(path.join(ROOT, 'dist/v2'), { recursive: true });
 fs.writeFileSync(path.join(out, 'lg-calculator.js'), ascii(script(CALCULATORS)));
 for (const key of CALCULATORS) {
   fs.writeFileSync(path.join(out, key + '.js'), ascii(script([key])));
-  fs.writeFileSync(path.join(ROOT, 'dist/v2', key + '.min.css'), ascii(pageStyles([key])) + '\n');
+  fs.writeFileSync(path.join(ROOT, 'dist/v2', key + '.min.css'), cssAscii(pageStyles([key])) + '\n');
 }
 console.log('Wrote lg-calculator.js and ' + CALCULATORS.length + ' calculators in ' + path.relative(process.cwd(), out));

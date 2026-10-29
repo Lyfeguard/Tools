@@ -8,6 +8,8 @@
 //   steps    as in test/scenarios.js
 //   text(v)  the paragraph(s); v(id) is the text of the element with that id
 //   sources  where the rates and figures come from (shown under the example)
+//   next     links to calculators that take these figures on: { to, text }
+//            (src/v2/handoff.js sends the figures as the link is clicked)
 'use strict';
 
 const TAX = 'HMRC Income Tax rates and allowances and National Insurance rates for 2026/27';
@@ -22,6 +24,7 @@ module.exports = {
       `Over the full term that's ${v('lgmc-interest')} in interest and ${v('lgmc-total')} repaid in total. At 3.5% the payment would be ${v('lgmc-lower')} a month; at 5.5%, ${v('lgmc-higher')}.`,
     ],
     sources: [],
+    next: [{ to: 'debt-to-income', text: 'See how this repayment affects your debt-to-income ratio' }],
   },
   'loan-repayment': {
     title: 'Worked example: a \u00A310,000 loan over 5 years',
@@ -58,6 +61,7 @@ module.exports = {
       `With \u00A34,500 already saved, that's ${v('ef-st-gap')} still to save: about ${v('ef-p12')} for 12 months, or ${v('ef-p24')} over 2 years.`,
     ],
     sources: ['MoneyHelper guidance on emergency savings'],
+    next: [{ to: 'savings-goal', text: 'Plan how to save the rest of your emergency fund' }],
   },
   'net-worth': {
     title: 'Worked example: a homeowner with a mortgage',
@@ -67,6 +71,7 @@ module.exports = {
       `Take away a \u00A3245,000 mortgage, \u00A37,500 car finance, \u00A31,250.50 on credit cards and a \u00A330,000 student loan (${v('lgnw-liabilities-total')} in all) and their net worth is ${v('lgnw-net-worth')}.`,
     ],
     sources: [],
+    next: [{ to: 'inheritance-tax', text: 'Estimate Inheritance Tax on these assets' }],
   },
   'inheritance-tax': {
     title: 'Worked example: a \u00A3500,000 estate',
@@ -94,6 +99,7 @@ module.exports = {
       `Income Tax, National Insurance and the pension take ${v('lgth-deductions')} a year, so you keep ${v('lgth-keep')} of your pay. A rise to \u00A340,000 would add ${v('lgth-rise1').replace(/^\+/, '')}.`,
     ],
     sources: [TAX, SL],
+    next: [{ to: 'debt-to-income', text: 'Check your debt-to-income ratio on this salary' }],
   },
   'pro-rata-salary': {
     title: 'Worked example: 3 days a week on a \u00A355,000 salary',
@@ -103,6 +109,7 @@ module.exports = {
       `After tax, National Insurance and a 5% pension, take-home is ${v('pr-pt-net')}, against ${v('pr-ft-net')} full time: you'd work 60% of the time and keep ${v('pr-bar-pay-val')} of the take-home pay.`,
     ],
     sources: [TAX],
+    next: [{ to: 'take-home-pay', text: 'Work out the full take-home pay on this pro rata salary' }],
   },
   'salary-by-age': {
     title: 'Worked example: a woman aged 22 to 29 earning \u00A328,500',
@@ -112,6 +119,7 @@ module.exports = {
       `The median for the group is ${v('sa-st-median')}, and the top 10% earn ${v('sa-top10')} or more.`,
     ],
     sources: ['ONS Annual Survey of Hours and Earnings (ASHE) 2026 provisional, Table 6.7a', TAX],
+    next: [{ to: 'take-home-pay', text: 'See your take-home pay on this salary' }],
   },
   'retirement-income': {
     title: 'Worked example: \u00A3300,000 pension pot from age 60',

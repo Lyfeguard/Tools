@@ -29,7 +29,7 @@ Replace both scripts (the `gtag('js', ...)` one, which nothing uses, and
 the click tracking) with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-beta.1/dist/lg-track.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0/dist/lg-track.min.js" defer></script>
 ```
 
 ## What gets sent
@@ -49,12 +49,13 @@ where they apply.
   `content_topic` the calculator's key:
   `calculator_start`, `calculator_result`, `calculator_see_results`,
   `calculator_download`, `calculator_pdf_request`, `calculator_clear`,
+  `calculator_handoff` (a "Use these figures" link) and
   `calculator_error`. Never the figures entered.
 - PDF downloads (guides, insights and calculators): `pdf_download`, as
   before, with `resource_type`.
 
 In GTM, check the GA4 event tag that fires on `lyf_event`: if its event
 name is the `ga4_event_name` variable, the calculator events arrive in GA4
-with no change. If it lists event names, add the seven above. To report on
+with no change. If it lists event names, add the eight above. To report on
 them by calculator, register `content_topic` as a custom dimension in GA4
 if it isn't one already.
