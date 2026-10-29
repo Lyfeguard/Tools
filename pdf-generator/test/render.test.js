@@ -45,7 +45,7 @@ test('the page is tidied for print', async () => {
     assert.deepEqual(r.toc, ['#first-section', '#second-section', '#section-1', '#faqs']);
     assert.equal(r.tables, 1);
     assert.equal(r.faqTables, 0, 'tables in FAQ answers repeat the article, so they are dropped');
-    assert.deepEqual(r.links, ['https://www.lyfeguard.com/tools/net-worth-calculator', 'https://example.com/page', 'https://www.lyfeguard.com/guides/other']);
+    assert.deepEqual(r.links, ['https://lyfeguard.com/tools/net-worth-calculator', 'https://example.com/page', 'https://lyfeguard.com/guides/other']);
     assert.equal(r.faqs, 2);
     assert.match(r.cta, /^https:\/\/app\.lyfeguard\.com\/register\?utm_source=lyfeguard-pdf&utm_medium=download&utm_campaign=sample-guide$/);
     assert.ok(r.fonts, 'Manrope loads from assets/fonts');

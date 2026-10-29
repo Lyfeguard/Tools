@@ -9,7 +9,7 @@
   // The logo as PDF drawing operators, in its SVG's units (1004 x 220).
   // Made from pdf-generator/assets/logo/lyfeguard-white.svg by scripts/build-extras.js.
   var LOGO = '/* @logo */';
-  var SITE = 'https://www.lyfeguard.com';
+  var SITE = 'https://lyfeguard.com';
   var SIGN_UP = 'https://app.lyfeguard.com/register';
 
   /* ------------------------------------------------------------------
