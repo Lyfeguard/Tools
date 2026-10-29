@@ -200,6 +200,9 @@ async function main() {
 }
 
 main().catch((err) => {
+  // An annotation, so the reason shows on the run's summary page as well as in the log.
+  const why = [err && err.message, err && err.cause && err.cause.message].filter(Boolean).join(': ') || String(err);
+  console.log(`::error::${why.replace(/\r?\n/g, ' ')}`);
   console.error(err);
   process.exit(1);
 });
