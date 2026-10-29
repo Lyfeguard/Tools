@@ -8,7 +8,9 @@
   var api = (window.LyfeDownload = window.LyfeDownload || {});
   if (api.open) return; // loaded twice
   var CSS = '/* @css */';
-  var KEY = 'lg-dl-ok'; // set once someone has given their email, on any download
+  // Set for each guide or calculator once someone has given their email for
+  // it, so HubSpot records every download: lg-dl-ok:<type>:<slug>.
+  var KEY = 'lg-dl-ok:';
   var PORTAL = '139576714';
   var REGION = 'eu1';
   var ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -30,16 +32,16 @@
   function $(selector) {
     return dialog.querySelector(selector);
   }
-  function remembered() {
+  function remembered(o) {
     try {
-      return localStorage.getItem(KEY) === '1';
+      return localStorage.getItem(KEY + o.type + ':' + o.slug) === '1';
     } catch (e) {
       return false;
     }
   }
-  function remember() {
+  function remember(o) {
     try {
-      localStorage.setItem(KEY, '1');
+      localStorage.setItem(KEY + o.type + ':' + o.slug, '1');
     } catch (e) {}
   }
   function track(o, extra) {
@@ -122,7 +124,7 @@
     });
     window.addEventListener('hs-form-event:on-submission:success', function (event) {
       if (!ours(event)) return;
-      remember();
+      remember(current);
       track(current);
       $('.lg-dl-ask').hidden = true;
       $('.lg-dl-done').hidden = false;
@@ -172,10 +174,10 @@
 
   // Opens a download. o: { formId, name, trackName, url, slug, type, file, trigger,
   // eyebrow, title, text, doneText }. Someone who has already given their
-  // email gets the file straight away.
+  // email for this download gets the file straight away.
   api.open = function (o) {
     o = Object.assign({ portalId: PORTAL, region: REGION, eyebrow: 'Free PDF', title: 'Get this guide as a PDF', text: 'Read it offline, print it or share it. Enter your email and your download appears straight away.', doneText: 'Thanks. Your download is below, and it\'s yours to keep.' }, o);
-    if (remembered()) {
+    if (remembered(o)) {
       track(o, { returning: true });
       // A URL opens in this click, so it isn't blocked as a pop-up.
       if (typeof o.file === 'string') return save({ url: o.file });
@@ -197,8 +199,9 @@
   api.remembered = remembered;
   api.icon = ICON;
 
-  // Guides: <div class="lg-dl" data-pdf data-name data-slug data-title
-  // data-form-id> around a .lg-dl-trigger button.
+  // Guides and Insights: <div class="lg-dl" data-pdf data-name data-slug
+  // data-title data-form-id data-type> around a .lg-dl-trigger button.
+  // data-type is "guide" (the default) or "insight".
   function blocks() {
     document.querySelectorAll('.lg-dl[data-pdf]').forEach(function (box) {
       var d = box.dataset;
@@ -210,8 +213,9 @@
       };
       if (!set(d.pdf)) return (box.style.display = 'none');
       addCss();
+      var type = d.type || 'guide';
       trigger.addEventListener('click', function () {
-        api.open({ formId: d.formId, portalId: d.portalId || PORTAL, region: d.region || REGION, name: set(d.title) || d.name, trackName: d.name, url: d.pdf, file: d.pdf, slug: d.slug, type: 'guide', trigger: trigger, title: set(d.title) ? 'Get ' + d.title : undefined });
+        api.open({ formId: d.formId, portalId: d.portalId || PORTAL, region: d.region || REGION, name: set(d.title) || d.name, trackName: d.name, url: d.pdf, file: d.pdf, slug: d.slug, type: type, trigger: trigger, title: set(d.title) ? 'Get ' + d.title : 'Get this ' + type + ' as a PDF' });
       });
     });
   }

@@ -21,7 +21,7 @@ const path = require('path');
 const crypto = require('crypto');
 const config = require('./config.json');
 const { client } = require('./lib/webflow');
-const { source, fingerprint, fileName, classify, assetParts, sweepable } = require('./lib/content');
+const { source, fingerprint, fileName, classify, assetParts, sweepable, fieldsOf } = require('./lib/content');
 
 const OUT = path.join(__dirname, 'out');
 const args = process.argv.slice(2);
@@ -71,17 +71,18 @@ function plan({ collections, faqs, authors }) {
     for (const item of live) {
       const f = item.fieldData;
       if (item.isArchived || item.isDraft || (onlySlug && f.slug !== onlySlug)) continue;
+      const fields = fieldsOf(cfg);
       const stagedItem = staged.get(item.id);
-      const current = (stagedItem && stagedItem.fieldData[config.pdfField]) || f[config.pdfField] || '';
+      const current = (stagedItem && stagedItem.fieldData[fields.pdf]) || f[fields.pdf] || '';
       const state = classify(current, f.slug);
       if (state.kind === 'manual') {
         counts.manual++;
         console.log(`keep    ${key}/${f.slug} (bespoke PDF)`);
         continue;
       }
-      const itemFaqs = (f.faqs || []).map((id) => faqs.get(id)).filter(Boolean);
+      const itemFaqs = (f[fields.faqs] || []).map((id) => faqs.get(id)).filter(Boolean);
       const author = authors.get(f['author-2']) || null;
-      const hash = fingerprint(source(item, itemFaqs, author));
+      const hash = fingerprint(source(item, itemFaqs, author, fields));
       if (!flag('force') && state.kind === 'generated' && state.hash === hash) {
         counts.upToDate++;
         continue;
@@ -96,12 +97,13 @@ function plan({ collections, faqs, authors }) {
 
 async function linkPdf(api, entry, url) {
   const { cfg, item, stagedItem } = entry;
-  const fieldData = { [config.pdfField]: url };
+  const field = fieldsOf(cfg).pdf;
+  const fieldData = { [field]: url };
   const pending = stagedItem && Date.parse(stagedItem.lastUpdated) > Date.parse(stagedItem.lastPublished || 0) + 1000;
   if (mode === 'live' && !pending) {
     await api.updateItems(cfg.id, [{ id: item.id, fieldData }], { live: true });
     const staged = byId(await api.listItems(cfg.id)).get(item.id);
-    if (staged && staged.fieldData[config.pdfField] !== url) {
+    if (staged && staged.fieldData[field] !== url) {
       await api.updateItems(cfg.id, [{ id: item.id, fieldData }]);
       return 'live (staged copy also updated)';
     }
@@ -114,14 +116,15 @@ async function linkPdf(api, entry, url) {
 async function sweep(api, data, replaced) {
   const referenced = new Set();
   const slugs = new Set();
-  for (const { live, staged } of data.collections) {
+  for (const { cfg, live, staged } of data.collections) {
+    const field = fieldsOf(cfg).pdf;
     for (const item of live) {
       slugs.add(item.fieldData.slug);
-      const a = assetParts(item.fieldData[config.pdfField]);
+      const a = assetParts(item.fieldData[field]);
       if (a) referenced.add(a.id);
     }
     for (const item of staged.values()) {
-      const url = replaced.get(item.id) || item.fieldData[config.pdfField];
+      const url = replaced.get(item.id) || item.fieldData[field];
       const a = assetParts(url);
       if (a) referenced.add(a.id);
     }

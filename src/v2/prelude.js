@@ -4,7 +4,7 @@
      src/lg-calc.js by scripts/build-v2.js, so both versions share them.
      ------------------------------------------------------------------ */
   var LG = (window.LyfeCalculators = window.LyfeCalculators || {});
-  LG.version = '2.0.0-alpha.4';
+  LG.version = '2.0.0-alpha.5';
   LG.calculators = LG.calculators || {};
 
   function report(key, error) {

@@ -62,3 +62,28 @@ test('a PDF is written', async () => {
   const pages = (pdf.toString('latin1').match(/\/Type\s*\/Page[^s]/g) || []).length;
   assert.ok(pages >= 2, `expected a cover and at least one page, got ${pages}`);
 });
+
+test('an insight: its own field names, Sources and the demo call to action', async () => {
+  const insight = structuredClone(items[0]);
+  insight.fieldData['cta-subheading'] = 'See how firms use Lyfeguard.';
+  insight.fieldData['cta-button-text'] = 'Book a demo';
+  insight.fieldData.sources = '<p><a href="/guides/example">Example source</a>, FCA 2026</p>';
+  const cfg = config.collections.insights;
+  const { page } = await openPage(browser, { ...data, item: insight, cfg }, path.join(dir, 'insight.html'));
+  try {
+    const r = await page.evaluate(() => ({
+      top: document.querySelector('.band .top span').textContent,
+      sources: document.querySelector('.sources') && document.querySelector('.sources').textContent,
+      link: document.querySelector('.sources a').getAttribute('href'),
+      cta: document.querySelector('.cta h2 + p').textContent,
+      button: document.querySelector('.cta a.btn').href,
+    }));
+    assert.match(r.top, /^Insight/);
+    assert.match(r.sources, /Sources.*Example source, FCA 2026/);
+    assert.equal(r.link, config.siteUrl + '/guides/example', 'relative links made absolute');
+    assert.equal(r.cta, 'See how firms use Lyfeguard.');
+    assert.match(r.button, new RegExp('^' + cfg.ctaUrl.replace(/[.?]/g, '\\$&') + '\\?utm_source=lyfeguard-pdf'));
+  } finally {
+    await page.close();
+  }
+});

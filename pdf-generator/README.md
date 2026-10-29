@@ -1,6 +1,6 @@
 # Guide PDFs
 
-Builds a branded PDF of every published guide from the Webflow CMS, uploads it to the site's assets and puts its link in the guide's **PDF Download** field. The gated download block on the Guides template (`webflow/download-block.html`) shows the link once someone has filled in the HubSpot form.
+Builds a branded PDF of every published guide and insight from the Webflow CMS, uploads it to the site's assets and puts its link in the item's PDF field (**PDF Download** on guides, **PDF Link** on insights). The gated download block on the Guides template (now `webflow/guides-download-embed.html` at the repository root, using the shared `dist/lg-dl.min.js`) shows the link once someone has filled in the HubSpot form.
 
 It runs on its own: the **Guide PDFs** workflow (`.github/workflows/guide-pdfs.yml`) checks every hour and rebuilds only the PDFs whose article has changed. It is separate from the calculators: its own `package.json`, its own tests, its own workflow, and nothing outside this folder apart from that workflow file.
 
@@ -48,9 +48,11 @@ node sync.js run --fixtures <dir>            # build from saved items.json, faqs
 - `lib/webflow.js`: the Webflow API calls (items, live items, assets) using Node's built-in `fetch`.
 - `template/pdf.css`: the PDF's design. Brand colours as CSS variables at the top.
 - `assets/`: Manrope (SIL Open Font License, `OFL.txt`) and the white Lyfeguard logo.
-- `config.json`: site, collection and field IDs, call-to-action links and category names.
-- `webflow/download-block.html`: the gated download block for the Guides template, with set-up notes for Webflow and HubSpot.
+- `config.json`: site and collection IDs, each collection's field names (`fields`), call-to-action links and category names.
+- `webflow/download-block.html`: the first gated download block, kept for its HubSpot set-up notes. Superseded by `webflow/guides-download-embed.html` and `webflow/insights-download-embed.html` at the repository root.
 - `test/`: tests for the rules above and a render of the sample guide.
 
 ## Insights
-Switched off in `config.json` until the Insights collection has a PDF Download field and a demo link for the call to action (`ctaUrl`). Then set `enabled` to `true`.
+Built the same way as the guides. The Insights collection names some fields differently, so its `fields` in `config.json` maps them: PDF Link (`pdf-link`) holds the PDF, FAQs are `faqs-2` and the CTA text is CTA Subheading. Its Sources rich text is added after the article. Collections without `fields` use the Guides' names (`pdf-download`, `faqs`, `cta-description`). The call to action links to `ctaUrl`, with "Book a demo" unless the item sets CTA Button Text. The cover's eyebrow says "Insights" (the collection has an Audience, not a Category). The download block for the Insights template is `webflow/insights-download-embed.html` at the repository root; it uses the Insights' own HubSpot form (`6702e583-4328-40b1-a84d-58f41a01e327`).
+
+The old PDF (File) field on Insights isn't used.

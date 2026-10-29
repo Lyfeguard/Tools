@@ -76,7 +76,7 @@ Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, 
 A calculator drawn inside its own shadow root, so the site's CSS can't change it. The template head loads the script alongside v1 while calculators move over:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.4/dist/v2/lg-calculator.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.5/dist/v2/lg-calculator.min.js" defer></script>
 ```
 
 SEO comes first: a calculator must be indexed exactly as with v1.
@@ -92,15 +92,15 @@ A new calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comment
 `test/v2.test.js` checks, for each calculator: the same figures as v1 (the v1 snapshots); the same look as v1 on the site (with `test/fixtures/webflow-site.css`), apart from the listed site styles that leaked in by mistake (`LEAK_FIXES`); no change from the site's CSS or hostile rules; and the same text and headings as v1, both without JavaScript and once rendered.
 
 ## PDF summaries and the download dialog
-Every v2 calculator offers a branded PDF of the figures entered and the results, behind an email form. Both the calculators and the Guides use the same dialog.
-- `src/lg-dl.js` and `src/lg-dl.css` → `dist/lg-dl.min.js`: the email-gated download dialog (the Guides' design). It holds a HubSpot form (v4 embed, portal 139576714, eu1) that loads when the dialog opens, plus a fallback link if the form is blocked. It remembers people who have already given their email (`localStorage` `lg-dl-ok`, shared by guides and calculators) and gives them the file straight away. It fills the `last_resource_requested` and `last_resource_url` hidden fields and pushes `pdf_download` (`resource_slug`, `resource_title`, `resource_type`: `guide` or `calculator`) to the dataLayer for GA4. On the Guides template, one Code Embed (`webflow/guides-download-embed.html`) holds the `.lg-dl` block and loads the script.
+Every v2 calculator offers a branded PDF of the figures entered and the results, behind an email form. The calculators, the Guides and the Insights all use the same dialog.
+- `src/lg-dl.js` and `src/lg-dl.css` → `dist/lg-dl.min.js`: the email-gated download dialog (the Guides' design). It holds a HubSpot form (v4 embed, portal 139576714, eu1) that loads when the dialog opens, plus a fallback link if the form is blocked. It remembers each download someone has given their email for (`localStorage` `lg-dl-ok:<type>:<slug>`) and gives them that file straight away next time. A new guide, insight or calculator asks again, so HubSpot records every download; HubSpot usually fills the form in for returning contacts. It fills the `last_resource_requested` and `last_resource_url` hidden fields and pushes `pdf_download` (`resource_slug`, `resource_title`, `resource_type`: `guide`, `insight` or `calculator`) to the dataLayer for GA4. On the Guides and Insights templates, one Code Embed (`webflow/guides-download-embed.html`, `webflow/insights-download-embed.html`) holds the `.lg-dl` block and loads the script.
 - `src/v2/download.js`: the "Download PDF summary" button at the end of each calculator's results panel (found from the result bar's markup). It shows once someone has used the calculator and there's a result, so search engines see the page as before. Nothing else loads until it's pressed. Calculators use HubSpot form `9d095c21-3177-42e8-9862-64228125f64d`.
 - `src/v2/pdf.js` → `dist/v2/lg-pdf.min.js`: makes the PDF in the browser from what the calculator shows: the fields filled in, the headline result, the results panels, tables and "How this was calculated". The figures never leave the page, and HubSpot gets only the calculator's name and page address. The layout follows the guide PDFs (`pdf-generator/template/pdf.css`): Manrope, fetched from `pdf-generator/assets/fonts/` when needed, and the logo from `pdf-generator/assets/logo/`, turned into PDF drawing operators by `scripts/build-extras.js`. Links carry `utm_source=lyfeguard-pdf&utm_medium=download&utm_campaign=<key>-calculator`. No per-calculator set-up: a new calculator gets its PDF from its markup.
 
 `test/pdf.test.js` makes every calculator's PDF and reads it back with poppler's `pdftotext` and `pdfinfo` (CI installs `poppler-utils`; locally, `apt install poppler-utils` or `brew install poppler`). It also checks the dialog, the hidden fields, the tracking and the Guides block.
 
-## Guide PDFs (`pdf-generator/`)
-A branded PDF of every published guide, built from the Webflow CMS, uploaded to the site's assets and linked from each guide's PDF Download field for the gated download block. The **Guide PDFs** workflow (`.github/workflows/guide-pdfs.yml`) checks hourly and rebuilds only PDFs whose article has changed. It needs the `WEBFLOW_TOKEN` repository secret.
+## Guide and Insight PDFs (`pdf-generator/`)
+A branded PDF of every published guide and insight, built from the Webflow CMS, uploaded to the site's assets and linked from each guide's PDF Download field for the gated download block. The **Guide PDFs** workflow (`.github/workflows/guide-pdfs.yml`) checks hourly and rebuilds only PDFs whose article has changed. It needs the `WEBFLOW_TOKEN` repository secret.
 
 The calculators' PDF summaries use its fonts and logo (`assets/`), so keep those paths. Otherwise it is kept apart from the calculators: its own `package.json` and tests inside the folder, and its own workflow, so `npm ci`, the build, the ASCII check and "Check calculators" never touch it. Details in `pdf-generator/README.md`.
 
