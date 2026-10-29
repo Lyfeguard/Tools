@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.8.2 – 2026-10-29
+CSS only, no embed changes.
+- Fix: the first paragraph of "How was this calculated?" on Take-Home Pay and Retirement Income showed as white on white. It has no class of its own, so it took a colour from the site's rich-text styles; it now sets its own (Ocean). The sticky result bar's text inherits the bar's colour for the same reason.
+
 ## v1.8.1 – 2026-10-29
 Take-home pay fixes and a new pay rise tool. **Re-paste `markup/take-home-pay.html`.**
 - "What a pay rise is worth" now shows +£5,000, +£10,000 and +£20,000 a year (was £1,000, £5,000 and 10%), each with your new salary, and adds "Try your own pay rise": a slider up to £50,000 with an amount box for any figure, showing your new pay, take-home a month, the extra a month and the share of the rise you keep.
