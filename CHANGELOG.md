@@ -1,13 +1,17 @@
 # Changelog
 
+## v2.0.0-alpha.5 – 2026-10-29
+Gated PDFs for Insights, and every download asked for on its own. **Update the template heads' scripts to v2.0.0-alpha.5** (Tools, and the Guides embed if it uses `dist/lg-dl.min.js`).
+- Each download is remembered on its own (`lg-dl-ok:<type>:<slug>`): someone who has given their email for one guide, insight or calculator is asked again for the next, so HubSpot records every download.
+- Insights: the same gated download (`webflow/insights-download-embed.html`, `data-type="insight"`, with the Insights HubSpot form `6702e583-...`), and the PDF generator now builds Insight PDFs too. It writes them to the Insights' own fields (PDF Link, FAQs, CTA Subheading) and adds their Sources. Field names are set per collection in `pdf-generator/config.json`; the Guides' PDFs are unchanged (same fingerprints, so nothing is rebuilt). The Insight PDFs' "Book a demo" links to the meetings page.
+- Tests (234 here, 9 in `pdf-generator/`): adds per-download memory and the Insights block, and an Insight PDF render.
+
 ## v2.0.0-alpha.4 – 2026-10-29
 PDF summaries, gated by email, with the same dialog as the Guides. **Update the template head's v2 script to v2.0.0-alpha.4.** There are no markup or CMS changes, and v1 (1.8.5) stays as it is.
 - Every calculator gets a "Download PDF summary" button at the end of its results. It shows once someone has used the calculator and there's a result, so the page is indexed as before. Pressing it opens the email dialog (HubSpot form `9d095c21-...`). After the form is sent, or straight away for someone who has given their email before, it downloads a branded A4 PDF with the details entered, the headline result, the results, any tables and "How this was calculated", plus the call to action with UTM tags.
 - The PDF is made in the browser (`dist/v2/lg-pdf.min.js`, 15 KB gzipped, plus the Manrope fonts, all loaded on the first click), so the figures never leave the page. HubSpot's hidden fields get only the calculator's name and the page's address.
 - New `dist/lg-dl.min.js`: the Guides' download dialog as one shared file. It holds the HubSpot embed loaded on open, the fallback link, the "already gave their email" memory and the `pdf_download` dataLayer event, now with `resource_type`. Fix: success events from other HubSpot forms on the page (a newsletter sign-up, say) no longer reveal the download. The Guides template can swap its pasted HTML, CSS and JS for `webflow/guides-download-embed.html`.
-- Each download is remembered on its own (`lg-dl-ok:<type>:<slug>`): someone who has given their email for one guide, insight or calculator is asked again for the next, so HubSpot records every download.
-- Insights: the same gated download (`webflow/insights-download-embed.html`, `data-type="insight"`, with the Insights HubSpot form `6702e583-...`), and the PDF generator now builds Insight PDFs too. It writes them to the Insights' own fields (PDF Link, FAQs, CTA Subheading) and adds their Sources. Field names are set per collection in `pdf-generator/config.json`; the Guides' PDFs are unchanged (same fingerprints, so nothing is rebuilt).
-- Tests (234 here, 9 in `pdf-generator/`): every calculator's PDF is made and read back, and the dialog, hidden fields, tracking, per-download memory and the Guides and Insights blocks are checked. CI installs `poppler-utils` for this.
+- Tests (233): every calculator's PDF is made and read back, and the dialog, hidden fields, tracking and Guides block are checked. CI installs `poppler-utils` for this.
 
 ## v2.0.0-alpha.3 (and v1.8.5) – 2026-10-29
 Every calculator moves to v2. **Update the template head to v1.8.5 and v2.0.0-alpha.3, then the markup for all twelve items is synced** (each wrapped in `<lg-calculator>`, still in the page HTML).

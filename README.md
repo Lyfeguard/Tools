@@ -76,7 +76,7 @@ Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, 
 A calculator drawn inside its own shadow root, so the site's CSS can't change it. The template head loads the script alongside v1 while calculators move over:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.4/dist/v2/lg-calculator.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.5/dist/v2/lg-calculator.min.js" defer></script>
 ```
 
 SEO comes first: a calculator must be indexed exactly as with v1.

@@ -31,7 +31,7 @@
       "path": "insights",
       "kind": "Insight",
       "fields": { "pdf": "pdf-link", "faqs": "faqs-2", "ctaText": "cta-subheading", "sources": "sources" },
-      "ctaUrl": "https://www.lyfeguard.com/contact",
+      "ctaUrl": "https://meetings.lyfeguard.com/meetings/fraser-stewart",
       "ctaFallback": "Book a demo",
       "categories": {}
     }
