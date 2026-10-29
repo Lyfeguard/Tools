@@ -158,8 +158,8 @@ async function main() {
   let failed = 0;
   if (todo.length) {
     const { chromium } = require('playwright');
-    const { renderPdf } = require('./lib/render');
-    const browser = await chromium.launch();
+    const { renderPdf, LAUNCH } = require('./lib/render');
+    const browser = await chromium.launch(LAUNCH);
     try {
       for (const entry of todo) {
         const slug = entry.item.fieldData.slug;
