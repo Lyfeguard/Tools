@@ -7,8 +7,8 @@ markup and template code for the Webflow "Tools" CMS collection.
 The Tools template loads two files in its head code, served by jsDelivr:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.2/dist/lg-calc.min.css">
-<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.2/dist/lg-calc.min.js" defer></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.3/dist/lg-calc.min.css">
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v1.8.3/dist/lg-calc.min.js" defer></script>
 ```
 
 Each calculator starts only when its own markup is on the page.
@@ -48,7 +48,7 @@ Needs Node.js 22. Run `npm ci` once, then `npx playwright install chromium` for 
    - `test/calculators.test.js` checks every figure, message and chart value against the saved snapshots in `test/snapshots/`. If you changed a result on purpose, run `UPDATE_SNAPSHOTS=1 npm test` and check the snapshot diff before committing.
 4. If you changed the CSS, prove nothing else moved by comparing every element's final styles with the last release:
    ```
-   npm run style-diff -- v1.8.2
+   npm run style-diff -- v1.8.3
    ```
 5. Commit, then create a release tagged with the new version (e.g. `v1.6.1`). GitHub runs the build and tests on every pull request ("Check calculators").
 6. Test on the webflow.io staging site with the new tag, then update the version in the template head code and publish.
@@ -70,6 +70,19 @@ Shared behaviours, switched on by attributes (core section of `src/lg-calc.js`, 
 - `<p class="lgc-sr-only" aria-live="polite" data-announce="id id">` (optional `data-announce-prefix`): reads out those elements once typing pauses, and stays silent while any of them shows a dash.
 - `<button type="button" data-clear>`: puts every field back to how the page loaded it, then lets the calculator update.
 - `data-format="money"` on an input: tidied to 12,500 style when you leave it.
+
+## v2: the `<lg-calculator>` component (pilot)
+A calculator drawn inside its own shadow root, so the site's CSS can't change it. Load the script (alongside v1 while calculators move over):
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.1/dist/v2/lg-calculator.min.js" defer></script>
+```
+
+and the item's embed is one line: `<lg-calculator key="take-home-pay"></lg-calculator>`. So far only `take-home-pay` is built in.
+
+- Nothing is written twice. `scripts/build-v2.js` (run by `npm run build`) copies the tax core and each calculator's module from `src/lg-calc.js` (between `/* @v2:...-start */` and `/* @v2:...-end */` comments), the shared components section and design tokens from `src/lg-calc.css`, and the markup from `markup/`. `src/v2/` holds only what's different: the start-up, the shared behaviours looked up inside the component, and the element itself.
+- To add a calculator: wrap its module in `@v2:<key>-start` / `@v2:<key>-end` comments, make it look elements up from `root.getRootNode()` instead of `document`, add it to `CALCULATORS` in `scripts/build-v2.js` and to `KEYS` in `test/v2.test.js`.
+- `test/v2.test.js` checks the component shows exactly what v1 shows (the v1 snapshots), and that the staging site's CSS (`test/fixtures/webflow-site.css`) and hostile rules change no element's styles or position.
 
 ## Rules
 - Never point Webflow at `@main` or `@latest`. Always use a version tag, so changes go live only when you choose.

@@ -1,8 +1,8 @@
-# Tools CMS template: setup guide (lg-calc v1.8.2)
+# Tools CMS template: setup guide (lg-calc v1.8.3)
 
 ## 1. Host the two files
-Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.8.2) to your host and pin the version in the URL.
-- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.8.2/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
+Upload `lg-calc.min.css` and `lg-calc.min.js` (v1.8.3) to your host and pin the version in the URL.
+- jsDelivr from GitHub: `https://cdn.jsdelivr.net/gh/<org>/<repo>@v1.8.3/lg-calc.min.js`. Add `cdn.jsdelivr.net` to the CSP `script-src` and `style-src`, and add `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` to the site head.
 - Cloudflare on your own domain: no CSP or preconnect change needed.
 
 ## 2. Collection fields (collection "Tools", currently slug `tool`)
@@ -62,3 +62,10 @@ Fill each calculator, check results, downloads (net worth, IHT, savings goal), a
 1. Delete the nine static pages and the tools folder.
 2. Collection settings → rename to Tools, slug `tools`.
 3. Publish, then re-test the live URLs and re-run PageSpeed.
+
+## v2 pilot: `<lg-calculator>` on staging (lyfeguard-stage.webflow.io)
+Try changes on the real Tools template on the staging site first, then copy them to the live site.
+1. Template head code: keep the v1 lines and add `<script src="https://cdn.jsdelivr.net/gh/Lyfeguard/tools@v2.0.0-alpha.1/dist/v2/lg-calculator.min.js" defer></script>`.
+2. Take-Home Pay item, "Calculator markup": replace the pasted markup with one Custom code block: `<lg-calculator key="take-home-pay"></lg-calculator>`. Other items stay as they are.
+3. Remove `overflow-x: auto` from `.lg-tools-embed-slot` (it makes the slot a scroll box, which stops the sticky result bar sticking on phones).
+4. Publish to staging only, then check Take-Home Pay on a phone and a desktop: results, the slider, Clear figures, the sticky bar and "See results", and the browser console.

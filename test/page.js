@@ -24,15 +24,40 @@ function pageHtml(key, dist, wrapper = 'cms') {
 </div></div></body></html>`;
 }
 
+// Rules a site might have that would break a calculator styled from outside.
+const HOSTILE_CSS = `lg-calculator{color:red!important;font:italic 30px/3 serif!important;letter-spacing:4px!important;padding:40px!important;
+text-transform:uppercase!important;text-align:right!important;display:inline!important;border:5px solid red!important;visibility:visible}
+p,label,h2,h3,input,select,button{color:red!important;margin:30px!important;font-size:40px!important}`;
+
+// v2: the <lg-calculator> component, on a page that also loads v1 (as the
+// site will while calculators move over). siteCss adds the Webflow site's CSS
+// (test/fixtures/webflow-site.css) and the hostile rules above.
+function componentPageHtml(key, dist, siteCss) {
+  const site = siteCss ? `<link rel="stylesheet" href="file://${path.join(__dirname, 'fixtures', 'webflow-site.css')}"><style>${HOSTILE_CSS}</style>` : '';
+  return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+${site}<link rel="stylesheet" href="file://${dist}/lg-calc.min.css">
+<script src="file://${dist}/lg-calc.min.js" defer></script>
+<script src="file://${dist}/v2/lg-calculator.min.js" defer></script>
+<style>body{margin:0!important}*,*::before,*::after{transition:none!important;animation:none!important}</style>
+</head><body><main style="display:block;max-width:960px;margin:0 auto;padding:24px 16px;box-sizing:border-box">
+<lg-calculator key="${key}"></lg-calculator>
+</main></body></html>`;
+}
+
 // Writes the page to a temp file and opens it. dist defaults to the repo's dist/.
-async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist'), wrapper = 'cms' } = {}) {
+// version 'v2' renders the <lg-calculator> component instead of the pasted markup.
+async function openCalculator(browser, key, { width = 1280, dist = path.join(ROOT, 'dist'), wrapper = 'cms', version = 'v1', siteCss = false } = {}) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lg-calc-'));
   const file = path.join(dir, key + '.html');
-  fs.writeFileSync(file, pageHtml(key, dist, wrapper));
-  const page = await browser.newPage({ viewport: { width, height: 900 } });
+  fs.writeFileSync(file, version === 'v2' ? componentPageHtml(key, dist, siteCss) : pageHtml(key, dist, wrapper));
+  // The page's no-transition rule can't reach inside the component; reduced
+  // motion switches its transitions off instead.
+  const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: version === 'v2' ? 'reduce' : 'no-preference' });
   page.lgErrors = [];
   page.on('pageerror', (e) => page.lgErrors.push(String(e)));
   page.on('console', (m) => {
+    if (siteCss && /^https?:/.test(m.location().url)) return; // the site CSS's fonts and images, see below
     if (m.type() === 'error' || m.type() === 'warning') page.lgErrors.push(m.text());
   });
   // A fixed clock keeps dates stable; timers (debounced updates) are run with runFor.
@@ -43,6 +68,9 @@ async function openCalculator(browser, key, { width = 1280, dist = path.join(ROO
   await page.addInitScript(() => {
     window.IntersectionObserver = undefined;
   });
+  // The site CSS refers to fonts and images on Webflow's CDN; the tests run offline.
+  // Those requests are refused, and the failures left out of page.lgErrors.
+  if (siteCss) await page.route(/^https?:/, (route) => route.abort());
   await page.goto('file://' + file);
   await page.waitForFunction(() => document.readyState === 'complete');
   await page.clock.runFor(1000);
@@ -66,7 +94,8 @@ async function run(page, steps) {
 async function readOutputs(page) {
   return page.evaluate(() => {
     const out = {};
-    const wrap = document.querySelector('.lg-calc-wrap');
+    const host = document.querySelector('lg-calculator');
+    const wrap = host ? host.shadowRoot : document.querySelector('.lg-calc-wrap');
     wrap.querySelectorAll('[id]').forEach((el) => {
       if (el.matches('input, select, textarea')) {
         const inv = el.getAttribute('aria-invalid');
