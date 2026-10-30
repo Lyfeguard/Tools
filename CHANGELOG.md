@@ -2,7 +2,13 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.1.1 – Unreleased
+## v2.1.2 (and v1.9.1) – Unreleased
+Tables in the Tools pages' rich text are styled again. **In Webflow:** nothing to do by hand; publish after the release.
+- `<div class="lg-faq-table">` tables in Extended Content and FAQs lost their styles when each page started loading only its own calculator's CSS, because no calculator uses the class. `scripts/build-v2.js` now keeps them in every page's stylesheet.
+- A refreshed look from the design tokens: rounded border, tinted header row, banded rows, figures right-aligned in tabular numbers, the caption above and a smaller note below. Wide tables scroll sideways on phones, and the spacing tightens below 480px. The rules start with `div.` so the rich text's own styles can't override them.
+- Tests: every page's stylesheet carries the table styles.
+
+## v2.1.1 – 2026-10-30
 Stamp Duty: the non-UK resident surcharge, checked against GOV.UK. **In Webflow:** nothing to do by hand; the release workflow stages the new Stamp Duty markup. Then publish.
 - The 2% non-resident surcharge starts at £40,000, like the surcharge for additional properties. Below that, a note says it doesn't apply.
 - The hint under "I'm not a UK resident" covers joint buyers: anyone buying with you who isn't UK resident makes the purchase non-resident, but a married couple or civil partners count as UK resident if either of them is.

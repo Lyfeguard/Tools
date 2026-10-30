@@ -88,7 +88,7 @@ CI rebuilds `dist/` on every pull request and fails if it differs from what's co
 
 ## The v1 reference build
 
-v1 put every calculator into one stylesheet and one script, outside any shadow root. The site no longer loads it. It's still built, at 1.9.0, because the tests use it as the reference:
+v1 put every calculator into one stylesheet and one script, outside any shadow root. The site no longer loads it. It's still built, at 1.9.1, because the tests use it as the reference:
 
 - `test/calculators.test.js` checks v1's figures against the snapshots;
 - `test/v2.test.js` checks v2 gives the same figures, text and look as v1;
