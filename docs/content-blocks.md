@@ -2,12 +2,28 @@
 
 Tables, short answers and notes in the rich text of Guides, Insights and the Tools pages' Extended Content and FAQs. Webflow's rich text has no tables or boxes of its own, so each block is a small piece of HTML in a rich-text embed, styled by `src/lg-content.css`.
 
+- [Classes at a glance](#classes-at-a-glance)
 - [Where the styles come from](#where-the-styles-come-from)
 - [Adding a block in Webflow](#adding-a-block-in-webflow)
 - [Table](#table)
 - [Short answer](#short-answer)
 - [Note](#note)
+- [Quick Answer and Executive Summary](#quick-answer-and-executive-summary)
 - [Writing for featured snippets](#writing-for-featured-snippets)
+
+## Classes at a glance
+
+| Class | What it is | Where it goes | How it's added |
+|---|---|---|---|
+| `lg-table` | A table, with a caption and an optional note | Body rich text: Guides, Insights, and the Tools pages' Extended Content and FAQs | HTML embed in the rich text ([Table](#table)) |
+| `lg-table lg-table-text` | A table of words: every column left-aligned | The same | HTML embed |
+| `lg-faq-table` | The earlier name for `lg-table`; works the same | The same | HTML embed (existing pages only) |
+| `lg-note` | A caveat worth stopping for | Body rich text, anywhere | HTML embed ([Note](#note)) |
+| `lg-answer` | A short answer after a question heading inside the body | Body rich text | HTML embed ([Short answer](#short-answer)) |
+| `lg-answer` | The Guides' Quick Answer, under the title | Guides template | Webflow: a Div with this class around a Paragraph bound to Quick Answer |
+| `lg-answer lg-summary` | The Insights' Executive Summary, under the title, labelled "Executive summary" | Insights template | Webflow: a Div with these classes around a Rich Text element bound to Executive Summary |
+
+The first five are typed into the content by whoever writes it. The last two are set up once in the template; writers just fill in the field.
 
 ## Where the styles come from
 
@@ -89,6 +105,19 @@ A caveat worth stopping for, such as a nation where the rules differ:
 ```
 
 Keep notes rare: one or two an article.
+
+## Quick Answer and Executive Summary
+
+Fields in Webflow, shown by the template under the title, so writers fill in a field rather than adding an embed.
+
+| | Guides: Quick Answer | Insights: Executive Summary |
+|---|---|---|
+| Field | Plain text, slug `quick-answer`, up to 420 characters | Rich text, slug `executive-summary` |
+| Written as | One paragraph of 40 to 60 words answering the guide's main question | 3 to 5 bullet points: the key points a professional reader needs |
+| In the template | After the H1, before the body: a Div with the class `lg-answer`, holding a **Paragraph** (not a Text Block) bound to the field | The same place: a Div with the classes `lg-answer lg-summary`, holding a **Rich Text** element bound to the field |
+| When empty | Conditional visibility on the Div: show when the field is set | The same |
+
+Leave the classes unstyled in Webflow: `lg-content.min.css` styles them, and its rules win.
 
 ## Writing for featured snippets
 
