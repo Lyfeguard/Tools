@@ -15,7 +15,7 @@ Versions follow [semantic versioning](https://semver.org): `v2.0.1` for a patch,
 | Loaded from | By | Updated |
 |---|---|---|
 | `@{{Release}}` | Each Tools page (template head) | The workflow sets each item's Release field |
-| `@2` | The site-wide footer, and the Guides and Insights embeds | jsDelivr serves the newest 2.x release; the workflow refreshes its cache |
+| `@2` | The site-wide footer, the Guides and Insights embeds, and their template heads | jsDelivr serves the newest 2.x release; the workflow refreshes its cache |
 
 ## Releasing a version
 
@@ -24,7 +24,7 @@ Versions follow [semantic versioning](https://semver.org): `v2.0.1` for a patch,
 3. **The Release to Webflow workflow runs by itself** (`.github/workflows/release.yml`). It uses the `WEBFLOW_TOKEN` secret (CMS read and write). Through the Webflow CMS API, as staged changes, it:
    - sets every Tools item's **Release** field to the tag;
    - writes the **Calculator markup** and **Component Key** fields from `markup/` wherever they differ;
-   - refreshes jsDelivr's `@2` copies of `lg-track.min.js` and `lg-dl.min.js`.
+   - refreshes jsDelivr's `@2` copies of `lg-track.min.js`, `lg-dl.min.js` and `lg-content.min.css`.
 
    The run's summary lists what changed.
 4. **Publish to the staging site** (the webflow.io subdomain) and check the calculators. Staging shares the live site's CMS, so the staged changes show there first.
@@ -67,4 +67,5 @@ Item IDs come from `webflow/cms-items.json`.
 
 - the site-wide footer code ([webflow.md](webflow.md#site-wide-custom-code));
 - the Guides embed (`webflow/guides-download-embed.html`);
-- the Insights embed (`webflow/insights-download-embed.html`).
+- the Insights embed (`webflow/insights-download-embed.html`);
+- the Guides and Insights template heads (`webflow/content-head.html`).

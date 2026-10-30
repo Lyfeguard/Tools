@@ -54,6 +54,7 @@ npx playwright install chromium
 | `pdf.test.js` | Every calculator's PDF (read back with `pdftotext` and `pdfinfo`), the dialog, its hidden fields and tracking, and the Guides block |
 | `analytics.test.js` | The click tracking matches the old footer code, and the calculator events |
 | `data.test.js` | Every figure in `data/` is present and sensible |
+| `content.test.js` | The content blocks' look on Guides and Tools pages over the site's rich text, and the CSV-to-table script |
 | `social.test.js` | Social images: size, escaping, and that nothing in an icon can run |
 | `webflow-markup.test.js` | The CMS sync: what differs, staging, `--only` and tag checks |
 
@@ -101,4 +102,5 @@ Add `--only=<key>` for one calculator and `--all` for every scenario. It compare
 | `scripts/links.js` | Writes the links from `markup/links.js` into `markup/<key>.html` |
 | `scripts/webflow-markup.js` | Writes the Tools items' code-owned fields ([releasing.md](releasing.md#the-sync-script)) |
 | `scripts/style-diff.js` | Style comparison (`npm run style-diff`) |
+| `scripts/table.js` | Turns a CSV into a table embed for rich text ([content-blocks.md](content-blocks.md#table)) |
 | `scripts/social-images.js` | A social sharing image for a calculator ([webflow.md](webflow.md#social-sharing-images)) |

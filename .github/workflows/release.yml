@@ -70,6 +70,6 @@ jobs:
       - name: Refresh jsDelivr's @${{ steps.tag.outputs.major }} copies (click tracking, download dialog)
         if: ${{ !inputs.dry_run && !inputs.only }}
         run: |
-          for file in dist/lg-track.min.js dist/lg-dl.min.js; do
+          for file in dist/lg-track.min.js dist/lg-dl.min.js dist/lg-content.min.css; do
             curl -fsS "https://purge.jsdelivr.net/gh/Lyfeguard/tools@${{ steps.tag.outputs.major }}/$file" > /dev/null && echo "Refreshed @${{ steps.tag.outputs.major }}/$file"
           done

@@ -2,7 +2,16 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.1.2 (and v1.9.1) – Unreleased
+## v2.2.0 (and v1.9.2) – Unreleased
+Content blocks for rich text everywhere: tables, short answers and notes, styled the same on Guides, Insights and the Tools pages. **In Webflow, once:** add [`webflow/content-head.html`](webflow/content-head.html) to the Guides and Insights templates' head code. Nothing changes on the Tools pages.
+- New `src/lg-content.css`, built into `dist/lg-content.min.css` (under 1 KB gzipped, from `@2`) for the Guides and Insights templates, and into every calculator's page stylesheet. Three blocks, each a rich-text embed: `lg-table` (`lg-faq-table` still works; `lg-table-text` for tables of words), `lg-answer` (the short answer under a question heading, with a "Short answer" label drawn by CSS so the page's text is only the answer) and `lg-note`.
+- [`docs/content-blocks.md`](docs/content-blocks.md): the HTML to paste for each block, how to add one in Webflow, and how to write for featured snippets.
+- `node scripts/table.js file.csv --caption "..."` turns a spreadsheet's CSV into a table embed, with every heading set up and every cell escaped.
+- The release workflow refreshes jsDelivr's `@2` copy of `lg-content.min.css` too.
+- v1.9.2: the table rules move from `src/lg-calc.css` to `src/lg-content.css`.
+- Tests (348): the blocks' look on a Guides page and on calculator pages, over the site's rich-text styles; the CSV conversion.
+
+## v2.1.2 (and v1.9.1) – 2026-10-30
 Tables in the Tools pages' rich text are styled again. **In Webflow:** nothing to do by hand; publish after the release.
 - `<div class="lg-faq-table">` tables in Extended Content and FAQs lost their styles when each page started loading only its own calculator's CSS, because no calculator uses the class. `scripts/build-v2.js` now keeps them in every page's stylesheet.
 - A refreshed look from the design tokens: rounded border, tinted header row, banded rows, figures right-aligned in tabular numbers, the caption above and a smaller note below. Wide tables scroll sideways on phones, and the spacing tightens below 480px. The rules start with `div.` so the rich text's own styles can't override them.
