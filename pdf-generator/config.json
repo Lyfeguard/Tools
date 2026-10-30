@@ -12,17 +12,16 @@
       "ctaUrl": "https://app.lyfeguard.com/register",
       "ctaFallback": "Create free account",
       "categories": {
+        "57555fb8d60100e18d0e169a1ef87a01": "Borrowing & Credit",
+        "d3004c702026acfab6a416a9ae99f5d4": "Estate Planning",
+        "d57f08b6195b22f9437125d6c23dcb41": "Homes",
+        "f91d865eb0126ec6b7c23cf1cf358d36": "Insurance & Protection",
         "1ed4cdd3c4fac15afe12dfd25338ba9f": "Life Admin & Documents",
-        "15f5380fcb92171171926df3dab451b5": "Money & Assets",
-        "d3004c702026acfab6a416a9ae99f5d4": "Estate & Legacy Planning",
-        "23f24652cac85a125301ebe70c207e40": "Digital Life",
-        "4a0f0461570d30ea5eccbc1dff8ee801": "Net Worth",
+        "4a0f0461570d30ea5eccbc1dff8ee801": "Net Worth & Financial Planning",
         "6bcbbac129681782e49cf2c452fe6296": "Pensions & Retirement",
-        "ea1e1a5ecd60c3db3b1b904cfdefcf95": "Investments & Wealth",
-        "f91d865eb0126ec6b7c23cf1cf358d36": "Protection",
+        "ea1e1a5ecd60c3db3b1b904cfdefcf95": "Savings & Investments",
         "cae34d12997207481de576327fce1321": "Tax",
-        "d57f08b6195b22f9437125d6c23dcb41": "Property",
-        "521131b451b16a60a1ffa6ba5eb63859": "Business"
+        "d095dc3d5693d779117e7ca0911c79fc": "Work & Pay"
       }
     },
     "insights": {

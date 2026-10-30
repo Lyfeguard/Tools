@@ -5,7 +5,7 @@
 const crypto = require('crypto');
 
 // Bump when the template changes in a way every PDF should pick up.
-const TEMPLATE_VERSION = '1';
+const TEMPLATE_VERSION = '2';
 
 // The CMS fields each collection uses, by role. A collection's "fields" in
 // config.json overrides these (Guides' own names) where its fields differ.
