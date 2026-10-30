@@ -5427,15 +5427,18 @@
         write('takehome-text', parts[0] + ', we take off ' + list(parts.slice(1)) + ', leaving ' + pounds(t.net) + ' a month. Change any of these below.');
       }
 
+      // A table with column headings labels each cell with its heading, so
+      // on a phone (.lgc-table-stack) each row can show as a small card.
       function row(body, cells, cls) {
         const tr = body.insertRow();
+        const head = body.parentNode.tHead;
         if (cls) tr.className = cls;
         cells.forEach((c, i) => {
           const cell = i ? tr.insertCell() : document.createElement('th');
           if (!i) {
             cell.scope = 'row';
             tr.appendChild(cell);
-          }
+          } else if (head) cell.setAttribute('data-label', head.rows[0].cells[i].textContent);
           if (c && typeof c === 'object') {
             cell.textContent = c.text;
             cell.id = c.id;

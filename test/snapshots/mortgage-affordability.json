@@ -581,13 +581,16 @@
       "text": "4 times£464,000£674,00069%£2,1964.5 times£522,000£732,00071%£2,4706 times£696,000£906,00077%£3,2947 times£812,000£1,022,00079%£3,843"
     },
     "undefined": {
-      "text": "£1,022,000"
+      "text": "£1,022,000",
+      "data-label": "Price"
     },
     "lgma-main-loan": {
-      "text": "£522,000"
+      "text": "£522,000",
+      "data-label": "Borrowing"
     },
     "lgma-main-price": {
-      "text": "£732,000"
+      "text": "£732,000",
+      "data-label": "Price"
     },
     "lgma-notes": {
       "text": "Credit card balances are counted as a monthly payment of 3% of the balance (£450), as many lenders do. Paying a card off before you apply can raise what you can borrow.Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more."
@@ -891,13 +894,16 @@
       "text": "4 times£220,000£246,00089%£1,2234.5 times£247,000£273,00090%£1,3736 times£330,000£356,00093%£1,8347 times£385,000£411,00094%£2,140"
     },
     "undefined": {
-      "text": "£411,000"
+      "text": "£411,000",
+      "data-label": "Price"
     },
     "lgma-main-loan": {
-      "text": "£247,000"
+      "text": "£247,000",
+      "data-label": "Borrowing"
     },
     "lgma-main-price": {
-      "text": "£273,000"
+      "text": "£273,000",
+      "data-label": "Price"
     },
     "lgma-notes": {
       "text": "Bonus, overtime and commission are counted at 50%. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it’s guaranteed or you have a 2-year record, so you could borrow more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal."
@@ -1199,13 +1205,16 @@
       "text": "4 times£276,000£336,00082%£2,1114.5 times£310,000£370,00084%£2,3716 times£414,000£474,00087%£3,1677 times£483,000£543,00089%£3,695"
     },
     "undefined": {
-      "text": "£543,000"
+      "text": "£543,000",
+      "data-label": "Price"
     },
     "lgma-main-loan": {
-      "text": "£310,000"
+      "text": "£310,000",
+      "data-label": "Borrowing"
     },
     "lgma-main-price": {
-      "text": "£370,000"
+      "text": "£370,000",
+      "data-label": "Price"
     },
     "lgma-notes": {
       "text": "Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change."
@@ -1509,13 +1518,16 @@
       "text": "4 times£600,000£900,00067%£2,6254.5 times£675,000£975,00069%£2,9536 times£900,000£1,200,00075%£3,9387 times£1,050,000£1,350,00078%£4,594"
     },
     "undefined": {
-      "text": "£1,350,000"
+      "text": "£1,350,000",
+      "data-label": "Price"
     },
     "lgma-main-loan": {
-      "text": "£675,000"
+      "text": "£675,000",
+      "data-label": "Borrowing"
     },
     "lgma-main-price": {
-      "text": "£975,000"
+      "text": "£975,000",
+      "data-label": "Price"
     },
     "lgma-notes": {
       "text": "Interest-only mortgages usually need a deposit of at least 25% and a plan to repay the loan at the end, such as savings or selling another property. Many lenders also need a higher income.On a variable or tracker rate, your payment changes whenever the rate does. Use the slider to see what a rise would cost."
@@ -1819,13 +1831,16 @@
       "text": "4 times£120,000£140,00086%£6674.5 times£135,000£155,00087%£7506 times£180,000£200,00090%£1,0007 times£210,000£230,00091%£1,167"
     },
     "undefined": {
-      "text": "£230,000"
+      "text": "£230,000",
+      "data-label": "Price"
     },
     "lgma-main-loan": {
-      "text": "£135,000"
+      "text": "£135,000",
+      "data-label": "Borrowing"
     },
     "lgma-main-price": {
-      "text": "£155,000"
+      "text": "£155,000",
+      "data-label": "Price"
     },
     "lgma-notes": {
       "text": "The loan this home needs is more than lenders are likely to offer on your income. A bigger deposit, a lower price or clearing debts would help.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change."
@@ -2130,13 +2145,16 @@
       "text": "4 times£0£0—£04.5 times£0£0—£06 times£0£0—£07 times£0£0—£0"
     },
     "undefined": {
-      "text": "£0"
+      "text": "£0",
+      "data-label": "Price"
     },
     "lgma-main-loan": {
-      "text": "£0"
+      "text": "£0",
+      "data-label": "Borrowing"
     },
     "lgma-main-price": {
-      "text": "£0"
+      "text": "£0",
+      "data-label": "Price"
     },
     "lgma-notes": {
       "text": "Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change."
