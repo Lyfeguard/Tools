@@ -36,6 +36,7 @@ Each collection is set up in `config.json`. Its `fields` map the collection's fi
 | Call to action link | `app.lyfeguard.com/register` | The meetings page |
 | Button text when the item sets none | Create free account | Book a demo |
 | Cover eyebrow | The guide's category | "Insights" (the collection has an Audience, not a Category) |
+| Short answer box, before the article | Quick Answer (`quick-answer`), labelled "Short answer" | Executive Summary (`executive-summary`), labelled "Executive summary" |
 | Extra content | | Sources, added after the article |
 | Download embed | `webflow/guides-download-embed.html` | `webflow/insights-download-embed.html` |
 
@@ -44,7 +45,7 @@ The Insights collection's old PDF (File) field isn't used.
 ## How it decides what to build
 
 - **Published content only.** It reads the live items, so drafts and unpublished edits never reach a PDF.
-- **A fingerprint of the content.** Each file is named `lyfeguard-<slug>-<8 characters>.pdf`. The 8 characters are a fingerprint of everything the PDF shows: title, summary, body, image, category, call to action, author and FAQs. When the live article's fingerprint differs from the file in its PDF field, the PDF is rebuilt. SEO fields and other changes that don't show in the PDF don't trigger a rebuild.
+- **A fingerprint of the content.** Each file is named `lyfeguard-<slug>-<8 characters>.pdf`. The 8 characters are a fingerprint of everything the PDF shows: title, summary, short answer, body, image, category, call to action, author and FAQs. When the live article's fingerprint differs from the file in its PDF field, the PDF is rebuilt. SEO fields and other changes that don't show in the PDF don't trigger a rebuild.
 - **Rebuilding everything.** After a template change, bump `TEMPLATE_VERSION` in `lib/content.js`, or run the workflow with **force**.
 - **Bespoke PDFs are left alone.** If the PDF field holds any other file, the item is skipped. An example is the fillable UK Life Admin Checklist on "What Is Life Admin?". Empty the field to hand the item back to the generator.
 - **Old files are tidied up.** After a rebuild, the generator deletes generated PDFs that are over two hours old and that no item links to any more, staged or live. It only ever deletes files named `lyfeguard-<known slug>-<fingerprint>.pdf`, or the pilot's `lyfeguard-<slug>.pdf`.

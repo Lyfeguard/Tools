@@ -182,6 +182,38 @@ div.lg-answer p + p {
   margin-top: 10px;
 }
 
+/* Executive summary: the same box, labelled for professional readers, with
+   the points as a list. In the Insights template, a Rich Text element
+   bound to the Executive Summary field, inside <div class="lg-answer lg-summary">. */
+div.lg-answer.lg-summary::before {
+  content: "Executive summary";
+}
+div.lg-answer ul,
+div.lg-answer ol {
+  margin: 0;
+  padding: 0 0 0 1.2em;
+  color: var(--ct-ocean);
+  font-family: var(--ct-font);
+  font-size: 16px;
+  line-height: 1.55;
+}
+div.lg-answer li {
+  margin: 0;
+  padding: 0;
+  color: var(--ct-ocean);
+  font-size: 16px;
+  line-height: 1.55;
+}
+div.lg-answer li + li {
+  margin-top: 6px;
+}
+div.lg-answer p + ul,
+div.lg-answer p + ol,
+div.lg-answer ul + p,
+div.lg-answer ol + p {
+  margin-top: 10px;
+}
+
 /* ------------------------------------------------------------------
    Note: a caveat worth stopping for.
    <div class="lg-note"><p><strong>Scotland and Wales:</strong> ...</p></div>

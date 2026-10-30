@@ -9,7 +9,8 @@ const TEMPLATE_VERSION = '2';
 
 // The CMS fields each collection uses, by role. A collection's "fields" in
 // config.json overrides these (Guides' own names) where its fields differ.
-const FIELDS = { pdf: 'pdf-download', faqs: 'faqs', ctaText: 'cta-description', sources: '' };
+// answer: the short answer or summary shown at the start of the article.
+const FIELDS = { pdf: 'pdf-download', faqs: 'faqs', ctaText: 'cta-description', sources: '', answer: '' };
 const fieldsOf = (cfg) => ({ ...FIELDS, ...((cfg && cfg.fields) || {}) });
 
 // The parts of an item (and its FAQs and author) that appear in the PDF.
@@ -30,6 +31,8 @@ function source(item, faqs, author, fields = FIELDS) {
   };
   // Only when there are any, so the Guides' fingerprints stay as they were.
   if (fields.sources && f[fields.sources]) src.sources = f[fields.sources];
+  // The same for the short answer: only the items that have one are rebuilt.
+  if (fields.answer && f[fields.answer]) src.answer = f[fields.answer];
   return src;
 }
 

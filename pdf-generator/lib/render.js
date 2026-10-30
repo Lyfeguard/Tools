@@ -56,6 +56,9 @@ function buildHtml({ item, faqs, author, cfg, site }) {
   const fields = fieldsOf(cfg);
   const ctaText = f[fields.ctaText];
   const sources = fields.sources && f[fields.sources];
+  // Plain text (a paragraph) or rich text (HTML, tidied below), whichever the field is.
+  const answer = fields.answer && f[fields.answer];
+  const answerHtml = !answer ? '' : /^\s*<(p|ul|ol|div|h[2-6])[\s>]/i.test(answer) ? answer : `<p>${esc(answer)}</p>`;
 
   const html = `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>${esc(f.name)}</title>
 <style>${CSS}</style></head><body>
@@ -74,6 +77,7 @@ function buildHtml({ item, faqs, author, cfg, site }) {
     General guidance only, not financial or legal advice. Figures are from the sources named in the text.</div>
   </div>
 </section>
+${answerHtml ? `<section class="keypoints"><p class="eyebrow">${esc(cfg.answerLabel || 'Short answer')}</p>${answerHtml}</section>` : ''}
 <main class="article">${f['post-body'] || ''}</main>
 ${sources ? `<section class="sources"><h2>Sources</h2>${sources}</section>` : ''}
 ${faqHtml ? `<section class="faqs" id="faqs">${faqHtml.replace('<div class="faq">', '<div class="faq"><h2>Frequently asked questions</h2>')}</section>` : ''}
@@ -92,7 +96,7 @@ ${faqHtml ? `<section class="faqs" id="faqs">${faqHtml.replace('<div class="faq"
 // Runs in the page. Turns Webflow rich text into print-ready HTML.
 function tidy(siteUrl) {
   const absolute = (href) => (href && href.startsWith('/') ? siteUrl + href : href);
-  const scopes = [...document.querySelectorAll('.article, .faq .answer, .sources')];
+  const scopes = [...document.querySelectorAll('.keypoints, .article, .faq .answer, .sources')];
   for (const scope of scopes) {
     const inFaq = scope.classList.contains('answer');
     for (const embed of [...scope.querySelectorAll('div[data-rt-embed-type]')]) {
@@ -118,7 +122,7 @@ function tidy(siteUrl) {
     scope.querySelectorAll('script, style, iframe, form, noscript').forEach((n) => n.remove());
     scope.querySelectorAll('[style], [class]').forEach((n) => {
       n.removeAttribute('style');
-      if (n.className !== 'table') n.removeAttribute('class');
+      if (n.className !== 'table' && n.className !== 'eyebrow') n.removeAttribute('class');
     });
     scope.querySelectorAll('a[href]').forEach((a) => a.setAttribute('href', absolute(a.getAttribute('href'))));
   }

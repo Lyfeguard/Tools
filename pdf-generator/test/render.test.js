@@ -87,3 +87,32 @@ test('an insight: its own field names, Sources and the demo call to action', asy
     await page.close();
   }
 });
+
+test('the short answer (Guides) and executive summary (Insights) come before the article', async () => {
+  const guide = structuredClone(items[0]);
+  guide.fieldData['quick-answer'] = 'Yes: <most> people should.';
+  const insight = structuredClone(items[0]);
+  insight.fieldData['executive-summary'] = '<ul><li style="color:red">First point.</li><li>Second point.</li></ul>';
+  const read = async (item, cfg, name) => {
+    const { page } = await openPage(browser, { ...data, item, cfg }, path.join(dir, name + '.html'));
+    try {
+      return await page.evaluate(() => {
+        const box = document.querySelector('.keypoints');
+        return {
+          label: box.querySelector('.eyebrow').textContent,
+          text: [...box.querySelectorAll('p:not(.eyebrow), li')].map((n) => n.textContent),
+          styled: box.querySelectorAll('[style]').length,
+          beforeArticle: box.nextElementSibling.classList.contains('article'),
+        };
+      });
+    } finally {
+      await page.close();
+    }
+  };
+  assert.deepEqual(await read(guide, config.collections.guides, 'answer'), { label: 'Short answer', text: ['Yes: <most> people should.'], styled: 0, beforeArticle: true });
+  assert.deepEqual(await read(insight, config.collections.insights, 'summary'), { label: 'Executive summary', text: ['First point.', 'Second point.'], styled: 0, beforeArticle: true });
+  // None set: no box.
+  const { page } = await openPage(browser, data, path.join(dir, 'none.html'));
+  assert.equal(await page.evaluate(() => document.querySelectorAll('.keypoints').length), 0);
+  await page.close();
+});
