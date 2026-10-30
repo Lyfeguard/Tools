@@ -5966,6 +5966,7 @@ details.lg-faq-accordian summary::-webkit-details-marker {
 }
 .lg-calc .lgc-field > label,
 .lg-calc .lgc-choice-group > legend {
+  display: block; /* as the site gives labels, even in a field that's hidden for now */
   padding: 0;
   font-size: 14px;
   font-weight: 650;

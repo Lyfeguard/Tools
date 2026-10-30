@@ -1,0 +1,1442 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about — Enter your pay to see what lenders could offer you. Most lenders (4 to 4.5 times)— Many lenders (up to 6 times)— A few specialist lenders (up to 7 times)— Income counted— An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month Enter your income to see what you could borrow. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Enter your income to see the payments. If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point—— +2 points—— +3 points—— How was this calculated? Enter your details to see how the figures are worked out. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about —See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgma-error-list": {
+      "text": ""
+    },
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year",
+      "hidden": true
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping.",
+      "hidden": true
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about — Enter your pay to see what lenders could offer you. Most lenders (4 to 4.5 times)— Many lenders (up to 6 times)— A few specialist lenders (up to 7 times)— Income counted— An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you.",
+      "data-state": "empty"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "—"
+    },
+    "lgma-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-summary": {
+      "text": "Enter your pay to see what lenders could offer you."
+    },
+    "lgma-most": {
+      "text": "—"
+    },
+    "lgma-many": {
+      "text": "—"
+    },
+    "lgma-specialist": {
+      "text": "—"
+    },
+    "lgma-counted": {
+      "text": "—"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month Enter your income to see what you could borrow."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "Enter your income to see what you could borrow."
+    },
+    "lgma-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Enter your income to see the payments."
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Enter your income to see the payments."
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point—— +2 points—— +3 points——"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point"
+    },
+    "lgma-rise0": {
+      "text": "—"
+    },
+    "lgma-rise0-note": {
+      "text": "—"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points"
+    },
+    "lgma-rise1": {
+      "text": "—"
+    },
+    "lgma-rise1-note": {
+      "text": "—"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points"
+    },
+    "lgma-rise2": {
+      "text": "—"
+    },
+    "lgma-rise2-note": {
+      "text": "—"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Enter your details to see how the figures are worked out. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Enter your details to see how the figures are worked out."
+    }
+  },
+  "joint": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about £464,000 to £696,000 71% loan-to-value at 4.5 times Most lenders could offer £464,000 to £522,000, and many up to £696,000 for higher incomes or bigger deposits. A few specialist lenders go up to £812,000. Most lenders (4 to 4.5 times)£464,000 to £522,000 Many lenders (up to 6 times)£696,000 A few specialist lenders (up to 7 times)£812,000 Income counted£116,012 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £464,000 to £696,000. Most lenders could offer £464,000 to £522,000, and many up to £696,000 for higher incomes or bigger deposits. A few specialist lenders go up to £812,000. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£464,000£674,00069%£2,085.974.5 times£522,000£732,00071%£2,346.726 times£696,000£906,00077%£3,128.967 times£812,000£1,022,00079%£3,650.45 Credit card balances are counted as a monthly payment of 3% of the balance (£450.00), as many lenders do. Paying a card off before you apply can raise what you can borrow.Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £522,000£2,346.72Share of your take-home pay30% of £7,801 a monthDebt-to-income with this mortgage30% (manageable)Commitments counted a month£749.00What your commitments cost in borrowingabout £40,000 to £54,000 If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£2,692.32 a month+£345.60 a month +2 points: 6.5%£3,056.08 a month+£709.37 a month +3 points: 7.5%£3,435.13 a month+£1,088.41 a month How was this calculated? Income counted: £125,000 a year, less a year of commitments (£8,988), leaves £116,012. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £464,000, £522,000, £696,000 and £812,000. Payments are worked out at 4.5% over 40 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about £464,000 to £696,000See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgma-error-list": {
+      "text": ""
+    },
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year"
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping.",
+      "hidden": true
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about £464,000 to £696,000 71% loan-to-value at 4.5 times Most lenders could offer £464,000 to £522,000, and many up to £696,000 for higher incomes or bigger deposits. A few specialist lenders go up to £812,000. Most lenders (4 to 4.5 times)£464,000 to £522,000 Many lenders (up to 6 times)£696,000 A few specialist lenders (up to 7 times)£812,000 Income counted£116,012 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £464,000 to £696,000. Most lenders could offer £464,000 to £522,000, and many up to £696,000 for higher incomes or bigger deposits. A few specialist lenders go up to £812,000.",
+      "data-state": "ready"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "£464,000 to £696,000"
+    },
+    "lgma-status": {
+      "text": "71% loan-to-value at 4.5 times"
+    },
+    "lgma-summary": {
+      "text": "Most lenders could offer £464,000 to £522,000, and many up to £696,000 for higher incomes or bigger deposits. A few specialist lenders go up to £812,000."
+    },
+    "lgma-most": {
+      "text": "£464,000 to £522,000"
+    },
+    "lgma-many": {
+      "text": "£696,000"
+    },
+    "lgma-specialist": {
+      "text": "£812,000"
+    },
+    "lgma-counted": {
+      "text": "£116,012 a year"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£464,000£674,00069%£2,085.974.5 times£522,000£732,00071%£2,346.726 times£696,000£906,00077%£3,128.967 times£812,000£1,022,00079%£3,650.45 Credit card balances are counted as a monthly payment of 3% of the balance (£450.00), as many lenders do. Paying a card off before you apply can raise what you can borrow.Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "4 times£464,000£674,00069%£2,085.974.5 times£522,000£732,00071%£2,346.726 times£696,000£906,00077%£3,128.967 times£812,000£1,022,00079%£3,650.45"
+    },
+    "undefined": {
+      "text": "£1,022,000"
+    },
+    "lgma-main-loan": {
+      "text": "£522,000"
+    },
+    "lgma-main-price": {
+      "text": "£732,000"
+    },
+    "lgma-notes": {
+      "text": "Credit card balances are counted as a monthly payment of 3% of the balance (£450.00), as many lenders do. Paying a card off before you apply can raise what you can borrow.Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more."
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £522,000£2,346.72Share of your take-home pay30% of £7,801 a monthDebt-to-income with this mortgage30% (manageable)Commitments counted a month£749.00What your commitments cost in borrowingabout £40,000 to £54,000"
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Monthly payment on £522,000£2,346.72Share of your take-home pay30% of £7,801 a monthDebt-to-income with this mortgage30% (manageable)Commitments counted a month£749.00What your commitments cost in borrowingabout £40,000 to £54,000"
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£2,692.32 a month+£345.60 a month +2 points: 6.5%£3,056.08 a month+£709.37 a month +3 points: 7.5%£3,435.13 a month+£1,088.41 a month"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point: 5.5%"
+    },
+    "lgma-rise0": {
+      "text": "£2,692.32 a month"
+    },
+    "lgma-rise0-note": {
+      "text": "+£345.60 a month"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points: 6.5%"
+    },
+    "lgma-rise1": {
+      "text": "£3,056.08 a month"
+    },
+    "lgma-rise1-note": {
+      "text": "+£709.37 a month"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points: 7.5%"
+    },
+    "lgma-rise2": {
+      "text": "£3,435.13 a month"
+    },
+    "lgma-rise2-note": {
+      "text": "+£1,088.41 a month"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Income counted: £125,000 a year, less a year of commitments (£8,988), leaves £116,012. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £464,000, £522,000, £696,000 and £812,000. Payments are worked out at 4.5% over 40 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Income counted: £125,000 a year, less a year of commitments (£8,988), leaves £116,012. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £464,000, £522,000, £696,000 and £812,000. Payments are worked out at 4.5% over 40 years, repaying the loan."
+    }
+  },
+  "firstTimeBuyer": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about £170,000 to £255,000 91% loan-to-value at 4.5 times Most lenders could offer £170,000 to £191,000, and many up to £255,000 for higher incomes or bigger deposits. A few specialist lenders go up to £297,000. Most lenders (4 to 4.5 times)£170,000 to £191,000 Many lenders (up to 6 times)£255,000 A few specialist lenders (up to 7 times)£297,000 Income counted£42,500 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £170,000 to £255,000. Most lenders could offer £170,000 to £191,000, and many up to £255,000 for higher incomes or bigger deposits. A few specialist lenders go up to £297,000. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£170,000£190,00089%£944.924.5 times£191,000£211,00091%£1,061.646 times£255,000£275,00093%£1,417.377 times£297,000£317,00094%£1,650.82 Bonus, overtime and commission are counted at 50%. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it’s guaranteed or you have a 2-year record, so you could borrow more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £191,000£1,061.64Share of your take-home pay35% of £2,993 a monthDebt-to-income with this mortgage28% (manageable)Commitments counted a month£0.00 If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£1,172.91 a month+£111.27 a month +2 points: 6.5%£1,289.65 a month+£228.01 a month +3 points: 7.5%£1,411.47 a month+£349.83 a month How was this calculated? Income counted: £42,500 a year (basic pay in full, other pay at 50%). At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £170,000, £191,000, £255,000 and £297,000. Payments are worked out at 4.5% over 25 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about £170,000 to £255,000See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgma-error-list": {
+      "text": ""
+    },
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year",
+      "hidden": true
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping.",
+      "hidden": true
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about £170,000 to £255,000 91% loan-to-value at 4.5 times Most lenders could offer £170,000 to £191,000, and many up to £255,000 for higher incomes or bigger deposits. A few specialist lenders go up to £297,000. Most lenders (4 to 4.5 times)£170,000 to £191,000 Many lenders (up to 6 times)£255,000 A few specialist lenders (up to 7 times)£297,000 Income counted£42,500 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £170,000 to £255,000. Most lenders could offer £170,000 to £191,000, and many up to £255,000 for higher incomes or bigger deposits. A few specialist lenders go up to £297,000.",
+      "data-state": "ready"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "£170,000 to £255,000"
+    },
+    "lgma-status": {
+      "text": "91% loan-to-value at 4.5 times"
+    },
+    "lgma-summary": {
+      "text": "Most lenders could offer £170,000 to £191,000, and many up to £255,000 for higher incomes or bigger deposits. A few specialist lenders go up to £297,000."
+    },
+    "lgma-most": {
+      "text": "£170,000 to £191,000"
+    },
+    "lgma-many": {
+      "text": "£255,000"
+    },
+    "lgma-specialist": {
+      "text": "£297,000"
+    },
+    "lgma-counted": {
+      "text": "£42,500 a year"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£170,000£190,00089%£944.924.5 times£191,000£211,00091%£1,061.646 times£255,000£275,00093%£1,417.377 times£297,000£317,00094%£1,650.82 Bonus, overtime and commission are counted at 50%. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it’s guaranteed or you have a 2-year record, so you could borrow more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "4 times£170,000£190,00089%£944.924.5 times£191,000£211,00091%£1,061.646 times£255,000£275,00093%£1,417.377 times£297,000£317,00094%£1,650.82"
+    },
+    "undefined": {
+      "text": "£317,000"
+    },
+    "lgma-main-loan": {
+      "text": "£191,000"
+    },
+    "lgma-main-price": {
+      "text": "£211,000"
+    },
+    "lgma-notes": {
+      "text": "Bonus, overtime and commission are counted at 50%. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it’s guaranteed or you have a 2-year record, so you could borrow more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal."
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £191,000£1,061.64Share of your take-home pay35% of £2,993 a monthDebt-to-income with this mortgage28% (manageable)Commitments counted a month£0.00"
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Monthly payment on £191,000£1,061.64Share of your take-home pay35% of £2,993 a monthDebt-to-income with this mortgage28% (manageable)Commitments counted a month£0.00"
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£1,172.91 a month+£111.27 a month +2 points: 6.5%£1,289.65 a month+£228.01 a month +3 points: 7.5%£1,411.47 a month+£349.83 a month"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point: 5.5%"
+    },
+    "lgma-rise0": {
+      "text": "£1,172.91 a month"
+    },
+    "lgma-rise0-note": {
+      "text": "+£111.27 a month"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points: 6.5%"
+    },
+    "lgma-rise1": {
+      "text": "£1,289.65 a month"
+    },
+    "lgma-rise1-note": {
+      "text": "+£228.01 a month"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points: 7.5%"
+    },
+    "lgma-rise2": {
+      "text": "£1,411.47 a month"
+    },
+    "lgma-rise2-note": {
+      "text": "+£349.83 a month"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Income counted: £42,500 a year (basic pay in full, other pay at 50%). At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £170,000, £191,000, £255,000 and £297,000. Payments are worked out at 4.5% over 25 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Income counted: £42,500 a year (basic pay in full, other pay at 50%). At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £170,000, £191,000, £255,000 and £297,000. Payments are worked out at 4.5% over 25 years, repaying the loan."
+    }
+  },
+  "interestOnlyVariable": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about £600,000 to £900,000 69% loan-to-value at 4.5 times Most lenders could offer £600,000 to £675,000, and many up to £900,000 for higher incomes or bigger deposits. A few specialist lenders go up to £1,050,000. Most lenders (4 to 4.5 times)£600,000 to £675,000 Many lenders (up to 6 times)£900,000 A few specialist lenders (up to 7 times)£1,050,000 Income counted£150,000 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £600,000 to £900,000. Most lenders could offer £600,000 to £675,000, and many up to £900,000 for higher incomes or bigger deposits. A few specialist lenders go up to £1,050,000. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£600,000£900,00067%£2,625.004.5 times£675,000£975,00069%£2,953.136 times£900,000£1,200,00075%£3,937.507 times£1,050,000£1,350,00078%£4,593.75 Interest-only mortgages usually need a deposit of at least 25% and a plan to repay the loan at the end, such as savings or selling another property. Many lenders also need a higher income.On a variable or tracker rate, your payment changes whenever the rate does. The figures below show what a rise would cost. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £675,000 (interest only)£2,953.13Share of your take-home pay39% of £7,607 a monthDebt-to-income with this mortgage24% (manageable)Commitments counted a month£0.00 If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 6.25%£3,515.63 a month+£562.50 a month +2 points: 7.25%£4,078.13 a month+£1,125.00 a month +3 points: 8.25%£4,640.63 a month+£1,687.50 a month How was this calculated? Income counted: £150,000 a year. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £600,000, £675,000, £900,000 and £1,050,000. Payments are worked out at 5.25% over 25 years, interest only. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about £600,000 to £900,000See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgma-error-list": {
+      "text": ""
+    },
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year",
+      "hidden": true
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping.",
+      "hidden": true
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about £600,000 to £900,000 69% loan-to-value at 4.5 times Most lenders could offer £600,000 to £675,000, and many up to £900,000 for higher incomes or bigger deposits. A few specialist lenders go up to £1,050,000. Most lenders (4 to 4.5 times)£600,000 to £675,000 Many lenders (up to 6 times)£900,000 A few specialist lenders (up to 7 times)£1,050,000 Income counted£150,000 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £600,000 to £900,000. Most lenders could offer £600,000 to £675,000, and many up to £900,000 for higher incomes or bigger deposits. A few specialist lenders go up to £1,050,000.",
+      "data-state": "ready"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "£600,000 to £900,000"
+    },
+    "lgma-status": {
+      "text": "69% loan-to-value at 4.5 times"
+    },
+    "lgma-summary": {
+      "text": "Most lenders could offer £600,000 to £675,000, and many up to £900,000 for higher incomes or bigger deposits. A few specialist lenders go up to £1,050,000."
+    },
+    "lgma-most": {
+      "text": "£600,000 to £675,000"
+    },
+    "lgma-many": {
+      "text": "£900,000"
+    },
+    "lgma-specialist": {
+      "text": "£1,050,000"
+    },
+    "lgma-counted": {
+      "text": "£150,000 a year"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£600,000£900,00067%£2,625.004.5 times£675,000£975,00069%£2,953.136 times£900,000£1,200,00075%£3,937.507 times£1,050,000£1,350,00078%£4,593.75 Interest-only mortgages usually need a deposit of at least 25% and a plan to repay the loan at the end, such as savings or selling another property. Many lenders also need a higher income.On a variable or tracker rate, your payment changes whenever the rate does. The figures below show what a rise would cost."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "4 times£600,000£900,00067%£2,625.004.5 times£675,000£975,00069%£2,953.136 times£900,000£1,200,00075%£3,937.507 times£1,050,000£1,350,00078%£4,593.75"
+    },
+    "undefined": {
+      "text": "£1,350,000"
+    },
+    "lgma-main-loan": {
+      "text": "£675,000"
+    },
+    "lgma-main-price": {
+      "text": "£975,000"
+    },
+    "lgma-notes": {
+      "text": "Interest-only mortgages usually need a deposit of at least 25% and a plan to repay the loan at the end, such as savings or selling another property. Many lenders also need a higher income.On a variable or tracker rate, your payment changes whenever the rate does. The figures below show what a rise would cost."
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £675,000 (interest only)£2,953.13Share of your take-home pay39% of £7,607 a monthDebt-to-income with this mortgage24% (manageable)Commitments counted a month£0.00"
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Monthly payment on £675,000 (interest only)£2,953.13Share of your take-home pay39% of £7,607 a monthDebt-to-income with this mortgage24% (manageable)Commitments counted a month£0.00"
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 6.25%£3,515.63 a month+£562.50 a month +2 points: 7.25%£4,078.13 a month+£1,125.00 a month +3 points: 8.25%£4,640.63 a month+£1,687.50 a month"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point: 6.25%"
+    },
+    "lgma-rise0": {
+      "text": "£3,515.63 a month"
+    },
+    "lgma-rise0-note": {
+      "text": "+£562.50 a month"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points: 7.25%"
+    },
+    "lgma-rise1": {
+      "text": "£4,078.13 a month"
+    },
+    "lgma-rise1-note": {
+      "text": "+£1,125.00 a month"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points: 8.25%"
+    },
+    "lgma-rise2": {
+      "text": "£4,640.63 a month"
+    },
+    "lgma-rise2-note": {
+      "text": "+£1,687.50 a month"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Income counted: £150,000 a year. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £600,000, £675,000, £900,000 and £1,050,000. Payments are worked out at 5.25% over 25 years, interest only. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Income counted: £150,000 a year. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £600,000, £675,000, £900,000 and £1,050,000. Payments are worked out at 5.25% over 25 years, interest only."
+    }
+  },
+  "secondHome": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about £276,000 to £414,000 84% loan-to-value at 4.5 times Most lenders could offer £276,000 to £310,000, and many up to £414,000 for higher incomes or bigger deposits. A few specialist lenders go up to £483,000. Most lenders (4 to 4.5 times)£276,000 to £310,000 Many lenders (up to 6 times)£414,000 A few specialist lenders (up to 7 times)£483,000 Income counted£69,000 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £276,000 to £414,000. Most lenders could offer £276,000 to £310,000, and many up to £414,000 for higher incomes or bigger deposits. A few specialist lenders go up to £483,000. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£276,000£336,00082%£1,534.104.5 times£310,000£370,00084%£1,723.086 times£414,000£474,00087%£2,301.157 times£483,000£543,00089%£2,684.67 Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change.For a second home, lenders count your existing mortgage as a commitment. Buy-to-let mortgages are assessed on the expected rent, not your income, so they work differently. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £310,000£1,723.08Share of your take-home pay33% of £5,230 a monthDebt-to-income with this mortgage41% (high)Commitments counted a month£1,750.00What your commitments cost in borrowingabout £95,000 to £126,000 If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£1,903.67 a month+£180.59 a month +2 points: 6.5%£2,093.14 a month+£370.06 a month +3 points: 7.5%£2,290.87 a month+£567.79 a month How was this calculated? Income counted: £90,000 a year, less a year of commitments (£21,000), leaves £69,000. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £276,000, £310,000, £414,000 and £483,000. Payments are worked out at 4.5% over 25 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about £276,000 to £414,000See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgma-error-list": {
+      "text": ""
+    },
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year",
+      "hidden": true
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about £276,000 to £414,000 84% loan-to-value at 4.5 times Most lenders could offer £276,000 to £310,000, and many up to £414,000 for higher incomes or bigger deposits. A few specialist lenders go up to £483,000. Most lenders (4 to 4.5 times)£276,000 to £310,000 Many lenders (up to 6 times)£414,000 A few specialist lenders (up to 7 times)£483,000 Income counted£69,000 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £276,000 to £414,000. Most lenders could offer £276,000 to £310,000, and many up to £414,000 for higher incomes or bigger deposits. A few specialist lenders go up to £483,000.",
+      "data-state": "ready"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "£276,000 to £414,000"
+    },
+    "lgma-status": {
+      "text": "84% loan-to-value at 4.5 times"
+    },
+    "lgma-summary": {
+      "text": "Most lenders could offer £276,000 to £310,000, and many up to £414,000 for higher incomes or bigger deposits. A few specialist lenders go up to £483,000."
+    },
+    "lgma-most": {
+      "text": "£276,000 to £310,000"
+    },
+    "lgma-many": {
+      "text": "£414,000"
+    },
+    "lgma-specialist": {
+      "text": "£483,000"
+    },
+    "lgma-counted": {
+      "text": "£69,000 a year"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£276,000£336,00082%£1,534.104.5 times£310,000£370,00084%£1,723.086 times£414,000£474,00087%£2,301.157 times£483,000£543,00089%£2,684.67 Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change.For a second home, lenders count your existing mortgage as a commitment. Buy-to-let mortgages are assessed on the expected rent, not your income, so they work differently."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "4 times£276,000£336,00082%£1,534.104.5 times£310,000£370,00084%£1,723.086 times£414,000£474,00087%£2,301.157 times£483,000£543,00089%£2,684.67"
+    },
+    "undefined": {
+      "text": "£543,000"
+    },
+    "lgma-main-loan": {
+      "text": "£310,000"
+    },
+    "lgma-main-price": {
+      "text": "£370,000"
+    },
+    "lgma-notes": {
+      "text": "Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change.For a second home, lenders count your existing mortgage as a commitment. Buy-to-let mortgages are assessed on the expected rent, not your income, so they work differently."
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £310,000£1,723.08Share of your take-home pay33% of £5,230 a monthDebt-to-income with this mortgage41% (high)Commitments counted a month£1,750.00What your commitments cost in borrowingabout £95,000 to £126,000"
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Monthly payment on £310,000£1,723.08Share of your take-home pay33% of £5,230 a monthDebt-to-income with this mortgage41% (high)Commitments counted a month£1,750.00What your commitments cost in borrowingabout £95,000 to £126,000"
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£1,903.67 a month+£180.59 a month +2 points: 6.5%£2,093.14 a month+£370.06 a month +3 points: 7.5%£2,290.87 a month+£567.79 a month"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point: 5.5%"
+    },
+    "lgma-rise0": {
+      "text": "£1,903.67 a month"
+    },
+    "lgma-rise0-note": {
+      "text": "+£180.59 a month"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points: 6.5%"
+    },
+    "lgma-rise1": {
+      "text": "£2,093.14 a month"
+    },
+    "lgma-rise1-note": {
+      "text": "+£370.06 a month"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points: 7.5%"
+    },
+    "lgma-rise2": {
+      "text": "£2,290.87 a month"
+    },
+    "lgma-rise2-note": {
+      "text": "+£567.79 a month"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Income counted: £90,000 a year, less a year of commitments (£21,000), leaves £69,000. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £276,000, £310,000, £414,000 and £483,000. Payments are worked out at 4.5% over 25 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Income counted: £90,000 a year, less a year of commitments (£21,000), leaves £69,000. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £276,000, £310,000, £414,000 and £483,000. Payments are worked out at 4.5% over 25 years, repaying the loan."
+    }
+  },
+  "debtsTooHigh": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about £0 Your commitments are more than the income lenders would count, so most lenders are unlikely to offer a mortgage until they come down. Most lenders (4 to 4.5 times)£0 to £0 Many lenders (up to 6 times)£0 A few specialist lenders (up to 7 times)£0 Income counted£0 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £0. Your commitments are more than the income lenders would count, so most lenders are unlikely to offer a mortgage until they come down. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£0£0—£0.004.5 times£0£0—£0.006 times£0£0—£0.007 times£0£0—£0.00 Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £0£0.00Share of your take-home pay0% of £1,493 a monthDebt-to-income with this mortgage120% (very high)Commitments counted a month£2,000.00What your commitments cost in borrowingabout £90,000 to £120,000 If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£0.00 a month+£0.00 a month +2 points: 6.5%£0.00 a month+£0.00 a month +3 points: 7.5%£0.00 a month+£0.00 a month How was this calculated? Income counted: £20,000 a year, less a year of commitments (£24,000), leaves £0. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £0, £0, £0 and £0. Payments are worked out at 4.5% over 25 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about £0See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgma-error-list": {
+      "text": ""
+    },
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year",
+      "hidden": true
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping.",
+      "hidden": true
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about £0 Your commitments are more than the income lenders would count, so most lenders are unlikely to offer a mortgage until they come down. Most lenders (4 to 4.5 times)£0 to £0 Many lenders (up to 6 times)£0 A few specialist lenders (up to 7 times)£0 Income counted£0 a year An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. Lenders could offer you about £0. Your commitments are more than the income lenders would count, so most lenders are unlikely to offer a mortgage until they come down.",
+      "data-state": "ready"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "£0"
+    },
+    "lgma-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-summary": {
+      "text": "Your commitments are more than the income lenders would count, so most lenders are unlikely to offer a mortgage until they come down."
+    },
+    "lgma-most": {
+      "text": "£0 to £0"
+    },
+    "lgma-many": {
+      "text": "£0"
+    },
+    "lgma-specialist": {
+      "text": "£0"
+    },
+    "lgma-counted": {
+      "text": "£0 a year"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month 4 times£0£0—£0.004.5 times£0£0—£0.006 times£0£0—£0.007 times£0£0—£0.00 Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "4 times£0£0—£0.004.5 times£0£0—£0.006 times£0£0—£0.007 times£0£0—£0.00"
+    },
+    "undefined": {
+      "text": "£0"
+    },
+    "lgma-main-loan": {
+      "text": "£0"
+    },
+    "lgma-main-price": {
+      "text": "£0"
+    },
+    "lgma-notes": {
+      "text": "Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change."
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Monthly payment on £0£0.00Share of your take-home pay0% of £1,493 a monthDebt-to-income with this mortgage120% (very high)Commitments counted a month£2,000.00What your commitments cost in borrowingabout £90,000 to £120,000"
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Monthly payment on £0£0.00Share of your take-home pay0% of £1,493 a monthDebt-to-income with this mortgage120% (very high)Commitments counted a month£2,000.00What your commitments cost in borrowingabout £90,000 to £120,000"
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point: 5.5%£0.00 a month+£0.00 a month +2 points: 6.5%£0.00 a month+£0.00 a month +3 points: 7.5%£0.00 a month+£0.00 a month"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point: 5.5%"
+    },
+    "lgma-rise0": {
+      "text": "£0.00 a month"
+    },
+    "lgma-rise0-note": {
+      "text": "+£0.00 a month"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points: 6.5%"
+    },
+    "lgma-rise1": {
+      "text": "£0.00 a month"
+    },
+    "lgma-rise1-note": {
+      "text": "+£0.00 a month"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points: 7.5%"
+    },
+    "lgma-rise2": {
+      "text": "£0.00 a month"
+    },
+    "lgma-rise2-note": {
+      "text": "+£0.00 a month"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Income counted: £20,000 a year, less a year of commitments (£24,000), leaves £0. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £0, £0, £0 and £0. Payments are worked out at 4.5% over 25 years, repaying the loan. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Income counted: £20,000 a year, less a year of commitments (£24,000), leaves £0. At 4, 4.5, 6 and 7 times that, rounded down to the nearest £1,000, lenders could offer £0, £0, £0 and £0. Payments are worked out at 4.5% over 25 years, repaying the loan."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgma": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Enter your yearly pay before tax, from £1.Enter a term in whole years, from 5 to 40. Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Enter your yearly pay before tax, from £1. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Enter a term in whole years, from 5 to 40. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results How much you could borrow Lenders could offer you about — Check the highlighted fields to see what you could borrow. Most lenders (4 to 4.5 times)— Many lenders (up to 6 times)— A few specialist lenders (up to 7 times)— Income counted— An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you. What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month Enter your income to see what you could borrow. Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Enter your income to see the payments. If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point—— +2 points—— +3 points—— How was this calculated? Enter your details to see how the figures are worked out. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria. Use these figures Work out the repayments on this mortgage Work out Stamp Duty on this price (England and Northern Ireland) Lenders could offer about —See results",
+      "data-calc": "mortgage-affordability",
+      "data-lgReadylgmaform": "true"
+    },
+    "lgma-form": {
+      "text": "01 — Your details Your income and commitments Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure. Check the highlighted fields Enter your yearly pay before tax, from £1.Enter a term in whole years, from 5 to 40. Your income Who’s applying Just me Two of us Basic pay before tax £a year Your salary. If you’re self-employed, your average profit over the last 2 years. Enter your yearly pay before tax, from £1. Bonus, overtime and commission £a year Optional. Your typical yearly amount. Second applicant’s basic pay £a year Their bonus, overtime and commission £a year Your commitments Loan and car finance repayments £a month Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay. Credit cards £ Leave it at 0 if you clear your cards every month. For credit cards, I’m entering The total balance Minimum payments a month Other committed spending £a month Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel. Your mortgage You’re buying Your first home A new home, moving A second home Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them. Your existing mortgage payments £a month The mortgage on the home you’re keeping. Deposit £ Including any equity from a home you’re selling. Mortgage term years Most are 25 to 35 years. A longer term lowers the payments but costs more interest. Enter a term in whole years, from 5 to 40. Interest rate % a year An example to start with. Use a rate you’ve been quoted or seen advertised. Type of rate Fixed Variable or tracker How you repay Repayment Interest-only Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgma-form-title": {
+      "text": "Your income and commitments"
+    },
+    "lgma-error-summary": {
+      "text": "Check the highlighted fields Enter your yearly pay before tax, from £1.Enter a term in whole years, from 5 to 40."
+    },
+    "lgma-error-list": {
+      "text": "Enter your yearly pay before tax, from £1.Enter a term in whole years, from 5 to 40."
+    },
+    "lgma-income1@invalid": "true",
+    "lgma-income1-hint": {
+      "text": "Your salary. If you’re self-employed, your average profit over the last 2 years."
+    },
+    "lgma-income1-error": {
+      "text": "Enter your yearly pay before tax, from £1."
+    },
+    "lgma-variable1-hint": {
+      "text": "Optional. Your typical yearly amount."
+    },
+    "lgma-variable1-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-second": {
+      "text": "Second applicant’s basic pay £a year Their bonus, overtime and commission £a year",
+      "hidden": true
+    },
+    "lgma-income2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-variable2-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-loans-hint": {
+      "text": "Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay."
+    },
+    "lgma-loans-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-cards-hint": {
+      "text": "Leave it at 0 if you clear your cards every month."
+    },
+    "lgma-cards-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-other-hint": {
+      "text": "Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel."
+    },
+    "lgma-other-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-existing-field": {
+      "text": "Your existing mortgage payments £a month The mortgage on the home you’re keeping.",
+      "hidden": true
+    },
+    "lgma-existing-hint": {
+      "text": "The mortgage on the home you’re keeping."
+    },
+    "lgma-existing-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-deposit-hint": {
+      "text": "Including any equity from a home you’re selling."
+    },
+    "lgma-deposit-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-term@invalid": "true",
+    "lgma-term-hint": {
+      "text": "Most are 25 to 35 years. A longer term lowers the payments but costs more interest."
+    },
+    "lgma-term-error": {
+      "text": "Enter a term in whole years, from 5 to 40."
+    },
+    "lgma-rate-hint": {
+      "text": "An example to start with. Use a rate you’ve been quoted or seen advertised."
+    },
+    "lgma-rate-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-results": {
+      "text": "02 — Your results How much you could borrow Lenders could offer you about — Check the highlighted fields to see what you could borrow. Most lenders (4 to 4.5 times)— Many lenders (up to 6 times)— A few specialist lenders (up to 7 times)— Income counted— An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you.",
+      "data-state": "invalid"
+    },
+    "lgma-results-title": {
+      "text": "How much you could borrow"
+    },
+    "lgma-headline-label": {
+      "text": "Lenders could offer you about"
+    },
+    "lgma-headline": {
+      "text": "—"
+    },
+    "lgma-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-summary": {
+      "text": "Check the highlighted fields to see what you could borrow."
+    },
+    "lgma-most": {
+      "text": "—"
+    },
+    "lgma-many": {
+      "text": "—"
+    },
+    "lgma-specialist": {
+      "text": "—"
+    },
+    "lgma-counted": {
+      "text": "—"
+    },
+    "lgma-borrowing": {
+      "text": "What you could buy Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment. Borrowing, price and payments Times your incomeBorrowingPriceLoan-to-valueA month Enter your income to see what you could borrow."
+    },
+    "lgma-borrowing-title": {
+      "text": "What you could buy"
+    },
+    "lgma-table-caption": {
+      "text": "Borrowing, price and payments"
+    },
+    "lgma-table-body": {
+      "text": "Enter your income to see what you could borrow."
+    },
+    "lgma-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgma-checks": {
+      "text": "Could you afford the payments? What most lenders could offer, measured against your take-home pay and your other debts. Your payments and debts Enter your income to see the payments."
+    },
+    "lgma-checks-title": {
+      "text": "Could you afford the payments?"
+    },
+    "lgma-checks-caption": {
+      "text": "Your payments and debts"
+    },
+    "lgma-checks-body": {
+      "text": "Enter your income to see the payments."
+    },
+    "lgma-rises": {
+      "text": "If interest rates rise The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too. +1 point—— +2 points—— +3 points——"
+    },
+    "lgma-rises-title": {
+      "text": "If interest rates rise"
+    },
+    "lgma-rise0-label": {
+      "text": "+1 point"
+    },
+    "lgma-rise0": {
+      "text": "—"
+    },
+    "lgma-rise0-note": {
+      "text": "—"
+    },
+    "lgma-rise1-label": {
+      "text": "+2 points"
+    },
+    "lgma-rise1": {
+      "text": "—"
+    },
+    "lgma-rise1-note": {
+      "text": "—"
+    },
+    "lgma-rise2-label": {
+      "text": "+3 points"
+    },
+    "lgma-rise2": {
+      "text": "—"
+    },
+    "lgma-rise2-note": {
+      "text": "—"
+    },
+    "lgma-method": {
+      "text": "How was this calculated? Enter your details to see how the figures are worked out. Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria."
+    },
+    "lgma-method-text": {
+      "text": "Enter your details to see how the figures are worked out."
+    }
+  }
+}

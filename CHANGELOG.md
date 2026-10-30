@@ -2,7 +2,17 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.3.0 – Unreleased
+## v2.4.0 – Unreleased
+Mortgage Affordability calculator. **In Webflow:** the Tools item (Mortgage Affordability Calculator) is already created; the release workflow writes its markup, Component Key and Release, and adds a "Use these figures" link to the Take-Home Pay page. Then fill in the new item's content, Icon and Social Image, and publish.
+- `mortgage-affordability`: how much lenders could offer, as a range rather than one figure: most lenders (4 to 4.5 times income), many lenders for higher incomes or bigger deposits (up to 6 times) and a few specialist lenders (up to 7 times). No lender names or rates.
+- Questions people can answer: one or two applicants, basic pay and bonus, overtime and commission (counted at 50%, with a note that many lenders count 60% to 70% and some all of it), loan and car finance repayments, credit cards (3% of the balance, or the minimum payments), other committed spending (as lenders define it), and for a second home the existing mortgage. Commitments come off a year's income before multiplying, and the page says this is cautious.
+- Results: the borrowing, price with the deposit, loan-to-value and monthly payment at each level; the payment as a share of take-home pay; debt-to-income with the mortgage (the Debt-to-Income calculator's bands); what commitments cost in borrowing; payments if rates rise 1, 2 or 3 points. Notes cover interest-only, variable rates, loan-to-value bands and second homes. Buy-to-let is out of scope, and says so.
+- "Use these figures": from Take-Home Pay (the salary), and to Mortgage (price, deposit, rate, term and type) and Stamp Duty (price and kind of buyer).
+- `data/2026-27.json` (`mortgageAffordability`): the multiples, the bonus and credit card rules, the loan-to-value bands and the rate rises. `docs/data.md` says to review them every few months. Redundancy's `$source` now cites nidirect for Northern Ireland's £783 cap.
+- Field labels are block-level even while their field is hidden (the second applicant and existing mortgage fields), as the site gives labels. No visible change on any calculator.
+- Tests (401): hand-worked answers, snapshots for seven scenarios, the hand-offs and the data.
+
+## v2.3.0 – 2026-10-30
 Redundancy Pay calculator. **In Webflow:** the Tools item (Redundancy Pay Calculator) is already created; the release workflow writes its markup, Component Key and Release. Then fill in its content, Icon and Social Image, and publish.
 - `redundancy-pay`: statutory redundancy pay from age, complete years of service and pay (yearly, monthly or weekly), for Great Britain or Northern Ireland. Shows the weeks' pay, the weekly pay counted (capped), the years counted (up to 20), each age band's share, and notes on the cap, the 20-year limit, the £30,000 tax-free allowance and contractual pay. Under 2 years' service gets nothing, and says so.
 - `data/2026-27.json` (`redundancy`): the weekly pay caps from 6 April 2026 (£751 in Great Britain, £783 in Northern Ireland, to be confirmed on nidirect), the 2- and 20-year limits and the age bands.

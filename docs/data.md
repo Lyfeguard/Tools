@@ -4,6 +4,7 @@ Figures that change over time live in `data/`, not in the code.
 
 - [Files](#files)
 - [How the data gets into the code](#how-the-data-gets-into-the-code)
+- [Every few months](#every-few-months)
 - [At each Budget](#at-each-budget)
 - [Each April](#each-april)
 - [New ONS tables](#new-ons-tables)
@@ -12,7 +13,7 @@ Figures that change over time live in `data/`, not in the code.
 
 | File | Contents | Used by |
 |---|---|---|
-| `data/2026-27.json` | The 2026/27 tax year: Income Tax (including Scottish rates), National Insurance, student loans, auto-enrolment, the High Income Child Benefit Charge, Inheritance Tax bands, pensions (the lump sum allowance and the full State Pension), statutory redundancy pay (`redundancy`: the weekly pay caps for Great Britain and Northern Ireland), and the tax on buying a home (`propertyTax`: Stamp Duty, LBTT and LTT) | Every calculator that uses tax figures, through `LG.taxYear` and `LG.ukTax` |
+| `data/2026-27.json` | The 2026/27 tax year: Income Tax (including Scottish rates), National Insurance, student loans, auto-enrolment, the High Income Child Benefit Charge, Inheritance Tax bands, pensions (the lump sum allowance and the full State Pension), mortgage affordability (`mortgageAffordability`: the income multiples, how bonus pay and credit cards count, and the loan-to-value bands), statutory redundancy pay (`redundancy`: the weekly pay caps for Great Britain and Northern Ireland), and the tax on buying a home (`propertyTax`: Stamp Duty, LBTT and LTT) | Every calculator that uses tax figures, through `LG.taxYear` and `LG.ukTax` |
 | `data/ons-ashe-2026.json` | ONS ASHE salary tables by age, for everyone, men and women | Salary by Age |
 
 Keys that start with `$` are notes (`$about`, `$checked`, `$source`), and the build leaves them out of the built files. Record in `$checked` when and against what the figures were last checked.
@@ -26,6 +27,10 @@ var YEAR = (LG.taxYear = /* @data:2026-27 */ null);
 ```
 
 When you build, `scripts/data.js` replaces each marker with the file's contents. `test/data.test.js` checks every figure is present and sensible: bands rise, and rates are fractions.
+
+## Every few months
+
+The mortgage affordability multiples (`mortgageAffordability.bands`) are typical market ranges, not any lender's figures. Check them every few months against what lenders and brokers publish, and update them if the market moves. The example interest rate is in the calculator's markup (`markup/mortgage-affordability.html`, the rate field's value).
 
 ## At each Budget
 

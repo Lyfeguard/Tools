@@ -42,6 +42,9 @@ const EXPECT = {
   'lbtt>land-transaction-tax': { 'lgltt-price': '300,000' },
   'land-transaction-tax>stamp-duty': { 'lgsd-price': '300,000' },
   'land-transaction-tax>lbtt': { 'lglbtt-price': '300,000' },
+  'take-home-pay>mortgage-affordability': { 'lgma-income1': '35,000' },
+  'mortgage-affordability>mortgage': { 'lgmc-price': '732,000', 'lgmc-deposit': '210,000', 'lgmc-rate': '4.50', 'lgmc-term': '40' }, // the mortgage calculator shows rates to 2 places
+  'mortgage-affordability>stamp-duty': { 'lgsd-price': '732,000' },
   'net-worth>inheritance-tax': { 'lgiht-home': '350,000', 'lgiht-cash': '15,000', 'lgiht-investments': '20,000', 'lgiht-possessions': '12,000', 'lgiht-mortgage': '245,000', 'lgiht-debts': '8,750.5' } // as IHT shows a typed 8750.50,
 };
 

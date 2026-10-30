@@ -66,6 +66,10 @@
     "redundancy-pay": {
       "slug": "redundancy-pay-calculator",
       "id": "6ae4d30ff02060279c31d562"
+    },
+    "mortgage-affordability": {
+      "slug": "mortgage-affordability-calculator",
+      "id": "6ae4d2e42a2d8eadd98d9198"
     }
   }
 }

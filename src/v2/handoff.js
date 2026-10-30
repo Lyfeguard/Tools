@@ -21,6 +21,7 @@
     'stamp-duty': 'Stamp Duty',
     lbtt: 'LBTT',
     'land-transaction-tax': 'Land Transaction Tax',
+    'mortgage-affordability': 'mortgage affordability',
   };
   // What's still needed on a calculator after the figures arrive.
   var NEXT = {
@@ -63,6 +64,28 @@
         if (!pay) return null;
         if (period === 'week') return { '@lgdti-period': 'year', 'lgdti-income': String(Math.round(pay * 52)) };
         return { '@lgdti-period': period === 'month' ? 'month' : 'year', 'lgdti-income': pay };
+      },
+      'mortgage-affordability': function (get, scope) {
+        var pay = amount(get('lgth-salary'));
+        if (!pay) return null;
+        var yearly = { week: 52, month: 12 }[checked(scope, 'lgth-period')] || 1;
+        return { '@lgma-applicants': 'one', 'lgma-income1': money2(pay * yearly) };
+      },
+    },
+    // What most lenders could offer: that loan and the price with the deposit.
+    'mortgage-affordability': {
+      'mortgage': function (get, scope) {
+        return {
+          'lgmc-price': amount(get('lgma-main-price')),
+          'lgmc-deposit': amount(get('lgma-deposit')),
+          'lgmc-rate': amount(get('lgma-rate')),
+          'lgmc-term': amount(get('lgma-term')),
+          '@mortgage-type': checked(scope, 'lgma-type') === 'interest-only' ? 'interest-only' : 'repayment',
+        };
+      },
+      'stamp-duty': function (get, scope) {
+        var purchase = checked(scope, 'lgma-purchase');
+        return { 'lgsd-price': amount(get('lgma-main-price')), '@lgsd-buyer': purchase === 'additional' ? 'additional' : purchase === 'moving' ? 'home' : 'first' };
       },
     },
     mortgage: {
