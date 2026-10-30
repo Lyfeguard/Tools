@@ -350,4 +350,43 @@ module.exports = {
       ['click', 'input[name="lgltt-buyer"][value="additional"]'],
     ],
   },
+  'redundancy-pay': {
+    empty: [],
+    typical: [
+      ['fill', '#lgrp-age', '43'],
+      ['fill', '#lgrp-years', '6'],
+      ['fill', '#lgrp-pay', '35,000'],
+    ],
+    cappedLong: [
+      ['fill', '#lgrp-age', '60'],
+      ['fill', '#lgrp-years', '30'],
+      ['fill', '#lgrp-pay', '60000'],
+    ],
+    northernIreland: [
+      ['check', 'input[name="lgrp-region"][value="ni"]'],
+      ['check', 'input[name="lgrp-period"][value="week"]'],
+      ['fill', '#lgrp-age', '50'],
+      ['fill', '#lgrp-years', '25'],
+      ['fill', '#lgrp-pay', '900'],
+    ],
+    young: [
+      ['check', 'input[name="lgrp-period"][value="month"]'],
+      ['fill', '#lgrp-age', '23'],
+      ['fill', '#lgrp-years', '3'],
+      ['fill', '#lgrp-pay', '2000'],
+    ],
+    underTwoYears: [
+      ['fill', '#lgrp-age', '30'],
+      ['fill', '#lgrp-years', '1'],
+      ['fill', '#lgrp-pay', '28000'],
+    ],
+    invalid: [
+      ['fill', '#lgrp-age', '30'],
+      ['fill', '#lgrp-years', '20'],
+      ['fill', '#lgrp-pay', '28000'],
+      ['click', '#lgrp-age'],
+      ['click', '#lgrp-years'],
+      ['click', '#lgrp-pay'],
+    ],
+  },
 };

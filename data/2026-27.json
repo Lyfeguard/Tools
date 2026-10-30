@@ -29,6 +29,19 @@
   "childBenefitCharge": { "start": 60000, "end": 80000 },
   "inheritanceTax": { "nilRateBand": 325000, "residenceNilRateBand": 175000, "taperThreshold": 2000000, "fullReliefCap": 2500000 },
   "pensions": { "lumpSumAllowance": 268275, "taxFreeShare": 0.25, "fullStatePension": 12548 },
+  "redundancy": {
+    "$source": "Statutory redundancy pay for dismissals from 6 April 2026: the weekly pay cap from the Employment Rights (Increase of Limits) Order 2026 (Great Britain) and the Northern Ireland order. Northern Ireland's cap to be confirmed on nidirect before release.",
+    "weeklyPayCap": 751,
+    "weeklyPayCapNI": 783,
+    "minYears": 2,
+    "maxYears": 20,
+    "bands": [
+      { "fromAge": 41, "weeks": 1.5 },
+      { "fromAge": 22, "weeks": 1 },
+      { "fromAge": 0, "weeks": 0.5 }
+    ],
+    "taxFree": 30000
+  },
   "propertyTax": {
     "$about": "Tax on buying a home, for individuals buying a whole residential property. These rates change at Budgets, not only in April: check them whenever a UK, Scottish or Welsh Budget is announced. Each band is a slice of the price; upTo null is the top slice. Surcharges don't apply below surchargeFrom.",
     "sdlt": {

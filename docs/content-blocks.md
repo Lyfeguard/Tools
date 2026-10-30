@@ -112,7 +112,7 @@ Fields in Webflow, shown by the template under the title, so writers fill in a f
 
 | | Guides: Quick Answer | Insights: Executive Summary |
 |---|---|---|
-| Field | Plain text, slug `quick-answer`, up to 420 characters | Rich text, slug `executive-summary` |
+| Field | Plain text, slug `quick-answer`, up to 420 characters | Rich text, slug `executive-summarys` (Webflow added the "s" when the field was recreated) |
 | Written as | One paragraph of 40 to 60 words answering the guide's main question | 3 to 5 bullet points: the key points a professional reader needs |
 | In the template | After the H1, before the body: a Div with the class `lg-answer`, holding a **Paragraph** (not a Text Block) bound to the field | The same place: a Div with the classes `lg-answer lg-summary`, holding a **Rich Text** element bound to the field |
 | When empty | Conditional visibility on the Div: show when the field is set | The same |

@@ -1,0 +1,104 @@
+<lg-calculator key="redundancy-pay">
+<div class="lg-calc" data-calc="redundancy-pay" id="lgrp">
+  <form id="lgrp-form" class="lgc-card" novalidate="" aria-labelledby="lgrp-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lgrp-form-title">Your job and pay</h2>
+    <p class="lgc-intro">Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026.</p>
+
+    <div id="lgrp-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
+      <p class="lgc-error-summary-title">Check the highlighted fields</p>
+      <ul id="lgrp-error-list"></ul>
+    </div>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your job</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field">
+          <label for="lgrp-age">Your age when you’re made redundant</label>
+          <div class="lgc-input"><input id="lgrp-age" name="age" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" placeholder="45" aria-describedby="lgrp-age-hint lgrp-age-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
+          <p id="lgrp-age-hint" class="lgc-hint">Your age on the date your job ends.</p>
+          <p id="lgrp-age-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgrp-years">Complete years of service</label>
+          <div class="lgc-input"><input id="lgrp-years" name="years" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" placeholder="10" aria-describedby="lgrp-years-hint lgrp-years-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
+          <p id="lgrp-years-hint" class="lgc-hint">Full years with your employer, without a break. You need at least 2.</p>
+          <p id="lgrp-years-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>Where you work</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgrp-region" value="gb" checked=""><span>England, Scotland or Wales</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgrp-region" value="ni"><span>Northern Ireland</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your pay</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field lgc-field-full">
+          <label for="lgrp-pay">Pay before tax</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgrp-pay" name="pay" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" placeholder="35,000" data-format="money" aria-describedby="lgrp-pay-hint lgrp-pay-error"></div>
+          <p id="lgrp-pay-hint" class="lgc-hint">Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks.</p>
+          <p id="lgrp-pay-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>I’m entering my pay</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgrp-period" value="year" checked=""><span>Yearly</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgrp-period" value="month"><span>Monthly</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgrp-period" value="week"><span>Weekly</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you type. Nothing you enter leaves your browser.</p>
+      <button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lgrp-results" class="lgc-card lgc-card-dark" aria-labelledby="lgrp-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lgrp-results-title">Your redundancy pay</h2>
+    <p class="lgc-result-label" id="lgrp-headline-label">Statutory redundancy pay</p>
+    <p class="lgc-result-value" id="lgrp-headline">—</p>
+    <p class="lgc-badge" id="lgrp-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lgrp-summary">Enter your age, years of service and pay to see your statutory redundancy pay.</p>
+    <dl class="lgc-stats">
+      <div><dt>Weeks’ pay</dt><dd id="lgrp-weeks">—</dd></div>
+      <div><dt>Weekly pay counted</dt><dd id="lgrp-weekly">—</dd></div>
+      <div><dt>Years counted</dt><dd id="lgrp-counted">—</dd></div>
+      <div><dt>The most anyone can get</dt><dd id="lgrp-max">—</dd></div>
+    </dl>
+    <p class="lgc-small">The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.</p>
+    <p class="lgc-sr-only" aria-live="polite" data-announce="lgrp-headline-label lgrp-headline lgrp-summary"></p>
+  </section>
+
+  <section id="lgrp-breakdown" class="lgc-card" aria-labelledby="lgrp-breakdown-title">
+    <h3 id="lgrp-breakdown-title">How your redundancy pay adds up</h3>
+    <p class="lgc-intro">Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year.</p>
+    <div class="lgc-table-wrap lgc-table-fit" tabindex="0" role="region" aria-labelledby="lgrp-table-caption">
+      <table class="lgc-table">
+        <caption id="lgrp-table-caption">Your years of service, by age</caption>
+        <thead><tr><th scope="col">Years of service</th><th scope="col">Years</th><th scope="col">Weeks’ pay</th><th scope="col">Pay</th></tr></thead>
+        <tbody id="lgrp-table-body"><tr><td colspan="4">Enter your details to see the breakdown.</td></tr></tbody>
+      </table>
+    </div>
+    <ul id="lgrp-notes" class="lgc-notes" hidden=""></ul>
+  </section>
+
+  <details id="lgrp-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lgrp-method-text">Enter your details to see how the figures are worked out.</p>
+      <p class="lgc-small">Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending.</p>
+    </div>
+  </details>
+
+  <div class="lgc-sticky" data-source="lgrp-headline" data-results="lgrp-results" hidden=""><p><span class="lgc-sticky-label">Statutory redundancy pay</span> <strong data-sticky-value="">—</strong></p><a href="#lgrp-results" class="lgc-sticky-link">See results</a></div>
+</div>
+</lg-calculator>

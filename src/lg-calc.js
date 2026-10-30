@@ -4799,4 +4799,227 @@
     });
   });
   /* @v2:land-transaction-tax-end */
+
+  /* ==================================================================
+     Redundancy pay calculator  [redundancy-pay]
+     Statutory redundancy pay, with the weekly pay cap and bands in data/.
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
+     ================================================================== */
+  /* @v2:redundancy-pay-start */
+  module('redundancy-pay', function () {
+    'use strict';
+    const R = LG.taxYear.redundancy;
+    const PERIODS = { week: 1, month: 12 / 52, year: 1 / 52 };
+
+    // age: at the date of redundancy; years: complete years of service;
+    // weekly: pay before tax a week; region: 'gb' or 'ni'. Each year is
+    // counted back from the redundancy, at the age reached during it.
+    function calculate({ age, years, weekly, region }) {
+      const cap = region === 'ni' ? R.weeklyPayCapNI : R.weeklyPayCap;
+      const counted = Math.min(years, R.maxYears);
+      const pay = Math.min(weekly, cap);
+      const bands = R.bands.map((b) => ({ fromAge: b.fromAge, weeks: b.weeks, years: 0 }));
+      for (let i = 1; i <= counted; i++) {
+        const during = age - i;
+        bands.find((b) => during >= b.fromAge).years++;
+      }
+      const weeks = bands.reduce((t, b) => t + b.years * b.weeks, 0);
+      const eligible = years >= R.minYears;
+      return { cap, counted, pay, capped: weekly > cap, bands, weeks: eligible ? weeks : 0, eligible, total: eligible ? weeks * pay : 0, max: R.maxYears * 1.5 * cap };
+    }
+    LG.redundancyPay = { calculate };
+
+    const FIELDS = {
+      age: { min: 16, max: 99, places: 0, msg: 'Enter your age in whole years, from 16 to 99.' },
+      years: { min: 0, max: 84, places: 0, msg: 'Enter your complete years of service in whole years, or 0.' },
+      pay: { min: 1, max: 10000000, places: 2, msg: 'Enter your pay before tax, from \u00A31.' },
+    };
+
+    LG.start({
+      name: 'Redundancy Pay',
+      panel: 'lgrp-form',
+      required: ['lgrp-age', 'lgrp-years', 'lgrp-pay', 'lgrp-results', 'lgrp-headline', 'lgrp-table-body', 'lgrp-notes'],
+      setup: setup,
+    });
+
+    function setup(root) {
+      // The document, or the component's shadow root when built into <lg-calculator>.
+      const scope = root.getRootNode();
+      const get = (id) => scope.getElementById('lgrp-' + id);
+      const write = (id, text) => {
+        const el = get(id);
+        if (el) el.textContent = text;
+      };
+      const choice = (name, fallback) => (root.querySelector('input[name="lgrp-' + name + '"]:checked') || {}).value || fallback;
+      const pounds = (n) => LG.money(n, Math.abs(Math.round(n * 100)) % 100 === 0 ? 0 : 2);
+      const weeksText = (n) => (n === 1 ? '1 week' : n === 0.5 ? '\u00BD week' : String(n).replace(/\.5$/, '\u00BD') + ' weeks');
+      const weeksPay = (n) => (n === 1 ? '1 week\u2019s pay' : n === 0.5 ? 'Half a week\u2019s pay' : weeksText(n) + '\u2019 pay');
+      const touched = new Set();
+
+      function readField(id) {
+        const rule = FIELDS[id];
+        const item = LG.parseNumber(get(id).value, rule.places);
+        if (!item.entered) return { blank: true };
+        const ok = item.valid && item.value >= rule.min && item.value <= rule.max;
+        return { value: item.value, error: ok ? '' : rule.msg };
+      }
+
+      function showErrors(errors) {
+        const shown = errors.filter((e) => touched.has(e.id));
+        Object.keys(FIELDS).forEach((id) => {
+          const e = shown.find((x) => x.id === id);
+          LG.markInvalid(get(id), Boolean(e));
+          const box = get(id + '-error');
+          box.textContent = e ? e.message : '';
+          box.hidden = !e;
+        });
+        const list = get('error-list');
+        list.replaceChildren();
+        shown.forEach((e) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#lgrp-' + e.id;
+          a.textContent = e.message;
+          a.addEventListener('click', (event) => {
+            event.preventDefault();
+            get(e.id).focus();
+          });
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        get('error-summary').hidden = shown.length === 0;
+      }
+
+      function resetResults(state, message) {
+        get('results').dataset.state = state;
+        write('headline', '\u2014');
+        get('status').hidden = true;
+        write('summary', message);
+        ['weeks', 'weekly', 'counted', 'max'].forEach((id) => write(id, '\u2014'));
+        const body = get('table-body');
+        body.innerHTML = '';
+        const td = body.insertRow().insertCell();
+        td.colSpan = 4;
+        td.textContent = 'Enter your details to see the breakdown.';
+        get('notes').replaceChildren();
+        get('notes').hidden = true;
+        write('method-text', 'Enter your details to see how the figures are worked out.');
+      }
+
+      function render() {
+        const values = {};
+        const errors = [];
+        let blank = false;
+        Object.keys(FIELDS).forEach((id) => {
+          const r = readField(id);
+          if (r.blank) blank = true;
+          else if (r.error) errors.push({ id, message: r.error });
+          values[id] = r.value;
+        });
+        if (!errors.length && !blank && values.years > values.age - 15) {
+          errors.push({ id: 'years', message: 'Your years of service can\u2019t be more than your age less 15.' });
+        }
+        showErrors(errors);
+        if (errors.length) return resetResults('invalid', 'Check the highlighted fields to see your redundancy pay.');
+        if (blank) return resetResults('empty', 'Enter your age, years of service and pay to see your statutory redundancy pay.');
+        const region = choice('region', 'gb');
+        const weekly = values.pay * PERIODS[choice('period', 'year')];
+        const r = calculate({ age: values.age, years: values.years, weekly, region });
+        get('results').dataset.state = 'ready';
+        write('headline', pounds(r.total));
+        const status = get('status');
+        status.hidden = false;
+        status.textContent = !r.eligible ? 'Under ' + R.minYears + ' years\u2019 service' : r.capped ? 'Weekly pay capped at ' + pounds(r.cap) : 'Your full weekly pay counts';
+        write(
+          'summary',
+          r.eligible
+            ? weeksPay(r.weeks) + ' at ' + pounds(r.pay) + ' a week, for ' + r.counted + ' year' + (r.counted === 1 ? '' : 's') + ' of service.'
+            : 'You need at least ' + R.minYears + ' years\u2019 continuous service to get statutory redundancy pay. Your employer may still pay you under your contract.',
+        );
+        write('weeks', r.eligible ? weeksText(r.weeks) : '0 weeks');
+        write('weekly', pounds(r.pay));
+        write('counted', r.counted + (r.counted === 1 ? ' year' : ' years'));
+        write('max', pounds(r.max));
+        renderTable(r);
+        renderNotes(r, values, region);
+        renderMethod(r, values, weekly);
+      }
+
+      const BAND_NAMES = { 41: 'Aged 41 or over', 22: 'Aged 22 to 40', 0: 'Under 22' };
+      function renderTable(r) {
+        const body = get('table-body');
+        body.innerHTML = '';
+        const row = (label, years, weeks, pay, cls) => {
+          const tr = body.insertRow();
+          if (cls) tr.className = cls;
+          const th = document.createElement('th');
+          th.scope = 'row';
+          th.textContent = label;
+          tr.appendChild(th);
+          [years, weeks, pay].forEach((t) => (tr.insertCell().textContent = t));
+        };
+        r.bands.forEach((b) => {
+          if (!b.years) return;
+          const weeks = r.eligible ? b.years * b.weeks : 0;
+          row(BAND_NAMES[b.fromAge] + ' (' + weeksText(b.weeks) + ' a year)', String(b.years), weeksText(weeks), pounds(weeks * r.pay));
+        });
+        row('Statutory redundancy pay', String(r.counted), r.eligible ? weeksText(r.weeks) : '0 weeks', pounds(r.total), 'lgc-row-total');
+      }
+
+      function renderNotes(r, values, region) {
+        const notes = [];
+        if (values.years > R.maxYears) notes.push('Only your last ' + R.maxYears + ' years count, so ' + (values.years - R.maxYears) + ' earlier year' + (values.years - R.maxYears === 1 ? '' : 's') + ' don\u2019t add anything.');
+        if (r.capped) notes.push('Weekly pay is capped at ' + pounds(r.cap) + (region === 'ni' ? ' in Northern Ireland' : '') + ' for redundancies from 6 April 2026, so pay above that doesn\u2019t count.');
+        if (r.eligible) notes.push('Statutory redundancy pay is tax-free, along with any other redundancy pay up to ' + pounds(R.taxFree) + ' in total. Notice pay, holiday pay and wages owed are taxed as normal.');
+        notes.push('Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer.');
+        const list = get('notes');
+        list.replaceChildren(
+          ...notes.map((t) => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            return li;
+          }),
+        );
+        list.hidden = false;
+      }
+
+      function renderMethod(r, values, weekly) {
+        if (!r.eligible) {
+          write('method-text', 'With ' + values.years + ' complete year' + (values.years === 1 ? '' : 's') + ' of service, you\u2019re under the ' + R.minYears + ' years needed for statutory redundancy pay.');
+          return;
+        }
+        const parts = r.bands.filter((b) => b.years).map((b) => b.years + ' year' + (b.years === 1 ? '' : 's') + ' ' + BAND_NAMES[b.fromAge].toLowerCase() + ' at ' + weeksText(b.weeks));
+        write(
+          'method-text',
+          'Counting back from your redundancy at age ' + values.age + ': ' + parts.join(', ') + ', which makes ' + weeksText(r.weeks) + '. ' +
+            'Your weekly pay before tax is ' + pounds(weekly) + (r.capped ? ', capped at ' + pounds(r.cap) : '') + ', so you get ' + weeksText(r.weeks) + ' \u00D7 ' + pounds(r.pay) + ' = ' + pounds(r.total) + '.',
+        );
+      }
+
+      Object.keys(FIELDS).forEach((id) => {
+        get(id).addEventListener('input', render);
+        get(id).addEventListener('blur', () => {
+          touched.add(id);
+          render();
+        });
+      });
+      // Radios (text fields update on input).
+      get('form').addEventListener('change', (event) => {
+        if (!FIELDS[event.target.name]) render();
+      });
+      get('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        Object.keys(FIELDS).forEach((id) => touched.add(id));
+        render();
+        if (!get('error-summary').hidden) get('error-summary').focus();
+      });
+      // The shared Clear button resets the fields; forget which ones were visited.
+      root.querySelector('[data-clear]').addEventListener('click', () => {
+        touched.clear();
+        render();
+      });
+      render();
+    }
+  });
+  /* @v2:redundancy-pay-end */
 })(window, document);

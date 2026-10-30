@@ -368,3 +368,28 @@ test('tax on buying a home: Stamp Duty, LBTT and LTT', async () => {
     roundsDown: 0,
   });
 });
+
+test('redundancy pay: statutory weeks, the cap and the 20-year limit (from 6 April 2026)', async () => {
+  const page = await openCalculator(browser, 'redundancy-pay');
+  const out = await page.evaluate(() => {
+    const calc = (age, years, weekly, region) => {
+      const r = window.LyfeTools.redundancyPay.calculate({ age, years, weekly, region: region || 'gb' });
+      return [r.weeks, Math.round(r.total * 100) / 100];
+    };
+    return {
+      // Aged 43 with 6 years: 2 years at 41+ (1.5 weeks) and 4 at 22-40 (1 week) = 7 weeks.
+      acas: calc(43, 6, 500),
+      // Aged 23 with 3 years: 1 year at 22 (1 week) and 2 under 22 (half a week) = 2 weeks.
+      young: calc(23, 3, 400),
+      // 30 years at 60: only 20 count; 19 at 41+ and 1 at 40 = 29.5 weeks at the 751 cap.
+      capped: calc(60, 30, 2000),
+      // The maximum: 20 years all at 41+ = 30 weeks x 751 = 22,530; in Northern Ireland x 783 = 23,490.
+      max: calc(61, 20, 5000),
+      maxNI: calc(61, 20, 5000, 'ni'),
+      // Under 2 years' service: nothing.
+      under2: calc(30, 1, 600),
+    };
+  });
+  await page.close();
+  assert.deepEqual(out, { acas: [7, 3500], young: [2, 800], capped: [29.5, 22154.5], max: [30, 22530], maxNI: [30, 23490], under2: [0, 0] });
+});
