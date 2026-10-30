@@ -2,14 +2,14 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.5.1 – Unreleased
+## v2.5.1 – 2026-10-30
 Better on phones, and a clearer age question on Mortgage Affordability. **In Webflow:** nothing to change; publish after the release.
 - **Option switchers:** those with longer options now stack as a list on phones instead of squeezing into columns: Mortgage Affordability (credit cards, what you're buying, where you pay tax), Stamp Duty, LBTT and Land Transaction Tax (who's buying), Redundancy Pay (where you work) and Take-Home Pay (where you pay tax, pension basis). Stacked options line up on the left. Short ones (Fixed / Variable, Yearly / Monthly / Weekly) stay side by side.
 - **Mortgage Affordability tables:** on a phone, "Borrowing, price and payments" shows each income multiple as a small card instead of scrolling sideways, and "Your loan, payments and debts" wraps long figures instead of cutting them off.
 - **"Use these figures" links:** the arrow stays with the last word.
 - **Mortgage Affordability:** the age label stays "Your age" for one or two buyers (it read "Age of the older of you" for two). The hint says "Buying with someone? Use the older person's age."
 
-## v2.5.0 – Unreleased
+## v2.5.0 – 2026-10-30
 Mortgage Affordability rebuilt around cash flow, the Guides' and Insights' answer boxes fixed and redesigned, and plainer wording on Redundancy Pay. **In Webflow:** nothing to change; publish after the release. Review the Mortgage Affordability item's written content against the calculator (see the pull request).
 - **Answer boxes** (`lg-answer`, the Guides' Quick Answer and the Insights' Executive Summary): text is always Ocean inside them, whatever the site's own classes set (they made it white). The site's rich-text list styles (dashed rule, indent, gap) and padding stay out. A new look: rounded card, mint edge, a dotted label and mint bullet points. Tables and notes get the same protection.
 - **Mortgage Affordability:**
