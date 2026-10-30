@@ -49,6 +49,15 @@ test('the tax on buying a home: bands rise and end open-ended, rates are fractio
   for (const n of ['sdlt', 'lbtt', 'ltt']) assert.ok(amount(p[n].surchargeFrom));
 });
 
+test('mortgage affordability: multiples rise, rates are fractions', () => {
+  const m = year.mortgageAffordability;
+  const multiples = [m.bands[0].from].concat(m.bands.map((b) => b.to));
+  multiples.forEach((x, i) => assert.ok(x > 0 && (i === 0 || x > multiples[i - 1]), String(x)));
+  assert.ok(rate(m.variableIncome) && rate(m.cardPayment));
+  m.ltvBands.forEach((b, i) => assert.ok(b > 0 && b <= 100 && (i === 0 || b > m.ltvBands[i - 1])));
+  assert.ok(m.rateRises.every((r) => r > 0));
+});
+
 test('redundancy pay: caps, limits and bands', () => {
   const r = year.redundancy;
   assert.ok(amount(r.weeklyPayCap) && amount(r.weeklyPayCapNI) && amount(r.taxFree));

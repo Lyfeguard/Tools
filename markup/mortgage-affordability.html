@@ -1,0 +1,209 @@
+<lg-calculator key="mortgage-affordability">
+<div class="lg-calc" data-calc="mortgage-affordability" id="lgma">
+  <form id="lgma-form" class="lgc-card" novalidate="" aria-labelledby="lgma-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lgma-form-title">Your income and commitments</h2>
+    <p class="lgc-intro">Answer a few questions to see the range lenders could offer you. Lenders work this out differently, so we show what most lenders, many lenders and a few specialist lenders could offer, not one figure.</p>
+
+    <div id="lgma-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
+      <p class="lgc-error-summary-title">Check the highlighted fields</p>
+      <ul id="lgma-error-list"></ul>
+    </div>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your income</legend>
+      <div class="lgc-grid">
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>Who’s applying</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgma-applicants" value="one" checked=""><span>Just me</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgma-applicants" value="two"><span>Two of us</span></label>
+          </div>
+        </fieldset>
+        <div class="lgc-field">
+          <label for="lgma-income1">Basic pay before tax</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-income1" name="income1" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="45,000" data-format="money" aria-describedby="lgma-income1-hint lgma-income1-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgma-income1-hint" class="lgc-hint">Your salary. If you’re self-employed, your average profit over the last 2 years.</p>
+          <p id="lgma-income1-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgma-variable1">Bonus, overtime and commission</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-variable1" name="variable1" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" data-format="money" aria-describedby="lgma-variable1-hint lgma-variable1-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgma-variable1-hint" class="lgc-hint">Optional. Your typical yearly amount.</p>
+          <p id="lgma-variable1-error" class="lgc-field-error" hidden=""></p>
+        </div>
+      </div>
+      <div id="lgma-second" class="lgc-grid" hidden="">
+        <div class="lgc-field">
+          <label for="lgma-income2">Second applicant’s basic pay</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-income2" name="income2" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="35,000" data-format="money" aria-describedby="lgma-income2-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgma-income2-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgma-variable2">Their bonus, overtime and commission</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-variable2" name="variable2" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" data-format="money" aria-describedby="lgma-variable2-error"><span class="lgc-affix" aria-hidden="true">a year</span></div>
+          <p id="lgma-variable2-error" class="lgc-field-error" hidden=""></p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your commitments</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field">
+          <label for="lgma-loans">Loan and car finance repayments</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-loans" name="loans" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" data-format="money" aria-describedby="lgma-loans-hint lgma-loans-error"><span class="lgc-affix" aria-hidden="true">a month</span></div>
+          <p id="lgma-loans-hint" class="lgc-hint">Personal loans, car finance and other credit agreements. Don’t include student loans: they’re taken from your pay.</p>
+          <p id="lgma-loans-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgma-cards">Credit cards</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-cards" name="cards" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" data-format="money" aria-describedby="lgma-cards-hint lgma-cards-error"></div>
+          <p id="lgma-cards-hint" class="lgc-hint">Leave it at 0 if you clear your cards every month.</p>
+          <p id="lgma-cards-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>For credit cards, I’m entering</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgma-cards-type" value="balance" checked=""><span>The total balance</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgma-cards-type" value="payments"><span>Minimum payments a month</span></label>
+          </div>
+        </fieldset>
+        <div class="lgc-field lgc-field-full">
+          <label for="lgma-other">Other committed spending</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-other" name="other" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" data-format="money" aria-describedby="lgma-other-hint lgma-other-error"><span class="lgc-affix" aria-hidden="true">a month</span></div>
+          <p id="lgma-other-hint" class="lgc-hint">Optional. Things like childcare, maintenance payments, care for a relative, ground rent and service charges. Don’t include groceries, bills, fuel or travel.</p>
+          <p id="lgma-other-error" class="lgc-field-error" hidden=""></p>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your mortgage</legend>
+      <div class="lgc-grid">
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>You’re buying</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgma-purchase" value="first" checked=""><span>Your first home</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgma-purchase" value="moving"><span>A new home, moving</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgma-purchase" value="additional"><span>A second home</span></label>
+          </div>
+          <p class="lgc-hint">Buy-to-let mortgages are based on the expected rent, not your income, so this calculator doesn’t cover them.</p>
+        </fieldset>
+        <div id="lgma-existing-field" class="lgc-field lgc-field-full" hidden="">
+          <label for="lgma-existing">Your existing mortgage payments</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-existing" name="existing" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="0" data-format="money" aria-describedby="lgma-existing-hint lgma-existing-error"><span class="lgc-affix" aria-hidden="true">a month</span></div>
+          <p id="lgma-existing-hint" class="lgc-hint">The mortgage on the home you’re keeping.</p>
+          <p id="lgma-existing-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgma-deposit">Deposit</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgma-deposit" name="deposit" type="text" inputmode="decimal" enterkeyhint="next" autocomplete="off" placeholder="40,000" data-format="money" aria-describedby="lgma-deposit-hint lgma-deposit-error"></div>
+          <p id="lgma-deposit-hint" class="lgc-hint">Including any equity from a home you’re selling.</p>
+          <p id="lgma-deposit-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgma-term">Mortgage term</label>
+          <div class="lgc-input"><input id="lgma-term" name="term" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" value="25" aria-describedby="lgma-term-hint lgma-term-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
+          <p id="lgma-term-hint" class="lgc-hint">Most are 25 to 35 years. A longer term lowers the payments but costs more interest.</p>
+          <p id="lgma-term-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <div class="lgc-field">
+          <label for="lgma-rate">Interest rate</label>
+          <div class="lgc-input"><input id="lgma-rate" name="rate" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" value="4.5" aria-describedby="lgma-rate-hint lgma-rate-error"><span class="lgc-affix" aria-hidden="true">% a year</span></div>
+          <p id="lgma-rate-hint" class="lgc-hint">An example to start with. Use a rate you’ve been quoted or seen advertised.</p>
+          <p id="lgma-rate-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group">
+          <legend>Type of rate</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgma-rate-type" value="fixed" checked=""><span>Fixed</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgma-rate-type" value="variable"><span>Variable or tracker</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>How you repay</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgma-type" value="repayment" checked=""><span>Repayment</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgma-type" value="interest-only"><span>Interest-only</span></label>
+          </div>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you type. Nothing you enter leaves your browser.</p>
+      <button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lgma-results" class="lgc-card lgc-card-dark" aria-labelledby="lgma-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lgma-results-title">How much you could borrow</h2>
+    <p class="lgc-result-label" id="lgma-headline-label">Lenders could offer you about</p>
+    <p class="lgc-result-value" id="lgma-headline">—</p>
+    <p class="lgc-badge" id="lgma-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lgma-summary">Enter your pay to see what lenders could offer you.</p>
+    <dl class="lgc-stats">
+      <div><dt>Most lenders (4 to 4.5 times)</dt><dd id="lgma-most">—</dd></div>
+      <div><dt>Many lenders (up to 6 times)</dt><dd id="lgma-many">—</dd></div>
+      <div><dt>A few specialist lenders (up to 7 times)</dt><dd id="lgma-specialist">—</dd></div>
+      <div><dt>Income counted</dt><dd id="lgma-counted">—</dd></div>
+    </dl>
+    <p class="lgc-small">An estimate, not an offer. Lenders also check your credit history, spending and circumstances, and test that you could still pay if rates rose. They can lend more than 4.5 times income on only a small share of their mortgages, so the higher amounts come with stricter checks. A mortgage adviser can tell you which lenders suit you.</p>
+    <p class="lgc-sr-only" aria-live="polite" data-announce="lgma-headline-label lgma-headline lgma-summary"></p>
+  </section>
+
+  <section id="lgma-borrowing" class="lgc-card" aria-labelledby="lgma-borrowing-title">
+    <h3 id="lgma-borrowing-title">What you could buy</h3>
+    <p class="lgc-intro">Most lenders offer 4 to 4.5 times income, many up to 6 times and a few specialist lenders up to 7 times. Here’s the borrowing at each, the price you could buy with your deposit, the loan-to-value and the monthly payment.</p>
+    <div class="lgc-table-wrap" tabindex="0" role="region" aria-labelledby="lgma-table-caption">
+      <table class="lgc-table">
+        <caption id="lgma-table-caption">Borrowing, price and payments</caption>
+        <thead><tr><th scope="col">Times your income</th><th scope="col">Borrowing</th><th scope="col">Price</th><th scope="col">Loan-to-value</th><th scope="col">A month</th></tr></thead>
+        <tbody id="lgma-table-body"><tr><td colspan="5">Enter your income to see what you could borrow.</td></tr></tbody>
+      </table>
+    </div>
+    <ul id="lgma-notes" class="lgc-notes" hidden=""></ul>
+  </section>
+
+  <section id="lgma-checks" class="lgc-card" aria-labelledby="lgma-checks-title">
+    <h3 id="lgma-checks-title">Could you afford the payments?</h3>
+    <p class="lgc-intro">What most lenders could offer, measured against your take-home pay and your other debts.</p>
+    <div class="lgc-table-wrap lgc-table-fit" tabindex="0" role="region" aria-labelledby="lgma-checks-caption">
+      <table class="lgc-table">
+        <caption id="lgma-checks-caption">Your payments and debts</caption>
+        <tbody id="lgma-checks-body"><tr><td colspan="2">Enter your income to see the payments.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="lgma-rises" class="lgc-card" aria-labelledby="lgma-rises-title">
+    <h3 id="lgma-rises-title">If interest rates rise</h3>
+    <p class="lgc-intro">The monthly payment on what most lenders could offer, if the rate went up. Lenders test this too.</p>
+    <div class="lgc-compare">
+      <div class="lgc-compare-item"><span id="lgma-rise0-label" class="lgc-compare-label">+1 point</span><strong id="lgma-rise0">—</strong><span id="lgma-rise0-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span id="lgma-rise1-label" class="lgc-compare-label">+2 points</span><strong id="lgma-rise1">—</strong><span id="lgma-rise1-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span id="lgma-rise2-label" class="lgc-compare-label">+3 points</span><strong id="lgma-rise2">—</strong><span id="lgma-rise2-note" class="lgc-compare-note">—</span></div>
+    </div>
+  </section>
+
+  <details id="lgma-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lgma-method-text">Enter your details to see how the figures are worked out.</p>
+      <p class="lgc-small">Lenders mostly lend a multiple of your income: 4 to 4.5 times is typical, many go up to 6 times for higher incomes or bigger deposits, and a few specialist lenders go up to 7 times. We count basic pay in full and bonus, overtime and commission at half, then take off a year of your commitments: loan and car finance repayments, credit cards (3% of the balance a month, or your minimum payments) and other committed spending. Take-home pay uses 2026/27 income tax and National Insurance for England, Wales and Northern Ireland, before pension or student loan deductions. Debt-to-income is your debt repayments, including this mortgage, as a share of your pay before tax. These are typical ranges, not any lender’s criteria.</p>
+    </div>
+  </details>
+
+  <nav class="lgc-next" aria-label="Use these figures in another calculator">
+    <h2 class="lgc-next-title">Use these figures</h2>
+    <ul>
+      <li><a href="/tools/mortgage-calculator" data-handoff="mortgage">Work out the repayments on this mortgage</a></li>
+      <li><a href="/tools/stamp-duty-calculator" data-handoff="stamp-duty">Work out Stamp Duty on this price (England and Northern Ireland)</a></li>
+    </ul>
+  </nav>
+
+  <div class="lgc-sticky" data-source="lgma-headline" data-results="lgma-results" hidden=""><p><span class="lgc-sticky-label">Lenders could offer about</span> <strong data-sticky-value="">—</strong></p><a href="#lgma-results" class="lgc-sticky-link">See results</a></div>
+</div>
+</lg-calculator>

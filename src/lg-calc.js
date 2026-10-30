@@ -5022,4 +5022,354 @@
     }
   });
   /* @v2:redundancy-pay-end */
+
+  /* ==================================================================
+     Mortgage affordability calculator  [mortgage-affordability]
+     How much lenders could offer, as a range of income multiples, with
+     the figures in data/ (mortgageAffordability). Lenders' own models are
+     private and vary, so it shows the range and the working, not one figure.
+     Also built into the <lg-calculator> component (scripts/build-v2.js).
+     ================================================================== */
+  /* @v2:mortgage-affordability-start */
+  module('mortgage-affordability', function () {
+    'use strict';
+    const A = LG.taxYear.mortgageAffordability;
+    const PAY_PERIODS = { year: 1, month: 12 };
+    // The multiples shown: the bottom and top of "most lenders", then each band's top.
+    const MULTIPLES = [A.bands[0].from].concat(A.bands.map((b) => b.to));
+
+    // Monthly payment on a loan. rate: % a year; years: the term.
+    function payment(loan, rate, years, type) {
+      const r = rate / 1200;
+      const n = Math.round(years * 12);
+      if (type === 'interest-only') return loan * r;
+      return r === 0 ? loan / n : (loan * r) / (1 - Math.pow(1 + r, -n));
+    }
+
+    // Take-home pay a month for one person: income tax (England, Wales and
+    // Northern Ireland rates) and National Insurance, nothing else.
+    const takeHome = (gross) => (gross - LG.ukTax.incomeTax(gross, 'ruk') - LG.ukTax.employeeNI(gross)) / 12;
+
+    // input: { applicants: [{ basic, variable }], loans, cards, cardsType
+    // ('balance' | 'payments'), other, existing (all a month), deposit,
+    // term, rate, type ('repayment' | 'interest-only') }.
+    function calculate(input) {
+      const counted = input.applicants.reduce((t, a) => t + a.basic + a.variable * A.variableIncome, 0);
+      const gross = input.applicants.reduce((t, a) => t + a.basic + a.variable, 0);
+      const cardsMonthly = input.cardsType === 'payments' ? input.cards : input.cards * A.cardPayment;
+      const debts = input.loans + cardsMonthly + input.existing;
+      const commitments = debts + input.other;
+      const assessed = Math.max(0, counted - commitments * 12);
+      const net = input.applicants.reduce((t, a) => t + takeHome(a.basic + a.variable), 0);
+      const points = MULTIPLES.map((multiple) => {
+        const loan = Math.floor((assessed * multiple) / 1000) * 1000;
+        const price = loan + input.deposit;
+        const ltv = price > 0 ? (loan / price) * 100 : 0;
+        return { multiple, loan, price, ltv, band: A.ltvBands.find((b) => ltv <= b + 1e-9) || null, monthly: payment(loan, input.rate, input.term, input.type) };
+      });
+      const main = points[1]; // the top of "most lenders"
+      return {
+        counted,
+        gross,
+        cardsMonthly,
+        debts,
+        commitments,
+        assessed,
+        net,
+        points,
+        main,
+        // What a year of commitments costs in borrowing, at the top of "most lenders" and "many lenders".
+        reduction: [MULTIPLES[1], MULTIPLES[2]].map((m) => Math.round((Math.min(counted, commitments * 12) * m) / 1000) * 1000),
+        share: net > 0 ? (main.monthly / net) * 100 : 0,
+        dti: gross > 0 ? ((debts + main.monthly) / (gross / 12)) * 100 : 0,
+        rises: A.rateRises.map((rise) => ({ rise, monthly: payment(main.loan, input.rate + rise, input.term, input.type) })),
+      };
+    }
+    LG.mortgageAffordability = { calculate, payment };
+
+    const money = { kind: 'money', min: 0, max: 100000000, msg: 'Enter an amount in pounds, or 0.' };
+    const FIELDS = {
+      income1: { min: 1, max: 100000000, msg: 'Enter your yearly pay before tax, from \u00A31.' },
+      variable1: money,
+      income2: { min: 1, max: 100000000, msg: 'Enter the second applicant\u2019s yearly pay before tax, from \u00A31.' },
+      variable2: money,
+      loans: money,
+      cards: money,
+      other: money,
+      existing: money,
+      deposit: money,
+      term: { min: 5, max: 40, places: 0, msg: 'Enter a term in whole years, from 5 to 40.' },
+      rate: { min: 0, max: 20, msg: 'Enter an interest rate from 0% to 20%.' },
+    };
+    const REQUIRED = ['income1', 'income2', 'term', 'rate'];
+    // The Debt-to-Income calculator's bands (upper bound exclusive).
+    const DTI_BANDS = [
+      [20, 'low'],
+      [36, 'manageable'],
+      [50, 'high'],
+      [Infinity, 'very high'],
+    ];
+
+    LG.start({
+      name: 'Mortgage Affordability',
+      panel: 'lgma-form',
+      required: ['lgma-income1', 'lgma-income2', 'lgma-second', 'lgma-existing-field', 'lgma-results', 'lgma-headline', 'lgma-table-body', 'lgma-checks-body', 'lgma-notes'],
+      setup: setup,
+    });
+
+    function setup(root) {
+      // The document, or the component's shadow root when built into <lg-calculator>.
+      const scope = root.getRootNode();
+      const get = (id) => scope.getElementById('lgma-' + id);
+      const write = (id, text) => {
+        const el = get(id);
+        if (el) el.textContent = text;
+      };
+      const choice = (name, fallback) => (root.querySelector('input[name="lgma-' + name + '"]:checked') || {}).value || fallback;
+      const pounds = (n) => LG.money(Math.round(n), 0);
+      const pence = (n) => LG.money(Math.round(n * 100) / 100, 2);
+      const times = (m) => String(m) + ' times';
+      // "a, b and c"
+      const list = (items) => (items.length > 1 ? items.slice(0, -1).join(', ') + ' and ' + items[items.length - 1] : items.join(''));
+      const touched = new Set();
+
+      // Which fields are in use: the second applicant's only on a joint application,
+      // existing mortgage payments only for an additional property.
+      function active() {
+        const joint = choice('applicants', 'one') === 'two';
+        const additional = choice('purchase', 'first') === 'additional';
+        get('second').hidden = !joint;
+        get('existing-field').hidden = !additional;
+        return Object.keys(FIELDS).filter((id) => (joint || !/2$/.test(id)) && (additional || id !== 'existing'));
+      }
+
+      function readField(id) {
+        const rule = FIELDS[id];
+        const item = LG.parseNumber(get(id).value.replace(/%\s*$/, ''), rule.places === undefined ? 2 : rule.places);
+        if (!item.entered) return { blank: true, value: 0 };
+        const ok = item.valid && item.value >= rule.min && item.value <= rule.max;
+        return { value: item.value, error: ok ? '' : rule.msg };
+      }
+
+      function showErrors(errors) {
+        const shown = errors.filter((e) => touched.has(e.id));
+        Object.keys(FIELDS).forEach((id) => {
+          const e = shown.find((x) => x.id === id);
+          LG.markInvalid(get(id), Boolean(e));
+          const box = get(id + '-error');
+          box.textContent = e ? e.message : '';
+          box.hidden = !e;
+        });
+        const list = get('error-list');
+        list.replaceChildren();
+        shown.forEach((e) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#lgma-' + e.id;
+          a.textContent = e.message;
+          a.addEventListener('click', (event) => {
+            event.preventDefault();
+            get(e.id).focus();
+          });
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        get('error-summary').hidden = shown.length === 0;
+      }
+
+      function emptyRow(id, cols, text) {
+        const body = get(id);
+        body.innerHTML = '';
+        const td = body.insertRow().insertCell();
+        td.colSpan = cols;
+        td.textContent = text;
+      }
+
+      function resetResults(state, message) {
+        get('results').dataset.state = state;
+        write('headline', '\u2014');
+        get('status').hidden = true;
+        write('summary', message);
+        ['most', 'many', 'specialist', 'counted'].forEach((id) => write(id, '\u2014'));
+        emptyRow('table-body', 5, 'Enter your income to see what you could borrow.');
+        emptyRow('checks-body', 2, 'Enter your income to see the payments.');
+        A.rateRises.forEach((rise, i) => {
+          write('rise' + i, '\u2014');
+          write('rise' + i + '-note', '\u2014');
+        });
+        get('notes').replaceChildren();
+        get('notes').hidden = true;
+        write('method-text', 'Enter your details to see how the figures are worked out.');
+      }
+
+      function render() {
+        const ids = active();
+        const values = {};
+        const errors = [];
+        let blank = false;
+        ids.forEach((id) => {
+          const r = readField(id);
+          values[id] = r.value;
+          if (r.error) errors.push({ id, message: r.error });
+          else if (r.blank && REQUIRED.includes(id)) blank = true;
+        });
+        showErrors(errors);
+        if (errors.length) return resetResults('invalid', 'Check the highlighted fields to see what you could borrow.');
+        if (blank) return resetResults('empty', 'Enter your pay to see what lenders could offer you.');
+        const joint = ids.includes('income2');
+        const input = {
+          applicants: [{ basic: values.income1, variable: values.variable1 }].concat(joint ? [{ basic: values.income2, variable: values.variable2 }] : []),
+          loans: values.loans,
+          cards: values.cards,
+          cardsType: choice('cards-type', 'balance'),
+          other: values.other,
+          existing: values.existing || 0,
+          deposit: values.deposit,
+          term: values.term,
+          rate: values.rate,
+          type: choice('type', 'repayment'),
+        };
+        const r = calculate(input);
+        const p = r.points;
+        get('results').dataset.state = 'ready';
+        write('headline', r.assessed > 0 ? pounds(p[0].loan) + ' to ' + pounds(p[2].loan) : pounds(0));
+        const status = get('status');
+        status.hidden = r.assessed <= 0;
+        status.textContent = r.assessed > 0 ? LG.percent(r.main.ltv, 0) + ' loan-to-value at ' + times(MULTIPLES[1]) + (r.main.band ? '' : ': over 95%') : '';
+        write(
+          'summary',
+          r.assessed > 0
+            ? 'Most lenders could offer ' + pounds(p[0].loan) + ' to ' + pounds(p[1].loan) + ', and many up to ' + pounds(p[2].loan) + ' for higher incomes or bigger deposits. A few specialist lenders go up to ' + pounds(p[3].loan) + '.'
+            : 'Your commitments are more than the income lenders would count, so most lenders are unlikely to offer a mortgage until they come down.',
+        );
+        write('most', pounds(p[0].loan) + ' to ' + pounds(p[1].loan));
+        write('many', pounds(p[2].loan));
+        write('specialist', pounds(p[3].loan));
+        write('counted', pounds(r.assessed) + ' a year');
+        renderTable(r, input);
+        renderChecks(r, input);
+        renderRises(r, input);
+        renderNotes(r, input, values);
+        renderMethod(r, input, values);
+      }
+
+      function row(body, cells, cls) {
+        const tr = body.insertRow();
+        if (cls) tr.className = cls;
+        cells.forEach((c, i) => {
+          const cell = i ? tr.insertCell() : document.createElement('th');
+          if (!i) {
+            cell.scope = 'row';
+            tr.appendChild(cell);
+          }
+          if (c && typeof c === 'object') {
+            cell.textContent = c.text;
+            cell.id = c.id;
+          } else cell.textContent = c;
+        });
+      }
+
+      function renderTable(r) {
+        const body = get('table-body');
+        body.innerHTML = '';
+        r.points.forEach((pt, i) => {
+          const id = (name) => (i === 1 ? { id: 'lgma-main-' + name } : {});
+          row(
+            body,
+            [
+              times(pt.multiple),
+              Object.assign({ text: pounds(pt.loan) }, id('loan')),
+              Object.assign({ text: pounds(pt.price) }, id('price')),
+              pt.price > 0 ? LG.percent(pt.ltv, 0) : '\u2014',
+              pence(pt.monthly),
+            ],
+            i === 1 ? 'lgc-row-total' : '',
+          );
+        });
+      }
+
+      function dtiBand(dti) {
+        return DTI_BANDS.find((b) => Math.round(dti * 10) / 10 < b[0])[1];
+      }
+      function renderChecks(r, input) {
+        const body = get('checks-body');
+        body.innerHTML = '';
+        row(body, ['Monthly payment on ' + pounds(r.main.loan) + (input.type === 'interest-only' ? ' (interest only)' : ''), pence(r.main.monthly)]);
+        row(body, ['Share of your take-home pay', r.net > 0 ? LG.percent(r.share, 0) + ' of ' + pounds(r.net) + ' a month' : '\u2014']);
+        row(body, ['Debt-to-income with this mortgage', LG.percent(r.dti, 0) + ' (' + dtiBand(r.dti) + ')']);
+        row(body, ['Commitments counted a month', pence(r.commitments)]);
+        if (r.commitments > 0) row(body, ['What your commitments cost in borrowing', 'about ' + pounds(r.reduction[0]) + ' to ' + pounds(r.reduction[1])]);
+      }
+
+      function renderRises(r, input) {
+        A.rateRises.forEach((rise, i) => {
+          const x = r.rises[i];
+          write('rise' + i + '-label', '+' + rise + ' point' + (rise === 1 ? '' : 's') + ': ' + Number((input.rate + rise).toFixed(2)) + '%');
+          write('rise' + i, pence(x.monthly) + ' a month');
+          write('rise' + i + '-note', '+' + pence(x.monthly - r.main.monthly) + ' a month');
+        });
+      }
+
+      function renderNotes(r, input, values) {
+        const notes = [];
+        const variable = input.applicants.some((a) => a.variable > 0);
+        if (variable) notes.push('Bonus, overtime and commission are counted at ' + LG.percent(A.variableIncome * 100, 0) + '. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it\u2019s guaranteed or you have a 2-year record, so you could borrow more.');
+        if (input.cards > 0 && input.cardsType === 'balance') notes.push('Credit card balances are counted as a monthly payment of ' + LG.percent(A.cardPayment * 100, 0) + ' of the balance (' + pence(r.cardsMonthly) + '), as many lenders do. Paying a card off before you apply can raise what you can borrow.');
+        if (r.commitments > 0) notes.push('Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.');
+        if (input.type === 'interest-only') notes.push('Interest-only mortgages usually need a deposit of at least ' + (100 - A.interestOnlyMaxLtv) + '% and a plan to repay the loan at the end, such as savings or selling another property. Many lenders also need a higher income.');
+        if (choice('rate-type', 'fixed') === 'variable') notes.push('On a variable or tracker rate, your payment changes whenever the rate does. The figures below show what a rise would cost.');
+        if (!r.main.band) notes.push('Very few lenders go above 95% loan-to-value. A bigger deposit widens your choice and usually lowers the rate.');
+        else if (r.main.band > 75) notes.push('Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.');
+        if (dtiBand(r.dti) === 'high' || dtiBand(r.dti) === 'very high') notes.push('With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change.');
+        if (choice('purchase', 'first') === 'additional') notes.push('For a second home, lenders count your existing mortgage as a commitment. Buy-to-let mortgages are assessed on the expected rent, not your income, so they work differently.');
+        const list = get('notes');
+        list.replaceChildren(
+          ...notes.map((t) => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            return li;
+          }),
+        );
+        list.hidden = notes.length === 0;
+      }
+
+      function renderMethod(r, input) {
+        const parts = [];
+        parts.push('Income counted: ' + pounds(r.counted) + ' a year');
+        if (input.applicants.some((a) => a.variable > 0)) parts.push(' (basic pay in full, other pay at ' + LG.percent(A.variableIncome * 100, 0) + ')');
+        if (r.commitments > 0) parts.push(', less a year of commitments (' + pounds(r.commitments * 12) + '), leaves ' + pounds(r.assessed));
+        parts.push('. ');
+        parts.push(
+          'At ' + list(MULTIPLES.map(String)) + ' times that, rounded down to the nearest \u00A31,000, lenders could offer ' + list(r.points.map((pt) => pounds(pt.loan))) + '. ',
+        );
+        parts.push('Payments are worked out at ' + Number(input.rate.toFixed(2)) + '% over ' + input.term + ' years' + (input.type === 'interest-only' ? ', interest only' : ', repaying the loan') + '.');
+        write('method-text', parts.join(''));
+      }
+
+      Object.keys(FIELDS).forEach((id) => {
+        get(id).addEventListener('input', render);
+        get(id).addEventListener('blur', () => {
+          touched.add(id);
+          render();
+        });
+      });
+      // Radios (text fields update on input).
+      get('form').addEventListener('change', (event) => {
+        if (!FIELDS[event.target.name]) render();
+      });
+      get('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        active().forEach((id) => touched.add(id));
+        render();
+        if (!get('error-summary').hidden) get('error-summary').focus();
+      });
+      // The shared Clear button resets the fields; forget which ones were visited.
+      root.querySelector('[data-clear]').addEventListener('click', () => {
+        touched.clear();
+        render();
+      });
+      render();
+    }
+  });
+  /* @v2:mortgage-affordability-end */
 })(window, document);

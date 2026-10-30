@@ -9,7 +9,14 @@ module.exports = {
   'mortgage': [{ to: 'debt-to-income', text: 'See how this repayment affects your debt-to-income ratio' }],
   'emergency-fund': [{ to: 'savings-goal', text: 'Plan how to save the rest of your emergency fund' }],
   'net-worth': [{ to: 'inheritance-tax', text: 'Estimate Inheritance Tax on these assets' }],
-  'take-home-pay': [{ to: 'debt-to-income', text: 'Check your debt-to-income ratio on this salary' }],
+  'take-home-pay': [
+    { to: 'debt-to-income', text: 'Check your debt-to-income ratio on this salary' },
+    { to: 'mortgage-affordability', text: 'See how much you could borrow for a mortgage on this salary' },
+  ],
+  'mortgage-affordability': [
+    { to: 'mortgage', text: 'Work out the repayments on this mortgage' },
+    { to: 'stamp-duty', text: 'Work out Stamp Duty on this price (England and Northern Ireland)' },
+  ],
   'pro-rata-salary': [{ to: 'take-home-pay', text: 'Work out the full take-home pay on this pro rata salary' }],
   'salary-by-age': [{ to: 'take-home-pay', text: 'See your take-home pay on this salary' }],
   'stamp-duty': [

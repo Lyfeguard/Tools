@@ -393,3 +393,48 @@ test('redundancy pay: statutory weeks, the cap and the 20-year limit (from 6 Apr
   await page.close();
   assert.deepEqual(out, { acas: [7, 3500], young: [2, 800], capped: [29.5, 22154.5], max: [30, 22530], maxNI: [30, 23490], under2: [0, 0] });
 });
+
+test('mortgage affordability: income multiples, commitments and payments', async () => {
+  const page = await openCalculator(browser, 'mortgage-affordability');
+  const out = await page.evaluate(() => {
+    const { calculate, payment } = window.LyfeTools.mortgageAffordability;
+    const base = { loans: 0, cards: 0, cardsType: 'balance', other: 0, existing: 0, deposit: 0, term: 25, rate: 4.5, type: 'repayment' };
+    const run = (o) => calculate(Object.assign({}, base, o));
+    const joint = run({ applicants: [{ basic: 70000, variable: 0 }, { basic: 55000, variable: 0 }], loans: 299, cards: 15000, deposit: 210000, term: 40 });
+    const bonus = run({ applicants: [{ basic: 40000, variable: 5000 }] });
+    const minimums = run({ applicants: [{ basic: 60000, variable: 0 }], cards: 200, cardsType: 'payments' });
+    return {
+      // 125,000 less a year of 299 + 3% of 15,000 = 749 a month (8,988): 116,012 at 4, 4.5, 6 and 7 times, rounded down.
+      jointLoans: joint.points.map((p) => p.loan),
+      jointPrice: joint.main.price,
+      jointLtv: Math.round(joint.main.ltv * 10) / 10,
+      jointBand: joint.main.band,
+      // 8,988 a year at 4.5 and 6 times, rounded to the nearest 1,000.
+      jointReduction: joint.reduction,
+      // Bonus counted at half: 40,000 + 2,500 = 42,500.
+      bonusCounted: bonus.counted,
+      // Minimum payments as entered: 60,000 - 2,400 = 57,600.
+      minimumsAssessed: minimums.assessed,
+      // 200,000 over 25 years at 4.5%: 1,111.66 a month; interest-only 750; at 0% 666.67.
+      repayment: Math.round(payment(200000, 4.5, 25, 'repayment') * 100) / 100,
+      interestOnly: payment(200000, 4.5, 25, 'interest-only'),
+      zero: Math.round(payment(200000, 0, 25, 'repayment') * 100) / 100,
+      // Commitments above income: nothing.
+      tooHigh: run({ applicants: [{ basic: 20000, variable: 0 }], loans: 2000 }).points.map((p) => p.loan),
+    };
+  });
+  await page.close();
+  assert.deepEqual(out, {
+    jointLoans: [464000, 522000, 696000, 812000],
+    jointPrice: 732000,
+    jointLtv: 71.3,
+    jointBand: 75,
+    jointReduction: [40000, 54000],
+    bonusCounted: 42500,
+    minimumsAssessed: 57600,
+    repayment: 1111.66,
+    interestOnly: 750,
+    zero: 666.67,
+    tooHigh: [0, 0, 0, 0],
+  });
+});

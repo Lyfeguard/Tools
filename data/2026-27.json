@@ -1,6 +1,6 @@
 {
   "$about": "UK tax year figures the calculators use, 2026/27. Copied into dist/ by npm run build (scripts/data.js). For a new tax year, add data/<year>.json and point the @data marker in src/lg-calc.js at it. Amounts in pounds a year; rates as fractions.",
-  "$checked": "29 October 2026: Scottish Income Tax bands (GOV.UK) and student loan thresholds and rates (Student Loans Company terms for 2026 to 2027) confirmed. 30 October 2026: LTT main and higher residential rates (Welsh Revenue Authority, Land Transaction Tax rates and bands, updated 10 December 2024) and LBTT residential rates and first-time buyer relief (Revenue Scotland, Residential property, revised 28 August 2026) confirmed; SDLT bands, and the 2% non-resident surcharge from £40,000 on top of all other rates (GOV.UK, Rates of Stamp Duty Land Tax for non-UK residents, updated 1 April 2025), confirmed. Still to confirm on the official pages: the SDLT first-time buyer relief and 5% surcharge (GOV.UK) and the 8% Additional Dwelling Supplement (Revenue Scotland).",
+  "$checked": "29 October 2026: Scottish Income Tax bands (GOV.UK) and student loan thresholds and rates (Student Loans Company terms for 2026 to 2027) confirmed. 30 October 2026: LTT main and higher residential rates (Welsh Revenue Authority, Land Transaction Tax rates and bands, updated 10 December 2024) and LBTT residential rates and first-time buyer relief (Revenue Scotland, Residential property, revised 28 August 2026) confirmed; SDLT bands, and the 2% non-resident surcharge from \u00a340,000 on top of all other rates (GOV.UK, Rates of Stamp Duty Land Tax for non-UK residents, updated 1 April 2025), confirmed. Still to confirm on the official pages: the SDLT first-time buyer relief and 5% surcharge (GOV.UK) and the 8% Additional Dwelling Supplement (Revenue Scotland).",
   "taxYear": "2026/27",
   "incomeTax": {
     "personalAllowance": 12570,
@@ -29,8 +29,21 @@
   "childBenefitCharge": { "start": 60000, "end": 80000 },
   "inheritanceTax": { "nilRateBand": 325000, "residenceNilRateBand": 175000, "taperThreshold": 2000000, "fullReliefCap": 2500000 },
   "pensions": { "lumpSumAllowance": 268275, "taxFreeShare": 0.25, "fullStatePension": 12548 },
+  "mortgageAffordability": {
+    "$about": "How much lenders could offer, as income multiples. Typical market ranges, not any lender's figures: check them every few months. Lenders count income after a year of committed spending; credit card balances count as a monthly payment of cardPayment of the balance; bonus, overtime and commission count at variableIncome. exampleRate is only the starting value of the rate field.",
+    "bands": [
+      { "key": "most", "from": 4, "to": 4.5 },
+      { "key": "many", "to": 6 },
+      { "key": "specialist", "to": 7 }
+    ],
+    "variableIncome": 0.5,
+    "cardPayment": 0.03,
+    "ltvBands": [60, 75, 80, 85, 90, 95],
+    "interestOnlyMaxLtv": 75,
+    "rateRises": [1, 2, 3]
+  },
   "redundancy": {
-    "$source": "Statutory redundancy pay for dismissals from 6 April 2026: the weekly pay cap from the Employment Rights (Increase of Limits) Order 2026 (Great Britain) and the Northern Ireland order. Northern Ireland's cap to be confirmed on nidirect before release.",
+    "$source": "Statutory redundancy pay for dismissals from 6 April 2026: the weekly pay cap from the Employment Rights (Increase of Limits) Order 2026 (Great Britain), and nidirect's Redundancy pay page for Northern Ireland (\u00a3783, confirmed 30 October 2026).",
     "weeklyPayCap": 751,
     "weeklyPayCapNI": 783,
     "minYears": 2,

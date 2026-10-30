@@ -66,7 +66,8 @@ A calculator can pass its figures on to another with a "Use these figures" link.
 
 | From | To |
 |---|---|
-| Take-Home Pay | Debt-to-Income |
+| Take-Home Pay | Debt-to-Income, Mortgage Affordability |
+| Mortgage Affordability | Mortgage, Stamp Duty |
 | Mortgage | Debt-to-Income |
 | Pro Rata Salary | Take-Home Pay |
 | Salary by Age | Take-Home Pay |

@@ -23,7 +23,7 @@ const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
 
 // Calculators in the component. Each key's module sits between
 // /* @v2:<key>-start */ and /* @v2:<key>-end */ in src/lg-calc.js.
-const CALCULATORS = ['net-worth', 'inheritance-tax', 'compound-interest', 'savings-goal', 'emergency-fund', 'loan-repayment', 'pro-rata-salary', 'salary-by-age', 'mortgage', 'debt-to-income', 'retirement-income', 'take-home-pay', 'stamp-duty', 'lbtt', 'land-transaction-tax', 'redundancy-pay'];
+const CALCULATORS = ['net-worth', 'inheritance-tax', 'compound-interest', 'savings-goal', 'emergency-fund', 'loan-repayment', 'pro-rata-salary', 'salary-by-age', 'mortgage', 'debt-to-income', 'retirement-income', 'take-home-pay', 'stamp-duty', 'lbtt', 'land-transaction-tax', 'redundancy-pay', 'mortgage-affordability'];
 // Code some calculators share, between its own @v2: markers, built in before their modules.
 const USES = { 'stamp-duty': ['property-tax'], lbtt: ['property-tax'], 'land-transaction-tax': ['property-tax'] };
 // The blocks a set of calculators needs, each once, shared code first.
