@@ -79,11 +79,25 @@ test('field names per collection: Guides as before, Insights mapped', () => {
   assert.equal('sources' in source(item, faqs, authors[0], guides), false);
 
   const insights = fieldsOf(config.collections.insights);
-  assert.deepEqual(insights, { pdf: 'pdf-link', faqs: 'faqs-2', ctaText: 'cta-subheading', sources: 'sources' });
+  assert.deepEqual(insights, { pdf: 'pdf-link', faqs: 'faqs-2', ctaText: 'cta-subheading', sources: 'sources', answer: 'executive-summary' });
   const insight = structuredClone(item);
   insight.fieldData['cta-subheading'] = 'See it working';
   insight.fieldData.sources = '<p>FCA, 2026</p>';
   const src = source(insight, faqs, authors[0], insights);
   assert.equal(src.cta[1], 'See it working');
   assert.equal(src.sources, '<p>FCA, 2026</p>');
+});
+
+test('a short answer joins the fingerprint only when there is one', () => {
+  const config = require('../config.json');
+  const { fieldsOf } = require('../lib/content');
+  const guides = fieldsOf(config.collections.guides);
+  assert.equal(guides.answer, 'quick-answer');
+  // Without one, the fingerprint is as before, so no existing PDF is rebuilt.
+  assert.equal('answer' in source(item, faqs, authors[0], guides), false);
+  const answered = structuredClone(item);
+  answered.fieldData['quick-answer'] = 'Yes, in most cases.';
+  const src = source(answered, faqs, authors[0], guides);
+  assert.equal(src.answer, 'Yes, in most cases.');
+  assert.notEqual(fingerprint(src), fingerprint(source(item, faqs, authors[0], guides)));
 });

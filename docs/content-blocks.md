@@ -119,6 +119,8 @@ Fields in Webflow, shown by the template under the title, so writers fill in a f
 
 Leave the classes unstyled in Webflow: `lg-content.min.css` styles them, and its rules win.
 
+Both also print in the Guide and Insight PDFs, in a box before the article ([the PDF generator](../pdf-generator/README.md#collections)).
+
 ## Writing for featured snippets
 
 Google picks snippets, People Also Ask answers and AI Overview sources from the page's HTML, not its styling. What helps:
