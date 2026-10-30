@@ -31,7 +31,7 @@
       "id": "69e87d592d41e3859e4158c4",
       "path": "insights",
       "kind": "Insight",
-      "fields": { "pdf": "pdf-link", "faqs": "faqs-2", "ctaText": "cta-subheading", "sources": "sources", "answer": "executive-summary" },
+      "fields": { "pdf": "pdf-link", "faqs": "faqs-2", "ctaText": "cta-subheading", "sources": "sources", "answer": "executive-summarys" },
       "answerLabel": "Executive summary",
       "ctaUrl": "https://meetings.lyfeguard.com/meetings/fraser-stewart",
       "ctaFallback": "Book a demo",

@@ -92,7 +92,7 @@ test('the short answer (Guides) and executive summary (Insights) come before the
   const guide = structuredClone(items[0]);
   guide.fieldData['quick-answer'] = 'Yes: <most> people should.';
   const insight = structuredClone(items[0]);
-  insight.fieldData['executive-summary'] = '<ul><li style="color:red">First point.</li><li>Second point.</li></ul>';
+  insight.fieldData['executive-summarys'] = '<ul><li style="color:red">First point.</li><li>Second point.</li></ul>';
   const read = async (item, cfg, name) => {
     const { page } = await openPage(browser, { ...data, item, cfg }, path.join(dir, name + '.html'));
     try {

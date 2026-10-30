@@ -6,6 +6,8 @@ Every release, newest first. [docs/releasing.md](docs/releasing.md) describes ho
 Redundancy Pay calculator. **In Webflow:** the Tools item (Redundancy Pay Calculator) is already created; the release workflow writes its markup, Component Key and Release. Then fill in its content, Icon and Social Image, and publish.
 - `redundancy-pay`: statutory redundancy pay from age, complete years of service and pay (yearly, monthly or weekly), for Great Britain or Northern Ireland. Shows the weeks' pay, the weekly pay counted (capped), the years counted (up to 20), each age band's share, and notes on the cap, the 20-year limit, the £30,000 tax-free allowance and contractual pay. Under 2 years' service gets nothing, and says so.
 - `data/2026-27.json` (`redundancy`): the weekly pay caps from 6 April 2026 (£751 in Great Britain, £783 in Northern Ireland, to be confirmed on nidirect), the 2- and 20-year limits and the age bands.
+- The Tools item's slug is `redundancy-pay-calculator`.
+- Insight PDFs: the Executive Summary field was recreated as rich text, and Webflow named it `executive-summarys`. The PDF generator now reads that slug, so the summary appears in Insight PDFs.
 - Tests (373): hand-worked answers (including the maximum in each nation), snapshots for six scenarios, and the data.
 
 ## v2.2.1 – 2026-10-30

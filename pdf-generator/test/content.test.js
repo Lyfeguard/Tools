@@ -79,7 +79,7 @@ test('field names per collection: Guides as before, Insights mapped', () => {
   assert.equal('sources' in source(item, faqs, authors[0], guides), false);
 
   const insights = fieldsOf(config.collections.insights);
-  assert.deepEqual(insights, { pdf: 'pdf-link', faqs: 'faqs-2', ctaText: 'cta-subheading', sources: 'sources', answer: 'executive-summary' });
+  assert.deepEqual(insights, { pdf: 'pdf-link', faqs: 'faqs-2', ctaText: 'cta-subheading', sources: 'sources', answer: 'executive-summarys' });
   const insight = structuredClone(item);
   insight.fieldData['cta-subheading'] = 'See it working';
   insight.fieldData.sources = '<p>FCA, 2026</p>';

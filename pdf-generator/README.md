@@ -36,7 +36,7 @@ Each collection is set up in `config.json`. Its `fields` map the collection's fi
 | Call to action link | `app.lyfeguard.com/register` | The meetings page |
 | Button text when the item sets none | Create free account | Book a demo |
 | Cover eyebrow | The guide's category | "Insights" (the collection has an Audience, not a Category) |
-| Short answer box, before the article | Quick Answer (`quick-answer`), labelled "Short answer" | Executive Summary (`executive-summary`), labelled "Executive summary" |
+| Short answer box, before the article | Quick Answer (`quick-answer`), labelled "Short answer" | Executive Summary (`executive-summarys`), labelled "Executive summary" |
 | Extra content | | Sources, added after the article |
 | Download embed | `webflow/guides-download-embed.html` | `webflow/insights-download-embed.html` |
 
