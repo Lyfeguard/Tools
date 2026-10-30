@@ -1,6 +1,6 @@
 {
   "$about": "UK tax year figures the calculators use, 2026/27. Copied into dist/ by npm run build (scripts/data.js). For a new tax year, add data/<year>.json and point the @data marker in src/lg-calc.js at it. Amounts in pounds a year; rates as fractions.",
-  "$checked": "29 October 2026: Scottish Income Tax bands (GOV.UK) and student loan thresholds and rates (Student Loans Company terms for 2026 to 2027) confirmed.",
+  "$checked": "29 October 2026: Scottish Income Tax bands (GOV.UK) and student loan thresholds and rates (Student Loans Company terms for 2026 to 2027) confirmed. 30 October 2026: Stamp Duty, LBTT and LTT residential rates, unchanged by the 2026/27 Scottish and Welsh Budgets (from published guides; confirm against GOV.UK, Revenue Scotland and the Welsh Revenue Authority before release).",
   "taxYear": "2026/27",
   "incomeTax": {
     "personalAllowance": 12570,
@@ -28,5 +28,54 @@
   "autoEnrolment": { "trigger": 10000, "qualifyingLower": 6240, "qualifyingUpper": 50270 },
   "childBenefitCharge": { "start": 60000, "end": 80000 },
   "inheritanceTax": { "nilRateBand": 325000, "residenceNilRateBand": 175000, "taperThreshold": 2000000, "fullReliefCap": 2500000 },
-  "pensions": { "lumpSumAllowance": 268275, "taxFreeShare": 0.25, "fullStatePension": 12548 }
+  "pensions": { "lumpSumAllowance": 268275, "taxFreeShare": 0.25, "fullStatePension": 12548 },
+  "propertyTax": {
+    "$about": "Tax on buying a home, for individuals buying a whole residential property. These rates change at Budgets, not only in April: check them whenever a UK, Scottish or Welsh Budget is announced. Each band is a slice of the price; upTo null is the top slice. Surcharges don't apply below surchargeFrom.",
+    "sdlt": {
+      "$source": "GOV.UK: Stamp Duty Land Tax residential rates for England and Northern Ireland, from 1 April 2025",
+      "bands": [
+        { "upTo": 125000, "rate": 0 },
+        { "upTo": 250000, "rate": 0.02 },
+        { "upTo": 925000, "rate": 0.05 },
+        { "upTo": 1500000, "rate": 0.1 },
+        { "upTo": null, "rate": 0.12 }
+      ],
+      "firstTimeBuyer": { "maxPrice": 500000, "bands": [{ "upTo": 300000, "rate": 0 }, { "upTo": 500000, "rate": 0.05 }] },
+      "additionalSurcharge": 0.05,
+      "nonResidentSurcharge": 0.02,
+      "surchargeFrom": 40000
+    },
+    "lbtt": {
+      "$source": "Revenue Scotland: Land and Buildings Transaction Tax residential rates, first-time buyer relief, and the Additional Dwelling Supplement (8% from 5 December 2024)",
+      "bands": [
+        { "upTo": 145000, "rate": 0 },
+        { "upTo": 250000, "rate": 0.02 },
+        { "upTo": 325000, "rate": 0.05 },
+        { "upTo": 750000, "rate": 0.1 },
+        { "upTo": null, "rate": 0.12 }
+      ],
+      "firstTimeBuyerNilBand": 175000,
+      "additionalDwellingSupplement": 0.08,
+      "surchargeFrom": 40000
+    },
+    "ltt": {
+      "$source": "Welsh Revenue Authority: Land Transaction Tax main residential rates (from 10 October 2022) and higher residential rates (from 11 December 2024)",
+      "bands": [
+        { "upTo": 225000, "rate": 0 },
+        { "upTo": 400000, "rate": 0.06 },
+        { "upTo": 750000, "rate": 0.075 },
+        { "upTo": 1500000, "rate": 0.1 },
+        { "upTo": null, "rate": 0.12 }
+      ],
+      "higherBands": [
+        { "upTo": 180000, "rate": 0.05 },
+        { "upTo": 250000, "rate": 0.085 },
+        { "upTo": 400000, "rate": 0.1 },
+        { "upTo": 750000, "rate": 0.125 },
+        { "upTo": 1500000, "rate": 0.15 },
+        { "upTo": null, "rate": 0.17 }
+      ],
+      "surchargeFrom": 40000
+    }
+  }
 }

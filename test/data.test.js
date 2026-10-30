@@ -31,6 +31,24 @@ test('the tax year file has every figure, and they make sense', () => {
   assert.ok(amount(year.pensions.lumpSumAllowance) && rate(year.pensions.taxFreeShare) && amount(year.pensions.fullStatePension));
 });
 
+test('the tax on buying a home: bands rise and end open-ended, rates are fractions', () => {
+  const p = year.propertyTax;
+  const bands = (list, name) =>
+    list.forEach((b, i) => {
+      assert.ok(typeof b.rate === 'number' && b.rate >= 0 && b.rate < 1 && (i === 0 || b.rate > list[i - 1].rate), name + ' rate ' + JSON.stringify(b));
+      if (i < list.length - 1) assert.ok(amount(b.upTo) && (i === 0 || b.upTo > list[i - 1].upTo), name + ' band ' + JSON.stringify(b));
+      else assert.equal(b.upTo, null, name + ': the top band is open-ended');
+    });
+  bands(p.sdlt.bands, 'SDLT');
+  bands(p.lbtt.bands, 'LBTT');
+  bands(p.ltt.bands, 'LTT');
+  bands(p.ltt.higherBands, 'LTT higher rates');
+  assert.equal(p.sdlt.firstTimeBuyer.bands.at(-1).upTo, p.sdlt.firstTimeBuyer.maxPrice);
+  assert.ok(rate(p.sdlt.additionalSurcharge) && rate(p.sdlt.nonResidentSurcharge) && rate(p.lbtt.additionalDwellingSupplement));
+  assert.ok(p.lbtt.firstTimeBuyerNilBand > p.lbtt.bands[0].upTo && p.lbtt.firstTimeBuyerNilBand < p.lbtt.bands[1].upTo);
+  for (const n of ['sdlt', 'lbtt', 'ltt']) assert.ok(amount(p[n].surchargeFrom));
+});
+
 test('the salary tables: every age group and sex, 12 figures in order', () => {
   for (const sex of ['all', 'male', 'female']) {
     for (const age of ons.ages.concat('all')) {

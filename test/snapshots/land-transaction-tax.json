@@ -1,0 +1,524 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgltt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your Land Transaction Tax Land Transaction Tax to pay — Enter the price of the home to see the Land Transaction Tax to pay. Share of the price— Rate on the top part— Price plus Land Transaction Tax— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Enter the price to see the breakdown. What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home—— Additional property—— How was this calculated? Enter the price to see how the figures are worked out. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Scotland? Work out LBTT on this price Land Transaction Tax to pay —See results",
+      "data-calc": "land-transaction-tax",
+      "data-lgReadylglttform": "true"
+    },
+    "lgltt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgltt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lgltt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgltt-error-list": {
+      "text": ""
+    },
+    "lgltt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lgltt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-results": {
+      "text": "02 — Your results Your Land Transaction Tax Land Transaction Tax to pay — Enter the price of the home to see the Land Transaction Tax to pay. Share of the price— Rate on the top part— Price plus Land Transaction Tax— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer.",
+      "data-state": "empty"
+    },
+    "lgltt-results-title": {
+      "text": "Your Land Transaction Tax"
+    },
+    "lgltt-headline-label": {
+      "text": "Land Transaction Tax to pay"
+    },
+    "lgltt-headline": {
+      "text": "—"
+    },
+    "lgltt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-summary": {
+      "text": "Enter the price of the home to see the Land Transaction Tax to pay."
+    },
+    "lgltt-rate": {
+      "text": "—"
+    },
+    "lgltt-top": {
+      "text": "—"
+    },
+    "lgltt-total": {
+      "text": "—"
+    },
+    "lgltt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lgltt-extra": {
+      "text": "—"
+    },
+    "lgltt-breakdown": {
+      "text": "How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Enter the price to see the breakdown."
+    },
+    "lgltt-breakdown-title": {
+      "text": "How your Land Transaction Tax adds up"
+    },
+    "lgltt-table-caption": {
+      "text": "Land Transaction Tax on each part of the price"
+    },
+    "lgltt-table-body": {
+      "text": "Enter the price to see the breakdown."
+    },
+    "lgltt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home—— Additional property——"
+    },
+    "lgltt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lgltt-compare-home": {
+      "text": "—"
+    },
+    "lgltt-compare-home-note": {
+      "text": "—"
+    },
+    "lgltt-compare-additional": {
+      "text": "—"
+    },
+    "lgltt-compare-additional-note": {
+      "text": "—"
+    },
+    "lgltt-method": {
+      "text": "How was this calculated? Enter the price to see how the figures are worked out. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead."
+    },
+    "lgltt-method-text": {
+      "text": "Enter the price to see how the figures are worked out."
+    }
+  },
+  "home": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgltt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your Land Transaction Tax Land Transaction Tax to pay £4,500 On a price of £300,000, that’s 1.5% of the price. Share of the price1.5% Rate on the top part6% Price plus Land Transaction Tax£304,500 Tax-free part of the price£225,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. Land Transaction Tax to pay £4,500. On a price of £300,000, that’s 1.5% of the price. How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Up to £225,0000%£0£225,001 to £300,0006%£4,500Land Transaction Tax to pay£4,500 What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home£4,500Your figures Additional property£19,950£15,450 more than yours How was this calculated? On a price of £300,000: 0% on the first £225,000 (£0), 6% on the part from £225,000 to £300,000 (£4,500). Total £4,500, rounded down to the pound. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Scotland? Work out LBTT on this price Land Transaction Tax to pay £4,500See results",
+      "data-calc": "land-transaction-tax",
+      "data-lgReadylglttform": "true"
+    },
+    "lgltt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgltt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lgltt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgltt-error-list": {
+      "text": ""
+    },
+    "lgltt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lgltt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-results": {
+      "text": "02 — Your results Your Land Transaction Tax Land Transaction Tax to pay £4,500 On a price of £300,000, that’s 1.5% of the price. Share of the price1.5% Rate on the top part6% Price plus Land Transaction Tax£304,500 Tax-free part of the price£225,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. Land Transaction Tax to pay £4,500. On a price of £300,000, that’s 1.5% of the price.",
+      "data-state": "ready"
+    },
+    "lgltt-results-title": {
+      "text": "Your Land Transaction Tax"
+    },
+    "lgltt-headline-label": {
+      "text": "Land Transaction Tax to pay"
+    },
+    "lgltt-headline": {
+      "text": "£4,500"
+    },
+    "lgltt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-summary": {
+      "text": "On a price of £300,000, that’s 1.5% of the price."
+    },
+    "lgltt-rate": {
+      "text": "1.5%"
+    },
+    "lgltt-top": {
+      "text": "6%"
+    },
+    "lgltt-total": {
+      "text": "£304,500"
+    },
+    "lgltt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lgltt-extra": {
+      "text": "£225,000"
+    },
+    "lgltt-breakdown": {
+      "text": "How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Up to £225,0000%£0£225,001 to £300,0006%£4,500Land Transaction Tax to pay£4,500"
+    },
+    "lgltt-breakdown-title": {
+      "text": "How your Land Transaction Tax adds up"
+    },
+    "lgltt-table-caption": {
+      "text": "Land Transaction Tax on each part of the price"
+    },
+    "lgltt-table-body": {
+      "text": "Up to £225,0000%£0£225,001 to £300,0006%£4,500Land Transaction Tax to pay£4,500"
+    },
+    "lgltt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home£4,500Your figures Additional property£19,950£15,450 more than yours"
+    },
+    "lgltt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lgltt-compare-home": {
+      "text": "£4,500"
+    },
+    "lgltt-compare-home-note": {
+      "text": "Your figures"
+    },
+    "lgltt-compare-additional": {
+      "text": "£19,950"
+    },
+    "lgltt-compare-additional-note": {
+      "text": "£15,450 more than yours"
+    },
+    "lgltt-method": {
+      "text": "How was this calculated? On a price of £300,000: 0% on the first £225,000 (£0), 6% on the part from £225,000 to £300,000 (£4,500). Total £4,500, rounded down to the pound. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead."
+    },
+    "lgltt-method-text": {
+      "text": "On a price of £300,000: 0% on the first £225,000 (£0), 6% on the part from £225,000 to £300,000 (£4,500). Total £4,500, rounded down to the pound."
+    }
+  },
+  "additional": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgltt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your Land Transaction Tax Land Transaction Tax to pay £36,200 Higher residential rates On a price of £450,000, that’s 8.04% of the price. Share of the price8.04% Rate on the top part12.5% Price plus Land Transaction Tax£486,200 Extra for an additional property£21,950 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. Land Transaction Tax to pay £36,200. On a price of £450,000, that’s 8.04% of the price. How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Up to £180,0005%£9,000£180,001 to £250,0008.5%£5,950£250,001 to £400,00010%£15,000£400,001 to £450,00012.5%£6,250Land Transaction Tax to pay£36,200 Replacing your main home? If you sell your previous main home within 3 years, you can claim back the difference from the higher rates. What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home£14,250£21,950 less than yours Additional property£36,200Your figures How was this calculated? On a price of £450,000: 5% on the first £180,000 (£9,000), 8.5% on the part from £180,000 to £250,000 (£5,950), 10% on the part from £250,000 to £400,000 (£15,000), 12.5% on the part from £400,000 to £450,000 (£6,250). Total £36,200, rounded down to the pound. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Scotland? Work out LBTT on this price Land Transaction Tax to pay £36,200See results",
+      "data-calc": "land-transaction-tax",
+      "data-lgReadylglttform": "true"
+    },
+    "lgltt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgltt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lgltt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgltt-error-list": {
+      "text": ""
+    },
+    "lgltt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lgltt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-results": {
+      "text": "02 — Your results Your Land Transaction Tax Land Transaction Tax to pay £36,200 Higher residential rates On a price of £450,000, that’s 8.04% of the price. Share of the price8.04% Rate on the top part12.5% Price plus Land Transaction Tax£486,200 Extra for an additional property£21,950 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. Land Transaction Tax to pay £36,200. On a price of £450,000, that’s 8.04% of the price.",
+      "data-state": "ready"
+    },
+    "lgltt-results-title": {
+      "text": "Your Land Transaction Tax"
+    },
+    "lgltt-headline-label": {
+      "text": "Land Transaction Tax to pay"
+    },
+    "lgltt-headline": {
+      "text": "£36,200"
+    },
+    "lgltt-status": {
+      "text": "Higher residential rates"
+    },
+    "lgltt-summary": {
+      "text": "On a price of £450,000, that’s 8.04% of the price."
+    },
+    "lgltt-rate": {
+      "text": "8.04%"
+    },
+    "lgltt-top": {
+      "text": "12.5%"
+    },
+    "lgltt-total": {
+      "text": "£486,200"
+    },
+    "lgltt-extra-label": {
+      "text": "Extra for an additional property"
+    },
+    "lgltt-extra": {
+      "text": "£21,950"
+    },
+    "lgltt-breakdown": {
+      "text": "How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Up to £180,0005%£9,000£180,001 to £250,0008.5%£5,950£250,001 to £400,00010%£15,000£400,001 to £450,00012.5%£6,250Land Transaction Tax to pay£36,200 Replacing your main home? If you sell your previous main home within 3 years, you can claim back the difference from the higher rates."
+    },
+    "lgltt-breakdown-title": {
+      "text": "How your Land Transaction Tax adds up"
+    },
+    "lgltt-table-caption": {
+      "text": "Land Transaction Tax on each part of the price"
+    },
+    "lgltt-table-body": {
+      "text": "Up to £180,0005%£9,000£180,001 to £250,0008.5%£5,950£250,001 to £400,00010%£15,000£400,001 to £450,00012.5%£6,250Land Transaction Tax to pay£36,200"
+    },
+    "lgltt-notes": {
+      "text": "Replacing your main home? If you sell your previous main home within 3 years, you can claim back the difference from the higher rates."
+    },
+    "lgltt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home£14,250£21,950 less than yours Additional property£36,200Your figures"
+    },
+    "lgltt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lgltt-compare-home": {
+      "text": "£14,250"
+    },
+    "lgltt-compare-home-note": {
+      "text": "£21,950 less than yours"
+    },
+    "lgltt-compare-additional": {
+      "text": "£36,200"
+    },
+    "lgltt-compare-additional-note": {
+      "text": "Your figures"
+    },
+    "lgltt-method": {
+      "text": "How was this calculated? On a price of £450,000: 5% on the first £180,000 (£9,000), 8.5% on the part from £180,000 to £250,000 (£5,950), 10% on the part from £250,000 to £400,000 (£15,000), 12.5% on the part from £400,000 to £450,000 (£6,250). Total £36,200, rounded down to the pound. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead."
+    },
+    "lgltt-method-text": {
+      "text": "On a price of £450,000: 5% on the first £180,000 (£9,000), 8.5% on the part from £180,000 to £250,000 (£5,950), 10% on the part from £250,000 to £400,000 (£15,000), 12.5% on the part from £400,000 to £450,000 (£6,250). Total £36,200, rounded down to the pound."
+    }
+  },
+  "expensive": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgltt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your Land Transaction Tax Land Transaction Tax to pay £171,750 On a price of £2,000,000.50, that’s 8.59% of the price. Share of the price8.59% Rate on the top part12% Price plus Land Transaction Tax£2,171,750.50 Tax-free part of the price£225,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. Land Transaction Tax to pay £171,750. On a price of £2,000,000.50, that’s 8.59% of the price. How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Up to £225,0000%£0£225,001 to £400,0006%£10,500£400,001 to £750,0007.5%£26,250£750,001 to £1,500,00010%£75,000£1,500,001 to £2,000,00112%£60,000.06Land Transaction Tax to pay£171,750 What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home£171,750Your figures Additional property£271,200£99,450 more than yours How was this calculated? On a price of £2,000,000.50: 0% on the first £225,000 (£0), 6% on the part from £225,000 to £400,000 (£10,500), 7.5% on the part from £400,000 to £750,000 (£26,250), 10% on the part from £750,000 to £1,500,000 (£75,000), 12% on the part from £1,500,000 to £2,000,001 (£60,000.06). Total £171,750, rounded down to the pound. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Scotland? Work out LBTT on this price Land Transaction Tax to pay £171,750See results",
+      "data-calc": "land-transaction-tax",
+      "data-lgReadylglttform": "true"
+    },
+    "lgltt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgltt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lgltt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lgltt-error-list": {
+      "text": ""
+    },
+    "lgltt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lgltt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-results": {
+      "text": "02 — Your results Your Land Transaction Tax Land Transaction Tax to pay £171,750 On a price of £2,000,000.50, that’s 8.59% of the price. Share of the price8.59% Rate on the top part12% Price plus Land Transaction Tax£2,171,750.50 Tax-free part of the price£225,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. Land Transaction Tax to pay £171,750. On a price of £2,000,000.50, that’s 8.59% of the price.",
+      "data-state": "ready"
+    },
+    "lgltt-results-title": {
+      "text": "Your Land Transaction Tax"
+    },
+    "lgltt-headline-label": {
+      "text": "Land Transaction Tax to pay"
+    },
+    "lgltt-headline": {
+      "text": "£171,750"
+    },
+    "lgltt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-summary": {
+      "text": "On a price of £2,000,000.50, that’s 8.59% of the price."
+    },
+    "lgltt-rate": {
+      "text": "8.59%"
+    },
+    "lgltt-top": {
+      "text": "12%"
+    },
+    "lgltt-total": {
+      "text": "£2,171,750.50"
+    },
+    "lgltt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lgltt-extra": {
+      "text": "£225,000"
+    },
+    "lgltt-breakdown": {
+      "text": "How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Up to £225,0000%£0£225,001 to £400,0006%£10,500£400,001 to £750,0007.5%£26,250£750,001 to £1,500,00010%£75,000£1,500,001 to £2,000,00112%£60,000.06Land Transaction Tax to pay£171,750"
+    },
+    "lgltt-breakdown-title": {
+      "text": "How your Land Transaction Tax adds up"
+    },
+    "lgltt-table-caption": {
+      "text": "Land Transaction Tax on each part of the price"
+    },
+    "lgltt-table-body": {
+      "text": "Up to £225,0000%£0£225,001 to £400,0006%£10,500£400,001 to £750,0007.5%£26,250£750,001 to £1,500,00010%£75,000£1,500,001 to £2,000,00112%£60,000.06Land Transaction Tax to pay£171,750"
+    },
+    "lgltt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home£171,750Your figures Additional property£271,200£99,450 more than yours"
+    },
+    "lgltt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lgltt-compare-home": {
+      "text": "£171,750"
+    },
+    "lgltt-compare-home-note": {
+      "text": "Your figures"
+    },
+    "lgltt-compare-additional": {
+      "text": "£271,200"
+    },
+    "lgltt-compare-additional-note": {
+      "text": "£99,450 more than yours"
+    },
+    "lgltt-method": {
+      "text": "How was this calculated? On a price of £2,000,000.50: 0% on the first £225,000 (£0), 6% on the part from £225,000 to £400,000 (£10,500), 7.5% on the part from £400,000 to £750,000 (£26,250), 10% on the part from £750,000 to £1,500,000 (£75,000), 12% on the part from £1,500,000 to £2,000,001 (£60,000.06). Total £171,750, rounded down to the pound. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead."
+    },
+    "lgltt-method-text": {
+      "text": "On a price of £2,000,000.50: 0% on the first £225,000 (£0), 6% on the part from £225,000 to £400,000 (£10,500), 7.5% on the part from £400,000 to £750,000 (£26,250), 10% on the part from £750,000 to £1,500,000 (£75,000), 12% on the part from £1,500,000 to £2,000,001 (£60,000.06). Total £171,750, rounded down to the pound."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lgltt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Enter the price, from £1 to £100,000,000. Your purchase Property price £ The price you’re paying for the home. Enter the price, from £1 to £100,000,000. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your Land Transaction Tax Land Transaction Tax to pay — Check the highlighted fields to see the Land Transaction Tax to pay. Share of the price— Rate on the top part— Price plus Land Transaction Tax— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer. How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Enter the price to see the breakdown. What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home—— Additional property—— How was this calculated? Enter the price to see how the figures are worked out. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Scotland? Work out LBTT on this price Land Transaction Tax to pay —See results",
+      "data-calc": "land-transaction-tax",
+      "data-lgReadylglttform": "true"
+    },
+    "lgltt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates. Check the highlighted fields Enter the price, from £1 to £100,000,000. Your purchase Property price £ The price you’re paying for the home. Enter the price, from £1 to £100,000,000. You’re buying Your main home An additional property Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lgltt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lgltt-error-summary": {
+      "text": "Check the highlighted fields Enter the price, from £1 to £100,000,000."
+    },
+    "lgltt-error-list": {
+      "text": "Enter the price, from £1 to £100,000,000."
+    },
+    "lgltt-price@invalid": "true",
+    "lgltt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lgltt-price-error": {
+      "text": "Enter the price, from £1 to £100,000,000."
+    },
+    "lgltt-results": {
+      "text": "02 — Your results Your Land Transaction Tax Land Transaction Tax to pay — Check the highlighted fields to see the Land Transaction Tax to pay. Share of the price— Rate on the top part— Price plus Land Transaction Tax— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer.",
+      "data-state": "invalid"
+    },
+    "lgltt-results-title": {
+      "text": "Your Land Transaction Tax"
+    },
+    "lgltt-headline-label": {
+      "text": "Land Transaction Tax to pay"
+    },
+    "lgltt-headline": {
+      "text": "—"
+    },
+    "lgltt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-summary": {
+      "text": "Check the highlighted fields to see the Land Transaction Tax to pay."
+    },
+    "lgltt-rate": {
+      "text": "—"
+    },
+    "lgltt-top": {
+      "text": "—"
+    },
+    "lgltt-total": {
+      "text": "—"
+    },
+    "lgltt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lgltt-extra": {
+      "text": "—"
+    },
+    "lgltt-breakdown": {
+      "text": "How your Land Transaction Tax adds up Land Transaction Tax is charged on each part of the price that falls in a band, like income tax. Land Transaction Tax on each part of the price Part of the priceRateTax Enter the price to see the breakdown."
+    },
+    "lgltt-breakdown-title": {
+      "text": "How your Land Transaction Tax adds up"
+    },
+    "lgltt-table-caption": {
+      "text": "Land Transaction Tax on each part of the price"
+    },
+    "lgltt-table-body": {
+      "text": "Enter the price to see the breakdown."
+    },
+    "lgltt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lgltt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their main home and someone buying an additional property. Your main home—— Additional property——"
+    },
+    "lgltt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lgltt-compare-home": {
+      "text": "—"
+    },
+    "lgltt-compare-home-note": {
+      "text": "—"
+    },
+    "lgltt-compare-additional": {
+      "text": "—"
+    },
+    "lgltt-compare-additional-note": {
+      "text": "—"
+    },
+    "lgltt-method": {
+      "text": "How was this calculated? Enter the price to see how the figures are worked out. Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead."
+    },
+    "lgltt-method-text": {
+      "text": "Enter the price to see how the figures are worked out."
+    }
+  }
+}

@@ -45,8 +45,11 @@ Each calculator page is a Tools item. The template's head loads only that page's
 | `debt-to-income` | Debt-to-Income |
 | `retirement-income` | Retirement Income |
 | `take-home-pay` | Take-Home Pay |
+| `stamp-duty` | Stamp Duty (England and Northern Ireland) |
+| `lbtt` | LBTT (Scotland) |
+| `land-transaction-tax` | Land Transaction Tax (Wales) |
 
-The key names the calculator's files (`dist/v2/<key>.min.js`, `markup/<key>.html`) and goes in its Tools item's Component Key field. Item IDs are in [`webflow/cms-items.json`](webflow/cms-items.json).
+The key names the calculator's files (`dist/v2/<key>.min.js`, `markup/<key>.html`) and goes in its Tools item's Component Key field. The three taxes on buying a home share one engine, with each nation's rates in the data file. Item IDs are in [`webflow/cms-items.json`](webflow/cms-items.json).
 
 ## Repository layout
 

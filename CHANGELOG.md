@@ -2,9 +2,15 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## Unreleased
-Documentation only; no change to anything the site loads.
-- The README is now a short overview, and the detail is in focused guides in `docs/`: architecture, development, writing a calculator, releasing, Webflow, data, analytics, and PDFs and downloads. The PDF generator's README covers Guides and Insights side by side.
+## v2.1.0 (and v1.9.0) – Unreleased
+Three new calculators for the tax on buying a home, one per nation, sharing one engine. **In Webflow:** the three Tools items (Stamp Duty, LBTT, Land Transaction Tax) are already created; the release workflow writes their markup, Component Key and Release. Then publish.
+- `stamp-duty` (England and Northern Ireland: Stamp Duty Land Tax), `lbtt` (Scotland: Land and Buildings Transaction Tax) and `land-transaction-tax` (Wales). Each works out the tax on a price for someone buying their only or main home, a first-time buyer (not in Wales, which has no relief) or someone buying an additional property, and Stamp Duty also for non-UK residents. Each shows the tax on each band, what other kinds of buyer pay at the same price, and how it was worked out. Each page calculates only its own nation's tax, so the pages don't compete in search.
+- Rates in `data/2026-27.json` (`propertyTax`): bands, first-time buyer relief, the 5% surcharge and 2% non-resident surcharge (SDLT), the 8% Additional Dwelling Supplement (LBTT) and the higher residential rates (LTT), with surcharges from £40,000. The total is rounded down to the pound, as the tax authorities do.
+- Calculators can share code: `scripts/build-v2.js` builds `USES` blocks (here `property-tax`) in before their modules.
+- "Use these figures" links between the three, carrying the price and the kind of buyer.
+- v1.9.0: the reference build includes the three calculators, and `.lgc-compare-2` for a two-item comparison.
+- Tests (343): figures worked out by hand for every nation and kind of buyer, snapshots, the links and hand-offs, the PDFs and the data file.
+- Documentation: the README is now a short overview, and the detail is in focused guides in `docs/`: architecture, development, writing a calculator, releasing, Webflow, data, analytics, and PDFs and downloads. The PDF generator's README covers Guides and Insights side by side.
 - Removed outdated files: `webflow/tools-cms-setup.md` (the original v1 set-up), `webflow/tools-items.csv` (the v1 import), `pdf-generator/webflow/download-block.html` (superseded by the download embeds), and `webflow/site-custom-code.md` (now in `docs/webflow.md` and `docs/analytics.md`).
 - `webflow/template-head.html` holds only the two lines the template uses. The structured data it used to carry was never live, and it named fields that don't exist.
 - Guide PDFs: the cover's category follows the new shared categories for Guides and the Glossary (`pdf-generator/config.json`). `TEMPLATE_VERSION` is now 2, so every guide PDF is rebuilt once with the new names.

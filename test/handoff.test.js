@@ -36,6 +36,12 @@ const EXPECT = {
   'pro-rata-salary>take-home-pay': { 'lgth-salary': '33,000', 'lgth-pension': '5' },
   'salary-by-age>take-home-pay': { 'lgth-salary': '28,500' },
   'emergency-fund>savings-goal': { 'sg-goal': '12,000', 'sg-initial': '4,500' },
+  'stamp-duty>lbtt': { 'lglbtt-price': '350,000' },
+  'stamp-duty>land-transaction-tax': { 'lgltt-price': '350,000' },
+  'lbtt>stamp-duty': { 'lgsd-price': '300,000' },
+  'lbtt>land-transaction-tax': { 'lgltt-price': '300,000' },
+  'land-transaction-tax>stamp-duty': { 'lgsd-price': '300,000' },
+  'land-transaction-tax>lbtt': { 'lglbtt-price': '300,000' },
   'net-worth>inheritance-tax': { 'lgiht-home': '350,000', 'lgiht-cash': '15,000', 'lgiht-investments': '20,000', 'lgiht-possessions': '12,000', 'lgiht-mortgage': '245,000', 'lgiht-debts': '8,750.5' } // as IHT shows a typed 8750.50,
 };
 
@@ -119,4 +125,18 @@ test('the figures go with the link however it is opened (middle-click, new tab, 
   });
   assert.match(href, /#lg-from=take-home-pay&.*lgdti-income=35000/);
   await page.close();
+});
+
+test('tax on buying a home: the kind of buyer goes too, and Wales has no first-time buyer relief', async () => {
+  const page = await openCalculator(browser, 'stamp-duty', { version: 'v2' });
+  await run(page, [['fill', '#lgsd-price', '450000'], ['check', 'input[name="lgsd-buyer"][value="first"]']]);
+  assert.match(await follow(page, 'lbtt'), /#lg-from=stamp-duty&%40lglbtt-buyer=first&lglbtt-price=450000$/);
+  assert.match(await follow(page, 'land-transaction-tax'), /#lg-from=stamp-duty&%40lgltt-buyer=home&lgltt-price=450000$/);
+  await page.close();
+  const scot = await openCalculator(browser, 'lbtt', { version: 'v2', hash: '#lg-from=stamp-duty&%40lglbtt-buyer=first&lglbtt-price=450000' });
+  const out = await readOutputs(scot);
+  assert.equal(out['lglbtt-status'].text, 'First-time buyer relief');
+  assert.equal(out['lglbtt-headline'].text, '\u00A317,750'); // 2% x 75,000 + 5% x 75,000 + 10% x 125,000
+  assert.match(await scot.evaluate(() => document.querySelector('lg-calculator').shadowRoot.querySelector('.lgc-handoff').textContent), /from the Stamp Duty calculator/);
+  await scot.close();
 });

@@ -1,0 +1,96 @@
+<lg-calculator key="land-transaction-tax">
+<div class="lg-calc" data-calc="land-transaction-tax" id="lgltt">
+  <form id="lgltt-form" class="lgc-card" novalidate="" aria-labelledby="lgltt-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lgltt-form-title">Your home purchase</h2>
+    <p class="lgc-intro">Enter the price of a home you’re buying in Wales. We’ll work out the Land Transaction Tax (LTT), Wales’s version of Stamp Duty, at the current rates.</p>
+
+    <div id="lgltt-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
+      <p class="lgc-error-summary-title">Check the highlighted fields</p>
+      <ul id="lgltt-error-list"></ul>
+    </div>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your purchase</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field lgc-field-full">
+          <label for="lgltt-price">Property price</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lgltt-price" name="price" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" placeholder="350,000" data-format="money" aria-describedby="lgltt-price-hint lgltt-price-error"></div>
+          <p id="lgltt-price-hint" class="lgc-hint">The price you’re paying for the home.</p>
+          <p id="lgltt-price-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>You’re buying</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lgltt-buyer" value="home" checked=""><span>Your main home</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lgltt-buyer" value="additional"><span>An additional property</span></label>
+          </div>
+          <p class="lgc-hint">Wales has no first-time buyer relief, so first-time buyers pay the same as anyone buying their main home. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the higher residential rates.</p>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you type. Nothing you enter leaves your browser.</p>
+      <button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lgltt-results" class="lgc-card lgc-card-dark" aria-labelledby="lgltt-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lgltt-results-title">Your Land Transaction Tax</h2>
+    <p class="lgc-result-label" id="lgltt-headline-label">Land Transaction Tax to pay</p>
+    <p class="lgc-result-value" id="lgltt-headline">—</p>
+    <p class="lgc-badge" id="lgltt-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lgltt-summary">Enter the price of the home to see the Land Transaction Tax to pay.</p>
+    <dl class="lgc-stats">
+      <div><dt>Share of the price</dt><dd id="lgltt-rate">—</dd></div>
+      <div><dt>Rate on the top part</dt><dd id="lgltt-top">—</dd></div>
+      <div><dt>Price plus Land Transaction Tax</dt><dd id="lgltt-total">—</dd></div>
+      <div><dt id="lgltt-extra-label">Tax-free part of the price</dt><dd id="lgltt-extra">—</dd></div>
+    </dl>
+    <p class="lgc-small">An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor or conveyancer.</p>
+    <p class="lgc-sr-only" aria-live="polite" data-announce="lgltt-headline-label lgltt-headline lgltt-summary"></p>
+  </section>
+
+  <section id="lgltt-breakdown" class="lgc-card" aria-labelledby="lgltt-breakdown-title">
+    <h3 id="lgltt-breakdown-title">How your Land Transaction Tax adds up</h3>
+    <p class="lgc-intro">Land Transaction Tax is charged on each part of the price that falls in a band, like income tax.</p>
+    <div class="lgc-table-wrap lgc-table-fit" tabindex="0" role="region" aria-labelledby="lgltt-table-caption">
+      <table class="lgc-table">
+        <caption id="lgltt-table-caption">Land Transaction Tax on each part of the price</caption>
+        <thead><tr><th scope="col">Part of the price</th><th scope="col">Rate</th><th scope="col">Tax</th></tr></thead>
+        <tbody id="lgltt-table-body"><tr><td colspan="3">Enter the price to see the breakdown.</td></tr></tbody>
+      </table>
+    </div>
+    <ul id="lgltt-notes" class="lgc-notes" hidden=""></ul>
+  </section>
+
+  <section id="lgltt-compare-card" class="lgc-card" aria-labelledby="lgltt-compare-title">
+    <h3 id="lgltt-compare-title">What other buyers pay at this price</h3>
+    <p class="lgc-intro">The same price for someone buying their main home and someone buying an additional property.</p>
+    <div class="lgc-compare lgc-compare-2">
+      <div class="lgc-compare-item lgc-compare-current"><span class="lgc-compare-label">Your main home</span><strong id="lgltt-compare-home">—</strong><span id="lgltt-compare-home-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span class="lgc-compare-label">Additional property</span><strong id="lgltt-compare-additional">—</strong><span id="lgltt-compare-additional-note" class="lgc-compare-note">—</span></div>
+    </div>
+  </section>
+
+  <details id="lgltt-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lgltt-method-text">Enter the price to see how the figures are worked out.</p>
+      <p class="lgc-small">Uses the main residential rates for Wales from 10 October 2022: 0% up to £225,000, 6% from £225,001 to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. An additional property costing £40,000 or more pays the higher residential rates from 11 December 2024: 5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Scotland has Land and Buildings Transaction Tax instead.</p>
+    </div>
+  </details>
+
+  <nav class="lgc-next" aria-label="Use these figures in another calculator">
+    <h2 class="lgc-next-title">Use these figures</h2>
+    <ul>
+      <li><a href="/tools/stamp-duty-calculator" data-handoff="stamp-duty">Buying in England or Northern Ireland? Work out Stamp Duty on this price</a></li>
+      <li><a href="/tools/lbtt-calculator" data-handoff="lbtt">Buying in Scotland? Work out LBTT on this price</a></li>
+    </ul>
+  </nav>
+
+  <div class="lgc-sticky" data-source="lgltt-headline" data-results="lgltt-results" hidden=""><p><span class="lgc-sticky-label">Land Transaction Tax to pay</span> <strong data-sticky-value="">—</strong></p><a href="#lgltt-results" class="lgc-sticky-link">See results</a></div>
+</div>
+</lg-calculator>

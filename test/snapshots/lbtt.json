@@ -1,0 +1,553 @@
+{
+  "empty": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglbtt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your LBTT LBTT to pay — Enter the price of the home to see the LBTT to pay. Share of the price— Rate on the top part— Price plus LBTT— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Enter the price to see the breakdown. What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home—— First-time buyer—— Additional property—— How was this calculated? Enter the price to see how the figures are worked out. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Wales? Work out Land Transaction Tax on this price LBTT to pay —See results",
+      "data-calc": "lbtt",
+      "data-lgReadylglbttform": "true"
+    },
+    "lglbtt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lglbtt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lglbtt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lglbtt-error-list": {
+      "text": ""
+    },
+    "lglbtt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lglbtt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-results": {
+      "text": "02 — Your results Your LBTT LBTT to pay — Enter the price of the home to see the LBTT to pay. Share of the price— Rate on the top part— Price plus LBTT— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor.",
+      "data-state": "empty"
+    },
+    "lglbtt-results-title": {
+      "text": "Your LBTT"
+    },
+    "lglbtt-headline-label": {
+      "text": "LBTT to pay"
+    },
+    "lglbtt-headline": {
+      "text": "—"
+    },
+    "lglbtt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-summary": {
+      "text": "Enter the price of the home to see the LBTT to pay."
+    },
+    "lglbtt-rate": {
+      "text": "—"
+    },
+    "lglbtt-top": {
+      "text": "—"
+    },
+    "lglbtt-total": {
+      "text": "—"
+    },
+    "lglbtt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lglbtt-extra": {
+      "text": "—"
+    },
+    "lglbtt-breakdown": {
+      "text": "How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Enter the price to see the breakdown."
+    },
+    "lglbtt-breakdown-title": {
+      "text": "How your LBTT adds up"
+    },
+    "lglbtt-table-caption": {
+      "text": "LBTT on each part of the price"
+    },
+    "lglbtt-table-body": {
+      "text": "Enter the price to see the breakdown."
+    },
+    "lglbtt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home—— First-time buyer—— Additional property——"
+    },
+    "lglbtt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lglbtt-compare-home": {
+      "text": "—"
+    },
+    "lglbtt-compare-home-note": {
+      "text": "—"
+    },
+    "lglbtt-compare-first": {
+      "text": "—"
+    },
+    "lglbtt-compare-first-note": {
+      "text": "—"
+    },
+    "lglbtt-compare-additional": {
+      "text": "—"
+    },
+    "lglbtt-compare-additional-note": {
+      "text": "—"
+    },
+    "lglbtt-method": {
+      "text": "How was this calculated? Enter the price to see how the figures are worked out. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead."
+    },
+    "lglbtt-method-text": {
+      "text": "Enter the price to see how the figures are worked out."
+    }
+  },
+  "home": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglbtt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your LBTT LBTT to pay £4,600 On a price of £300,000, that’s 1.53% of the price. Share of the price1.53% Rate on the top part5% Price plus LBTT£304,600 Tax-free part of the price£145,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. LBTT to pay £4,600. On a price of £300,000, that’s 1.53% of the price. How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Up to £145,0000%£0£145,001 to £250,0002%£2,100£250,001 to £300,0005%£2,500LBTT to pay£4,600 What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home£4,600Your figures First-time buyer£4,000£600 less than yours Additional property£28,600£24,000 more than yours How was this calculated? On a price of £300,000: 0% on the first £145,000 (£0), 2% on the part from £145,000 to £250,000 (£2,100), 5% on the part from £250,000 to £300,000 (£2,500). Total £4,600, rounded down to the pound. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Wales? Work out Land Transaction Tax on this price LBTT to pay £4,600See results",
+      "data-calc": "lbtt",
+      "data-lgReadylglbttform": "true"
+    },
+    "lglbtt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lglbtt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lglbtt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lglbtt-error-list": {
+      "text": ""
+    },
+    "lglbtt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lglbtt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-results": {
+      "text": "02 — Your results Your LBTT LBTT to pay £4,600 On a price of £300,000, that’s 1.53% of the price. Share of the price1.53% Rate on the top part5% Price plus LBTT£304,600 Tax-free part of the price£145,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. LBTT to pay £4,600. On a price of £300,000, that’s 1.53% of the price.",
+      "data-state": "ready"
+    },
+    "lglbtt-results-title": {
+      "text": "Your LBTT"
+    },
+    "lglbtt-headline-label": {
+      "text": "LBTT to pay"
+    },
+    "lglbtt-headline": {
+      "text": "£4,600"
+    },
+    "lglbtt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-summary": {
+      "text": "On a price of £300,000, that’s 1.53% of the price."
+    },
+    "lglbtt-rate": {
+      "text": "1.53%"
+    },
+    "lglbtt-top": {
+      "text": "5%"
+    },
+    "lglbtt-total": {
+      "text": "£304,600"
+    },
+    "lglbtt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lglbtt-extra": {
+      "text": "£145,000"
+    },
+    "lglbtt-breakdown": {
+      "text": "How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Up to £145,0000%£0£145,001 to £250,0002%£2,100£250,001 to £300,0005%£2,500LBTT to pay£4,600"
+    },
+    "lglbtt-breakdown-title": {
+      "text": "How your LBTT adds up"
+    },
+    "lglbtt-table-caption": {
+      "text": "LBTT on each part of the price"
+    },
+    "lglbtt-table-body": {
+      "text": "Up to £145,0000%£0£145,001 to £250,0002%£2,100£250,001 to £300,0005%£2,500LBTT to pay£4,600"
+    },
+    "lglbtt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home£4,600Your figures First-time buyer£4,000£600 less than yours Additional property£28,600£24,000 more than yours"
+    },
+    "lglbtt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lglbtt-compare-home": {
+      "text": "£4,600"
+    },
+    "lglbtt-compare-home-note": {
+      "text": "Your figures"
+    },
+    "lglbtt-compare-first": {
+      "text": "£4,000"
+    },
+    "lglbtt-compare-first-note": {
+      "text": "£600 less than yours"
+    },
+    "lglbtt-compare-additional": {
+      "text": "£28,600"
+    },
+    "lglbtt-compare-additional-note": {
+      "text": "£24,000 more than yours"
+    },
+    "lglbtt-method": {
+      "text": "How was this calculated? On a price of £300,000: 0% on the first £145,000 (£0), 2% on the part from £145,000 to £250,000 (£2,100), 5% on the part from £250,000 to £300,000 (£2,500). Total £4,600, rounded down to the pound. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead."
+    },
+    "lglbtt-method-text": {
+      "text": "On a price of £300,000: 0% on the first £145,000 (£0), 2% on the part from £145,000 to £250,000 (£2,100), 5% on the part from £250,000 to £300,000 (£2,500). Total £4,600, rounded down to the pound."
+    }
+  },
+  "firstTimeBuyer": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglbtt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your LBTT LBTT to pay £1,500 First-time buyer relief On a price of £250,000, that’s 0.6% of the price. Share of the price0.6% Rate on the top part2% Price plus LBTT£251,500 First-time buyer relief saves£600 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. LBTT to pay £1,500. On a price of £250,000, that’s 0.6% of the price. How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Up to £175,0000%£0£175,001 to £250,0002%£1,500LBTT to pay£1,500 What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home£2,100£600 more than yours First-time buyer£1,500Your figures Additional property£22,100£20,600 more than yours How was this calculated? On a price of £250,000: 0% on the first £175,000 (£0), 2% on the part from £175,000 to £250,000 (£1,500). Total £1,500, rounded down to the pound. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Wales? Work out Land Transaction Tax on this price LBTT to pay £1,500See results",
+      "data-calc": "lbtt",
+      "data-lgReadylglbttform": "true"
+    },
+    "lglbtt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lglbtt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lglbtt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lglbtt-error-list": {
+      "text": ""
+    },
+    "lglbtt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lglbtt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-results": {
+      "text": "02 — Your results Your LBTT LBTT to pay £1,500 First-time buyer relief On a price of £250,000, that’s 0.6% of the price. Share of the price0.6% Rate on the top part2% Price plus LBTT£251,500 First-time buyer relief saves£600 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. LBTT to pay £1,500. On a price of £250,000, that’s 0.6% of the price.",
+      "data-state": "ready"
+    },
+    "lglbtt-results-title": {
+      "text": "Your LBTT"
+    },
+    "lglbtt-headline-label": {
+      "text": "LBTT to pay"
+    },
+    "lglbtt-headline": {
+      "text": "£1,500"
+    },
+    "lglbtt-status": {
+      "text": "First-time buyer relief"
+    },
+    "lglbtt-summary": {
+      "text": "On a price of £250,000, that’s 0.6% of the price."
+    },
+    "lglbtt-rate": {
+      "text": "0.6%"
+    },
+    "lglbtt-top": {
+      "text": "2%"
+    },
+    "lglbtt-total": {
+      "text": "£251,500"
+    },
+    "lglbtt-extra-label": {
+      "text": "First-time buyer relief saves"
+    },
+    "lglbtt-extra": {
+      "text": "£600"
+    },
+    "lglbtt-breakdown": {
+      "text": "How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Up to £175,0000%£0£175,001 to £250,0002%£1,500LBTT to pay£1,500"
+    },
+    "lglbtt-breakdown-title": {
+      "text": "How your LBTT adds up"
+    },
+    "lglbtt-table-caption": {
+      "text": "LBTT on each part of the price"
+    },
+    "lglbtt-table-body": {
+      "text": "Up to £175,0000%£0£175,001 to £250,0002%£1,500LBTT to pay£1,500"
+    },
+    "lglbtt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home£2,100£600 more than yours First-time buyer£1,500Your figures Additional property£22,100£20,600 more than yours"
+    },
+    "lglbtt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lglbtt-compare-home": {
+      "text": "£2,100"
+    },
+    "lglbtt-compare-home-note": {
+      "text": "£600 more than yours"
+    },
+    "lglbtt-compare-first": {
+      "text": "£1,500"
+    },
+    "lglbtt-compare-first-note": {
+      "text": "Your figures"
+    },
+    "lglbtt-compare-additional": {
+      "text": "£22,100"
+    },
+    "lglbtt-compare-additional-note": {
+      "text": "£20,600 more than yours"
+    },
+    "lglbtt-method": {
+      "text": "How was this calculated? On a price of £250,000: 0% on the first £175,000 (£0), 2% on the part from £175,000 to £250,000 (£1,500). Total £1,500, rounded down to the pound. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead."
+    },
+    "lglbtt-method-text": {
+      "text": "On a price of £250,000: 0% on the first £175,000 (£0), 2% on the part from £175,000 to £250,000 (£1,500). Total £1,500, rounded down to the pound."
+    }
+  },
+  "additional": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglbtt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your LBTT LBTT to pay £118,350 Additional Dwelling Supplement On a price of £800,000, that’s 14.79% of the price. Share of the price14.79% Rate on the top part12% Price plus LBTT£918,350 Extra for an additional property£64,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. LBTT to pay £118,350. On a price of £800,000, that’s 14.79% of the price. How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Up to £145,0000%£0£145,001 to £250,0002%£2,100£250,001 to £325,0005%£3,750£325,001 to £750,00010%£42,500£750,001 to £800,00012%£6,000Additional Dwelling Supplement on £800,0008%£64,000LBTT to pay£118,350 Replacing your main home? If you sell your previous main home within 36 months, you can claim back the Additional Dwelling Supplement. What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home£54,350£64,000 less than yours First-time buyer£53,750£64,600 less than yours Additional property£118,350Your figures How was this calculated? On a price of £800,000: 0% on the first £145,000 (£0), 2% on the part from £145,000 to £250,000 (£2,100), 5% on the part from £250,000 to £325,000 (£3,750), 10% on the part from £325,000 to £750,000 (£42,500), 12% on the part from £750,000 to £800,000 (£6,000). Plus the Additional Dwelling Supplement of 8% on the whole price (£64,000). Total £118,350, rounded down to the pound. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Wales? Work out Land Transaction Tax on this price LBTT to pay £118,350See results",
+      "data-calc": "lbtt",
+      "data-lgReadylglbttform": "true"
+    },
+    "lglbtt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Your purchase Property price £ The price you’re paying for the home. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lglbtt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lglbtt-error-summary": {
+      "text": "Check the highlighted fields",
+      "hidden": true
+    },
+    "lglbtt-error-list": {
+      "text": ""
+    },
+    "lglbtt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lglbtt-price-error": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-results": {
+      "text": "02 — Your results Your LBTT LBTT to pay £118,350 Additional Dwelling Supplement On a price of £800,000, that’s 14.79% of the price. Share of the price14.79% Rate on the top part12% Price plus LBTT£918,350 Extra for an additional property£64,000 An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. LBTT to pay £118,350. On a price of £800,000, that’s 14.79% of the price.",
+      "data-state": "ready"
+    },
+    "lglbtt-results-title": {
+      "text": "Your LBTT"
+    },
+    "lglbtt-headline-label": {
+      "text": "LBTT to pay"
+    },
+    "lglbtt-headline": {
+      "text": "£118,350"
+    },
+    "lglbtt-status": {
+      "text": "Additional Dwelling Supplement"
+    },
+    "lglbtt-summary": {
+      "text": "On a price of £800,000, that’s 14.79% of the price."
+    },
+    "lglbtt-rate": {
+      "text": "14.79%"
+    },
+    "lglbtt-top": {
+      "text": "12%"
+    },
+    "lglbtt-total": {
+      "text": "£918,350"
+    },
+    "lglbtt-extra-label": {
+      "text": "Extra for an additional property"
+    },
+    "lglbtt-extra": {
+      "text": "£64,000"
+    },
+    "lglbtt-breakdown": {
+      "text": "How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Up to £145,0000%£0£145,001 to £250,0002%£2,100£250,001 to £325,0005%£3,750£325,001 to £750,00010%£42,500£750,001 to £800,00012%£6,000Additional Dwelling Supplement on £800,0008%£64,000LBTT to pay£118,350 Replacing your main home? If you sell your previous main home within 36 months, you can claim back the Additional Dwelling Supplement."
+    },
+    "lglbtt-breakdown-title": {
+      "text": "How your LBTT adds up"
+    },
+    "lglbtt-table-caption": {
+      "text": "LBTT on each part of the price"
+    },
+    "lglbtt-table-body": {
+      "text": "Up to £145,0000%£0£145,001 to £250,0002%£2,100£250,001 to £325,0005%£3,750£325,001 to £750,00010%£42,500£750,001 to £800,00012%£6,000Additional Dwelling Supplement on £800,0008%£64,000LBTT to pay£118,350"
+    },
+    "lglbtt-notes": {
+      "text": "Replacing your main home? If you sell your previous main home within 36 months, you can claim back the Additional Dwelling Supplement."
+    },
+    "lglbtt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home£54,350£64,000 less than yours First-time buyer£53,750£64,600 less than yours Additional property£118,350Your figures"
+    },
+    "lglbtt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lglbtt-compare-home": {
+      "text": "£54,350"
+    },
+    "lglbtt-compare-home-note": {
+      "text": "£64,000 less than yours"
+    },
+    "lglbtt-compare-first": {
+      "text": "£53,750"
+    },
+    "lglbtt-compare-first-note": {
+      "text": "£64,600 less than yours"
+    },
+    "lglbtt-compare-additional": {
+      "text": "£118,350"
+    },
+    "lglbtt-compare-additional-note": {
+      "text": "Your figures"
+    },
+    "lglbtt-method": {
+      "text": "How was this calculated? On a price of £800,000: 0% on the first £145,000 (£0), 2% on the part from £145,000 to £250,000 (£2,100), 5% on the part from £250,000 to £325,000 (£3,750), 10% on the part from £325,000 to £750,000 (£42,500), 12% on the part from £750,000 to £800,000 (£6,000). Plus the Additional Dwelling Supplement of 8% on the whole price (£64,000). Total £118,350, rounded down to the pound. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead."
+    },
+    "lglbtt-method-text": {
+      "text": "On a price of £800,000: 0% on the first £145,000 (£0), 2% on the part from £145,000 to £250,000 (£2,100), 5% on the part from £250,000 to £325,000 (£3,750), 10% on the part from £325,000 to £750,000 (£42,500), 12% on the part from £750,000 to £800,000 (£6,000). Plus the Additional Dwelling Supplement of 8% on the whole price (£64,000). Total £118,350, rounded down to the pound."
+    }
+  },
+  "invalid": {
+    "calc-heading": {
+      "text": "Calculator"
+    },
+    "lglbtt": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Enter the price, from £1 to £100,000,000. Your purchase Property price £ The price you’re paying for the home. Enter the price, from £1 to £100,000,000. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your LBTT LBTT to pay — Check the highlighted fields to see the LBTT to pay. Share of the price— Rate on the top part— Price plus LBTT— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor. How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Enter the price to see the breakdown. What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home—— First-time buyer—— Additional property—— How was this calculated? Enter the price to see how the figures are worked out. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead. Use these figures Buying in England or Northern Ireland? Work out Stamp Duty on this price Buying in Wales? Work out Land Transaction Tax on this price LBTT to pay —See results",
+      "data-calc": "lbtt",
+      "data-lgReadylglbttform": "true"
+    },
+    "lglbtt-form": {
+      "text": "01 — Your details Your home purchase Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates. Check the highlighted fields Enter the price, from £1 to £100,000,000. Your purchase Property price £ The price you’re paying for the home. Enter the price, from £1 to £100,000,000. You’re buying Your only home As a first-time buyer An additional property First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement. Results update as you type. Nothing you enter leaves your browser. Clear figures"
+    },
+    "lglbtt-form-title": {
+      "text": "Your home purchase"
+    },
+    "lglbtt-error-summary": {
+      "text": "Check the highlighted fields Enter the price, from £1 to £100,000,000."
+    },
+    "lglbtt-error-list": {
+      "text": "Enter the price, from £1 to £100,000,000."
+    },
+    "lglbtt-price@invalid": "true",
+    "lglbtt-price-hint": {
+      "text": "The price you’re paying for the home."
+    },
+    "lglbtt-price-error": {
+      "text": "Enter the price, from £1 to £100,000,000."
+    },
+    "lglbtt-results": {
+      "text": "02 — Your results Your LBTT LBTT to pay — Check the highlighted fields to see the LBTT to pay. Share of the price— Rate on the top part— Price plus LBTT— Tax-free part of the price— An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor.",
+      "data-state": "invalid"
+    },
+    "lglbtt-results-title": {
+      "text": "Your LBTT"
+    },
+    "lglbtt-headline-label": {
+      "text": "LBTT to pay"
+    },
+    "lglbtt-headline": {
+      "text": "—"
+    },
+    "lglbtt-status": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-summary": {
+      "text": "Check the highlighted fields to see the LBTT to pay."
+    },
+    "lglbtt-rate": {
+      "text": "—"
+    },
+    "lglbtt-top": {
+      "text": "—"
+    },
+    "lglbtt-total": {
+      "text": "—"
+    },
+    "lglbtt-extra-label": {
+      "text": "Tax-free part of the price"
+    },
+    "lglbtt-extra": {
+      "text": "—"
+    },
+    "lglbtt-breakdown": {
+      "text": "How your LBTT adds up LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price. LBTT on each part of the price Part of the priceRateTax Enter the price to see the breakdown."
+    },
+    "lglbtt-breakdown-title": {
+      "text": "How your LBTT adds up"
+    },
+    "lglbtt-table-caption": {
+      "text": "LBTT on each part of the price"
+    },
+    "lglbtt-table-body": {
+      "text": "Enter the price to see the breakdown."
+    },
+    "lglbtt-notes": {
+      "text": "",
+      "hidden": true
+    },
+    "lglbtt-compare-card": {
+      "text": "What other buyers pay at this price The same price for someone buying their only home, a first-time buyer and someone buying an additional property. Your only home—— First-time buyer—— Additional property——"
+    },
+    "lglbtt-compare-title": {
+      "text": "What other buyers pay at this price"
+    },
+    "lglbtt-compare-home": {
+      "text": "—"
+    },
+    "lglbtt-compare-home-note": {
+      "text": "—"
+    },
+    "lglbtt-compare-first": {
+      "text": "—"
+    },
+    "lglbtt-compare-first-note": {
+      "text": "—"
+    },
+    "lglbtt-compare-additional": {
+      "text": "—"
+    },
+    "lglbtt-compare-additional-note": {
+      "text": "—"
+    },
+    "lglbtt-method": {
+      "text": "How was this calculated? Enter the price to see how the figures are worked out. Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead."
+    },
+    "lglbtt-method-text": {
+      "text": "Enter the price to see how the figures are worked out."
+    }
+  }
+}
