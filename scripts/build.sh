@@ -29,7 +29,7 @@ npx --yes terser@5.51.2 "$v2_tmp/v2/lg-pdf.js" -c -m --comments '/^!/' --format 
 # Site-wide click tracking.
 npx --yes terser@5.51.2 "$v2_tmp/lg-track.js" -c -m --comments '/^!/' --format ascii_only=true -o dist/lg-track.min.js
 
-# Files must stay ASCII-only (see README).
+# Files must stay ASCII-only (see the Rules in README.md).
 if LC_ALL=C grep -nP '[^\x00-\x7F]' src/lg-calc.css src/lg-calc.js src/v2/*.js src/v2/*.css src/lg-dl.js src/lg-dl.css src/lg-track.js dist/lg-track.min.js dist/lg-calc.min.css dist/lg-calc.min.js dist/v2/*.min.js dist/v2/*.min.css dist/lg-dl.min.js; then
   echo "Non-ASCII characters found: write them as escapes (e.g. \\u00A3 in JS)." >&2
   exit 1
