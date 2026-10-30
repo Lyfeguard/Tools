@@ -4,7 +4,7 @@
      src/lg-calc.js by scripts/build-v2.js, so both versions share them.
      ------------------------------------------------------------------ */
   var LG = (window.LyfeCalculators = window.LyfeCalculators || {});
-  LG.version = '2.5.0';
+  LG.version = '2.5.1';
   LG.calculators = LG.calculators || {};
   // Each calculator's styles (from whichever file brought it), and the
   // elements on the page waiting for a calculator that hasn't loaded yet.
