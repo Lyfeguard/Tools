@@ -69,14 +69,14 @@
         var pay = amount(get('lgth-salary'));
         if (!pay) return null;
         var yearly = { week: 52, month: 12 }[checked(scope, 'lgth-period')] || 1;
-        return { '@lgma-applicants': 'one', 'lgma-income1': money2(pay * yearly) };
+        return { '@lgma-applicants': 'one', 'lgma-income': money2(pay * yearly) };
       },
     },
-    // What most lenders could offer: that loan and the price with the deposit.
+    // The home's price if one's entered; otherwise the price most lenders' offer would buy.
     'mortgage-affordability': {
       'mortgage': function (get, scope) {
         return {
-          'lgmc-price': amount(get('lgma-main-price')),
+          'lgmc-price': amount(get('lgma-price')) || amount(get('lgma-main-price')),
           'lgmc-deposit': amount(get('lgma-deposit')),
           'lgmc-rate': amount(get('lgma-rate')),
           'lgmc-term': amount(get('lgma-term')),
@@ -85,7 +85,7 @@
       },
       'stamp-duty': function (get, scope) {
         var purchase = checked(scope, 'lgma-purchase');
-        return { 'lgsd-price': amount(get('lgma-main-price')), '@lgsd-buyer': purchase === 'additional' ? 'additional' : purchase === 'moving' ? 'home' : 'first' };
+        return { 'lgsd-price': amount(get('lgma-price')) || amount(get('lgma-main-price')), '@lgsd-buyer': purchase === 'additional' ? 'additional' : purchase === 'moving' ? 'home' : 'first' };
       },
     },
     mortgage: {

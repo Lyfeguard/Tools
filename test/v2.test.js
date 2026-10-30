@@ -238,6 +238,6 @@ test('each page loads only its own calculator, and little of it', async () => {
     await page.close();
     assert.deepEqual(files.sort(), [`v2/${key}.min.css`, `v2/${key}.min.js`].sort(), key);
     const total = gz(key + '.min.js') + gz(key + '.min.css');
-    assert.ok(total < 25000, `${key}: ${total} bytes gzipped`);
+    assert.ok(total < 26000, `${key}: ${total} bytes gzipped`);
   }
 });

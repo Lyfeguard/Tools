@@ -5,6 +5,8 @@
 - [JavaScript](#javascript)
 - [Adding a calculator](#adding-a-calculator)
 - [Calculators that work together](#calculators-that-work-together)
+- [Mortgage calculators: who does what](#mortgage-calculators-who-does-what)
+- [Planned](#planned)
 
 ## Markup pattern
 
@@ -36,6 +38,9 @@ These are switched on by attributes in the markup (`src/v2/shared.js`).
 | `<p class="lgc-sr-only" aria-live="polite" data-announce="id id">` | Reads out those elements once typing pauses, and stays silent while any of them shows a dash. `data-announce-prefix` adds a lead-in. |
 | `<button type="button" data-clear>` | Puts every field back to how the page loaded it, then lets the calculator update. |
 | `<input data-format="money">` | Tidied to 12,500 style when the field loses focus. |
+| `<button type="button" class="lgc-tip-button" aria-expanded="false" aria-controls="id" aria-label="...">?</button>` with `<p id="id" class="lgc-tip-text" hidden>` | A (?) that shows or hides a short explanation. Put the label and the button in a `<div class="lgc-label-row">`. |
+
+**(?) explanations on every calculator.** Mortgage Affordability is the first to use them. The others will get them in a later release, wherever a figure needs explaining (how income is counted, what a band means), without adding text to the form itself.
 
 The "Download PDF summary" button needs no markup. It's added after the result bar's results panel and builds the PDF from what the calculator shows ([pdf-downloads.md](pdf-downloads.md)).
 
@@ -82,3 +87,23 @@ A calculator can pass its figures on to another with a "Use these figures" link.
 - **Stamp Duty, LBTT and LTT** each link to the other two nations' calculators, so the three pages point searchers to the right one. Wales has no first-time buyer relief, so a first-time buyer arrives there as buying their main home.
 
 `test/links.test.js` checks the markup has the links, and `test/handoff.test.js` checks every link fills the right fields.
+
+## Mortgage calculators: who does what
+
+The two mortgage pages answer different questions, so they don't compete in search.
+
+| | Mortgage (`mortgage`) | Mortgage Affordability (`mortgage-affordability`) |
+|---|---|---|
+| Question | "What will this mortgage cost me?" | "How much can I borrow, and can I afford it?" |
+| Starts from | A price, deposit, rate and term you already have | Your income, commitments and age |
+| Main result | The monthly repayment, total interest and total cost | The range lenders could offer, and what's left each month |
+| Searches | mortgage calculator, mortgage repayment calculator, interest-only mortgage calculator | how much can I borrow, mortgage affordability calculator, how much mortgage can I afford |
+| Links | Debt-to-Income | Mortgage (for the full repayment breakdown), Stamp Duty |
+
+Keep each page's SEO title, headings and written content on its own question. Affordability shows a payment to judge affordability, but leaves the repayment breakdown (interest, total cost, rate changes) to the Mortgage calculator, and links there.
+
+## Planned
+
+- **(?) explanations** on every calculator ([above](#shared-behaviours)).
+- **Buy-to-Let calculator**: how much a landlord could borrow, from the expected rent (lenders' rental cover tests) rather than income. Mortgage Affordability will link to it from its buy-to-let note once it exists.
+

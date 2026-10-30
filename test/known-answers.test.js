@@ -394,47 +394,63 @@ test('redundancy pay: statutory weeks, the cap and the 20-year limit (from 6 Apr
   assert.deepEqual(out, { acas: [7, 3500], young: [2, 800], capped: [29.5, 22154.5], max: [30, 22530], maxNI: [30, 23490], under2: [0, 0] });
 });
 
-test('mortgage affordability: income multiples, commitments and payments', async () => {
+test('mortgage affordability: income multiples, commitments, take-home pay and cash flow', async () => {
   const page = await openCalculator(browser, 'mortgage-affordability');
   const out = await page.evaluate(() => {
-    const { calculate, payment } = window.LyfeTools.mortgageAffordability;
-    const base = { loans: 0, cards: 0, cardsType: 'balance', other: 0, existing: 0, deposit: 0, term: 25, rate: 4.5, type: 'repayment' };
+    const { calculate, payment, takeHome, maxTerm } = window.LyfeTools.mortgageAffordability;
+    const tax = { region: 'ruk', pensionPct: 0, student: 0, deductions: 0 };
+    const base = { people: 1, variable: 0, loans: 0, cards: 0, cardsType: 'balance', other: 0, existing: 0, living: null, price: null, deposit: 0, term: 25, rate: 4.5, type: 'repayment', tax };
     const run = (o) => calculate(Object.assign({}, base, o));
-    const joint = run({ applicants: [{ basic: 70000, variable: 0 }, { basic: 55000, variable: 0 }], loans: 299, cards: 15000, deposit: 210000, term: 40 });
-    const bonus = run({ applicants: [{ basic: 40000, variable: 5000 }] });
-    const minimums = run({ applicants: [{ basic: 60000, variable: 0 }], cards: 200, cardsType: 'payments' });
+    const joint = run({ people: 2, income: 125000, loans: 299, cards: 15000, deposit: 210000, term: 40 });
+    const bonus = run({ income: 40000, variable: 5000 });
+    const minimums = run({ income: 60000, cards: 200, cardsType: 'payments' });
+    // 30,000 salary: tax (30,000 - 12,570) x 20% = 3,486; NI 17,430 x 8% = 1,394.40; take-home 25,119.60 a year.
+    const single = takeHome(30000, 1, tax);
+    // Two on 60,000 together: each 30,000, so twice the above.
+    const pair = takeHome(60000, 2, tax);
+    // 5% pension before tax on 30,000: 1,500; tax on 28,500 = 3,186; NI unchanged; take-home 23,919.60.
+    const pension = takeHome(30000, 1, Object.assign({}, tax, { pensionPct: 5 }));
+    // A 200,000 home with 20,000 down on 30,000: 180,000 needed, more than 4.5 x 30,000 (135,000) and 6 x (180,000) is exactly reached.
+    const priced = run({ income: 30000, price: 200000, deposit: 20000, living: 900 });
     return {
-      // 125,000 less a year of 299 + 3% of 15,000 = 749 a month (8,988): 116,012 at 4, 4.5, 6 and 7 times, rounded down.
       jointLoans: joint.points.map((p) => p.loan),
-      jointPrice: joint.main.price,
-      jointLtv: Math.round(joint.main.ltv * 10) / 10,
-      jointBand: joint.main.band,
-      // 8,988 a year at 4.5 and 6 times, rounded to the nearest 1,000.
       jointReduction: joint.reduction,
-      // Bonus counted at half: 40,000 + 2,500 = 42,500.
       bonusCounted: bonus.counted,
-      // Minimum payments as entered: 60,000 - 2,400 = 57,600.
       minimumsAssessed: minimums.assessed,
-      // 200,000 over 25 years at 4.5%: 1,111.66 a month; interest-only 750; at 0% 666.67.
       repayment: Math.round(payment(200000, 4.5, 25, 'repayment') * 100) / 100,
       interestOnly: payment(200000, 4.5, 25, 'interest-only'),
-      zero: Math.round(payment(200000, 0, 25, 'repayment') * 100) / 100,
-      // Commitments above income: nothing.
-      tooHigh: run({ applicants: [{ basic: 20000, variable: 0 }], loans: 2000 }).points.map((p) => p.loan),
+      terms: [maxTerm(30), maxTerm(38), maxTerm(58), maxTerm(70)],
+      single: Math.round(single.net * 100) / 100,
+      pair: Math.round(pair.net * 100) / 100,
+      pension: Math.round(pension.net * 100) / 100,
+      pricedLoan: priced.loan,
+      pricedLtv: priced.ltv,
+      pricedFit: priced.fit,
+      // Left: 2,093.30 take-home - 1,000.50 mortgage - 900 living = 192.80: 9.2% of take-home, under 10%, so amber.
+      pricedLeft: Math.round(priced.left * 100) / 100,
+      pricedStatus: priced.status,
+      tooHigh: run({ income: 20000, loans: 2000 }).points.map((p) => p.loan),
     };
   });
   await page.close();
   assert.deepEqual(out, {
+    // 125,000 less a year of 299 + 3% of 15,000 = 749 a month (8,988): 116,012 at 4, 4.5, 6 and 7 times, rounded down.
     jointLoans: [464000, 522000, 696000, 812000],
-    jointPrice: 732000,
-    jointLtv: 71.3,
-    jointBand: 75,
     jointReduction: [40000, 54000],
     bonusCounted: 42500,
     minimumsAssessed: 57600,
     repayment: 1111.66,
     interestOnly: 750,
-    zero: 666.67,
+    // Repaid by 75, and no longer than 40 years.
+    terms: [40, 37, 17, 5],
+    single: 2093.3,
+    pair: 4186.6,
+    pension: 1993.3,
+    pricedLoan: 180000,
+    pricedLtv: 90,
+    pricedFit: 'many',
+    pricedLeft: 192.8,
+    pricedStatus: 'tight',
     tooHigh: [0, 0, 0, 0],
   });
 });

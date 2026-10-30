@@ -2,7 +2,24 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.4.0 – Unreleased
+## v2.5.0 – Unreleased
+Mortgage Affordability rebuilt around cash flow, the Guides' and Insights' answer boxes fixed and redesigned, and plainer wording on Redundancy Pay. **In Webflow:** nothing to change; publish after the release. Review the Mortgage Affordability item's written content against the calculator (see the pull request).
+- **Answer boxes** (`lg-answer`, the Guides' Quick Answer and the Insights' Executive Summary): text is always Ocean inside them, whatever the site's own classes set (they made it white). The site's rich-text list styles (dashed rule, indent, gap) and padding stay out. A new look: rounded card, mint edge, a dotted label and mint bullet points. Tables and notes get the same protection.
+- **Mortgage Affordability:**
+  - Age first (the older applicant's for two): the term list only offers terms that end by 75, with a note that lenders' age limits vary.
+  - Two applicants enter combined basic pay and combined bonus pay.
+  - Credit cards: choose the balance or minimum payments before entering the amount.
+  - Expected property price (optional): the loan the home needs, its loan-to-value, and whether it's within most, many or only specialist lenders' range.
+  - Everyday living costs (optional), for the cash flow.
+  - Results: a monthly cash flow (take-home pay, mortgage, debts, spending, what's left), coloured green, amber or red; figures to try (price, deposit, loans and rate) inside the results, kept in step with the form; a rate-rise slider up to +5 points that shows where the colour changes; and the take-home pay assumptions, adjustable (where you pay tax, pension, student loan and other deductions).
+  - (?) explanations on the harder questions, a shared component the other calculators will get later.
+  - "Moving home", a banner for second homes (bigger deposits and tighter checks), and the interest rate and type of rate side by side at the same height.
+- **Shared styles:** every choice group (legend and switch) now lines up with the fields beside it: 8px under the legend, and switches 52px tall like inputs. New colour tokens for good, tight and short results.
+- **Redundancy Pay:** plainer labels and messages ("Your age", "Years with your employer", "Weeks of pay").
+- `docs/calculators.md`: the shared (?) component, how the two mortgage calculators divide the work, and what's planned (Buy-to-Let, (?) on every calculator).
+- Page weight: the shared code and content-block styles bring the heaviest page (Net Worth) to about 25 KB gzipped, so the test budget is now 26 KB (was 25 KB), and the docs give 16 to 25 KB.
+
+## v2.4.0 – 2026-10-30
 Mortgage Affordability calculator. **In Webflow:** the Tools item (Mortgage Affordability Calculator) is already created; the release workflow writes its markup, Component Key and Release, and adds a "Use these figures" link to the Take-Home Pay page. Then fill in the new item's content, Icon and Social Image, and publish.
 - `mortgage-affordability`: how much lenders could offer, as a range rather than one figure: most lenders (4 to 4.5 times income), many lenders for higher incomes or bigger deposits (up to 6 times) and a few specialist lenders (up to 7 times). No lender names or rates.
 - Questions people can answer: one or two applicants, basic pay and bonus, overtime and commission (counted at 50%, with a note that many lenders count 60% to 70% and some all of it), loan and car finance repayments, credit cards (3% of the balance, or the minimum payments), other committed spending (as lenders define it), and for a second home the existing mortgage. Commitments come off a year's income before multiplying, and the page says this is cautious.

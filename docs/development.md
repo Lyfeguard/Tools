@@ -48,7 +48,7 @@ npx playwright install chromium
 |---|---|
 | `known-answers.test.js` | Results against figures worked out by hand: tax, loan and mortgage formulas, IHT bands and so on |
 | `calculators.test.js` | Every figure, message and chart value against the snapshots in `test/snapshots/` |
-| `v2.test.js` | Each v2 calculator against v1: figures, look on the site, look without JavaScript, text and headings, immunity to the site's CSS, and page weight (its own two files, under 25 KB gzipped) |
+| `v2.test.js` | Each v2 calculator against v1: figures, look on the site, look without JavaScript, text and headings, immunity to the site's CSS, and page weight (its own two files, under 26 KB gzipped) |
 | `styles.test.js` | Calculators don't depend on the Webflow wrapper's styles |
 | `handoff.test.js`, `links.test.js` | "Use these figures" links: present in the markup, and filling the right fields |
 | `pdf.test.js` | Every calculator's PDF (read back with `pdftotext` and `pdfinfo`), the dialog, its hidden fields and tracking, and the Guides block |

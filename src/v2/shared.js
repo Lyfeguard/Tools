@@ -96,6 +96,23 @@
       });
     });
 
+    // (?) buttons: <button class="lgc-tip-button" aria-expanded="false"
+    // aria-controls="id"> shows or hides the explanation it controls.
+    scope.querySelectorAll('.lgc-tip-button[aria-controls]').forEach(function (button) {
+      var tip = scope.getElementById(button.getAttribute('aria-controls'));
+      if (!tip) return;
+      function show(open) {
+        button.setAttribute('aria-expanded', open ? 'true' : 'false');
+        tip.hidden = !open;
+      }
+      button.addEventListener('click', function () {
+        show(button.getAttribute('aria-expanded') !== 'true');
+      });
+      button.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') show(false);
+      });
+    });
+
     // Money fields are tidied to 12,500 style when you leave them.
     scope.addEventListener(
       'focusout',
