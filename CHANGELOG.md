@@ -2,7 +2,15 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.1.0 (and v1.9.0) – Unreleased
+## v2.1.1 – Unreleased
+Stamp Duty: the non-UK resident surcharge, checked against GOV.UK. **In Webflow:** nothing to do by hand; the release workflow stages the new Stamp Duty markup. Then publish.
+- The 2% non-resident surcharge starts at £40,000, like the surcharge for additional properties. Below that, a note says it doesn't apply.
+- The hint under "I'm not a UK resident" covers joint buyers: anyone buying with you who isn't UK resident makes the purchase non-resident, but a married couple or civil partners count as UK resident if either of them is.
+- A note on claiming the 2% back after 183 days in the UK in a 365-day period, from a year before buying to a year after.
+- `data/2026-27.json`: `$checked` records the rates confirmed on GOV.UK, Revenue Scotland and the Welsh Revenue Authority, and what's still to confirm.
+- Tests (343): GOV.UK's worked example (a non-resident buying for £700,000 pays £39,000), and the surcharge's £40,000 start.
+
+## v2.1.0 (and v1.9.0) – 2026-10-30
 Three new calculators for the tax on buying a home, one per nation, sharing one engine. **In Webflow:** the three Tools items (Stamp Duty, LBTT, Land Transaction Tax) are already created; the release workflow writes their markup, Component Key and Release. Then publish.
 - `stamp-duty` (England and Northern Ireland: Stamp Duty Land Tax), `lbtt` (Scotland: Land and Buildings Transaction Tax) and `land-transaction-tax` (Wales). Each works out the tax on a price for someone buying their only or main home, a first-time buyer (not in Wales, which has no relief) or someone buying an additional property, and Stamp Duty also for non-UK residents. Each shows the tax on each band, what other kinds of buyer pay at the same price, and how it was worked out. Each page calculates only its own nation's tax, so the pages don't compete in search.
 - Rates in `data/2026-27.json` (`propertyTax`): bands, first-time buyer relief, the 5% surcharge and 2% non-resident surcharge (SDLT), the 8% Additional Dwelling Supplement (LBTT) and the higher residential rates (LTT), with surcharges from £40,000. The total is rounded down to the pound, as the tax authorities do.

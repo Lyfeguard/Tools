@@ -314,6 +314,7 @@ module.exports = {
     additionalUnder40k: [
       ['fill', '#lgsd-price', '35000'],
       ['check', 'input[name="lgsd-buyer"][value="additional"]'],
+      ['check', '#lgsd-nonres'],
     ],
     invalid: [
       ['fill', '#lgsd-price', '350k'],
