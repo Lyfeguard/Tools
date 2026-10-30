@@ -2,6 +2,10 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
+## v2.5.1 – Unreleased
+Clearer age question on Mortgage Affordability. **In Webflow:** nothing to change; publish after the release.
+- **Mortgage Affordability:** the age label stays "Your age" for one or two buyers (it read "Age of the older of you" for two). The hint says "Buying with someone? Use the older person's age."
+
 ## v2.5.0 – Unreleased
 Mortgage Affordability rebuilt around cash flow, the Guides' and Insights' answer boxes fixed and redesigned, and plainer wording on Redundancy Pay. **In Webflow:** nothing to change; publish after the release. Review the Mortgage Affordability item's written content against the calculator (see the pull request).
 - **Answer boxes** (`lg-answer`, the Guides' Quick Answer and the Insights' Executive Summary): text is always Ocean inside them, whatever the site's own classes set (they made it white). The site's rich-text list styles (dashed rule, indent, gap) and padding stay out. A new look: rounded card, mint edge, a dotted label and mint bullet points. Tables and notes get the same protection.

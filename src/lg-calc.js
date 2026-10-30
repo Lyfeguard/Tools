@@ -5205,7 +5205,6 @@
       function arrange(age) {
         const joint = choice('applicants', 'one') === 'two';
         const additional = choice('purchase', 'first') === 'additional';
-        write('age-label', joint ? 'Age of the older of you' : 'Your age');
         write('income-label', joint ? 'Combined basic salary before tax' : 'Basic salary before tax');
         write('variable-label', joint ? 'Combined bonus, overtime and commission' : 'Bonus, overtime and commission');
         const payments = choice('cards-type', 'balance') === 'payments';
