@@ -17,6 +17,7 @@ How the calculators are built, served and kept safe for search engines.
 | `dist/v2/<key>.min.js` | Tools template head | `@{{Release}}` |
 | `dist/lg-track.min.js` | Site-wide footer, every page | `@2` |
 | `dist/lg-dl.min.js` | Guides and Insights embeds, and calculators when the PDF button is pressed | `@2` on articles; the calculator's release on calculators |
+| `dist/lg-content.min.css` | Guides and Insights template heads: the content blocks in rich text ([content-blocks.md](content-blocks.md)) | `@2` |
 | `dist/v2/lg-pdf.min.js` and the Manrope fonts | Calculators, when a PDF is downloaded | The calculator's release |
 
 All of them come from jsDelivr (`https://cdn.jsdelivr.net/gh/Lyfeguard/tools@<version>/...`). A calculator page loads 10 to 21 KB gzipped. Nothing else loads until someone asks for a PDF.
@@ -65,6 +66,7 @@ Each piece of code is written once. `npm run build` runs `scripts/build.sh`, whi
 | `src/v2/pdf.js` | The PDF writer |
 | `src/lg-dl.js`, `lg-dl.css` | The email-gated download dialog |
 | `src/lg-track.js` | The site-wide click tracking |
+| `src/lg-content.css` | The content blocks in rich text: tables, short answers and notes |
 
 ### Each calculator's styles
 
@@ -82,13 +84,14 @@ A calculator gets only the rules of `src/lg-calc.css` whose classes and ids it u
 | `dist/v2/lg-pdf.min.js` | The PDF writer |
 | `dist/lg-dl.min.js` | The download dialog, with its styles |
 | `dist/lg-track.min.js` | The click tracking |
+| `dist/lg-content.min.css` | The content blocks' styles (each calculator's page stylesheet includes them too) |
 | `dist/lg-calc.min.css`, `dist/lg-calc.min.js` | The v1 reference build |
 
 CI rebuilds `dist/` on every pull request and fails if it differs from what's committed.
 
 ## The v1 reference build
 
-v1 put every calculator into one stylesheet and one script, outside any shadow root. The site no longer loads it. It's still built, at 1.9.1, because the tests use it as the reference:
+v1 put every calculator into one stylesheet and one script, outside any shadow root. The site no longer loads it. It's still built, at 1.9.2, because the tests use it as the reference:
 
 - `test/calculators.test.js` checks v1's figures against the snapshots;
 - `test/v2.test.js` checks v2 gives the same figures, text and look as v1;

@@ -25,7 +25,7 @@ Each calculator page is a Tools item. The template's head loads only that page's
 - **The markup stays in the page.** The calculator's HTML is in the item's Calculator markup field, so crawlers read it without running JavaScript. The script moves it into a shadow root, where the site's CSS can't change it. SEO is the reason the calculators exist, so nothing here may change what search engines see.
 - **Small pages.** Each page loads only its own calculator, 10 to 21 KB gzipped.
 - **Releases.** Publishing a GitHub release runs the **Release to Webflow** workflow. The workflow points every Tools item at the new tag and writes the markup from this repository, as staged changes. You then publish in Webflow. No code in Webflow changes between releases.
-- **Site-wide files.** The click tracking and the Guides and Insights download dialog load from `@2`, the newest 2.x release.
+- **Site-wide files.** The click tracking, the Guides and Insights download dialog and the content blocks' styles load from `@2`, the newest 2.x release.
 
 [docs/architecture.md](docs/architecture.md) explains all of this in detail.
 
@@ -60,9 +60,9 @@ The key names the calculator's files (`dist/v2/<key>.min.js`, `markup/<key>.html
 | `dist/` | Built, minified files that the site loads. Rebuild them with `npm run build`; never edit them by hand. |
 | `data/` | Figures that change: each tax year's rates and thresholds, and the ONS salary tables. |
 | `markup/` | The HTML for each calculator, written to its Tools item by the release workflow. `links.js` lists the "Use these figures" links. |
-| `scripts/` | The build, the CMS sync, the style comparison and the social image maker. |
+| `scripts/` | The build, the CMS sync, the style comparison, the social image maker and the CSV-to-table converter. |
 | `test/` | Browser tests for every calculator, with snapshots and fixtures. |
-| `webflow/` | Code that goes into Webflow: the Tools template head, the Guides and Insights download embeds, and the Tools item IDs. |
+| `webflow/` | Code that goes into Webflow: the Tools, Guides and Insights template heads, the Guides and Insights download embeds, and the Tools item IDs. |
 | `pdf-generator/` | A separate package that builds the Guide and Insight PDFs from the CMS ([its README](pdf-generator/README.md)). |
 | `.github/workflows/` | `check.yml` (build and tests on every pull request), `release.yml` (Release to Webflow) and `guide-pdfs.yml` (hourly Guide PDFs). |
 | `CHANGELOG.md` | What changed in each release. |
@@ -100,6 +100,7 @@ The PDF tests also need poppler (`apt install poppler-utils` or `brew install po
 | [Webflow](docs/webflow.md) | Which fields people edit and which code owns, the template, embeds, site-wide code and social images |
 | [Data](docs/data.md) | The data files and the April update checklist |
 | [Analytics](docs/analytics.md) | The events sent to GTM and GA4, and the GTM set-up |
+| [Content blocks](docs/content-blocks.md) | Tables, short answers and notes in rich text, and writing for featured snippets |
 | [PDFs and downloads](docs/pdf-downloads.md) | The email-gated dialog, the calculator PDF summaries and the HubSpot forms |
 | [Guide and Insight PDFs](pdf-generator/README.md) | The separate generator for article PDFs |
 

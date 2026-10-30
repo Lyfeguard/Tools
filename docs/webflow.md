@@ -5,6 +5,7 @@ How the site uses this repository, and who edits what.
 - [Overview](#overview)
 - [Tools collection fields](#tools-collection-fields)
 - [Tools template](#tools-template)
+- [Guides and Insights template heads](#guides-and-insights-template-heads)
 - [Guides and Insights download embeds](#guides-and-insights-download-embeds)
 - [Site-wide custom code](#site-wide-custom-code)
 - [Social sharing images](#social-sharing-images)
@@ -55,6 +56,10 @@ Page settings > Custom code > Inside `<head>` tag holds [`webflow/template-head.
 
 - The Calculator markup field sits in the template's embed slot (`.lg-tools-embed-slot`). Keep `overflow-x: auto` off that slot: it stops the sticky result bar sticking on phones.
 - The calculators style and lay themselves out, so they don't depend on the template's classes.
+
+## Guides and Insights template heads
+
+Page settings > Custom code > Inside `<head>` tag, on both templates, holds [`webflow/content-head.html`](../webflow/content-head.html): one line loading `dist/lg-content.min.css` from `@2`. It styles the tables, short answers and notes written in the rich text ([content-blocks.md](content-blocks.md)). It changes only for a new major version.
 
 ## Guides and Insights download embeds
 

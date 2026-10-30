@@ -5,6 +5,8 @@
 //   lg-pdf.js    the calculators' PDF maker (src/v2/pdf.js), with the logo
 //                from pdf-generator/assets/logo as PDF drawing operators
 //   lg-track.js  the site-wide click tracking (src/lg-track.js)
+//   lg-content.min.css  the content blocks for rich text (src/lg-content.css),
+//                written straight to dist/ (Guides and Insights templates)
 // Run through npm run build (scripts/build.sh), which minifies them.
 'use strict';
 const fs = require('fs');
@@ -82,4 +84,5 @@ fs.mkdirSync(path.join(out, 'v2'), { recursive: true });
 fs.writeFileSync(path.join(out, 'lg-dl.js'), ascii(read('src/lg-dl.js').replace('VERSION', 'v' + version).replace("'/* @css */'", () => JSON.stringify(css('src/lg-dl.css')))));
 fs.writeFileSync(path.join(out, 'v2/lg-pdf.js'), ascii(read('src/v2/pdf.js').replace('VERSION', 'v' + version).replace("'/* @logo */'", () => JSON.stringify(logo('pdf-generator/assets/logo/lyfeguard-white.svg')))));
 fs.writeFileSync(path.join(out, 'lg-track.js'), ascii(read('src/lg-track.js').replace('VERSION', 'v' + version)));
+fs.writeFileSync(path.join(ROOT, 'dist/lg-content.min.css'), '/*! Lyfeguard content blocks | lg-content.css | v' + version + ' */\n' + css('src/lg-content.css') + '\n');
 console.log('Wrote lg-dl.js, lg-track.js and v2/lg-pdf.js in ' + path.relative(process.cwd(), out));
