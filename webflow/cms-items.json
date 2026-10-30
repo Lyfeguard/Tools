@@ -62,6 +62,10 @@
     "land-transaction-tax": {
       "slug": "land-transaction-tax-calculator",
       "id": "6ae483ac75d1434eb1d8d5b2"
+    },
+    "redundancy-pay": {
+      "slug": "redundancy-pay",
+      "id": "6ae4d30ff02060279c31d562"
     }
   }
 }

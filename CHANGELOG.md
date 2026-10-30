@@ -2,7 +2,13 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
-## v2.2.1 – Unreleased
+## v2.3.0 – Unreleased
+Redundancy Pay calculator. **In Webflow:** the Tools item (Redundancy Pay Calculator) is already created; the release workflow writes its markup, Component Key and Release. Then fill in its content, Icon and Social Image, and publish.
+- `redundancy-pay`: statutory redundancy pay from age, complete years of service and pay (yearly, monthly or weekly), for Great Britain or Northern Ireland. Shows the weeks' pay, the weekly pay counted (capped), the years counted (up to 20), each age band's share, and notes on the cap, the 20-year limit, the £30,000 tax-free allowance and contractual pay. Under 2 years' service gets nothing, and says so.
+- `data/2026-27.json` (`redundancy`): the weekly pay caps from 6 April 2026 (£751 in Great Britain, £783 in Northern Ireland, to be confirmed on nidirect), the 2- and 20-year limits and the age bands.
+- Tests (373): hand-worked answers (including the maximum in each nation), snapshots for six scenarios, and the data.
+
+## v2.2.1 – 2026-10-30
 The Insights' Executive Summary. **In Webflow:** nothing to do for this release beyond publishing; set up the fields and template elements as in [`docs/content-blocks.md`](docs/content-blocks.md#quick-answer-and-executive-summary).
 - `lg-answer lg-summary`: the short-answer box labelled "Executive summary", with its points as a list, for an Executive Summary field in the Insights template. Lists inside any `lg-answer` are styled.
 - `docs/content-blocks.md`: every class at a glance (what it is, where it goes, whether it's an embed or a template element), and how to set up the Guides' Quick Answer and the Insights' Executive Summary.

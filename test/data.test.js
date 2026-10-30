@@ -49,6 +49,13 @@ test('the tax on buying a home: bands rise and end open-ended, rates are fractio
   for (const n of ['sdlt', 'lbtt', 'ltt']) assert.ok(amount(p[n].surchargeFrom));
 });
 
+test('redundancy pay: caps, limits and bands', () => {
+  const r = year.redundancy;
+  assert.ok(amount(r.weeklyPayCap) && amount(r.weeklyPayCapNI) && amount(r.taxFree));
+  assert.ok(r.minYears === 2 && r.maxYears === 20);
+  assert.deepEqual(r.bands.map((b) => [b.fromAge, b.weeks]), [[41, 1.5], [22, 1], [0, 0.5]]);
+});
+
 test('the salary tables: every age group and sex, 12 figures in order', () => {
   for (const sex of ['all', 'male', 'female']) {
     for (const age of ons.ages.concat('all')) {

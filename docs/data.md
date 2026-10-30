@@ -12,7 +12,7 @@ Figures that change over time live in `data/`, not in the code.
 
 | File | Contents | Used by |
 |---|---|---|
-| `data/2026-27.json` | The 2026/27 tax year: Income Tax (including Scottish rates), National Insurance, student loans, auto-enrolment, the High Income Child Benefit Charge, Inheritance Tax bands, pensions (the lump sum allowance and the full State Pension), and the tax on buying a home (`propertyTax`: Stamp Duty, LBTT and LTT) | Every calculator that uses tax figures, through `LG.taxYear` and `LG.ukTax` |
+| `data/2026-27.json` | The 2026/27 tax year: Income Tax (including Scottish rates), National Insurance, student loans, auto-enrolment, the High Income Child Benefit Charge, Inheritance Tax bands, pensions (the lump sum allowance and the full State Pension), statutory redundancy pay (`redundancy`: the weekly pay caps for Great Britain and Northern Ireland), and the tax on buying a home (`propertyTax`: Stamp Duty, LBTT and LTT) | Every calculator that uses tax figures, through `LG.taxYear` and `LG.ukTax` |
 | `data/ons-ashe-2026.json` | ONS ASHE salary tables by age, for everyone, men and women | Salary by Age |
 
 Keys that start with `$` are notes (`$about`, `$checked`, `$source`), and the build leaves them out of the built files. Record in `$checked` when and against what the figures were last checked.
@@ -36,7 +36,7 @@ Stamp Duty, LBTT and LTT rates change when the UK, Scottish or Welsh government 
 ### In this repository
 
 1. **Copy the data file** to the new year: `data/2026-27.json` to `data/2027-28.json`.
-2. **Update every figure** from GOV.UK, including the Scottish rates and student loan thresholds, and update `$checked`.
+2. **Update every figure** from GOV.UK, including the Scottish rates, student loan thresholds and the redundancy pay caps (Great Britain and Northern Ireland), and update `$checked`.
 3. **Point the marker** in `src/lg-calc.js` at the new file (`/* @data:2027-28 */`).
 4. **Rebuild and test.** Where results change on purpose, update the snapshots (`UPDATE_SNAPSHOTS=1 npm test`) and review the diff.
 5. **Release** ([releasing.md](releasing.md)).
