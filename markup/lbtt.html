@@ -1,0 +1,98 @@
+<lg-calculator key="lbtt">
+<div class="lg-calc" data-calc="lbtt" id="lglbtt">
+  <form id="lglbtt-form" class="lgc-card" novalidate="" aria-labelledby="lglbtt-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lglbtt-form-title">Your home purchase</h2>
+    <p class="lgc-intro">Enter the price of a home you’re buying in Scotland. We’ll work out the Land and Buildings Transaction Tax (LBTT), Scotland’s version of Stamp Duty, at the current rates.</p>
+
+    <div id="lglbtt-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
+      <p class="lgc-error-summary-title">Check the highlighted fields</p>
+      <ul id="lglbtt-error-list"></ul>
+    </div>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your purchase</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field lgc-field-full">
+          <label for="lglbtt-price">Property price</label>
+          <div class="lgc-input"><span class="lgc-affix" aria-hidden="true">£</span><input id="lglbtt-price" name="price" type="text" inputmode="decimal" enterkeyhint="done" autocomplete="off" placeholder="350,000" data-format="money" aria-describedby="lglbtt-price-hint lglbtt-price-error"></div>
+          <p id="lglbtt-price-hint" class="lgc-hint">The price you’re paying for the home.</p>
+          <p id="lglbtt-price-error" class="lgc-field-error" hidden=""></p>
+        </div>
+        <fieldset class="lgc-choice-group lgc-field-full">
+          <legend>You’re buying</legend>
+          <div class="lgc-switch lgc-switch-compact">
+            <label class="lgc-switch-option"><input type="radio" name="lglbtt-buyer" value="home" checked=""><span>Your only home</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lglbtt-buyer" value="first"><span>As a first-time buyer</span></label>
+            <label class="lgc-switch-option"><input type="radio" name="lglbtt-buyer" value="additional"><span>An additional property</span></label>
+          </div>
+          <p class="lgc-hint">First-time buyers have never owned a home, in the UK or anywhere else. An additional property is one you’ll own alongside another home, such as a second home or a buy-to-let, and pays the Additional Dwelling Supplement.</p>
+        </fieldset>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you type. Nothing you enter leaves your browser.</p>
+      <button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lglbtt-results" class="lgc-card lgc-card-dark" aria-labelledby="lglbtt-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lglbtt-results-title">Your LBTT</h2>
+    <p class="lgc-result-label" id="lglbtt-headline-label">LBTT to pay</p>
+    <p class="lgc-result-value" id="lglbtt-headline">—</p>
+    <p class="lgc-badge" id="lglbtt-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lglbtt-summary">Enter the price of the home to see the LBTT to pay.</p>
+    <dl class="lgc-stats">
+      <div><dt>Share of the price</dt><dd id="lglbtt-rate">—</dd></div>
+      <div><dt>Rate on the top part</dt><dd id="lglbtt-top">—</dd></div>
+      <div><dt>Price plus LBTT</dt><dd id="lglbtt-total">—</dd></div>
+      <div><dt id="lglbtt-extra-label">Tax-free part of the price</dt><dd id="lglbtt-extra">—</dd></div>
+    </dl>
+    <p class="lgc-small">An estimate for one person or a couple buying a whole home. It doesn’t cover shared ownership, companies or trusts, mixed-use property, or reliefs such as for buying several homes at once. You normally pay within 30 days of completion, usually through your solicitor.</p>
+    <p class="lgc-sr-only" aria-live="polite" data-announce="lglbtt-headline-label lglbtt-headline lglbtt-summary"></p>
+  </section>
+
+  <section id="lglbtt-breakdown" class="lgc-card" aria-labelledby="lglbtt-breakdown-title">
+    <h3 id="lglbtt-breakdown-title">How your LBTT adds up</h3>
+    <p class="lgc-intro">LBTT is charged on each part of the price that falls in a band, like income tax. The Additional Dwelling Supplement is charged on the whole price.</p>
+    <div class="lgc-table-wrap lgc-table-fit" tabindex="0" role="region" aria-labelledby="lglbtt-table-caption">
+      <table class="lgc-table">
+        <caption id="lglbtt-table-caption">LBTT on each part of the price</caption>
+        <thead><tr><th scope="col">Part of the price</th><th scope="col">Rate</th><th scope="col">Tax</th></tr></thead>
+        <tbody id="lglbtt-table-body"><tr><td colspan="3">Enter the price to see the breakdown.</td></tr></tbody>
+      </table>
+    </div>
+    <ul id="lglbtt-notes" class="lgc-notes" hidden=""></ul>
+  </section>
+
+  <section id="lglbtt-compare-card" class="lgc-card" aria-labelledby="lglbtt-compare-title">
+    <h3 id="lglbtt-compare-title">What other buyers pay at this price</h3>
+    <p class="lgc-intro">The same price for someone buying their only home, a first-time buyer and someone buying an additional property.</p>
+    <div class="lgc-compare">
+      <div class="lgc-compare-item lgc-compare-current"><span class="lgc-compare-label">Your only home</span><strong id="lglbtt-compare-home">—</strong><span id="lglbtt-compare-home-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span class="lgc-compare-label">First-time buyer</span><strong id="lglbtt-compare-first">—</strong><span id="lglbtt-compare-first-note" class="lgc-compare-note">—</span></div>
+      <div class="lgc-compare-item"><span class="lgc-compare-label">Additional property</span><strong id="lglbtt-compare-additional">—</strong><span id="lglbtt-compare-additional-note" class="lgc-compare-note">—</span></div>
+    </div>
+  </section>
+
+  <details id="lglbtt-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lglbtt-method-text">Enter the price to see how the figures are worked out.</p>
+      <p class="lgc-small">Uses the residential rates for Scotland: 0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. First-time buyer relief raises the 0% band to £175,000, saving up to £600, whatever the price. An additional property costing £40,000 or more also pays the Additional Dwelling Supplement of 8% of the whole price. The total is rounded down to the pound. England and Northern Ireland have Stamp Duty Land Tax and Wales has Land Transaction Tax instead.</p>
+    </div>
+  </details>
+
+  <nav class="lgc-next" aria-label="Use these figures in another calculator">
+    <h2 class="lgc-next-title">Use these figures</h2>
+    <ul>
+      <li><a href="/tools/stamp-duty-calculator" data-handoff="stamp-duty">Buying in England or Northern Ireland? Work out Stamp Duty on this price</a></li>
+      <li><a href="/tools/land-transaction-tax-calculator" data-handoff="land-transaction-tax">Buying in Wales? Work out Land Transaction Tax on this price</a></li>
+    </ul>
+  </nav>
+
+  <div class="lgc-sticky" data-source="lglbtt-headline" data-results="lglbtt-results" hidden=""><p><span class="lgc-sticky-label">LBTT to pay</span> <strong data-sticky-value="">—</strong></p><a href="#lglbtt-results" class="lgc-sticky-link">See results</a></div>
+</div>
+</lg-calculator>

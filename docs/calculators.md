@@ -53,7 +53,7 @@ Each calculator's module lives in `src/lg-calc.js`, between `/* @v2:<key>-start 
 
 1. Write `markup/<key>.html` to the [pattern](#markup-pattern), wrapped in `<lg-calculator key="<key>">`.
 2. Add its styles to `src/lg-calc.css`, using the design tokens, and its module to `src/lg-calc.js` between the `@v2:<key>` comments.
-3. Add the key to `CALCULATORS` in `scripts/build-v2.js`.
+3. Add the key to `CALCULATORS` in `scripts/build-v2.js`. If calculators share code, put it between its own `@v2:<name>` comments and list it for each of them in `USES` there, as the Stamp Duty, LBTT and LTT calculators do with `property-tax`.
 4. Add its scenarios to `test/scenarios.js`, and hand-worked answers to `test/known-answers.test.js`.
 5. Build, then create the snapshots with `UPDATE_SNAPSHOTS=1 npm test`, and review them.
 6. In Webflow, create the Tools item and fill in its editable fields ([webflow.md](webflow.md#tools-collection-fields)). Add its key, slug and item ID to `webflow/cms-items.json`.
@@ -72,10 +72,12 @@ A calculator can pass its figures on to another with a "Use these figures" link.
 | Salary by Age | Take-Home Pay |
 | Emergency Fund | Savings Goal |
 | Net Worth | Inheritance Tax |
+| Stamp Duty, LBTT, LTT | Each other (the price and the kind of buyer) |
 
 - **The links are in the HTML.** `markup/links.js` lists them. After you edit it, run `node scripts/links.js`, which writes them into `markup/<key>.html` as plain internal links, just before the result bar. `node scripts/links.js --check` lists any markup that's out of date.
 - **The figures travel in the URL fragment.** As a link is opened (click, middle-click, "Open in new tab", keyboard or long press), `src/v2/handoff.js` adds the figures after the `#`. The fragment is never sent to the server, and the click tracking records the link without it.
 - **The receiving calculator checks what it gets.** It accepts only plain numbers, and only into its own fields. It says where the figures came from, then takes them out of the address.
 - **Net Worth** hands over figures only when they were entered for one person, because Inheritance Tax works on one person's estate. Its note asks for the questions about the home and who inherits, which the estimate needs.
+- **Stamp Duty, LBTT and LTT** each link to the other two nations' calculators, so the three pages point searchers to the right one. Wales has no first-time buyer relief, so a first-time buyer arrives there as buying their main home.
 
 `test/links.test.js` checks the markup has the links, and `test/handoff.test.js` checks every link fills the right fields.

@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.js | v1.8.6
+ * Lyfeguard calculators | lg-calc.js | v1.9.0
  * One file for every /tools calculator. Each module starts only when its
  * markup is on the page, so the same file is safe to load on every calculator.
  * Load with: <script src=".../lg-calc.js" defer></script>
@@ -8,7 +8,7 @@
   'use strict';
 
   var LG = (window.LyfeTools = window.LyfeTools || {});
-  LG.version = '1.8.6';
+  LG.version = '1.9.0';
 
   /* ------------------------------------------------------------------
      Core: start-up helpers
@@ -4481,4 +4481,314 @@
     }
   });
   /* @v2:take-home-pay-end */
+
+  /* ==================================================================
+     Tax on buying a home: Stamp Duty, LBTT and LTT  [property-tax]
+     One engine and one page set-up shared by three calculators, one for
+     each nation's tax, with the rates in data/ (propertyTax). Built into
+     the component with each of them (scripts/build-v2.js, USES).
+     ================================================================== */
+  /* @v2:property-tax-start */
+  (function () {
+    'use strict';
+    const RATES = LG.taxYear.propertyTax;
+    const pounds = (n) => LG.money(Math.round(n), 0);
+
+    // Tax on each slice of the price: [{ from, to, rate, tax }]. add is a
+    // surcharge on every slice.
+    function slices(price, bands, add) {
+      const out = [];
+      let from = 0;
+      for (const b of bands) {
+        const top = b.upTo === null ? Infinity : b.upTo;
+        if (price <= from) break;
+        const to = Math.min(price, top);
+        const rate = b.rate + add;
+        out.push({ from, to, rate, tax: (to - from) * rate });
+        from = top;
+      }
+      return out;
+    }
+
+    // buyer: 'home' (your only or main home), 'first' (first-time buyer) or
+    // 'additional' (a second home or buy-to-let). nonResident: SDLT only.
+    // Returns the tax (whole pounds, rounded down as the tax authorities do),
+    // the slices, any supplement charged on the whole price, and what applied.
+    function calculate(nation, price, buyer, nonResident) {
+      const r = RATES[nation];
+      const surcharged = buyer === 'additional' && price >= r.surchargeFrom;
+      let bands = r.bands;
+      let add = 0;
+      let relief = false;
+      let supplement = 0;
+      if (nation === 'sdlt') {
+        relief = buyer === 'first' && price <= r.firstTimeBuyer.maxPrice;
+        if (relief) bands = r.firstTimeBuyer.bands;
+        if (surcharged) add += r.additionalSurcharge;
+        if (nonResident) add += r.nonResidentSurcharge;
+      } else if (nation === 'lbtt') {
+        relief = buyer === 'first';
+        if (relief) bands = [{ upTo: r.firstTimeBuyerNilBand, rate: 0 }].concat(bands.filter((b) => b.upTo === null || b.upTo > r.firstTimeBuyerNilBand));
+        if (surcharged) supplement = price * r.additionalDwellingSupplement;
+      } else if (surcharged) {
+        bands = r.higherBands;
+      }
+      const rows = slices(price, bands, add);
+      const exact = rows.reduce((t, s) => t + s.tax, 0) + supplement;
+      return { nation, price, buyer, nonResident: Boolean(nonResident), rows, supplement, relief, surcharged, tax: Math.floor(exact + 1e-9) };
+    }
+
+    // The page for one nation's calculator. o: { key, prefix, nation, name,
+    // short (the tax's name in sentences), buyers: { value: label } }.
+    function start(o) {
+      const FIELDS = { price: { min: 1, max: 100000000, msg: 'Enter the price, from \u00A31 to \u00A3100,000,000.' } };
+      LG.start({
+        name: o.name,
+        panel: o.prefix + '-form',
+        required: [o.prefix + '-price', o.prefix + '-results', o.prefix + '-headline', o.prefix + '-table-body', o.prefix + '-notes'],
+        setup: setup,
+      });
+
+      function setup(root) {
+        // The document, or the component's shadow root when built into <lg-calculator>.
+        const scope = root.getRootNode();
+        const get = (id) => scope.getElementById(o.prefix + '-' + id);
+        const write = (id, text) => {
+          const el = get(id);
+          if (el) el.textContent = text;
+        };
+        const buyer = () => (root.querySelector('input[name="' + o.prefix + '-buyer"]:checked') || {}).value || 'home';
+        const nonResident = () => Boolean(get('nonres') && get('nonres').checked);
+        const touched = new Set();
+
+        function readPrice() {
+          const rule = FIELDS.price;
+          const item = LG.parseNumber(get('price').value, 2);
+          if (!item.entered) return { blank: true };
+          const ok = item.valid && item.value >= rule.min && item.value <= rule.max;
+          return { value: item.value, error: ok ? '' : rule.msg };
+        }
+
+        function showErrors(errors) {
+          const shown = errors.filter((e) => touched.has(e.id));
+          Object.keys(FIELDS).forEach((id) => {
+            const e = shown.find((x) => x.id === id);
+            LG.markInvalid(get(id), Boolean(e));
+            const box = get(id + '-error');
+            box.textContent = e ? e.message : '';
+            box.hidden = !e;
+          });
+          const list = get('error-list');
+          list.replaceChildren();
+          shown.forEach((e) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#' + o.prefix + '-' + e.id;
+            a.textContent = e.message;
+            a.addEventListener('click', (event) => {
+              event.preventDefault();
+              get(e.id).focus();
+            });
+            li.appendChild(a);
+            list.appendChild(li);
+          });
+          get('error-summary').hidden = shown.length === 0;
+        }
+
+        function resetResults(state, message) {
+          get('results').dataset.state = state;
+          write('headline', '\u2014');
+          get('status').hidden = true;
+          write('summary', message);
+          ['rate', 'top', 'total', 'extra'].forEach((id) => write(id, '\u2014'));
+          write('extra-label', o.extraLabel);
+          Object.keys(o.buyers).forEach((b) => {
+            write('compare-' + b, '\u2014');
+            write('compare-' + b + '-note', '\u2014');
+          });
+          const body = get('table-body');
+          body.innerHTML = '';
+          const td = body.insertRow().insertCell();
+          td.colSpan = 3;
+          td.textContent = 'Enter the price to see the breakdown.';
+          get('notes').replaceChildren();
+          get('notes').hidden = true;
+          write('method-text', 'Enter the price to see how the figures are worked out.');
+        }
+
+        function render() {
+          const price = readPrice();
+          const errors = price.error ? [{ id: 'price', message: price.error }] : [];
+          showErrors(errors);
+          if (errors.length) return resetResults('invalid', 'Check the highlighted fields to see the ' + o.short + ' to pay.');
+          if (price.blank) return resetResults('empty', o.emptyMessage);
+          const r = calculate(o.nation, price.value, buyer(), nonResident());
+          get('results').dataset.state = 'ready';
+          write('headline', pounds(r.tax));
+          write('summary', 'On a price of ' + LG.money(r.price) + ', that\u2019s ' + LG.percent((r.tax / r.price) * 100, 2) + ' of the price.');
+          const status = get('status');
+          const badge = r.tax === 0 ? 'No ' + o.short + ' to pay' : r.relief ? 'First-time buyer relief' : r.surcharged ? o.higherName : '';
+          status.textContent = badge + (r.nonResident ? (badge ? ', with the non-UK resident surcharge' : 'Includes the non-UK resident surcharge') : '');
+          status.hidden = !status.textContent;
+          write('rate', LG.percent((r.tax / r.price) * 100, 2));
+          write('top', LG.percent(r.rows[r.rows.length - 1].rate * 100, 2));
+          write('total', LG.money(r.price + r.tax));
+          renderExtra(r);
+          renderTable(r);
+          renderCompare(r);
+          renderNotes(r);
+          renderMethod(r);
+        }
+
+        // The last figure: what relief saves, what the higher rates add, or the tax-free part.
+        function renderExtra(r) {
+          const home = calculate(o.nation, r.price, 'home', r.nonResident).tax;
+          if (r.relief) {
+            write('extra-label', 'First-time buyer relief saves');
+            write('extra', pounds(home - r.tax));
+          } else if (r.surcharged) {
+            write('extra-label', 'Extra for an additional property');
+            write('extra', pounds(r.tax - home));
+          } else {
+            write('extra-label', o.extraLabel);
+            const nil = r.rows.length && r.rows[0].rate === 0 ? r.rows[0].to : 0;
+            write('extra', pounds(nil));
+          }
+        }
+
+        const range = (s) => (s.from === 0 ? 'Up to ' + pounds(s.to) : pounds(s.from + 1) + ' to ' + pounds(s.to));
+        function renderTable(r) {
+          const body = get('table-body');
+          body.innerHTML = '';
+          const row = (label, rate, tax, cls) => {
+            const tr = body.insertRow();
+            if (cls) tr.className = cls;
+            const th = document.createElement('th');
+            th.scope = 'row';
+            th.textContent = label;
+            tr.appendChild(th);
+            tr.insertCell().textContent = rate;
+            tr.insertCell().textContent = tax;
+          };
+          r.rows.forEach((s) => row(range(s), LG.percent(s.rate * 100, 2), LG.money(s.tax)));
+          if (r.supplement) row('Additional Dwelling Supplement on ' + LG.money(r.price), LG.percent(RATES.lbtt.additionalDwellingSupplement * 100, 2), LG.money(r.supplement));
+          row(o.short + ' to pay', '', pounds(r.tax), 'lgc-row-total');
+        }
+
+        // The same price for every kind of buyer this tax has.
+        function renderCompare(r) {
+          Object.keys(o.buyers).forEach((b) => {
+            const tax = calculate(o.nation, r.price, b, r.nonResident).tax;
+            const item = get('compare-' + b).parentNode;
+            item.classList.toggle('lgc-compare-current', b === r.buyer);
+            write('compare-' + b, pounds(tax));
+            const diff = tax - r.tax;
+            write('compare-' + b + '-note', b === r.buyer ? 'Your figures' : diff === 0 ? 'The same as yours' : pounds(Math.abs(diff)) + (diff > 0 ? ' more than yours' : ' less than yours'));
+          });
+        }
+
+        function renderNotes(r) {
+          const R = RATES[o.nation];
+          const notes = [];
+          if (o.nation === 'sdlt' && r.buyer === 'first' && !r.relief) {
+            notes.push('First-time buyer relief only applies to homes costing up to ' + pounds(R.firstTimeBuyer.maxPrice) + ', so the standard rates apply.');
+          }
+          if (r.buyer === 'additional' && !r.surcharged) notes.push('The higher rates for additional properties don\u2019t apply below ' + pounds(R.surchargeFrom) + '.');
+          if (r.surcharged) notes.push(o.refundNote);
+          const list = get('notes');
+          list.replaceChildren(
+            ...notes.map((t) => {
+              const li = document.createElement('li');
+              li.textContent = t;
+              return li;
+            }),
+          );
+          list.hidden = notes.length === 0;
+        }
+
+        function renderMethod(r) {
+          const parts = r.rows.map((s) => LG.percent(s.rate * 100, 2) + ' on ' + (s.from === 0 ? 'the first ' + pounds(s.to) : 'the part from ' + pounds(s.from) + ' to ' + pounds(s.to)) + ' (' + LG.money(s.tax) + ')');
+          let text = 'On a price of ' + LG.money(r.price) + ': ' + parts.join(', ') + '.';
+          if (r.supplement) text += ' Plus the Additional Dwelling Supplement of ' + LG.percent(RATES.lbtt.additionalDwellingSupplement * 100, 2) + ' on the whole price (' + LG.money(r.supplement) + ').';
+          text += ' Total ' + pounds(r.tax) + ', rounded down to the pound.';
+          write('method-text', text);
+        }
+
+        get('price').addEventListener('input', render);
+        get('price').addEventListener('blur', () => {
+          touched.add('price');
+          render();
+        });
+        // Radios and the checkbox.
+        get('form').addEventListener('change', (event) => {
+          if (!FIELDS[event.target.name]) render();
+        });
+        get('form').addEventListener('submit', (event) => {
+          event.preventDefault();
+          touched.add('price');
+          render();
+          if (!get('error-summary').hidden) get('error-summary').focus();
+        });
+        // The shared Clear button resets the fields; forget which ones were visited.
+        root.querySelector('[data-clear]').addEventListener('click', () => {
+          touched.clear();
+          render();
+        });
+        render();
+      }
+    }
+    LG.propertyTax = { calculate, start };
+  })();
+  /* @v2:property-tax-end */
+
+  /* @v2:stamp-duty-start */
+  module('stamp-duty', function () {
+    LG.propertyTax.start({
+      key: 'stamp-duty',
+      prefix: 'lgsd',
+      nation: 'sdlt',
+      name: 'Stamp Duty',
+      short: 'Stamp Duty',
+      higherName: 'Higher rates for an additional property',
+      extraLabel: 'Tax-free part of the price',
+      emptyMessage: 'Enter the price of the home to see the Stamp Duty to pay.',
+      refundNote: 'Replacing your main home? If you sell your previous main home within 3 years, you can claim back the extra 5%.',
+      buyers: { home: 'Your only home', first: 'First-time buyer', additional: 'Additional property' },
+    });
+  });
+  /* @v2:stamp-duty-end */
+
+  /* @v2:lbtt-start */
+  module('lbtt', function () {
+    LG.propertyTax.start({
+      key: 'lbtt',
+      prefix: 'lglbtt',
+      nation: 'lbtt',
+      name: 'LBTT',
+      short: 'LBTT',
+      higherName: 'Additional Dwelling Supplement',
+      extraLabel: 'Tax-free part of the price',
+      emptyMessage: 'Enter the price of the home to see the LBTT to pay.',
+      refundNote: 'Replacing your main home? If you sell your previous main home within 36 months, you can claim back the Additional Dwelling Supplement.',
+      buyers: { home: 'Your only home', first: 'First-time buyer', additional: 'Additional property' },
+    });
+  });
+  /* @v2:lbtt-end */
+
+  /* @v2:land-transaction-tax-start */
+  module('land-transaction-tax', function () {
+    LG.propertyTax.start({
+      key: 'land-transaction-tax',
+      prefix: 'lgltt',
+      nation: 'ltt',
+      name: 'Land Transaction Tax',
+      short: 'Land Transaction Tax',
+      higherName: 'Higher residential rates',
+      extraLabel: 'Tax-free part of the price',
+      emptyMessage: 'Enter the price of the home to see the Land Transaction Tax to pay.',
+      refundNote: 'Replacing your main home? If you sell your previous main home within 3 years, you can claim back the difference from the higher rates.',
+      buyers: { home: 'Your main home', additional: 'Additional property' },
+    });
+  });
+  /* @v2:land-transaction-tax-end */
 })(window, document);

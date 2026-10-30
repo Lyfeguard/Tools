@@ -46,7 +46,7 @@ Each piece of code is written once. `npm run build` runs `scripts/build.sh`, whi
 
 1. puts the data files into the code (`scripts/data.js`, at each `/* @data:<name> */ null` marker);
 2. builds `dist/lg-calc.min.*`, the [v1 reference build](#the-v1-reference-build);
-3. builds the v2 files (`scripts/build-v2.js`), taking from `src/lg-calc.js` the tax core and each calculator's module (between `/* @v2:<key>-start */` and `/* @v2:<key>-end */`), and from `src/lg-calc.css` the shared components and design tokens;
+3. builds the v2 files (`scripts/build-v2.js`), taking from `src/lg-calc.js` the tax core and each calculator's module (between `/* @v2:<key>-start */` and `/* @v2:<key>-end */`), plus any code it shares with others (`USES`), and from `src/lg-calc.css` the shared components and design tokens;
 4. builds the files around the calculators (`scripts/build-extras.js`): the download dialog, the PDF writer (including the logo, turned into PDF drawing operators) and the click tracking;
 5. minifies everything with terser and fails if any source or built file isn't ASCII-only.
 
@@ -88,7 +88,7 @@ CI rebuilds `dist/` on every pull request and fails if it differs from what's co
 
 ## The v1 reference build
 
-v1 put every calculator into one stylesheet and one script, outside any shadow root. The site no longer loads it. It's still built, at 1.8.6, because the tests use it as the reference:
+v1 put every calculator into one stylesheet and one script, outside any shadow root. The site no longer loads it. It's still built, at 1.9.0, because the tests use it as the reference:
 
 - `test/calculators.test.js` checks v1's figures against the snapshots;
 - `test/v2.test.js` checks v2 gives the same figures, text and look as v1;

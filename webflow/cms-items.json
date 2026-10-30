@@ -50,6 +50,18 @@
     "take-home-pay": {
       "slug": "take-home-pay-calculator",
       "id": "6ae30faa99544e5048e3dec0"
+    },
+    "stamp-duty": {
+      "slug": "stamp-duty-calculator",
+      "id": "6ae483263ae30d8c0be8bd72"
+    },
+    "lbtt": {
+      "slug": "lbtt-calculator",
+      "id": "6ae4836baa0635aa9ee349f8"
+    },
+    "land-transaction-tax": {
+      "slug": "land-transaction-tax-calculator",
+      "id": "6ae483ac75d1434eb1d8d5b2"
     }
   }
 }

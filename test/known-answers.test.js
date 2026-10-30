@@ -324,3 +324,43 @@ test('take-home pay: what a pay rise is worth', async () => {
   );
   assert.deepEqual(out, { 'lgth-rise1': '+£283.33 a month', 'lgth-custom-extra': '+£425.00', 'lgth-custom-keep': '68%', 'lgth-custom-pay': '£42,500' });
 });
+
+test('tax on buying a home: Stamp Duty, LBTT and LTT', async () => {
+  const page = await openCalculator(browser, 'stamp-duty');
+  const out = await page.evaluate(() => {
+    const tax = (nation, price, buyer, nonRes) => window.LyfeTools.propertyTax.calculate(nation, price, buyer || 'home', nonRes).tax;
+    return {
+      sdlt: [tax('sdlt', 125000), tax('sdlt', 350000), tax('sdlt', 1000000), tax('sdlt', 2000000)],
+      sdltFirst: [tax('sdlt', 300000, 'first'), tax('sdlt', 500000, 'first'), tax('sdlt', 500001, 'first')],
+      sdltAdditional: [tax('sdlt', 39999, 'additional'), tax('sdlt', 40000, 'additional'), tax('sdlt', 300000, 'additional'), tax('sdlt', 300000, 'additional', true), tax('sdlt', 300000, 'first', true)],
+      lbtt: [tax('lbtt', 145000), tax('lbtt', 300000), tax('lbtt', 800000)],
+      lbttFirst: [tax('lbtt', 175000, 'first'), tax('lbtt', 300000, 'first')],
+      lbttAdditional: [tax('lbtt', 39999, 'additional'), tax('lbtt', 300000, 'additional')],
+      ltt: [tax('ltt', 225000), tax('ltt', 300000), tax('ltt', 2000000)],
+      lttAdditional: [tax('ltt', 39999, 'additional'), tax('ltt', 300000, 'additional')],
+      roundsDown: tax('ltt', 225001.5),
+    };
+  });
+  await page.close();
+  assert.deepEqual(out, {
+    // 350k: 2% x 125,000 + 5% x 100,000 = 7,500. 1m: 2,500 + 33,750 + 10% x 75,000 = 43,750.
+    // 2m: 2,500 + 33,750 + 57,500 + 12% x 500,000 = 153,750.
+    sdlt: [0, 7500, 43750, 153750],
+    // First-time buyers: 0% to 300,000, then 5% to 500,000; above 500,000 the standard rates (2,500 + 12,500.05).
+    sdltFirst: [0, 10000, 15000],
+    // 5% more on every band from 40,000; non-UK residents 2% more again (7%, 9%, 12% at 300k).
+    sdltAdditional: [0, 2000, 20000, 26000, 6000],
+    // LBTT 300k: 2% x 105,000 + 5% x 50,000 = 4,600. 800k: 2,100 + 3,750 + 10% x 425,000 + 12% x 50,000 = 54,350.
+    lbtt: [0, 4600, 54350],
+    // First-time buyers: 0% to 175,000, saving 600.
+    lbttFirst: [0, 4000],
+    // Additional Dwelling Supplement: 8% of the whole price, from 40,000.
+    lbttAdditional: [0, 28600],
+    // LTT 300k: 6% x 75,000 = 4,500. 2m: 10,500 + 26,250 + 75,000 + 12% x 500,000 = 171,750.
+    ltt: [0, 4500, 171750],
+    // Higher rates: 5% x 180,000 + 8.5% x 70,000 + 10% x 50,000 = 19,950.
+    lttAdditional: [0, 19950],
+    // 6% of 1.50 is 9p, rounded down to 0.
+    roundsDown: 0,
+  });
+});

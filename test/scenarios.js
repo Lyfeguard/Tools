@@ -295,4 +295,58 @@ module.exports = {
       ['click', '#lgth-salary'],
     ],
   },
+  'stamp-duty': {
+    empty: [],
+    home: [['fill', '#lgsd-price', '350,000']],
+    firstTimeBuyer: [
+      ['fill', '#lgsd-price', '450000'],
+      ['check', 'input[name="lgsd-buyer"][value="first"]'],
+    ],
+    firstTimeBuyerOverCap: [
+      ['fill', '#lgsd-price', '525000'],
+      ['check', 'input[name="lgsd-buyer"][value="first"]'],
+    ],
+    additionalNonResident: [
+      ['fill', '#lgsd-price', '1,600,000'],
+      ['check', 'input[name="lgsd-buyer"][value="additional"]'],
+      ['check', '#lgsd-nonres'],
+    ],
+    additionalUnder40k: [
+      ['fill', '#lgsd-price', '35000'],
+      ['check', 'input[name="lgsd-buyer"][value="additional"]'],
+    ],
+    invalid: [
+      ['fill', '#lgsd-price', '350k'],
+      ['click', 'input[name="lgsd-buyer"][value="first"]'],
+    ],
+  },
+  'lbtt': {
+    empty: [],
+    home: [['fill', '#lglbtt-price', '300,000']],
+    firstTimeBuyer: [
+      ['fill', '#lglbtt-price', '250000'],
+      ['check', 'input[name="lglbtt-buyer"][value="first"]'],
+    ],
+    additional: [
+      ['fill', '#lglbtt-price', '800000'],
+      ['check', 'input[name="lglbtt-buyer"][value="additional"]'],
+    ],
+    invalid: [
+      ['fill', '#lglbtt-price', '0'],
+      ['click', 'input[name="lglbtt-buyer"][value="first"]'],
+    ],
+  },
+  'land-transaction-tax': {
+    empty: [],
+    home: [['fill', '#lgltt-price', '300,000']],
+    additional: [
+      ['fill', '#lgltt-price', '450000'],
+      ['check', 'input[name="lgltt-buyer"][value="additional"]'],
+    ],
+    expensive: [['fill', '#lgltt-price', '2000000.50']],
+    invalid: [
+      ['fill', '#lgltt-price', '1,2,3'],
+      ['click', 'input[name="lgltt-buyer"][value="additional"]'],
+    ],
+  },
 };

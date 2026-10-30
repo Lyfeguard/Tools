@@ -12,4 +12,16 @@ module.exports = {
   'take-home-pay': [{ to: 'debt-to-income', text: 'Check your debt-to-income ratio on this salary' }],
   'pro-rata-salary': [{ to: 'take-home-pay', text: 'Work out the full take-home pay on this pro rata salary' }],
   'salary-by-age': [{ to: 'take-home-pay', text: 'See your take-home pay on this salary' }],
+  'stamp-duty': [
+    { to: 'lbtt', text: 'Buying in Scotland? Work out LBTT on this price' },
+    { to: 'land-transaction-tax', text: 'Buying in Wales? Work out Land Transaction Tax on this price' },
+  ],
+  'lbtt': [
+    { to: 'stamp-duty', text: 'Buying in England or Northern Ireland? Work out Stamp Duty on this price' },
+    { to: 'land-transaction-tax', text: 'Buying in Wales? Work out Land Transaction Tax on this price' },
+  ],
+  'land-transaction-tax': [
+    { to: 'stamp-duty', text: 'Buying in England or Northern Ireland? Work out Stamp Duty on this price' },
+    { to: 'lbtt', text: 'Buying in Scotland? Work out LBTT on this price' },
+  ],
 };

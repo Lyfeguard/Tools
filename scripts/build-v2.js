@@ -23,7 +23,12 @@ const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
 
 // Calculators in the component. Each key's module sits between
 // /* @v2:<key>-start */ and /* @v2:<key>-end */ in src/lg-calc.js.
-const CALCULATORS = ['net-worth', 'inheritance-tax', 'compound-interest', 'savings-goal', 'emergency-fund', 'loan-repayment', 'pro-rata-salary', 'salary-by-age', 'mortgage', 'debt-to-income', 'retirement-income', 'take-home-pay'];
+const CALCULATORS = ['net-worth', 'inheritance-tax', 'compound-interest', 'savings-goal', 'emergency-fund', 'loan-repayment', 'pro-rata-salary', 'salary-by-age', 'mortgage', 'debt-to-income', 'retirement-income', 'take-home-pay', 'stamp-duty', 'lbtt', 'land-transaction-tax'];
+// Code some calculators share, between its own @v2: markers, built in before their modules.
+const USES = { 'stamp-duty': ['property-tax'], lbtt: ['property-tax'], 'land-transaction-tax': ['property-tax'] };
+// The blocks a set of calculators needs, each once, shared code first.
+const blocks = (keys) => [...new Set(keys.flatMap((key) => [...(USES[key] || []), key]))];
+const block = (js, name) => between(js, '/* @v2:' + name + '-start */', '/* @v2:' + name + '-end */', 'src/lg-calc.js');
 
 function between(text, start, end, file) {
   const from = text.indexOf(start);
@@ -45,7 +50,8 @@ const TEMPLATE = 'lg-calc-wrap lg-calc-markup w-richtext w-embed lg-heading-wrap
 function usedBy(keys) {
   const js = read('src/lg-calc.js');
   const corpus = [TEMPLATE, ...SHARED.map(read), between(js, '/* @v2:core-start', '/* @v2:core-end */', 'src/lg-calc.js')];
-  for (const key of keys) corpus.push(read('markup/' + key + '.html'), between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js'));
+  for (const key of keys) corpus.push(read('markup/' + key + '.html'));
+  for (const name of blocks(keys)) corpus.push(block(js, name));
   return usage(corpus.join('\n'));
 }
 function only(css, keys) {
@@ -129,7 +135,7 @@ function styles(keys) {
 function script(keys) {
   const js = inline(read('src/lg-calc.js'));
   const version = /LG\.version = '([^']+)'/.exec(read('src/v2/prelude.js'))[1];
-  const modules = keys.map((key) => between(js, '/* @v2:' + key + '-start */', '/* @v2:' + key + '-end */', 'src/lg-calc.js'));
+  const modules = blocks(keys).map((name) => block(js, name));
   return [
     '/*!',
     ' * Lyfeguard calculators | ' + (keys.length === 1 ? keys[0] : 'lg-calculator') + '.js | v' + version,

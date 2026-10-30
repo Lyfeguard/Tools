@@ -1,5 +1,5 @@
 /*!
- * Lyfeguard calculators | lg-calc.css | v1.8.6
+ * Lyfeguard calculators | lg-calc.css | v1.9.0
  * Styles for every /tools calculator in one cached file.
  * Load in the page head, after the Webflow stylesheet:
  *   <link rel="stylesheet" href=".../lg-calc.css">
@@ -6457,6 +6457,9 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+}
+.lg-calc .lgc-compare-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .lg-calc .lgc-compare-item {
   display: flex;

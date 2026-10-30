@@ -18,6 +18,9 @@
     'savings-goal': 'savings goal',
     'net-worth': 'net worth',
     'inheritance-tax': 'inheritance tax',
+    'stamp-duty': 'Stamp Duty',
+    lbtt: 'LBTT',
+    'land-transaction-tax': 'Land Transaction Tax',
   };
   // What's still needed on a calculator after the figures arrive.
   var NEXT = {
@@ -38,6 +41,17 @@
   function checked(scope, name) {
     var el = scope.querySelector('input[type="radio"][name="' + name + '"]:checked');
     return el ? el.value : null;
+  }
+  // Tax on buying a home: the price and kind of buyer go to another nation's
+  // calculator. Wales has no first-time buyer relief, so there a first-time
+  // buyer is buying their main home.
+  function homeTax(get, scope, from, to) {
+    var buyer = checked(scope, from + '-buyer');
+    if (buyer === 'first' && to === 'lgltt') buyer = 'home';
+    var figures = {};
+    figures['@' + to + '-buyer'] = buyer;
+    figures[to + '-price'] = amount(get(from + '-price'));
+    return figures;
   }
   // From each calculator: for each one it links to, the figures to send.
   // Each returns { field id or @radio name: value }; empty values are left out.
@@ -93,6 +107,30 @@
           // Student loans are written off on death, so they don't reduce the estate.
           'lgiht-debts': sum(['lgnw-car-finance', 'lgnw-credit-cards', 'lgnw-personal-loans', 'lgnw-overdraft', 'lgnw-other-debts']),
         };
+      },
+    },
+    'stamp-duty': {
+      'lbtt': function (get, scope) {
+        return homeTax(get, scope, 'lgsd', 'lglbtt');
+      },
+      'land-transaction-tax': function (get, scope) {
+        return homeTax(get, scope, 'lgsd', 'lgltt');
+      },
+    },
+    'lbtt': {
+      'stamp-duty': function (get, scope) {
+        return homeTax(get, scope, 'lglbtt', 'lgsd');
+      },
+      'land-transaction-tax': function (get, scope) {
+        return homeTax(get, scope, 'lglbtt', 'lgltt');
+      },
+    },
+    'land-transaction-tax': {
+      'stamp-duty': function (get, scope) {
+        return homeTax(get, scope, 'lgltt', 'lgsd');
+      },
+      'lbtt': function (get, scope) {
+        return homeTax(get, scope, 'lgltt', 'lglbtt');
       },
     },
   };
