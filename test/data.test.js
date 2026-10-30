@@ -55,7 +55,8 @@ test('mortgage affordability: multiples rise, rates are fractions', () => {
   multiples.forEach((x, i) => assert.ok(x > 0 && (i === 0 || x > multiples[i - 1]), String(x)));
   assert.ok(rate(m.variableIncome) && rate(m.cardPayment));
   m.ltvBands.forEach((b, i) => assert.ok(b > 0 && b <= 100 && (i === 0 || b > m.ltvBands[i - 1])));
-  assert.ok(m.rateRises.every((r) => r > 0));
+  assert.ok(m.repaidByAge > m.terms.max / 2 && m.terms.min < m.terms.max && m.rateRiseMax > 0);
+  for (const t of [m.cashFlow.withLivingCosts, m.cashFlow.withoutLivingCosts]) assert.ok(t.good > t.tight && t.tight >= 0 && t.good < 1);
 });
 
 test('redundancy pay: caps, limits and bands', () => {

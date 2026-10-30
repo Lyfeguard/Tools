@@ -86,6 +86,11 @@ div.lg-table thead th:last-child,
 div.lg-faq-table thead th:last-child {
   border-top-right-radius: var(--ct-radius-tiny);
 }
+/* Tables are always light, so their text is always Ocean (the note below stays soft). */
+div.lg-table :where(caption, th, td),
+div.lg-faq-table :where(caption, th, td) {
+  color: var(--ct-ocean) !important;
+}
 div.lg-table tbody th,
 div.lg-faq-table tbody th {
   font-weight: 600;
@@ -149,69 +154,121 @@ div.lg-faq-table > p {
    Short answer, straight after a question heading:
    <div class="lg-answer"><p>The answer in 40 to 60 words.</p></div>
    The label is drawn by CSS, so the page's text is only the answer.
+   Also the Guides' Quick Answer and (with lg-summary) the Insights'
+   Executive Summary, in their templates.
    ------------------------------------------------------------------ */
 div.lg-answer {
-  margin: 16px 0 28px;
-  padding: 18px 22px;
+  position: relative;
+  margin: 24px 0 32px;
+  padding: 20px 24px 22px 26px;
+  border: 1px solid rgba(10, 163, 118, 0.24);
   border-left: 4px solid var(--ct-mint-ink);
-  border-radius: 0 var(--ct-radius-small) var(--ct-radius-small) 0;
+  border-radius: var(--ct-radius-small);
   background: var(--ct-mist);
+  box-shadow: 0 1px 2px rgba(10, 45, 58, 0.05);
   color: var(--ct-ocean);
   font-family: var(--ct-font);
+  text-align: left;
 }
+/* The label, with a mint dot before it. */
 div.lg-answer::before {
   content: "Short answer";
   display: block;
-  margin: 0 0 6px;
-  color: var(--ct-ink-soft);
+  margin: 0 0 10px;
+  padding-left: 16px;
+  background: radial-gradient(circle, var(--ct-mint-ink) 0 4px, transparent 4.5px) left center / 8px 8px no-repeat;
+  color: var(--ct-ocean);
+  font-family: var(--ct-font);
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   line-height: 1.4;
   text-transform: uppercase;
 }
+div.lg-answer.lg-summary::before {
+  content: "Executive summary";
+}
+/* These boxes are always light, so their text is always Ocean, whatever
+   the site's own classes (made for its dark sections) set on the
+   paragraphs and lists placed inside them. */
+div.lg-answer,
+div.lg-answer :where(p, ul, ol, li, span, strong, b, em, i, div) {
+  color: var(--ct-ocean) !important;
+}
 div.lg-answer p {
   margin: 0;
-  color: var(--ct-ocean);
   font-family: var(--ct-font);
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 div.lg-answer p + p {
   margin-top: 10px;
 }
-
-/* Executive summary: the same box, labelled for professional readers, with
-   the points as a list. In the Insights template, a Rich Text element
-   bound to the Executive Summary field, inside <div class="lg-answer lg-summary">. */
-div.lg-answer.lg-summary::before {
-  content: "Executive summary";
+div.lg-answer a {
+  color: var(--ct-ocean) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--ct-mint-ink);
+  text-underline-offset: 3px;
 }
+/* Points (the Executive Summary): mint dots, a little space between. */
 div.lg-answer ul,
 div.lg-answer ol {
-  margin: 0;
-  padding: 0 0 0 1.2em;
-  color: var(--ct-ocean);
-  font-family: var(--ct-font);
-  font-size: 16px;
-  line-height: 1.55;
-}
-div.lg-answer li {
+  display: block;
   margin: 0;
   padding: 0;
-  color: var(--ct-ocean);
-  font-size: 16px;
+  border: 0;
+  gap: 0;
+  list-style: none;
+  font-family: var(--ct-font);
+}
+div.lg-answer li {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 22px;
+  font-size: 16.5px;
+  font-weight: 500;
   line-height: 1.55;
 }
+div.lg-answer li::before {
+  content: "";
+  position: absolute;
+  top: 0.62em;
+  left: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ct-mint-ink);
+}
 div.lg-answer li + li {
-  margin-top: 6px;
+  margin-top: 10px;
 }
 div.lg-answer p + ul,
 div.lg-answer p + ol,
 div.lg-answer ul + p,
 div.lg-answer ol + p {
-  margin-top: 10px;
+  margin-top: 12px;
+}
+/* The Rich Text element inside (Executive Summary) keeps none of its own spacing. */
+div.lg-answer > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+/* Webflow's rich text adds space above and below its first and last
+   elements; inside the box, the box's padding is enough. */
+div.lg-answer > :first-child > :first-child,
+div.lg-answer > :last-child > :last-child {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@media (max-width: 479px) {
+  div.lg-answer {
+    padding: 16px 18px 18px 20px;
+  }
+  div.lg-answer p {
+    font-size: 17px;
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -240,4 +297,8 @@ div.lg-note p + p {
 div.lg-note strong {
   color: var(--ct-ocean);
   font-weight: 700;
+}
+/* As the answer box: always light, so always Ocean text. */
+div.lg-note :where(p, strong, b, em, i, span, li) {
+  color: var(--ct-ocean) !important;
 }

@@ -3,7 +3,7 @@
   <form id="lgrp-form" class="lgc-card" novalidate="" aria-labelledby="lgrp-form-title">
     <p class="lgc-eyebrow">01 — Your details</p>
     <h2 id="lgrp-form-title">Your job and pay</h2>
-    <p class="lgc-intro">Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026.</p>
+    <p class="lgc-intro">See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026.</p>
 
     <div id="lgrp-error-summary" class="lgc-error-summary" role="alert" tabindex="-1" hidden="">
       <p class="lgc-error-summary-title">Check the highlighted fields</p>
@@ -11,18 +11,18 @@
     </div>
 
     <fieldset class="lgc-group">
-      <legend class="lgc-group-title">Your job</legend>
+      <legend class="lgc-group-title">You and your job</legend>
       <div class="lgc-grid">
         <div class="lgc-field">
-          <label for="lgrp-age">Your age when you’re made redundant</label>
+          <label for="lgrp-age">Your age</label>
           <div class="lgc-input"><input id="lgrp-age" name="age" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" placeholder="45" aria-describedby="lgrp-age-hint lgrp-age-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
-          <p id="lgrp-age-hint" class="lgc-hint">Your age on the date your job ends.</p>
+          <p id="lgrp-age-hint" class="lgc-hint">On the day your job ends.</p>
           <p id="lgrp-age-error" class="lgc-field-error" hidden=""></p>
         </div>
         <div class="lgc-field">
-          <label for="lgrp-years">Complete years of service</label>
+          <label for="lgrp-years">Years with your employer</label>
           <div class="lgc-input"><input id="lgrp-years" name="years" type="text" inputmode="numeric" enterkeyhint="next" autocomplete="off" placeholder="10" aria-describedby="lgrp-years-hint lgrp-years-error"><span class="lgc-affix" aria-hidden="true">years</span></div>
-          <p id="lgrp-years-hint" class="lgc-hint">Full years with your employer, without a break. You need at least 2.</p>
+          <p id="lgrp-years-hint" class="lgc-hint">Full years only, without a break. You need at least 2 to qualify.</p>
           <p id="lgrp-years-error" class="lgc-field-error" hidden=""></p>
         </div>
         <fieldset class="lgc-choice-group lgc-field-full">
@@ -69,22 +69,22 @@
     <p class="lgc-badge" id="lgrp-status" hidden=""></p>
     <p class="lgc-result-summary" id="lgrp-summary">Enter your age, years of service and pay to see your statutory redundancy pay.</p>
     <dl class="lgc-stats">
-      <div><dt>Weeks’ pay</dt><dd id="lgrp-weeks">—</dd></div>
-      <div><dt>Weekly pay counted</dt><dd id="lgrp-weekly">—</dd></div>
-      <div><dt>Years counted</dt><dd id="lgrp-counted">—</dd></div>
-      <div><dt>The most anyone can get</dt><dd id="lgrp-max">—</dd></div>
+      <div><dt>Weeks of pay</dt><dd id="lgrp-weeks">—</dd></div>
+      <div><dt>Weekly pay used</dt><dd id="lgrp-weekly">—</dd></div>
+      <div><dt>Years that count</dt><dd id="lgrp-counted">—</dd></div>
+      <div><dt>Most anyone can get</dt><dd id="lgrp-max">—</dd></div>
     </dl>
-    <p class="lgc-small">The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.</p>
+    <p class="lgc-small">The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.</p>
     <p class="lgc-sr-only" aria-live="polite" data-announce="lgrp-headline-label lgrp-headline lgrp-summary"></p>
   </section>
 
   <section id="lgrp-breakdown" class="lgc-card" aria-labelledby="lgrp-breakdown-title">
     <h3 id="lgrp-breakdown-title">How your redundancy pay adds up</h3>
-    <p class="lgc-intro">Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year.</p>
+    <p class="lgc-intro">Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year.</p>
     <div class="lgc-table-wrap lgc-table-fit" tabindex="0" role="region" aria-labelledby="lgrp-table-caption">
       <table class="lgc-table">
         <caption id="lgrp-table-caption">Your years of service, by age</caption>
-        <thead><tr><th scope="col">Years of service</th><th scope="col">Years</th><th scope="col">Weeks’ pay</th><th scope="col">Pay</th></tr></thead>
+        <thead><tr><th scope="col">Your age that year</th><th scope="col">Years</th><th scope="col">Weeks of pay</th><th scope="col">Pay</th></tr></thead>
         <tbody id="lgrp-table-body"><tr><td colspan="4">Enter your details to see the breakdown.</td></tr></tbody>
       </table>
     </div>

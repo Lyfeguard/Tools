@@ -23,7 +23,7 @@ Each calculator page is a Tools item. The template's head loads only that page's
 ```
 
 - **The markup stays in the page.** The calculator's HTML is in the item's Calculator markup field, so crawlers read it without running JavaScript. The script moves it into a shadow root, where the site's CSS can't change it. SEO is the reason the calculators exist, so nothing here may change what search engines see.
-- **Small pages.** Each page loads only its own calculator, 10 to 21 KB gzipped.
+- **Small pages.** Each page loads only its own calculator, 16 to 25 KB gzipped.
 - **Releases.** Publishing a GitHub release runs the **Release to Webflow** workflow. The workflow points every Tools item at the new tag and writes the markup from this repository, as staged changes. You then publish in Webflow. No code in Webflow changes between releases.
 - **Site-wide files.** The click tracking, the Guides and Insights download dialog and the content blocks' styles load from `@2`, the newest 2.x release.
 

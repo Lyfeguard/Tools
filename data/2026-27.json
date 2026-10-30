@@ -30,7 +30,7 @@
   "inheritanceTax": { "nilRateBand": 325000, "residenceNilRateBand": 175000, "taperThreshold": 2000000, "fullReliefCap": 2500000 },
   "pensions": { "lumpSumAllowance": 268275, "taxFreeShare": 0.25, "fullStatePension": 12548 },
   "mortgageAffordability": {
-    "$about": "How much lenders could offer, as income multiples. Typical market ranges, not any lender's figures: check them every few months. Lenders count income after a year of committed spending; credit card balances count as a monthly payment of cardPayment of the balance; bonus, overtime and commission count at variableIncome. exampleRate is only the starting value of the rate field.",
+    "$about": "How much lenders could offer, as income multiples. Typical market ranges, not any lender's figures: check them every few months. Lenders count income after a year of committed spending; credit card balances count as a monthly payment of cardPayment of the balance; bonus, overtime and commission count at variableIncome. repaidByAge caps the term (the oldest applicant's age at the end); lenders' age limits vary.",
     "bands": [
       { "key": "most", "from": 4, "to": 4.5 },
       { "key": "many", "to": 6 },
@@ -40,7 +40,14 @@
     "cardPayment": 0.03,
     "ltvBands": [60, 75, 80, 85, 90, 95],
     "interestOnlyMaxLtv": 75,
-    "rateRises": [1, 2, 3]
+    "repaidByAge": 75,
+    "terms": { "min": 5, "max": 40 },
+    "rateRiseMax": 5,
+    "cashFlow": {
+      "$about": "Share of take-home pay left each month, after the mortgage, debts and spending entered, for green (good) and amber (tight); below amber is red. With everyday living costs entered, what's left only needs to be a buffer; without them, it has to cover them too.",
+      "withLivingCosts": { "good": 0.1, "tight": 0 },
+      "withoutLivingCosts": { "good": 0.5, "tight": 0.3 }
+    }
   },
   "redundancy": {
     "$source": "Statutory redundancy pay for dismissals from 6 April 2026: the weekly pay cap from the Employment Rights (Increase of Limits) Order 2026 (Great Britain), and nidirect's Redundancy pay page for Northern Ireland (\u00a3783, confirmed 30 October 2026).",

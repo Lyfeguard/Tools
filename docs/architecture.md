@@ -20,7 +20,7 @@ How the calculators are built, served and kept safe for search engines.
 | `dist/lg-content.min.css` | Guides and Insights template heads: the content blocks in rich text ([content-blocks.md](content-blocks.md)) | `@2` |
 | `dist/v2/lg-pdf.min.js` and the Manrope fonts | Calculators, when a PDF is downloaded | The calculator's release |
 
-All of them come from jsDelivr (`https://cdn.jsdelivr.net/gh/Lyfeguard/tools@<version>/...`). A calculator page loads 10 to 21 KB gzipped. Nothing else loads until someone asks for a PDF.
+All of them come from jsDelivr (`https://cdn.jsdelivr.net/gh/Lyfeguard/tools@<version>/...`). A calculator page loads 16 to 25 KB gzipped. Nothing else loads until someone asks for a PDF.
 
 ## The `<lg-calculator>` component
 

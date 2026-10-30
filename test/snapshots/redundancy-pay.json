@@ -4,12 +4,12 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay — Enter your age, years of service and pay to see your statutory redundancy pay. Weeks’ pay— Weekly pay counted— Years counted— The most anyone can get— The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Enter your details to see the breakdown. How was this calculated? Enter your details to see how the figures are worked out. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay —See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay — Enter your age, years of service and pay to see your statutory redundancy pay. Weeks of pay— Weekly pay used— Years that count— Most anyone can get— The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Enter your details to see the breakdown. How was this calculated? Enter your details to see how the figures are worked out. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay —See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
@@ -22,14 +22,14 @@
       "text": ""
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
       "hidden": true
     },
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
       "text": "",
@@ -43,7 +43,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay — Enter your age, years of service and pay to see your statutory redundancy pay. Weeks’ pay— Weekly pay counted— Years counted— The most anyone can get— The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay — Enter your age, years of service and pay to see your statutory redundancy pay. Weeks of pay— Weekly pay used— Years that count— Most anyone can get— The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.",
       "data-state": "empty"
     },
     "lgrp-results-title": {
@@ -75,7 +75,7 @@
       "text": "—"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Enter your details to see the breakdown."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Enter your details to see the breakdown."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"
@@ -102,12 +102,12 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £4,711.54 Your full weekly pay counts 7 weeks’ pay at £673.08 a week, for 6 years of service. Weeks’ pay7 weeks Weekly pay counted£673.08 Years counted6 years The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £4,711.54. 7 weeks’ pay at £673.08 a week, for 6 years of service. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 41 or over (1½ weeks a year)23 weeks£2,019.23Aged 22 to 40 (1 week a year)44 weeks£2,692.31Statutory redundancy pay67 weeks£4,711.54 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 43: 2 years aged 41 or over at 1½ weeks, 4 years aged 22 to 40 at 1 week, which makes 7 weeks. Your weekly pay before tax is £673.08, so you get 7 weeks × £673.08 = £4,711.54. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £4,711.54See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £4,711.54 Your full weekly pay counts 7 weeks’ pay at £673.08 a week, for 6 years with your employer. Weeks of pay7 weeks Weekly pay used£673.08 Years that count6 years Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £4,711.54. 7 weeks’ pay at £673.08 a week, for 6 years with your employer. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 41 or over (1½ weeks a year)23 weeks£2,019.23Aged 22 to 40 (1 week a year)44 weeks£2,692.31Statutory redundancy pay67 weeks£4,711.54 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 43: 2 years aged 41 or over at 1½ weeks, 4 years aged 22 to 40 at 1 week, which makes 7 weeks. Your weekly pay before tax is £673.08, so you get 7 weeks × £673.08 = £4,711.54. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £4,711.54See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
@@ -120,14 +120,14 @@
       "text": ""
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
       "hidden": true
     },
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
       "text": "",
@@ -141,7 +141,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £4,711.54 Your full weekly pay counts 7 weeks’ pay at £673.08 a week, for 6 years of service. Weeks’ pay7 weeks Weekly pay counted£673.08 Years counted6 years The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £4,711.54. 7 weeks’ pay at £673.08 a week, for 6 years of service.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £4,711.54 Your full weekly pay counts 7 weeks’ pay at £673.08 a week, for 6 years with your employer. Weeks of pay7 weeks Weekly pay used£673.08 Years that count6 years Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £4,711.54. 7 weeks’ pay at £673.08 a week, for 6 years with your employer.",
       "data-state": "ready"
     },
     "lgrp-results-title": {
@@ -157,7 +157,7 @@
       "text": "Your full weekly pay counts"
     },
     "lgrp-summary": {
-      "text": "7 weeks’ pay at £673.08 a week, for 6 years of service."
+      "text": "7 weeks’ pay at £673.08 a week, for 6 years with your employer."
     },
     "lgrp-weeks": {
       "text": "7 weeks"
@@ -172,7 +172,7 @@
       "text": "£22,530"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 41 or over (1½ weeks a year)23 weeks£2,019.23Aged 22 to 40 (1 week a year)44 weeks£2,692.31Statutory redundancy pay67 weeks£4,711.54 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 41 or over (1½ weeks a year)23 weeks£2,019.23Aged 22 to 40 (1 week a year)44 weeks£2,692.31Statutory redundancy pay67 weeks£4,711.54 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"
@@ -198,12 +198,12 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £22,154.50 Weekly pay capped at £751 29½ weeks’ pay at £751 a week, for 20 years of service. Weeks’ pay29½ weeks Weekly pay counted£751 Years counted20 years The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £22,154.50. 29½ weeks’ pay at £751 a week, for 20 years of service. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 41 or over (1½ weeks a year)1928½ weeks£21,403.50Aged 22 to 40 (1 week a year)11 week£751Statutory redundancy pay2029½ weeks£22,154.50 Only your last 20 years count, so 10 earlier years don’t add anything.Weekly pay is capped at £751 for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 60: 19 years aged 41 or over at 1½ weeks, 1 year aged 22 to 40 at 1 week, which makes 29½ weeks. Your weekly pay before tax is £1,153.85, capped at £751, so you get 29½ weeks × £751 = £22,154.50. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £22,154.50See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £22,154.50 Weekly pay capped at £751 29½ weeks’ pay at £751 a week, for 20 years with your employer. Weeks of pay29½ weeks Weekly pay used£751 Years that count20 years Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £22,154.50. 29½ weeks’ pay at £751 a week, for 20 years with your employer. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 41 or over (1½ weeks a year)1928½ weeks£21,403.50Aged 22 to 40 (1 week a year)11 week£751Statutory redundancy pay2029½ weeks£22,154.50 Only your last 20 years count, so 10 earlier years don’t add anything.Weekly pay is capped at £751 for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 60: 19 years aged 41 or over at 1½ weeks, 1 year aged 22 to 40 at 1 week, which makes 29½ weeks. Your weekly pay before tax is £1,153.85, capped at £751, so you get 29½ weeks × £751 = £22,154.50. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £22,154.50See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
@@ -216,14 +216,14 @@
       "text": ""
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
       "hidden": true
     },
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
       "text": "",
@@ -237,7 +237,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £22,154.50 Weekly pay capped at £751 29½ weeks’ pay at £751 a week, for 20 years of service. Weeks’ pay29½ weeks Weekly pay counted£751 Years counted20 years The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £22,154.50. 29½ weeks’ pay at £751 a week, for 20 years of service.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £22,154.50 Weekly pay capped at £751 29½ weeks’ pay at £751 a week, for 20 years with your employer. Weeks of pay29½ weeks Weekly pay used£751 Years that count20 years Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £22,154.50. 29½ weeks’ pay at £751 a week, for 20 years with your employer.",
       "data-state": "ready"
     },
     "lgrp-results-title": {
@@ -253,7 +253,7 @@
       "text": "Weekly pay capped at £751"
     },
     "lgrp-summary": {
-      "text": "29½ weeks’ pay at £751 a week, for 20 years of service."
+      "text": "29½ weeks’ pay at £751 a week, for 20 years with your employer."
     },
     "lgrp-weeks": {
       "text": "29½ weeks"
@@ -268,7 +268,7 @@
       "text": "£22,530"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 41 or over (1½ weeks a year)1928½ weeks£21,403.50Aged 22 to 40 (1 week a year)11 week£751Statutory redundancy pay2029½ weeks£22,154.50 Only your last 20 years count, so 10 earlier years don’t add anything.Weekly pay is capped at £751 for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 41 or over (1½ weeks a year)1928½ weeks£21,403.50Aged 22 to 40 (1 week a year)11 week£751Statutory redundancy pay2029½ weeks£22,154.50 Only your last 20 years count, so 10 earlier years don’t add anything.Weekly pay is capped at £751 for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"
@@ -294,12 +294,12 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £19,183.50 Weekly pay capped at £783 24½ weeks’ pay at £783 a week, for 20 years of service. Weeks’ pay24½ weeks Weekly pay counted£783 Years counted20 years The most anyone can get£23,490 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £19,183.50. 24½ weeks’ pay at £783 a week, for 20 years of service. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 41 or over (1½ weeks a year)913½ weeks£10,570.50Aged 22 to 40 (1 week a year)1111 weeks£8,613Statutory redundancy pay2024½ weeks£19,183.50 Only your last 20 years count, so 5 earlier years don’t add anything.Weekly pay is capped at £783 in Northern Ireland for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 50: 9 years aged 41 or over at 1½ weeks, 11 years aged 22 to 40 at 1 week, which makes 24½ weeks. Your weekly pay before tax is £900, capped at £783, so you get 24½ weeks × £783 = £19,183.50. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £19,183.50See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £19,183.50 Weekly pay capped at £783 24½ weeks’ pay at £783 a week, for 20 years with your employer. Weeks of pay24½ weeks Weekly pay used£783 Years that count20 years Most anyone can get£23,490 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £19,183.50. 24½ weeks’ pay at £783 a week, for 20 years with your employer. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 41 or over (1½ weeks a year)913½ weeks£10,570.50Aged 22 to 40 (1 week a year)1111 weeks£8,613Statutory redundancy pay2024½ weeks£19,183.50 Only your last 20 years count, so 5 earlier years don’t add anything.Weekly pay is capped at £783 in Northern Ireland for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 50: 9 years aged 41 or over at 1½ weeks, 11 years aged 22 to 40 at 1 week, which makes 24½ weeks. Your weekly pay before tax is £900, capped at £783, so you get 24½ weeks × £783 = £19,183.50. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £19,183.50See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
@@ -312,14 +312,14 @@
       "text": ""
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
       "hidden": true
     },
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
       "text": "",
@@ -333,7 +333,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £19,183.50 Weekly pay capped at £783 24½ weeks’ pay at £783 a week, for 20 years of service. Weeks’ pay24½ weeks Weekly pay counted£783 Years counted20 years The most anyone can get£23,490 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £19,183.50. 24½ weeks’ pay at £783 a week, for 20 years of service.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £19,183.50 Weekly pay capped at £783 24½ weeks’ pay at £783 a week, for 20 years with your employer. Weeks of pay24½ weeks Weekly pay used£783 Years that count20 years Most anyone can get£23,490 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £19,183.50. 24½ weeks’ pay at £783 a week, for 20 years with your employer.",
       "data-state": "ready"
     },
     "lgrp-results-title": {
@@ -349,7 +349,7 @@
       "text": "Weekly pay capped at £783"
     },
     "lgrp-summary": {
-      "text": "24½ weeks’ pay at £783 a week, for 20 years of service."
+      "text": "24½ weeks’ pay at £783 a week, for 20 years with your employer."
     },
     "lgrp-weeks": {
       "text": "24½ weeks"
@@ -364,7 +364,7 @@
       "text": "£23,490"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 41 or over (1½ weeks a year)913½ weeks£10,570.50Aged 22 to 40 (1 week a year)1111 weeks£8,613Statutory redundancy pay2024½ weeks£19,183.50 Only your last 20 years count, so 5 earlier years don’t add anything.Weekly pay is capped at £783 in Northern Ireland for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 41 or over (1½ weeks a year)913½ weeks£10,570.50Aged 22 to 40 (1 week a year)1111 weeks£8,613Statutory redundancy pay2024½ weeks£19,183.50 Only your last 20 years count, so 5 earlier years don’t add anything.Weekly pay is capped at £783 in Northern Ireland for redundancies from 6 April 2026, so pay above that doesn’t count.Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"
@@ -390,12 +390,12 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £923.08 Your full weekly pay counts 2 weeks’ pay at £461.54 a week, for 3 years of service. Weeks’ pay2 weeks Weekly pay counted£461.54 Years counted3 years The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £923.08. 2 weeks’ pay at £461.54 a week, for 3 years of service. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 22 to 40 (1 week a year)11 week£461.54Under 22 (½ week a year)21 week£461.54Statutory redundancy pay32 weeks£923.08 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 23: 1 year aged 22 to 40 at 1 week, 2 years under 22 at ½ week, which makes 2 weeks. Your weekly pay before tax is £461.54, so you get 2 weeks × £461.54 = £923.08. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £923.08See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £923.08 Your full weekly pay counts 2 weeks’ pay at £461.54 a week, for 3 years with your employer. Weeks of pay2 weeks Weekly pay used£461.54 Years that count3 years Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £923.08. 2 weeks’ pay at £461.54 a week, for 3 years with your employer. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 22 to 40 (1 week a year)11 week£461.54Under 22 (½ week a year)21 week£461.54Statutory redundancy pay32 weeks£923.08 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? Counting back from your redundancy at age 23: 1 year aged 22 to 40 at 1 week, 2 years under 22 at ½ week, which makes 2 weeks. Your weekly pay before tax is £461.54, so you get 2 weeks × £461.54 = £923.08. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £923.08See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
@@ -408,14 +408,14 @@
       "text": ""
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
       "hidden": true
     },
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
       "text": "",
@@ -429,7 +429,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £923.08 Your full weekly pay counts 2 weeks’ pay at £461.54 a week, for 3 years of service. Weeks’ pay2 weeks Weekly pay counted£461.54 Years counted3 years The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £923.08. 2 weeks’ pay at £461.54 a week, for 3 years of service.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £923.08 Your full weekly pay counts 2 weeks’ pay at £461.54 a week, for 3 years with your employer. Weeks of pay2 weeks Weekly pay used£461.54 Years that count3 years Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £923.08. 2 weeks’ pay at £461.54 a week, for 3 years with your employer.",
       "data-state": "ready"
     },
     "lgrp-results-title": {
@@ -445,7 +445,7 @@
       "text": "Your full weekly pay counts"
     },
     "lgrp-summary": {
-      "text": "2 weeks’ pay at £461.54 a week, for 3 years of service."
+      "text": "2 weeks’ pay at £461.54 a week, for 3 years with your employer."
     },
     "lgrp-weeks": {
       "text": "2 weeks"
@@ -460,7 +460,7 @@
       "text": "£22,530"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 22 to 40 (1 week a year)11 week£461.54Under 22 (½ week a year)21 week£461.54Statutory redundancy pay32 weeks£923.08 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 22 to 40 (1 week a year)11 week£461.54Under 22 (½ week a year)21 week£461.54Statutory redundancy pay32 weeks£923.08 Statutory redundancy pay is tax-free, along with any other redundancy pay up to £30,000 in total. Notice pay, holiday pay and wages owed are taxed as normal.Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"
@@ -486,12 +486,12 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £0 Under 2 years’ service You need at least 2 years’ continuous service to get statutory redundancy pay. Your employer may still pay you under your contract. Weeks’ pay0 weeks Weekly pay counted£538.46 Years counted1 year The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £0. You need at least 2 years’ continuous service to get statutory redundancy pay. Your employer may still pay you under your contract. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 22 to 40 (1 week a year)10 weeks£0Statutory redundancy pay10 weeks£0 Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? With 1 complete year of service, you’re under the 2 years needed for statutory redundancy pay. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £0See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay £0 Less than 2 years with your employer You need to have worked for your employer for at least 2 years without a break to get statutory redundancy pay. Your contract may still give you some. Weeks of pay0 weeks Weekly pay used£538.46 Years that count1 year Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £0. You need to have worked for your employer for at least 2 years without a break to get statutory redundancy pay. Your contract may still give you some. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 22 to 40 (1 week a year)10 weeks£0Statutory redundancy pay10 weeks£0 Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer. How was this calculated? With 1 full year with your employer, you’re under the 2 years needed for statutory redundancy pay. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay £0See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
@@ -504,14 +504,14 @@
       "text": ""
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
       "hidden": true
     },
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
       "text": "",
@@ -525,7 +525,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £0 Under 2 years’ service You need at least 2 years’ continuous service to get statutory redundancy pay. Your employer may still pay you under your contract. Weeks’ pay0 weeks Weekly pay counted£538.46 Years counted1 year The most anyone can get£22,530 The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £0. You need at least 2 years’ continuous service to get statutory redundancy pay. Your employer may still pay you under your contract.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay £0 Less than 2 years with your employer You need to have worked for your employer for at least 2 years without a break to get statutory redundancy pay. Your contract may still give you some. Weeks of pay0 weeks Weekly pay used£538.46 Years that count1 year Most anyone can get£22,530 The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. Statutory redundancy pay £0. You need to have worked for your employer for at least 2 years without a break to get statutory redundancy pay. Your contract may still give you some.",
       "data-state": "ready"
     },
     "lgrp-results-title": {
@@ -538,10 +538,10 @@
       "text": "£0"
     },
     "lgrp-status": {
-      "text": "Under 2 years’ service"
+      "text": "Less than 2 years with your employer"
     },
     "lgrp-summary": {
-      "text": "You need at least 2 years’ continuous service to get statutory redundancy pay. Your employer may still pay you under your contract."
+      "text": "You need to have worked for your employer for at least 2 years without a break to get statutory redundancy pay. Your contract may still give you some."
     },
     "lgrp-weeks": {
       "text": "0 weeks"
@@ -556,7 +556,7 @@
       "text": "£22,530"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Aged 22 to 40 (1 week a year)10 weeks£0Statutory redundancy pay10 weeks£0 Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Aged 22 to 40 (1 week a year)10 weeks£0Statutory redundancy pay10 weeks£0 Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"
@@ -571,10 +571,10 @@
       "text": "Your contract may give you more than the legal minimum. Check your contract or staff handbook, or ask your employer."
     },
     "lgrp-method": {
-      "text": "How was this calculated? With 1 complete year of service, you’re under the 2 years needed for statutory redundancy pay. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending."
+      "text": "How was this calculated? With 1 full year with your employer, you’re under the 2 years needed for statutory redundancy pay. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending."
     },
     "lgrp-method-text": {
-      "text": "With 1 complete year of service, you’re under the 2 years needed for statutory redundancy pay."
+      "text": "With 1 full year with your employer, you’re under the 2 years needed for statutory redundancy pay."
     }
   },
   "invalid": {
@@ -582,24 +582,24 @@
       "text": "Calculator"
     },
     "lgrp": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your years of service can’t be more than your age less 15. Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Your years of service can’t be more than your age less 15. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay — Check the highlighted fields to see your redundancy pay. Weeks’ pay— Weekly pay counted— Years counted— The most anyone can get— The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Enter your details to see the breakdown. How was this calculated? Enter your details to see how the figures are worked out. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay —See results",
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields Your years with your employer can’t be more than your age minus 15. You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Your years with your employer can’t be more than your age minus 15. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures 02 — Your results Your redundancy pay Statutory redundancy pay — Check the highlighted fields to see your redundancy pay. Weeks of pay— Weekly pay used— Years that count— Most anyone can get— The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice. How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Enter your details to see the breakdown. How was this calculated? Enter your details to see how the figures are worked out. Statutory redundancy pay is half a week’s pay for each full year you were under 22, one week’s pay for each full year you were 22 to 40, and one and a half weeks’ pay for each full year you were 41 or older. Years are counted back from the date your job ends, up to 20 years. Weekly pay is your pay before tax, capped at £751 a week (£783 in Northern Ireland) for redundancies from 6 April 2026, so the most anyone can get is £22,530 (£23,490 in Northern Ireland). Ages are in whole years, so the result can differ slightly from your employer’s if you have a birthday close to a year of service ending. Statutory redundancy pay —See results",
       "data-calc": "redundancy-pay",
       "data-lgReadylgrpform": "true"
     },
     "lgrp-form": {
-      "text": "01 — Your details Your job and pay Enter your age, how long you’ve worked for your employer and your pay. We’ll work out the statutory redundancy pay you’re legally owed for a redundancy from 6 April 2026. Check the highlighted fields Your years of service can’t be more than your age less 15. Your job Your age when you’re made redundant years Your age on the date your job ends. Complete years of service years Full years with your employer, without a break. You need at least 2. Your years of service can’t be more than your age less 15. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
+      "text": "01 — Your details Your job and pay See the minimum redundancy pay your employer must give you by law (statutory redundancy pay). It depends on your age, how long you’ve worked there and your pay. For redundancies from 6 April 2026. Check the highlighted fields Your years with your employer can’t be more than your age minus 15. You and your job Your age years On the day your job ends. Years with your employer years Full years only, without a break. You need at least 2 to qualify. Your years with your employer can’t be more than your age minus 15. Where you work England, Scotland or Wales Northern Ireland Your pay Pay before tax £ Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks. I’m entering my pay Yearly Monthly Weekly Results update as you type. Nothing you enter leaves your browser. Clear figures"
     },
     "lgrp-form-title": {
       "text": "Your job and pay"
     },
     "lgrp-error-summary": {
-      "text": "Check the highlighted fields Your years of service can’t be more than your age less 15."
+      "text": "Check the highlighted fields Your years with your employer can’t be more than your age minus 15."
     },
     "lgrp-error-list": {
-      "text": "Your years of service can’t be more than your age less 15."
+      "text": "Your years with your employer can’t be more than your age minus 15."
     },
     "lgrp-age-hint": {
-      "text": "Your age on the date your job ends."
+      "text": "On the day your job ends."
     },
     "lgrp-age-error": {
       "text": "",
@@ -607,10 +607,10 @@
     },
     "lgrp-years@invalid": "true",
     "lgrp-years-hint": {
-      "text": "Full years with your employer, without a break. You need at least 2."
+      "text": "Full years only, without a break. You need at least 2 to qualify."
     },
     "lgrp-years-error": {
-      "text": "Your years of service can’t be more than your age less 15."
+      "text": "Your years with your employer can’t be more than your age minus 15."
     },
     "lgrp-pay-hint": {
       "text": "Your normal pay before tax and anything else is taken off. If your hours or pay vary, use your average over the last 12 weeks."
@@ -620,7 +620,7 @@
       "hidden": true
     },
     "lgrp-results": {
-      "text": "02 — Your results Your redundancy pay Statutory redundancy pay — Check the highlighted fields to see your redundancy pay. Weeks’ pay— Weekly pay counted— Years counted— The most anyone can get— The legal minimum for employees with at least 2 years’ continuous service. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.",
+      "text": "02 — Your results Your redundancy pay Statutory redundancy pay — Check the highlighted fields to see your redundancy pay. Weeks of pay— Weekly pay used— Years that count— Most anyone can get— The legal minimum for employees who’ve worked for their employer for at least 2 years without a break. It doesn’t include notice pay, holiday pay or any extra redundancy pay in your contract. This is not legal advice.",
       "data-state": "invalid"
     },
     "lgrp-results-title": {
@@ -652,7 +652,7 @@
       "text": "—"
     },
     "lgrp-breakdown": {
-      "text": "How your redundancy pay adds up Each year of service counts for half a week, one week or one and a half weeks’ pay, depending on your age during that year. Your years of service, by age Years of serviceYearsWeeks’ payPay Enter your details to see the breakdown."
+      "text": "How your redundancy pay adds up Each full year you’ve worked there adds half a week’s, one week’s or one and a half weeks’ pay, depending on how old you were that year. Your years of service, by age Your age that yearYearsWeeks of payPay Enter your details to see the breakdown."
     },
     "lgrp-breakdown-title": {
       "text": "How your redundancy pay adds up"

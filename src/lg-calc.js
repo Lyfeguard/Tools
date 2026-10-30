@@ -359,10 +359,28 @@
     });
   }
 
+  // <button class="lgc-tip-button" aria-expanded="false" aria-controls="id">:
+  // a (?) that shows or hides the explanation it controls.
+  function initTip(button) {
+    var tip = document.getElementById(button.getAttribute('aria-controls'));
+    if (!tip) return;
+    function show(open) {
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+      tip.hidden = !open;
+    }
+    button.addEventListener('click', function () {
+      show(button.getAttribute('aria-expanded') !== 'true');
+    });
+    button.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') show(false);
+    });
+  }
+
   LG.ready(function () {
     document.querySelectorAll('.lg-calc').forEach(function (root) {
       if (root.dataset.lgShared === 'true') return;
       root.dataset.lgShared = 'true';
+      root.querySelectorAll('.lgc-tip-button[aria-controls]').forEach(initTip);
       root.querySelectorAll('.lgc-sticky[data-source]').forEach(initSticky);
       root.querySelectorAll('[data-announce]').forEach(initAnnouncer);
       root.querySelectorAll('[data-clear]').forEach(function (b) {
@@ -4831,7 +4849,7 @@
 
     const FIELDS = {
       age: { min: 16, max: 99, places: 0, msg: 'Enter your age in whole years, from 16 to 99.' },
-      years: { min: 0, max: 84, places: 0, msg: 'Enter your complete years of service in whole years, or 0.' },
+      years: { min: 0, max: 84, places: 0, msg: 'Enter how many full years you\u2019ve worked there, or 0.' },
       pay: { min: 1, max: 10000000, places: 2, msg: 'Enter your pay before tax, from \u00A31.' },
     };
 
@@ -4917,7 +4935,7 @@
           values[id] = r.value;
         });
         if (!errors.length && !blank && values.years > values.age - 15) {
-          errors.push({ id: 'years', message: 'Your years of service can\u2019t be more than your age less 15.' });
+          errors.push({ id: 'years', message: 'Your years with your employer can\u2019t be more than your age minus 15.' });
         }
         showErrors(errors);
         if (errors.length) return resetResults('invalid', 'Check the highlighted fields to see your redundancy pay.');
@@ -4929,12 +4947,12 @@
         write('headline', pounds(r.total));
         const status = get('status');
         status.hidden = false;
-        status.textContent = !r.eligible ? 'Under ' + R.minYears + ' years\u2019 service' : r.capped ? 'Weekly pay capped at ' + pounds(r.cap) : 'Your full weekly pay counts';
+        status.textContent = !r.eligible ? 'Less than ' + R.minYears + ' years with your employer' : r.capped ? 'Weekly pay capped at ' + pounds(r.cap) : 'Your full weekly pay counts';
         write(
           'summary',
           r.eligible
-            ? weeksPay(r.weeks) + ' at ' + pounds(r.pay) + ' a week, for ' + r.counted + ' year' + (r.counted === 1 ? '' : 's') + ' of service.'
-            : 'You need at least ' + R.minYears + ' years\u2019 continuous service to get statutory redundancy pay. Your employer may still pay you under your contract.',
+            ? weeksPay(r.weeks) + ' at ' + pounds(r.pay) + ' a week, for ' + r.counted + ' year' + (r.counted === 1 ? '' : 's') + ' with your employer.'
+            : 'You need to have worked for your employer for at least ' + R.minYears + ' years without a break to get statutory redundancy pay. Your contract may still give you some.',
         );
         write('weeks', r.eligible ? weeksText(r.weeks) : '0 weeks');
         write('weekly', pounds(r.pay));
@@ -4985,7 +5003,7 @@
 
       function renderMethod(r, values, weekly) {
         if (!r.eligible) {
-          write('method-text', 'With ' + values.years + ' complete year' + (values.years === 1 ? '' : 's') + ' of service, you\u2019re under the ' + R.minYears + ' years needed for statutory redundancy pay.');
+          write('method-text', 'With ' + values.years + ' full year' + (values.years === 1 ? '' : 's') + ' with your employer, you\u2019re under the ' + R.minYears + ' years needed for statutory redundancy pay.');
           return;
         }
         const parts = r.bands.filter((b) => b.years).map((b) => b.years + ' year' + (b.years === 1 ? '' : 's') + ' ' + BAND_NAMES[b.fromAge].toLowerCase() + ' at ' + weeksText(b.weeks));
@@ -5034,9 +5052,9 @@
   module('mortgage-affordability', function () {
     'use strict';
     const A = LG.taxYear.mortgageAffordability;
-    const PAY_PERIODS = { year: 1, month: 12 };
     // The multiples shown: the bottom and top of "most lenders", then each band's top.
     const MULTIPLES = [A.bands[0].from].concat(A.bands.map((b) => b.to));
+    const BANDS = ['most', 'most', 'many', 'specialist'];
 
     // Monthly payment on a loan. rate: % a year; years: the term.
     function payment(loan, rate, years, type) {
@@ -5046,28 +5064,64 @@
       return r === 0 ? loan / n : (loan * r) / (1 - Math.pow(1 + r, -n));
     }
 
-    // Take-home pay a month for one person: income tax (England, Wales and
-    // Northern Ireland rates) and National Insurance, nothing else.
-    const takeHome = (gross) => (gross - LG.ukTax.incomeTax(gross, 'ruk') - LG.ukTax.employeeNI(gross)) / 12;
+    // The longest term that ends by repaidByAge, within the terms offered.
+    const maxTerm = (age) => Math.min(A.terms.max, A.repaidByAge - age);
 
-    // input: { applicants: [{ basic, variable }], loans, cards, cardsType
-    // ('balance' | 'payments'), other, existing (all a month), deposit,
-    // term, rate, type ('repayment' | 'interest-only') }.
+    // Take-home pay a month. Two applicants' pay is split equally. tax:
+    // { region, pensionPct (taken before tax), student, deductions (a month) }.
+    function takeHome(gross, people, tax) {
+      const each = gross / people;
+      const pension = (each * tax.pensionPct) / 100;
+      const incomeTax = LG.ukTax.incomeTax(each - pension, tax.region);
+      const ni = LG.ukTax.employeeNI(each);
+      const perPerson = (each - pension - incomeTax - ni) / 12;
+      return { net: perPerson * people - tax.student - tax.deductions, pension: (pension * people) / 12, incomeTax: (incomeTax * people) / 12, ni: (ni * people) / 12 };
+    }
+
+    // How comfortable what's left is: 'good', 'tight' or 'short'.
+    function comfort(left, net, withLiving) {
+      const t = withLiving ? A.cashFlow.withLivingCosts : A.cashFlow.withoutLivingCosts;
+      if (net > 0 && left >= net * t.good) return 'good';
+      if (net > 0 && left >= net * t.tight) return 'tight';
+      return 'short';
+    }
+
+    // input: { people (1 or 2), income, variable (a year, combined), loans,
+    // cards, cardsType ('balance' | 'payments'), other, existing, living (a
+    // month; living null if not entered), price (null if not entered),
+    // deposit, term, rate, type ('repayment' | 'interest-only'), tax }.
     function calculate(input) {
-      const counted = input.applicants.reduce((t, a) => t + a.basic + a.variable * A.variableIncome, 0);
-      const gross = input.applicants.reduce((t, a) => t + a.basic + a.variable, 0);
+      const counted = input.income + input.variable * A.variableIncome;
+      const gross = input.income + input.variable;
       const cardsMonthly = input.cardsType === 'payments' ? input.cards : input.cards * A.cardPayment;
       const debts = input.loans + cardsMonthly + input.existing;
       const commitments = debts + input.other;
       const assessed = Math.max(0, counted - commitments * 12);
-      const net = input.applicants.reduce((t, a) => t + takeHome(a.basic + a.variable), 0);
+      const pay = takeHome(gross, input.people, input.tax);
       const points = MULTIPLES.map((multiple) => {
         const loan = Math.floor((assessed * multiple) / 1000) * 1000;
         const price = loan + input.deposit;
         const ltv = price > 0 ? (loan / price) * 100 : 0;
         return { multiple, loan, price, ltv, band: A.ltvBands.find((b) => ltv <= b + 1e-9) || null, monthly: payment(loan, input.rate, input.term, input.type) };
       });
-      const main = points[1]; // the top of "most lenders"
+      // The loan for the cash flow: what the home needs, or else what most lenders could offer.
+      const priced = input.price !== null;
+      const loan = priced ? Math.max(0, input.price - input.deposit) : points[1].loan;
+      const ltv = priced && input.price > 0 ? (loan / input.price) * 100 : null;
+      const fitIndex = points.findIndex((p, i) => i > 0 && loan <= p.loan);
+      const flow = (rise) => {
+        const monthly = payment(loan, input.rate + rise, input.term, input.type);
+        const left = pay.net - monthly - debts - input.other - (input.living || 0);
+        return { rate: input.rate + rise, monthly, left, status: comfort(left, pay.net, input.living !== null) };
+      };
+      // The smallest rise (in 0.05 steps, up to rateRiseMax) where the colour changes.
+      const tipping = {};
+      const now = flow(0).status;
+      for (let step = 0; step <= A.rateRiseMax * 20; step++) {
+        const s = flow(step / 20).status;
+        if (s !== now && s !== 'good' && !(s in tipping)) tipping[s] = step / 20;
+      }
+      const first = flow(0);
       return {
         counted,
         gross,
@@ -5075,33 +5129,44 @@
         debts,
         commitments,
         assessed,
-        net,
+        pay,
         points,
-        main,
+        priced,
+        loan,
+        ltv,
+        ltvBand: ltv === null ? null : A.ltvBands.find((b) => ltv <= b + 1e-9) || null,
+        fit: loan <= 0 ? 'none' : fitIndex < 0 ? 'beyond' : BANDS[fitIndex],
+        monthly: first.monthly,
+        left: first.left,
+        status: first.status,
+        flow,
+        tipping,
         // What a year of commitments costs in borrowing, at the top of "most lenders" and "many lenders".
         reduction: [MULTIPLES[1], MULTIPLES[2]].map((m) => Math.round((Math.min(counted, commitments * 12) * m) / 1000) * 1000),
-        share: net > 0 ? (main.monthly / net) * 100 : 0,
-        dti: gross > 0 ? ((debts + main.monthly) / (gross / 12)) * 100 : 0,
-        rises: A.rateRises.map((rise) => ({ rise, monthly: payment(main.loan, input.rate + rise, input.term, input.type) })),
+        share: pay.net > 0 ? (first.monthly / pay.net) * 100 : 0,
+        dti: gross > 0 ? ((debts + first.monthly) / (gross / 12)) * 100 : 0,
       };
     }
-    LG.mortgageAffordability = { calculate, payment };
+    LG.mortgageAffordability = { calculate, payment, takeHome, maxTerm };
 
-    const money = { kind: 'money', min: 0, max: 100000000, msg: 'Enter an amount in pounds, or 0.' };
+    const money = { min: 0, max: 100000000, msg: 'Enter an amount in pounds, or leave it blank.' };
     const FIELDS = {
-      income1: { min: 1, max: 100000000, msg: 'Enter your yearly pay before tax, from \u00A31.' },
-      variable1: money,
-      income2: { min: 1, max: 100000000, msg: 'Enter the second applicant\u2019s yearly pay before tax, from \u00A31.' },
-      variable2: money,
+      age: { min: 18, max: A.repaidByAge - A.terms.min, places: 0, msg: 'Enter an age from 18 to ' + (A.repaidByAge - A.terms.min) + '. Lenders usually want a mortgage repaid by ' + A.repaidByAge + ', though some lend to older people: a mortgage adviser can help.' },
+      income: { min: 1, max: 100000000, msg: 'Enter your yearly pay before tax, from \u00A31.' },
+      variable: money,
       loans: money,
       cards: money,
       other: money,
+      living: money,
       existing: money,
+      price: { min: 1, max: 100000000, msg: 'Enter the price in pounds, or leave it blank.' },
       deposit: money,
-      term: { min: 5, max: 40, places: 0, msg: 'Enter a term in whole years, from 5 to 40.' },
       rate: { min: 0, max: 20, msg: 'Enter an interest rate from 0% to 20%.' },
+      pension: { min: 0, max: 100, msg: 'Enter a pension contribution from 0% to 100%.' },
+      student: money,
+      deductions: money,
     };
-    const REQUIRED = ['income1', 'income2', 'term', 'rate'];
+    const REQUIRED = ['age', 'income', 'rate'];
     // The Debt-to-Income calculator's bands (upper bound exclusive).
     const DTI_BANDS = [
       [20, 'low'],
@@ -5109,11 +5174,12 @@
       [50, 'high'],
       [Infinity, 'very high'],
     ];
+    const STATUS = { good: 'Healthy surplus', tight: 'Tight margin', short: 'Not enough left' };
 
     LG.start({
       name: 'Mortgage Affordability',
       panel: 'lgma-form',
-      required: ['lgma-income1', 'lgma-income2', 'lgma-second', 'lgma-existing-field', 'lgma-results', 'lgma-headline', 'lgma-table-body', 'lgma-checks-body', 'lgma-notes'],
+      required: ['lgma-age', 'lgma-income', 'lgma-term', 'lgma-existing-field', 'lgma-second-banner', 'lgma-results', 'lgma-headline', 'lgma-flow', 'lgma-rise', 'lgma-table-body', 'lgma-checks-body', 'lgma-notes'],
       setup: setup,
     });
 
@@ -5127,26 +5193,52 @@
       };
       const choice = (name, fallback) => (root.querySelector('input[name="lgma-' + name + '"]:checked') || {}).value || fallback;
       const pounds = (n) => LG.money(Math.round(n), 0);
-      const pence = (n) => LG.money(Math.round(n * 100) / 100, 2);
+      const signed = (n) => (n < 0 ? '\u2212' : '') + pounds(Math.abs(n));
       const times = (m) => String(m) + ' times';
+      const pct = (n) => Number(n.toFixed(2)) + '%';
       // "a, b and c"
       const list = (items) => (items.length > 1 ? items.slice(0, -1).join(', ') + ' and ' + items[items.length - 1] : items.join(''));
       const touched = new Set();
 
-      // Which fields are in use: the second applicant's only on a joint application,
-      // existing mortgage payments only for an additional property.
-      function active() {
+      // What the form shows: labels for one or two people, the card field's
+      // wording, the second-home banner and field, and the terms that end by 75.
+      function arrange(age) {
         const joint = choice('applicants', 'one') === 'two';
         const additional = choice('purchase', 'first') === 'additional';
-        get('second').hidden = !joint;
+        write('age-label', joint ? 'Age of the older of you' : 'Your age');
+        write('income-label', joint ? 'Combined basic salary before tax' : 'Basic salary before tax');
+        write('variable-label', joint ? 'Combined bonus, overtime and commission' : 'Bonus, overtime and commission');
+        const payments = choice('cards-type', 'balance') === 'payments';
+        write('cards-label', payments ? 'Credit card minimum payments' : 'Credit card balances');
+        write('cards-affix', payments ? 'a month' : 'owed');
+        get('second-banner').hidden = !additional;
         get('existing-field').hidden = !additional;
-        return Object.keys(FIELDS).filter((id) => (joint || !/2$/.test(id)) && (additional || id !== 'existing'));
+        const select = get('term');
+        const max = Number.isFinite(age) ? maxTerm(age) : A.terms.max;
+        let chosen = Number(select.value);
+        Array.prototype.forEach.call(select.options, (o) => {
+          o.disabled = Number(o.value) > max;
+        });
+        if (chosen > max) {
+          const allowed = Array.prototype.filter.call(select.options, (o) => !o.disabled);
+          if (allowed.length) {
+            select.value = allowed[allowed.length - 1].value;
+            chosen = Number(select.value);
+          }
+        }
+        write(
+          'term-note',
+          Number.isFinite(age)
+            ? 'At ' + age + ', the longest term that ends by age ' + A.repaidByAge + ' is ' + max + ' years. Lenders\u2019 age limits vary: some stop earlier, others lend later.'
+            : 'Enter your age to see the terms that end by age ' + A.repaidByAge + '. Lenders\u2019 age limits vary.',
+        );
+        return { joint, additional, term: chosen };
       }
 
       function readField(id) {
         const rule = FIELDS[id];
         const item = LG.parseNumber(get(id).value.replace(/%\s*$/, ''), rule.places === undefined ? 2 : rule.places);
-        if (!item.entered) return { blank: true, value: 0 };
+        if (!item.entered) return { blank: true, value: null };
         const ok = item.valid && item.value >= rule.min && item.value <= rule.max;
         return { value: item.value, error: ok ? '' : rule.msg };
       }
@@ -5157,6 +5249,7 @@
           const e = shown.find((x) => x.id === id);
           LG.markInvalid(get(id), Boolean(e));
           const box = get(id + '-error');
+          if (!box) return;
           box.textContent = e ? e.message : '';
           box.hidden = !e;
         });
@@ -5190,20 +5283,25 @@
         write('headline', '\u2014');
         get('status').hidden = true;
         write('summary', message);
-        ['most', 'many', 'specialist', 'counted'].forEach((id) => write(id, '\u2014'));
+        ['most', 'many', 'specialist', 'counted', 'flow-net', 'flow-mortgage', 'flow-debts', 'flow-spending', 'flow-living', 'flow-left', 'rise-rate', 'rise-payment', 'rise-left'].forEach((id) => write(id, '\u2014'));
+        get('flow').removeAttribute('data-status');
+        get('flow-status').hidden = true;
+        get('rise-status').hidden = true;
+        write('rise-note', 'Slide to see how a higher rate changes what\u2019s left, up to ' + A.rateRiseMax + ' points higher. Lenders test this too.');
+        write('takehome-text', 'Enter your pay to see how your take-home pay is worked out.');
         emptyRow('table-body', 5, 'Enter your income to see what you could borrow.');
         emptyRow('checks-body', 2, 'Enter your income to see the payments.');
-        A.rateRises.forEach((rise, i) => {
-          write('rise' + i, '\u2014');
-          write('rise' + i + '-note', '\u2014');
-        });
         get('notes').replaceChildren();
         get('notes').hidden = true;
         write('method-text', 'Enter your details to see how the figures are worked out.');
+        last = null;
       }
 
+      let last = null; // the latest input and result, for the rate slider
       function render() {
-        const ids = active();
+        const ageRead = readField('age');
+        const layout = arrange(ageRead.error || ageRead.blank ? NaN : ageRead.value);
+        const ids = Object.keys(FIELDS).filter((id) => layout.additional || id !== 'existing');
         const values = {};
         const errors = [];
         let blank = false;
@@ -5215,27 +5313,33 @@
         });
         showErrors(errors);
         if (errors.length) return resetResults('invalid', 'Check the highlighted fields to see what you could borrow.');
-        if (blank) return resetResults('empty', 'Enter your pay to see what lenders could offer you.');
-        const joint = ids.includes('income2');
+        if (blank) return resetResults('empty', 'Enter your age and pay to see what lenders could offer you.');
+        const zero = (v) => v || 0;
         const input = {
-          applicants: [{ basic: values.income1, variable: values.variable1 }].concat(joint ? [{ basic: values.income2, variable: values.variable2 }] : []),
-          loans: values.loans,
-          cards: values.cards,
+          people: layout.joint ? 2 : 1,
+          income: values.income,
+          variable: zero(values.variable),
+          loans: zero(values.loans),
+          cards: zero(values.cards),
           cardsType: choice('cards-type', 'balance'),
-          other: values.other,
-          existing: values.existing || 0,
-          deposit: values.deposit,
-          term: values.term,
+          other: zero(values.other),
+          existing: zero(values.existing),
+          living: values.living,
+          price: values.price,
+          deposit: zero(values.deposit),
+          term: layout.term,
           rate: values.rate,
           type: choice('type', 'repayment'),
+          tax: { region: choice('region', 'ruk'), pensionPct: values.pension === null ? 0 : values.pension, student: zero(values.student), deductions: zero(values.deductions) },
         };
         const r = calculate(input);
+        last = { input, r };
         const p = r.points;
         get('results').dataset.state = 'ready';
         write('headline', r.assessed > 0 ? pounds(p[0].loan) + ' to ' + pounds(p[2].loan) : pounds(0));
         const status = get('status');
-        status.hidden = r.assessed <= 0;
-        status.textContent = r.assessed > 0 ? LG.percent(r.main.ltv, 0) + ' loan-to-value at ' + times(MULTIPLES[1]) + (r.main.band ? '' : ': over 95%') : '';
+        status.textContent = badge(r);
+        status.hidden = !status.textContent;
         write(
           'summary',
           r.assessed > 0
@@ -5246,11 +5350,82 @@
         write('many', pounds(p[2].loan));
         write('specialist', pounds(p[3].loan));
         write('counted', pounds(r.assessed) + ' a year');
-        renderTable(r, input);
+        renderFlow(r, input);
+        renderRise();
+        renderTakeHome(r, input);
+        renderTable(r);
         renderChecks(r, input);
-        renderRises(r, input);
-        renderNotes(r, input, values);
-        renderMethod(r, input, values);
+        renderNotes(r, input);
+        renderMethod(r, input);
+      }
+
+      // Whether the loan the home needs is within reach, or the LTV of what most lenders offer.
+      function badge(r) {
+        if (r.assessed <= 0) return '';
+        if (!r.priced) return LG.percent(r.points[1].ltv, 0) + ' loan-to-value at ' + times(MULTIPLES[1]);
+        const need = 'Borrowing ' + pounds(r.loan) + ': ';
+        return need + { none: 'none needed', most: 'within most lenders\u2019 range', many: 'with many lenders', specialist: 'only with specialist lenders', beyond: 'more than lenders are likely to offer' }[r.fit];
+      }
+
+      function renderFlow(r, input) {
+        const flow = get('flow');
+        flow.dataset.status = r.status;
+        write('flow-net', pounds(r.pay.net));
+        write('flow-mortgage-label', 'Mortgage payment on ' + pounds(r.loan) + (input.type === 'interest-only' ? ' (interest only)' : ''));
+        write('flow-mortgage', '\u2212' + pounds(r.monthly));
+        write('flow-debts', '\u2212' + pounds(r.debts));
+        write('flow-spending', '\u2212' + pounds(input.other));
+        write('flow-living', input.living === null ? 'Not entered' : '\u2212' + pounds(input.living));
+        write('flow-left-label', input.living === null ? 'Left for everyday costs and saving' : 'Left each month');
+        write('flow-left', signed(r.left));
+        const s = get('flow-status');
+        s.hidden = false;
+        s.dataset.status = r.status;
+        const share = LG.percent(r.pay.net > 0 ? (Math.max(0, r.left) / r.pay.net) * 100 : 0, 0);
+        s.textContent = STATUS[r.status] + ': ' + (r.left < 0 ? pounds(-r.left) + ' short each month' : (r.status === 'short' ? 'only ' : '') + share + ' of your take-home pay left' + (input.living === null ? ' for everyday costs' : ''));
+        write('flow-intro', r.priced ? 'What would be left each month with the loan your home needs, after the mortgage, your debts and your spending.' : 'What would be left each month borrowing what most lenders could offer, after the mortgage, your debts and your spending. Add a property price to use the loan your home needs.');
+      }
+
+      // The rate slider: payment and what's left at the chosen rise, and where the colour changes.
+      const rise = get('rise');
+      function renderRise() {
+        if (!last) return;
+        const value = Number(rise.value) || 0;
+        const f = last.r.flow(value);
+        rise.style.setProperty('--lgc-fill', (value / A.rateRiseMax) * 100 + '%');
+        rise.setAttribute('aria-valuetext', '+' + value + ' points: ' + pct(f.rate));
+        write('rise-rate', pct(f.rate) + (value ? ' (+' + value + ')' : ''));
+        write('rise-payment', pounds(f.monthly));
+        write('rise-left', signed(f.left));
+        const s = get('rise-status');
+        s.hidden = false;
+        s.dataset.status = f.status;
+        s.textContent = STATUS[f.status];
+        const t = last.r.tipping;
+        const at = (x) => '+' + Number(x.toFixed(2)) + ' points (' + pct(last.input.rate + x) + ')';
+        const parts = [];
+        if ('tight' in t) parts.push('turns amber at ' + at(t.tight));
+        if ('short' in t) parts.push('turns red at ' + at(t.short));
+        write(
+          'rise-note',
+          last.r.status === 'short'
+            ? 'You\u2019d already be short at today\u2019s rate.'
+            : parts.length
+              ? 'What\u2019s left ' + list(parts) + '.'
+              : 'What\u2019s left stays ' + (last.r.status === 'good' ? 'green' : 'amber') + ' even ' + A.rateRiseMax + ' points higher.',
+        );
+      }
+      rise.addEventListener('input', renderRise);
+
+      function renderTakeHome(r, input) {
+        const t = r.pay;
+        const parts = ['From ' + pounds(r.gross / 12) + ' a month before tax' + (input.people === 2 ? ' (split equally between you)' : '')];
+        if (t.pension > 0) parts.push(pounds(t.pension) + ' pension');
+        parts.push(pounds(t.incomeTax) + ' income tax (' + (input.tax.region === 'scotland' ? 'Scottish' : 'England, Wales and Northern Ireland') + ' rates)');
+        parts.push(pounds(t.ni) + ' National Insurance');
+        if (input.tax.student) parts.push(pounds(input.tax.student) + ' student loan');
+        if (input.tax.deductions) parts.push(pounds(input.tax.deductions) + ' other deductions');
+        write('takehome-text', parts[0] + ', we take off ' + list(parts.slice(1)) + ', leaving ' + pounds(t.net) + ' a month. Change any of these below.');
       }
 
       function row(body, cells, cls) {
@@ -5281,7 +5456,7 @@
               Object.assign({ text: pounds(pt.loan) }, id('loan')),
               Object.assign({ text: pounds(pt.price) }, id('price')),
               pt.price > 0 ? LG.percent(pt.ltv, 0) : '\u2014',
-              pence(pt.monthly),
+              pounds(pt.monthly),
             ],
             i === 1 ? 'lgc-row-total' : '',
           );
@@ -5294,34 +5469,30 @@
       function renderChecks(r, input) {
         const body = get('checks-body');
         body.innerHTML = '';
-        row(body, ['Monthly payment on ' + pounds(r.main.loan) + (input.type === 'interest-only' ? ' (interest only)' : ''), pence(r.main.monthly)]);
-        row(body, ['Share of your take-home pay', r.net > 0 ? LG.percent(r.share, 0) + ' of ' + pounds(r.net) + ' a month' : '\u2014']);
+        if (r.priced) {
+          row(body, ['Borrowing your home needs', pounds(r.loan) + ' (' + pounds(input.price) + ' less ' + pounds(input.deposit) + ' deposit)']);
+          row(body, ['Loan-to-value', r.ltv === null ? '\u2014' : LG.percent(r.ltv, 0) + (r.ltvBand ? ' (' + r.ltvBand + '% band)' : ' (over 95%)')]);
+        }
+        row(body, ['Monthly payment' + (input.type === 'interest-only' ? ' (interest only)' : ''), pounds(r.monthly)]);
+        row(body, ['Share of your take-home pay', r.pay.net > 0 ? LG.percent(r.share, 0) + ' of ' + pounds(r.pay.net) + ' a month' : '\u2014']);
         row(body, ['Debt-to-income with this mortgage', LG.percent(r.dti, 0) + ' (' + dtiBand(r.dti) + ')']);
-        row(body, ['Commitments counted a month', pence(r.commitments)]);
+        row(body, ['Commitments lenders count a month', pounds(r.commitments)]);
         if (r.commitments > 0) row(body, ['What your commitments cost in borrowing', 'about ' + pounds(r.reduction[0]) + ' to ' + pounds(r.reduction[1])]);
       }
 
-      function renderRises(r, input) {
-        A.rateRises.forEach((rise, i) => {
-          const x = r.rises[i];
-          write('rise' + i + '-label', '+' + rise + ' point' + (rise === 1 ? '' : 's') + ': ' + Number((input.rate + rise).toFixed(2)) + '%');
-          write('rise' + i, pence(x.monthly) + ' a month');
-          write('rise' + i + '-note', '+' + pence(x.monthly - r.main.monthly) + ' a month');
-        });
-      }
-
-      function renderNotes(r, input, values) {
+      function renderNotes(r, input) {
         const notes = [];
-        const variable = input.applicants.some((a) => a.variable > 0);
-        if (variable) notes.push('Bonus, overtime and commission are counted at ' + LG.percent(A.variableIncome * 100, 0) + '. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it\u2019s guaranteed or you have a 2-year record, so you could borrow more.');
-        if (input.cards > 0 && input.cardsType === 'balance') notes.push('Credit card balances are counted as a monthly payment of ' + LG.percent(A.cardPayment * 100, 0) + ' of the balance (' + pence(r.cardsMonthly) + '), as many lenders do. Paying a card off before you apply can raise what you can borrow.');
+        if (input.variable > 0) notes.push('Bonus, overtime and commission are counted at ' + LG.percent(A.variableIncome * 100, 0) + '. Many lenders count 60% to 70%, and some specialist lenders and building societies count all of it if it\u2019s guaranteed or you have a 2-year record, so you could borrow more.');
+        if (input.cards > 0 && input.cardsType === 'balance') notes.push('Credit card balances are counted as a monthly payment of ' + LG.percent(A.cardPayment * 100, 0) + ' of the balance (' + pounds(r.cardsMonthly) + '), as many lenders do. Paying a card off before you apply can raise what you can borrow.');
         if (r.commitments > 0) notes.push('Lenders treat commitments differently. This takes a year of them off your income before multiplying, which is cautious: some lenders will offer more.');
+        if (r.priced && r.fit === 'beyond') notes.push('The loan this home needs is more than lenders are likely to offer on your income. A bigger deposit, a lower price or clearing debts would help.');
         if (input.type === 'interest-only') notes.push('Interest-only mortgages usually need a deposit of at least ' + (100 - A.interestOnlyMaxLtv) + '% and a plan to repay the loan at the end, such as savings or selling another property. Many lenders also need a higher income.');
-        if (choice('rate-type', 'fixed') === 'variable') notes.push('On a variable or tracker rate, your payment changes whenever the rate does. The figures below show what a rise would cost.');
-        if (!r.main.band) notes.push('Very few lenders go above 95% loan-to-value. A bigger deposit widens your choice and usually lowers the rate.');
-        else if (r.main.band > 75) notes.push('Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.');
+        if (choice('rate-type', 'fixed') === 'variable') notes.push('On a variable or tracker rate, your payment changes whenever the rate does. Use the slider to see what a rise would cost.');
+        const ltv = r.priced ? r.ltv : r.points[1].ltv;
+        const band = r.priced ? r.ltvBand : r.points[1].band;
+        if (ltv !== null && !band) notes.push('Very few lenders go above 95% loan-to-value. A bigger deposit widens your choice and usually lowers the rate.');
+        else if (band > 75) notes.push('Lower loan-to-value bands usually get lower rates: each step down (90%, 85%, 75%, 60%) can bring a better deal.');
         if (dtiBand(r.dti) === 'high' || dtiBand(r.dti) === 'very high') notes.push('With this mortgage, your debt repayments would be a high share of your income. Some lenders may offer less, and the payments could be hard to keep up if your circumstances change.');
-        if (choice('purchase', 'first') === 'additional') notes.push('For a second home, lenders count your existing mortgage as a commitment. Buy-to-let mortgages are assessed on the expected rent, not your income, so they work differently.');
         const list = get('notes');
         list.replaceChildren(
           ...notes.map((t) => {
@@ -5336,15 +5507,34 @@
       function renderMethod(r, input) {
         const parts = [];
         parts.push('Income counted: ' + pounds(r.counted) + ' a year');
-        if (input.applicants.some((a) => a.variable > 0)) parts.push(' (basic pay in full, other pay at ' + LG.percent(A.variableIncome * 100, 0) + ')');
+        if (input.variable > 0) parts.push(' (basic pay in full, other pay at ' + LG.percent(A.variableIncome * 100, 0) + ')');
         if (r.commitments > 0) parts.push(', less a year of commitments (' + pounds(r.commitments * 12) + '), leaves ' + pounds(r.assessed));
         parts.push('. ');
-        parts.push(
-          'At ' + list(MULTIPLES.map(String)) + ' times that, rounded down to the nearest \u00A31,000, lenders could offer ' + list(r.points.map((pt) => pounds(pt.loan))) + '. ',
-        );
-        parts.push('Payments are worked out at ' + Number(input.rate.toFixed(2)) + '% over ' + input.term + ' years' + (input.type === 'interest-only' ? ', interest only' : ', repaying the loan') + '.');
+        parts.push('At ' + list(MULTIPLES.map(String)) + ' times that, rounded down to the nearest \u00A31,000, lenders could offer ' + list(r.points.map((pt) => pounds(pt.loan))) + '. ');
+        parts.push('Payments are worked out at ' + pct(input.rate) + ' over ' + input.term + ' years' + (input.type === 'interest-only' ? ', interest only' : ', repaying the loan') + '.');
         write('method-text', parts.join(''));
       }
+
+      // The figures to try in the results are the form's own fields: typing in
+      // either updates both.
+      root.querySelectorAll('input[data-mirror]').forEach((copy) => {
+        const field = scope.getElementById(copy.getAttribute('data-mirror'));
+        copy.addEventListener('input', () => {
+          field.value = copy.value;
+          touched.add(field.name);
+          render();
+        });
+        field.addEventListener('input', () => {
+          if (scope.activeElement !== copy) copy.value = field.value;
+        });
+        // After the field is tidied (12,500 style), so is its copy.
+        field.addEventListener('focusout', () => {
+          copy.value = field.value;
+        });
+        copy.addEventListener('focusout', () => {
+          copy.value = field.value = copy.value;
+        });
+      });
 
       Object.keys(FIELDS).forEach((id) => {
         get(id).addEventListener('input', render);
@@ -5353,13 +5543,13 @@
           render();
         });
       });
-      // Radios (text fields update on input).
-      get('form').addEventListener('change', (event) => {
-        if (!FIELDS[event.target.name]) render();
+      // Radios and the term (text fields update on input).
+      root.addEventListener('change', (event) => {
+        if (!FIELDS[event.target.name] && !event.target.hasAttribute('data-mirror') && event.target !== rise) render();
       });
       get('form').addEventListener('submit', (event) => {
         event.preventDefault();
-        active().forEach((id) => touched.add(id));
+        Object.keys(FIELDS).forEach((id) => touched.add(id));
         render();
         if (!get('error-summary').hidden) get('error-summary').focus();
       });

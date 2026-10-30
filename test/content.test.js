@@ -15,7 +15,8 @@ const BLOCKS = `<h2>Do first-time buyers pay stamp duty?</h2>
 <div class="lg-table"><table><caption>Stamp duty</caption><thead><tr><th scope="col">Price</th><th scope="col">Tax</th></tr></thead>
 <tbody><tr><th scope="row">\u00A3250,000</th><td>\u00A30</td></tr><tr><th scope="row">\u00A3350,000</th><td>\u00A32,500</td></tr></tbody></table><p>Rates from 1 April 2025.</p></div>
 <div class="lg-note"><p><strong>Scotland and Wales:</strong> different taxes apply.</p></div>
-<div class="lg-answer lg-summary"><div class="w-richtext"><ul><li>One point.</li><li>Another point.</li></ul></div></div>`;
+<div class="lg-answer lg-summary"><div class="lg-rich-text w-richtext"><ul role="list"><li>One point.</li><li>Another point.</li></ul></div></div>
+<div class="lg-answer" id="quick"><p class="lg-text_regular">A Guides quick answer in a site-styled paragraph.</p></div>`;
 
 let browser;
 before(async () => {
@@ -54,7 +55,9 @@ async function looks(css) {
       calloutBg: style('.lg-note', 'backgroundColor'),
       calloutText: style('.lg-note p', 'color'),
       summaryLabel: style('.lg-summary', 'content', '::before'),
-      summaryList: style('.lg-summary li', 'color') + ' ' + style('.lg-summary li', 'fontSize') + ' ' + style('.lg-summary ul', 'listStyleType'),
+      // The site's .lg-rich-text list styles (dashed rule, indent, gap) and white text classes stay out.
+      summaryList: [style('.lg-summary li', 'color'), style('.lg-summary li', 'fontSize'), style('.lg-summary ul', 'listStyleType'), style('.lg-summary ul', 'borderLeftStyle'), style('.lg-summary ul', 'paddingLeft'), style('.lg-summary .lg-rich-text', 'paddingLeft')].join(' '),
+      quickText: style('#quick p', 'color'),
     };
   });
   await page.close();
@@ -74,7 +77,8 @@ const EXPECTED = {
   calloutBg: 'rgb(230, 255, 245)',
   calloutText: 'rgb(10, 45, 58)',
   summaryLabel: '"Executive summary"',
-  summaryList: 'rgb(10, 45, 58) 16px disc',
+  summaryList: 'rgb(10, 45, 58) 16.5px none none 0px 0px',
+  quickText: 'rgb(10, 45, 58)',
 };
 
 test('content blocks: styled on Guides and Insights pages (dist/lg-content.min.css), over the site\u2019s rich text', async () => {
