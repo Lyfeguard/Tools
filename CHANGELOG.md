@@ -7,7 +7,7 @@ The Insights' Executive Summary. **In Webflow:** nothing to do for this release 
 - `lg-answer lg-summary`: the short-answer box labelled "Executive summary", with its points as a list, for an Executive Summary field in the Insights template. Lists inside any `lg-answer` are styled.
 - `docs/content-blocks.md`: every class at a glance (what it is, where it goes, whether it's an embed or a template element), and how to set up the Guides' Quick Answer and the Insights' Executive Summary.
 - Guide and Insight PDFs: the Quick Answer (`quick-answer`, labelled "Short answer") and the Executive Summary (`executive-summary`) print in a box before the article. Plain or rich text both work. Only items with one filled in are rebuilt; the rest keep their PDFs.
-- Tests (348, and 12 in `pdf-generator/`): the summary's label and list; the PDF box, its label and its place, and that an empty field changes nothing.
+- Tests (348, and 11 in `pdf-generator/`): the summary's label and list; the PDF box, its label and its place, and that an empty field changes nothing.
 
 ## v2.2.0 (and v1.9.2) – 2026-10-30
 Content blocks for rich text everywhere: tables, short answers and notes, styled the same on Guides, Insights and the Tools pages. **In Webflow, once:** add [`webflow/content-head.html`](webflow/content-head.html) to the Guides and Insights templates' head code. Nothing changes on the Tools pages.
