@@ -333,6 +333,8 @@ test('tax on buying a home: Stamp Duty, LBTT and LTT', async () => {
       sdlt: [tax('sdlt', 125000), tax('sdlt', 350000), tax('sdlt', 1000000), tax('sdlt', 2000000)],
       sdltFirst: [tax('sdlt', 300000, 'first'), tax('sdlt', 500000, 'first'), tax('sdlt', 500001, 'first')],
       sdltAdditional: [tax('sdlt', 39999, 'additional'), tax('sdlt', 40000, 'additional'), tax('sdlt', 300000, 'additional'), tax('sdlt', 300000, 'additional', true), tax('sdlt', 300000, 'first', true)],
+      // GOV.UK's example (Fifi): a non-resident first-time buyer above the relief's limit pays standard rates plus 2%.
+      sdltNonResident: [tax('sdlt', 39999, 'home', true), tax('sdlt', 40000, 'home', true), tax('sdlt', 700000, 'first', true)],
       lbtt: [tax('lbtt', 145000), tax('lbtt', 300000), tax('lbtt', 800000)],
       lbttFirst: [tax('lbtt', 175000, 'first'), tax('lbtt', 300000, 'first')],
       lbttAdditional: [tax('lbtt', 39999, 'additional'), tax('lbtt', 300000, 'additional')],
@@ -350,6 +352,8 @@ test('tax on buying a home: Stamp Duty, LBTT and LTT', async () => {
     sdltFirst: [0, 10000, 15000],
     // 5% more on every band from 40,000; non-UK residents 2% more again (7%, 9%, 12% at 300k).
     sdltAdditional: [0, 2000, 20000, 26000, 6000],
+    // The 2% starts at 40,000 too. 700k: 2% x 125,000 + 4% x 125,000 + 7% x 450,000 = 39,000.
+    sdltNonResident: [0, 800, 39000],
     // LBTT 300k: 2% x 105,000 + 5% x 50,000 = 4,600. 800k: 2,100 + 3,750 + 10% x 425,000 + 12% x 50,000 = 54,350.
     lbtt: [0, 4600, 54350],
     // First-time buyers: 0% to 175,000, saving 600.

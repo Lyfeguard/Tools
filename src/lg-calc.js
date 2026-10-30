@@ -4512,11 +4512,13 @@
 
     // buyer: 'home' (your only or main home), 'first' (first-time buyer) or
     // 'additional' (a second home or buy-to-let). nonResident: SDLT only.
+    // Surcharges, including the non-resident one, start at surchargeFrom.
     // Returns the tax (whole pounds, rounded down as the tax authorities do),
     // the slices, any supplement charged on the whole price, and what applied.
     function calculate(nation, price, buyer, nonResident) {
       const r = RATES[nation];
       const surcharged = buyer === 'additional' && price >= r.surchargeFrom;
+      const nonRes = nation === 'sdlt' && Boolean(nonResident) && price >= r.surchargeFrom;
       let bands = r.bands;
       let add = 0;
       let relief = false;
@@ -4525,7 +4527,7 @@
         relief = buyer === 'first' && price <= r.firstTimeBuyer.maxPrice;
         if (relief) bands = r.firstTimeBuyer.bands;
         if (surcharged) add += r.additionalSurcharge;
-        if (nonResident) add += r.nonResidentSurcharge;
+        if (nonRes) add += r.nonResidentSurcharge;
       } else if (nation === 'lbtt') {
         relief = buyer === 'first';
         if (relief) bands = [{ upTo: r.firstTimeBuyerNilBand, rate: 0 }].concat(bands.filter((b) => b.upTo === null || b.upTo > r.firstTimeBuyerNilBand));
@@ -4535,7 +4537,7 @@
       }
       const rows = slices(price, bands, add);
       const exact = rows.reduce((t, s) => t + s.tax, 0) + supplement;
-      return { nation, price, buyer, nonResident: Boolean(nonResident), rows, supplement, relief, surcharged, tax: Math.floor(exact + 1e-9) };
+      return { nation, price, buyer, nonResident: nonRes, rows, supplement, relief, surcharged, tax: Math.floor(exact + 1e-9) };
     }
 
     // The page for one nation's calculator. o: { key, prefix, nation, name,
@@ -4695,6 +4697,12 @@
           }
           if (r.buyer === 'additional' && !r.surcharged) notes.push('The higher rates for additional properties don\u2019t apply below ' + pounds(R.surchargeFrom) + '.');
           if (r.surcharged) notes.push(o.refundNote);
+          if (nonResident() && !r.nonResident) notes.push('The non-UK resident surcharge doesn\u2019t apply below ' + pounds(R.surchargeFrom) + '.');
+          if (r.nonResident) {
+            notes.push(
+              'If you\u2019re in the UK for at least 183 days in any 365-day period, from a year before buying to a year after, you can claim the 2% back by amending your return within 2 years of buying.',
+            );
+          }
           const list = get('notes');
           list.replaceChildren(
             ...notes.map((t) => {
