@@ -23,6 +23,9 @@ New calculators follow `markup/retirement-income.html` and `markup/take-home-pay
   The root does its own spacing, and its layout responds to its own width through container queries. Nothing depends on the Webflow template.
 - **The ten older calculators** add `lg-calc-classic` to the root. That keeps their own styles and switches off the base text styles meant for new calculators.
 - **Shared components.** Use the `lgc-` components in `src/lg-calc.css`: cards, fields, the option switcher, stats, comparison cards, the chart, the table and the sticky result bar.
+- **On a phone.** Check every calculator at 390px wide.
+  - **Option switcher:** options stack into a list on narrow screens. Add `lgc-switch-compact` only when every option is a word or two (Yearly / Monthly / Weekly, Fixed / Variable), so they stay side by side without wrapping.
+  - **Tables:** a short two-column table takes `lgc-table-fit`. A wider one with only a few rows takes `lgc-table-stack`: on a phone each row becomes a small card, with each figure labelled by its column heading (the code adds a `data-label` to each cell). Long year-by-year tables keep the sideways scroll.
 - **Accessible fields.** Every input has a `<label>`, a hint and an error line linked with `aria-describedby`, plus `inputmode` and `enterkeyhint`. Groups of fields and radio buttons sit in a `<fieldset>` with a `<legend>`.
 - **Errors and announcements.** One error summary (`role="alert"`) goes at the top of the form, with a "Clear figures" button. One short screen-reader announcement (`aria-live`) plays once typing pauses; it doesn't read out the whole results panel.
 - **Accessible charts.** Charts are SVG with a text description (`role="img"` and `aria-label`), and the same figures are in a table.

@@ -6803,6 +6803,11 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   .lg-calc .lgc-switch {
     grid-auto-flow: row;
   }
+  /* Stacked options read as a list, so they line up on the left */
+  .lg-calc .lgc-switch:not(.lgc-switch-compact) .lgc-switch-option {
+    justify-content: flex-start;
+    text-align: left;
+  }
   .lg-calc .lgc-stats {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
@@ -6820,8 +6825,50 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   .lg-calc .lgc-table-fit .lgc-table :is(th, td) {
     padding: 9px 8px;
   }
-  .lg-calc .lgc-table-fit .lgc-table tbody th {
+  .lg-calc .lgc-table-fit .lgc-table :is(tbody th, td) {
     white-space: normal;
+  }
+  /* A wide table becomes a card per row: the row's heading, then each
+     figure with its column heading (the cell's data-label) beside it. */
+  .lg-calc .lgc-table-stack {
+    max-height: none;
+  }
+  .lg-calc .lgc-table-stack .lgc-table {
+    min-width: 0;
+  }
+  .lg-calc .lgc-table-stack thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .lg-calc .lgc-table-stack tbody tr {
+    display: block;
+    padding: 6px 0;
+    border-top: 1px solid var(--lg-border);
+  }
+  .lg-calc .lgc-table-stack tbody tr.lgc-row-total {
+    border-top: 2px solid var(--lg-ocean);
+  }
+  .lg-calc .lgc-table-stack .lgc-table :is(th, td) {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 14px;
+    border-top: 0;
+    white-space: normal;
+  }
+  .lg-calc .lgc-table-stack .lgc-table td::before {
+    content: attr(data-label);
+    color: var(--lg-ink-soft);
+    font-weight: 400;
+    text-align: left;
+  }
+  .lg-calc .lgc-table-stack .lgc-table td:not([data-label]) {
+    display: block;
+    text-align: left;
   }
   .lg-calc .lgc-range-row {
     grid-template-columns: minmax(0, 1fr);
@@ -7144,8 +7191,9 @@ details.lg-faq-accordian summary::-webkit-details-marker {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+/* A non-breaking space keeps the arrow with the last word. */
 .lg-calc .lgc-next a::after {
-  content: " \2192";
+  content: "\00a0\2192";
 }
 .lg-calc .lgc-next a:hover {
   color: var(--lg-mint-ink);
