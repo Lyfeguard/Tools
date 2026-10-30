@@ -44,9 +44,10 @@ const literal = (value) => ascii(JSON.stringify(value));
 const cssAscii = (s) => s.replace(/[^\x00-\x7f]/g, (c) => '\\' + c.charCodeAt(0).toString(16).toUpperCase() + ' ');
 
 // Classes and ids a calculator can use: in its markup, its module, the
-// shared component code, and the CMS template's wrappers.
+// shared component code, and the CMS template's wrappers and rich text.
 const SHARED = ['src/v2/shared.js', 'src/v2/download.js', 'src/v2/track.js', 'src/v2/handoff.js', 'src/v2/element.js'];
-const TEMPLATE = 'lg-calc-wrap lg-calc-markup w-richtext w-embed lg-heading-wrap calculator';
+// lg-faq-table: tables in the page's rich text (Extended Content and FAQs).
+const TEMPLATE = 'lg-calc-wrap lg-calc-markup w-richtext w-embed lg-heading-wrap calculator lg-faq-table';
 function usedBy(keys) {
   const js = read('src/lg-calc.js');
   const corpus = [TEMPLATE, ...SHARED.map(read), between(js, '/* @v2:core-start', '/* @v2:core-end */', 'src/lg-calc.js')];

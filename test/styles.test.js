@@ -45,3 +45,12 @@ for (const key of Object.keys(scenarios)) {
     }
   });
 }
+
+// Tables in the page's rich text (<div class="lg-faq-table">) sit outside the
+// calculator, so every page's stylesheet must carry their styles.
+test('every page styles the rich text tables', () => {
+  for (const key of Object.keys(scenarios)) {
+    const css = require('fs').readFileSync(require('path').join(__dirname, '..', 'dist/v2', key + '.min.css'), 'utf8');
+    assert.ok(css.includes('div.lg-faq-table table{'), key);
+  }
+});
