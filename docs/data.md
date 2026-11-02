@@ -6,6 +6,7 @@ Figures that change over time live in `data/`, not in the code.
 - [How the data gets into the code](#how-the-data-gets-into-the-code)
 - [Every few months](#every-few-months)
 - [At each Budget](#at-each-budget)
+- [Each March](#each-march)
 - [Each April](#each-april)
 - [New ONS tables](#new-ons-tables)
 
@@ -15,6 +16,7 @@ Figures that change over time live in `data/`, not in the code.
 |---|---|---|
 | `data/2026-27.json` | The 2026/27 tax year: Income Tax (including Scottish rates), National Insurance, student loans, auto-enrolment, the High Income Child Benefit Charge, Inheritance Tax bands, pensions (the lump sum allowance and the full State Pension), mortgage affordability (`mortgageAffordability`: the income multiples, how bonus pay and credit cards count, and the loan-to-value bands), statutory redundancy pay (`redundancy`: the weekly pay caps for Great Britain and Northern Ireland), and the tax on buying a home (`propertyTax`: Stamp Duty, LBTT and LTT) | Every calculator that uses tax figures, through `LG.taxYear` and `LG.ukTax` |
 | `data/ons-ashe-2026.json` | ONS ASHE salary tables by age, for everyone, men and women | Salary by Age |
+| `data/council-tax-2026-27.json` | Council tax in England for 2026/27: every council's average Band D for its area (including county, police, fire, mayor and the average parish charge), England's average, and the bands in ninths of Band D with their 1991 values | Council Tax |
 
 Keys that start with `$` are notes (`$about`, `$checked`, `$source`), and the build leaves them out of the built files. Record in `$checked` when and against what the figures were last checked.
 
@@ -35,6 +37,17 @@ The mortgage affordability multiples (`mortgageAffordability.bands`) are typical
 ## At each Budget
 
 Stamp Duty, LBTT and LTT rates change when the UK, Scottish or Welsh government announces them, often from a date that isn't 6 April. When one does, update `propertyTax` in the current data file and its `$source` and `$checked` notes, rebuild, update the snapshots and release before the new rates start. In Webflow, re-check the worked examples on the three Tools items.
+
+## Each March
+
+MHCLG publishes the next year's council tax levels in late March ("Council Tax levels set by local authorities in England", with a Band D live tables spreadsheet). Before 1 April:
+
+1. **Make the new data file** (`data/council-tax-2027-28.json`, in the same shape) from the spreadsheet's Table 5 (`Area_CT`): each of the 296 billing authorities' Band D for the new year, with the names tidied (no "UA", "and" for "&"), and England's average from the same table. Keep the councils in alphabetical order.
+2. **Point the marker** in the Council Tax module (`/* @data:council-tax-2027-28 */`), and change "2026/27" in `markup/council-tax.html` and the module's text.
+3. **Rebuild and test,** update the snapshots and the known answers, and release.
+4. **In Webflow,** update the figures in the Council Tax item's Quick Answer, At a Glance, Extended Content (both tables and the Leeds example) and FAQs, and the year in its SEO title.
+
+If councils merge or are renamed, the data test's count of 296 changes too.
 
 ## Each April
 

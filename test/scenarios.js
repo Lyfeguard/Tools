@@ -453,4 +453,22 @@ module.exports = {
     ],
   },
 
+  'council-tax': {
+    empty: [],
+    bandD: [['select', '#lgct-council', 'Leeds']],
+    singleBandC: [
+      ['select', '#lgct-council', 'Leeds'],
+      ['select', '#lgct-band', 'C'],
+      ['check', '#lgct-single'],
+    ],
+    lowestBandH: [
+      ['select', '#lgct-council', 'Wandsworth'],
+      ['select', '#lgct-band', 'H'],
+    ],
+    cleared: [
+      ['select', '#lgct-council', 'Dorset'],
+      ['select', '#lgct-band', 'A'],
+      ['click', '#lgct [data-clear]'],
+    ],
+  },
 };

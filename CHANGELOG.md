@@ -2,6 +2,12 @@
 
 Every release, newest first. [docs/releasing.md](docs/releasing.md) describes how releases work.
 
+## v2.6.0 – Unreleased
+A new calculator: Council Tax, for every council in England. **In Webflow:** the Council Tax Calculator item and its FAQ item are drafts, filled in; publish both after the release. Add its icon and Social Image.
+- **Council Tax** (`council-tax`, slug `council-tax-calculator`): choose your council (all 296 in England) and band (A to H, with their 1 April 1991 values), and whether only one adult lives there. Shows the year's bill for 2026/27, the monthly payments over 10 or 12 months, the council's Band D against England's average (£2,391.52), and every band in that area. Each band is its ninths of Band D (Local Government Finance Act 1992, section 5).
+- **Data:** `data/council-tax-2026-27.json`, from MHCLG's Band D live tables for 2026/27 (Table 5, area council tax: each council's average including county, police, fire, mayor and parish charges). Only the Council Tax page loads it. `docs/data.md` says how to replace it each March.
+- The band table is in the markup, so the bands, 1991 values and shares of Band D are in the page for search engines; the script fills in the amounts.
+
 ## v2.5.1 – 2026-10-30
 Better on phones, and a clearer age question on Mortgage Affordability. **In Webflow:** nothing to change; publish after the release.
 - **Option switchers:** those with longer options now stack as a list on phones instead of squeezing into columns: Mortgage Affordability (credit cards, what you're buying, where you pay tax), Stamp Duty, LBTT and Land Transaction Tax (who's buying), Redundancy Pay (where you work) and Take-Home Pay (where you pay tax, pension basis). Stacked options line up on the left. Short ones (Fixed / Variable, Yearly / Monthly / Weekly) stay side by side.

@@ -8,6 +8,7 @@ const { inline } = require('../scripts/data');
 
 const year = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/2026-27.json'), 'utf8'));
 const ons = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/ons-ashe-2026.json'), 'utf8'));
+const councilTax = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/council-tax-2026-27.json'), 'utf8'));
 const rate = (r) => typeof r === 'number' && r > 0 && r < 1;
 const amount = (n) => Number.isInteger(n) && n > 0;
 
@@ -64,6 +65,18 @@ test('redundancy pay: caps, limits and bands', () => {
   assert.ok(amount(r.weeklyPayCap) && amount(r.weeklyPayCapNI) && amount(r.taxFree));
   assert.ok(r.minYears === 2 && r.maxYears === 20);
   assert.deepEqual(r.bands.map((b) => [b.fromAge, b.weeks]), [[41, 1.5], [22, 1], [0, 0.5]]);
+});
+
+test('council tax: the bands in ninths, and a Band D for every council in England', () => {
+  const c = councilTax;
+  // Local Government Finance Act 1992, section 5(1), and the 1991 values for England.
+  assert.deepEqual(c.bands.map((b) => [b.band, b.ninths, b.upTo]), [['A', 6, 40000], ['B', 7, 52000], ['C', 8, 68000], ['D', 9, 88000], ['E', 11, 120000], ['F', 13, 160000], ['G', 15, 320000], ['H', 18, null]]);
+  assert.equal(c.councils.length, 296);
+  const names = c.councils.map((r) => r[0]);
+  assert.equal(new Set(names).size, names.length, 'no council twice');
+  assert.deepEqual(names, [...names].sort((a, b) => a.localeCompare(b, 'en-GB')), 'in alphabetical order');
+  c.councils.forEach(([name, bandD]) => assert.ok(bandD > 900 && bandD < 3500 && Math.abs(bandD * 100 - Math.round(bandD * 100)) < 1e-6 && /^[A-Z]/.test(name), name));
+  assert.ok(c.englandBandD > 2000 && c.englandBandD < 3000);
 });
 
 test('the salary tables: every age group and sex, 12 figures in order', () => {
