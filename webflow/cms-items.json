@@ -70,6 +70,10 @@
     "mortgage-affordability": {
       "slug": "mortgage-affordability-calculator",
       "id": "6ae4d2e42a2d8eadd98d9198"
+    },
+    "council-tax": {
+      "slug": "council-tax-calculator",
+      "id": "6ae87acd38de289a295d5d98"
     }
   }
 }

@@ -394,6 +394,40 @@ test('redundancy pay: statutory weeks, the cap and the 20-year limit (from 6 Apr
   assert.deepEqual(out, { acas: [7, 3500], young: [2, 800], capped: [29.5, 22154.5], max: [30, 22530], maxNI: [30, 23490], under2: [0, 0] });
 });
 
+test('council tax: ninths of Band D, the single person discount and monthly payments (2026/27)', async () => {
+  const page = await openCalculator(browser, 'council-tax');
+  const out = await page.evaluate(() => {
+    const { calculate, council, data } = window.LyfeTools.councilTax;
+    const bands = (name) => calculate({ bandD: council(name), band: 'D', single: false }).bands.map((b) => b.year);
+    const r = calculate({ bandD: council('Leeds'), band: 'C', single: true });
+    return {
+      count: data.councils.length,
+      england: data.englandBandD,
+      // MHCLG's area Band D for 2026/27.
+      leeds: council('Leeds'),
+      // 2,283.73 x 6/9, 7/9, 8/9, 1, 11/9, 13/9, 15/9, 18/9, to the penny.
+      leedsBands: bands('Leeds'),
+      // Band C 2,029.98, less 25% (507.50) = 1,522.48; / 10 = 152.25; / 12 = 126.87.
+      leedsSingleC: [r.full, r.discount, r.year, r.ten, r.twelve],
+      // The lowest and highest Band D in England.
+      lowest: council('Wandsworth'),
+      highest: council('Dorset'),
+      unknown: council('Glasgow'),
+    };
+  });
+  await page.close();
+  assert.deepEqual(out, {
+    count: 296,
+    england: 2391.52,
+    leeds: 2283.73,
+    leedsBands: [1522.49, 1776.23, 2029.98, 2283.73, 2791.23, 3298.72, 3806.22, 4567.46],
+    leedsSingleC: [2029.98, 507.5, 1522.48, 152.25, 126.87],
+    lowest: 1028.21,
+    highest: 2765.02,
+    unknown: undefined,
+  });
+});
+
 test('mortgage affordability: income multiples, commitments, take-home pay and cash flow', async () => {
   const page = await openCalculator(browser, 'mortgage-affordability');
   const out = await page.evaluate(() => {

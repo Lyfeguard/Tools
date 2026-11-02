@@ -5564,4 +5564,123 @@
     }
   });
   /* @v2:mortgage-affordability-end */
+  /* @v2:council-tax-start */
+  module('council-tax', function () {
+    'use strict';
+    const CT = /* @data:council-tax-2026-27 */ null;
+    const pence = (n) => Math.round(n * 100) / 100;
+
+    // bandD: the council's Band D a year; band: 'A' to 'H'; single: only one
+    // adult lives there (the single person discount). Each band is a number
+    // of ninths of Band D.
+    function calculate({ bandD, band, single }) {
+      const bands = CT.bands.map((b) => ({ band: b.band, ninths: b.ninths, upTo: b.upTo, year: pence((bandD * b.ninths) / 9) }));
+      const full = bands.find((b) => b.band === band).year;
+      const discount = single ? pence(full * 0.25) : 0;
+      const year = pence(full - discount);
+      return { bands, full, discount, year, ten: pence(year / 10), twelve: pence(year / 12), vsEngland: bandD / CT.englandBandD - 1 };
+    }
+    const council = (name) => (CT.councils.find((c) => c[0] === name) || [])[1];
+    LG.councilTax = { calculate, council, data: CT };
+
+    LG.start({
+      name: 'Council Tax',
+      panel: 'lgct-form',
+      required: ['lgct-council', 'lgct-band', 'lgct-single', 'lgct-results', 'lgct-headline', 'lgct-notes'],
+      setup: setup,
+    });
+
+    function setup(root) {
+      // The document, or the component's shadow root when built into <lg-calculator>.
+      const scope = root.getRootNode();
+      const get = (id) => scope.getElementById('lgct-' + id);
+      const write = (id, text) => {
+        const el = get(id);
+        if (el) el.textContent = text;
+      };
+      const pounds = (n) => LG.money(n, 2);
+      const select = get('council');
+      CT.councils.forEach(([name]) => select.add(new Option(name, name)));
+
+      function reset() {
+        get('results').dataset.state = 'empty';
+        write('headline', '\u2014');
+        write('status', '');
+        get('status').hidden = true;
+        write('summary', 'Choose your council to see your council tax.');
+        ['ten', 'twelve', 'band-d', 'england'].forEach((id) => write(id, '\u2014'));
+        CT.bands.forEach((b) => {
+          write('year-' + b.band, '\u2014');
+          write('month-' + b.band, '\u2014');
+          get('row-' + b.band).classList.remove('lgc-row-total');
+        });
+        write('table-caption', 'Council tax bands in England, 2026/27');
+        get('notes').replaceChildren();
+        get('notes').hidden = true;
+        write('method-text', 'Choose your council to see how the figures are worked out.');
+      }
+
+      function render() {
+        const name = select.value;
+        const bandD = council(name);
+        if (!bandD) return reset();
+        const band = get('band').value;
+        const single = get('single').checked;
+        const r = calculate({ bandD, band, single });
+        get('results').dataset.state = 'ready';
+        write('headline', pounds(r.year));
+        const status = get('status');
+        const diff = Math.round(Math.abs(r.vsEngland) * 100);
+        status.hidden = false;
+        status.textContent = name + ': ' + (diff === 0 ? 'about the England average' : diff + '% ' + (r.vsEngland > 0 ? 'above' : 'below') + ' the England average');
+        write('summary', 'Band ' + band + ' in ' + name + (single ? ', with the single person discount' : '') + '. That\u2019s ' + pounds(r.ten) + ' a month over 10 months, or ' + pounds(r.twelve) + ' over 12.');
+        write('ten', pounds(r.ten));
+        write('twelve', pounds(r.twelve));
+        write('band-d', pounds(bandD));
+        write('england', pounds(CT.englandBandD));
+        r.bands.forEach((b) => {
+          write('year-' + b.band, pounds(b.year));
+          write('month-' + b.band, pounds(pence(b.year / 10)));
+          get('row-' + b.band).classList.toggle('lgc-row-total', b.band === band);
+        });
+        write('table-caption', 'Council tax bands in ' + name + ', 2026/27, before discounts');
+        renderNotes(single);
+        renderMethod(r, name, bandD, band, single);
+      }
+
+      function renderNotes(single) {
+        const notes = [];
+        if (single) notes.push('The single person discount is 25% off the whole bill. Tell your council if more adults move in.');
+        else notes.push('If you\u2019re the only adult living there, you can get 25% off: the single person discount.');
+        notes.push('You may pay less with Council Tax Reduction if you\u2019re on a low income or get certain benefits, or if someone in your home is disabled, a full-time student or a carer. Ask your council.');
+        notes.push('Many councils charge extra on second homes and on homes that have been empty for a year or more.');
+        const list = get('notes');
+        list.replaceChildren(
+          ...notes.map((t) => {
+            const li = document.createElement('li');
+            li.textContent = t;
+            return li;
+          }),
+        );
+        list.hidden = false;
+      }
+
+      function renderMethod(r, name, bandD, band, single) {
+        const ninths = CT.bands.find((b) => b.band === band).ninths;
+        write(
+          'method-text',
+          'Band D in ' + name + ' is ' + pounds(bandD) + ' for 2026/27. ' +
+            (band === 'D' ? '' : 'Band ' + band + ' pays ' + ninths + '/9 of that: ' + pounds(bandD) + ' \u00D7 ' + ninths + ' \u00F7 9 = ' + pounds(r.full) + '. ') +
+            (single ? 'Less the 25% single person discount (' + pounds(r.discount) + '), that\u2019s ' + pounds(r.year) + '. ' : '') +
+            'Over 10 monthly payments, ' + pounds(r.year) + ' \u00F7 10 = ' + pounds(r.ten) + '; over 12, ' + pounds(r.twelve) + '.',
+        );
+      }
+
+      get('form').addEventListener('change', render);
+      get('form').addEventListener('submit', (event) => event.preventDefault());
+      root.querySelector('[data-clear]').addEventListener('click', render);
+      render();
+    }
+  });
+  /* @v2:council-tax-end */
 })(window, document);

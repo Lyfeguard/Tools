@@ -1,0 +1,95 @@
+<lg-calculator key="council-tax">
+<div class="lg-calc" data-calc="council-tax" id="lgct">
+  <form id="lgct-form" class="lgc-card" novalidate="" aria-labelledby="lgct-form-title">
+    <p class="lgc-eyebrow">01 — Your details</p>
+    <h2 id="lgct-form-title">Your council and band</h2>
+    <p class="lgc-intro">See how much council tax you’ll pay from April 2026 to March 2027, for any council in England and any band from A to H.</p>
+
+    <fieldset class="lgc-group">
+      <legend class="lgc-group-title">Your home</legend>
+      <div class="lgc-grid">
+        <div class="lgc-field lgc-field-full">
+          <label for="lgct-council">Your council</label>
+          <div class="lgc-input lgc-select"><select id="lgct-council" name="council" aria-describedby="lgct-council-hint">
+            <option value="">Choose your council</option>
+          </select></div>
+          <p id="lgct-council-hint" class="lgc-hint">The council you pay council tax to. For homes in England: Scotland and Wales have their own bands.</p>
+        </div>
+        <div class="lgc-field lgc-field-full">
+          <label for="lgct-band">Your council tax band</label>
+          <div class="lgc-input lgc-select"><select id="lgct-band" name="band" aria-describedby="lgct-band-hint">
+            <option value="A">Band A: up to £40,000</option>
+            <option value="B">Band B: £40,001 to £52,000</option>
+            <option value="C">Band C: £52,001 to £68,000</option>
+            <option value="D" selected="">Band D: £68,001 to £88,000</option>
+            <option value="E">Band E: £88,001 to £120,000</option>
+            <option value="F">Band F: £120,001 to £160,000</option>
+            <option value="G">Band G: £160,001 to £320,000</option>
+            <option value="H">Band H: over £320,000</option>
+          </select></div>
+          <p id="lgct-band-hint" class="lgc-hint">Bands go by what your home was worth on 1 April 1991, not today. Your band is on your bill, or <a href="https://www.gov.uk/council-tax-bands">check your band on GOV.UK</a>.</p>
+        </div>
+        <div class="lgc-field lgc-field-full">
+          <span class="lgc-field-label" aria-hidden="true">Who lives there</span>
+          <label class="lgc-check"><input id="lgct-single" name="single" type="checkbox" aria-describedby="lgct-single-hint"><span>Only one adult lives here</span></label>
+          <p id="lgct-single-hint" class="lgc-hint">You get 25% off, the single person discount. Some adults don’t count, such as full-time students and live-in carers.</p>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="lgc-form-footer">
+      <p class="lgc-hint">Results update as you choose. Nothing you enter leaves your browser.</p>
+      <button type="button" class="lgc-button lgc-button-quiet" data-clear="">Clear figures</button>
+    </div>
+  </form>
+
+  <section id="lgct-results" class="lgc-card lgc-card-dark" aria-labelledby="lgct-results-title" data-state="empty">
+    <p class="lgc-eyebrow">02 — Your results</p>
+    <h2 id="lgct-results-title">Your council tax</h2>
+    <p class="lgc-result-label" id="lgct-headline-label">Council tax for 2026/27</p>
+    <p class="lgc-result-value" id="lgct-headline">—</p>
+    <p class="lgc-badge" id="lgct-status" hidden=""></p>
+    <p class="lgc-result-summary" id="lgct-summary">Choose your council to see your council tax.</p>
+    <dl class="lgc-stats">
+      <div><dt>Over 10 months</dt><dd id="lgct-ten">—</dd></div>
+      <div><dt>Over 12 months</dt><dd id="lgct-twelve">—</dd></div>
+      <div><dt>Band D in your area</dt><dd id="lgct-band-d">—</dd></div>
+      <div><dt>England average, Band D</dt><dd id="lgct-england">—</dd></div>
+    </dl>
+    <p class="lgc-small">Each council’s average for its area, including the county council, police, fire and any mayor, and the average town or parish council charge. Your bill can differ by a few pounds, depending on your parish.</p>
+    <p class="lgc-sr-only" aria-live="polite" data-announce="lgct-headline-label lgct-headline lgct-summary"></p>
+  </section>
+
+  <section id="lgct-bands" class="lgc-card" aria-labelledby="lgct-bands-title">
+    <h3 id="lgct-bands-title">Every band in your area</h3>
+    <p class="lgc-intro">Each band pays a set share of Band D, from two thirds in Band A to twice as much in Band H. Your band depends on what your home would have sold for on 1 April 1991.</p>
+    <div class="lgc-table-wrap lgc-table-stack" tabindex="0" role="region" aria-labelledby="lgct-table-caption">
+      <table class="lgc-table">
+        <caption id="lgct-table-caption">Council tax bands in England, 2026/27</caption>
+        <thead><tr><th scope="col">Band</th><th scope="col">Value in 1991</th><th scope="col">Share of Band D</th><th scope="col">A year</th><th scope="col">Over 10 months</th></tr></thead>
+        <tbody>
+          <tr id="lgct-row-A"><th scope="row">Band A</th><td data-label="Value in 1991">Up to £40,000</td><td data-label="Share of Band D">6/9</td><td data-label="A year" id="lgct-year-A">—</td><td data-label="Over 10 months" id="lgct-month-A">—</td></tr>
+          <tr id="lgct-row-B"><th scope="row">Band B</th><td data-label="Value in 1991">£40,001 to £52,000</td><td data-label="Share of Band D">7/9</td><td data-label="A year" id="lgct-year-B">—</td><td data-label="Over 10 months" id="lgct-month-B">—</td></tr>
+          <tr id="lgct-row-C"><th scope="row">Band C</th><td data-label="Value in 1991">£52,001 to £68,000</td><td data-label="Share of Band D">8/9</td><td data-label="A year" id="lgct-year-C">—</td><td data-label="Over 10 months" id="lgct-month-C">—</td></tr>
+          <tr id="lgct-row-D"><th scope="row">Band D</th><td data-label="Value in 1991">£68,001 to £88,000</td><td data-label="Share of Band D">9/9</td><td data-label="A year" id="lgct-year-D">—</td><td data-label="Over 10 months" id="lgct-month-D">—</td></tr>
+          <tr id="lgct-row-E"><th scope="row">Band E</th><td data-label="Value in 1991">£88,001 to £120,000</td><td data-label="Share of Band D">11/9</td><td data-label="A year" id="lgct-year-E">—</td><td data-label="Over 10 months" id="lgct-month-E">—</td></tr>
+          <tr id="lgct-row-F"><th scope="row">Band F</th><td data-label="Value in 1991">£120,001 to £160,000</td><td data-label="Share of Band D">13/9</td><td data-label="A year" id="lgct-year-F">—</td><td data-label="Over 10 months" id="lgct-month-F">—</td></tr>
+          <tr id="lgct-row-G"><th scope="row">Band G</th><td data-label="Value in 1991">£160,001 to £320,000</td><td data-label="Share of Band D">15/9</td><td data-label="A year" id="lgct-year-G">—</td><td data-label="Over 10 months" id="lgct-month-G">—</td></tr>
+          <tr id="lgct-row-H"><th scope="row">Band H</th><td data-label="Value in 1991">Over £320,000</td><td data-label="Share of Band D">18/9</td><td data-label="A year" id="lgct-year-H">—</td><td data-label="Over 10 months" id="lgct-month-H">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul id="lgct-notes" class="lgc-notes" hidden=""></ul>
+  </section>
+
+  <details id="lgct-method" class="lgc-card lgc-method">
+    <summary>How was this calculated?</summary>
+    <div class="lgc-method-body">
+      <p id="lgct-method-text">Choose your council to see how the figures are worked out.</p>
+      <p class="lgc-small">Councils in England set a Band D amount each year, and every other band pays a fixed share of it, in ninths: Band A 6/9, B 7/9, C 8/9, D 9/9, E 11/9, F 13/9, G 15/9 and H 18/9 (Local Government Finance Act 1992, section 5). We use each council’s average Band D for 2026/27 from the Ministry of Housing, Communities and Local Government, which includes the county council, police, fire, mayor and the average town or parish council charge. The single person discount takes 25% off. Monthly figures divide the year’s bill into 10 or 12 equal payments; councils round the first payment slightly differently.</p>
+    </div>
+  </details>
+
+  <div class="lgc-sticky" data-source="lgct-headline" data-results="lgct-results" hidden=""><p><span class="lgc-sticky-label">Council tax</span> <strong data-sticky-value="">—</strong></p><a href="#lgct-results" class="lgc-sticky-link">See results</a></div>
+</div>
+</lg-calculator>
