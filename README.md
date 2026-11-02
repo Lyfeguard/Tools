@@ -31,26 +31,26 @@ Each calculator page is a Tools item. The template's head loads only that page's
 
 ## Calculators
 
-| Key | Calculator |
+| Key | Calculator (live page) |
 |---|---|
-| `net-worth` | Net Worth |
-| `inheritance-tax` | Inheritance Tax |
-| `compound-interest` | Compound Interest |
-| `savings-goal` | Savings Goal |
-| `emergency-fund` | Emergency Fund |
-| `loan-repayment` | Loan Repayment |
-| `pro-rata-salary` | Pro Rata Salary |
-| `salary-by-age` | Salary by Age |
-| `mortgage` | Mortgage |
-| `debt-to-income` | Debt-to-Income |
-| `retirement-income` | Retirement Income |
-| `take-home-pay` | Take-Home Pay |
-| `stamp-duty` | Stamp Duty (England and Northern Ireland) |
-| `lbtt` | LBTT (Scotland) |
-| `land-transaction-tax` | Land Transaction Tax (Wales) |
-| `redundancy-pay` | Redundancy Pay |
-| `mortgage-affordability` | Mortgage Affordability |
-| `council-tax` | Council Tax (England) |
+| `net-worth` | [Net Worth](https://lyfeguard.com/tools/net-worth-calculator) |
+| `inheritance-tax` | [Inheritance Tax](https://lyfeguard.com/tools/inheritance-tax-calculator) |
+| `compound-interest` | [Compound Interest](https://lyfeguard.com/tools/compound-interest-calculator) |
+| `savings-goal` | [Savings Goal](https://lyfeguard.com/tools/savings-goal-calculator) |
+| `emergency-fund` | [Emergency Fund](https://lyfeguard.com/tools/emergency-fund-calculator) |
+| `loan-repayment` | [Loan Repayment](https://lyfeguard.com/tools/loan-repayment-calculator) |
+| `pro-rata-salary` | [Pro Rata Salary](https://lyfeguard.com/tools/pro-rata-salary-calculator) |
+| `salary-by-age` | [Salary by Age](https://lyfeguard.com/tools/average-salary-by-age) |
+| `mortgage` | [Mortgage](https://lyfeguard.com/tools/mortgage-calculator) |
+| `debt-to-income` | [Debt-to-Income](https://lyfeguard.com/tools/dti-calculator) |
+| `retirement-income` | [Retirement Income](https://lyfeguard.com/tools/retirement-income-calculator) |
+| `take-home-pay` | [Take-Home Pay](https://lyfeguard.com/tools/take-home-pay-calculator) |
+| `stamp-duty` | [Stamp Duty (England and Northern Ireland)](https://lyfeguard.com/tools/stamp-duty-calculator) |
+| `lbtt` | [LBTT (Scotland)](https://lyfeguard.com/tools/lbtt-calculator) |
+| `land-transaction-tax` | [Land Transaction Tax (Wales)](https://lyfeguard.com/tools/land-transaction-tax-calculator) |
+| `redundancy-pay` | [Redundancy Pay](https://lyfeguard.com/tools/redundancy-pay-calculator) |
+| `mortgage-affordability` | [Mortgage Affordability](https://lyfeguard.com/tools/mortgage-affordability-calculator) |
+| `council-tax` | [Council Tax (England)](https://lyfeguard.com/tools/council-tax-calculator) |
 
 The key names the calculator's files (`dist/v2/<key>.min.js`, `markup/<key>.html`) and goes in its Tools item's Component Key field. The three taxes on buying a home share one engine, with each nation's rates in the data file. Item IDs are in [`webflow/cms-items.json`](webflow/cms-items.json).
 
